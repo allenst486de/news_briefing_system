@@ -1,28 +1,20 @@
 name: Daily News Briefing
+
 on:
   schedule:
-    # 매일 오전 6시 KST (UTC 21:00 전날)
     - cron: '0 21 * * *'
-  workflow_dispatch:  # 수동 실행 가능
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   generate-briefing:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Git credentials
-        run : |
-          git config --global user.email "youremail@example.com"
-          git config --global user.name "Your Name"
-          git config --global url."https://github.com".insteadOf git@github.com
-          git remote set-url origin https://github.com/allenst486de/news_briefing_system.git
-          git remote set-url --add --push origin https://github.com/allenst486de/news_briefing_system.git
-          git remote set-url --add --push origin https://x-access-token:${{ secrets.PAT_news_briefing_system }}@github.com/allenst486de/news_briefing_system.git
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -43,19 +35,18 @@ jobs:
       - name: Run news briefing
         run: python main.py
       
-      - name: Commit and push changes
+      - name: Commit docs if changed
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add docs/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update daily news briefing - $(date +'%Y-%m-%d')" && git push)
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name : Push changes
-        run : |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -am "Automated commit"
-          git push
+          if [[ -n $(git status --porcelain docs/) ]]; then
+            git add docs/
+            git commit -m "Update daily news briefing - $(date +'%Y-%m-%d')"
+            git push
+          else
+            echo "No changes in docs"
+          fi
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -63,4 +54,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
           publish_branch: gh-pages
-          keep_files: true  # 이전 파일 유지 (아카이브)
+          keep_files: true
