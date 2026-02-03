@@ -49,6 +49,13 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add docs/
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update daily news briefing - $(date +'%Y-%m-%d')" && git push)
+
+      - name : Push changes
+        run : |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "Automated commit"
+          git push
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
