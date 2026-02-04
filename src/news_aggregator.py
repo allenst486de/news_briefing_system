@@ -145,7 +145,6 @@ class NewsAggregator:
             categorized_news[category] = self._process_articles(
                 categorized_news[category]
             )
-        )
         
         # 4. 중복 제거 및 정렬
         for category in categorized_news:
@@ -204,3 +203,4 @@ class NewsAggregator:
                 unique_articles.append(article)
                 
         return unique_articles
+
