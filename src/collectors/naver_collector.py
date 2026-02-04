@@ -1,7 +1,7 @@
 import logging
 from typing import List
 from .base_collector import BaseCollector, NewsArticle
-from .utils.rss_utils import fetch_feed, clean_html, extract_date
+from ..utils.rss_utils import fetch_feed, clean_html, extract_date
 
 
 class NaverCollector(BaseCollector):
@@ -48,4 +48,5 @@ class NaverCollector(BaseCollector):
             articles.append(article)
 
         return articles
+
 
