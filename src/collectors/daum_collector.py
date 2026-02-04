@@ -1,7 +1,7 @@
 import logging
 from typing import List
 from .base_collector import BaseCollector, NewsArticle
-from .utils.rss_utils import fetch_feed, clean_html, extract_date
+from ..utils.rss_utils import fetch_feed, clean_html, extract_date
 
 
 class DaumCollector(BaseCollector):
@@ -47,4 +47,5 @@ class DaumCollector(BaseCollector):
             articles.append(article)
 
         return articles
+
 
