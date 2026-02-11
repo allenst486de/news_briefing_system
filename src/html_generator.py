@@ -79,7 +79,8 @@ class HTMLGenerator:
                     category=category,
                     articles=articles,
                     output_file=file_path,
-                    date_str=date_str
+                    date_str=date_str,
+                    date_path=date_path
                 )
                 
                 # URL 저장 (상대 경로)
@@ -98,7 +99,7 @@ class HTMLGenerator:
         return page_urls
     
     def _generate_briefing_page(self, category: str, articles: List[NewsArticle],
-                                output_file: str, date_str: str):
+                                output_file: str, date_str: str, date_path: str):
         """개별 브리핑 페이지 생성"""
         template = self.env.get_template('briefing.html')
         
@@ -122,12 +123,14 @@ class HTMLGenerator:
             
             articles_data.append(article_dict)
         
-        # HTML 렌더링
+        # HTML 렌더링 (루트 기준 절대 경로 사용)
         html_content = template.render(
             category_name=self.CATEGORY_NAMES[category],
             date=date_str,
             articles=articles_data,
-            css_path='../../../style.css'
+            css_path='/style.css',  # 루트 기준 절대 경로
+            archive_path='/archive.html',  # 루트 기준 절대 경로
+            date_path=date_path  # 같은 날짜 내 다른 카테고리 링크용
         )
         
         # 파일 저장
@@ -152,7 +155,7 @@ class HTMLGenerator:
                 archive_items.append({
                     'title': f"{date_str} - {self.CATEGORY_NAMES[category]}",
                     'date': date_str,
-                    'path': f"{date_path}/{filename}"
+                    'path': f"/{date_path}/{filename}"  # 루트 기준 절대 경로
                 })
         
         # 날짜 역순 정렬
@@ -174,8 +177,8 @@ class HTMLGenerator:
         index_file = os.path.join(self.output_dir, 'index.html')
         template = self.env.get_template('index.html')
         
-        # 최신 브리핑 URL (국내 종합으로 기본 설정)
-        latest_url = f"{latest_date_path}/domestic_general.html"
+        # 최신 브리핑 URL (루트 기준 절대 경로)
+        latest_url = f"/{latest_date_path}/domestic_general.html"
         
         html_content = template.render(latest_briefing_url=latest_url)
         
