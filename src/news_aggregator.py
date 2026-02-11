@@ -29,16 +29,14 @@ SOURCE_CATEGORY_MAP = {
         "economy": "economy",
         "politics": "politics",
         "society": "society",
-        "world": "world",
-        "it": "it"
+        "world": "world"
     },
     "daum": {
         "top": "top",
         "economic": "economy",
         "politics": "politics",
         "society": "society",
-        "world": "world",
-        "it": "it"
+        "world": "world"
     },
     "bbc": {
         "world": "world",
