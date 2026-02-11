@@ -105,14 +105,22 @@ class HTMLGenerator:
         # 기사 데이터 변환
         articles_data = []
         for article in articles:
-            articles_data.append({
+            article_dict = {
                 'title': article.title,
                 'link': article.link,
                 'published': article.published.strftime('%Y-%m-%d %H:%M'),
                 'summary': article.summary,
                 'source': article.source,
                 'is_important': article.is_important
-            })
+            }
+            
+            # 번역된 기사인 경우 원문 정보 추가
+            if hasattr(article, 'original_title'):
+                article_dict['original_title'] = article.original_title
+            if hasattr(article, 'original_summary'):
+                article_dict['original_summary'] = article.original_summary
+            
+            articles_data.append(article_dict)
         
         # HTML 렌더링
         html_content = template.render(

@@ -47,5 +47,3 @@ class DaumCollector(BaseCollector):
             articles.append(article)
 
         return articles
-
-

@@ -5,6 +5,7 @@
 ## 📋 주요 기능
 
 - **자동 뉴스 수집**: BBC, New York Times, 네이버 뉴스, 다음 뉴스에서 RSS 피드를 통해 뉴스 수집
+- **자동 번역**: 해외 뉴스(BBC, NYT)를 한국어로 자동 번역하여 제공 (원문 보기 기능 포함)
 - **카테고리별 분류**: 
   - 🇰🇷 국내 종합 뉴스
   - 💰 국내 경제 뉴스
@@ -104,7 +105,9 @@ news_briefing_system/
 │   │   └── style.css
 │   ├── utils/                    # 유틸리티
 │   │   ├── logger.py
-│   │   └── importance_analyzer.py
+│   │   ├── importance_analyzer.py
+│   │   ├── translator.py         # 번역 유틸리티
+│   │   └── rss_utils.py          # RSS 피드 유틸리티
 │   ├── news_aggregator.py        # 뉴스 통합 및 분류
 │   ├── html_generator.py         # HTML 생성
 │   └── telegram_bot.py           # 텔레그램 봇
@@ -118,12 +121,14 @@ news_briefing_system/
 
 ## 🎨 기능 상세
 
-### 뉴스 수집
+### 뉴스 수집 및 번역
 
-- **BBC News**: 세계 뉴스, 비즈니스, 정치 등
-- **New York Times**: 세계 뉴스, 비즈니스, 정치 등
+- **BBC News**: 세계 뉴스, 비즈니스, 정치 등 (자동 번역)
+- **New York Times**: 세계 뉴스, 비즈니스, 정치 등 (자동 번역)
 - **네이버 뉴스**: 정치, 경제, 사회, 세계, IT 등
 - **다음 뉴스**: 정치, 경제, 사회, 국제, 문화, IT 등
+
+해외 뉴스는 Google Translate API를 통해 자동으로 한국어로 번역되며, 각 기사에서 "원문 보기"를 클릭하면 영문 원문을 확인할 수 있습니다.
 
 ### 중요도 분석
 

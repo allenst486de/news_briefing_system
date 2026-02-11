@@ -48,5 +48,3 @@ class NaverCollector(BaseCollector):
             articles.append(article)
 
         return articles
-
-

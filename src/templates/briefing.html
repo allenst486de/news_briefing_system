@@ -52,6 +52,18 @@
                 {% if article.summary %}
                 <p class="news-summary">{{ article.summary }}</p>
                 {% endif %}
+
+                {% if article.original_title %}
+                <details>
+                    <summary>📄 원문 보기</summary>
+                    <div class="original-content">
+                        <p class="original-title">{{ article.original_title }}</p>
+                        {% if article.original_summary %}
+                        <p class="original-summary">{{ article.original_summary }}</p>
+                        {% endif %}
+                    </div>
+                </details>
+                {% endif %}
             </article>
             {% endfor %}
             {% else %}
