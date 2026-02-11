@@ -38,33 +38,47 @@ class TelegramNotifier:
         self.logger = setup_logger()
         self.bot = Bot(token=bot_token)
         self.chat_id = chat_id
+        # base_url에서 trailing slash 제거
         self.base_url = base_url.rstrip('/')
+        self.logger.info(f"Telegram bot initialized with base URL: {self.base_url}")
         
     async def send_briefing(self, page_urls: Dict[str, str], date_str: str):
         """
         브리핑 링크를 텔레그램으로 전송
         
         Args:
-            page_urls: 카테고리별 페이지 URL 딕셔너리
+            page_urls: 카테고리별 페이지 URL 딕셔너리 (예: {"domestic_general": "2026/02/11/domestic_general.html"})
             date_str: 날짜 문자열
         """
         self.logger.info("Sending Telegram notification...")
+        self.logger.info(f"Page URLs received: {page_urls}")
         
         # 메시지 구성
-        message = f"📰 *일일 뉴스 브리핑* ({date_str})\n\n"
-        message += "오늘의 주요 뉴스를 확인하세요!\n\n"
+        message = f"📰 *일일 뉴스 브리핑* ({date_str})\\n\\n"
+        message += "오늘의 주요 뉴스를 확인하세요!\\n\\n"
         
         for category, url in page_urls.items():
             if category in self.CATEGORY_NAMES:
                 emoji = self.CATEGORY_EMOJI.get(category, '📌')
                 name = self.CATEGORY_NAMES[category]
-                full_url = f"{self.base_url}/{url}"
                 
-                message += f"{emoji} *{name}*\n"
-                message += f"🔗 {full_url}\n\n"
+                # URL이 이미 /로 시작하면 그대로 사용, 아니면 /를 추가
+                if url.startswith('/'):
+                    full_url = f"{self.base_url}{url}"
+                else:
+                    full_url = f"{self.base_url}/{url}"
+                
+                self.logger.info(f"Generated URL for {category}: {full_url}")
+                
+                message += f"{emoji} *{name}*\\n"
+                message += f"🔗 {full_url}\\n\\n"
         
-        message += "📚 [아카이브 보기]({}/archive.html)\n\n".format(self.base_url)
+        # 아카이브 링크
+        archive_url = f"{self.base_url}/archive.html"
+        message += f"📚 [아카이브 보기]({archive_url})\\n\\n"
         message += "_매일 오전 6시에 자동으로 업데이트됩니다._"
+        
+        self.logger.info(f"Final message:\n{message}")
         
         try:
             # 메시지 전송
