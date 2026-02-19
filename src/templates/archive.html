@@ -6,38 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="과거 뉴스 브리핑 아카이브">
     <title>뉴스 브리핑 아카이브</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="{{ css_path }}">
 </head>
 
 <body>
     <div class="container">
         <header>
             <h1>📚 뉴스 브리핑 아카이브</h1>
-            <p class="subtitle">과거 브리핑 목록</p>
+            <p class="subtitle">날짜별 과거 브리핑 모음</p>
         </header>
 
         <nav class="category-nav">
-            <a href="/index.html">🏠 최신 브리핑</a>
+            <a href="{{ index_path }}">🏠 최신 브리핑</a>
         </nav>
 
         <section class="news-section">
             <h2 class="section-title">브리핑 목록</h2>
 
             {% if archive_items %}
-            <ul class="archive-list">
+            <div class="archive-grid">
                 {% for item in archive_items %}
-                <li class="archive-item">
-                    <a href="{{ item.path }}">
-                        {{ item.title }}
-                    </a>
-                    <span class="archive-date">{{ item.date }}</span>
-                </li>
+                <div class="archive-day-card">
+                    <div class="archive-day-header">
+                        <span class="archive-day-date">📅 {{ item.date }}</span>
+                        {% if item.categories %}
+                        <span class="archive-day-count">{{ item.categories|length }}개 카테고리</span>
+                        {% endif %}
+                    </div>
+                    {% if item.categories %}
+                    <ul class="archive-category-list">
+                        {% for cat in item.categories %}
+                        <li class="archive-category-item">
+                            <a href="{{ cat.path }}">{{ cat.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    {# 구형 데이터 호환 #}
+                    <ul class="archive-category-list">
+                        <li class="archive-category-item">
+                            <a href="{{ item.path }}">{{ item.title }}</a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
             {% else %}
-            <p style="text-align: center; color: var(--text-muted); padding: 40px;">
-                아직 아카이브된 브리핑이 없습니다.
-            </p>
+            <div class="empty-state">
+                <div class="icon">🗂️</div>
+                <p>아직 아카이브된 브리핑이 없습니다.</p>
+            </div>
             {% endif %}
         </section>
 
