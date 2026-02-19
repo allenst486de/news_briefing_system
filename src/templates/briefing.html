@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ category_name }} - 일일 뉴스 브리핑">
-    <title>{{ category_name }} - {{ date }}</title>
+    <title>{{ category_name }} — {{ date }}</title>
     <link rel="stylesheet" href="{{ css_path }}">
 </head>
 
@@ -21,63 +21,59 @@
         </div>
 
         <nav class="category-nav">
-            <a href="domestic_general.html">🇰🇷 국내 종합</a>
-            <a href="domestic_economy.html">💰 국내 경제</a>
-            <a href="domestic_politics.html">🏛️국내 정치</a>
-            <a href="world_general.html">🌍 세계 종합</a>
-            <a href="world_economy_politics.html">🌐 세계 경제/정치</a>
+            <a href="{{ nav_domestic_general }}">🇰🇷 국내 종합</a>
+            <a href="{{ nav_domestic_economy }}">💰 국내 경제</a>
+            <a href="{{ nav_domestic_politics }}">🏛️ 국내 정치</a>
+            <a href="{{ nav_world_general }}">🌍 세계 종합</a>
+            <a href="{{ nav_world_economy_politics }}">🌐 세계 경제/정치</a>
             <a href="{{ archive_path }}">📚 아카이브</a>
         </nav>
 
         <section class="news-section">
-            <h2 class="section-title">{{ category_name }}</h2>
+            <h2 class="section-title">오늘의 주요 뉴스</h2>
 
             {% if articles %}
-            {% for article in articles %}
-            <article class="news-item {% if article.is_important %}important{% endif %}">
-                <h3 class="news-title">
-                    <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
-                        {{ article.title }}
-                    </a>
-                    {% if article.is_important %}
-                    <span class="badge badge-important">⚠️ 중요</span>
-                    {% endif %}
-                </h3>
-
-                <div class="news-meta">
-                    <span class="news-source">📌 {{ article.source }}</span>
-                    <span class="news-date">🕐 {{ article.published }}</span>
-                </div>
-
-                {% if article.summary %}
-                <p class="news-summary">{{ article.summary }}</p>
-                {% endif %}
-
-                {% if article.original_title %}
-                <details>
-                    <summary>📄 원문 보기</summary>
-                    <div class="original-content">
-                        <p class="original-title">{{ article.original_title }}</p>
-                        {% if article.original_summary %}
-                        <p class="original-summary">{{ article.original_summary }}</p>
+            <div class="news-list">
+                {% for article in articles %}
+                <div class="news-item {% if article.is_important %}important{% endif %}">
+                    <div class="news-title">
+                        <a href="{{ article.link }}" target="_blank" rel="noopener">{{ article.title }}</a>
+                    </div>
+                    <div class="news-meta">
+                        <span class="news-source">{{ article.source }}</span>
+                        <span class="news-date">{{ article.published }}</span>
+                        {% if article.is_important %}
+                        <span class="important-badge">⭐ 주요 뉴스</span>
                         {% endif %}
                     </div>
-                </details>
-                {% endif %}
-            </article>
-            {% endfor %}
+                    {% if article.summary %}
+                    <p class="news-summary">{{ article.summary }}</p>
+                    {% endif %}
+
+                    {% if article.original_title %}
+                    <details class="original-toggle">
+                        <summary>원문 보기 (English)</summary>
+                        <div class="original-content">
+                            <p><strong>{{ article.original_title }}</strong></p>
+                            {% if article.original_summary %}
+                            <p>{{ article.original_summary }}</p>
+                            {% endif %}
+                        </div>
+                    </details>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
             {% else %}
-            <p style="text-align: center; color: var(--text-muted); padding: 40px;">
-                현재 수집된 뉴스가 없습니다.
-            </p>
+            <div class="empty-state">
+                <div class="icon">📭</div>
+                <p>현재 수집된 뉴스가 없습니다.</p>
+            </div>
             {% endif %}
         </section>
 
         <footer>
-            <p>자동 생성된 뉴스 브리핑 | 출처: BBC, New York Times, 네이버 뉴스, 다음 뉴스</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">
-                이 페이지는 매일 오전 6시에 자동으로 업데이트됩니다.
-            </p>
+            <p>자동 생성된 뉴스 브리핑 · <a href="{{ archive_path }}">아카이브</a></p>
         </footer>
     </div>
 </body>
