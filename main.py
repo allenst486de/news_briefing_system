@@ -37,15 +37,15 @@ def main():
         logger.info("Step 2: Generating HTML pages...")
         template_dir = os.path.join(os.path.dirname(__file__), 'src', 'templates')
         output_dir = os.path.join(os.path.dirname(__file__), 'docs')
+        base_url = os.getenv('PAGES_BASE_URL', '')
         
-        generator = HTMLGenerator(template_dir, output_dir)
+        generator = HTMLGenerator(template_dir, output_dir, base_url)
         page_urls = generator.generate_all(categorized_news)
         
         # 3. 텔레그램 전송
         logger.info("Step 3: Sending Telegram notification...")
         bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
         chat_id = os.getenv('TELEGRAM_CHAT_ID')
-        base_url = os.getenv('PAGES_BASE_URL')
         
         if not bot_token or not chat_id:
             logger.warning("Telegram credentials not found. Skipping notification.")
