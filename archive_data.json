@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-02-27",
+    "categories": [
+      {
+        "name": "🇰🇷 국내 종합 뉴스",
+        "path": "/news_briefing_system/2026/02/27/domestic_general.html"
+      },
+      {
+        "name": "💰 국내 경제 뉴스",
+        "path": "/news_briefing_system/2026/02/27/domestic_economy.html"
+      },
+      {
+        "name": "🏛️ 국내 정치/시사 뉴스",
+        "path": "/news_briefing_system/2026/02/27/domestic_politics.html"
+      },
+      {
+        "name": "🌍 세계 종합 뉴스",
+        "path": "/news_briefing_system/2026/02/27/world_general.html"
+      },
+      {
+        "name": "🌐 세계 경제/정치/시사 뉴스",
+        "path": "/news_briefing_system/2026/02/27/world_economy_politics.html"
+      }
+    ]
+  },
+  {
     "date": "2026-02-26",
     "categories": [
       {
