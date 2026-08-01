@@ -38,17 +38,17 @@ jobs:
       - name: Run news briefing
         run: python main.py
       
-      - name: Commit docs if changed
+      - name: Commit docs/data/archive if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          if [[ -n $(git status --porcelain docs/) ]]; then
-            git add docs/
+          if [[ -n $(git status --porcelain docs/ data/ archive/) ]]; then
+            git add docs/ data/ archive/
             git commit -m "Update daily news briefing - $(date +'%Y-%m-%d')"
             git push
           else
-            echo "No changes in docs"
+            echo "No changes in docs/data/archive"
           fi
       
       - name: Deploy to GitHub Pages

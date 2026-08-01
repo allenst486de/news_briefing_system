@@ -28,17 +28,20 @@ class HTMLGenerator:
     CATEGORY_NAMES = {key: f"{meta['icon']} {meta['name']}" for key, meta in CATEGORY_META.items()}
     CATEGORY_FILES = {key: f"{key}.html" for key in CATEGORIES}
 
-    def __init__(self, template_dir: str, output_dir: str, base_url: str = ''):
+    def __init__(self, template_dir: str, output_dir: str, base_url: str = '', raw_data_dir: Optional[str] = None):
         """
         Args:
             template_dir: 템플릿 디렉토리 경로
             output_dir: 출력 디렉토리 경로 (docs/)
             base_url: GitHub Pages 기본 URL (예: https://user.github.io/news_briefing_system)
                       서브경로 포함. 빈 문자열이면 루트 경로 사용.
+            raw_data_dir: 일일 원본 스냅샷 저장 경로 (docs/ 밖, 3개월 롤오버용).
+                          지정 안 하면 스냅샷을 저장하지 않는다.
         """
         self.logger = setup_logger()
         self.template_dir = template_dir
         self.output_dir = output_dir
+        self.raw_data_dir = raw_data_dir
         self.base_url = base_url.rstrip('/')
 
         if base_url:
@@ -112,6 +115,7 @@ class HTMLGenerator:
         self._generate_index_page(categorized_news, date_str, date_path, nav_categories, top10, indicators)
         self._generate_feed_xml(categorized_news, date_str)
         self._generate_robots_txt()
+        self._save_raw_snapshot(categorized_news, stock_picks, date_str)
 
         self.logger.info("HTML generation completed")
         return page_urls, top10
@@ -298,3 +302,28 @@ class HTMLGenerator:
         js_source = os.path.join(self.template_dir, 'static', 'site.js')
         js_dest = os.path.join(self.output_dir, 'site.js')
         shutil.copy2(js_source, js_dest)
+
+    def _save_raw_snapshot(self, categorized_news: Dict[str, List[NewsArticle]],
+                            stock_picks: Dict, date_str: str):
+        """
+        docs/ 밖에 그날의 원본 데이터를 저장 (archiver.py의 3개월 롤오버 압축용).
+        raw_data_dir이 지정 안 됐으면 스냅샷을 만들지 않는다(예: 테스트 환경).
+        """
+        if not self.raw_data_dir:
+            return
+
+        year, month, day = date_str.split('-')
+        snapshot_dir = os.path.join(self.raw_data_dir, year, month)
+        os.makedirs(snapshot_dir, exist_ok=True)
+
+        snapshot = {
+            'date': date_str,
+            'categories': {
+                key: [a.to_dict() for a in articles]
+                for key, articles in categorized_news.items()
+            },
+            'stock_picks': stock_picks,
+        }
+
+        with open(os.path.join(snapshot_dir, f'{day}.json'), 'w', encoding='utf-8') as f:
+            json.dump(snapshot, f, ensure_ascii=False, indent=2)

@@ -14,6 +14,7 @@ from src.news_aggregator import NewsAggregator
 from src.html_generator import HTMLGenerator
 from src.telegram_bot import TelegramNotifier
 from src.utils.logger import setup_logger
+from src import archiver
 
 
 def main():
@@ -35,11 +36,13 @@ def main():
         
         # 2. HTML 생성
         logger.info("Step 2: Generating HTML pages...")
-        template_dir = os.path.join(os.path.dirname(__file__), 'src', 'templates')
-        output_dir = os.path.join(os.path.dirname(__file__), 'docs')
+        repo_root = os.path.dirname(__file__)
+        template_dir = os.path.join(repo_root, 'src', 'templates')
+        output_dir = os.path.join(repo_root, 'docs')
+        raw_data_dir = os.path.join(repo_root, 'data', 'raw')
         base_url = os.getenv('PAGES_BASE_URL', '')
-        
-        generator = HTMLGenerator(template_dir, output_dir, base_url)
+
+        generator = HTMLGenerator(template_dir, output_dir, base_url, raw_data_dir=raw_data_dir)
         page_urls, top10 = generator.generate_all(categorized_news)
 
         # 3. 텔레그램 전송
@@ -53,7 +56,15 @@ def main():
             notifier = TelegramNotifier(bot_token, chat_id, base_url)
             date_str = datetime.now().strftime('%Y-%m-%d')
             notifier.send_briefing_sync(page_urls, categorized_news, top10, date_str)
-        
+
+        # 4. 3개월 지난 자료 압축 롤오버 (실패해도 전체 실행은 성공으로 취급)
+        try:
+            logger.info("Step 4: Rolling over archives older than retention window...")
+            archive_dir = os.path.join(repo_root, 'archive')
+            archiver.rollover_old_archives(raw_data_dir, output_dir, archive_dir)
+        except Exception as e:
+            logger.warning(f"Archive rollover failed (non-fatal): {e}")
+
         logger.info("=" * 60)
         logger.info("Daily News Briefing System completed successfully!")
         logger.info("=" * 60)
