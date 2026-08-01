@@ -9,10 +9,11 @@ from datetime import datetime
 
 class NewsArticle:
     """뉴스 기사 데이터 클래스"""
-    def __init__(self, title: str, link: str, published: datetime, 
+    def __init__(self, title: str, link: str, published: datetime,
                  summary: str = "", source: str = "", category: str = ""):
         self.title = title
-        self.link = link
+        # javascript:/data: 등 위험한 스킴 차단 (모든 수집기가 이 생성자를 거침)
+        self.link = link if link.startswith(('http://', 'https://')) else ''
         self.published = published
         self.summary = summary
         self.source = source

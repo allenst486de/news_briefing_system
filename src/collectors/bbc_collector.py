@@ -5,6 +5,7 @@ BBC 뉴스 RSS 피드에서 뉴스 수집
 import feedparser
 from typing import List
 from .base_collector import BaseCollector, NewsArticle
+from ..utils.rss_utils import clean_html
 
 
 class BBCCollector(BaseCollector):
@@ -48,7 +49,7 @@ class BBCCollector(BaseCollector):
                     title=entry.get('title', ''),
                     link=entry.get('link', ''),
                     published=self._parse_date(entry.get('published', '')),
-                    summary=entry.get('summary', ''),
+                    summary=clean_html(entry.get('summary', '')),
                     source=self.source_name,
                     category=category
                 )

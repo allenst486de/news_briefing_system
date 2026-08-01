@@ -2,20 +2,10 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+이 프로젝트는 단일 버전(main 브랜치)만 운영하며, 버전별 지원 구분은 없습니다.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+취약점을 발견하면 이 저장소의 GitHub Issues 대신 저장소 소유자에게 비공개로 연락해 주세요
+(GitHub 프로필의 연락처 참고). 커밋 히스토리에 자격증명이 포함된 경우처럼 민감한 내용은
+공개 이슈로 올리지 마세요.

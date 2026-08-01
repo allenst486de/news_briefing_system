@@ -6,7 +6,7 @@ import os
 import json
 from datetime import datetime
 from typing import Dict, List
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 from .collectors.base_collector import NewsArticle
 from .utils.logger import setup_logger
 
@@ -54,8 +54,11 @@ class HTMLGenerator:
         
         self.logger.info(f"HTMLGenerator initialized with base_path: '{self.base_path}'")
         
-        # Jinja2 환경 설정
-        self.env = Environment(loader=FileSystemLoader(template_dir))
+        # Jinja2 환경 설정 (외부 RSS 콘텐츠를 렌더링하므로 autoescape 필수)
+        self.env = Environment(
+            loader=FileSystemLoader(template_dir),
+            autoescape=select_autoescape(['html', 'xml']),
+        )
         
     def generate_all(self, categorized_news: Dict[str, List[NewsArticle]]) -> Dict[str, str]:
         """

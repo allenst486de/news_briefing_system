@@ -78,7 +78,8 @@ class TelegramNotifier:
 
         # 실제 줄바꿈 문자(\n)로 합치기
         message = "\n".join(parts)
-        self.logger.info(f"Final message:\n{message}")
+        # GitHub Actions 로그는 public 저장소에서 누구나 볼 수 있으므로 debug로 낮춤
+        self.logger.debug(f"Final message:\n{message}")
 
         try:
             await self.bot.send_message(
