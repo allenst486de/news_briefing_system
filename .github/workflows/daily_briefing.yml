@@ -43,6 +43,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          # archive/는 90일 롤오버가 아직 한 번도 안 일어났으면 존재하지 않음 —
+          # 없는 경로에 git add/status를 하면 fatal error가 나므로 미리 만들어둠
+          mkdir -p docs data archive
+
           if [[ -n $(git status --porcelain docs/ data/ archive/) ]]; then
             git add docs/ data/ archive/
             git commit -m "Update daily news briefing - $(date +'%Y-%m-%d')"
