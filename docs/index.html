@@ -4,21 +4,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=/news_briefing_system/2026/07/31/domestic_general.html">
-    <meta name="description" content="일일 뉴스 브리핑 - 최신 뉴스를 한눈에">
+    <meta name="description" content="일일 뉴스 브리핑 - 오늘의 뉴스를 한눈에">
+    <meta property="og:title" content="일일 뉴스 브리핑">
+    <meta property="og:description" content="2026-08-01 오늘의 뉴스를 한눈에">
+    <meta property="og:url" content="https://allenst486de.github.io/news_briefing_system/news_briefing_system/index.html">
+    <meta property="og:type" content="website">
     <title>일일 뉴스 브리핑</title>
     <link rel="stylesheet" href="/news_briefing_system/style.css">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
 </head>
 
 <body>
-    <div class="loading-screen">
-        <div class="spinner"></div>
-        <h2>📰 뉴스 브리핑 로딩 중...</h2>
-        <p>자동으로 최신 브리핑으로 이동합니다.</p>
-        <p style="margin-top:8px;">
-            이동하지 않으면 <a href="/news_briefing_system/2026/07/31/domestic_general.html">여기</a>를 클릭하세요.
-        </p>
+    <div class="container">
+        
+<header class="home-header">
+    <div class="home-title-row">
+        <h1>📰 일일 뉴스 브리핑</h1>
+        <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="라이트/다크 모드 전환">🌓</button>
     </div>
+
+    <div class="home-datetime">
+        <span id="live-clock">--:--:--</span>
+        <span class="home-date">📅 2026-08-01</span>
+        <span class="home-weather" id="weather-widget" data-loading="true">날씨 확인 중…</span>
+    </div>
+
+    
+    <div class="home-econ-ticker">
+        <span class="ticker-item"><em>KOSPI</em> 6,595.45
+            <b class="up">17.91%</b></span>
+        <span class="ticker-item"><em>KOSDAQ</em> 719.76
+            <b class="up">11.63%</b></span>
+        <span class="ticker-item"><em>USD/KRW</em> 1,446.00
+            <b class="up">1.39%</b></span>
+    </div>
+    
+</header>
+
+        
+
+<section class="top10-section">
+    <h2 class="section-title">🔥 오늘의 Top 10</h2>
+    <div class="top10-grid">
+        
+        <a class="top10-card" href="https://www.hani.co.kr/arti/politics/bluehouse/1270936.html" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">1</span>
+            <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+            <h3>한-아르헨티나 경제협력</h3>
+            <p>이 대통령과 밀레이 대통령의 정상회담을 통해 내년부터 아르헨티나산 원유를 수입하고 리튬 분야에 공동 투자하기로 합의했습니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://www.hani.co.kr/arti/politics/bluehouse/1270923.html" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">2</span>
+            <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+            <h3>검사 수사권 폐지 시행</h3>
+            <p>검사의 수사권을 폐지하는 형사소송법이 통과됨에 따라, 대통령실은 해당 제도가 차질 없이 시행될 수 있도록 최선을 다하겠다고 밝혔습니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://www.hani.co.kr/arti/economy/economy_general/1270897.html" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">3</span>
+            <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+            <h3>코스피 사상 최대 상승</h3>
+            <p>코스피가 1001포인트 상승하며 17.9%라는 역대 최대 상승률을 기록하는 등 증시의 변동성이 매우 심한 모습입니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://www.theguardian.com/technology/2026/aug/01/china-silicon-valley-white-house" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">4</span>
+            <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
+            <h3>중국 기술 굴기에 美 긴장</h3>
+            <p>중국의 AI, 반도체, 로봇 공학의 급격한 발전이 실리콘밸리와 백악관에 충격을 주며 미국 기술 산업 내 갈등과 대응책 마련을 촉발하고 있습니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQYk9FalBNdWFWMGpHT1JFQm9WLVdfSHY0dzF4TVRqenVVVmxHUWNxb0lmakRJLUF1Rll0d2R6YXR0c1hlMzNIR2FyUFVIOFJtUUdEUzV5ZkZqNmUtVzFCanhmck5BVzFFd0hXZVF5dFFRZlVkdVNKcjVVaGNJbUo1SWRlbw?oc=5" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">5</span>
+            <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
+            <h3>챗GPT 사용자 10억명 돌파</h3>
+            <p>오픈AI의 챗GPT가 가격 인하 전략의 성공으로 활성 사용자 수 10억 명을 넘어섰습니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://www.hani.co.kr/arti/international/china/1270879.html" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">6</span>
+            <span class="top10-category-tag" style="background:var(--tag-world, var(--tag-general))">국제</span>
+            <h3>미-중 경제수장 긴급 통화</h3>
+            <p>9월 정상회담을 앞두고 양국 경제 수장이 통화했으나, 희토류 및 무역 제재를 둘러싼 신경전은 계속되고 있습니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://www.hani.co.kr/arti/international/europe/1270916.html" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">7</span>
+            <span class="top10-category-tag" style="background:var(--tag-world, var(--tag-general))">국제</span>
+            <h3>러시아의 북한 미사일 사용</h3>
+            <p>젤렌스키 대통령은 러시아가 북한제 탄도미사일을 다시 사용한 정황이 있다는 예비 분석 결과를 발표했습니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://www.nytimes.com/2026/08/01/world/middleeast/iran-kuwait-drone-strikes-trump-escalation.html" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">8</span>
+            <span class="top10-category-tag" style="background:var(--tag-world, var(--tag-general))">국제</span>
+            <h3>쿠웨이트, 이란 드론 격추</h3>
+            <p>쿠웨이트가 이란 드론을 격추했다고 밝혔으며, 미국이 이란에 대한 공세를 강화하겠다고 예고하면서 중동의 긴장이 고조되고 있습니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://www.yonhapnewstv.co.kr/news/MYH20260801171049R0i" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">9</span>
+            <span class="top10-category-tag" style="background:var(--tag-society, var(--tag-general))">사회</span>
+            <h3>역대급 폭염 및 정치 수사</h3>
+            <p>양산 기온이 41.6도를 기록하며 역대 최고치를 경신한 가운데, 윤한홍 의원이 관저 이전 개입 의혹으로 첫 피의자 조사를 받았습니다.</p>
+        </a>
+        
+        <a class="top10-card" href="https://www.hani.co.kr/arti/science/science_general/1270609.html" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">10</span>
+            <span class="top10-category-tag" style="background:var(--tag-science, var(--tag-general))">과학</span>
+            <h3>중국 유전자 치료 아동 사망</h3>
+            <p>중국에서 뇌 표적 유전자 교정 치료를 받은 6세 아이가 사망하면서 해당 치료 기술의 안전성에 대한 파장이 일고 있습니다.</p>
+        </a>
+        
+    </div>
+</section>
+
+
+        
+        
+<section class="ai-subsection">
+    <h2 class="section-title">🤖 AI 소식</h2>
+    <div class="news-list">
+        
+        <div class="news-item ai-item">
+            <div class="news-title">
+                <a href="https://www.theguardian.com/technology/2026/aug/01/china-silicon-valley-white-house" target="_blank" rel="noopener">China’s tech advances are causing chaos from Silicon Valley to the White House</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">The Guardian</span>
+                <span class="news-date">2026-08-01 12:00</span>
+                
+                <span class="ai-subtype-badge">산업 동향</span>
+                
+            </div>
+            
+            <p class="news-summary">New AI models, advanced robots and specialty computer chips are unsettling markets and the US tech industryOver the past month, a series of advancements in China’s artificial intelligence, chip manufacturing and robotics technologies have rattled financial markets, caused divisions among US tech moguls and left the Trump administration scrambling to respond.Silicon Valley has long pointed to China’s tech industry as a competitive threat and used its growth as rationale for why US firms should not face regulatory oversight that could slow them down. In recent weeks, however, China’s progress has pushed US tech CEOs past vague warnings and into open disagreement over how to address Chinese-made products upending their industry. Continue reading...</p>
+            
+        </div>
+        
+        <div class="news-item ai-item">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQYk9FalBNdWFWMGpHT1JFQm9WLVdfSHY0dzF4TVRqenVVVmxHUWNxb0lmakRJLUF1Rll0d2R6YXR0c1hlMzNIR2FyUFVIOFJtUUdEUzV5ZkZqNmUtVzFCanhmck5BVzFFd0hXZVF5dFFRZlVkdVNKcjVVaGNJbUo1SWRlbw?oc=5" target="_blank" rel="noopener">오픈AI ‘챗GPT’, 활성 사용자 수 10억명 돌파… ‘가격 인하’ 승부수 통했다 - 조선일보</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">구글 뉴스</span>
+                <span class="news-date">2026-08-01 00:06</span>
+                
+                <span class="ai-subtype-badge">가격 정책 변경</span>
+                
+            </div>
+            
+            <p class="news-summary">오픈AI ‘챗GPT’, 활성 사용자 수 10억명 돌파… ‘가격 인하’ 승부수 통했다  조선일보</p>
+            
+        </div>
+        
+    </div>
+</section>
+        
+
+        <div class="category-preview-grid">
+            
+            <section class="category-preview">
+                <h2>🏛️ 정치 <a class="preview-more" href="/news_briefing_system/2026/08/01/politics.html">전체보기 →</a></h2>
+                
+                <ul class="preview-list">
+                    
+                    <li><a href="https://www.hani.co.kr/arti/politics/defense/1270905.html" target="_blank" rel="noopener">‘우승’ 북한 내고향 축구팀 감독, 수원FC에 “이런 높은 수준 팀 처음”</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/politics/politics_general/1270909.html" target="_blank" rel="noopener">10년 만에 특별감찰관 나오나…이 대통령 요청 1년 만에 후보 추천</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/politics/assembly/1270920.html" target="_blank" rel="noopener">김민석 “‘1차전’ 열세여도 결국 이길 것”…정청래 “추세가 대세 될 것”</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/politics/bluehouse/1270923.html" target="_blank" rel="noopener">청, ‘검사 수사권 폐지’ 형소법 통과에 “차질 없는 시행에 최선 다할 것”</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/politics/politics_general/1270931.html" target="_blank" rel="noopener">검사 수사권 완전 폐지, 70여년 사법체계 전면 전환…‘국민적 동의 부족’ 우려도</a></li>
+                    
+                </ul>
+                
+            </section>
+            
+            <section class="category-preview">
+                <h2>💰 경제 <a class="preview-more" href="/news_briefing_system/2026/08/01/economy.html">전체보기 →</a></h2>
+                
+                <ul class="preview-list">
+                    
+                    <li><a href="https://www.hani.co.kr/arti/economy/economy_general/1270854.html" target="_blank" rel="noopener">북한 지난해 1인당 국민소득 187만원, 남한의 1/28</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/economy/economy_general/1270855.html" target="_blank" rel="noopener">하루 평균 1214억달러…2분기 은행 외환거래 규모 역대 최대</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/economy/biznews/1270858.html" target="_blank" rel="noopener">사이버한국외국어대학교-(사)건설안전감시단협회, 인재 양성 및 교육 협력 활성화를 위한 산학협력 업무협약 체결</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/economy/economy_general/1270865.html" target="_blank" rel="noopener">딱 1억 모자란…최태원, 하이닉스 주식 ‘49억 매수’ 왜?</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/economy/marketing/1270876.html" target="_blank" rel="noopener">[영상] 쓰레기봉투 묶고 전구도 간다…구글, 로봇 전신 제어 AI모델 공개</a></li>
+                    
+                </ul>
+                
+            </section>
+            
+            <section class="category-preview">
+                <h2>👥 사회 <a class="preview-more" href="/news_briefing_system/2026/08/01/society.html">전체보기 →</a></h2>
+                
+                <ul class="preview-list">
+                    
+                    <li><a href="https://www.hani.co.kr/arti/society/ngo/1270906.html" target="_blank" rel="noopener">8월1일 알림</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/society/internalmove/1270907.html" target="_blank" rel="noopener">8월1일 인사</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/society/obituary/1270908.html" target="_blank" rel="noopener">8월1일 궂긴 소식</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/society/society_general/1270913.html" target="_blank" rel="noopener">[포토] “발 담그고 더위 식혀요”…청계천서 열린 ‘물 첨벙첨벙’ 피서</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/society/society_general/1270914.html" target="_blank" rel="noopener">‘장경태 성추행 혐의’ 피해자에 2차 가해…댓글 작성자 검찰 송치</a></li>
+                    
+                </ul>
+                
+            </section>
+            
+            <section class="category-preview">
+                <h2>🌱 생활 <a class="preview-more" href="/news_briefing_system/2026/08/01/life.html">전체보기 →</a></h2>
+                
+                <ul class="preview-list">
+                    
+                    <li><a href="https://www.theguardian.com/lifeandstyle/2026/aug/01/purple-coloured-plants-british-gardener-favourite" target="_blank" rel="noopener">Purple reign: how shade became British gardeners’ favourite</a></li>
+                    
+                    <li><a href="https://www.theguardian.com/thefilter/2026/aug/01/best-worst-supermarket-tinned-anchovies-tasted-rated" target="_blank" rel="noopener">‘Intense, salty, foul’: the best (and worst) supermarket anchovies, tasted and rated</a></li>
+                    
+                    <li><a href="https://www.theguardian.com/technology/2026/aug/01/great-british-switch-off-fun-freeing-ways-ditch-smartphone-doomscrolling" target="_blank" rel="noopener">The great British switch-off: how floating retreats, mobile-free pubs and sauna book groups are freeing people from their smartphones</a></li>
+                    
+                    <li><a href="https://www.theguardian.com/money/2026/aug/01/bookingcom-money-back-refund" target="_blank" rel="noopener">‘We didn’t feel safe’: Booking.com users face battle to get money back</a></li>
+                    
+                    <li><a href="https://www.theguardian.com/lifeandstyle/2026/aug/01/fiona-allen-actor-writer-edinburgh-festival-fringe" target="_blank" rel="noopener">Fiona Allen: ‘The closest I’ve come to death? A trip in a black cab with John Worboys. I had a lucky escape’</a></li>
+                    
+                </ul>
+                
+            </section>
+            
+            <section class="category-preview">
+                <h2>🎭 문화 <a class="preview-more" href="/news_briefing_system/2026/08/01/culture.html">전체보기 →</a></h2>
+                
+                <ul class="preview-list">
+                    
+                    <li><a href="https://www.hani.co.kr/arti/culture/book/1270785.html" target="_blank" rel="noopener">‘보이지 않는 우생학’이 만든 저출생 [.txt]</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/culture/book/1270787.html" target="_blank" rel="noopener">동심과 함께라면 매일이 모험일 거야 [.txt]</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/culture/book/1270788.html" target="_blank" rel="noopener">무더위를 떠나, 책의 바다를 서핑하는 여름 [.txt]</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/culture/book/1270790.html" target="_blank" rel="noopener">미국과 이란은 어떻게 원수가 됐나 [.txt]</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/culture/book/1270791.html" target="_blank" rel="noopener">“넌 우리의 ‘푸토로’, 미래란다”…차별에 맞선 소년 [.txt]</a></li>
+                    
+                </ul>
+                
+            </section>
+            
+            <section class="category-preview">
+                <h2>💻 IT <a class="preview-more" href="/news_briefing_system/2026/08/01/it.html">전체보기 →</a></h2>
+                
+                <ul class="preview-list">
+                    
+                    <li><a href="https://www.theguardian.com/technology/2026/aug/01/great-british-switch-off-fun-freeing-ways-ditch-smartphone-doomscrolling" target="_blank" rel="noopener">The great British switch-off: how floating retreats, mobile-free pubs and sauna book groups are freeing people from their smartphones</a></li>
+                    
+                    <li><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxNWmRqVWQ3SHJuRjFfeTlEUXduRU9GbUpLS2JOZmxRNnFyRTU3WEVaTE14NGJlUFNoV0dCU2UxWGRfQW9wZ3ZaVm1OVWdaZDBabi1DR3NxX0Y3RDlOdTN2TVlCZW1Mdy0yQmJ3Qk55Rk51UXNkSVdPd0ktOVlvVWdwQUFwYw?oc=5" target="_blank" rel="noopener">갤폴드8 사생활 보호 미탑재… 외신&#34;탁월한 선택&#34; 호평 왜? - 조선일보</a></li>
+                    
+                    <li><a href="https://www.nytimes.com/2026/07/31/us/politics/trump-iran-economy-media-critics.html" target="_blank" rel="noopener">How the Pro-Trump Media Ecosystem Is Splintering Ahead of the Midterms</a></li>
+                    
+                    <li><a href="https://www.nytimes.com/2026/07/31/magazine/larry-ellison-ai-oracle.html" target="_blank" rel="noopener">Larry Ellison Bet It All on the A.I. Boom. Will He Be the Face of the A.I. Bubble?</a></li>
+                    
+                    <li><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxPSVMxamROWVdDd1VYQkFWZ3ZQSXZoNGFsWldHRVNxSUZwU2JFLUpKcTJSNG5ySXV0RFFmb2l0VVcxT2ZPcXZPZ1NSejdYamM0cnVUZFZ4RnhUOUJGcUFva25uQUFWbTk1MjRHMkVhM0dkeTQ4VmhpcnJHdlpIemtYNDFlcw?oc=5" target="_blank" rel="noopener">‘사전예약 D-2’ 갤Z 폴드8, 전작 대비 ‘라방’ 판매량 2배 넘어... 1030 “비싸지만, 예쁘다” - 조선일보</a></li>
+                    
+                </ul>
+                
+            </section>
+            
+            <section class="category-preview">
+                <h2>🔬 과학 <a class="preview-more" href="/news_briefing_system/2026/08/01/science.html">전체보기 →</a></h2>
+                
+                <ul class="preview-list">
+                    
+                    <li><a href="https://www.hani.co.kr/arti/science/science_general/1269425.html" target="_blank" rel="noopener">북극 해빙 녹는 속도 둔화한 줄 알았더니…‘급반전’ 중</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/science/science_general/1269549.html" target="_blank" rel="noopener">장수시대의 ‘아픔’…기대수명과 건강수명 격차 커졌다</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/science/science_general/1269765.html" target="_blank" rel="noopener">보이저 1호, 49년 만에 ‘1광일’ 거리…2030년대 타임캡슐로 남는다</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/science/future/1269775.html" target="_blank" rel="noopener">인공지능 기업들은 왜 철학자를 고용할까</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/science/technology/1269914.html" target="_blank" rel="noopener">역대 최강 스타십, ‘무결점’ 준궤도 비행 성공…궤도 진입 도전 ‘성큼’</a></li>
+                    
+                </ul>
+                
+            </section>
+            
+            <section class="category-preview">
+                <h2>🌍 국제 <a class="preview-more" href="/news_briefing_system/2026/08/01/world.html">전체보기 →</a></h2>
+                
+                <ul class="preview-list">
+                    
+                    <li><a href="https://www.hani.co.kr/arti/international/international_general/1270877.html" target="_blank" rel="noopener">맨몸으로 바다 건너…모로코서 수만명 스페인 진입, 군대 투입됐다</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/international/china/1270879.html" target="_blank" rel="noopener">미-중 경제수장, 9월 정상회담 앞두고 통화…희토류·무역제재 신경전</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/international/international_general/1270880.html" target="_blank" rel="noopener">타지마할 원숭이가 한국인 팔 물어…“출혈에도 구급차 안 왔다”</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/international/international_general/1270886.html" target="_blank" rel="noopener">‘일본판 CIA’ 공식 출범…스파이 방지·국외 내밀한 정보 수집도</a></li>
+                    
+                    <li><a href="https://www.hani.co.kr/arti/international/arabafrica/1270891.html" target="_blank" rel="noopener">이란 “미군 기지 습격해 전투기 6대 타격”…미 “거짓 주장, 피해 없어”</a></li>
+                    
+                </ul>
+                
+            </section>
+            
+        </div>
+
+        <footer>
+            <p>자동 생성된 뉴스 브리핑 · <a href="/news_briefing_system/archive.html">아카이브</a></p>
+        </footer>
+    </div>
+    <script src="/news_briefing_system/site.js"></script>
 </body>
 
 </html>
