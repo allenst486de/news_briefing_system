@@ -1,21 +1,20 @@
 # 📰 일일 뉴스 브리핑 시스템
 
-매일 오전 6시에 자동으로 국내외 주요 뉴스를 수집하여 카테고리별로 정리한 웹 페이지를 생성하고, 텔레그램으로 링크를 전송하는 자동화 시스템입니다.
+매일 오전 6시(KST)에 국내외 12개 언론사에서 8개 분야 뉴스를 수집해 LLM으로 번역·재구성·요약하고, 포털 스타일 웹사이트와 텔레그램으로 전달하는 완전 자동화 시스템입니다.
 
 ## 📋 주요 기능
 
-- **자동 뉴스 수집**: BBC, New York Times, 네이버 뉴스, 다음 뉴스에서 RSS 피드를 통해 뉴스 수집
-- **자동 번역**: 해외 뉴스(BBC, NYT)를 한국어로 자동 번역하여 제공 (원문 보기 기능 포함)
-- **카테고리별 분류**: 
-  - 🇰🇷 국내 종합 뉴스
-  - 💰 국내 경제 뉴스
-  - 🏛️ 국내 정치/시사 뉴스
-  - 🌍 세계 종합 뉴스
-  - 🌐 세계 경제/정치/시사 뉴스
-- **중요 뉴스 강조**: 키워드 기반으로 중요한 뉴스를 자동 감지하여 강조 표시
-- **웹 페이지 생성**: 깔끔하고 읽기 쉬운 HTML 페이지 (다크모드 지원, 인쇄 최적화)
-- **아카이브 기능**: 과거 브리핑을 블로그 형식으로 보관 및 열람
-- **텔레그램 알림**: 매일 오전 6시에 브리핑 링크를 텔레그램으로 전송
+- **8개 분야 자동 수집**: 🏛️ 정치 · 💰 경제 · 👥 사회 · 🌱 생활 · 🎭 문화 · 💻 IT · 🔬 과학 · 🌍 국제
+- **12개 언론사, 57개 RSS 피드**: 연합뉴스, 경향신문, 한겨레, 동아일보, 한국경제, 연합뉴스TV, 구글 뉴스(국내) + BBC, NYT, The Guardian, Al Jazeera, WSJ(해외) — 전체 목록은 `src/collectors/sources.py` 참고
+- **LLM 기반 번역·재구성·요약**: NVIDIA NIM(무료 티어)으로 카테고리당 1회 배치 호출 — 원문을 그대로 베끼지 않고 자기 표현으로 재구성, 해외 기사는 번역과 동시에 자연스럽게 다듬음, 확인되지 않은 수치·전망은 지어내지 않음. **API 키가 없거나 호출이 실패해도 규칙기반 요약으로 자동 폴백**해 서비스가 멈추지 않음
+- **IT 내 AI 소식 서브섹션**: 신규 모델 출시·가격 정책 변경·산업 동향을 일반 IT 뉴스와 분리 표시
+- **크로스카테고리 Top10**: 8개 분야를 통틀어 가장 중요한 10건을 선정해 홈 화면 카드뉴스 + 텔레그램 이미지 한 장으로 전송
+- **경제 대시보드**: 국내/해외 지수(코스피·코스닥·원달러 + 다우·나스닥·S&P500·니케이225)를 탭으로 전환하는 박스, 일간/주간/월간 주식 추천을 같은 방식의 탭 박스로 표시(추천 종목 선정은 100% 결정론적 로직, LLM은 근거 문장만 작성 — 투자자문 아님 고지 포함)
+- **중요도순 정렬**: 모든 페이지·텔레그램 메시지가 (중요도, 최신순)으로 정렬
+- **포털형 홈 화면**: 실시간 시계, 방문자 위치 기반 날씨, 8개 분야 미리보기, 라이트/다크 테마 전환
+- **텔레그램 알림**: 리드 메시지(Top10 이미지 또는 텍스트) + 분야별 메시지 8개로 분리 전송, 마스킹 링크 없이 평문 URL(팝업 없이 바로 연결), 기사마다 출처 표기
+- **3개월 자동 아카이브 압축**: 원본 페이지는 최근 90일만 보관하고, 그 이전은 월 단위 요약 JSON(`archive/`)으로 압축 후 원본 삭제 — 저장소 용량이 무한정 커지지 않음
+- **비공개 노출 정책**: `robots.txt`로 검색엔진 색인을 차단(링크를 아는 사람만 접근 가능한 조용한 사이트)
 - **GitHub Pages 호스팅**: 무료로 웹 페이지 호스팅
 
 ## 🚀 설치 및 설정
@@ -23,7 +22,7 @@
 ### 1. 저장소 클론
 
 ```bash
-git clone https://github.com/yourusername/news_briefing_system.git
+git clone https://github.com/allenst486de/news_briefing_system.git
 cd news_briefing_system
 ```
 
@@ -41,6 +40,7 @@ pip install -r requirements.txt
 TELEGRAM_BOT_TOKEN=your_bot_token_here
 TELEGRAM_CHAT_ID=your_chat_id_here
 PAGES_BASE_URL=https://yourusername.github.io/news_briefing_system
+NVIDIA_API_KEY=your_nvidia_api_key_here
 ```
 
 **텔레그램 봇 토큰 받기:**
@@ -53,6 +53,11 @@ PAGES_BASE_URL=https://yourusername.github.io/news_briefing_system
 2. `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates` 접속
 3. `chat.id` 값을 `TELEGRAM_CHAT_ID`에 입력
 
+**NVIDIA API 키 받기 (선택, 없어도 동작함):**
+1. [build.nvidia.com](https://build.nvidia.com)에서 무료 계정 생성 후 API 키 발급
+2. `NVIDIA_API_KEY`에 입력
+3. 비워두면 번역/250자 재구성 요약/Top10 선정이 규칙기반(원문 그대로, 최신순 정렬)으로 대체되어 동작합니다 — 서비스가 멈추지 않습니다
+
 ### 4. GitHub Secrets 설정
 
 GitHub 저장소 Settings > Secrets and variables > Actions에서 다음 Secrets 추가:
@@ -60,6 +65,7 @@ GitHub 저장소 Settings > Secrets and variables > Actions에서 다음 Secrets
 - `TELEGRAM_BOT_TOKEN`: 텔레그램 봇 토큰
 - `TELEGRAM_CHAT_ID`: 텔레그램 채팅 ID
 - `PAGES_BASE_URL`: GitHub Pages URL (예: `https://yourusername.github.io/news_briefing_system`)
+- `NVIDIA_API_KEY`: NVIDIA NIM API 키 (선택)
   - ⚠️ 주의: `GITHUB_`로 시작하는 이름은 사용할 수 없습니다
 
 ### 5. GitHub Pages 활성화
@@ -77,83 +83,113 @@ GitHub 저장소 Settings > Secrets and variables > Actions에서 다음 Secrets
 python main.py
 ```
 
-실행 후 `docs/` 디렉토리에 HTML 파일이 생성됩니다.
+실행 후 `docs/`에 8개 분야 HTML + 포털 홈(`index.html`)이, `data/raw/`에 압축용 원본 스냅샷이 생성됩니다.
 
 ### 자동 실행 (GitHub Actions)
 
-- 매일 오전 6시 (KST)에 자동으로 실행됩니다.
+- 매일 오전 6시(KST)에 자동으로 실행됩니다.
 - 수동 실행: GitHub Actions 탭 > Daily News Briefing > Run workflow
+
+### 자체 점검 스크립트
+
+프레임워크 없이 `assert` 기반으로 작성된 수동 점검 스크립트들입니다. 코드를 크게 건드릴 때 실행하세요.
+
+```bash
+python test_escaping.py    # XSS 이스케이프 회귀 검증
+python test_feeds.py       # sources.py의 모든 RSS 피드 생존 확인
+python test_llm_client.py  # LLM JSON 파싱/복구/폴백 로직 검증 (실제 API 호출 없음)
+python test_archiver.py    # 3개월 롤오버/압축/멱등성 검증
+```
 
 ## 📁 프로젝트 구조
 
 ```
 news_briefing_system/
-├── .github/
-│   └── workflows/
-│       └── daily_briefing.yml    # GitHub Actions 워크플로우
+├── .github/workflows/
+│   └── daily_briefing.yml        # 매일 06시 KST 실행 + docs/data/archive 커밋 + Pages 배포
 ├── src/
-│   ├── collectors/               # 뉴스 수집기
-│   │   ├── base_collector.py
-│   │   ├── bbc_collector.py
-│   │   ├── nyt_collector.py
-│   │   ├── naver_collector.py
-│   │   └── daum_collector.py
-│   ├── templates/                # HTML 템플릿
-│   │   ├── briefing.html
-│   │   ├── archive.html
-│   │   ├── index.html
-│   │   └── style.css
-│   ├── utils/                    # 유틸리티
+│   ├── collectors/
+│   │   ├── base_collector.py     # NewsArticle, 수집기 공통 인터페이스 (위험 링크 스킴 차단)
+│   │   ├── rss_collector.py      # 설정 기반 범용 RSS 수집기 (모든 언론사 공용)
+│   │   └── sources.py            # 언론사·카테고리·피드 URL 목록 (신규 언론사 = 여기 항목 추가)
+│   ├── templates/
+│   │   ├── briefing.html         # 분야별 페이지
+│   │   ├── index.html            # 포털형 홈
+│   │   ├── archive.html          # 아카이브 목록
+│   │   ├── _home_header.html     # 홈 헤더(시계/날씨/지표)
+│   │   ├── _indicator_box.html   # 국내/해외 지수 탭 박스 (홈+경제 페이지 공용)
+│   │   ├── _economy_dashboard.html  # 경제 지표 + 주식 추천 탭 박스
+│   │   ├── _top10_cards.html     # Top10 카드뉴스
+│   │   ├── _ai_subsection.html   # IT 내 AI 소식
+│   │   ├── style.css
+│   │   └── static/
+│   │       ├── site.js           # 시계/날씨/테마토글/탭전환
+│   │       └── fonts/            # 카드뉴스 이미지용 나눔고딕(SIL OFL)
+│   ├── utils/
 │   │   ├── logger.py
-│   │   ├── importance_analyzer.py
-│   │   ├── translator.py         # 번역 유틸리티
-│   │   └── rss_utils.py          # RSS 피드 유틸리티
-│   ├── news_aggregator.py        # 뉴스 통합 및 분류
-│   ├── html_generator.py         # HTML 생성
-│   └── telegram_bot.py           # 텔레그램 봇
-├── docs/                         # 생성된 HTML 파일 (GitHub Pages)
-├── main.py                       # 메인 실행 스크립트
-├── requirements.txt              # Python 패키지
-├── .env.example                  # 환경 변수 예시
-├── .gitignore
+│   │   ├── importance_analyzer.py  # 중요도 키워드 폴백 + AI 관련 키워드 폴백
+│   │   ├── rss_utils.py          # RSS 공통 유틸(HTML 정리, 제목 중복 제거 등)
+│   │   ├── dedup.py              # 제목 정규화(당일 중복 제거 + 월간 압축 중복 제거 공용)
+│   │   ├── llm_client.py         # NVIDIA NIM REST 클라이언트 (재시도+JSON 복구)
+│   │   ├── indicators.py         # 국내/해외 시장 지수 조회
+│   │   ├── stock_data.py         # 주식 추천 결정론적 스크리닝 (Naver Finance + yfinance)
+│   │   └── cardnews.py           # Top10 카드뉴스 PNG 생성 (Pillow)
+│   ├── news_aggregator.py        # 수집 → 중복/공지성 기사 제거 → 요약 → 정렬
+│   ├── summarizer.py             # LLM 배치 요약/AI추출/Top10선정/주식근거 생성 + 폴백
+│   ├── html_generator.py         # HTML·RSS피드·robots.txt·원본 스냅샷 생성
+│   ├── archiver.py               # 90일 지난 자료 월단위 압축 + 원본 삭제
+│   └── telegram_bot.py           # 텔레그램 9~10개 메시지 전송
+├── docs/                         # 생성된 HTML (GitHub Pages, 최근 90일)
+├── data/raw/                     # 일일 원본 JSON 스냅샷 (docs 밖, 비공개)
+├── archive/                      # 90일 지난 자료의 월별 압축 요약 (docs 밖, 비공개)
+├── test_*.py                     # 자체 점검 스크립트
+├── main.py
+├── requirements.txt
+├── .env.example
 └── README.md
 ```
 
 ## 🎨 기능 상세
 
-### 뉴스 수집 및 번역
+### 뉴스 수집 → 요약 파이프라인
 
-- **BBC News**: 세계 뉴스, 비즈니스, 정치 등 (자동 번역)
-- **New York Times**: 세계 뉴스, 비즈니스, 정치 등 (자동 번역)
-- **네이버 뉴스**: 정치, 경제, 사회, 세계, IT 등
-- **다음 뉴스**: 정치, 경제, 사회, 국제, 문화, IT 등
+1. `sources.py`에 등록된 12개 언론사에서 8개 분야 RSS를 병렬로 수집
+2. 정기 행정 공지(예: "N월N일 인사/부고/동정/알림")와 카테고리 내 중복 기사 제거
+3. 카테고리당 최대 30건을 LLM 1회 배치 호출로 번역+재구성+250자 요약 (LLM 실패 시 해당 기사만 규칙기반으로 대체)
+4. IT 카테고리에서 AI 관련 기사만 따로 추출
+5. (중요도, 최신순)으로 정렬 후 HTML/텔레그램에 전달
 
-해외 뉴스는 Google Translate API를 통해 자동으로 한국어로 번역되며, 각 기사에서 "원문 보기"를 클릭하면 영문 원문을 확인할 수 있습니다.
+### LLM 환각 방지 규칙
 
-### 중요도 분석
-
-다음 키워드를 포함한 뉴스를 자동으로 중요 뉴스로 표시:
-- 전쟁, 재난, 위기, 긴급, 경보
-- 금리, 환율, 주가, 폭락, 급등
-- 대통령, 국회, 법안, 선거, 탄핵
-- 기타 중요 키워드
+모든 요약 프롬프트에 공통으로 적용되는 규칙(`summarizer.py`):
+- 제공된 원문에 없는 수치·실적·가격·출시일·미래 예측 금지
+- 사전 학습 지식이 아닌 오늘 수집된 데이터로만 판단
+- 원문을 그대로 베끼지 않고 자기 표현으로 재구성 (직역 금지)
+- 번역이 모호한 표현은 원어를 괄호로 병기
+- 홍보성 문구·근거 없는 벤치마크·유료 강의성 내용 제외
+- (예외) 주식 추천 근거 문장만 전망성 서술 허용 — 단 실제 가격/거래량 데이터에 근거해야 하며 투자자문 아님을 명시
 
 ### 웹 페이지 디자인
 
+- 다크/라이트 테마 전환 (버튼 클릭, localStorage 저장)
+- 국내/해외 지수, 일/주/월 주식 추천을 탭으로 전환하는 공용 박스 UI
 - 반응형 디자인 (모바일, 태블릿, 데스크톱)
-- 다크모드 자동 지원
-- A4 인쇄 최적화
-- 출처 링크 표기
+- 기사마다 출처 언론사 표기, 원문 링크 연결
+- OG 메타태그(공유 시 미리보기), 자체 RSS 피드(`feed.xml`, 비공개)
 
 ## 🔧 커스터마이징
 
-### 뉴스 소스 추가
+### 뉴스 소스 추가/변경
 
-`src/collectors/` 디렉토리에 새로운 수집기 클래스를 추가하고, `src/news_aggregator.py`에서 통합하세요.
+`src/collectors/sources.py`의 `SOURCES` 목록에 언론사 항목을 추가하면 됩니다 — 새 클래스를 작성할 필요 없이 RSS URL만 등록하면 `RSSCollector`가 공통으로 처리합니다. 추가 후에는 `python test_feeds.py`로 살아있는 피드인지 확인하세요.
 
 ### 카테고리 수정
 
-`src/news_aggregator.py`와 `src/html_generator.py`에서 카테고리 정의를 수정하세요.
+`src/collectors/sources.py`의 `CATEGORIES`/`CATEGORY_META`를 수정하세요 (아이콘·표시명 포함).
+
+### 아카이브 보관 기간 변경
+
+`main.py`에서 `archiver.rollover_old_archives(...)` 호출 시 `retention_days` 인자를 조정하세요 (기본 90일).
 
 ### 스케줄 변경
 
@@ -162,6 +198,8 @@ news_briefing_system/
 ## 📝 라이선스
 
 MIT License
+
+번들된 나눔고딕 폰트(`src/templates/static/fonts/`)는 SIL Open Font License 1.1을 따릅니다.
 
 ## 🤝 기여
 
