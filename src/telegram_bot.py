@@ -1,32 +1,25 @@
 """
 Telegram Bot
-텔레그램으로 뉴스 브리핑 링크 전송
+텔레그램으로 뉴스 브리핑 요약 전송
+
+8개 카테고리 × top3 요약이 한 메시지(4096자 한도)에 안 들어가서
+리드 메시지 1개 + 카테고리별 메시지 8개 = 하루 9개로 분리 전송한다.
 """
-from typing import Dict
+import asyncio
+from typing import Dict, List
 from telegram import Bot
 from telegram.error import TelegramError
+from .collectors.base_collector import NewsArticle
+from .collectors.sources import CATEGORIES, CATEGORY_META
 from .utils.logger import setup_logger
+
+TOP_N_PER_CATEGORY = 3
+SUMMARY_TRIM = 180  # HTML 페이지(250자)보다 짧게 — 텔레그램은 티저 역할
 
 
 class TelegramNotifier:
     """텔레그램 알림 전송기"""
-    
-    CATEGORY_EMOJI = {
-        'domestic_general': '🇰🇷',
-        'domestic_economy': '💰',
-        'domestic_politics': '🏛️',
-        'world_general': '🌍',
-        'world_economy_politics': '🌐'
-    }
-    
-    CATEGORY_NAMES = {
-        'domestic_general': '국내 종합 뉴스',
-        'domestic_economy': '국내 경제 뉴스',
-        'domestic_politics': '국내 정치/시사 뉴스',
-        'world_general': '세계 종합 뉴스',
-        'world_economy_politics': '세계 경제/정치/시사 뉴스'
-    }
-    
+
     def __init__(self, bot_token: str, chat_id: str, base_url: str):
         """
         Args:
@@ -41,61 +34,81 @@ class TelegramNotifier:
         self.base_url = base_url.rstrip('/')
         self.logger.info(f"Telegram bot initialized with base URL: {self.base_url}")
 
-    async def send_briefing(self, page_urls: Dict[str, str], date_str: str):
-        """
-        브리핑 링크를 텔레그램으로 전송.
-        parse_mode='HTML' 사용 → URL 언더바(_) 문제 없음
-        """
-        self.logger.info("Sending Telegram notification...")
-        self.logger.info(f"Base URL: {self.base_url}")
-        self.logger.info(f"Page URLs: {page_urls}")
+    def _full_url(self, relative: str) -> str:
+        return f"{self.base_url}/{relative.lstrip('/')}"
 
-        # HTML 태그로 굵게 처리; URL은 절대 태그 안에 넣지 않음
+    def _build_lead_message(self, page_urls: Dict[str, str], date_str: str) -> str:
         parts = [
             f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>",
             "",
-            "오늘의 주요 뉴스를 확인하세요!",
+            "분야별 브리핑이 곧 이어서 도착합니다.",
             "",
+            "📂 <b>분야별 바로가기</b>",
         ]
-
-        for category, url in page_urls.items():
-            if category not in self.CATEGORY_NAMES:
+        for key in CATEGORIES:
+            url = page_urls.get(key)
+            if not url:
                 continue
-            emoji = self.CATEGORY_EMOJI.get(category, '📌')
-            name = self.CATEGORY_NAMES[category]
-            clean_url = url.lstrip('/')
-            full_url = f"{self.base_url}/{clean_url}"
-            self.logger.info(f"URL [{category}]: {full_url}")
+            meta = CATEGORY_META[key]
+            parts.append(f'{meta["icon"]} <a href="{self._full_url(url)}">{meta["name"]}</a>')
 
-            parts.append(f"{emoji} <b>{name}</b>")
-            parts.append(f"🔗 {full_url}")
-            parts.append("")
-
-        archive_url = f"{self.base_url}/archive.html"
-        parts.append(f'📚 <a href="{archive_url}">아카이브 보기</a>')
+        parts.append("")
+        parts.append(f'📚 <a href="{self._full_url("archive.html")}">아카이브 보기</a>')
         parts.append("")
         parts.append("<i>매일 오전 6시에 자동으로 업데이트됩니다.</i>")
+        return "\n".join(parts)
 
-        # 실제 줄바꿈 문자(\n)로 합치기
-        message = "\n".join(parts)
-        # GitHub Actions 로그는 public 저장소에서 누구나 볼 수 있으므로 debug로 낮춤
-        self.logger.debug(f"Final message:\n{message}")
+    def _build_category_message(self, key: str, articles: List[NewsArticle], page_url: str, date_str: str) -> str:
+        meta = CATEGORY_META[key]
+        parts = [f'<b>{meta["icon"]} {meta["name"]} 뉴스 ({date_str})</b>', ""]
+
+        top_articles = sorted(articles, key=lambda a: a.is_important, reverse=True)[:TOP_N_PER_CATEGORY]
+        if not top_articles:
+            parts.append("오늘 수집된 뉴스가 없습니다.")
+        for article in top_articles:
+            summary = (article.summary or "")[:SUMMARY_TRIM]
+            parts.append(f"📌 <b>{article.title}</b>")
+            if summary:
+                parts.append(summary)
+            parts.append(f'🔗 <a href="{article.link}">원문 보기</a>')
+            parts.append("")
+
+        parts.append(f'📄 <a href="{self._full_url(page_url)}">전체보기</a>')
+        return "\n".join(parts)
+
+    async def send_briefing(self, page_urls: Dict[str, str],
+                             categorized_news: Dict[str, List[NewsArticle]], date_str: str):
+        """리드 메시지 1개 + 카테고리별 메시지(top3 요약)를 순차 전송."""
+        self.logger.info("Sending Telegram notification...")
 
         try:
             await self.bot.send_message(
                 chat_id=self.chat_id,
-                text=message,
-                parse_mode='HTML',           # Markdown 대신 HTML 사용
-                disable_web_page_preview=True
+                text=self._build_lead_message(page_urls, date_str),
+                parse_mode='HTML',
+                disable_web_page_preview=True,
             )
-            self.logger.info("Telegram notification sent successfully")
+
+            for key in CATEGORIES:
+                page_url = page_urls.get(key)
+                if not page_url:
+                    continue
+                message = self._build_category_message(key, categorized_news.get(key, []), page_url, date_str)
+                await self.bot.send_message(
+                    chat_id=self.chat_id,
+                    text=message,
+                    parse_mode='HTML',
+                    disable_web_page_preview=True,
+                )
+
+            self.logger.info("Telegram notification sent successfully (9 messages)")
         except TelegramError as e:
             self.logger.error(f"Failed to send Telegram message: {e}")
             raise
 
-    def send_briefing_sync(self, page_urls: Dict[str, str], date_str: str):
+    def send_briefing_sync(self, page_urls: Dict[str, str],
+                            categorized_news: Dict[str, List[NewsArticle]], date_str: str):
         """동기 방식으로 브리핑 전송"""
-        import asyncio
         try:
             try:
                 loop = asyncio.get_event_loop()
@@ -104,7 +117,7 @@ class TelegramNotifier:
             except RuntimeError:
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
-            loop.run_until_complete(self.send_briefing(page_urls, date_str))
+            loop.run_until_complete(self.send_briefing(page_urls, categorized_news, date_str))
         except Exception as e:
             self.logger.error(f"Error in send_briefing_sync: {e}")
             raise

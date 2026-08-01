@@ -52,7 +52,7 @@ def main():
         else:
             notifier = TelegramNotifier(bot_token, chat_id, base_url)
             date_str = datetime.now().strftime('%Y-%m-%d')
-            notifier.send_briefing_sync(page_urls, date_str)
+            notifier.send_briefing_sync(page_urls, categorized_news, date_str)
         
         logger.info("=" * 60)
         logger.info("Daily News Briefing System completed successfully!")

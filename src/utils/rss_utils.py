@@ -1,3 +1,4 @@
+import html
 import requests
 import feedparser
 import re
@@ -26,7 +27,9 @@ def fetch_feed(url: str):
 
 
 def clean_html(text: str) -> str:
-    return re.sub("<[^<]+?>", "", text or "")
+    """태그 제거 + HTML 엔티티 복원(&nbsp; 등이 리터럴 텍스트로 노출되는 것 방지)."""
+    stripped = re.sub("<[^<]+?>", "", text or "")
+    return html.unescape(stripped)
 
 
 def extract_date(entry, parse_func):

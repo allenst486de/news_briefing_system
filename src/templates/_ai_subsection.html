@@ -1,0 +1,20 @@
+{# IT 카테고리 내 AI 전용 섹션 (홈 미리보기와 공유하는 파셜) #}
+<section class="ai-subsection">
+    <h2 class="section-title">🤖 AI 소식</h2>
+    <div class="news-list">
+        {% for article in ai_items %}
+        <div class="news-item ai-item">
+            <div class="news-title">
+                <a href="{{ article.link }}" target="_blank" rel="noopener">{{ article.title }}</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">{{ article.source }}</span>
+                <span class="news-date">{{ article.published }}</span>
+            </div>
+            {% if article.summary %}
+            <p class="news-summary">{{ article.summary }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>

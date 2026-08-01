@@ -1,0 +1,24 @@
+{# 홈 상단 헤더 — 날짜(서버 렌더) + 시계/날씨(site.js가 방문 시점에 채움) + 경제지표 티커 #}
+<header class="home-header">
+    <div class="home-title-row">
+        <h1>📰 일일 뉴스 브리핑</h1>
+        <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="라이트/다크 모드 전환">🌓</button>
+    </div>
+
+    <div class="home-datetime">
+        <span id="live-clock">--:--:--</span>
+        <span class="home-date">📅 {{ date }}</span>
+        <span class="home-weather" id="weather-widget" data-loading="true">날씨 확인 중…</span>
+    </div>
+
+    {% if indicators %}
+    <div class="home-econ-ticker">
+        <span class="ticker-item"><em>KOSPI</em> {{ indicators.kospi }}
+            <b class="{{ indicators.kospi_dir }}">{{ indicators.kospi_pct }}</b></span>
+        <span class="ticker-item"><em>KOSDAQ</em> {{ indicators.kosdaq }}
+            <b class="{{ indicators.kosdaq_dir }}">{{ indicators.kosdaq_pct }}</b></span>
+        <span class="ticker-item"><em>USD/KRW</em> {{ indicators.usdkrw }}
+            <b class="{{ indicators.usdkrw_dir }}">{{ indicators.usdkrw_pct }}</b></span>
+    </div>
+    {% endif %}
+</header>

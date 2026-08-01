@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ category_name }} - 일일 뉴스 브리핑">
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_description }}">
+    <meta property="og:url" content="{{ og_url }}">
+    <meta property="og:type" content="article">
     <title>{{ category_name }} — {{ date }}</title>
     <link rel="stylesheet" href="{{ css_path }}">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
 </head>
 
 <body>
@@ -21,16 +26,18 @@
         </div>
 
         <nav class="category-nav">
-            <a href="{{ nav_domestic_general }}">🇰🇷 국내 종합</a>
-            <a href="{{ nav_domestic_economy }}">💰 국내 경제</a>
-            <a href="{{ nav_domestic_politics }}">🏛️ 국내 정치</a>
-            <a href="{{ nav_world_general }}">🌍 세계 종합</a>
-            <a href="{{ nav_world_economy_politics }}">🌐 세계 경제/정치</a>
+            {% for cat in nav_categories %}
+            <a href="{{ cat.url }}" {% if cat.key==category_key %}class="active"{% endif %}>{{ cat.icon }} {{ cat.name }}</a>
+            {% endfor %}
             <a href="{{ archive_path }}">📚 아카이브</a>
         </nav>
 
+        {% if category_key == 'it' and ai_items %}
+        {% include '_ai_subsection.html' %}
+        {% endif %}
+
         <section class="news-section">
-            <h2 class="section-title">오늘의 주요 뉴스</h2>
+            <h2 class="section-title">{% if category_key == 'it' %}일반 IT 뉴스{% else %}오늘의 주요 뉴스{% endif %}</h2>
 
             {% if articles %}
             <div class="news-list">
@@ -74,8 +81,10 @@
 
         <footer>
             <p>자동 생성된 뉴스 브리핑 · <a href="{{ archive_path }}">아카이브</a></p>
+            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="라이트/다크 모드 전환">🌓</button>
         </footer>
     </div>
+    <script src="{{ site_js_path }}"></script>
 </body>
 
 </html>

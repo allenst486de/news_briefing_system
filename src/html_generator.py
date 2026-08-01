@@ -4,32 +4,28 @@ HTML Generator
 """
 import os
 import json
+import shutil
+import xml.etree.ElementTree as ET
 from datetime import datetime
 from typing import Dict, List
+from urllib.parse import urlparse
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from .collectors.base_collector import NewsArticle
+from .collectors.sources import CATEGORIES, CATEGORY_META
 from .utils.logger import setup_logger
+from .utils.indicators import get_market_indicators
+
+PREVIEW_COUNT = 5
+AI_PREVIEW_COUNT = 3
+FEED_ITEMS_PER_CATEGORY = 3
 
 
 class HTMLGenerator:
     """HTML 페이지 생성기"""
-    
-    CATEGORY_NAMES = {
-        'domestic_general': '🇰🇷 국내 종합 뉴스',
-        'domestic_economy': '💰 국내 경제 뉴스',
-        'domestic_politics': '🏛️ 국내 정치/시사 뉴스',
-        'world_general': '🌍 세계 종합 뉴스',
-        'world_economy_politics': '🌐 세계 경제/정치/시사 뉴스'
-    }
-    
-    CATEGORY_FILES = {
-        'domestic_general': 'domestic_general.html',
-        'domestic_economy': 'domestic_economy.html',
-        'domestic_politics': 'domestic_politics.html',
-        'world_general': 'world_general.html',
-        'world_economy_politics': 'world_economy_politics.html'
-    }
-    
+
+    CATEGORY_NAMES = {key: f"{meta['icon']} {meta['name']}" for key, meta in CATEGORY_META.items()}
+    CATEGORY_FILES = {key: f"{key}.html" for key in CATEGORIES}
+
     def __init__(self, template_dir: str, output_dir: str, base_url: str = ''):
         """
         Args:
@@ -41,192 +37,245 @@ class HTMLGenerator:
         self.logger = setup_logger()
         self.template_dir = template_dir
         self.output_dir = output_dir
-        
-        # base_url에서 서브경로 추출 (예: /news_briefing_system)
-        # GitHub Pages에서 저장소명이 서브경로로 사용될 때 필요
+        self.base_url = base_url.rstrip('/')
+
         if base_url:
-            from urllib.parse import urlparse
             parsed = urlparse(base_url.rstrip('/'))
-            # 경로 부분만 추출 (예: /news_briefing_system)
             self.base_path = parsed.path.rstrip('/')
         else:
             self.base_path = ''
-        
+
         self.logger.info(f"HTMLGenerator initialized with base_path: '{self.base_path}'")
-        
+
         # Jinja2 환경 설정 (외부 RSS 콘텐츠를 렌더링하므로 autoescape 필수)
         self.env = Environment(
             loader=FileSystemLoader(template_dir),
             autoescape=select_autoescape(['html', 'xml']),
         )
-        
+
     def generate_all(self, categorized_news: Dict[str, List[NewsArticle]]) -> Dict[str, str]:
         """
-        모든 카테고리의 HTML 페이지 생성
-        
+        모든 카테고리의 HTML 페이지 + 포털 홈 + 부가 파일 생성
+
         Returns:
-            Dict[str, str]: 카테고리별 생성된 페이지 상대경로 (예: "2026/02/19/domestic_general.html")
+            Dict[str, str]: 카테고리별 생성된 페이지 상대경로
         """
         self.logger.info("Starting HTML generation...")
-        
+
         now = datetime.now()
         date_str = now.strftime('%Y-%m-%d')
         date_path = now.strftime('%Y/%m/%d')
-        
+
         output_path = os.path.join(self.output_dir, date_path)
         os.makedirs(output_path, exist_ok=True)
-        
-        # CSS 파일 복사
+
         self._copy_css()
-        
+        self._copy_static()
+
+        nav_categories = [
+            {
+                'key': key,
+                'name': CATEGORY_META[key]['name'],
+                'icon': CATEGORY_META[key]['icon'],
+                'url': self._make_path(f'/{date_path}/{self.CATEGORY_FILES[key]}'),
+            }
+            for key in CATEGORIES
+        ]
+
         page_urls = {}
-        
-        for category, articles in categorized_news.items():
-            if category in self.CATEGORY_NAMES:
-                html_file = self.CATEGORY_FILES[category]
-                file_path = os.path.join(output_path, html_file)
-                
-                self._generate_briefing_page(
-                    category=category,
-                    articles=articles,
-                    output_file=file_path,
-                    date_str=date_str,
-                    date_path=date_path
-                )
-                
-                # 텔레그램 봇이 사용할 상대경로
-                page_urls[category] = f"{date_path}/{html_file}"
-                
-                self.logger.info(f"Generated {category}: {file_path}")
-        
+        for category in CATEGORIES:
+            articles = categorized_news.get(category, [])
+            html_file = self.CATEGORY_FILES[category]
+            file_path = os.path.join(output_path, html_file)
+
+            self._generate_briefing_page(
+                category=category, articles=articles, output_file=file_path,
+                date_str=date_str, date_path=date_path, nav_categories=nav_categories,
+            )
+            page_urls[category] = f"{date_path}/{html_file}"
+            self.logger.info(f"Generated {category}: {file_path}")
+
         self._update_archive(date_str, date_path)
-        self._generate_index_page(date_path)
-        
+        self._generate_index_page(categorized_news, date_str, date_path, nav_categories)
+        self._generate_feed_xml(categorized_news, date_str)
+        self._generate_robots_txt()
+
         self.logger.info("HTML generation completed")
         return page_urls
-    
+
     def _make_path(self, relative: str) -> str:
-        """
-        base_path + relative 경로 생성
-        예) base_path='/news_briefing_system', relative='/style.css'
-            => '/news_briefing_system/style.css'
-        """
         clean = relative.lstrip('/')
         if self.base_path:
             return f"{self.base_path}/{clean}"
         return f"/{clean}"
-    
+
+    def _og_context(self, title: str, description: str, path: str) -> Dict[str, str]:
+        return {
+            'og_title': title,
+            'og_description': description,
+            'og_url': f"{self.base_url}{self._make_path(path)}" if self.base_url else self._make_path(path),
+        }
+
+    @staticmethod
+    def _article_to_dict(article: NewsArticle) -> Dict:
+        d = {
+            'title': article.title,
+            'link': article.link,
+            'published': article.published.strftime('%Y-%m-%d %H:%M'),
+            'summary': article.summary,
+            'source': article.source,
+            'is_important': article.is_important,
+        }
+        if hasattr(article, 'original_title'):
+            d['original_title'] = article.original_title
+        if hasattr(article, 'original_summary'):
+            d['original_summary'] = article.original_summary
+        return d
+
     def _generate_briefing_page(self, category: str, articles: List[NewsArticle],
-                                output_file: str, date_str: str, date_path: str):
+                                 output_file: str, date_str: str, date_path: str,
+                                 nav_categories: List[Dict]):
         """개별 브리핑 페이지 생성"""
         template = self.env.get_template('briefing.html')
-        
-        articles_data = []
-        for article in articles:
-            article_dict = {
-                'title': article.title,
-                'link': article.link,
-                'published': article.published.strftime('%Y-%m-%d %H:%M'),
-                'summary': article.summary,
-                'source': article.source,
-                'is_important': article.is_important
-            }
-            
-            if hasattr(article, 'original_title'):
-                article_dict['original_title'] = article.original_title
-            if hasattr(article, 'original_summary'):
-                article_dict['original_summary'] = article.original_summary
-            
-            articles_data.append(article_dict)
-        
+        category_name = self.CATEGORY_NAMES[category]
+
+        articles_data = [self._article_to_dict(a) for a in articles]
+
+        ai_items = []
+        if category == 'it':
+            ai_items = [self._article_to_dict(a) for a in articles if getattr(a, 'is_ai', False)]
+            articles_data = [self._article_to_dict(a) for a in articles if not getattr(a, 'is_ai', False)]
+
         html_content = template.render(
-            category_name=self.CATEGORY_NAMES[category],
+            category_key=category,
+            category_name=category_name,
             date=date_str,
             articles=articles_data,
+            ai_items=ai_items,
             css_path=self._make_path('/style.css'),
+            site_js_path=self._make_path('/site.js'),
             archive_path=self._make_path('/archive.html'),
             index_path=self._make_path('/index.html'),
             date_path=date_path,
             base_path=self.base_path,
-            nav_domestic_general=self._make_path(f'/{date_path}/domestic_general.html'),
-            nav_domestic_economy=self._make_path(f'/{date_path}/domestic_economy.html'),
-            nav_domestic_politics=self._make_path(f'/{date_path}/domestic_politics.html'),
-            nav_world_general=self._make_path(f'/{date_path}/world_general.html'),
-            nav_world_economy_politics=self._make_path(f'/{date_path}/world_economy_politics.html'),
+            nav_categories=nav_categories,
+            **self._og_context(f"{category_name} — {date_str}", f"{category_name} 일일 뉴스 브리핑 ({date_str})", f'/{date_path}/{self.CATEGORY_FILES[category]}'),
         )
-        
+
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
-    
+
     def _update_archive(self, date_str: str, date_path: str):
         """아카이브 페이지 업데이트"""
         archive_file = os.path.join(self.output_dir, 'archive.html')
         archive_data_file = os.path.join(self.output_dir, 'archive_data.json')
-        
+
         archive_items = []
         if os.path.exists(archive_data_file):
             with open(archive_data_file, 'r', encoding='utf-8') as f:
                 archive_items = json.load(f)
-        
-        # 날짜별로 그룹화된 구조로 저장
-        existing_dates = {item['date'] for item in archive_items if 'categories' in item}
-        # 구형 데이터와 신형 데이터 모두 처리
-        existing_date_strs = set()
-        for item in archive_items:
-            if 'date' in item:
-                existing_date_strs.add(item['date'])
-        
+
+        existing_date_strs = {item['date'] for item in archive_items if 'date' in item}
+
         if date_str not in existing_date_strs:
-            categories_list = []
-            for category, filename in self.CATEGORY_FILES.items():
-                categories_list.append({
-                    'name': self.CATEGORY_NAMES[category],
-                    'path': self._make_path(f'/{date_path}/{filename}')
-                })
-            
-            archive_items.append({
-                'date': date_str,
-                'categories': categories_list
-            })
-        
-        # 날짜 역순 정렬
+            categories_list = [
+                {'name': self.CATEGORY_NAMES[key], 'path': self._make_path(f'/{date_path}/{self.CATEGORY_FILES[key]}')}
+                for key in CATEGORIES
+            ]
+            archive_items.append({'date': date_str, 'categories': categories_list})
+
         archive_items.sort(key=lambda x: x['date'], reverse=True)
-        
+
         with open(archive_data_file, 'w', encoding='utf-8') as f:
             json.dump(archive_items, f, ensure_ascii=False, indent=2)
-        
+
         template = self.env.get_template('archive.html')
         html_content = template.render(
             archive_items=archive_items,
             css_path=self._make_path('/style.css'),
-            index_path=self._make_path('/index.html')
+            site_js_path=self._make_path('/site.js'),
+            index_path=self._make_path('/index.html'),
+            **self._og_context('뉴스 브리핑 아카이브', '날짜별 과거 브리핑 모음', '/archive.html'),
         )
-        
+
         with open(archive_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
-    
-    def _generate_index_page(self, latest_date_path: str):
-        """메인 인덱스 페이지 생성 (최신 브리핑으로 리다이렉트)"""
+
+    def _generate_index_page(self, categorized_news: Dict[str, List[NewsArticle]],
+                              date_str: str, date_path: str, nav_categories: List[Dict]):
+        """포털형 홈페이지 생성 — 카테고리 미리보기 + AI 소식 미리보기 + 헤더"""
         index_file = os.path.join(self.output_dir, 'index.html')
         template = self.env.get_template('index.html')
-        
-        latest_url = self._make_path(f'/{latest_date_path}/domestic_general.html')
-        archive_url = self._make_path('/archive.html')
-        
+
+        category_previews = []
+        all_ai_items = []
+        for cat in nav_categories:
+            key = cat['key']
+            articles = categorized_news.get(key, [])
+            if key == 'it':
+                ai_articles = [a for a in articles if getattr(a, 'is_ai', False)]
+                all_ai_items.extend(ai_articles)
+                articles = [a for a in articles if not getattr(a, 'is_ai', False)]
+            category_previews.append({
+                **cat,
+                'top5': [self._article_to_dict(a) for a in articles[:PREVIEW_COUNT]],
+            })
+
+        ai_preview = [self._article_to_dict(a) for a in all_ai_items[:AI_PREVIEW_COUNT]]
+        indicators = get_market_indicators()
+
         html_content = template.render(
-            latest_briefing_url=latest_url,
-            archive_url=archive_url,
-            css_path=self._make_path('/style.css')
+            date=date_str,
+            indicators=indicators,
+            category_previews=category_previews,
+            ai_items=ai_preview,
+            nav_categories=nav_categories,
+            css_path=self._make_path('/style.css'),
+            site_js_path=self._make_path('/site.js'),
+            archive_path=self._make_path('/archive.html'),
+            feed_path=self._make_path('/feed.xml'),
+            **self._og_context('일일 뉴스 브리핑', f'{date_str} 오늘의 뉴스를 한눈에', '/index.html'),
         )
-        
+
         with open(index_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
-    
+
+    def _generate_feed_xml(self, categorized_news: Dict[str, List[NewsArticle]], date_str: str):
+        """자체 RSS 2.0 피드 — 검색엔진 자동탐지 태그는 템플릿에 넣지 않음(비공개 노출 방침)"""
+        rss = ET.Element('rss', version='2.0')
+        channel = ET.SubElement(rss, 'channel')
+        ET.SubElement(channel, 'title').text = '일일 뉴스 브리핑'
+        ET.SubElement(channel, 'link').text = self.base_url or '/'
+        ET.SubElement(channel, 'description').text = f'{date_str} 뉴스 브리핑'
+
+        items = []
+        for key in CATEGORIES:
+            for article in categorized_news.get(key, [])[:FEED_ITEMS_PER_CATEGORY]:
+                items.append((article.published, key, article))
+        items.sort(key=lambda t: t[0], reverse=True)
+
+        for published, key, article in items:
+            item = ET.SubElement(channel, 'item')
+            ET.SubElement(item, 'title').text = f"[{CATEGORY_META[key]['name']}] {article.title}"
+            ET.SubElement(item, 'link').text = article.link
+            ET.SubElement(item, 'description').text = article.summary
+            ET.SubElement(item, 'pubDate').text = published.strftime('%a, %d %b %Y %H:%M:%S %z') or published.isoformat()
+
+        feed_file = os.path.join(self.output_dir, 'feed.xml')
+        ET.ElementTree(rss).write(feed_file, encoding='utf-8', xml_declaration=True)
+
+    def _generate_robots_txt(self):
+        """검색엔진 색인 차단 — 링크를 아는 사람은 여전히 접근 가능하지만 크롤링은 막음"""
+        robots_file = os.path.join(self.output_dir, 'robots.txt')
+        with open(robots_file, 'w', encoding='utf-8') as f:
+            f.write("User-agent: *\nDisallow: /\n")
+
     def _copy_css(self):
-        """CSS 파일을 output 디렉토리로 복사"""
-        import shutil
-        
         css_source = os.path.join(self.template_dir, 'style.css')
         css_dest = os.path.join(self.output_dir, 'style.css')
-        
         shutil.copy2(css_source, css_dest)
+
+    def _copy_static(self):
+        js_source = os.path.join(self.template_dir, 'static', 'site.js')
+        js_dest = os.path.join(self.output_dir, 'site.js')
+        shutil.copy2(js_source, js_dest)

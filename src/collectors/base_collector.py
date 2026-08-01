@@ -4,7 +4,7 @@ Base News Collector Class
 """
 from abc import ABC, abstractmethod
 from typing import List, Dict
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class NewsArticle:
@@ -54,9 +54,16 @@ class BaseCollector(ABC):
         pass
     
     def _parse_date(self, date_str: str) -> datetime:
-        """날짜 문자열을 datetime 객체로 변환"""
+        """
+        날짜 문자열을 datetime 객체로 변환.
+        언론사마다 RFC822 오프셋 유무가 달라 aware/naive가 섞이면
+        나중에 카테고리 통합 정렬(sort)에서 TypeError가 난다 — 항상 UTC aware로 정규화.
+        """
         from email.utils import parsedate_to_datetime
         try:
-            return parsedate_to_datetime(date_str)
-        except:
-            return datetime.now()
+            dt = parsedate_to_datetime(date_str)
+        except Exception:
+            dt = datetime.now(timezone.utc)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)

@@ -50,11 +50,12 @@ def test_html_output_is_escaped():
         gen = HTMLGenerator(template_dir, output_dir)
         out_file = os.path.join(output_dir, "out.html")
         gen._generate_briefing_page(
-            category="domestic_general",
+            category="politics",
             articles=[article],
             output_file=out_file,
             date_str="2026-01-01",
             date_path="2026/01/01",
+            nav_categories=[],
         )
 
         with open(out_file, "r", encoding="utf-8") as f:

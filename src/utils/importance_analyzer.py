@@ -80,6 +80,27 @@ class ImportanceAnalyzer:
                 
         return False
     
+    # AI 관련 키워드 — IT 카테고리 내 AI 소식 서브섹션 분류용
+    # Phase1 임시 규칙기반 구현. Phase2에서 LLM 프롬프트(b)로 교체되며,
+    # 이 키워드 매칭은 LLM 호출 실패 시 폴백으로 재사용된다.
+    AI_KEYWORDS = {
+        'korean': [
+            '인공지능', 'AI', '생성형', '챗봇', '거대언어모델', '딥러닝', '머신러닝',
+            'LLM', 'GPT', '오픈AI', '앤스로픽', '제미나이', '클로드', '코파일럿'
+        ],
+        'english': [
+            'artificial intelligence', ' ai ', 'chatbot', 'large language model', 'deep learning',
+            'machine learning', 'llm', 'gpt', 'openai', 'anthropic', 'gemini', 'claude', 'copilot'
+        ]
+    }
+
+    @staticmethod
+    def is_ai_related(title: str, summary: str = "") -> bool:
+        """IT 카테고리 기사 중 AI 관련 여부 판단 (키워드 매칭)."""
+        text = f" {title} {summary} ".lower()
+        keywords = ImportanceAnalyzer.AI_KEYWORDS['korean'] + ImportanceAnalyzer.AI_KEYWORDS['english']
+        return any(keyword.lower() in text for keyword in keywords)
+
     @staticmethod
     def get_importance_badge(is_important: bool) -> str:
         """

@@ -12,7 +12,8 @@ permissions:
 jobs:
   generate-briefing:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 30
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
