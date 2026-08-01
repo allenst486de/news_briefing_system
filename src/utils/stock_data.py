@@ -11,6 +11,7 @@ Stock Data & Deterministic Pick Screening
 전체 시장을 스캔하지 않고 유동성 큰 대형주 관찰목록으로 한정했다 —
 필요하면 아래 WATCHLIST에 종목을 추가하면 된다.
 """
+import time
 from io import StringIO
 from typing import Dict, List, Optional
 
@@ -23,6 +24,8 @@ from .logger import setup_logger
 logger = setup_logger()
 
 _HEADERS = {"User-Agent": "Mozilla/5.0"}
+_REQUEST_TIMEOUT = 6  # 초 — CI 환경(GitHub Actions IP)이 Naver/Yahoo에서 차단·저속 처리될 수 있어 짧게
+_DOMESTIC_BUDGET_SECONDS = 90  # 워치리스트 전체가 느려도 이 시간을 넘기면 지금까지 모은 것만 사용
 
 DOMESTIC_WATCHLIST = [
     ("005930", "삼성전자"), ("000660", "SK하이닉스"), ("035420", "NAVER"),
@@ -75,7 +78,7 @@ def _fetch_domestic_history(code: str, pages: int = 3) -> Optional[pd.DataFrame]
     try:
         for page in range(1, pages + 1):
             url = f"https://finance.naver.com/item/sise_day.naver?code={code}&page={page}"
-            resp = requests.get(url, headers=_HEADERS, timeout=10)
+            resp = requests.get(url, headers=_HEADERS, timeout=_REQUEST_TIMEOUT)
             resp.encoding = "euc-kr"
             tables = pd.read_html(StringIO(resp.text))
             df = tables[0].dropna()
@@ -99,9 +102,17 @@ def _screen(candidates: List[Dict], horizon: str) -> List[Dict]:
 
 
 def get_domestic_picks() -> Dict[str, List[Dict]]:
-    """{"daily": [...], "weekly": [...], "monthly": [...]} — 실패 종목은 후보에서 제외, 실패 시 빈 dict."""
+    """
+    {"daily": [...], "weekly": [...], "monthly": [...]} — 실패 종목은 후보에서 제외.
+    Naver Finance가 느리거나 막혀 있어도(예: CI 환경 IP 차단) 전체 파이프라인이
+    묶이지 않도록 _DOMESTIC_BUDGET_SECONDS를 넘기면 남은 워치리스트는 건너뛴다.
+    """
     candidates = []
+    start = time.monotonic()
     for code, name in DOMESTIC_WATCHLIST:
+        if time.monotonic() - start > _DOMESTIC_BUDGET_SECONDS:
+            logger.warning("Domestic stock fetch budget exceeded — using partial results")
+            break
         hist = _fetch_domestic_history(code)
         if hist is None:
             continue
@@ -117,7 +128,8 @@ def get_domestic_picks() -> Dict[str, List[Dict]]:
 def get_overseas_picks() -> Dict[str, List[Dict]]:
     tickers = list(OVERSEAS_NAMES.keys())
     try:
-        data = yf.download(tickers=tickers, period="35d", group_by="ticker", threads=True, progress=False)
+        data = yf.download(tickers=tickers, period="35d", group_by="ticker", threads=True,
+                            progress=False, timeout=_REQUEST_TIMEOUT)
     except Exception as e:
         logger.warning(f"yfinance batch download failed — omitting overseas picks: {e}")
         return {h: [] for h in HORIZONS}
