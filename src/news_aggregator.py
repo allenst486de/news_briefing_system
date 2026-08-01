@@ -2,6 +2,7 @@
 News Aggregator
 모든 뉴스 소스를 통합하고 카테고리별로 분류
 """
+import re
 from typing import List, Dict
 from .collectors.rss_collector import RSSCollector
 from .collectors.sources import SOURCES, CATEGORIES
@@ -12,6 +13,14 @@ from . import summarizer
 from .collectors.sources import CATEGORY_META
 
 CATEGORY_ARTICLE_CAP = 20
+
+# 언론사가 정기적으로 내보내는 행정성 공지("N월N일 인사/부고/동정/알림") —
+# 한겨레 society 피드에서 실제 확인됨. 뉴스 가치가 없어 통째로 제외한다.
+_WIRE_BULLETIN_PATTERN = re.compile(r'^\d{1,2}월\s*\d{1,2}일\s*(궂긴\s*소식|인사|동정|부고|알림|일정)\s*$')
+
+
+def _is_wire_bulletin(title: str) -> bool:
+    return bool(_WIRE_BULLETIN_PATTERN.match((title or '').strip()))
 
 
 class NewsAggregator:
@@ -43,6 +52,7 @@ class NewsAggregator:
                     articles = collector.collect(category, limit=source.get("limit", 15))
                     for article in articles:
                         article.language = source.get("language", "ko")
+                    articles = [a for a in articles if not _is_wire_bulletin(a.title)]
                     categorized_news[category].extend(articles)
                 except Exception as e:
                     self.logger.warning(f"[{source['id']}] failed category {category}: {e}")
@@ -61,6 +71,10 @@ class NewsAggregator:
 
             if category == "it":
                 summarizer.extract_ai_items(categorized_news[category])
+
+            # is_important는 summarize_category에서 확정되므로 여기서 최종 정렬
+            # (중요기사 우선, 동률이면 최신순) — HTML/텔레그램 모두 이 순서를 그대로 씀
+            categorized_news[category].sort(key=lambda x: (x.is_important, x.published), reverse=True)
 
         self.logger.info(f"News collection completed. Total categories: {len(categorized_news)}")
         for category, articles in categorized_news.items():

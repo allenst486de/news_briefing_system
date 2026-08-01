@@ -11,14 +11,5 @@
         <span class="home-weather" id="weather-widget" data-loading="true">날씨 확인 중…</span>
     </div>
 
-    {% if indicators %}
-    <div class="home-econ-ticker">
-        <span class="ticker-item"><em>KOSPI</em> {{ indicators.kospi }}
-            <b class="{{ indicators.kospi_dir }}">{{ indicators.kospi_pct }}</b></span>
-        <span class="ticker-item"><em>KOSDAQ</em> {{ indicators.kosdaq }}
-            <b class="{{ indicators.kosdaq_dir }}">{{ indicators.kosdaq_pct }}</b></span>
-        <span class="ticker-item"><em>USD/KRW</em> {{ indicators.usdkrw }}
-            <b class="{{ indicators.usdkrw_dir }}">{{ indicators.usdkrw_pct }}</b></span>
-    </div>
-    {% endif %}
+    {% include '_indicator_box.html' %}
 </header>

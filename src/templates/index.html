@@ -31,7 +31,10 @@
                 {% if cat.top5 %}
                 <ul class="preview-list">
                     {% for a in cat.top5 %}
-                    <li><a href="{{ a.link }}" target="_blank" rel="noopener">{{ a.title }}</a></li>
+                    <li>
+                        <a href="{{ a.link }}" target="_blank" rel="noopener">{{ a.title }}</a>
+                        <span class="preview-source">{{ a.source }}</span>
+                    </li>
                     {% endfor %}
                 </ul>
                 {% else %}

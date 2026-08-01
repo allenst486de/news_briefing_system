@@ -4,6 +4,7 @@ Main Execution Script
 """
 import os
 import sys
+import tempfile
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -14,6 +15,7 @@ from src.news_aggregator import NewsAggregator
 from src.html_generator import HTMLGenerator
 from src.telegram_bot import TelegramNotifier
 from src.utils.logger import setup_logger
+from src.utils.cardnews import generate_top10_card
 from src import archiver
 
 
@@ -53,9 +55,12 @@ def main():
         if not bot_token or not chat_id:
             logger.warning("Telegram credentials not found. Skipping notification.")
         else:
-            notifier = TelegramNotifier(bot_token, chat_id, base_url)
             date_str = datetime.now().strftime('%Y-%m-%d')
-            notifier.send_briefing_sync(page_urls, categorized_news, top10, date_str)
+            top10_image_path = generate_top10_card(
+                top10, date_str, os.path.join(tempfile.gettempdir(), f'top10_{date_str}.png')
+            )
+            notifier = TelegramNotifier(bot_token, chat_id, base_url)
+            notifier.send_briefing_sync(page_urls, categorized_news, top10, date_str, top10_image_path)
 
         # 4. 3개월 지난 자료 압축 롤오버 (실패해도 전체 실행은 성공으로 취급)
         try:

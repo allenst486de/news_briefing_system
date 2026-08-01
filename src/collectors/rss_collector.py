@@ -6,7 +6,7 @@ sources.py에 항목을 추가하는 것으로 끝난다.
 import logging
 from typing import Dict, List
 from .base_collector import BaseCollector, NewsArticle
-from ..utils.rss_utils import fetch_feed, clean_html, extract_date
+from ..utils.rss_utils import fetch_feed, clean_html, extract_date, strip_title_prefix
 
 
 class RSSCollector(BaseCollector):
@@ -34,11 +34,13 @@ class RSSCollector(BaseCollector):
         articles = []
         for entry in feed.entries[:limit]:
             try:
+                title = entry.get("title", "").strip()
                 summary = clean_html(entry.get("description", "") or entry.get("summary", ""))
-                summary = summary or entry.get("title", "")[:200]
+                summary = strip_title_prefix(summary, title)
+                summary = summary or title[:200]
 
                 article = NewsArticle(
-                    title=entry.get("title", "").strip(),
+                    title=title,
                     link=entry.get("link", ""),
                     published=extract_date(entry, self._parse_date),
                     summary=summary,

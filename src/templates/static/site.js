@@ -60,9 +60,28 @@
     });
   }
 
+  // 지표/주식추천 박스의 탭 전환 — 페이지에 [data-tabs] 박스가 여러 개 있어도
+  // 각자 독립적으로 동작 (querySelectorAll을 컨테이너 범위로 한정)
+  function setupTabs() {
+    document.querySelectorAll('[data-tabs]').forEach(function (box) {
+      var buttons = box.querySelectorAll('[data-tab-target]');
+      var panels = box.querySelectorAll('[data-tab-panel]');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = btn.getAttribute('data-tab-target');
+          buttons.forEach(function (b) { b.classList.toggle('active', b === btn); });
+          panels.forEach(function (p) {
+            p.classList.toggle('active', p.getAttribute('data-tab-panel') === target);
+          });
+        });
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     startClock();
     loadWeather();
     setupThemeToggle();
+    setupTabs();
   });
 })();

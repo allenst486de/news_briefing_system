@@ -11,7 +11,7 @@ from .collectors.base_collector import NewsArticle
 from .collectors.sources import CATEGORY_META
 from .utils.llm_client import call_llm_json
 from .utils.importance_analyzer import ImportanceAnalyzer, AI_SUBTYPE_LABELS
-from .utils.rss_utils import clean_html
+from .utils.rss_utils import clean_html, strip_title_prefix
 from .utils.logger import setup_logger
 
 logger = setup_logger()
@@ -41,6 +41,7 @@ CATEGORY_MAX_TOKENS = 8192
 def _rule_based_fallback(article: NewsArticle) -> None:
     """LLM 실패 시 Phase1 규칙기반 동작으로 복귀 (번역은 생략, 원문 그대로 유지)."""
     article.summary = clean_html(article.summary)
+    article.summary = strip_title_prefix(article.summary, article.title)
     article.is_important = _analyzer.analyze(article.title, article.summary)
 
 
@@ -97,6 +98,7 @@ def summarize_category(category_key: str, category_name: str, articles: List[New
 
         new_title = (item.get("paraphrased_title") or "").strip()
         new_summary = (item.get("summary_250") or "").strip()
+        new_summary = strip_title_prefix(new_summary, new_title)
         if not new_title or not new_summary:
             _rule_based_fallback(article)
             kept.append(article)
@@ -208,6 +210,7 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
                 "category": entry["category"],
                 "category_name": CATEGORY_META[entry["category"]]["name"],
                 "link": article.link,
+                "source": article.source,
                 "card_headline": (item.get("card_headline") or article.title[:15]).strip(),
                 "card_blurb": (item.get("card_blurb") or article.summary[:90]).strip(),
             })
@@ -225,6 +228,7 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
             "category": entry["category"],
             "category_name": CATEGORY_META[entry["category"]]["name"],
             "link": article.link,
+            "source": article.source,
             "card_headline": article.title[:15],
             "card_blurb": article.summary[:90],
         })

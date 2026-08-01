@@ -1,25 +1,21 @@
-{# 경제 카테고리 페이지 전용: 지표 티커 + 주식 추천(일/주/월, 국내+해외) #}
+{# 경제 카테고리 페이지 전용: 지표 박스(국내/해외 탭) + 주식 추천 박스(일/주/월 탭) #}
 <section class="economy-dashboard">
-    {% if indicators %}
-    <div class="dashboard-metrics">
-        <div class="dashboard-metric"><span>KOSPI</span><strong>{{ indicators.kospi }}</strong>
-            <em class="{{ indicators.kospi_dir }}">{{ indicators.kospi_pct }}</em></div>
-        <div class="dashboard-metric"><span>KOSDAQ</span><strong>{{ indicators.kosdaq }}</strong>
-            <em class="{{ indicators.kosdaq_dir }}">{{ indicators.kosdaq_pct }}</em></div>
-        <div class="dashboard-metric"><span>USD/KRW</span><strong>{{ indicators.usdkrw }}</strong>
-            <em class="{{ indicators.usdkrw_dir }}">{{ indicators.usdkrw_pct }}</em></div>
-    </div>
-    {% endif %}
+    {% include '_indicator_box.html' %}
 
     <div class="disclaimer-banner">⚠️ 정보 제공 목적이며 투자 자문이 아닙니다. 투자 판단과 책임은 본인에게 있습니다.</div>
 
-    {% set horizon_labels = {'daily': '오늘의 추천 (Daily)', 'weekly': '이번 주 추천 (Weekly)', 'monthly': '이번 달 추천 (Monthly)'} %}
-    <div class="stock-horizon-tabs">
+    {% set horizon_labels = {'daily': '일간', 'weekly': '주간', 'monthly': '월간'} %}
+    <div class="tab-box stock-pick-box" data-tabs>
+        <div class="tab-buttons">
+            {% for horizon in ['daily', 'weekly', 'monthly'] %}
+            <button type="button" class="tab-button{% if loop.first %} active{% endif %}"
+                    data-tab-target="stock-{{ horizon }}">{{ horizon_labels[horizon] }}</button>
+            {% endfor %}
+        </div>
         {% for horizon in ['daily', 'weekly', 'monthly'] %}
-        <div class="stock-horizon-section">
-            <h4>{{ horizon_labels[horizon] }}</h4>
-            {% set change_key = horizon + '_change_pct' %}
-            {% set picks = stock_picks.domestic[horizon] + stock_picks.overseas[horizon] %}
+        {% set change_key = horizon + '_change_pct' %}
+        {% set picks = stock_picks.domestic[horizon] + stock_picks.overseas[horizon] %}
+        <div class="tab-panel{% if loop.first %} active{% endif %}" data-tab-panel="stock-{{ horizon }}">
             {% if picks %}
             <div class="stock-pick-grid">
                 {% for pick in picks %}

@@ -4,8 +4,8 @@ News Source Registry
 
 각 소스의 feeds 딕셔너리 키가 곧 최종 카테고리 키(CATEGORIES)이다.
 URL은 구현 시점(2026-08)에 curl로 상태코드+content-type을 직접 확인한 것만 등재했다.
-확인 결과 죽어있던 후보(매일경제, 조선일보, KBS, YTN, Reuters/AP/CNN)는 제외했다 —
-새로 추가하려면 test_feeds.py로 먼저 검증할 것.
+확인 결과 죽어있던 후보(매일경제, 조선일보, KBS, YTN, Reuters/AP/CNN, 코리아헤럴드,
+전자신문-카테고리 미분리)는 제외했다 — 새로 추가하려면 test_feeds.py로 먼저 검증할 것.
 """
 
 CATEGORIES = ["politics", "economy", "society", "life", "culture", "it", "science", "world"]
@@ -105,6 +105,41 @@ SOURCES = [
         "feeds": {
             # 해외 증시/경제 전문 — NYT와 동일하게 원문은 페이월이지만 제목/요약은 RSS로 무료 제공
             "economy": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",
+        },
+    },
+    {
+        "id": "yna", "name": "연합뉴스", "language": "ko", "limit": 15,
+        "feeds": {
+            "politics": "https://www.yna.co.kr/rss/politics.xml",
+            "economy":  "https://www.yna.co.kr/rss/economy.xml",
+            "society":  "https://www.yna.co.kr/rss/society.xml",
+            "world":    "https://www.yna.co.kr/rss/international.xml",
+            "culture":  "https://www.yna.co.kr/rss/culture.xml",
+            "life":     "https://www.yna.co.kr/rss/health.xml",
+        },
+    },
+    {
+        "id": "khan", "name": "경향신문", "language": "ko", "limit": 15,
+        "feeds": {
+            "politics": "https://www.khan.co.kr/rss/rssdata/politic_news.xml",
+            "economy":  "https://www.khan.co.kr/rss/rssdata/economy_news.xml",
+            "society":  "https://www.khan.co.kr/rss/rssdata/society_news.xml",
+            "culture":  "https://www.khan.co.kr/rss/rssdata/culture_news.xml",
+            "it":       "https://www.khan.co.kr/rss/rssdata/it_news.xml",
+            "science":  "https://www.khan.co.kr/rss/rssdata/kh_science.xml",
+            "life":     "https://www.khan.co.kr/rss/rssdata/life_news.xml",
+        },
+    },
+    {
+        "id": "donga", "name": "동아일보", "language": "ko", "limit": 15,
+        "feeds": {
+            "politics": "https://rss.donga.com/politics.xml",
+            "economy":  "https://rss.donga.com/economy.xml",
+            "society":  "https://rss.donga.com/national.xml",
+            "world":    "https://rss.donga.com/international.xml",
+            "culture":  "https://rss.donga.com/culture.xml",
+            "it":       "https://rss.donga.com/science.xml",  # 실제로는 "IT/의학" 혼합 피드
+            "life":     "https://rss.donga.com/lifeinfo.xml",
         },
     },
 ]
