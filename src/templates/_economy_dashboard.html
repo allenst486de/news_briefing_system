@@ -1,0 +1,44 @@
+{# 경제 카테고리 페이지 전용: 지표 티커 + 주식 추천(일/주/월, 국내+해외) #}
+<section class="economy-dashboard">
+    {% if indicators %}
+    <div class="dashboard-metrics">
+        <div class="dashboard-metric"><span>KOSPI</span><strong>{{ indicators.kospi }}</strong>
+            <em class="{{ indicators.kospi_dir }}">{{ indicators.kospi_pct }}</em></div>
+        <div class="dashboard-metric"><span>KOSDAQ</span><strong>{{ indicators.kosdaq }}</strong>
+            <em class="{{ indicators.kosdaq_dir }}">{{ indicators.kosdaq_pct }}</em></div>
+        <div class="dashboard-metric"><span>USD/KRW</span><strong>{{ indicators.usdkrw }}</strong>
+            <em class="{{ indicators.usdkrw_dir }}">{{ indicators.usdkrw_pct }}</em></div>
+    </div>
+    {% endif %}
+
+    <div class="disclaimer-banner">⚠️ 정보 제공 목적이며 투자 자문이 아닙니다. 투자 판단과 책임은 본인에게 있습니다.</div>
+
+    {% set horizon_labels = {'daily': '오늘의 추천 (Daily)', 'weekly': '이번 주 추천 (Weekly)', 'monthly': '이번 달 추천 (Monthly)'} %}
+    <div class="stock-horizon-tabs">
+        {% for horizon in ['daily', 'weekly', 'monthly'] %}
+        <div class="stock-horizon-section">
+            <h4>{{ horizon_labels[horizon] }}</h4>
+            {% set change_key = horizon + '_change_pct' %}
+            {% set picks = stock_picks.domestic[horizon] + stock_picks.overseas[horizon] %}
+            {% if picks %}
+            <div class="stock-pick-grid">
+                {% for pick in picks %}
+                <div class="stock-pick-card">
+                    <div class="stock-pick-head">
+                        <strong>{{ pick.name }} ({{ pick.symbol }})</strong>
+                        <span>{{ pick.price }}</span>
+                        <em class="{{ 'up' if pick[change_key] and pick[change_key] > 0 else 'down' }}">
+                            {{ pick[change_key] }}%
+                        </em>
+                    </div>
+                    <p>{{ pick.reason }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="preview-empty">데이터를 가져오지 못했습니다.</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>

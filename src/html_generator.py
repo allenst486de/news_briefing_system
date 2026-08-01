@@ -7,13 +7,15 @@ import json
 import shutil
 import xml.etree.ElementTree as ET
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional
 from urllib.parse import urlparse
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from .collectors.base_collector import NewsArticle
 from .collectors.sources import CATEGORIES, CATEGORY_META
 from .utils.logger import setup_logger
 from .utils.indicators import get_market_indicators
+from .utils import stock_data
+from . import summarizer
 
 PREVIEW_COUNT = 5
 AI_PREVIEW_COUNT = 3
@@ -53,12 +55,14 @@ class HTMLGenerator:
             autoescape=select_autoescape(['html', 'xml']),
         )
 
-    def generate_all(self, categorized_news: Dict[str, List[NewsArticle]]) -> Dict[str, str]:
+    def generate_all(self, categorized_news: Dict[str, List[NewsArticle]]):
         """
         모든 카테고리의 HTML 페이지 + 포털 홈 + 부가 파일 생성
 
         Returns:
-            Dict[str, str]: 카테고리별 생성된 페이지 상대경로
+            (Dict[str, str], List[Dict]): 카테고리별 생성된 페이지 상대경로, top10 카드 목록
+            (텔레그램 리드 메시지가 HTML과 동일한 top10을 재사용하도록 함께 반환 —
+             다시 계산하면 LLM을 한 번 더 호출하게 되어 비용이 두 배가 됨)
         """
         self.logger.info("Starting HTML generation...")
 
@@ -82,6 +86,14 @@ class HTMLGenerator:
             for key in CATEGORIES
         ]
 
+        self.logger.info("Fetching economy dashboard data (indicators + stock picks)...")
+        indicators = get_market_indicators()
+        stock_picks = {"domestic": stock_data.get_domestic_picks(), "overseas": stock_data.get_overseas_picks()}
+        summarizer.generate_stock_reasons(stock_picks)
+
+        self.logger.info("Selecting top10...")
+        top10 = summarizer.select_top10(categorized_news)
+
         page_urls = {}
         for category in CATEGORIES:
             articles = categorized_news.get(category, [])
@@ -91,17 +103,18 @@ class HTMLGenerator:
             self._generate_briefing_page(
                 category=category, articles=articles, output_file=file_path,
                 date_str=date_str, date_path=date_path, nav_categories=nav_categories,
+                indicators=indicators, stock_picks=stock_picks,
             )
             page_urls[category] = f"{date_path}/{html_file}"
             self.logger.info(f"Generated {category}: {file_path}")
 
         self._update_archive(date_str, date_path)
-        self._generate_index_page(categorized_news, date_str, date_path, nav_categories)
+        self._generate_index_page(categorized_news, date_str, date_path, nav_categories, top10, indicators)
         self._generate_feed_xml(categorized_news, date_str)
         self._generate_robots_txt()
 
         self.logger.info("HTML generation completed")
-        return page_urls
+        return page_urls, top10
 
     def _make_path(self, relative: str) -> str:
         clean = relative.lstrip('/')
@@ -136,7 +149,8 @@ class HTMLGenerator:
 
     def _generate_briefing_page(self, category: str, articles: List[NewsArticle],
                                  output_file: str, date_str: str, date_path: str,
-                                 nav_categories: List[Dict]):
+                                 nav_categories: List[Dict], indicators: Optional[Dict] = None,
+                                 stock_picks: Optional[Dict] = None):
         """개별 브리핑 페이지 생성"""
         template = self.env.get_template('briefing.html')
         category_name = self.CATEGORY_NAMES[category]
@@ -154,6 +168,8 @@ class HTMLGenerator:
             date=date_str,
             articles=articles_data,
             ai_items=ai_items,
+            indicators=indicators if category == 'economy' else None,
+            stock_picks=stock_picks if category == 'economy' else None,
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
             archive_path=self._make_path('/archive.html'),
@@ -204,8 +220,9 @@ class HTMLGenerator:
             f.write(html_content)
 
     def _generate_index_page(self, categorized_news: Dict[str, List[NewsArticle]],
-                              date_str: str, date_path: str, nav_categories: List[Dict]):
-        """포털형 홈페이지 생성 — 카테고리 미리보기 + AI 소식 미리보기 + 헤더"""
+                              date_str: str, date_path: str, nav_categories: List[Dict],
+                              top10: List[Dict], indicators: Optional[Dict] = None):
+        """포털형 홈페이지 생성 — Top10 카드 + 카테고리 미리보기 + AI 소식 미리보기 + 헤더"""
         index_file = os.path.join(self.output_dir, 'index.html')
         template = self.env.get_template('index.html')
 
@@ -224,11 +241,11 @@ class HTMLGenerator:
             })
 
         ai_preview = [self._article_to_dict(a) for a in all_ai_items[:AI_PREVIEW_COUNT]]
-        indicators = get_market_indicators()
 
         html_content = template.render(
             date=date_str,
             indicators=indicators,
+            top10=top10,
             category_previews=category_previews,
             ai_items=ai_preview,
             nav_categories=nav_categories,

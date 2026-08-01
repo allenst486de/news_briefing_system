@@ -37,14 +37,16 @@ class TelegramNotifier:
     def _full_url(self, relative: str) -> str:
         return f"{self.base_url}/{relative.lstrip('/')}"
 
-    def _build_lead_message(self, page_urls: Dict[str, str], date_str: str) -> str:
-        parts = [
-            f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>",
-            "",
-            "분야별 브리핑이 곧 이어서 도착합니다.",
-            "",
-            "📂 <b>분야별 바로가기</b>",
-        ]
+    def _build_lead_message(self, page_urls: Dict[str, str], top10: List[Dict], date_str: str) -> str:
+        parts = [f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>", ""]
+
+        if top10:
+            parts.append("🔥 <b>오늘의 Top 10</b>")
+            for item in top10:
+                parts.append(f'{item["rank"]}. <a href="{item["link"]}">{item["card_headline"]}</a>')
+            parts.append("")
+
+        parts.append("📂 <b>분야별 바로가기</b>")
         for key in CATEGORIES:
             url = page_urls.get(key)
             if not url:
@@ -74,17 +76,20 @@ class TelegramNotifier:
             parts.append("")
 
         parts.append(f'📄 <a href="{self._full_url(page_url)}">전체보기</a>')
+        if key == 'economy':
+            parts.append("⚠️ 주식 추천은 정보 제공 목적이며 투자 자문이 아닙니다.")
         return "\n".join(parts)
 
     async def send_briefing(self, page_urls: Dict[str, str],
-                             categorized_news: Dict[str, List[NewsArticle]], date_str: str):
-        """리드 메시지 1개 + 카테고리별 메시지(top3 요약)를 순차 전송."""
+                             categorized_news: Dict[str, List[NewsArticle]],
+                             top10: List[Dict], date_str: str):
+        """리드 메시지(Top10) 1개 + 카테고리별 메시지(top3 요약)를 순차 전송."""
         self.logger.info("Sending Telegram notification...")
 
         try:
             await self.bot.send_message(
                 chat_id=self.chat_id,
-                text=self._build_lead_message(page_urls, date_str),
+                text=self._build_lead_message(page_urls, top10, date_str),
                 parse_mode='HTML',
                 disable_web_page_preview=True,
             )
@@ -107,7 +112,8 @@ class TelegramNotifier:
             raise
 
     def send_briefing_sync(self, page_urls: Dict[str, str],
-                            categorized_news: Dict[str, List[NewsArticle]], date_str: str):
+                            categorized_news: Dict[str, List[NewsArticle]],
+                            top10: List[Dict], date_str: str):
         """동기 방식으로 브리핑 전송"""
         try:
             try:
@@ -117,7 +123,7 @@ class TelegramNotifier:
             except RuntimeError:
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
-            loop.run_until_complete(self.send_briefing(page_urls, categorized_news, date_str))
+            loop.run_until_complete(self.send_briefing(page_urls, categorized_news, top10, date_str))
         except Exception as e:
             self.logger.error(f"Error in send_briefing_sync: {e}")
             raise

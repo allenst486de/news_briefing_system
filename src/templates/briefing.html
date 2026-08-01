@@ -32,6 +32,10 @@
             <a href="{{ archive_path }}">📚 아카이브</a>
         </nav>
 
+        {% if category_key == 'economy' and stock_picks %}
+        {% include '_economy_dashboard.html' %}
+        {% endif %}
+
         {% if category_key == 'it' and ai_items %}
         {% include '_ai_subsection.html' %}
         {% endif %}

@@ -1,0 +1,16 @@
+{# 홈 최상단 크로스카테고리 Top10 카드뉴스 #}
+{% if top10 %}
+<section class="top10-section">
+    <h2 class="section-title">🔥 오늘의 Top 10</h2>
+    <div class="top10-grid">
+        {% for item in top10 %}
+        <a class="top10-card" href="{{ item.link }}" target="_blank" rel="noopener">
+            <span class="top10-rank-badge">{{ item.rank }}</span>
+            <span class="top10-category-tag" style="background:var(--tag-{{ item.category }}, var(--tag-general))">{{ item.category_name }}</span>
+            <h3>{{ item.card_headline }}</h3>
+            <p>{{ item.card_blurb }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

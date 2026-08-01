@@ -40,19 +40,19 @@ def main():
         base_url = os.getenv('PAGES_BASE_URL', '')
         
         generator = HTMLGenerator(template_dir, output_dir, base_url)
-        page_urls = generator.generate_all(categorized_news)
-        
+        page_urls, top10 = generator.generate_all(categorized_news)
+
         # 3. 텔레그램 전송
         logger.info("Step 3: Sending Telegram notification...")
         bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
         chat_id = os.getenv('TELEGRAM_CHAT_ID')
-        
+
         if not bot_token or not chat_id:
             logger.warning("Telegram credentials not found. Skipping notification.")
         else:
             notifier = TelegramNotifier(bot_token, chat_id, base_url)
             date_str = datetime.now().strftime('%Y-%m-%d')
-            notifier.send_briefing_sync(page_urls, categorized_news, date_str)
+            notifier.send_briefing_sync(page_urls, categorized_news, top10, date_str)
         
         logger.info("=" * 60)
         logger.info("Daily News Briefing System completed successfully!")
