@@ -5,6 +5,14 @@ Importance Analyzer
 from typing import List
 import re
 
+# IT 카테고리 AI 서브섹션 배지 라벨 (Phase2 LLM 프롬프트(b)의 ai_subtype 값과 대응)
+AI_SUBTYPE_LABELS = {
+    'release': '신규 모델 출시',
+    'pricing': '가격 정책 변경',
+    'policy': '정책/약관 변경',
+    'industry_shift': '산업 동향',
+}
+
 
 class ImportanceAnalyzer:
     """뉴스 중요도 분석기"""

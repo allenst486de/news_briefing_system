@@ -130,6 +130,8 @@ class HTMLGenerator:
             d['original_title'] = article.original_title
         if hasattr(article, 'original_summary'):
             d['original_summary'] = article.original_summary
+        if hasattr(article, 'ai_subtype_label'):
+            d['ai_subtype_label'] = article.ai_subtype_label
         return d
 
     def _generate_briefing_page(self, category: str, articles: List[NewsArticle],

@@ -10,6 +10,9 @@
             <div class="news-meta">
                 <span class="news-source">{{ article.source }}</span>
                 <span class="news-date">{{ article.published }}</span>
+                {% if article.ai_subtype_label %}
+                <span class="ai-subtype-badge">{{ article.ai_subtype_label }}</span>
+                {% endif %}
             </div>
             {% if article.summary %}
             <p class="news-summary">{{ article.summary }}</p>
