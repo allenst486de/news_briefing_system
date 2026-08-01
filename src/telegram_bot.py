@@ -3,13 +3,15 @@ Telegram Bot
 텔레그램으로 뉴스 브리핑 요약 전송
 
 8개 카테고리 × top3 요약이 한 메시지(4096자 한도)에 안 들어가서
-리드 메시지 1개(+ Top10 카드뉴스 이미지) + 카테고리별 메시지 8개 = 하루 9~10개로
-분리 전송한다.
+리드 메시지 1개(+ Top10 카드뉴스 이미지, 있으면) + 카테고리별 메시지 8개 = 하루
+9~10개로 분리 전송한다. Top10은 이미지와 텍스트 목록을 함께 보낸다 — 웹 홈 화면의
+Top10과 동일한 데이터(summarizer.select_top10)를 그대로 재사용하므로 내용은 항상 같다.
 
-링크는 <a href="URL">텍스트</a> 형태의 마스킹 링크를 쓰지 않는다 — 표시 텍스트와
-실제 URL이 다르면 텔레그램 클라이언트가 피싱 방지용 "이 링크를 여시겠습니까?" 확인
-팝업을 띄운다. URL을 메시지에 평문으로 그대로 노출하면(자동 링크 인식) 팝업 없이
-바로 연결된다.
+뉴스 원문 링크는 "원문 보기"처럼 텍스트로 감싼 링크(<a href="URL">텍스트</a>)를
+쓴다 — 표시 텍스트와 실제 URL이 다르면 텔레그램 클라이언트가 피싱 방지용
+"이 링크를 여시겠습니까?" 확인 팝업을 띄우지만, 가독성을 우선한 사용자 선택이다.
+(팝업 없이 바로 연결하고 싶다면 평문 URL을 그대로 노출해야 한다 — 트레이드오프.)
+분야별 바로가기/아카이브/홈 같은 자체 사이트 내비게이션 링크는 계속 평문 URL을 쓴다.
 """
 import asyncio
 from typing import Dict, List, Optional
@@ -43,16 +45,15 @@ class TelegramNotifier:
     def _full_url(self, relative: str) -> str:
         return f"{self.base_url}/{relative.lstrip('/')}"
 
-    def _build_lead_message(self, page_urls: Dict[str, str], top10: List[Dict], date_str: str,
-                             top10_has_image: bool) -> str:
+    def _build_lead_message(self, page_urls: Dict[str, str], top10: List[Dict], date_str: str) -> str:
         parts = [f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>", ""]
 
-        if top10 and not top10_has_image:
-            # 카드뉴스 이미지 전송이 실패한 경우에만 텍스트로 대체
+        if top10:
             parts.append("🔥 <b>오늘의 Top 10</b>")
             for item in top10:
-                parts.append(f'{item["rank"]}. {item["card_headline"]}')
-                parts.append(item["link"])
+                parts.append(f'{item["rank"]}. <b>{item["card_headline"]}</b>')
+                parts.append(f'{item.get("category_name", "")} · {item.get("source", "")} · '
+                              f'<a href="{item["link"]}">원문 보기</a>')
             parts.append("")
 
         parts.append("📂 <b>분야별 바로가기</b>")
@@ -84,7 +85,7 @@ class TelegramNotifier:
             parts.append(f"({article.source})")
             if summary:
                 parts.append(summary)
-            parts.append(article.link)
+            parts.append(f'<a href="{article.link}">원문 보기</a>')
             parts.append("")
 
         parts.append(f'📄 전체보기: {self._full_url(page_url)}')
@@ -96,23 +97,21 @@ class TelegramNotifier:
                              categorized_news: Dict[str, List[NewsArticle]],
                              top10: List[Dict], date_str: str,
                              top10_image_path: Optional[str] = None):
-        """Top10 카드뉴스 이미지(있으면) + 리드 메시지 + 카테고리별 메시지(top3 요약)를 순차 전송."""
+        """Top10 인포그래픽 이미지(있으면) + 리드 메시지(Top10 텍스트 포함) + 카테고리별 메시지를 순차 전송."""
         self.logger.info("Sending Telegram notification...")
 
         try:
-            top10_sent_as_image = False
             if top10_image_path:
                 try:
                     with open(top10_image_path, 'rb') as photo:
                         await self.bot.send_photo(chat_id=self.chat_id, photo=photo,
                                                    caption=f"🔥 오늘의 Top 10 ({date_str})")
-                    top10_sent_as_image = True
                 except TelegramError as e:
-                    self.logger.warning(f"Top10 image send failed, falling back to text: {e}")
+                    self.logger.warning(f"Top10 image send failed (text list still sent): {e}")
 
             await self.bot.send_message(
                 chat_id=self.chat_id,
-                text=self._build_lead_message(page_urls, top10, date_str, top10_sent_as_image),
+                text=self._build_lead_message(page_urls, top10, date_str),
                 parse_mode='HTML',
                 disable_web_page_preview=True,
             )
