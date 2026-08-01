@@ -12,7 +12,7 @@ from .utils.logger import setup_logger
 from . import summarizer
 from .collectors.sources import CATEGORY_META
 
-CATEGORY_ARTICLE_CAP = 20
+CATEGORY_ARTICLE_CAP = 30
 
 # 언론사가 정기적으로 내보내는 행정성 공지("N월N일 인사/부고/동정/알림") —
 # 한겨레 society 피드에서 실제 확인됨. 뉴스 가치가 없어 통째로 제외한다.

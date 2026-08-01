@@ -35,7 +35,7 @@ COMMON_RULES = """당신은 뉴스 요약 보조자입니다. 아래 규칙을 �
 6. 반드시 지정된 JSON 형식으로만 응답하세요. 그 외 설명 문구를 절대 추가하지
    마세요."""
 
-CATEGORY_MAX_TOKENS = 8192
+CATEGORY_MAX_TOKENS = 12288  # 카테고리당 상한 30건 기준 — 20건일 때 8192로 넉넉했던 걸 비례로 올림
 
 
 def _rule_based_fallback(article: NewsArticle) -> None:
