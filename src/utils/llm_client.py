@@ -44,6 +44,9 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
         "temperature": temperature,
         "max_tokens": max_tokens,
         "stream": False,
+        # gemma-4-31b-it은 내장 thinking 모드가 있다 — 켜져 있으면 JSON 앞에
+        # 추론 텍스트가 붙어 엄격한 JSON 파싱이 깨질 수 있어 명시적으로 끈다.
+        "chat_template_kwargs": {"enable_thinking": False},
     }
 
     for attempt in range(retries + 1):
@@ -51,7 +54,10 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
             resp = requests.post(NVIDIA_API_URL, headers=headers, json=payload, timeout=timeout)
             if resp.status_code == 429 or resp.status_code >= 500:
                 raise requests.HTTPError(f"retryable status {resp.status_code}")
-            resp.raise_for_status()
+            if not resp.ok:
+                # 4xx는 재시도해도 안 바뀌므로 응답 본문을 로그로 남기고 바로 포기
+                logger.warning(f"LLM call rejected ({resp.status_code}): {resp.text[:500]}")
+                return None
             data = resp.json()
             return data["choices"][0]["message"]["content"]
         except Exception as e:

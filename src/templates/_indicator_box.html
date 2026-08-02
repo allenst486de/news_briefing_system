@@ -9,9 +9,14 @@
         <div class="indicator-grid">
             {% for ind in indicators.domestic %}
             <div class="indicator-item">
-                <span>{{ ind.name }}</span>
+                <div class="indicator-item-head">
+                    <span>{{ ind.name }}</span>
+                    <em class="{{ ind.dir }}">{{ ind.pct }}</em>
+                </div>
                 <strong>{{ ind.value }}</strong>
-                <em class="{{ ind.dir }}">{{ ind.pct }}</em>
+                {% if ind.sparkline_svg %}
+                <div class="indicator-spark">{{ ind.sparkline_svg | safe }}</div>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
@@ -20,9 +25,14 @@
         <div class="indicator-grid">
             {% for ind in indicators.overseas %}
             <div class="indicator-item">
-                <span>{{ ind.name }}</span>
+                <div class="indicator-item-head">
+                    <span>{{ ind.name }}</span>
+                    <em class="{{ ind.dir }}">{{ ind.pct }}</em>
+                </div>
                 <strong>{{ ind.value }}</strong>
-                <em class="{{ ind.dir }}">{{ ind.pct }}</em>
+                {% if ind.sparkline_svg %}
+                <div class="indicator-spark">{{ ind.sparkline_svg | safe }}</div>
+                {% endif %}
             </div>
             {% endfor %}
         </div>

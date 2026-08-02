@@ -7,11 +7,11 @@ Telegram Bot
 9~10개로 분리 전송한다. Top10은 이미지와 텍스트 목록을 함께 보낸다 — 웹 홈 화면의
 Top10과 동일한 데이터(summarizer.select_top10)를 그대로 재사용하므로 내용은 항상 같다.
 
-뉴스 원문 링크는 "원문 보기"처럼 텍스트로 감싼 링크(<a href="URL">텍스트</a>)를
-쓴다 — 표시 텍스트와 실제 URL이 다르면 텔레그램 클라이언트가 피싱 방지용
-"이 링크를 여시겠습니까?" 확인 팝업을 띄우지만, 가독성을 우선한 사용자 선택이다.
-(팝업 없이 바로 연결하고 싶다면 평문 URL을 그대로 노출해야 한다 — 트레이드오프.)
-분야별 바로가기/아카이브/홈 같은 자체 사이트 내비게이션 링크는 계속 평문 URL을 쓴다.
+모든 링크(뉴스 원문 링크 포함, 분야별 바로가기/전체보기/아카이브/홈 등 내비게이션
+링크 포함)는 텍스트로 감싼 링크(<a href="URL">텍스트</a>)를 쓴다 — URL을 그대로
+노출하지 않는다는 요청에 따른 것. 단, 표시 텍스트와 실제 URL이 다르면 텔레그램
+클라이언트가 피싱 방지용 "이 링크를 여시겠습니까?" 확인 팝업을 띄운다 — 가독성을
+팝업 없음보다 우선한 트레이드오프다.
 """
 import asyncio
 from typing import Dict, List, Optional
@@ -57,16 +57,18 @@ class TelegramNotifier:
             parts.append("")
 
         parts.append("📂 <b>분야별 바로가기</b>")
+        nav_links = []
         for key in CATEGORIES:
             url = page_urls.get(key)
             if not url:
                 continue
             meta = CATEGORY_META[key]
-            parts.append(f'{meta["icon"]} {meta["name"]}: {self._full_url(url)}')
+            nav_links.append(f'<a href="{self._full_url(url)}">{meta["icon"]} {meta["name"]}</a>')
+        parts.append(" · ".join(nav_links))
 
         parts.append("")
-        parts.append(f'📚 아카이브: {self._full_url("archive.html")}')
-        parts.append(f'🏠 홈(최신 브리핑): {self._full_url("index.html")}')
+        parts.append(f'📚 <a href="{self._full_url("archive.html")}">아카이브</a>'
+                      f' · 🏠 <a href="{self._full_url("index.html")}">홈(최신 브리핑)</a>')
         parts.append("")
         parts.append("<i>매일 오전 6시에 자동으로 업데이트됩니다.</i>")
         return "\n".join(parts)
@@ -88,7 +90,7 @@ class TelegramNotifier:
             parts.append(f'<a href="{article.link}">원문 보기</a>')
             parts.append("")
 
-        parts.append(f'📄 전체보기: {self._full_url(page_url)}')
+        parts.append(f'📄 <a href="{self._full_url(page_url)}">전체보기</a>')
         if key == 'economy':
             parts.append("⚠️ 주식 추천은 정보 제공 목적이며 투자 자문이 아닙니다.")
         return "\n".join(parts)

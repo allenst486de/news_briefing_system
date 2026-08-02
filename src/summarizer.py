@@ -189,7 +189,8 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
         "각 항목에 대해:\n"
         " - id: 아래 번호와 동일한 정수\n"
         " - rank: 1~10\n"
-        " - card_headline: 카드에 표시할 15자 내외의 짧은 헤드라인\n"
+        " - card_headline: 카드에 표시할 30자 내외의 헤드라인 (한 줄에 다 안 들어가면 2줄로 표시되니 "
+        "억지로 줄이지 말고 자연스러운 문장으로 작성)\n"
         " - card_blurb: 카드에 표시할 80~100자 내외의 짧은 설명 (요약을 그대로 복사하지 말고 카드용으로 더 짧게 재구성)\n\n"
         "반드시 아래 JSON 배열 형식으로만 응답하세요:\n"
         '[{"id": 1, "rank": 1, "card_headline": "...", "card_blurb": "..."}]\n\n'
@@ -211,7 +212,7 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
                 "category_name": CATEGORY_META[entry["category"]]["name"],
                 "link": article.link,
                 "source": article.source,
-                "card_headline": (item.get("card_headline") or article.title[:15]).strip(),
+                "card_headline": (item.get("card_headline") or article.title[:32]).strip(),
                 "card_blurb": (item.get("card_blurb") or article.summary[:90]).strip(),
             })
         if cards:
@@ -229,7 +230,7 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
             "category_name": CATEGORY_META[entry["category"]]["name"],
             "link": article.link,
             "source": article.source,
-            "card_headline": article.title[:15],
+            "card_headline": article.title[:32],
             "card_blurb": article.summary[:90],
         })
     return cards

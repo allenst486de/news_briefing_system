@@ -6,7 +6,9 @@ sources.py에 항목을 추가하는 것으로 끝난다.
 import logging
 from typing import Dict, List
 from .base_collector import BaseCollector, NewsArticle
-from ..utils.rss_utils import fetch_feed, clean_html, extract_date, strip_title_prefix
+from ..utils.rss_utils import (
+    fetch_feed, clean_html, extract_date, strip_title_prefix, strip_google_news_title_suffix,
+)
 
 
 class RSSCollector(BaseCollector):
@@ -35,6 +37,8 @@ class RSSCollector(BaseCollector):
         for entry in feed.entries[:limit]:
             try:
                 title = entry.get("title", "").strip()
+                if self.source_id == "googlenews":
+                    title = strip_google_news_title_suffix(title)
                 summary = clean_html(entry.get("description", "") or entry.get("summary", ""))
                 summary = strip_title_prefix(summary, title)
                 summary = summary or title[:200]

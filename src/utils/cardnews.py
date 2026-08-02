@@ -1,15 +1,22 @@
 """
 Top10 카드뉴스 이미지 생성 (Pillow)
-텔레그램에 텍스트 목록 대신 이미지 한 장으로 보내기 위함.
-실패해도 예외를 던지지 않고 None을 반환한다 — 호출부(main.py)가
-텍스트 리스트로 폴백하도록.
+텔레그램에 텍스트 목록과 별도로 함께 보내는 인포그래픽 한 장.
+실패해도 예외를 던지지 않고 None을 반환한다 — 호출부(main.py)가 텍스트 목록만으로도
+계속 동작하도록.
+
+디자인: 어두운 캔버스 위에 순위 10개를 2열×5행 카드 그리드로 배치하고, 각 카드는
+분야별 강조색을 파스텔로 우려낸 배경 + 진한 헤드라인 텍스트로 구성한다 — 실제
+일러스트 없이도 "카드뉴스" 느낌(칸마다 다른 색, 굵은 타이포)을 내기 위한 절충이다.
+매일 자동 생성되는 동적 콘텐츠라 AI 이미지 생성/수동 디자인 도구 대신 순수 코드로
+그린다 — 매일 다른 헤드라인 10개를 텍스트 오버레이 걱정 없이 안정적으로 넣을 수
+있는 유일한 방법.
 
 한글 렌더링을 위해 나눔고딕(SIL OFL 1.1, 재배포 자유)을
 src/templates/static/fonts/에 번들했다 — CI 환경에 한글 폰트가
 없어도 항상 동작하도록.
 """
 import os
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -21,12 +28,10 @@ _FONT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates'
 _FONT_REGULAR = os.path.join(_FONT_DIR, 'NanumGothic-Regular.ttf')
 _FONT_BOLD = os.path.join(_FONT_DIR, 'NanumGothic-Bold.ttf')
 
-_WIDTH, _HEIGHT = 1080, 1620
 _BG = (15, 17, 23)
-_CARD_BG = (30, 34, 53)
-_ACCENT = (91, 141, 238)
 _TEXT_PRIMARY = (232, 234, 240)
 _TEXT_SECONDARY = (155, 163, 188)
+_INK = (26, 29, 41)  # 카드 안 헤드라인 색 — 파스텔 배경 위에서 항상 잘 읽히는 짙은 남색
 _WHITE = (255, 255, 255)
 
 _CATEGORY_COLORS = {
@@ -35,15 +40,44 @@ _CATEGORY_COLORS = {
     'science': (20, 184, 166), 'world': (139, 92, 246),
 }
 
+_COLS, _ROWS = 2, 5
+_CELL_W, _CELL_H, _GAP = 490, 320, 20
+_MARGIN = 40
+_HEADER_H = 150
+_FOOTER_H = 60
 
-def _truncate_to_width(draw, text: str, font, max_width: float) -> str:
-    """폭에 맞을 때까지 한 글자씩 줄이고 맞지 않으면 말줄임표를 붙인다."""
-    if draw.textlength(text, font=font) <= max_width:
-        return text
-    truncated = text
-    while truncated and draw.textlength(truncated + '…', font=font) > max_width:
-        truncated = truncated[:-1]
-    return truncated + '…' if truncated else text[:1]
+_WIDTH = _MARGIN * 2 + _CELL_W * _COLS + _GAP * (_COLS - 1)
+_GRID_TOP = _MARGIN + _HEADER_H
+_HEIGHT = _GRID_TOP + _CELL_H * _ROWS + _GAP * (_ROWS - 1) + _FOOTER_H + _MARGIN
+
+
+def _pastel(rgb: Tuple[int, int, int], white_ratio: float = 0.78) -> Tuple[int, int, int]:
+    return tuple(int(c + (255 - c) * white_ratio) for c in rgb)
+
+
+def _wrap_lines(draw, text: str, font, max_width: float, max_lines: int = 3) -> List[str]:
+    """글자 단위로 폭에 맞춰 줄바꿈 (한국어는 어절 간격이 일정하지 않아 글자 단위가 더 안전)."""
+    lines, current = [], ""
+    for ch in text:
+        trial = current + ch
+        if draw.textlength(trial, font=font) > max_width and current:
+            lines.append(current)
+            current = ch
+            if len(lines) == max_lines:
+                break
+        else:
+            current = trial
+    if len(lines) < max_lines and current:
+        lines.append(current)
+
+    if len(lines) == max_lines and draw.textlength(text, font=font) > sum(
+        draw.textlength(l, font=font) for l in lines
+    ):
+        last = lines[-1]
+        while last and draw.textlength(last + '…', font=font) > max_width:
+            last = last[:-1]
+        lines[-1] = last + '…'
+    return lines
 
 
 def generate_top10_card(top10: List[Dict], date_str: str, output_path: str) -> Optional[str]:
@@ -52,52 +86,59 @@ def generate_top10_card(top10: List[Dict], date_str: str, output_path: str) -> O
         return None
 
     try:
-        font_title = ImageFont.truetype(_FONT_BOLD, 48)
-        font_date = ImageFont.truetype(_FONT_REGULAR, 30)
-        font_rank = ImageFont.truetype(_FONT_BOLD, 28)
-        font_headline = ImageFont.truetype(_FONT_BOLD, 32)
-        font_tag = ImageFont.truetype(_FONT_REGULAR, 22)
-        font_footer = ImageFont.truetype(_FONT_REGULAR, 24)
+        font_title = ImageFont.truetype(_FONT_BOLD, 44)
+        font_date = ImageFont.truetype(_FONT_REGULAR, 26)
+        font_rank = ImageFont.truetype(_FONT_BOLD, 24)
+        font_tag = ImageFont.truetype(_FONT_BOLD, 20)
+        font_headline = ImageFont.truetype(_FONT_BOLD, 30)
+        font_source = ImageFont.truetype(_FONT_REGULAR, 20)
+        font_footer = ImageFont.truetype(_FONT_REGULAR, 22)
 
         img = Image.new('RGB', (_WIDTH, _HEIGHT), _BG)
         draw = ImageDraw.Draw(img)
 
-        draw.text((60, 56), "📰 오늘의 뉴스 Top 10", font=font_title, fill=_TEXT_PRIMARY)
-        draw.text((60, 120), date_str, font=font_date, fill=_TEXT_SECONDARY)
+        draw.text((_MARGIN, 48), "🔥 오늘의 뉴스 Top 10", font=font_title, fill=_TEXT_PRIMARY)
+        draw.text((_MARGIN, 106), date_str, font=font_date, fill=_TEXT_SECONDARY)
 
-        top_y = 200
-        pad_x = 60
-        row_gap = 12
-        row_h = (_HEIGHT - top_y - 90 - row_gap * 9) // 10
-        row_w = _WIDTH - pad_x * 2
+        pad = 24
+        for i, item in enumerate(top10[:_COLS * _ROWS]):
+            col, row = i % _COLS, i // _COLS
+            x = _MARGIN + col * (_CELL_W + _GAP)
+            y = _GRID_TOP + row * (_CELL_H + _GAP)
+            accent = _CATEGORY_COLORS.get(item.get('category'), (91, 141, 238))
 
-        for i, item in enumerate(top10[:10]):
-            y = top_y + i * (row_h + row_gap)
-            draw.rounded_rectangle([pad_x, y, pad_x + row_w, y + row_h], radius=16, fill=_CARD_BG)
+            draw.rounded_rectangle([x, y, x + _CELL_W, y + _CELL_H], radius=20, fill=_pastel(accent))
 
-            cy = y + row_h // 2
-            badge_r = 26
-            cx = pad_x + 40
-            draw.ellipse([cx - badge_r, cy - badge_r, cx + badge_r, cy + badge_r], fill=_ACCENT)
+            # 순위 배지
+            badge_r = 22
+            bx, by = x + pad + badge_r, y + pad + badge_r
+            draw.ellipse([bx - badge_r, by - badge_r, bx + badge_r, by + badge_r], fill=accent)
             rank_text = str(item.get('rank', i + 1))
             rw = draw.textlength(rank_text, font=font_rank)
-            draw.text((cx - rw / 2, cy - 16), rank_text, font=font_rank, fill=_WHITE)
+            draw.text((bx - rw / 2, by - 15), rank_text, font=font_rank, fill=_WHITE)
 
-            tag_color = _CATEGORY_COLORS.get(item.get('category'), _ACCENT)
+            # 분야 태그
             tag_text = item.get('category_name', '')
-            tag_x = cx + badge_r + 20
+            tag_x = bx + badge_r + 14
             tw = draw.textlength(tag_text, font=font_tag)
-            draw.rounded_rectangle([tag_x, cy - 16, tag_x + tw + 20, cy + 16], radius=14, fill=tag_color)
-            draw.text((tag_x + 10, cy - 13), tag_text, font=font_tag, fill=_WHITE)
+            tag_y = by - 15
+            draw.rounded_rectangle([tag_x, tag_y, tag_x + tw + 22, tag_y + 30], radius=15, fill=accent)
+            draw.text((tag_x + 11, tag_y + 4), tag_text, font=font_tag, fill=_WHITE)
 
-            text_x = tag_x + tw + 40
-            max_w = pad_x + row_w - text_x - 20
-            headline = _truncate_to_width(draw, item.get('card_headline', ''), font_headline, max_w)
-            draw.text((text_x, cy - 26), headline, font=font_headline, fill=_TEXT_PRIMARY)
-            source = _truncate_to_width(draw, item.get('source', ''), font_tag, max_w)
-            draw.text((text_x, cy + 12), source, font=font_tag, fill=_TEXT_SECONDARY)
+            # 헤드라인 (최대 3줄)
+            headline_y = y + pad + badge_r * 2 + 22
+            max_text_w = _CELL_W - pad * 2
+            lines = _wrap_lines(draw, item.get('card_headline', ''), font_headline, max_text_w, max_lines=3)
+            for li, line in enumerate(lines):
+                draw.text((x + pad, headline_y + li * 40), line, font=font_headline, fill=_INK)
 
-        draw.text((60, _HEIGHT - 56), "일일 뉴스 브리핑", font=font_footer, fill=_TEXT_SECONDARY)
+            # 출처
+            source_text = item.get('source', '')
+            if source_text:
+                draw.text((x + pad, y + _CELL_H - pad - 22), source_text, font=font_source,
+                          fill=tuple(int(c * 0.55) for c in _INK))
+
+        draw.text((_MARGIN, _HEIGHT - _FOOTER_H + 4), "일일 뉴스 브리핑", font=font_footer, fill=_TEXT_SECONDARY)
 
         img.save(output_path, 'PNG')
         return output_path
