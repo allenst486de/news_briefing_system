@@ -47,13 +47,24 @@ jobs:
           # 없는 경로에 git add/status를 하면 fatal error가 나므로 미리 만들어둠
           mkdir -p docs data archive
 
-          if [[ -n $(git status --porcelain docs/ data/ archive/) ]]; then
-            git add docs/ data/ archive/
-            git commit -m "Update daily news briefing - $(date +'%Y-%m-%d')"
-            git push
-          else
+          if [[ -z $(git status --porcelain docs/ data/ archive/) ]]; then
             echo "No changes in docs/data/archive"
+            exit 0
           fi
+
+          git add docs/ data/ archive/
+          git commit -m "Update daily news briefing - $(date +'%Y-%m-%d')"
+
+          # 브리핑 생성이 수 분~수십 분 걸려서 그 사이 main에 다른 push가 들어오면
+          # 여기 push가 non-fast-forward로 거절된다(실제 실패 원인). rebase 후 재시도.
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) — rebasing onto origin/main"
+            git pull --rebase origin main
+          done
+          exit 1
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
