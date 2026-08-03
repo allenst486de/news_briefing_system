@@ -16,6 +16,7 @@ from src.html_generator import HTMLGenerator
 from src.telegram_bot import TelegramNotifier
 from src.utils.logger import setup_logger
 from src.utils.cardnews import generate_top10_card
+from src.utils import llm_client
 from src import archiver
 
 
@@ -60,7 +61,7 @@ def main():
                 top10, date_str, os.path.join(tempfile.gettempdir(), f'top10_{date_str}.png')
             )
             notifier = TelegramNotifier(bot_token, chat_id, base_url)
-            notifier.send_briefing_sync(page_urls, categorized_news, top10, date_str, top10_image_path)
+            notifier.send_briefing_sync(page_urls, top10, date_str, top10_image_path)
 
         # 4. 3개월 지난 자료 압축 롤오버 (실패해도 전체 실행은 성공으로 취급)
         try:
@@ -70,13 +71,38 @@ def main():
         except Exception as e:
             logger.warning(f"Archive rollover failed (non-fatal): {e}")
 
+        _report_llm_status(logger)
+
         logger.info("=" * 60)
         logger.info("Daily News Briefing System completed successfully!")
         logger.info("=" * 60)
-        
+
     except Exception as e:
         logger.error(f"Error in main execution: {e}", exc_info=True)
         sys.exit(1)
+
+
+def _report_llm_status(logger) -> None:
+    """
+    LLM은 실패해도 규칙기반으로 조용히 폴백하기 때문에, 번역/요약이 몇 주째 안 되는 걸
+    모르고 지나간 적이 있다. 실행 요약($GITHUB_STEP_SUMMARY)과 로그에 집계를 남겨
+    Actions 화면에서 바로 보이게 한다.
+    """
+    summary = llm_client.stats_summary()
+    stats = llm_client.LLM_STATS
+    degraded = stats["ok"] == 0 and stats["calls"] > 0
+    headline = "❌ LLM 전부 실패 — 요약/번역이 규칙기반으로 대체됨" if degraded else "✅ LLM 정상 동작"
+
+    logger.info(f"LLM status: {headline} | {summary}")
+
+    step_summary = os.getenv('GITHUB_STEP_SUMMARY')
+    if not step_summary:
+        return
+    try:
+        with open(step_summary, 'a', encoding='utf-8') as f:
+            f.write(f"### LLM 요약·번역 상태\n\n{headline}\n\n```\n{summary}\n```\n")
+    except OSError as e:
+        logger.warning(f"Could not write step summary: {e}")
 
 
 if __name__ == "__main__":

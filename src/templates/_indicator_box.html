@@ -1,41 +1,37 @@
-{# 국내/해외 지수 탭 전환 박스 — 홈 헤더와 경제 대시보드가 공유 #}
+{# 주요 지표 / 환율 탭 전환 박스 — 홈 헤더와 경제 대시보드가 공유 #}
+{# data-ind-key / .ind-value / .ind-pct 는 site.js가 장중 15분 갱신 때 찾는 훅이다 #}
+{% macro indicator_items(items) -%}
+<div class="indicator-grid">
+    {% for ind in items %}
+    <div class="indicator-item" data-ind-key="{{ ind.key }}">
+        <div class="indicator-item-head">
+            <span>{{ ind.name }}</span>
+            <em class="ind-pct {{ ind.dir }}">{{ ind.pct }}</em>
+        </div>
+        <strong class="ind-value">{{ ind.value }}</strong>
+        {% if ind.sparkline_svg %}
+        <div class="indicator-spark">{{ ind.sparkline_svg | safe }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{%- endmacro %}
+
 {% if indicators %}
-<div class="tab-box indicator-box" data-tabs>
+<div class="tab-box indicator-box" data-tabs data-indicator-box
+     data-indicators-url="{{ indicators_url }}">
     <div class="tab-buttons">
-        <button type="button" class="tab-button active" data-tab-target="ind-domestic">국내</button>
-        <button type="button" class="tab-button" data-tab-target="ind-overseas">해외</button>
+        <button type="button" class="tab-button active" data-tab-target="ind-main">주요 지표</button>
+        <button type="button" class="tab-button" data-tab-target="ind-fx">환율</button>
     </div>
-    <div class="tab-panel active" data-tab-panel="ind-domestic">
-        <div class="indicator-grid">
-            {% for ind in indicators.domestic %}
-            <div class="indicator-item">
-                <div class="indicator-item-head">
-                    <span>{{ ind.name }}</span>
-                    <em class="{{ ind.dir }}">{{ ind.pct }}</em>
-                </div>
-                <strong>{{ ind.value }}</strong>
-                {% if ind.sparkline_svg %}
-                <div class="indicator-spark">{{ ind.sparkline_svg | safe }}</div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
+    <div class="tab-panel active" data-tab-panel="ind-main">
+        {{ indicator_items(indicators.main) }}
     </div>
-    <div class="tab-panel" data-tab-panel="ind-overseas">
-        <div class="indicator-grid">
-            {% for ind in indicators.overseas %}
-            <div class="indicator-item">
-                <div class="indicator-item-head">
-                    <span>{{ ind.name }}</span>
-                    <em class="{{ ind.dir }}">{{ ind.pct }}</em>
-                </div>
-                <strong>{{ ind.value }}</strong>
-                {% if ind.sparkline_svg %}
-                <div class="indicator-spark">{{ ind.sparkline_svg | safe }}</div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
+    <div class="tab-panel" data-tab-panel="ind-fx">
+        {{ indicator_items(indicators.fx) }}
     </div>
+    {% if indicators.as_of %}
+    <p class="indicator-asof">기준 <time data-ind-asof>{{ indicators.as_of }}</time> · 장중 15분마다 갱신</p>
+    {% endif %}
 </div>
 {% endif %}

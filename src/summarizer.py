@@ -33,9 +33,18 @@ COMMON_RULES = """당신은 뉴스 요약 보조자입니다. 아래 규칙을 �
 5. 홍보성 문구, 근거 없는 벤치마크 주장, 유료 강의/제휴링크성 내용은
    요약에서 완전히 제외하세요.
 6. 반드시 지정된 JSON 형식으로만 응답하세요. 그 외 설명 문구를 절대 추가하지
-   마세요."""
+   마세요.
+7. 글자 수를 채우려고 내용을 늘리지 마세요. 요약 길이 기준은 '최대'이며,
+   제공된 원문에 담긴 내용이 부족하면 짧게 끝내는 것이 정답입니다.
+   분량을 맞추려 배경 설명·추측·일반론을 덧붙이는 것은 1번 규칙 위반입니다."""
 
-CATEGORY_MAX_TOKENS = 12288  # 카테고리당 상한 30건 기준 — 20건일 때 8192로 넉넉했던 걸 비례로 올림
+# 카테고리 30건을 한 번에 요청하면 한국어 출력이 1.3~1.9토큰/자라 응답이
+# max_tokens에 걸려 배열이 닫히기 전에 잘리고, 그러면 JSON 파싱이 실패해
+# 카테고리 전체가 규칙기반으로 폴백된다(실제로 매일 8개 카테고리 전부 이랬다).
+# 한 번에 8건씩 끊어 요청해 응답이 상한에 닿지 않게 한다.
+CHUNK_SIZE = 8
+CHUNK_MAX_TOKENS = 6144
+TOP10_MAX_TOKENS = 6144
 
 
 def _rule_based_fallback(article: NewsArticle) -> None:
@@ -45,17 +54,11 @@ def _rule_based_fallback(article: NewsArticle) -> None:
     article.is_important = _analyzer.analyze(article.title, article.summary)
 
 
-def summarize_category(category_key: str, category_name: str, articles: List[NewsArticle]) -> List[NewsArticle]:
-    """
-    카테고리 기사 전체를 LLM 1회 배치 호출로 번역+재구성+250자 요약.
-    실패/부분실패 시 해당 기사만 규칙기반으로 대체 — 전체 카테고리가 통으로
-    죽지 않는다. exclude=true로 판정된 기사는 결과 리스트에서 제외한다.
-    """
-    if not articles:
-        return articles
-
+def _summarize_chunk(category_name: str, articles: List[NewsArticle]) -> List[NewsArticle]:
+    """기사 8건 이하 한 덩어리를 LLM 1회 호출로 처리. 반환은 남길 기사 목록."""
     listing = "\n".join(
-        f"{i + 1}. [{a.source}/{getattr(a, 'language', 'ko')}] {a.title} — {a.summary}"
+        f"{i + 1}. [{a.source}/{getattr(a, 'language', 'ko')}] {a.title} — "
+        f"{getattr(a, 'body', '') or a.summary}"
         for i, a in enumerate(articles)
     )
     user_prompt = (
@@ -63,7 +66,8 @@ def summarize_category(category_key: str, category_name: str, articles: List[New
         "입력은 이 카테고리의 오늘자 기사 목록입니다. 각 기사에 대해 다음을 생성하세요:\n"
         " - id: 아래 번호와 동일한 정수\n"
         " - paraphrased_title: 기사 제목을 자연스러운 한국어로 재서술 (원문이 한국어여도 그대로 베끼지 말 것)\n"
-        " - summary_250: 약 250자 분량의 한국어 요약 (제공된 제목/스니펫 근거로만 작성)\n"
+        " - summary_250: 최대 250자의 한국어 요약. 제공된 원문에 있는 내용만으로 쓰고,\n"
+        "   내용이 부족하면 짧게 끝낼 것 (분량을 채우려고 지어내지 말 것)\n"
         " - is_important: 이 기사가 오늘 이 카테고리에서 특히 중요한 뉴스인지 (true/false)\n"
         " - exclude: 홍보/유료강의/근거없는 벤치마크 등으로 제외해야 하면 true, 아니면 false\n\n"
         "반드시 아래 JSON 배열 형식으로만 응답하세요:\n"
@@ -71,12 +75,11 @@ def summarize_category(category_key: str, category_name: str, articles: List[New
         f"기사 목록:\n{listing}"
     )
 
-    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=CATEGORY_MAX_TOKENS)
+    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=CHUNK_MAX_TOKENS)
     if not isinstance(result, list):
-        logger.warning(f"[{category_key}] LLM summarize failed or malformed — falling back to rule-based")
         for article in articles:
             _rule_based_fallback(article)
-        return articles
+        return list(articles)
 
     by_id = {}
     for item in result:
@@ -112,6 +115,29 @@ def summarize_category(category_key: str, category_name: str, articles: List[New
         article.summary = new_summary
         article.is_important = bool(item.get("is_important"))
         kept.append(article)
+
+    return kept
+
+
+def summarize_category(category_key: str, category_name: str, articles: List[NewsArticle]) -> List[NewsArticle]:
+    """
+    카테고리 기사를 CHUNK_SIZE건씩 끊어 LLM으로 번역+재구성+요약한다.
+    한 덩어리가 실패해도 그 덩어리만 규칙기반으로 대체되고 나머지는 살아남는다.
+    exclude=true로 판정된 기사는 결과 리스트에서 제외한다.
+    """
+    if not articles:
+        return articles
+
+    kept = []
+    for start in range(0, len(articles), CHUNK_SIZE):
+        chunk = articles[start:start + CHUNK_SIZE]
+        try:
+            kept.extend(_summarize_chunk(category_name, chunk))
+        except Exception as e:
+            logger.warning(f"[{category_key}] chunk at {start} failed ({e}) — rule-based fallback")
+            for article in chunk:
+                _rule_based_fallback(article)
+            kept.extend(chunk)
 
     return kept
 
@@ -161,6 +187,7 @@ def extract_ai_items(articles: List[NewsArticle]) -> None:
 
 
 TOP10_COUNT = 10
+TOP10_CANDIDATES_PER_CATEGORY = 6  # 8개 카테고리 × 6 = 48건 후보 (10건 고르기엔 충분)
 
 
 def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
@@ -169,16 +196,20 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
     선정한다 (프롬프트 c). 실패 시 중요도→최신순 정렬로 대체.
     반환: [{rank, category, category_name, link, card_headline, card_blurb}, ...]
     """
+    # 8개 카테고리 × 30건 전체를 요약문까지 붙여 보내면 입력만 7만 자를 넘는다.
+    # top10을 고르는 데는 카테고리별 상위 후보만으로 충분하고, 요약도 앞부분만 있으면 된다.
     flat = [
         {"category": category, "article": article}
         for category, articles in categorized_news.items()
-        for article in articles
+        for article in sorted(
+            articles, key=lambda a: (a.is_important, a.published), reverse=True
+        )[:TOP10_CANDIDATES_PER_CATEGORY]
     ]
     if not flat:
         return []
 
     listing = "\n".join(
-        f"{i + 1}. [{e['category']}] {e['article'].title} — {e['article'].summary} "
+        f"{i + 1}. [{e['category']}] {e['article'].title} — {e['article'].summary[:120]} "
         f"(is_important={e['article'].is_important})"
         for i, e in enumerate(flat)
     )
@@ -197,7 +228,7 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
         f"전체 기사 목록:\n{listing}"
     )
 
-    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=CATEGORY_MAX_TOKENS)
+    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=TOP10_MAX_TOKENS)
     if isinstance(result, list) and result:
         cards = []
         for item in result:

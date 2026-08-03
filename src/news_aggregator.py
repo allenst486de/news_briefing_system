@@ -2,11 +2,13 @@
 News Aggregator
 모든 뉴스 소스를 통합하고 카테고리별로 분류
 """
+import os
 import re
 from typing import List, Dict
 from .collectors.rss_collector import RSSCollector
 from .collectors.sources import SOURCES, CATEGORIES
 from .collectors.base_collector import NewsArticle
+from .utils import article_body
 from .utils.dedup import normalize_title
 from .utils.logger import setup_logger
 from . import summarizer
@@ -63,6 +65,12 @@ class NewsAggregator:
             categorized_news[category] = self._remove_duplicates(categorized_news[category])
             categorized_news[category].sort(key=lambda x: x.published, reverse=True)
             categorized_news[category] = categorized_news[category][:CATEGORY_ARTICLE_CAP]
+
+            # RSS 요약문이 짧거나 …로 잘린 기사는 원문 본문을 가져와 요약 근거로 쓴다.
+            # 본문은 LLM 요약 입력으로만 쓰이므로 키가 없으면 받아올 이유가 없다
+            # (규칙기반 폴백은 RSS 요약문을 그대로 쓴다) — 헛된 HTTP 요청 200건 절약.
+            if os.getenv('NVIDIA_API_KEY'):
+                article_body.enrich(categorized_news[category])
 
             self.logger.info(f"Summarizing {category} ({len(categorized_news[category])} articles)...")
             categorized_news[category] = summarizer.summarize_category(

@@ -19,6 +19,7 @@ class NewsArticle:
         self.source = source
         self.category = category
         self.is_important = False  # 중요도 플래그
+        self.body = ""  # 원문 본문 (article_body.enrich가 채움, 요약 입력으로만 사용)
         
     def to_dict(self) -> Dict:
         """딕셔너리로 변환"""

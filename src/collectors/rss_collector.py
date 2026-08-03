@@ -36,7 +36,9 @@ class RSSCollector(BaseCollector):
         articles = []
         for entry in feed.entries[:limit]:
             try:
-                title = entry.get("title", "").strip()
+                # 요약은 clean_html로 엔티티가 풀리는데 제목은 그냥 두면 "&amp;"가
+                # 그대로 남고, 템플릿이 한 번 더 이스케이프해 화면에 "&amp;"로 보인다.
+                title = clean_html(entry.get("title", "")).strip()
                 if self.source_id == "googlenews":
                     title = strip_google_news_title_suffix(title)
                 summary = clean_html(entry.get("description", "") or entry.get("summary", ""))

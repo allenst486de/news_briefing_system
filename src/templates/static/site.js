@@ -78,10 +78,45 @@
     });
   }
 
+  // 장중 지표 갱신 — 별도 워크플로가 15분마다 덮어쓰는 indicators.json을 읽어
+  // 값/등락률만 바꿔치기한다. 네이버 지표 API는 CORS를 허용하지 않아 브라우저에서
+  // 직접 부를 수 없기 때문에 같은 도메인의 JSON을 경유한다.
+  // 스파크라인(7일 추이)은 일간 빌드 때 그린 걸 그대로 두고 숫자만 갱신한다 —
+  // 하루 안에 7일 추이선이 눈에 띄게 바뀌지 않고, textContent만 쓰면 HTML 주입 여지도 없다.
+  function refreshIndicators() {
+    var box = document.querySelector('[data-indicator-box]');
+    if (!box) return;
+    var url = box.getAttribute('data-indicators-url');
+    if (!url) return;
+    fetch(url, { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        [].concat(data.main || [], data.fx || []).forEach(function (ind) {
+          document.querySelectorAll('[data-ind-key="' + ind.key + '"]').forEach(function (node) {
+            var value = node.querySelector('.ind-value');
+            var pct = node.querySelector('.ind-pct');
+            if (value) value.textContent = ind.value;
+            if (pct) {
+              pct.textContent = ind.pct;
+              pct.className = 'ind-pct ' + ind.dir;
+            }
+          });
+        });
+        if (data.as_of) {
+          document.querySelectorAll('[data-ind-asof]').forEach(function (n) {
+            n.textContent = data.as_of;
+          });
+        }
+      })
+      .catch(function () { /* 갱신 실패 시 빌드 시점 값을 그대로 둔다 */ });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     startClock();
     loadWeather();
     setupThemeToggle();
     setupTabs();
+    refreshIndicators();
   });
 })();

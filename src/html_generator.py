@@ -13,7 +13,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from .collectors.base_collector import NewsArticle
 from .collectors.sources import CATEGORIES, CATEGORY_META
 from .utils.logger import setup_logger
-from .utils.indicators import get_market_indicators
+from .utils.indicators import get_market_indicators, write_indicators_json
 from .utils import stock_data
 from . import summarizer
 
@@ -91,6 +91,9 @@ class HTMLGenerator:
 
         self.logger.info("Fetching economy dashboard data (indicators + stock picks)...")
         indicators = get_market_indicators()
+        # 장중 갱신 워크플로가 15분마다 덮어쓰는 파일 — 첫 배포 시점에도 있어야
+        # site.js의 fetch가 404로 실패하지 않는다
+        write_indicators_json(indicators, os.path.join(self.output_dir, 'indicators.json'))
         stock_picks = {"domestic": stock_data.get_domestic_picks(), "overseas": stock_data.get_overseas_picks()}
         summarizer.generate_stock_reasons(stock_picks)
 
@@ -174,6 +177,7 @@ class HTMLGenerator:
             ai_items=ai_items,
             indicators=indicators if category == 'economy' else None,
             stock_picks=stock_picks if category == 'economy' else None,
+            indicators_url=self._make_path('/indicators.json'),
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
             archive_path=self._make_path('/archive.html'),
@@ -253,6 +257,7 @@ class HTMLGenerator:
             category_previews=category_previews,
             ai_items=ai_preview,
             nav_categories=nav_categories,
+            indicators_url=self._make_path('/indicators.json'),
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
             archive_path=self._make_path('/archive.html'),
