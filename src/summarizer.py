@@ -5,6 +5,7 @@ LLM Summarizer Orchestration
 담당한다. LLM 호출이 실패하면 항상 규칙기반으로 자동 폴백한다 — 이 파일이
 파이프라인을 죽이는 일은 없다.
 """
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List
 
 from .collectors.base_collector import NewsArticle
@@ -45,6 +46,7 @@ COMMON_RULES = """당신은 뉴스 요약 보조자입니다. 아래 규칙을 �
 CHUNK_SIZE = 8
 CHUNK_MAX_TOKENS = 6144
 TOP10_MAX_TOKENS = 6144
+CHUNK_WORKERS = 4  # 무료 티어 rate limit 여유를 두고 낮게
 
 
 def _rule_based_fallback(article: NewsArticle) -> None:
@@ -128,18 +130,28 @@ def summarize_category(category_key: str, category_name: str, articles: List[New
     if not articles:
         return articles
 
-    kept = []
-    for start in range(0, len(articles), CHUNK_SIZE):
-        chunk = articles[start:start + CHUNK_SIZE]
-        try:
-            kept.extend(_summarize_chunk(category_name, chunk))
-        except Exception as e:
-            logger.warning(f"[{category_key}] chunk at {start} failed ({e}) — rule-based fallback")
-            for article in chunk:
-                _rule_based_fallback(article)
-            kept.extend(chunk)
+    chunks = [articles[i:i + CHUNK_SIZE] for i in range(0, len(articles), CHUNK_SIZE)]
 
-    return kept
+    # 청크를 순차로 돌리면 카테고리 8개 × 4청크 × 한 호출 수십 초라 워크플로
+    # 30분 제한을 넘긴다(실제로 넘겨서 run이 취소됐다). 청크끼리는 서로 의존이
+    # 없으므로 병렬로 부른다. 동시 실행 수는 무료 티어 rate limit을 감안해 낮게 잡고,
+    # 429는 llm_client가 백오프로 재시도한다.
+    results = [None] * len(chunks)
+    with ThreadPoolExecutor(max_workers=CHUNK_WORKERS) as pool:
+        futures = {pool.submit(_summarize_chunk, category_name, c): i
+                   for i, c in enumerate(chunks)}
+        for future in as_completed(futures):
+            i = futures[future]
+            try:
+                results[i] = future.result()
+            except Exception as e:
+                logger.warning(f"[{category_key}] chunk {i} failed ({e}) — rule-based fallback")
+                for article in chunks[i]:
+                    _rule_based_fallback(article)
+                results[i] = list(chunks[i])
+
+    # 원래 순서(중요도 정렬 전 최신순)를 유지해서 이어 붙인다
+    return [article for chunk_result in results for article in chunk_result]
 
 
 def extract_ai_items(articles: List[NewsArticle]) -> None:

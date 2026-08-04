@@ -75,7 +75,8 @@ def test_chunking_splits_calls():
         llm_client.call_llm = original
 
     assert len(calls) == 4, f"청크 4회 호출을 기대했는데 {len(calls)}회: {calls}"
-    assert calls == [8, 8, 8, 6], f"청크 크기 분배가 이상하다: {calls}"
+    # 청크는 병렬로 돌아 완료 순서가 매번 다르다 — 크기 구성만 확인한다
+    assert sorted(calls) == [6, 8, 8, 8], f"청크 크기 분배가 이상하다: {calls}"
     assert len(kept) == 30, f"기사 30건이 유지돼야 하는데 {len(kept)}건"
     assert kept[0].title == "재서술0", "LLM 결과가 반영되지 않았다"
 
@@ -106,6 +107,80 @@ def test_one_bad_chunk_does_not_kill_the_rest():
     assert len(kept) == 16, f"16건이 유지돼야 하는데 {len(kept)}건"
     assert kept[0].title == "제목0", "실패한 청크는 원래 제목이 남아야 한다"
     assert kept[8].title == "재서술", "성공한 청크까지 폴백되면 안 된다"
+
+
+def test_parallel_chunks_preserve_article_order():
+    """
+    청크를 병렬로 부르므로 완료 순서가 뒤섞인다. 결과를 완료 순서대로 이어붙이면
+    기사 순서가 망가지므로, 원래 순서가 유지되는지 확인한다.
+    (뒤 청크를 일부러 먼저 끝내도 순서가 지켜져야 한다.)
+    """
+    import time as _time
+    articles = [_article(i) for i in range(24)]
+
+    def staggered(system, user, **kwargs):
+        count = user.count("[테스트/ko]")
+        # 첫 청크(제목0 포함)를 일부러 가장 늦게 끝내 완료 순서를 뒤집는다
+        if "제목0 —" in user:
+            _time.sleep(0.25)
+        items = ", ".join(
+            f'{{"id": {i + 1}, "paraphrased_title": "T{i}", '
+            f'"summary_250": "S{i}", "is_important": false, "exclude": false}}'
+            for i in range(count)
+        )
+        return f"[{items}]"
+
+    original = llm_client.call_llm
+    llm_client.call_llm = staggered
+    try:
+        kept = summarizer.summarize_category("world", "국제", articles)
+    finally:
+        llm_client.call_llm = original
+
+    assert len(kept) == 24, f"24건이 유지돼야 하는데 {len(kept)}건"
+    # 각 청크 안에서 id가 1부터 다시 시작하므로 제목은 T0..T7 이 3번 반복된다
+    expected = [f"T{i % summarizer.CHUNK_SIZE}" for i in range(24)]
+    assert [a.title for a in kept] == expected, \
+        f"병렬 실행 후 기사 순서가 뒤바뀌었다: {[a.title for a in kept][:10]}"
+
+
+def test_llm_time_budget_stops_calls():
+    """시간 예산을 넘기면 즉시 None을 반환해 실행이 무한정 길어지지 않아야 한다."""
+    original_deadline = llm_client._deadline
+    original_budget = llm_client.LLM_TIME_BUDGET_SECONDS
+    called = []
+
+    def should_not_run(*a, **k):
+        called.append(1)
+        return "{}"
+
+    try:
+        llm_client._deadline = None
+        llm_client.LLM_TIME_BUDGET_SECONDS = -1  # 첫 호출 이후 즉시 소진
+        llm_client._budget_exhausted()           # 데드라인 설정
+        before = llm_client.LLM_STATS["budget"]
+        assert llm_client.call_llm("sys", "user") is None, "예산 초과인데 호출이 진행됐다"
+        assert llm_client.LLM_STATS["budget"] == before + 1, "예산 초과가 집계되지 않았다"
+    finally:
+        llm_client._deadline = original_deadline
+        llm_client.LLM_TIME_BUDGET_SECONDS = original_budget
+
+
+def test_body_budget_is_global_not_per_category():
+    """
+    본문 fetch 예산이 카테고리마다 새로 잡히면 8배가 되어 워크플로가 취소된다
+    (실제 발생). 전역 데드라인이 유지되는지 확인한다.
+    """
+    original = article_body._deadline
+    try:
+        article_body._deadline = None
+        article_body.enrich([])          # 첫 호출에서 데드라인 설정
+        first = article_body._deadline
+        assert first is not None, "첫 호출에서 데드라인이 설정되지 않았다"
+        article_body.enrich([])          # 두 번째 카테고리
+        assert article_body._deadline == first, "카테고리마다 예산이 초기화되고 있다"
+    finally:
+        article_body._deadline = original
 
 
 def test_prose_score_separates_body_from_headline_list():
@@ -158,9 +233,12 @@ def main():
 
     test_chunking_splits_calls()
     test_one_bad_chunk_does_not_kill_the_rest()
+    test_parallel_chunks_preserve_article_order()
+    test_llm_time_budget_stops_calls()
+    test_body_budget_is_global_not_per_category()
     test_prose_score_separates_body_from_headline_list()
     test_needs_body_targets_short_and_truncated()
-    print("OK: salvage + chunking + body-extraction self-checks passed")
+    print("OK: salvage + chunking + budget + body-extraction self-checks passed")
 
 
 if __name__ == "__main__":

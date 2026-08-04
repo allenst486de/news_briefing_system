@@ -9,6 +9,7 @@ NVIDIA_API_KEY는 환경변수(GitHub Secrets)로만 전달된다 — 이 파일
 import json
 import os
 import re
+import threading
 import time
 from typing import Optional, Union
 
@@ -26,14 +27,32 @@ NVIDIA_MODEL = "google/gemma-4-31b-it"  # NVIDIA NIM 카탈로그에서 모델 �
 # 찍는다 — 다음 실행에서 원인을 바로 볼 수 있도록.
 LLM_STATS = {
     "calls": 0, "ok": 0, "no_key": 0, "http_error": 0,
-    "network_error": 0, "parse_fail": 0, "salvaged": 0, "errors": [],
+    "network_error": 0, "parse_fail": 0, "salvaged": 0, "budget": 0, "errors": [],
 }
+
+_stats_lock = threading.Lock()
+
+# 실행 전체에서 LLM에 쓸 수 있는 총 시간. 워크플로 30분 제한 안에서 수집·본문·
+# HTML 생성까지 끝나야 하므로 LLM이 무한정 잡아먹지 않도록 못을 박는다.
+# 초과하면 남은 호출은 즉시 None을 반환하고 호출부가 규칙기반으로 넘어간다 —
+# 요약 품질이 일부 떨어져도 사이트는 반드시 발행된다.
+LLM_TIME_BUDGET_SECONDS = 900
+_deadline = None
 
 
 def _record(key: str, detail: Optional[str] = None) -> None:
-    LLM_STATS[key] = LLM_STATS.get(key, 0) + 1
-    if detail and len(LLM_STATS["errors"]) < 5:
-        LLM_STATS["errors"].append(detail)
+    with _stats_lock:
+        LLM_STATS[key] = LLM_STATS.get(key, 0) + 1
+        if detail and len(LLM_STATS["errors"]) < 5:
+            LLM_STATS["errors"].append(detail)
+
+
+def _budget_exhausted() -> bool:
+    global _deadline
+    if _deadline is None:
+        _deadline = time.monotonic() + LLM_TIME_BUDGET_SECONDS
+        return False
+    return time.monotonic() > _deadline
 
 
 def stats_summary() -> str:
@@ -41,7 +60,8 @@ def stats_summary() -> str:
     lines = [
         f"호출 {s['calls']}건 · 성공 {s['ok']} · 부분복구 {s['salvaged']} · "
         f"JSON실패 {s['parse_fail']} · HTTP오류 {s['http_error']} · "
-        f"네트워크오류 {s['network_error']} · 키없음 {s['no_key']}"
+        f"네트워크오류 {s['network_error']} · 키없음 {s['no_key']} · "
+        f"시간예산초과 {s['budget']}"
     ]
     if s["errors"]:
         lines.append("첫 오류: " + s["errors"][0])
@@ -55,7 +75,13 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
     429/5xx/네트워크 오류 시 지수 백오프로 재시도. 재시도까지 모두 실패하면
     예외를 던지지 않고 None을 반환한다 — 호출부가 규칙기반 폴백으로 넘어가도록.
     """
-    LLM_STATS["calls"] += 1
+    with _stats_lock:
+        LLM_STATS["calls"] += 1
+
+    if _budget_exhausted():
+        _record("budget", f"LLM 시간 예산 {LLM_TIME_BUDGET_SECONDS}초 초과 — 남은 요약은 규칙기반")
+        return None
+
     api_key = os.getenv("NVIDIA_API_KEY")
     if not api_key:
         logger.warning("NVIDIA_API_KEY not set — skipping LLM call")

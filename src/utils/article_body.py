@@ -24,7 +24,10 @@ logger = setup_logger()
 _HEADERS = {"User-Agent": "Mozilla/5.0 (NewsAggregator Bot)"}
 _TIMEOUT = 5
 _WORKERS = 8
-_BUDGET_SECONDS = 240
+# 실행 '전체'에 걸친 예산이다. 카테고리마다 새로 잡으면 8배가 되어 워크플로
+# 30분 제한을 혼자서 넘긴다(실제로 넘겨서 run이 취소됐다).
+_TOTAL_BUDGET_SECONDS = 300
+_deadline = None
 
 # RSS 요약문이 이보다 짧으면(또는 …로 잘려 있으면) 본문을 시도한다
 _SHORT_SUMMARY_CHARS = 300
@@ -114,17 +117,22 @@ def enrich(articles: List) -> int:
     요약 근거가 부족한 기사에 article.body를 채운다 (in-place).
     반환값은 실제로 본문을 확보한 건수.
     """
+    global _deadline
+    if _deadline is None:
+        _deadline = time.monotonic() + _TOTAL_BUDGET_SECONDS
+
     targets = [a for a in articles if a.link and needs_body(a)]
     if not targets:
         return 0
+    if time.monotonic() > _deadline:
+        logger.warning("Article body budget already spent — using RSS summaries")
+        return 0
 
-    deadline = time.monotonic() + _BUDGET_SECONDS
     filled = 0
-
     with ThreadPoolExecutor(max_workers=_WORKERS) as pool:
         futures = {pool.submit(fetch_body, a.link): a for a in targets}
         for future in as_completed(futures):
-            if time.monotonic() > deadline:
+            if time.monotonic() > _deadline:
                 # 남은 건은 포기 — RSS 요약문으로 진행한다
                 for f in futures:
                     f.cancel()
