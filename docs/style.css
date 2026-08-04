@@ -674,6 +674,13 @@ footer .theme-toggle-btn {
     height: 28px;
 }
 
+.indicator-asof {
+    margin: 10px 0 0;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
 /* ===== Category Preview Grid (portal home) ===== */
 .category-preview-grid {
     display: grid;
