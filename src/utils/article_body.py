@@ -32,7 +32,10 @@ _deadline = None
 # RSS 요약문이 이보다 짧으면(또는 …로 잘려 있으면) 본문을 시도한다
 _SHORT_SUMMARY_CHARS = 300
 _MIN_BODY_CHARS = 400
-_MAX_BODY_CHARS = 1500
+# 250자 요약을 쓰는 데 필요한 만큼만. 기사는 역피라미드 구조라 앞부분에 핵심이
+# 몰려 있어 900자면 충분하고, 1500자를 쓰면 청크당 프롬프트가 12,000자까지
+# 커져 호출 지연과 rate limit 압박만 늘어난다.
+_MAX_BODY_CHARS = 900
 
 _DROP_XPATH = (
     '//script | //style | //noscript | //nav | //header | //footer | //aside '

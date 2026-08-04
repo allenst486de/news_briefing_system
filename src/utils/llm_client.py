@@ -36,8 +36,12 @@ _stats_lock = threading.Lock()
 # HTML 생성까지 끝나야 하므로 LLM이 무한정 잡아먹지 않도록 못을 박는다.
 # 초과하면 남은 호출은 즉시 None을 반환하고 호출부가 규칙기반으로 넘어간다 —
 # 요약 품질이 일부 떨어져도 사이트는 반드시 발행된다.
-LLM_TIME_BUDGET_SECONDS = 900
+LLM_TIME_BUDGET_SECONDS = 1800
 _deadline = None
+
+# 429 재시도 대기(초). Retry-After 헤더가 있으면 그쪽이 우선.
+_RATE_LIMIT_BACKOFF = [5, 15]
+_RATE_LIMIT_MAX_WAIT = 30
 
 
 def _record(key: str, detail: Optional[str] = None) -> None:
@@ -69,11 +73,16 @@ def stats_summary() -> str:
 
 
 def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
-             max_tokens: int = 4096, timeout: int = 60, retries: int = 2) -> Optional[str]:
+             max_tokens: int = 4096, timeout: int = 180, retries: int = 2) -> Optional[str]:
     """
     NVIDIA NIM chat completions 1회 호출(비스트리밍).
     429/5xx/네트워크 오류 시 지수 백오프로 재시도. 재시도까지 모두 실패하면
     예외를 던지지 않고 None을 반환한다 — 호출부가 규칙기반 폴백으로 넘어가도록.
+
+    timeout 기본값 주의: 기사 8건 배치는 한국어 요약 3,500토큰가량을 생성해
+    호출 하나가 90초 안팎 걸린다. 예전 기본값 60초로는 정상 생성 중인 요청이
+    잘려 나가 카테고리가 통째로 규칙기반으로 폴백됐다(실제 발생). 청크 크기를
+    키우면 이 값도 같이 키워야 한다.
     """
     with _stats_lock:
         LLM_STATS["calls"] += 1
@@ -106,7 +115,18 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
     for attempt in range(retries + 1):
         try:
             resp = requests.post(NVIDIA_API_URL, headers=headers, json=payload, timeout=timeout)
-            if resp.status_code == 429 or resp.status_code >= 500:
+            if resp.status_code == 429:
+                # 병렬 호출 중이라 rate limit이 실제로 걸린다. 1~2초 후 재시도하면
+                # 대개 또 걸리므로 서버가 알려주는 Retry-After를 우선 따른다.
+                if attempt >= retries:
+                    logger.warning("LLM rate limited (429) — out of retries")
+                    _record("http_error", "HTTP 429: rate limited (재시도 소진)")
+                    return None
+                wait = _retry_after_seconds(resp) or _RATE_LIMIT_BACKOFF[attempt]
+                logger.warning(f"LLM rate limited (429) — waiting {wait}s")
+                time.sleep(wait)
+                continue
+            if resp.status_code >= 500:
                 raise requests.HTTPError(f"retryable status {resp.status_code}")
             if not resp.ok:
                 # 4xx는 재시도해도 안 바뀌므로 응답 본문을 로그로 남기고 바로 포기
@@ -125,6 +145,17 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
                 _record("network_error", f"{type(e).__name__}: {str(e)[:200]}")
 
     return None
+
+
+def _retry_after_seconds(resp) -> Optional[int]:
+    """429 응답의 Retry-After(초 단위 정수형만) — 없거나 이상하면 None."""
+    raw = resp.headers.get("Retry-After")
+    if not raw:
+        return None
+    try:
+        return max(1, min(int(float(raw)), _RATE_LIMIT_MAX_WAIT))
+    except (TypeError, ValueError):
+        return None
 
 
 def _extract_json_block(text: str) -> Optional[str]:

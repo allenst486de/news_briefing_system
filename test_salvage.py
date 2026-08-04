@@ -7,6 +7,7 @@
 여기서 검증하는 건 (1) 잘린 응답에서 완성된 객체만 건져내는지 (2) 청크 단위로
 끊어 호출하는지 (3) 한 청크가 죽어도 나머지는 살아남는지.
 """
+import os
 from datetime import datetime, timezone
 
 from src.collectors.base_collector import NewsArticle
@@ -183,6 +184,48 @@ def test_body_budget_is_global_not_per_category():
         article_body._deadline = original
 
 
+def test_rate_limit_retry_waits_and_gives_up_cleanly():
+    """
+    429는 1~2초 후 재시도하면 대개 또 걸린다. Retry-After를 따르는지, 그리고
+    재시도를 소진하면 network_error가 아니라 http_error(429)로 분류되는지 확인.
+    한 번의 429에 대해 대기가 두 번 일어나지 않아야 한다(sleep 후 raise 하면
+    except 절에서 또 sleep 하는 버그가 있었다).
+    """
+    import requests
+
+    class FakeResp:
+        status_code = 429
+        headers = {"Retry-After": "7"}
+        ok = False
+        text = "rate limited"
+
+    sleeps = []
+    orig_post, orig_sleep = requests.post, llm_client.time.sleep
+    orig_deadline = llm_client._deadline
+    llm_client.time.sleep = lambda s: sleeps.append(s)
+    requests.post = lambda *a, **k: FakeResp()
+    os.environ["NVIDIA_API_KEY"] = "test-key"
+    try:
+        llm_client._deadline = None
+        before = llm_client.LLM_STATS["http_error"]
+        assert llm_client.call_llm("s", "u", retries=2) is None
+        assert sleeps == [7, 7], f"Retry-After(7초)를 따라 2회만 대기해야 하는데 {sleeps}"
+        assert llm_client.LLM_STATS["http_error"] == before + 1, "429가 http_error로 집계되지 않았다"
+    finally:
+        requests.post, llm_client.time.sleep = orig_post, orig_sleep
+        llm_client._deadline = orig_deadline
+        os.environ.pop("NVIDIA_API_KEY", None)
+
+
+def test_retry_after_header_is_clamped():
+    class R:
+        def __init__(self, v): self.headers = {"Retry-After": v} if v is not None else {}
+    assert llm_client._retry_after_seconds(R("3")) == 3
+    assert llm_client._retry_after_seconds(R("9999")) == llm_client._RATE_LIMIT_MAX_WAIT, "과도한 대기가 제한되지 않음"
+    assert llm_client._retry_after_seconds(R("Wed, 21 Oct 2026 07:28:00 GMT")) is None, "날짜 형식은 무시해야 함"
+    assert llm_client._retry_after_seconds(R(None)) is None
+
+
 def test_prose_score_separates_body_from_headline_list():
     """
     본문 추출이 '관련기사 헤드라인 목록'을 본문으로 착각하면 엉뚱한 요약이 나온다.
@@ -236,6 +279,8 @@ def main():
     test_parallel_chunks_preserve_article_order()
     test_llm_time_budget_stops_calls()
     test_body_budget_is_global_not_per_category()
+    test_rate_limit_retry_waits_and_gives_up_cleanly()
+    test_retry_after_header_is_clamped()
     test_prose_score_separates_body_from_headline_list()
     test_needs_body_targets_short_and_truncated()
     print("OK: salvage + chunking + budget + body-extraction self-checks passed")

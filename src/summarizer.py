@@ -46,7 +46,9 @@ COMMON_RULES = """당신은 뉴스 요약 보조자입니다. 아래 규칙을 �
 CHUNK_SIZE = 8
 CHUNK_MAX_TOKENS = 6144
 TOP10_MAX_TOKENS = 6144
-CHUNK_WORKERS = 4  # 무료 티어 rate limit 여유를 두고 낮게
+# 호출 하나가 90초 안팎이라 워커가 적으면 라운드 수만큼 그대로 벽시계 시간이 된다.
+# 4 → 6으로 올려 35건을 9라운드에서 6라운드로 줄인다(약 780초 → 520초).
+CHUNK_WORKERS = 6
 
 
 def _rule_based_fallback(article: NewsArticle) -> None:
