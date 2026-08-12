@@ -53,10 +53,22 @@
     }
 
     if (!btn) return;
+
+    // 스위치라서 현재 상태를 스크린리더에도 알려야 한다
+    function syncState() {
+      var isDark = root.dataset.theme
+        ? root.dataset.theme === 'dark'
+        : !(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+      btn.setAttribute('aria-checked', isDark ? 'true' : 'false');
+      btn.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
+    }
+    syncState();
+
     btn.addEventListener('click', function () {
       var next = root.dataset.theme === 'light' ? 'dark' : 'light';
       root.dataset.theme = next;
       try { localStorage.setItem('theme', next); } catch (e) {}
+      syncState();
     });
   }
 

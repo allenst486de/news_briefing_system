@@ -293,15 +293,12 @@ header h1 {
     font-weight: 600;
 }
 
+/* 요약은 이미 250자 상한이라 자를 이유가 없다. 예전엔 3줄 클램프가 걸려 있어
+   요약 뒷부분이 잘려 보였고, 그게 "요약이 잘린다"는 증상의 실제 원인이었다. */
 .news-summary {
     font-size: 0.875rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 /* ===== Original Content (Translation) ===== */
@@ -516,27 +513,66 @@ footer {
     font-weight: 600;
 }
 
-/* ===== Theme Toggle ===== */
-.theme-toggle-btn {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
+/* ===== Theme Toggle =====
+   이모지 버튼 하나로는 무슨 기능인지 알기 어려워 on/off가 드러나는 스위치로 바꿨다. */
+.theme-switch {
+    background: none;
+    border: 0;
+    padding: 0;
     cursor: pointer;
-    color: var(--text-secondary);
-    transition: all var(--transition);
+    line-height: 0;
 }
 
-.theme-toggle-btn:hover {
+.theme-switch-track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 58px;
+    height: 30px;
+    padding: 0 7px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-secondary);
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.theme-switch:hover .theme-switch-track {
     border-color: var(--border-hover);
-    color: var(--text-primary);
 }
 
-footer .theme-toggle-btn {
-    margin: 16px auto 0;
-    display: block;
+.theme-switch:focus-visible .theme-switch-track {
+    outline: 2px solid var(--accent, #5b8dee);
+    outline-offset: 2px;
+}
+
+.theme-switch-icon {
+    font-size: 0.78rem;
+    line-height: 1;
+    color: var(--text-secondary);
+    z-index: 1;
+}
+
+.theme-switch-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    transition: transform var(--transition);
+}
+
+/* 다크 모드일 때 손잡이가 달 쪽으로 이동 */
+:root[data-theme="dark"] .theme-switch-thumb {
+    transform: translateX(28px);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-switch-thumb {
+        transform: translateX(28px);
+    }
 }
 
 /* ===== Home Header (portal) ===== */
@@ -679,6 +715,86 @@ footer .theme-toggle-btn {
     font-size: 0.72rem;
     color: var(--text-secondary);
     text-align: right;
+}
+
+/* ===== Region tabs / article links ===== */
+.tab-count {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--bg-secondary);
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+
+.tab-button.active .tab-count {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.news-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+    font-size: 0.8rem;
+}
+
+.news-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+}
+
+.news-links a:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--border-hover);
+}
+
+.news-links .detail-link {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ===== Overseas detail page ===== */
+.article-page {
+    max-width: 760px;
+}
+
+.article-detail {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+}
+
+.article-headline {
+    margin: 0 0 12px;
+    font-size: 1.45rem;
+    line-height: 1.4;
+    color: var(--text-primary);
+}
+
+.article-body {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text-primary);
+}
+
+.article-body p {
+    margin: 0 0 16px;
+}
+
+.article-note {
+    margin-top: 22px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
 }
 
 /* ===== Category Preview Grid (portal home) ===== */
