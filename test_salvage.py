@@ -271,6 +271,53 @@ def test_dead_category_key_falls_back_to_working_key():
                 os.environ[name] = v
 
 
+def test_probe_timeout_does_not_discard_key():
+    """
+    NIM은 모델이 식어 있으면 첫 요청에서 예열하느라 수십 초가 걸린다. 점검이
+    타임아웃됐다고 키를 버리면 멀쩡한 키 8개 중 7개를 버리는 일이 실제로 벌어졌다
+    (working keys: 1로 떨어져 전부 한 키에 몰렸다). 타임아웃은 '판단 불가'여야 한다.
+    """
+    import requests
+
+    def timeout_post(*a, **k):
+        raise requests.exceptions.ReadTimeout("read timed out")
+
+    orig_post = requests.post
+    orig_status = dict(llm_client.KEY_STATUS)
+    try:
+        requests.post = timeout_post
+        llm_client.KEY_STATUS.clear()
+        assert llm_client.probe_key("some-key", "politics") is True, \
+            "타임아웃인데 키를 버렸다 (멀쩡한 키가 폐기됨)"
+        assert "확인 불가" in llm_client.KEY_STATUS["politics"], \
+            f"판단 불가로 기록되지 않았다: {llm_client.KEY_STATUS}"
+    finally:
+        requests.post = orig_post
+        llm_client.KEY_STATUS.clear()
+        llm_client.KEY_STATUS.update(orig_status)
+
+
+def test_rate_limited_key_is_kept():
+    """429는 rate limit이지 키 문제가 아니다 — 버리면 안 된다."""
+    import requests
+
+    class Resp:
+        status_code = 429
+        ok = False
+        text = "rate limited"
+
+    orig_post = requests.post
+    orig_status = dict(llm_client.KEY_STATUS)
+    try:
+        requests.post = lambda *a, **k: Resp()
+        llm_client.KEY_STATUS.clear()
+        assert llm_client.probe_key("k", "world") is True, "429인데 키를 버렸다"
+    finally:
+        requests.post = orig_post
+        llm_client.KEY_STATUS.clear()
+        llm_client.KEY_STATUS.update(orig_status)
+
+
 def test_concurrency_scales_with_working_keys():
     """살아있는 키가 하나면 동시 호출을 줄이고, 많으면 늘려야 한다."""
     assert llm_client.set_concurrency(1) < llm_client.set_concurrency(8), \
@@ -335,6 +382,8 @@ def main():
     test_rate_limit_retry_waits_and_gives_up_cleanly()
     test_retry_after_header_is_clamped()
     test_dead_category_key_falls_back_to_working_key()
+    test_probe_timeout_does_not_discard_key()
+    test_rate_limited_key_is_kept()
     test_concurrency_scales_with_working_keys()
     test_prose_score_separates_body_from_headline_list()
     test_needs_body_targets_short_and_truncated()

@@ -183,12 +183,22 @@ def _retry_after_seconds(resp) -> Optional[int]:
         return None
 
 
+PROBE_TIMEOUT = 120
+# 키를 '못 쓴다'고 단정할 수 있는 응답만 나열한다. 타임아웃은 여기 없다 —
+# NIM은 모델 인스턴스가 식어 있으면 첫 요청에서 모델을 올리느라 수십 초가 걸리고,
+# 그걸 죽은 키로 판정하면 멀쩡한 키를 버리게 된다(실제로 8개 중 7개를 버렸다).
+_FATAL_KEY_STATUSES = (400, 401, 403, 404)
+
+
 def probe_key(api_key: Optional[str], label: str) -> bool:
     """
-    키 하나가 실제로 쓸 수 있는지 최소 호출로 확인한다(출력 8토큰).
-    카테고리별 키를 8개나 쓰게 되면서, 그중 하나가 잘못돼도 '전부 실패'로만 보여
-    어느 키가 문제인지 알 수 없었다 — 실행 요약에 키별로 찍어 바로 짚게 한다.
-    성공/실패와 사유를 KEY_STATUS[label]에 남긴다.
+    키 하나를 최소 호출로 찔러 보고 상태를 KEY_STATUS[label]에 남긴다(출력 8토큰).
+    카테고리별 키를 8개 쓰게 되면서, 하나가 잘못돼도 '전부 실패'로만 보여
+    어느 키가 문제인지 알 수 없었기 때문이다.
+
+    반환값은 '이 키를 쓸 것인가'다. 인증 실패처럼 확실한 경우만 False이고,
+    타임아웃·네트워크 오류는 판단 불가로 보고 True를 준다 — 점검 실패로
+    멀쩡한 키를 버리는 것이 훨씬 손해다. 덤으로 이 호출이 모델 예열도 해준다.
     """
     if not api_key:
         KEY_STATUS[label] = "미설정"
@@ -202,22 +212,24 @@ def probe_key(api_key: Optional[str], label: str) -> bool:
                 "model": NVIDIA_MODEL,
                 "messages": [{"role": "user", "content": "ping"}],
                 "max_tokens": 8, "temperature": 0, "stream": False,
+                "chat_template_kwargs": {"enable_thinking": False},
             },
-            timeout=30,
+            timeout=PROBE_TIMEOUT,
         )
     except Exception as e:
-        KEY_STATUS[label] = f"연결 실패({type(e).__name__})"
-        return False
+        # 판단 불가 — 키를 버리지 않고 그대로 쓴다
+        KEY_STATUS[label] = f"확인 불가({type(e).__name__}) — 그대로 사용"
+        return True
 
     if resp.ok:
         KEY_STATUS[label] = "정상"
         return True
-    # 401/403은 키 문제, 429는 rate limit(키 자체는 유효)
-    if resp.status_code == 429:
-        KEY_STATUS[label] = "429 rate limit (키는 유효)"
-        return True
-    KEY_STATUS[label] = f"HTTP {resp.status_code}: {resp.text[:120]}"
-    return False
+    if resp.status_code in _FATAL_KEY_STATUSES:
+        KEY_STATUS[label] = f"사용 불가 HTTP {resp.status_code}: {resp.text[:100]}"
+        return False
+    # 429(rate limit)/5xx는 키 자체 문제가 아니다
+    KEY_STATUS[label] = f"HTTP {resp.status_code} (키는 유효, 재시도 대상)"
+    return True
 
 
 def key_status_report() -> str:

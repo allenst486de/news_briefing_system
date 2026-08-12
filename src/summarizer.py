@@ -207,12 +207,18 @@ def resolve_keys(category_keys: List[str]) -> Dict[str, Optional[str]]:
         distinct.setdefault(value, []).append(key)
 
     common = os.getenv("NVIDIA_API_KEY")
-    usable = {}
-    for value, owners in distinct.items():
+
+    def probe(item):
+        value, owners = item
         label = ",".join(sorted(owners))
         if value and value == common:
             label += " (공용)"
-        usable[value] = llm_client.probe_key(value, label)
+        return value, llm_client.probe_key(value, label)
+
+    # 순차로 찌르면 NIM 콜드스타트 지연(모델 예열)이 앞선 항목에 몰려 실제로
+    # 멀쩡한 키까지 느리게 응답한 것처럼 보인다 — 병렬로 찔러 한 번에 예열시킨다
+    with ThreadPoolExecutor(max_workers=len(distinct) or 1) as pool:
+        usable = dict(pool.map(probe, distinct.items()))
 
     fallback = next((v for v, ok in usable.items() if ok), None)
     resolved = {}
