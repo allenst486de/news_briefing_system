@@ -22,6 +22,12 @@ PREVIEW_COUNT = 5
 AI_PREVIEW_COUNT = 3
 FEED_ITEMS_PER_CATEGORY = 3
 KST = timezone(timedelta(hours=9))
+_WEEKDAYS_KO = ['월', '화', '수', '목', '금', '토', '일']
+
+
+def date_with_weekday(dt) -> str:
+    """'2026-08-12 (수)' — 화면 표시용. 폴더 경로에는 쓰지 않는다."""
+    return f"{dt.strftime('%Y-%m-%d')} ({_WEEKDAYS_KO[dt.weekday()]})"
 
 
 class HTMLGenerator:
@@ -77,6 +83,7 @@ class HTMLGenerator:
         # 러너는 UTC라 naive now()를 쓰면 06시 KST 발행분이 전날로 찍힌다
         now = datetime.now(KST)
         date_str = now.strftime('%Y-%m-%d')
+        date_full = date_with_weekday(now)   # 화면에는 요일까지 표시
         date_path = now.strftime('%Y/%m/%d')
 
         output_path = os.path.join(self.output_dir, date_path)
@@ -126,7 +133,8 @@ class HTMLGenerator:
 
             self._generate_briefing_page(
                 category=category, regions=buckets.get(category, {}), output_file=file_path,
-                date_str=date_str, date_path=date_path, nav_categories=nav_categories,
+                date_str=date_str, date_full=date_full, date_path=date_path,
+                nav_categories=nav_categories,
                 indicators=indicators, stock_picks=stock_picks,
                 page_rel=f'/{date_path}/{html_file}',
             )
@@ -136,7 +144,7 @@ class HTMLGenerator:
         # 아카이브는 홈에서 링크하지 않는다 — 과거 기록은 직접 링크를 아는 사람만
         archive_file = obfuscate('archive.html', salt, 'archive')
         self._update_archive(date_str, date_path, archive_file)
-        self._generate_index_page(buckets, date_str, date_path, nav_categories,
+        self._generate_index_page(buckets, date_str, date_full, date_path, nav_categories,
                                    top10_by_region, indicators)
         self._generate_feed_xml(buckets, date_str)
         self._generate_robots_txt()
@@ -216,7 +224,8 @@ class HTMLGenerator:
     def _generate_briefing_page(self, category: str, regions: Dict[str, List[NewsArticle]],
                                  output_file: str, date_str: str, date_path: str,
                                  nav_categories: List[Dict], indicators: Optional[Dict] = None,
-                                 stock_picks: Optional[Dict] = None, page_rel: str = ''):
+                                 stock_picks: Optional[Dict] = None, page_rel: str = '',
+                                 date_full: str = ''):
         """개별 브리핑 페이지 생성 — 국내/해외 탭으로 나눠 렌더링"""
         template = self.env.get_template('briefing.html')
         category_name = self.CATEGORY_NAMES[category]
@@ -239,6 +248,7 @@ class HTMLGenerator:
             category_key=category,
             category_name=category_name,
             date=date_str,
+            date_full=date_full or date_str,
             region_blocks=region_blocks,
             ai_items=ai_items,
             indicators=indicators if category == 'economy' else None,
@@ -307,7 +317,8 @@ class HTMLGenerator:
         self.logger.info(f"Archive written to {archive_file_name} (not linked from home)")
 
     def _generate_index_page(self, buckets: Dict[str, Dict[str, List[NewsArticle]]],
-                              date_str: str, date_path: str, nav_categories: List[Dict],
+                              date_str: str, date_full: str, date_path: str,
+                              nav_categories: List[Dict],
                               top10_by_region: Dict[str, List[Dict]],
                               indicators: Optional[Dict] = None):
         """포털형 홈페이지 생성 — Top10 카드 + 카테고리 미리보기 + AI 소식 미리보기 + 헤더"""
@@ -340,6 +351,7 @@ class HTMLGenerator:
 
         html_content = template.render(
             date=date_str,
+            date_full=date_full,
             indicators=indicators,
             top10_blocks=top10_blocks,
             category_previews=category_previews,

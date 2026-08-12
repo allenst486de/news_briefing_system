@@ -11,6 +11,7 @@ from typing import Dict, List, Optional
 
 from .collectors.base_collector import NewsArticle
 from .collectors.sources import CATEGORY_META
+from .utils import llm_client
 from .utils.llm_client import call_llm_json
 from .utils.importance_analyzer import ImportanceAnalyzer, AI_SUBTYPE_LABELS
 from .utils.rss_utils import clean_html, strip_title_prefix
@@ -193,14 +194,51 @@ def summarize_region(category_key: str, category_name: str, articles: List[NewsA
     return [article for chunk_result in results for article in chunk_result]
 
 
+def resolve_keys(category_keys: List[str]) -> Dict[str, Optional[str]]:
+    """
+    카테고리별 키를 실제로 한 번 찔러 보고, 죽은 키는 살아있는 키로 대체한다.
+    키가 8개로 늘면서 그중 하나만 잘못돼도 화면에는 '전부 실패'로만 보여
+    어느 키가 문제인지 알 수 없었다. 여기서 키별 상태를 남기고,
+    쓸 수 없는 키는 공용 키(또는 살아있는 아무 키)로 라우팅한다.
+    """
+    distinct = {}
+    for key in category_keys:
+        value = category_api_key(key)
+        distinct.setdefault(value, []).append(key)
+
+    common = os.getenv("NVIDIA_API_KEY")
+    usable = {}
+    for value, owners in distinct.items():
+        label = ",".join(sorted(owners))
+        if value and value == common:
+            label += " (공용)"
+        usable[value] = llm_client.probe_key(value, label)
+
+    fallback = next((v for v, ok in usable.items() if ok), None)
+    resolved = {}
+    for key in category_keys:
+        value = category_api_key(key)
+        resolved[key] = value if usable.get(value) else fallback
+        if not usable.get(value) and fallback:
+            logger.warning(f"[{key}] 전용 키를 쓸 수 없어 다른 키로 대체함")
+
+    logger.info("LLM 키 점검:\n" + llm_client.key_status_report())
+    # 살아있는 키가 하나뿐이면 동시 호출을 줄여야 429가 안 터진다
+    llm_client.set_concurrency(sum(1 for ok in usable.values() if ok))
+    return resolved
+
+
 def summarize_all(buckets: Dict[str, Dict[str, List[NewsArticle]]]) -> None:
     """
     {카테고리: {지역: [기사]}} 전체를 in-place로 요약한다.
     카테고리마다 전용 API 키를 쓰므로 8개 카테고리를 동시에 돌린다 — 순차로 하면
     호출 수가 늘어난 만큼 그대로 벽시계 시간이 되어 30분 제한을 넘긴다.
     """
+    keys = list(buckets.keys())
+    resolved = resolve_keys(keys)
+
     def run(category_key):
-        api_key = category_api_key(category_key)
+        api_key = resolved.get(category_key) or category_api_key(category_key)
         category_name = CATEGORY_META[category_key]["name"]
         for region in ("domestic", "overseas"):
             articles = buckets[category_key].get(region) or []

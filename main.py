@@ -101,6 +101,7 @@ def _report_llm_status(logger) -> None:
     Actions 화면에서 바로 보이게 한다.
     """
     summary = llm_client.stats_summary()
+    keys = llm_client.key_status_report()
     stats = llm_client.LLM_STATS
     degraded = stats["ok"] == 0 and stats["calls"] > 0
     headline = "❌ LLM 전부 실패 — 요약/번역이 규칙기반으로 대체됨" if degraded else "✅ LLM 정상 동작"
@@ -113,6 +114,8 @@ def _report_llm_status(logger) -> None:
     try:
         with open(step_summary, 'a', encoding='utf-8') as f:
             f.write(f"### LLM 요약·번역 상태\n\n{headline}\n\n```\n{summary}\n```\n")
+            # 키가 8개라 어느 키가 문제인지 같이 보여야 짚을 수 있다
+            f.write(f"\n**API 키 점검**\n\n```\n{keys}\n```\n")
     except OSError as e:
         logger.warning(f"Could not write step summary: {e}")
 

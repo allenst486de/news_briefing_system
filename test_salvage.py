@@ -226,6 +226,59 @@ def test_retry_after_header_is_clamped():
     assert llm_client._retry_after_seconds(R(None)) is None
 
 
+def test_dead_category_key_falls_back_to_working_key():
+    """
+    카테고리 키 8개 중 하나가 잘못돼도 그 카테고리만 통째로 실패하면 안 된다.
+    죽은 키는 살아있는 키로 대체되고, 키별 상태가 기록돼야 한다.
+    """
+    import requests
+
+    class Resp:
+        def __init__(self, code): self.status_code = code; self.ok = code == 200; self.text = 'x'
+
+    # WORLD 키만 401, 나머지는 정상
+    def fake_post(url, **kw):
+        auth = kw.get('headers', {}).get('Authorization', '')
+        return Resp(401 if 'bad-world' in auth else 200)
+
+    saved_env = {}
+    cats = ['politics', 'world']
+    for c in cats:
+        saved_env[c] = os.environ.get(f'NVIDIA_API_KEY_{c.upper()}')
+    orig_post = requests.post
+    orig_status = dict(llm_client.KEY_STATUS)
+    try:
+        os.environ['NVIDIA_API_KEY_POLITICS'] = 'good-politics'
+        os.environ['NVIDIA_API_KEY_WORLD'] = 'bad-world'
+        requests.post = fake_post
+        llm_client.KEY_STATUS.clear()
+        resolved = summarizer.resolve_keys(cats)
+
+        assert resolved['politics'] == 'good-politics', f"정상 키가 유지되지 않았다: {resolved}"
+        assert resolved['world'] == 'good-politics', \
+            f"죽은 키가 살아있는 키로 대체되지 않았다: {resolved}"
+        joined = " ".join(llm_client.KEY_STATUS.values())
+        assert 'HTTP 401' in joined, f"키 실패 사유가 기록되지 않았다: {llm_client.KEY_STATUS}"
+    finally:
+        requests.post = orig_post
+        llm_client.KEY_STATUS.clear()
+        llm_client.KEY_STATUS.update(orig_status)
+        for c, v in saved_env.items():
+            name = f'NVIDIA_API_KEY_{c.upper()}'
+            if v is None:
+                os.environ.pop(name, None)
+            else:
+                os.environ[name] = v
+
+
+def test_concurrency_scales_with_working_keys():
+    """살아있는 키가 하나면 동시 호출을 줄이고, 많으면 늘려야 한다."""
+    assert llm_client.set_concurrency(1) < llm_client.set_concurrency(8), \
+        "키 개수에 따라 동시 호출 수가 조정되지 않는다"
+    assert llm_client.set_concurrency(100) <= llm_client._MAX_CONCURRENT, "상한이 적용되지 않음"
+    assert llm_client.set_concurrency(0) >= llm_client._MIN_CONCURRENT, "하한이 적용되지 않음"
+
+
 def test_prose_score_separates_body_from_headline_list():
     """
     본문 추출이 '관련기사 헤드라인 목록'을 본문으로 착각하면 엉뚱한 요약이 나온다.
@@ -281,6 +334,8 @@ def main():
     test_body_budget_is_global_not_per_category()
     test_rate_limit_retry_waits_and_gives_up_cleanly()
     test_retry_after_header_is_clamped()
+    test_dead_category_key_falls_back_to_working_key()
+    test_concurrency_scales_with_working_keys()
     test_prose_score_separates_body_from_headline_list()
     test_needs_body_targets_short_and_truncated()
     print("OK: salvage + chunking + budget + body-extraction self-checks passed")

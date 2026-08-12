@@ -5,9 +5,10 @@
         {% include '_theme_toggle.html' %}
     </div>
 
+    {# 날짜 → 시간 → 날씨 순서 (읽는 순서가 자연스럽도록) #}
     <div class="home-datetime">
+        <span class="home-date">📅 {{ date_full }}</span>
         <span id="live-clock">--:--:--</span>
-        <span class="home-date">📅 {{ date }}</span>
         <span class="home-weather" id="weather-widget" data-loading="true">날씨 확인 중…</span>
     </div>
 

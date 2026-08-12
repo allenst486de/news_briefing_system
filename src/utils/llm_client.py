@@ -45,6 +45,25 @@ _deadline = None
 _RATE_LIMIT_BACKOFF = [5, 15]
 _RATE_LIMIT_MAX_WAIT = 30
 
+# 전체 동시 요청 상한. 카테고리 8개 × 청크 워커를 곱하면 20개가 넘게 붙는데,
+# 살아있는 키가 하나뿐이면 그게 전부 한 계정의 rate limit으로 몰린다.
+# 실제로 쓸 수 있는 키 개수를 확인한 뒤 set_concurrency()로 조정한다.
+_PER_KEY_CONCURRENCY = 2
+_MIN_CONCURRENT, _MAX_CONCURRENT = 3, 16
+_slot = threading.Semaphore(_MIN_CONCURRENT)
+
+
+def set_concurrency(working_keys: int) -> int:
+    """쓸 수 있는 키 개수에 맞춰 전체 동시 호출 수를 정한다. 요약 시작 전에만 호출."""
+    global _slot
+    limit = max(_MIN_CONCURRENT, min(working_keys * _PER_KEY_CONCURRENCY, _MAX_CONCURRENT))
+    _slot = threading.Semaphore(limit)
+    logger.info(f"LLM concurrency set to {limit} (working keys: {working_keys})")
+    return limit
+
+# 키별 상태 — 실행 시작 시 probe_key로 채우고 실행 요약에 찍는다
+KEY_STATUS = {}
+
 
 def _record(key: str, detail: Optional[str] = None) -> None:
     with _stats_lock:
@@ -117,7 +136,10 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
 
     for attempt in range(retries + 1):
         try:
-            resp = requests.post(NVIDIA_API_URL, headers=headers, json=payload, timeout=timeout)
+            # 세마포어는 POST 구간만 잡는다 — 백오프 sleep 동안 붙잡고 있으면
+            # 다른 스레드가 빈 슬롯을 못 쓴다
+            with _slot:
+                resp = requests.post(NVIDIA_API_URL, headers=headers, json=payload, timeout=timeout)
             if resp.status_code == 429:
                 # 병렬 호출 중이라 rate limit이 실제로 걸린다. 1~2초 후 재시도하면
                 # 대개 또 걸리므로 서버가 알려주는 Retry-After를 우선 따른다.
@@ -159,6 +181,50 @@ def _retry_after_seconds(resp) -> Optional[int]:
         return max(1, min(int(float(raw)), _RATE_LIMIT_MAX_WAIT))
     except (TypeError, ValueError):
         return None
+
+
+def probe_key(api_key: Optional[str], label: str) -> bool:
+    """
+    키 하나가 실제로 쓸 수 있는지 최소 호출로 확인한다(출력 8토큰).
+    카테고리별 키를 8개나 쓰게 되면서, 그중 하나가 잘못돼도 '전부 실패'로만 보여
+    어느 키가 문제인지 알 수 없었다 — 실행 요약에 키별로 찍어 바로 짚게 한다.
+    성공/실패와 사유를 KEY_STATUS[label]에 남긴다.
+    """
+    if not api_key:
+        KEY_STATUS[label] = "미설정"
+        return False
+
+    try:
+        resp = requests.post(
+            NVIDIA_API_URL,
+            headers={"Authorization": f"Bearer {api_key}"},
+            json={
+                "model": NVIDIA_MODEL,
+                "messages": [{"role": "user", "content": "ping"}],
+                "max_tokens": 8, "temperature": 0, "stream": False,
+            },
+            timeout=30,
+        )
+    except Exception as e:
+        KEY_STATUS[label] = f"연결 실패({type(e).__name__})"
+        return False
+
+    if resp.ok:
+        KEY_STATUS[label] = "정상"
+        return True
+    # 401/403은 키 문제, 429는 rate limit(키 자체는 유효)
+    if resp.status_code == 429:
+        KEY_STATUS[label] = "429 rate limit (키는 유효)"
+        return True
+    KEY_STATUS[label] = f"HTTP {resp.status_code}: {resp.text[:120]}"
+    return False
+
+
+def key_status_report() -> str:
+    if not KEY_STATUS:
+        return "(키 점검 기록 없음)"
+    width = max(len(k) for k in KEY_STATUS)
+    return "\n".join(f"{k.ljust(width)}  {v}" for k, v in sorted(KEY_STATUS.items()))
 
 
 def _extract_json_block(text: str) -> Optional[str]:
