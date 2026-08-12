@@ -20,6 +20,10 @@ class NewsArticle:
         self.category = category
         self.is_important = False  # 중요도 플래그
         self.body = ""  # 원문 본문 (article_body.enrich가 채움, 요약 입력으로만 사용)
+        self.date_is_approximate = False  # 피드에 날짜가 없어 목록 순서로 추정한 경우
+        self.region = "domestic"  # sources.py의 region — 국내/해외 탭 분리 기준
+        self.language = "ko"
+        self.detail_path = ""  # 해외 기사 상세 요약 페이지 (있을 때만)
         
     def to_dict(self) -> Dict:
         """딕셔너리로 변환"""

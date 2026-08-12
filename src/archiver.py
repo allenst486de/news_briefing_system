@@ -44,7 +44,13 @@ def compact_month(archive_dir: str, year_month: str, day_snapshots: List[Dict]) 
             continue
         included.add(date_str)
 
-        for category, articles in snapshot.get('categories', {}).items():
+        for category, entry in snapshot.get('categories', {}).items():
+            # 스냅샷 구조가 리스트(구버전) → {지역: 리스트}(현재)로 바뀌었다.
+            # 예전 아카이브도 계속 압축해야 하므로 둘 다 받는다.
+            if isinstance(entry, dict):
+                articles = [a for arts in entry.values() for a in arts]
+            else:
+                articles = entry
             cat_entry = summary['categories'].setdefault(category, {'article_count': 0, 'headlines': []})
             for article in articles:
                 cat_entry['headlines'].append({

@@ -3,6 +3,11 @@
 .env.*
 !.env.example
 
+# 페이지 URL 난수화 salt — 커밋되면 공개 저장소에서 그대로 보여
+# 난수화가 무의미해진다. 안정적인 링크를 원하면 PAGE_SALT Secret으로 줄 것.
+data/raw/page_salt.txt
+page_salt.txt
+
 # Python
 __pycache__/
 *.py[cod]

@@ -19,6 +19,7 @@
         <header>
             <h1>📰 일일 뉴스 브리핑</h1>
             <p class="subtitle">{{ category_name }}</p>
+            {% include '_theme_toggle.html' %}
         </header>
 
         <div class="date-info">
@@ -29,7 +30,6 @@
             {% for cat in nav_categories %}
             <a href="{{ cat.url }}" {% if cat.key==category_key %}class="active"{% endif %}>{{ cat.icon }} {{ cat.name }}</a>
             {% endfor %}
-            <a href="{{ archive_path }}">📚 아카이브</a>
         </nav>
 
         {% if category_key == 'economy' and stock_picks %}
@@ -43,49 +43,73 @@
         <section class="news-section">
             <h2 class="section-title">{% if category_key == 'it' %}일반 IT 뉴스{% else %}오늘의 주요 뉴스{% endif %}</h2>
 
-            {% if articles %}
-            <div class="news-list">
-                {% for article in articles %}
-                <div class="news-item {% if article.is_important %}important{% endif %}">
-                    <div class="news-title">
-                        <a href="{{ article.link }}" target="_blank" rel="noopener">{{ article.title }}</a>
-                    </div>
-                    <div class="news-meta">
-                        <span class="news-source">{{ article.source }}</span>
-                        <span class="news-date">{{ article.published }}</span>
-                        {% if article.is_important %}
-                        <span class="important-badge">⭐ 주요 뉴스</span>
-                        {% endif %}
-                    </div>
-                    {% if article.summary %}
-                    <p class="news-summary">{{ article.summary }}</p>
-                    {% endif %}
+            {# 국내/해외를 탭으로 나눠 보여준다 — 예전엔 합쳐서 상위 30건만 잘라
+               해외 기사가 국내에 밀려 거의 안 보였다 #}
+            <div class="tab-box" data-tabs>
+                <div class="tab-buttons">
+                    {% for block in region_blocks %}
+                    <button type="button" class="tab-button {% if loop.first %}active{% endif %}"
+                            data-tab-target="region-{{ block.key }}">
+                        {{ block.icon }} {{ block.name }} <span class="tab-count">{{ block.articles | length }}</span>
+                    </button>
+                    {% endfor %}
+                </div>
 
-                    {% if article.original_title %}
-                    <details class="original-toggle">
-                        <summary>원문 보기 (English)</summary>
-                        <div class="original-content">
-                            <p><strong>{{ article.original_title }}</strong></p>
-                            {% if article.original_summary %}
-                            <p>{{ article.original_summary }}</p>
+                {% for block in region_blocks %}
+                <div class="tab-panel {% if loop.first %}active{% endif %}" data-tab-panel="region-{{ block.key }}">
+                    {% if block.articles %}
+                    <div class="news-list">
+                        {% for article in block.articles %}
+                        <div class="news-item {% if article.is_important %}important{% endif %}">
+                            <div class="news-title">
+                                <a href="{{ article.link }}" target="_blank" rel="noopener">{{ article.title }}</a>
+                            </div>
+                            <div class="news-meta">
+                                <span class="news-source">{{ article.source }}</span>
+                                <span class="news-date">{{ article.published }}</span>
+                                {% if article.is_important %}
+                                <span class="important-badge">⭐ 주요 뉴스</span>
+                                {% endif %}
+                            </div>
+                            {% if article.summary %}
+                            <p class="news-summary">{{ article.summary }}</p>
+                            {% endif %}
+
+                            <div class="news-links">
+                                <a href="{{ article.link }}" target="_blank" rel="noopener">원문 보기</a>
+                                {% if article.detail_path %}
+                                {# 유료 매체는 원문을 못 여는 경우가 있어 한국어 상세 요약을 따로 제공 #}
+                                <a href="{{ article.detail_path }}" class="detail-link">한국어 상세 요약</a>
+                                {% endif %}
+                            </div>
+
+                            {% if article.original_title %}
+                            <details class="original-toggle">
+                                <summary>원문 제목·요약 (English)</summary>
+                                <div class="original-content">
+                                    <p><strong>{{ article.original_title }}</strong></p>
+                                    {% if article.original_summary %}
+                                    <p>{{ article.original_summary }}</p>
+                                    {% endif %}
+                                </div>
+                            </details>
                             {% endif %}
                         </div>
-                    </details>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="empty-state">
+                        <div class="icon">📭</div>
+                        <p>{{ block.name }} 뉴스가 수집되지 않았습니다.</p>
+                    </div>
                     {% endif %}
                 </div>
                 {% endfor %}
             </div>
-            {% else %}
-            <div class="empty-state">
-                <div class="icon">📭</div>
-                <p>현재 수집된 뉴스가 없습니다.</p>
-            </div>
-            {% endif %}
         </section>
 
         <footer>
-            <p>자동 생성된 뉴스 브리핑 · <a href="{{ archive_path }}">아카이브</a></p>
-            <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="라이트/다크 모드 전환">🌓</button>
+            <p>자동 생성된 뉴스 브리핑 · <a href="{{ index_path }}">홈</a></p>
         </footer>
     </div>
     <script src="{{ site_js_path }}"></script>

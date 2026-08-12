@@ -1,16 +1,28 @@
-{# 홈 최상단 크로스카테고리 Top10 카드뉴스 #}
-{% if top10 %}
+{# 홈 최상단 크로스카테고리 Top10 — 국내/해외를 탭으로 나눠 각각 10건 #}
+{% if top10_blocks and top10_blocks | selectattr('cards') | list %}
 <section class="top10-section">
     <h2 class="section-title">🔥 오늘의 Top 10</h2>
-    <div class="top10-grid">
-        {% for item in top10 %}
-        <a class="top10-card" href="{{ item.link }}" target="_blank" rel="noopener">
-            <span class="top10-rank-badge">{{ item.rank }}</span>
-            <span class="top10-category-tag" style="background:var(--tag-{{ item.category }}, var(--tag-general))">{{ item.category_name }}</span>
-            <h3>{{ item.card_headline }}</h3>
-            <p>{{ item.card_blurb }}</p>
-            <span class="top10-source">{{ item.source }}</span>
-        </a>
+    <div class="tab-box" data-tabs>
+        <div class="tab-buttons">
+            {% for block in top10_blocks %}
+            <button type="button" class="tab-button {% if loop.first %}active{% endif %}"
+                    data-tab-target="top10-{{ block.key }}">{{ block.icon }} {{ block.name }}</button>
+            {% endfor %}
+        </div>
+        {% for block in top10_blocks %}
+        <div class="tab-panel {% if loop.first %}active{% endif %}" data-tab-panel="top10-{{ block.key }}">
+            <div class="top10-grid">
+                {% for item in block.cards %}
+                <a class="top10-card" href="{{ item.link }}" target="_blank" rel="noopener">
+                    <span class="top10-rank-badge">{{ item.rank }}</span>
+                    <span class="top10-category-tag" style="background:var(--tag-{{ item.category }}, var(--tag-general))">{{ item.category_name }}</span>
+                    <h3>{{ item.card_headline }}</h3>
+                    <p>{{ item.card_blurb }}</p>
+                    <span class="top10-source">{{ item.source }}</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
         {% endfor %}
     </div>
 </section>

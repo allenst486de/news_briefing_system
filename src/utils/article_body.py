@@ -12,6 +12,7 @@ RSS description만으로는 요약 근거가 부족한 문제를 보완한다 �
 import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
 from typing import List, Optional
 
 import requests
@@ -32,10 +33,9 @@ _deadline = None
 # RSS 요약문이 이보다 짧으면(또는 …로 잘려 있으면) 본문을 시도한다
 _SHORT_SUMMARY_CHARS = 300
 _MIN_BODY_CHARS = 400
-# 250자 요약을 쓰는 데 필요한 만큼만. 기사는 역피라미드 구조라 앞부분에 핵심이
-# 몰려 있어 900자면 충분하고, 1500자를 쓰면 청크당 프롬프트가 12,000자까지
-# 커져 호출 지연과 rate limit 압박만 늘어난다.
-_MAX_BODY_CHARS = 900
+# 해외 기사는 600~800자 상세 요약까지 만들어야 해서 근거가 더 필요하다.
+# 카테고리별 전용 API 키로 병렬화한 뒤 여유가 생겨 900 → 1500으로 되돌렸다.
+_MAX_BODY_CHARS = 1500
 
 _DROP_XPATH = (
     '//script | //style | //noscript | //nav | //header | //footer | //aside '
@@ -80,13 +80,41 @@ def _node_text(node) -> str:
     return _clean(node.text_content())
 
 
-def fetch_body(url: str) -> Optional[str]:
-    """기사 본문 텍스트. 못 가져오면 None."""
+# 매체마다 property= / name= 을 섞어 쓴다(한겨레는 name=) — 속성명은 가리지 않는다
+_META_DATE_PATTERNS = (
+    re.compile(r'article:published_time["\'][^>]*?content=["\']([^"\']+)', re.I),
+    re.compile(r'content=["\']([^"\']+)["\'][^>]*?article:published_time', re.I),
+    re.compile(r'["\']datePublished["\']\s*:\s*["\']([^"\']+)', re.I),
+)
+
+
+def extract_published(page_html: str):
+    """기사 페이지 메타태그의 발행일. 한겨레처럼 RSS에 날짜가 없는 매체용."""
+    for pattern in _META_DATE_PATTERNS:
+        match = pattern.search(page_html)
+        if not match:
+            continue
+        try:
+            dt = datetime.fromisoformat(match.group(1).strip().replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    return None
+
+
+def fetch_body(url: str, want_date: bool = False):
+    """
+    기사 본문 텍스트. 못 가져오면 None.
+    want_date=True면 (본문, 발행일) 튜플을 준다 — 발행일도 못 찾으면 None.
+    """
     try:
         resp = requests.get(url, headers=_HEADERS, timeout=_TIMEOUT)
         if not resp.ok or not resp.content:
-            return None
+            return (None, None) if want_date else None
 
+        published = extract_published(resp.text) if want_date else None
         tree = lxml_html.fromstring(resp.content)
         for el in tree.xpath(_DROP_XPATH):
             parent = el.getparent()
@@ -101,13 +129,15 @@ def fetch_body(url: str) -> Optional[str]:
             if len(text) >= _MIN_BODY_CHARS and _prose_score(text) >= _MIN_PROSE_SCORE
         ]
         if candidates:
-            return min(candidates, key=len)[:_MAX_BODY_CHARS]
+            body = min(candidates, key=len)[:_MAX_BODY_CHARS]
+        else:
+            # 컨테이너를 못 찾는 레이아웃 — 문서 전체 <p>로 폴백
+            fallback = _paragraph_text(tree)
+            body = fallback[:_MAX_BODY_CHARS] if len(fallback) >= _MIN_BODY_CHARS else None
 
-        # 컨테이너를 못 찾는 레이아웃 — 문서 전체 <p>로 폴백
-        fallback = _paragraph_text(tree)
-        return fallback[:_MAX_BODY_CHARS] if len(fallback) >= _MIN_BODY_CHARS else None
+        return (body, published) if want_date else body
     except Exception:
-        return None
+        return (None, None) if want_date else None
 
 
 def needs_body(article) -> bool:
@@ -132,8 +162,12 @@ def enrich(articles: List) -> int:
         return 0
 
     filled = 0
+    dated = 0
     with ThreadPoolExecutor(max_workers=_WORKERS) as pool:
-        futures = {pool.submit(fetch_body, a.link): a for a in targets}
+        futures = {
+            pool.submit(fetch_body, a.link, getattr(a, "date_is_approximate", False)): a
+            for a in targets
+        }
         for future in as_completed(futures):
             if time.monotonic() > _deadline:
                 # 남은 건은 포기 — RSS 요약문으로 진행한다
@@ -143,12 +177,18 @@ def enrich(articles: List) -> int:
                 break
             article = futures[future]
             try:
-                body = future.result()
+                result = future.result()
             except Exception:
-                body = None
+                result = None
+            body, published = result if isinstance(result, tuple) else (result, None)
             if body:
                 article.body = body
                 filled += 1
+            # 피드에 날짜가 없어 순서로 추정했던 건 진짜 발행일로 교정
+            if published and getattr(article, "date_is_approximate", False):
+                article.published = published
+                article.date_is_approximate = False
+                dated += 1
 
-    logger.info(f"Article bodies fetched: {filled}/{len(targets)} attempted")
+    logger.info(f"Article bodies fetched: {filled}/{len(targets)} attempted, {dated} dates corrected")
     return filled

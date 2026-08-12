@@ -51,7 +51,7 @@ def test_html_output_is_escaped():
         out_file = os.path.join(output_dir, "out.html")
         gen._generate_briefing_page(
             category="politics",
-            articles=[article],
+            regions={"domestic": [article], "overseas": []},
             output_file=out_file,
             date_str="2026-01-01",
             date_path="2026/01/01",

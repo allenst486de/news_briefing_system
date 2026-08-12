@@ -12,10 +12,10 @@ permissions:
 jobs:
   generate-briefing:
     runs-on: ubuntu-latest
-    # 코드 쪽 예산(본문 300초 + LLM 900초)으로 25분 안에 끝나게 잡아뒀지만,
-    # 외부 API가 느린 날 여유가 없으면 통째로 취소된다 — 실제로 30분에 걸려
-    # 두 번 취소됐다. 공개 저장소는 Actions 시간이 무료라 여유를 둔다.
-    timeout-minutes: 45
+    # 30분 안에 반드시 끝나야 한다는 요구사항. 코드 쪽 예산(본문 300초 +
+    # LLM 1200초)이 그 안에 들도록 잡혀 있고, 예산을 넘기면 남은 요약만
+    # 규칙기반으로 낮춰 발행은 끝낸다.
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
@@ -37,6 +37,18 @@ jobs:
           echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> .env
           echo "PAGES_BASE_URL=${{ secrets.PAGES_BASE_URL }}" >> .env
           echo "NVIDIA_API_KEY=${{ secrets.NVIDIA_API_KEY }}" >> .env
+          # 카테고리별 전용 키 — 있으면 8개 카테고리를 동시에 처리한다(없으면 공용 키로 폴백)
+          echo "NVIDIA_API_KEY_POLITICS=${{ secrets.NVIDIA_API_KEY_POLITICS }}" >> .env
+          echo "NVIDIA_API_KEY_ECONOMY=${{ secrets.NVIDIA_API_KEY_ECONOMY }}" >> .env
+          echo "NVIDIA_API_KEY_SOCIETY=${{ secrets.NVIDIA_API_KEY_SOCIETY }}" >> .env
+          echo "NVIDIA_API_KEY_LIFE=${{ secrets.NVIDIA_API_KEY_LIFE }}" >> .env
+          echo "NVIDIA_API_KEY_CULTURE=${{ secrets.NVIDIA_API_KEY_CULTURE }}" >> .env
+          echo "NVIDIA_API_KEY_IT=${{ secrets.NVIDIA_API_KEY_IT }}" >> .env
+          echo "NVIDIA_API_KEY_SCIENCE=${{ secrets.NVIDIA_API_KEY_SCIENCE }}" >> .env
+          echo "NVIDIA_API_KEY_WORLD=${{ secrets.NVIDIA_API_KEY_WORLD }}" >> .env
+          # 페이지 URL 난수화 salt — 없으면 data/ 아래에 자동 생성되지만,
+          # 매 실행이 새 러너라 Secret으로 주지 않으면 날마다 링크가 달라진다
+          echo "PAGE_SALT=${{ secrets.PAGE_SALT }}" >> .env
       
       - name: Run news briefing
         run: python main.py

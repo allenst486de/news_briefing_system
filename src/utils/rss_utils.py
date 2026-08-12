@@ -1,8 +1,9 @@
+import calendar
 import html
 import requests
 import feedparser
 import re
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 
 USER_AGENT = {
@@ -47,9 +48,46 @@ def clean_html(text: str) -> str:
     return html.unescape(stripped)
 
 
-def extract_date(entry, parse_func):
-    date_str = entry.get("published") or entry.get("updated") or ""
-    return parse_func(date_str)
+def extract_date(entry, parse_func, feed_anchor=None, index=0):
+    """
+    발행일 추출. 우선순위:
+      1) feedparser가 이미 파싱해 둔 published_parsed/updated_parsed
+         — RFC822뿐 아니라 ISO 8601(<dc:date>)도 처리한다. 경향신문이
+           ISO를 쓰는데 예전엔 RFC822 파서만 돌려 전부 실패했다.
+      2) 원문 문자열을 parse_func으로 재시도
+      3) 피드에 날짜가 아예 없으면(한겨레) feed_anchor 기준으로 목록 순서를
+         이용해 근사치를 만든다 — RSS는 최신순이라 index가 클수록 오래된 글이다.
+         날짜를 now()로 찍어버리면 그 매체가 항상 '최신'이 되어 정렬 상위를
+         독식하고 다른 매체가 밀려난다(실제로 그랬다).
+    반환: (published, is_approximate)
+    """
+    parsed = entry.get("published_parsed") or entry.get("updated_parsed")
+    if parsed:
+        try:
+            return datetime.fromtimestamp(calendar.timegm(parsed), tz=timezone.utc), False
+        except (ValueError, OverflowError, TypeError):
+            pass
+
+    raw = entry.get("published") or entry.get("updated") or ""
+    if raw:
+        try:
+            return parse_func(raw), False
+        except Exception:
+            pass
+
+    anchor = feed_anchor or datetime.now(timezone.utc)
+    return anchor - timedelta(minutes=index), True
+
+
+def feed_anchor_time(feed):
+    """피드 자체의 갱신 시각 — 항목에 날짜가 없는 피드의 기준점."""
+    parsed = getattr(feed, "feed", {}).get("updated_parsed") if feed else None
+    if parsed:
+        try:
+            return datetime.fromtimestamp(calendar.timegm(parsed), tz=timezone.utc)
+        except (ValueError, OverflowError, TypeError):
+            pass
+    return datetime.now(timezone.utc)
 
 
 _GOOGLE_NEWS_TITLE_SUFFIX = re.compile(r'\s+-\s+[^-]{1,30}$')

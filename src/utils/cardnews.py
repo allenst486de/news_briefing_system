@@ -80,8 +80,9 @@ def _wrap_lines(draw, text: str, font, max_width: float, max_lines: int = 3) -> 
     return lines
 
 
-def generate_top10_card(top10: List[Dict], date_str: str, output_path: str) -> Optional[str]:
-    """성공 시 저장된 파일 경로, 실패 시 None."""
+def generate_top10_card(top10: List[Dict], date_str: str, output_path: str,
+                         region_label: str = "") -> Optional[str]:
+    """성공 시 저장된 파일 경로, 실패 시 None. region_label은 제목에 붙는 국내/해외 구분."""
     if not top10:
         return None
 
@@ -97,7 +98,8 @@ def generate_top10_card(top10: List[Dict], date_str: str, output_path: str) -> O
         img = Image.new('RGB', (_WIDTH, _HEIGHT), _BG)
         draw = ImageDraw.Draw(img)
 
-        draw.text((_MARGIN, 48), "🔥 오늘의 뉴스 Top 10", font=font_title, fill=_TEXT_PRIMARY)
+        heading = f"🔥 오늘의 {region_label} 뉴스 Top 10" if region_label else "🔥 오늘의 뉴스 Top 10"
+        draw.text((_MARGIN, 48), heading, font=font_title, fill=_TEXT_PRIMARY)
         draw.text((_MARGIN, 106), date_str, font=font_date, fill=_TEXT_SECONDARY)
 
         pad = 24

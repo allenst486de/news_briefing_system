@@ -5,7 +5,7 @@ Main Execution Script
 import os
 import sys
 import tempfile
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 
 # 프로젝트 루트를 Python 경로에 추가
@@ -18,6 +18,8 @@ from src.utils.logger import setup_logger
 from src.utils.cardnews import generate_top10_card
 from src.utils import llm_client
 from src import archiver
+
+KST = timezone(timedelta(hours=9))
 
 
 def main():
@@ -46,7 +48,7 @@ def main():
         base_url = os.getenv('PAGES_BASE_URL', '')
 
         generator = HTMLGenerator(template_dir, output_dir, base_url, raw_data_dir=raw_data_dir)
-        page_urls, top10 = generator.generate_all(categorized_news)
+        page_urls, top10_by_region = generator.generate_all(categorized_news)
 
         # 3. 텔레그램 전송
         logger.info("Step 3: Sending Telegram notification...")
@@ -56,12 +58,22 @@ def main():
         if not bot_token or not chat_id:
             logger.warning("Telegram credentials not found. Skipping notification.")
         else:
-            date_str = datetime.now().strftime('%Y-%m-%d')
-            top10_image_path = generate_top10_card(
-                top10, date_str, os.path.join(tempfile.gettempdir(), f'top10_{date_str}.png')
-            )
+            # 러너가 UTC라 naive now()를 쓰면 06시 KST 발행분이 전날로 찍힌다
+            date_str = datetime.now(KST).strftime('%Y-%m-%d')
+            # 국내/해외 인포그래픽을 따로 만들어 둘 다 보낸다
+            images = []
+            for region, label in (('domestic', '국내'), ('overseas', '해외')):
+                cards = top10_by_region.get(region) or []
+                path = generate_top10_card(
+                    cards, date_str,
+                    os.path.join(tempfile.gettempdir(), f'top10_{region}_{date_str}.png'),
+                    region_label=label,
+                )
+                if path:
+                    images.append((path, label))
+
             notifier = TelegramNotifier(bot_token, chat_id, base_url)
-            notifier.send_briefing_sync(page_urls, top10, date_str, top10_image_path)
+            notifier.send_briefing_sync(page_urls, top10_by_region, date_str, images)
 
         # 4. 3개월 지난 자료 압축 롤오버 (실패해도 전체 실행은 성공으로 취급)
         try:

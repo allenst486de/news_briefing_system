@@ -6,20 +6,22 @@ import os
 import json
 import shutil
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from urllib.parse import urlparse
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from .collectors.base_collector import NewsArticle
-from .collectors.sources import CATEGORIES, CATEGORY_META
+from .collectors.sources import CATEGORIES, CATEGORY_META, REGIONS, REGION_META
 from .utils.logger import setup_logger
 from .utils.indicators import get_market_indicators, write_indicators_json
+from .utils.pagekey import load_or_create_salt, obfuscate
 from .utils import stock_data
 from . import summarizer
 
 PREVIEW_COUNT = 5
 AI_PREVIEW_COUNT = 3
 FEED_ITEMS_PER_CATEGORY = 3
+KST = timezone(timedelta(hours=9))
 
 
 class HTMLGenerator:
@@ -50,6 +52,9 @@ class HTMLGenerator:
         else:
             self.base_path = ''
 
+        # 페이지 URL 난수화용 salt — docs/ 밖에 두어 공개되지 않게 한다
+        self.salt = load_or_create_salt(raw_data_dir or os.path.dirname(output_dir))
+
         self.logger.info(f"HTMLGenerator initialized with base_path: '{self.base_path}'")
 
         # Jinja2 환경 설정 (외부 RSS 콘텐츠를 렌더링하므로 autoescape 필수)
@@ -58,18 +63,19 @@ class HTMLGenerator:
             autoescape=select_autoescape(['html', 'xml']),
         )
 
-    def generate_all(self, categorized_news: Dict[str, List[NewsArticle]]):
+    def generate_all(self, buckets: Dict[str, Dict[str, List[NewsArticle]]]):
         """
-        모든 카테고리의 HTML 페이지 + 포털 홈 + 부가 파일 생성
+        모든 카테고리의 HTML 페이지 + 포털 홈 + 부가 파일 생성.
+        buckets는 {카테고리: {"domestic": [...], "overseas": [...]}}.
 
         Returns:
-            (Dict[str, str], List[Dict]): 카테고리별 생성된 페이지 상대경로, top10 카드 목록
-            (텔레그램 리드 메시지가 HTML과 동일한 top10을 재사용하도록 함께 반환 —
-             다시 계산하면 LLM을 한 번 더 호출하게 되어 비용이 두 배가 됨)
+            (page_urls, top10_by_region) — 텔레그램이 HTML과 동일한 top10을
+            재사용하도록 함께 반환한다(다시 계산하면 LLM 호출이 두 배가 된다).
         """
         self.logger.info("Starting HTML generation...")
 
-        now = datetime.now()
+        # 러너는 UTC라 naive now()를 쓰면 06시 KST 발행분이 전날로 찍힌다
+        now = datetime.now(KST)
         date_str = now.strftime('%Y-%m-%d')
         date_path = now.strftime('%Y/%m/%d')
 
@@ -79,12 +85,16 @@ class HTMLGenerator:
         self._copy_css()
         self._copy_static()
 
+        salt = self.salt
+        category_files = {
+            key: obfuscate(f'{key}.html', salt, date_str) for key in CATEGORIES
+        }
         nav_categories = [
             {
                 'key': key,
                 'name': CATEGORY_META[key]['name'],
                 'icon': CATEGORY_META[key]['icon'],
-                'url': self._make_path(f'/{date_path}/{self.CATEGORY_FILES[key]}'),
+                'url': self._make_path(f'/{date_path}/{category_files[key]}'),
             }
             for key in CATEGORIES
         ]
@@ -97,31 +107,43 @@ class HTMLGenerator:
         stock_picks = {"domestic": stock_data.get_domestic_picks(), "overseas": stock_data.get_overseas_picks()}
         summarizer.generate_stock_reasons(stock_picks)
 
-        self.logger.info("Selecting top10...")
-        top10 = summarizer.select_top10(categorized_news)
+        # 해외 기사 상세 요약 페이지를 먼저 만들어야 목록에서 링크를 걸 수 있다
+        self._generate_detail_pages(buckets, output_path, date_path, date_str, salt)
+
+        self.logger.info("Selecting top10 (domestic / overseas)...")
+        top10_by_region = {
+            region: summarizer.select_top10(
+                {key: buckets[key].get(region, []) for key in CATEGORIES},
+                api_key=summarizer.category_api_key('politics'),
+            )
+            for region in REGIONS
+        }
 
         page_urls = {}
         for category in CATEGORIES:
-            articles = categorized_news.get(category, [])
-            html_file = self.CATEGORY_FILES[category]
+            html_file = category_files[category]
             file_path = os.path.join(output_path, html_file)
 
             self._generate_briefing_page(
-                category=category, articles=articles, output_file=file_path,
+                category=category, regions=buckets.get(category, {}), output_file=file_path,
                 date_str=date_str, date_path=date_path, nav_categories=nav_categories,
                 indicators=indicators, stock_picks=stock_picks,
+                page_rel=f'/{date_path}/{html_file}',
             )
             page_urls[category] = f"{date_path}/{html_file}"
             self.logger.info(f"Generated {category}: {file_path}")
 
-        self._update_archive(date_str, date_path)
-        self._generate_index_page(categorized_news, date_str, date_path, nav_categories, top10, indicators)
-        self._generate_feed_xml(categorized_news, date_str)
+        # 아카이브는 홈에서 링크하지 않는다 — 과거 기록은 직접 링크를 아는 사람만
+        archive_file = obfuscate('archive.html', salt, 'archive')
+        self._update_archive(date_str, date_path, archive_file)
+        self._generate_index_page(buckets, date_str, date_path, nav_categories,
+                                   top10_by_region, indicators)
+        self._generate_feed_xml(buckets, date_str)
         self._generate_robots_txt()
-        self._save_raw_snapshot(categorized_news, stock_picks, date_str)
+        self._save_raw_snapshot(buckets, stock_picks, date_str)
 
         self.logger.info("HTML generation completed")
-        return page_urls, top10
+        return page_urls, top10_by_region
 
     def _make_path(self, relative: str) -> str:
         clean = relative.lstrip('/')
@@ -136,15 +158,52 @@ class HTMLGenerator:
             'og_url': f"{self.base_url}{self._make_path(path)}" if self.base_url else self._make_path(path),
         }
 
+    def _generate_detail_pages(self, buckets, output_path, date_path, date_str, salt) -> int:
+        """
+        해외 기사마다 한국어 상세 요약 페이지를 만든다.
+        원문 전체 번역이 아니라 상세 '요약'이다 — 타사 기사 전문을 번역해 재배포하면
+        저작권 문제가 되고, NYT·WSJ 같은 유료 매체는 본문 자체를 못 가져온다(403).
+        상세 요약이 없으면(LLM 실패 등) 페이지를 만들지 않고 링크도 걸지 않는다.
+        """
+        template = self.env.get_template('article.html')
+        made = 0
+        for category in CATEGORIES:
+            for article in buckets.get(category, {}).get('overseas', []):
+                detail = (getattr(article, 'detail_summary', '') or '').strip()
+                if not detail:
+                    continue
+                filename = obfuscate('a.html', salt, date_str, article.link)
+                with open(os.path.join(output_path, filename), 'w', encoding='utf-8') as f:
+                    f.write(template.render(
+                        title=article.title,
+                        original_title=getattr(article, 'original_title', ''),
+                        source=article.source,
+                        published=article.published.astimezone(KST).strftime('%Y-%m-%d %H:%M'),
+                        detail=detail,
+                        summary=article.summary,
+                        link=article.link,
+                        category_name=CATEGORY_META[category]['name'],
+                        css_path=self._make_path('/style.css'),
+                        site_js_path=self._make_path('/site.js'),
+                        index_path=self._make_path('/index.html'),
+                        **self._og_context(article.title, article.summary[:120],
+                                            f'/{date_path}/{filename}'),
+                    ))
+                article.detail_path = self._make_path(f'/{date_path}/{filename}')
+                made += 1
+        self.logger.info(f"Generated {made} overseas detail pages")
+        return made
+
     @staticmethod
     def _article_to_dict(article: NewsArticle) -> Dict:
         d = {
             'title': article.title,
             'link': article.link,
-            'published': article.published.strftime('%Y-%m-%d %H:%M'),
+            'published': article.published.astimezone(KST).strftime('%Y-%m-%d %H:%M'),
             'summary': article.summary,
             'source': article.source,
             'is_important': article.is_important,
+            'detail_path': getattr(article, 'detail_path', ''),
         }
         if hasattr(article, 'original_title'):
             d['original_title'] = article.original_title
@@ -154,46 +213,58 @@ class HTMLGenerator:
             d['ai_subtype_label'] = article.ai_subtype_label
         return d
 
-    def _generate_briefing_page(self, category: str, articles: List[NewsArticle],
+    def _generate_briefing_page(self, category: str, regions: Dict[str, List[NewsArticle]],
                                  output_file: str, date_str: str, date_path: str,
                                  nav_categories: List[Dict], indicators: Optional[Dict] = None,
-                                 stock_picks: Optional[Dict] = None):
-        """개별 브리핑 페이지 생성"""
+                                 stock_picks: Optional[Dict] = None, page_rel: str = ''):
+        """개별 브리핑 페이지 생성 — 국내/해외 탭으로 나눠 렌더링"""
         template = self.env.get_template('briefing.html')
         category_name = self.CATEGORY_NAMES[category]
 
-        articles_data = [self._article_to_dict(a) for a in articles]
-
+        region_blocks = []
         ai_items = []
-        if category == 'it':
-            ai_items = [self._article_to_dict(a) for a in articles if getattr(a, 'is_ai', False)]
-            articles_data = [self._article_to_dict(a) for a in articles if not getattr(a, 'is_ai', False)]
+        for region in REGIONS:
+            articles = regions.get(region, [])
+            if category == 'it':
+                ai_items.extend(self._article_to_dict(a) for a in articles if getattr(a, 'is_ai', False))
+                articles = [a for a in articles if not getattr(a, 'is_ai', False)]
+            region_blocks.append({
+                'key': region,
+                'name': REGION_META[region]['name'],
+                'icon': REGION_META[region]['icon'],
+                'articles': [self._article_to_dict(a) for a in articles],
+            })
 
         html_content = template.render(
             category_key=category,
             category_name=category_name,
             date=date_str,
-            articles=articles_data,
+            region_blocks=region_blocks,
             ai_items=ai_items,
             indicators=indicators if category == 'economy' else None,
             stock_picks=stock_picks if category == 'economy' else None,
             indicators_url=self._make_path('/indicators.json'),
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
-            archive_path=self._make_path('/archive.html'),
             index_path=self._make_path('/index.html'),
             date_path=date_path,
             base_path=self.base_path,
             nav_categories=nav_categories,
-            **self._og_context(f"{category_name} — {date_str}", f"{category_name} 일일 뉴스 브리핑 ({date_str})", f'/{date_path}/{self.CATEGORY_FILES[category]}'),
+            **self._og_context(f"{category_name} — {date_str}",
+                                f"{category_name} 일일 뉴스 브리핑 ({date_str})", page_rel),
         )
 
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
-    def _update_archive(self, date_str: str, date_path: str):
-        """아카이브 페이지 업데이트"""
-        archive_file = os.path.join(self.output_dir, 'archive.html')
+    def _update_archive(self, date_str: str, date_path: str, archive_file_name: str):
+        """
+        아카이브 페이지 업데이트.
+        파일명 자체가 난수화돼 있고 홈에서 링크하지 않으므로, 링크를 직접 아는
+        사람만 과거 기록을 볼 수 있다(요청사항). 날짜별 카테고리 경로는
+        archive_data.json에 누적되므로 예전 날짜의 난수 경로도 그대로 유지된다.
+        """
+        archive_file = os.path.join(self.output_dir, archive_file_name)
         archive_data_file = os.path.join(self.output_dir, 'archive_data.json')
 
         archive_items = []
@@ -205,7 +276,8 @@ class HTMLGenerator:
 
         if date_str not in existing_date_strs:
             categories_list = [
-                {'name': self.CATEGORY_NAMES[key], 'path': self._make_path(f'/{date_path}/{self.CATEGORY_FILES[key]}')}
+                {'name': self.CATEGORY_NAMES[key],
+                 'path': self._make_path(f'/{date_path}/{obfuscate(f"{key}.html", self.salt, date_str)}')}
                 for key in CATEGORIES
             ]
             archive_items.append({'date': date_str, 'categories': categories_list})
@@ -215,21 +287,29 @@ class HTMLGenerator:
         with open(archive_data_file, 'w', encoding='utf-8') as f:
             json.dump(archive_items, f, ensure_ascii=False, indent=2)
 
+        # 이전 실행이 남긴 예전 이름의 아카이브 파일은 지운다 (링크 노출 방지)
+        legacy = os.path.join(self.output_dir, 'archive.html')
+        if os.path.exists(legacy) and os.path.abspath(legacy) != os.path.abspath(archive_file):
+            os.remove(legacy)
+
         template = self.env.get_template('archive.html')
         html_content = template.render(
             archive_items=archive_items,
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
             index_path=self._make_path('/index.html'),
-            **self._og_context('뉴스 브리핑 아카이브', '날짜별 과거 브리핑 모음', '/archive.html'),
+            **self._og_context('뉴스 브리핑 아카이브', '날짜별 과거 브리핑 모음',
+                                f'/{archive_file_name}'),
         )
 
         with open(archive_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
+        self.logger.info(f"Archive written to {archive_file_name} (not linked from home)")
 
-    def _generate_index_page(self, categorized_news: Dict[str, List[NewsArticle]],
+    def _generate_index_page(self, buckets: Dict[str, Dict[str, List[NewsArticle]]],
                               date_str: str, date_path: str, nav_categories: List[Dict],
-                              top10: List[Dict], indicators: Optional[Dict] = None):
+                              top10_by_region: Dict[str, List[Dict]],
+                              indicators: Optional[Dict] = None):
         """포털형 홈페이지 생성 — Top10 카드 + 카테고리 미리보기 + AI 소식 미리보기 + 헤더"""
         index_file = os.path.join(self.output_dir, 'index.html')
         template = self.env.get_template('index.html')
@@ -238,10 +318,12 @@ class HTMLGenerator:
         all_ai_items = []
         for cat in nav_categories:
             key = cat['key']
-            articles = categorized_news.get(key, [])
+            regions = buckets.get(key, {})
+            # 홈 미리보기는 국내/해외를 합쳐 중요도순 상위만 보여준다
+            articles = [a for region in REGIONS for a in regions.get(region, [])]
+            articles.sort(key=lambda a: (a.is_important, a.published), reverse=True)
             if key == 'it':
-                ai_articles = [a for a in articles if getattr(a, 'is_ai', False)]
-                all_ai_items.extend(ai_articles)
+                all_ai_items.extend(a for a in articles if getattr(a, 'is_ai', False))
                 articles = [a for a in articles if not getattr(a, 'is_ai', False)]
             category_previews.append({
                 **cat,
@@ -250,17 +332,22 @@ class HTMLGenerator:
 
         ai_preview = [self._article_to_dict(a) for a in all_ai_items[:AI_PREVIEW_COUNT]]
 
+        top10_blocks = [
+            {'key': region, 'name': REGION_META[region]['name'],
+             'icon': REGION_META[region]['icon'], 'cards': top10_by_region.get(region, [])}
+            for region in REGIONS
+        ]
+
         html_content = template.render(
             date=date_str,
             indicators=indicators,
-            top10=top10,
+            top10_blocks=top10_blocks,
             category_previews=category_previews,
             ai_items=ai_preview,
             nav_categories=nav_categories,
             indicators_url=self._make_path('/indicators.json'),
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
-            archive_path=self._make_path('/archive.html'),
             feed_path=self._make_path('/feed.xml'),
             **self._og_context('일일 뉴스 브리핑', f'{date_str} 오늘의 뉴스를 한눈에', '/index.html'),
         )
@@ -278,7 +365,10 @@ class HTMLGenerator:
 
         items = []
         for key in CATEGORIES:
-            for article in categorized_news.get(key, [])[:FEED_ITEMS_PER_CATEGORY]:
+            regions = categorized_news.get(key, {})
+            merged = [a for region in REGIONS for a in regions.get(region, [])]
+            merged.sort(key=lambda a: (a.is_important, a.published), reverse=True)
+            for article in merged[:FEED_ITEMS_PER_CATEGORY]:
                 items.append((article.published, key, article))
         items.sort(key=lambda t: t[0], reverse=True)
 
@@ -324,8 +414,9 @@ class HTMLGenerator:
         snapshot = {
             'date': date_str,
             'categories': {
-                key: [a.to_dict() for a in articles]
-                for key, articles in categorized_news.items()
+                key: {region: [a.to_dict() for a in articles]
+                      for region, articles in regions.items()}
+                for key, regions in categorized_news.items()
             },
             'stock_picks': stock_picks,
         }

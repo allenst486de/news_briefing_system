@@ -7,7 +7,8 @@ import logging
 from typing import Dict, List
 from .base_collector import BaseCollector, NewsArticle
 from ..utils.rss_utils import (
-    fetch_feed, clean_html, extract_date, strip_title_prefix, strip_google_news_title_suffix,
+    fetch_feed, clean_html, extract_date, feed_anchor_time,
+    strip_title_prefix, strip_google_news_title_suffix,
 )
 
 
@@ -33,8 +34,9 @@ class RSSCollector(BaseCollector):
             self.logger.warning(f"Feed empty: {self.source_id}/{category} from {url}")
             return []
 
+        anchor = feed_anchor_time(feed)
         articles = []
-        for entry in feed.entries[:limit]:
+        for index, entry in enumerate(feed.entries[:limit]):
             try:
                 # 요약은 clean_html로 엔티티가 풀리는데 제목은 그냥 두면 "&amp;"가
                 # 그대로 남고, 템플릿이 한 번 더 이스케이프해 화면에 "&amp;"로 보인다.
@@ -45,14 +47,18 @@ class RSSCollector(BaseCollector):
                 summary = strip_title_prefix(summary, title)
                 summary = summary or title[:200]
 
+                published, approximate = extract_date(entry, self._parse_date, anchor, index)
                 article = NewsArticle(
                     title=title,
                     link=entry.get("link", ""),
-                    published=extract_date(entry, self._parse_date),
+                    published=published,
                     summary=summary,
                     source=self.source_name,
                     category=category,
                 )
+                # 피드에 날짜가 없어 순서로 추정한 건 나중에 기사 본문 메타에서
+                # 진짜 발행일로 교정한다(article_body가 어차피 본문을 받아온다)
+                article.date_is_approximate = approximate
                 articles.append(article)
             except Exception as e:
                 self.logger.error(f"Error parsing entry from {self.source_id}: {e}")

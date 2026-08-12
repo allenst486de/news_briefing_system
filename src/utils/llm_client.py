@@ -36,7 +36,9 @@ _stats_lock = threading.Lock()
 # HTML 생성까지 끝나야 하므로 LLM이 무한정 잡아먹지 않도록 못을 박는다.
 # 초과하면 남은 호출은 즉시 None을 반환하고 호출부가 규칙기반으로 넘어간다 —
 # 요약 품질이 일부 떨어져도 사이트는 반드시 발행된다.
-LLM_TIME_BUDGET_SECONDS = 1800
+# 30분 제한에서 수집·본문(약 4분)과 HTML·텔레그램(약 2분)을 뺀 나머지에서
+# 마진을 남긴 값이다.
+LLM_TIME_BUDGET_SECONDS = 1200
 _deadline = None
 
 # 429 재시도 대기(초). Retry-After 헤더가 있으면 그쪽이 우선.
@@ -73,7 +75,8 @@ def stats_summary() -> str:
 
 
 def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
-             max_tokens: int = 4096, timeout: int = 180, retries: int = 2) -> Optional[str]:
+             max_tokens: int = 4096, timeout: int = 180, retries: int = 2,
+             api_key: Optional[str] = None) -> Optional[str]:
     """
     NVIDIA NIM chat completions 1회 호출(비스트리밍).
     429/5xx/네트워크 오류 시 지수 백오프로 재시도. 재시도까지 모두 실패하면
@@ -91,7 +94,7 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
         _record("budget", f"LLM 시간 예산 {LLM_TIME_BUDGET_SECONDS}초 초과 — 남은 요약은 규칙기반")
         return None
 
-    api_key = os.getenv("NVIDIA_API_KEY")
+    api_key = api_key or os.getenv("NVIDIA_API_KEY")
     if not api_key:
         logger.warning("NVIDIA_API_KEY not set — skipping LLM call")
         _record("no_key", "NVIDIA_API_KEY 환경변수가 비어 있음")

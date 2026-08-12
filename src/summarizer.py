@@ -5,8 +5,9 @@ LLM Summarizer Orchestration
 담당한다. LLM 호출이 실패하면 항상 규칙기반으로 자동 폴백한다 — 이 파일이
 파이프라인을 죽이는 일은 없다.
 """
+import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from .collectors.base_collector import NewsArticle
 from .collectors.sources import CATEGORY_META
@@ -46,9 +47,16 @@ COMMON_RULES = """당신은 뉴스 요약 보조자입니다. 아래 규칙을 �
 CHUNK_SIZE = 8
 CHUNK_MAX_TOKENS = 6144
 TOP10_MAX_TOKENS = 6144
-# 호출 하나가 90초 안팎이라 워커가 적으면 라운드 수만큼 그대로 벽시계 시간이 된다.
-# 4 → 6으로 올려 35건을 9라운드에서 6라운드로 줄인다(약 780초 → 520초).
-CHUNK_WORKERS = 6
+
+# 해외 기사는 250자 요약에 600~800자 상세 요약까지 한 호출에서 받으므로
+# 기사당 출력이 3배 이상이다 — 청크를 작게 잡아야 응답이 안 잘린다.
+DETAIL_CHUNK_SIZE = 3
+DETAIL_MAX_TOKENS = 8192
+
+# 카테고리마다 전용 API 키를 쓰므로 카테고리 8개를 동시에 돌린다.
+# 카테고리 안쪽 청크 동시 실행은 키 하나에 몰리므로 낮게 유지한다.
+CATEGORY_WORKERS = 8
+CHUNK_WORKERS = 3
 
 
 def _rule_based_fallback(article: NewsArticle) -> None:
@@ -58,13 +66,25 @@ def _rule_based_fallback(article: NewsArticle) -> None:
     article.is_important = _analyzer.analyze(article.title, article.summary)
 
 
-def _summarize_chunk(category_name: str, articles: List[NewsArticle]) -> List[NewsArticle]:
-    """기사 8건 이하 한 덩어리를 LLM 1회 호출로 처리. 반환은 남길 기사 목록."""
+def _summarize_chunk(category_name: str, articles: List[NewsArticle],
+                      api_key: Optional[str] = None, want_detail: bool = False) -> List[NewsArticle]:
+    """
+    한 덩어리를 LLM 1회 호출로 처리. 반환은 남길 기사 목록.
+    want_detail=True(해외 기사)면 상세 요약 페이지용 detail_summary도 같이 받는다 —
+    별도 호출로 나누면 호출 수가 두 배가 되어 30분 제한에 걸린다.
+    """
     listing = "\n".join(
         f"{i + 1}. [{a.source}/{getattr(a, 'language', 'ko')}] {a.title} — "
         f"{getattr(a, 'body', '') or a.summary}"
         for i, a in enumerate(articles)
     )
+    detail_field = (
+        " - detail_600: 600~800자의 한국어 상세 요약. 원문 전체를 번역해 옮기지 말고,\n"
+        "   핵심 사실·배경·전개를 당신의 표현으로 정리할 것. 원문에 없는 내용은 쓰지 말고,\n"
+        "   근거가 부족하면 짧게 끝낼 것\n"
+        if want_detail else ""
+    )
+    detail_json = ', "detail_600": "..."' if want_detail else ""
     user_prompt = (
         f"카테고리: {category_name}\n"
         "입력은 이 카테고리의 오늘자 기사 목록입니다. 각 기사에 대해 다음을 생성하세요:\n"
@@ -72,14 +92,17 @@ def _summarize_chunk(category_name: str, articles: List[NewsArticle]) -> List[Ne
         " - paraphrased_title: 기사 제목을 자연스러운 한국어로 재서술 (원문이 한국어여도 그대로 베끼지 말 것)\n"
         " - summary_250: 최대 250자의 한국어 요약. 제공된 원문에 있는 내용만으로 쓰고,\n"
         "   내용이 부족하면 짧게 끝낼 것 (분량을 채우려고 지어내지 말 것)\n"
+        f"{detail_field}"
         " - is_important: 이 기사가 오늘 이 카테고리에서 특히 중요한 뉴스인지 (true/false)\n"
         " - exclude: 홍보/유료강의/근거없는 벤치마크 등으로 제외해야 하면 true, 아니면 false\n\n"
         "반드시 아래 JSON 배열 형식으로만 응답하세요:\n"
-        '[{"id": 1, "paraphrased_title": "...", "summary_250": "...", "is_important": false, "exclude": false}]\n\n'
+        '[{"id": 1, "paraphrased_title": "...", "summary_250": "..."'
+        f'{detail_json}, "is_important": false, "exclude": false}}]\n\n'
         f"기사 목록:\n{listing}"
     )
 
-    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=CHUNK_MAX_TOKENS)
+    max_tokens = DETAIL_MAX_TOKENS if want_detail else CHUNK_MAX_TOKENS
+    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=max_tokens, api_key=api_key)
     if not isinstance(result, list):
         for article in articles:
             _rule_based_fallback(article)
@@ -118,36 +141,50 @@ def _summarize_chunk(category_name: str, articles: List[NewsArticle]) -> List[Ne
         article.title = new_title
         article.summary = new_summary
         article.is_important = bool(item.get("is_important"))
+        if want_detail:
+            article.detail_summary = (item.get("detail_600") or "").strip()
         kept.append(article)
 
     return kept
 
 
-def summarize_category(category_key: str, category_name: str, articles: List[NewsArticle]) -> List[NewsArticle]:
+def category_api_key(category_key: str) -> Optional[str]:
     """
-    카테고리 기사를 CHUNK_SIZE건씩 끊어 LLM으로 번역+재구성+요약한다.
+    카테고리 전용 키(NVIDIA_API_KEY_POLITICS 등)가 있으면 그걸 쓰고, 없으면 공용 키.
+    카테고리마다 키가 다르면 rate limit이 나뉘어 8개를 동시에 돌릴 수 있다.
+    """
+    return os.getenv(f"NVIDIA_API_KEY_{category_key.upper()}") or os.getenv("NVIDIA_API_KEY")
+
+
+def summarize_region(category_key: str, category_name: str, articles: List[NewsArticle],
+                      region: str, api_key: Optional[str]) -> List[NewsArticle]:
+    """
+    한 카테고리·한 지역의 기사를 청크로 끊어 요약한다.
+    해외 기사는 상세 요약(detail_600)까지 같은 호출에서 받아 온다 — 페이월 기사는
+    원문을 못 가져오니 RSS 요약문 기준으로만 작성된다.
     한 덩어리가 실패해도 그 덩어리만 규칙기반으로 대체되고 나머지는 살아남는다.
-    exclude=true로 판정된 기사는 결과 리스트에서 제외한다.
     """
     if not articles:
         return articles
 
-    chunks = [articles[i:i + CHUNK_SIZE] for i in range(0, len(articles), CHUNK_SIZE)]
+    want_detail = region == "overseas"
+    size = DETAIL_CHUNK_SIZE if want_detail else CHUNK_SIZE
+    chunks = [articles[i:i + size] for i in range(0, len(articles), size)]
 
-    # 청크를 순차로 돌리면 카테고리 8개 × 4청크 × 한 호출 수십 초라 워크플로
-    # 30분 제한을 넘긴다(실제로 넘겨서 run이 취소됐다). 청크끼리는 서로 의존이
-    # 없으므로 병렬로 부른다. 동시 실행 수는 무료 티어 rate limit을 감안해 낮게 잡고,
-    # 429는 llm_client가 백오프로 재시도한다.
+    # 청크끼리는 서로 의존이 없으므로 병렬로 부른다. 카테고리들도 동시에 도는
+    # 상황이라 카테고리 안쪽 동시 실행 수는 낮게 잡는다(키 하나당 rate limit).
     results = [None] * len(chunks)
     with ThreadPoolExecutor(max_workers=CHUNK_WORKERS) as pool:
-        futures = {pool.submit(_summarize_chunk, category_name, c): i
-                   for i, c in enumerate(chunks)}
+        futures = {
+            pool.submit(_summarize_chunk, category_name, c, api_key, want_detail): i
+            for i, c in enumerate(chunks)
+        }
         for future in as_completed(futures):
             i = futures[future]
             try:
                 results[i] = future.result()
             except Exception as e:
-                logger.warning(f"[{category_key}] chunk {i} failed ({e}) — rule-based fallback")
+                logger.warning(f"[{category_key}/{region}] chunk {i} failed ({e}) — rule-based fallback")
                 for article in chunks[i]:
                     _rule_based_fallback(article)
                 results[i] = list(chunks[i])
@@ -156,7 +193,30 @@ def summarize_category(category_key: str, category_name: str, articles: List[New
     return [article for chunk_result in results for article in chunk_result]
 
 
-def extract_ai_items(articles: List[NewsArticle]) -> None:
+def summarize_all(buckets: Dict[str, Dict[str, List[NewsArticle]]]) -> None:
+    """
+    {카테고리: {지역: [기사]}} 전체를 in-place로 요약한다.
+    카테고리마다 전용 API 키를 쓰므로 8개 카테고리를 동시에 돌린다 — 순차로 하면
+    호출 수가 늘어난 만큼 그대로 벽시계 시간이 되어 30분 제한을 넘긴다.
+    """
+    def run(category_key):
+        api_key = category_api_key(category_key)
+        category_name = CATEGORY_META[category_key]["name"]
+        for region in ("domestic", "overseas"):
+            articles = buckets[category_key].get(region) or []
+            buckets[category_key][region] = summarize_region(
+                category_key, category_name, articles, region, api_key
+            )
+        if category_key == "it":
+            for region in ("domestic", "overseas"):
+                extract_ai_items(buckets[category_key][region], api_key)
+
+    keys = list(buckets.keys())
+    with ThreadPoolExecutor(max_workers=min(len(keys), CATEGORY_WORKERS)) as pool:
+        list(pool.map(run, keys))
+
+
+def extract_ai_items(articles: List[NewsArticle], api_key: Optional[str] = None) -> None:
     """
     IT 카테고리의 이미 요약된 기사 중 AI 관련 항목에 is_ai/ai_subtype/
     ai_subtype_label을 부여한다 (in-place). LLM 실패 시 키워드 매칭으로 폴백.
@@ -178,7 +238,7 @@ def extract_ai_items(articles: List[NewsArticle]) -> None:
         f"기사 목록:\n{listing}"
     )
 
-    result = call_llm_json(COMMON_RULES, user_prompt)
+    result = call_llm_json(COMMON_RULES, user_prompt, api_key=api_key)
     if not isinstance(result, list):
         logger.warning("AI subsection extraction failed — falling back to keyword matching")
         for article in articles:
@@ -204,10 +264,12 @@ TOP10_COUNT = 10
 TOP10_CANDIDATES_PER_CATEGORY = 6  # 8개 카테고리 × 6 = 48건 후보 (10건 고르기엔 충분)
 
 
-def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
+def select_top10(categorized_news: Dict[str, List[NewsArticle]],
+                  api_key: Optional[str] = None) -> List[Dict]:
     """
     8개 카테고리에서 이미 요약된 기사 전체 풀에서 크로스카테고리 top10을
     선정한다 (프롬프트 c). 실패 시 중요도→최신순 정렬로 대체.
+    국내/해외를 따로 뽑으려면 지역별로 나눈 dict를 각각 넘긴다.
     반환: [{rank, category, category_name, link, card_headline, card_blurb}, ...]
     """
     # 8개 카테고리 × 30건 전체를 요약문까지 붙여 보내면 입력만 7만 자를 넘는다.
@@ -242,7 +304,8 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]]) -> List[Dict]:
         f"전체 기사 목록:\n{listing}"
     )
 
-    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=TOP10_MAX_TOKENS)
+    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=TOP10_MAX_TOKENS,
+                            api_key=api_key)
     if isinstance(result, list) and result:
         cards = []
         for item in result:
@@ -330,7 +393,8 @@ def generate_stock_reasons(picks_by_market: Dict[str, Dict[str, List[Dict]]]) ->
         f"종목 목록:\n{listing}"
     )
 
-    result = call_llm_json(STOCK_REASON_SYSTEM_PROMPT, user_prompt)
+    result = call_llm_json(STOCK_REASON_SYSTEM_PROMPT, user_prompt,
+                            api_key=category_api_key("economy"))
     reasons = {}
     if isinstance(result, list):
         for item in result:

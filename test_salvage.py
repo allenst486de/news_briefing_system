@@ -71,7 +71,7 @@ def test_chunking_splits_calls():
     original = llm_client.call_llm
     llm_client.call_llm = fake_call
     try:
-        kept = summarizer.summarize_category("world", "국제", articles)
+        kept = summarizer.summarize_region("world", "국제", articles, "domestic", "test-key")
     finally:
         llm_client.call_llm = original
 
@@ -101,7 +101,7 @@ def test_one_bad_chunk_does_not_kill_the_rest():
     original = llm_client.call_llm
     llm_client.call_llm = flaky_call
     try:
-        kept = summarizer.summarize_category("world", "국제", articles)
+        kept = summarizer.summarize_region("world", "국제", articles, "domestic", "test-key")
     finally:
         llm_client.call_llm = original
 
@@ -134,7 +134,7 @@ def test_parallel_chunks_preserve_article_order():
     original = llm_client.call_llm
     llm_client.call_llm = staggered
     try:
-        kept = summarizer.summarize_category("world", "국제", articles)
+        kept = summarizer.summarize_region("world", "국제", articles, "domestic", "test-key")
     finally:
         llm_client.call_llm = original
 

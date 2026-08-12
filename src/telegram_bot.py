@@ -15,7 +15,7 @@ Top10은 이미지와 텍스트 목록을 함께 보낸다 — 웹 홈 화면의
 팝업 없음보다 우선한 트레이드오프다.
 """
 import asyncio
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 from telegram import Bot
 from telegram.error import TelegramError
 from .collectors.sources import CATEGORIES, CATEGORY_META
@@ -42,12 +42,16 @@ class TelegramNotifier:
     def _full_url(self, relative: str) -> str:
         return f"{self.base_url}/{relative.lstrip('/')}"
 
-    def _build_lead_message(self, page_urls: Dict[str, str], top10: List[Dict], date_str: str) -> str:
+    def _build_lead_message(self, page_urls: Dict[str, str],
+                             top10_by_region: Dict[str, List[Dict]], date_str: str) -> str:
         parts = [f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>", ""]
 
-        if top10:
-            parts.append("🔥 <b>오늘의 Top 10</b>")
-            for item in top10:
+        for region, label in (("domestic", "국내"), ("overseas", "해외")):
+            cards = top10_by_region.get(region) or []
+            if not cards:
+                continue
+            parts.append(f"🔥 <b>오늘의 {label} Top 10</b>")
+            for item in cards:
                 parts.append(f'{item["rank"]}. <b>{item["card_headline"]}</b>')
                 parts.append(f'{item.get("category_name", "")} · {item.get("source", "")} · '
                               f'<a href="{item["link"]}">원문 보기</a>')
@@ -64,32 +68,33 @@ class TelegramNotifier:
         parts.append(" · ".join(nav_links))
 
         parts.append("")
-        parts.append(f'📚 <a href="{self._full_url("archive.html")}">아카이브</a>'
-                      f' · 🏠 <a href="{self._full_url("index.html")}">홈(최신 브리핑)</a>')
+        # 아카이브는 링크하지 않는다 — 과거 기록은 직접 링크를 아는 사람만 보도록(요청사항)
+        parts.append(f'🏠 <a href="{self._full_url("index.html")}">홈(최신 브리핑)</a>')
         parts.append("")
-        parts.append("<i>분야별 링크를 누르면 기사마다 250자 요약이 있는 전체 목록으로 이동합니다.</i>")
+        parts.append("<i>분야별 링크를 누르면 국내·해외 탭과 기사별 요약이 있는 전체 목록으로 이동합니다.</i>")
         parts.append("<i>매일 오전 6시에 자동으로 업데이트됩니다.</i>")
         parts.append("⚠️ 경제 분야의 종목 추천은 정보 제공 목적이며 투자 자문이 아닙니다.")
         return "\n".join(parts)
 
     async def send_briefing(self, page_urls: Dict[str, str],
-                             top10: List[Dict], date_str: str,
-                             top10_image_path: Optional[str] = None):
-        """Top10 인포그래픽 이미지(있으면) + 일일 뉴스 브리핑 메시지 1개만 전송."""
+                             top10_by_region: Dict[str, List[Dict]], date_str: str,
+                             images: Optional[List[Tuple[str, str]]] = None):
+        """국내/해외 Top10 인포그래픽(있으면) + 일일 뉴스 브리핑 메시지 1개 전송."""
         self.logger.info("Sending Telegram notification...")
 
         try:
-            if top10_image_path:
+            for path, label in (images or []):
                 try:
-                    with open(top10_image_path, 'rb') as photo:
+                    with open(path, 'rb') as photo:
                         await self.bot.send_photo(chat_id=self.chat_id, photo=photo,
-                                                   caption=f"🔥 오늘의 Top 10 ({date_str})")
-                except TelegramError as e:
-                    self.logger.warning(f"Top10 image send failed (text list still sent): {e}")
+                                                   caption=f"🔥 오늘의 {label} Top 10 ({date_str})")
+                except (TelegramError, OSError) as e:
+                    # 이미지가 실패해도 아래 텍스트 목록은 그대로 나간다
+                    self.logger.warning(f"Top10 {label} image send failed: {e}")
 
             await self.bot.send_message(
                 chat_id=self.chat_id,
-                text=self._build_lead_message(page_urls, top10, date_str),
+                text=self._build_lead_message(page_urls, top10_by_region, date_str),
                 parse_mode='HTML',
                 disable_web_page_preview=True,
             )
@@ -100,8 +105,8 @@ class TelegramNotifier:
             raise
 
     def send_briefing_sync(self, page_urls: Dict[str, str],
-                            top10: List[Dict], date_str: str,
-                            top10_image_path: Optional[str] = None):
+                            top10_by_region: Dict[str, List[Dict]], date_str: str,
+                            images: Optional[List[Tuple[str, str]]] = None):
         """동기 방식으로 브리핑 전송"""
         try:
             try:
@@ -112,7 +117,7 @@ class TelegramNotifier:
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
             loop.run_until_complete(
-                self.send_briefing(page_urls, top10, date_str, top10_image_path)
+                self.send_briefing(page_urls, top10_by_region, date_str, images)
             )
         except Exception as e:
             self.logger.error(f"Error in send_briefing_sync: {e}")
