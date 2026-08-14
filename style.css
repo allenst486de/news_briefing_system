@@ -717,6 +717,128 @@ footer {
     text-align: right;
 }
 
+/* ===== Site menu (전 페이지 공통 이동) ===== */
+.site-menu {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 50;
+}
+
+.site-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    cursor: pointer;
+}
+
+.site-menu-button:hover {
+    border-color: var(--border-hover);
+}
+
+.site-menu-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 18px;
+}
+
+.site-menu-bars span {
+    display: block;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--text-primary);
+}
+
+.site-menu-panel {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 264px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+.site-menu-panel[hidden] {
+    display: none;
+}
+
+.site-menu-home {
+    display: block;
+    padding: 9px 10px;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.site-menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: 6px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+}
+
+.site-menu-grid a {
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    text-decoration: none;
+}
+
+.site-menu-home:hover,
+.site-menu-grid a:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.site-menu-grid a.current {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* 메뉴 버튼이 헤더 제목을 가리지 않도록 좁은 화면에서 여백 확보 */
+@media (max-width: 640px) {
+    .site-menu { top: 10px; left: 10px; }
+    .container > header,
+    .home-header { padding-top: 56px; }
+    .site-menu-panel { width: calc(100vw - 32px); }
+}
+
+/* ===== Top10 card detail link ===== */
+.top10-card-main {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.top10-detail-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+}
+
+.top10-detail-link:hover {
+    border-bottom-color: var(--border-hover);
+}
+
 /* ===== Region tabs / article links ===== */
 .tab-count {
     display: inline-block;
