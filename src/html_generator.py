@@ -115,7 +115,8 @@ class HTMLGenerator:
         summarizer.generate_stock_reasons(stock_picks)
 
         # 해외 기사 상세 요약 페이지를 먼저 만들어야 목록에서 링크를 걸 수 있다
-        self._generate_detail_pages(buckets, output_path, date_path, date_str, salt)
+        self._generate_detail_pages(buckets, output_path, date_path, date_str, salt,
+                                     nav_categories)
 
         self.logger.info("Selecting top10 (domestic / overseas)...")
         top10_by_region = {
@@ -143,7 +144,7 @@ class HTMLGenerator:
 
         # 아카이브는 홈에서 링크하지 않는다 — 과거 기록은 직접 링크를 아는 사람만
         archive_file = obfuscate('archive.html', salt, 'archive')
-        self._update_archive(date_str, date_path, archive_file)
+        self._update_archive(date_str, date_path, archive_file, nav_categories)
         self._generate_index_page(buckets, date_str, date_full, date_path, nav_categories,
                                    top10_by_region, indicators)
         self._generate_feed_xml(buckets, date_str)
@@ -166,7 +167,8 @@ class HTMLGenerator:
             'og_url': f"{self.base_url}{self._make_path(path)}" if self.base_url else self._make_path(path),
         }
 
-    def _generate_detail_pages(self, buckets, output_path, date_path, date_str, salt) -> int:
+    def _generate_detail_pages(self, buckets, output_path, date_path, date_str, salt,
+                                nav_categories=None) -> int:
         """
         해외 기사마다 한국어 상세 요약 페이지를 만든다.
         원문 전체 번역이 아니라 상세 '요약'이다 — 타사 기사 전문을 번역해 재배포하면
@@ -191,13 +193,19 @@ class HTMLGenerator:
                         summary=article.summary,
                         link=article.link,
                         category_name=CATEGORY_META[category]['name'],
+                        category_key=category,
+                        nav_categories=nav_categories or [],
                         css_path=self._make_path('/style.css'),
                         site_js_path=self._make_path('/site.js'),
                         index_path=self._make_path('/index.html'),
                         **self._og_context(article.title, article.summary[:120],
                                             f'/{date_path}/{filename}'),
                     ))
+                # detail_path: 페이지 <a href>용 (base_path 포함)
+                # detail_rel : 텔레그램용 상대경로 (_full_url이 base_url을 붙이므로
+                #              base_path가 들어가면 경로가 두 번 겹친다)
                 article.detail_path = self._make_path(f'/{date_path}/{filename}')
+                article.detail_rel = f'{date_path}/{filename}'
                 made += 1
         self.logger.info(f"Generated {made} overseas detail pages")
         return made
@@ -267,7 +275,8 @@ class HTMLGenerator:
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
-    def _update_archive(self, date_str: str, date_path: str, archive_file_name: str):
+    def _update_archive(self, date_str: str, date_path: str, archive_file_name: str,
+                         nav_categories=None):
         """
         아카이브 페이지 업데이트.
         파일명 자체가 난수화돼 있고 홈에서 링크하지 않으므로, 링크를 직접 아는
@@ -305,6 +314,7 @@ class HTMLGenerator:
         template = self.env.get_template('archive.html')
         html_content = template.render(
             archive_items=archive_items,
+            nav_categories=nav_categories or [],
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
             index_path=self._make_path('/index.html'),

@@ -95,6 +95,9 @@
   // 직접 부를 수 없기 때문에 같은 도메인의 JSON을 경유한다.
   // 스파크라인(7일 추이)은 일간 빌드 때 그린 걸 그대로 두고 숫자만 갱신한다 —
   // 하루 안에 7일 추이선이 눈에 띄게 바뀌지 않고, textContent만 쓰면 HTML 주입 여지도 없다.
+  // indicators.py의 _UP_COLOR/_DOWN_COLOR/_FLAT_COLOR과 같은 값이어야 한다
+  var DIR_COLORS = { up: '#ef4444', down: '#3b82f6', flat: '#8890a3' };
+
   function refreshIndicators() {
     var box = document.querySelector('[data-indicator-box]');
     if (!box) return;
@@ -113,6 +116,10 @@
               pct.textContent = ind.pct;
               pct.className = 'ind-pct ' + ind.dir;
             }
+            // 장중에 등락 방향이 뒤집히면 스파크라인 색도 같이 바꿔야
+            // 숫자(빨강)와 선(파랑)이 어긋나 보이지 않는다
+            var line = node.querySelector('.indicator-spark polyline');
+            if (line && DIR_COLORS[ind.dir]) line.setAttribute('stroke', DIR_COLORS[ind.dir]);
           });
         });
         if (data.as_of) {
@@ -124,11 +131,39 @@
       .catch(function () { /* 갱신 실패 시 빌드 시점 값을 그대로 둔다 */ });
   }
 
+  // 전 페이지 공통 메뉴 — 바깥 클릭/Esc로 닫힌다
+  function setupMenu() {
+    var root = document.querySelector('[data-menu]');
+    if (!root) return;
+    var button = root.querySelector('[data-menu-toggle]');
+    var panel = root.querySelector('[data-menu-panel]');
+    if (!button || !panel) return;
+
+    function setOpen(open) {
+      panel.hidden = !open;
+      root.classList.toggle('open', open);
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      button.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    }
+
+    button.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(panel.hidden);
+    });
+    document.addEventListener('click', function (e) {
+      if (!panel.hidden && !root.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) { setOpen(false); button.focus(); }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     startClock();
     loadWeather();
     setupThemeToggle();
     setupTabs();
+    setupMenu();
     refreshIndicators();
   });
 })();

@@ -1,0 +1,17 @@
+{# 전 페이지 공통 메뉴 — 어느 페이지에서든 홈/분야로 바로 이동 #}
+<div class="site-menu" data-menu>
+    <button type="button" class="site-menu-button" data-menu-toggle
+            aria-expanded="false" aria-controls="site-menu-panel" aria-label="메뉴 열기">
+        <span class="site-menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <nav class="site-menu-panel" id="site-menu-panel" data-menu-panel hidden>
+        <a class="site-menu-home" href="{{ index_path }}">🏠 홈 (최신 브리핑)</a>
+        {% if nav_categories %}
+        <div class="site-menu-grid">
+            {% for cat in nav_categories %}
+            <a href="{{ cat.url }}" {% if cat.key == category_key %}class="current"{% endif %}>{{ cat.icon }} {{ cat.name }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </nav>
+</div>

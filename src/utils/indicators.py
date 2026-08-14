@@ -58,8 +58,17 @@ def _dir_from_pct(pct: float) -> str:
     return "flat"
 
 
-def _sparkline_svg(values: List[float], width: int = 84, height: int = 28) -> str:
-    """오래된→최신 순 값 목록으로 작은 추이선 SVG를 그린다. 2개 미만이면 빈 문자열."""
+_DIR_COLORS = {"up": _UP_COLOR, "down": _DOWN_COLOR, "flat": _FLAT_COLOR}
+
+
+def _sparkline_svg(values: List[float], direction: str = "", width: int = 84, height: int = 28) -> str:
+    """
+    오래된→최신 순 값 목록으로 작은 추이선 SVG를 그린다. 2개 미만이면 빈 문자열.
+
+    선 색은 화면에 같이 찍히는 등락률(direction)과 맞춘다. 예전엔 7일 추이
+    (values[-1] vs values[0])로 색을 정해서, 7일째 내리다가 오늘 오른 지표는
+    '+0.50%' 빨간 숫자 옆에 파란 선이 그려졌다 — 숫자와 색이 어긋나 보였다.
+    """
     if len(values) < 2:
         return ""
     lo, hi = min(values), max(values)
@@ -70,7 +79,9 @@ def _sparkline_svg(values: List[float], width: int = 84, height: int = 28) -> st
         f"{i * step:.1f},{height - pad - ((v - lo) / span) * (height - pad * 2):.1f}"
         for i, v in enumerate(values)
     )
-    color = _UP_COLOR if values[-1] > values[0] else (_DOWN_COLOR if values[-1] < values[0] else _FLAT_COLOR)
+    color = _DIR_COLORS.get(direction) or (
+        _UP_COLOR if values[-1] > values[0] else (_DOWN_COLOR if values[-1] < values[0] else _FLAT_COLOR)
+    )
     return (
         f'<svg viewBox="0 0 {width} {height}" width="{width}" height="{height}" class="sparkline" '
         f'aria-hidden="true"><polyline points="{points}" fill="none" stroke="{color}" '
@@ -80,13 +91,15 @@ def _sparkline_svg(values: List[float], width: int = 84, height: int = 28) -> st
 
 def _item(key: str, name: str, value: str, pct: float, history: List[float]) -> Dict:
     """key는 site.js가 장중 갱신 때 DOM 노드를 찾는 데 쓴다 — 이름 바꾸면 JS도 같이."""
+    direction = _dir_from_pct(pct)
     return {
         "key": key,
         "name": name,
         "value": value,
         "pct": f"{pct:+.2f}%",
-        "dir": _dir_from_pct(pct),
-        "sparkline_svg": _sparkline_svg(history),
+        "dir": direction,
+        # 선 색을 등락률과 같은 기준으로 맞춘다
+        "sparkline_svg": _sparkline_svg(history, direction),
     }
 
 

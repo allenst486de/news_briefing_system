@@ -53,8 +53,12 @@ class TelegramNotifier:
             parts.append(f"🔥 <b>오늘의 {label} Top 10</b>")
             for item in cards:
                 parts.append(f'{item["rank"]}. <b>{item["card_headline"]}</b>')
-                parts.append(f'{item.get("category_name", "")} · {item.get("source", "")} · '
-                              f'<a href="{item["link"]}">원문 보기</a>')
+                links = f'<a href="{item["link"]}">원문 보기</a>'
+                # 해외 기사는 원문이 유료라 못 여는 경우가 있어 한국어 요약을 함께 건다
+                detail = item.get("detail_rel")
+                if detail:
+                    links += f' · <a href="{self._full_url(detail)}">한국어 상세 요약</a>'
+                parts.append(f'{item.get("category_name", "")} · {item.get("source", "")} · {links}')
             parts.append("")
 
         parts.append("📂 <b>분야별 바로가기</b>")

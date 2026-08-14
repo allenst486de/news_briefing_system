@@ -10,6 +10,9 @@ URL은 등재 전에 실제로 받아 항목 수와 날짜 파싱 여부까지 �
 2026-08 재검증에서 죽어 있던 후보는 제외했다: 헤럴드경제(4개 주소 모두 항목 0),
 매일경제(403), 서울경제/한국일보/파이낸셜뉴스(404), 중앙일보/KBS/MBC(항목 0),
 Reuters(404), AP(403), 블로터(403), 이데일리(연결 실패).
+2026-08 3차: 피드가 살아 있어도 '갱신을 멈춘' 경우가 있다 — CNN world(기사 중앙값
+1225일), WSJ(564일), 경향 과학(513일, 8건)은 오래된 기사만 내보내 제거했다.
+등재 전에 항목 수만 보지 말고 발행일까지 확인할 것.
 새로 추가하려면 test_feeds.py로 먼저 검증할 것.
 """
 
@@ -112,13 +115,6 @@ SOURCES = [
         },
     },
     {
-        "id": "wsj", "name": "WSJ Markets", "language": "en", "region": "overseas", "limit": 10,
-        "feeds": {
-            # 해외 증시/경제 전문 — NYT와 동일하게 원문은 페이월이지만 제목/요약은 RSS로 무료 제공
-            "economy": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",
-        },
-    },
-    {
         "id": "yna", "name": "연합뉴스", "language": "ko", "region": "domestic", "limit": 15,
         "feeds": {
             "politics": "https://www.yna.co.kr/rss/politics.xml",
@@ -137,7 +133,6 @@ SOURCES = [
             "society":  "https://www.khan.co.kr/rss/rssdata/society_news.xml",
             "culture":  "https://www.khan.co.kr/rss/rssdata/culture_news.xml",
             "it":       "https://www.khan.co.kr/rss/rssdata/it_news.xml",
-            "science":  "https://www.khan.co.kr/rss/rssdata/kh_science.xml",
             "life":     "https://www.khan.co.kr/rss/rssdata/life_news.xml",
         },
     },
@@ -170,8 +165,14 @@ SOURCES = [
         "feeds": {"economy": "https://news.einfomax.co.kr/rss/allArticle.xml"},
     },
     {
+        # Section901은 이름과 달리 "오늘의뉴스"(종합)라 IT 페이지에 사형 집행·환전소
+        # 기사까지 올라왔다. 실제 섹션 피드로 교체 — 04=AI·SW, 20=과학.
         "id": "etnews", "name": "전자신문", "language": "ko", "region": "domestic", "limit": 15,
-        "feeds": {"it": "https://rss.etnews.com/Section901.xml"},
+        "feeds": {"it": "https://rss.etnews.com/04.xml"},
+    },
+    {
+        "id": "etnews_sci", "name": "전자신문", "language": "ko", "region": "domestic", "limit": 15,
+        "feeds": {"science": "https://rss.etnews.com/20.xml"},
     },
     {
         "id": "zdnetkr", "name": "ZDNet Korea", "language": "ko", "region": "domestic", "limit": 15,
@@ -192,10 +193,6 @@ SOURCES = [
     {
         "id": "pressian", "name": "프레시안", "language": "ko", "region": "domestic", "limit": 15,
         "feeds": {"society": "https://www.pressian.com/api/v3/site/rss/news"},
-    },
-    {
-        "id": "cnn", "name": "CNN", "language": "en", "region": "overseas", "limit": 10,
-        "feeds": {"world": "http://rss.cnn.com/rss/edition_world.rss"},
     },
     {
         "id": "ft", "name": "Financial Times", "language": "en", "region": "overseas", "limit": 10,

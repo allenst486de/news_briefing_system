@@ -4,6 +4,7 @@ News Aggregator
 """
 import os
 import re
+from datetime import datetime, timedelta, timezone
 from collections import OrderedDict, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from typing import Dict, List
@@ -12,9 +13,17 @@ from .collectors.rss_collector import RSSCollector
 from .collectors.sources import SOURCES, CATEGORIES, CATEGORY_META, REGIONS
 from .collectors.base_collector import NewsArticle
 from .utils import article_body
-from .utils.dedup import normalize_title
+from .utils.dedup import normalize_title, load_recent_links, _canonical_link
 from .utils.logger import setup_logger
 from . import summarizer
+
+# 발행일이 이보다 오래된 기사는 버린다. 피드가 살아 있어도 갱신을 멈춘 곳이 있어
+# 3년 전 기사가 그대로 올라왔다(실측: CNN 1217일, WSJ 562일, 경향 과학 513일).
+# 죽은 피드를 목록에서 빼는 것과 별개로, 일간 브리핑에는 오래된 기사가 들어오면 안 된다.
+MAX_ARTICLE_AGE_DAYS = 3
+
+# 전날 이미 실은 기사를 다시 싣지 않기 위해 되돌아볼 일수
+CROSS_DAY_LOOKBACK_DAYS = 7
 
 # 지역별 상한. 예전엔 카테고리당 통합 30건이었는데, 그러면 국내 기사에 밀려
 # 해외 기사가 거의 안 보였다.
@@ -41,8 +50,9 @@ def _title_tokens(title: str) -> set:
 class NewsAggregator:
     """뉴스 통합 및 분류 클래스"""
 
-    def __init__(self):
+    def __init__(self, raw_data_dir: str = ''):
         self.logger = setup_logger()
+        self.raw_data_dir = raw_data_dir
 
     def collect_all_news(self) -> Dict[str, Dict[str, List[NewsArticle]]]:
         """
@@ -75,8 +85,11 @@ class NewsAggregator:
         return buckets
 
     def _collect_raw(self) -> Dict[str, Dict[str, List[NewsArticle]]]:
-        """수집 → 공지성 제거 → 중복 제거 → 매체 균형 선별."""
+        """수집 → 오래된/전날 기사 제거 → 공지성 제거 → 중복 제거 → 매체 균형 선별."""
         raw = {key: {region: [] for region in REGIONS} for key in CATEGORIES}
+        seen_before = load_recent_links(self.raw_data_dir, CROSS_DAY_LOOKBACK_DAYS)
+        cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_ARTICLE_AGE_DAYS)
+        dropped = {'old': 0, 'seen': 0}
 
         def fetch(job):
             source, category = job
@@ -88,16 +101,34 @@ class NewsAggregator:
             except Exception as e:
                 self.logger.warning(f"[{source['id']}] failed category {category}: {e}")
                 return source, category, []
+            kept = []
             for article in articles:
                 article.language = source.get("language", "ko")
                 article.region = source.get("region", "domestic")
-            return source, category, [a for a in articles if not _is_wire_bulletin(a.title)]
+                if _is_wire_bulletin(article.title):
+                    continue
+                # 발행일이 추정치인 건(피드에 날짜가 없는 매체) 나이로 거르지 않는다 —
+                # 나중에 기사 메타로 교정되므로 여기서 버리면 멀쩡한 기사를 잃는다
+                if not article.date_is_approximate and article.published < cutoff:
+                    dropped['old'] += 1
+                    continue
+                if _canonical_link(article.link) in seen_before:
+                    dropped['seen'] += 1
+                    continue
+                kept.append(article)
+            return source, category, kept
 
         jobs = [(s, c) for s in SOURCES for c in s["feeds"]]
         # 피드 수가 늘어 순차 수집이면 그것만 몇 분 걸린다 — 네트워크 대기라 병렬이 안전
         with ThreadPoolExecutor(max_workers=12) as pool:
             for source, category, articles in pool.map(fetch, jobs):
                 raw[category][source.get("region", "domestic")].extend(articles)
+
+        self.logger.info(
+            f"Filtered out {dropped['old']} stale (>{MAX_ARTICLE_AGE_DAYS}d) "
+            f"and {dropped['seen']} already-published articles "
+            f"({len(seen_before)} links seen in last {CROSS_DAY_LOOKBACK_DAYS} days)"
+        )
 
         for category in CATEGORIES:
             for region in REGIONS:

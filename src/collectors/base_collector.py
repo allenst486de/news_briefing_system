@@ -23,7 +23,8 @@ class NewsArticle:
         self.date_is_approximate = False  # 피드에 날짜가 없어 목록 순서로 추정한 경우
         self.region = "domestic"  # sources.py의 region — 국내/해외 탭 분리 기준
         self.language = "ko"
-        self.detail_path = ""  # 해외 기사 상세 요약 페이지 (있을 때만)
+        self.detail_path = ""  # 해외 기사 상세 요약 페이지 href (base_path 포함)
+        self.detail_rel = ""   # 같은 페이지의 상대경로 (텔레그램 링크 조립용)
         
     def to_dict(self) -> Dict:
         """딕셔너리로 변환"""

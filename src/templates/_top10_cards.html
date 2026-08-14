@@ -13,13 +13,19 @@
         <div class="tab-panel {% if loop.first %}active{% endif %}" data-tab-panel="top10-{{ block.key }}">
             <div class="top10-grid">
                 {% for item in block.cards %}
-                <a class="top10-card" href="{{ item.link }}" target="_blank" rel="noopener">
-                    <span class="top10-rank-badge">{{ item.rank }}</span>
-                    <span class="top10-category-tag" style="background:var(--tag-{{ item.category }}, var(--tag-general))">{{ item.category_name }}</span>
-                    <h3>{{ item.card_headline }}</h3>
-                    <p>{{ item.card_blurb }}</p>
-                    <span class="top10-source">{{ item.source }}</span>
-                </a>
+                <div class="top10-card">
+                    <a class="top10-card-main" href="{{ item.link }}" target="_blank" rel="noopener">
+                        <span class="top10-rank-badge">{{ item.rank }}</span>
+                        <span class="top10-category-tag" style="background:var(--tag-{{ item.category }}, var(--tag-general))">{{ item.category_name }}</span>
+                        <h3>{{ item.card_headline }}</h3>
+                        <p>{{ item.card_blurb }}</p>
+                        <span class="top10-source">{{ item.source }}</span>
+                    </a>
+                    {% if item.detail_path %}
+                    {# 해외 기사는 원문이 유료라 못 여는 경우가 있어 한국어 요약을 함께 건다 #}
+                    <a class="top10-detail-link" href="{{ item.detail_path }}">한국어 상세 요약 →</a>
+                    {% endif %}
+                </div>
                 {% endfor %}
             </div>
         </div>

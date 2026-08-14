@@ -36,15 +36,16 @@ def main():
     try:
         # 1. 뉴스 수집
         logger.info("Step 1: Collecting news from all sources...")
-        aggregator = NewsAggregator()
+        repo_root = os.path.dirname(__file__)
+        raw_data_dir = os.path.join(repo_root, 'data', 'raw')
+        # 전날 이미 실은 기사를 다시 싣지 않으려면 과거 스냅샷을 봐야 한다
+        aggregator = NewsAggregator(raw_data_dir=raw_data_dir)
         categorized_news = aggregator.collect_all_news()
-        
+
         # 2. HTML 생성
         logger.info("Step 2: Generating HTML pages...")
-        repo_root = os.path.dirname(__file__)
         template_dir = os.path.join(repo_root, 'src', 'templates')
         output_dir = os.path.join(repo_root, 'docs')
-        raw_data_dir = os.path.join(repo_root, 'data', 'raw')
         base_url = os.getenv('PAGES_BASE_URL', '')
 
         generator = HTMLGenerator(template_dir, output_dir, base_url, raw_data_dir=raw_data_dir)

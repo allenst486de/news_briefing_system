@@ -95,10 +95,13 @@ def _summarize_chunk(category_name: str, articles: List[NewsArticle],
         "   내용이 부족하면 짧게 끝낼 것 (분량을 채우려고 지어내지 말 것)\n"
         f"{detail_field}"
         " - is_important: 이 기사가 오늘 이 카테고리에서 특히 중요한 뉴스인지 (true/false)\n"
+        f" - off_topic: 이 기사가 '{category_name}' 분야와 무관하면 true "
+        "(예: IT 분야에 사형 집행·환전소 기사, 과학 분야에 연예 기사). "
+        "분야에 조금이라도 관련되면 false로 둘 것\n"
         " - exclude: 홍보/유료강의/근거없는 벤치마크 등으로 제외해야 하면 true, 아니면 false\n\n"
         "반드시 아래 JSON 배열 형식으로만 응답하세요:\n"
         '[{"id": 1, "paraphrased_title": "...", "summary_250": "..."'
-        f'{detail_json}, "is_important": false, "exclude": false}}]\n\n'
+        f'{detail_json}, "is_important": false, "off_topic": false, "exclude": false}}]\n\n'
         f"기사 목록:\n{listing}"
     )
 
@@ -124,7 +127,9 @@ def _summarize_chunk(category_name: str, articles: List[NewsArticle],
             kept.append(article)
             continue
 
-        if item.get("exclude"):
+        # 피드 이름과 실제 내용이 다른 경우가 있어(전자신문 '오늘의뉴스'가 IT로
+        # 매핑돼 사형 집행 기사가 올라왔다) 분야 무관 기사도 여기서 걸러낸다.
+        if item.get("exclude") or item.get("off_topic"):
             continue
 
         new_title = (item.get("paraphrased_title") or "").strip()
@@ -364,6 +369,9 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
                 "category_name": CATEGORY_META[entry["category"]]["name"],
                 "link": article.link,
                 "source": article.source,
+                # 해외 기사는 원문이 유료일 수 있어 한국어 상세 요약 링크도 같이 준다
+                "detail_path": getattr(article, "detail_path", ""),
+                "detail_rel": getattr(article, "detail_rel", ""),
                 "card_headline": (item.get("card_headline") or article.title[:32]).strip(),
                 "card_blurb": (item.get("card_blurb") or article.summary[:90]).strip(),
             })
@@ -382,6 +390,8 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
             "category_name": CATEGORY_META[entry["category"]]["name"],
             "link": article.link,
             "source": article.source,
+            "detail_path": getattr(article, "detail_path", ""),
+            "detail_rel": getattr(article, "detail_rel", ""),
             "card_headline": article.title[:32],
             "card_blurb": article.summary[:90],
         })

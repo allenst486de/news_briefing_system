@@ -8,7 +8,7 @@
 끊어 호출하는지 (3) 한 청크가 죽어도 나머지는 살아남는지.
 """
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from src.collectors.base_collector import NewsArticle
 from src.utils import article_body, llm_client
@@ -326,6 +326,51 @@ def test_concurrency_scales_with_working_keys():
     assert llm_client.set_concurrency(0) >= llm_client._MIN_CONCURRENT, "하한이 적용되지 않음"
 
 
+def test_cross_day_links_are_loaded_from_snapshots():
+    """
+    같은 기사가 며칠씩 피드에 남아 어제 실린 기사가 오늘 또 올라온다(실측 21%).
+    제목은 LLM이 매일 다르게 재서술해 못 잡으므로 URL로 걸러야 한다.
+    스냅샷 구조가 리스트(구버전)/지역dict(현재) 둘 다 읽혀야 한다.
+    """
+    import json, shutil, tempfile
+    from datetime import date
+    from src.utils.dedup import load_recent_links, _canonical_link
+
+    root = tempfile.mkdtemp(prefix="snap_")
+    try:
+        today = datetime(2026, 8, 14, tzinfo=timezone(timedelta(hours=9)))
+        for day, payload in ((13, {"domestic": [{"link": "https://e/a?utm_source=x"}]}),
+                             (12, [{"link": "https://e/b"}])):
+            path = os.path.join(root, "2026", "08")
+            os.makedirs(path, exist_ok=True)
+            with open(os.path.join(path, f"{day}.json"), "w", encoding="utf-8") as f:
+                json.dump({"date": f"2026-08-{day}", "categories": {"politics": payload}}, f)
+
+        links = load_recent_links(root, days=7, today=today)
+        assert _canonical_link("https://e/a?utm_source=y") in links, \
+            f"추적 파라미터가 달라도 같은 기사로 봐야 한다: {links}"
+        assert "https://e/b" in links, f"구버전 스냅샷(리스트)도 읽어야 한다: {links}"
+        assert load_recent_links("", 7) == set(), "경로가 없으면 빈 집합"
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
+
+
+def test_sparkline_color_follows_displayed_pct():
+    """
+    7일 추이로 색을 정하면 '7일째 하락 중 오늘만 반등'한 지표가
+    빨간 +0.50% 옆에 파란 선으로 그려진다 — 표기된 등락률과 색이 어긋난다.
+    """
+    from src.utils import indicators
+    falling_week_up_today = [110, 108, 106, 104, 102, 100, 101]
+    svg = indicators._sparkline_svg(falling_week_up_today, "up")
+    assert indicators._UP_COLOR in svg, f"등락률(up)과 선 색이 다르다: {svg[:120]}"
+    assert indicators._DOWN_COLOR not in svg
+
+    item = indicators._item("K", "코스피", "100", -1.25, falling_week_up_today)
+    assert item["dir"] == "down" and indicators._DOWN_COLOR in item["sparkline_svg"], \
+        "_item이 등락률과 선 색을 같은 기준으로 맞추지 않는다"
+
+
 def test_prose_score_separates_body_from_headline_list():
     """
     본문 추출이 '관련기사 헤드라인 목록'을 본문으로 착각하면 엉뚱한 요약이 나온다.
@@ -385,6 +430,8 @@ def main():
     test_probe_timeout_does_not_discard_key()
     test_rate_limited_key_is_kept()
     test_concurrency_scales_with_working_keys()
+    test_cross_day_links_are_loaded_from_snapshots()
+    test_sparkline_color_follows_displayed_pct()
     test_prose_score_separates_body_from_headline_list()
     test_needs_body_targets_short_and_truncated()
     print("OK: salvage + chunking + budget + body-extraction self-checks passed")
