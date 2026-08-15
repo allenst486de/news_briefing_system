@@ -6,13 +6,28 @@ import json
 import os
 import re
 from datetime import datetime, timedelta, timezone
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 _KST = timezone(timedelta(hours=9))
 
 
+# 광고·유입 추적용 파라미터. 이것만 떼고 나머지 쿼리는 반드시 남겨야 한다 —
+# 국내 매체 상당수가 기사 ID를 쿼리에 담는다(zdnet ?no=, SBS ?news_id=,
+# 오마이뉴스 ?CNTN_CD=, 연합인포맥스 ?idxno=). 쿼리를 통째로 자르면 그 매체의
+# 모든 기사가 같은 URL로 뭉개져 하루치가 전부 '이미 실은 기사'로 걸러진다(실제 발생).
+_TRACKING_PARAMS = {
+    "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
+    "fbclid", "gclid", "igshid", "ref", "source", "from", "at_medium", "at_campaign",
+}
+
+
 def _canonical_link(link: str) -> str:
-    """추적 파라미터(utm_* 등)를 떼어낸 비교용 URL."""
-    return (link or "").split("?")[0].split("#")[0].rstrip("/")
+    """추적 파라미터만 떼어낸 비교용 URL (기사 ID 쿼리는 보존)."""
+    parts = urlsplit((link or "").strip())
+    kept = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
+            if k.lower() not in _TRACKING_PARAMS]
+    return urlunsplit((parts.scheme, parts.netloc, parts.path.rstrip("/"),
+                        urlencode(kept), ""))
 
 
 def load_recent_links(raw_data_dir: str, days: int = 7, today=None) -> set:

@@ -355,6 +355,36 @@ def test_cross_day_links_are_loaded_from_snapshots():
         shutil.rmtree(root, ignore_errors=True)
 
 
+def test_canonical_link_keeps_article_id_in_query():
+    """
+    국내 매체 상당수가 기사 ID를 쿼리에 담는다(zdnet ?no=, SBS ?news_id=,
+    오마이뉴스 ?CNTN_CD=, 연합인포맥스 ?idxno=). 쿼리를 통째로 자르면 그 매체의
+    모든 기사가 같은 URL이 되어 하루치가 전부 '이미 실은 기사'로 걸러진다
+    (실제로 네 매체가 지면에서 통째로 사라졌다).
+    """
+    from src.utils.dedup import _canonical_link
+
+    pairs = [
+        ("https://zdnet.co.kr/view/?no=20260813233849", "https://zdnet.co.kr/view/?no=20260814031003"),
+        ("https://news.sbs.co.kr/news/endPage.do?news_id=N1008704761",
+         "https://news.sbs.co.kr/news/endPage.do?news_id=N1008704760"),
+        ("https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003258562",
+         "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003258877"),
+        ("https://news.einfomax.co.kr/news/articleView.html?idxno=4430088",
+         "https://news.einfomax.co.kr/news/articleView.html?idxno=4430086"),
+    ]
+    for first, second in pairs:
+        assert _canonical_link(first) != _canonical_link(second), \
+            f"서로 다른 기사가 같은 URL로 뭉개진다: {_canonical_link(first)}"
+
+    # 추적 파라미터만 다른 건 같은 기사로 봐야 한다
+    assert _canonical_link("https://e/a?utm_source=rss&utm_medium=x") == \
+           _canonical_link("https://e/a?fbclid=zz"), "추적 파라미터가 제거되지 않는다"
+    # 기사 ID와 추적 파라미터가 섞여 있어도 ID는 남아야 한다
+    kept = _canonical_link("https://zdnet.co.kr/view/?no=123&utm_source=rss")
+    assert "no=123" in kept and "utm_source" not in kept, kept
+
+
 def test_sparkline_color_follows_displayed_pct():
     """
     7일 추이로 색을 정하면 '7일째 하락 중 오늘만 반등'한 지표가
@@ -431,6 +461,7 @@ def main():
     test_rate_limited_key_is_kept()
     test_concurrency_scales_with_working_keys()
     test_cross_day_links_are_loaded_from_snapshots()
+    test_canonical_link_keeps_article_id_in_query()
     test_sparkline_color_follows_displayed_pct()
     test_prose_score_separates_body_from_headline_list()
     test_needs_body_targets_short_and_truncated()

@@ -11,8 +11,9 @@ URL은 등재 전에 실제로 받아 항목 수와 날짜 파싱 여부까지 �
 매일경제(403), 서울경제/한국일보/파이낸셜뉴스(404), 중앙일보/KBS/MBC(항목 0),
 Reuters(404), AP(403), 블로터(403), 이데일리(연결 실패).
 2026-08 3차: 피드가 살아 있어도 '갱신을 멈춘' 경우가 있다 — CNN world(기사 중앙값
-1225일), WSJ(564일), 경향 과학(513일, 8건)은 오래된 기사만 내보내 제거했다.
-등재 전에 항목 수만 보지 말고 발행일까지 확인할 것.
+1225일), WSJ(564일), 경향 과학(513일, 8건)이 그랬다. 등재 전에 항목 수만 보지 말고
+발행일까지 확인할 것. 셋은 요청에 따라 목록에 유지하되, 오래된 기사는
+news_aggregator의 MAX_ARTICLE_AGE_DAYS 필터가 일괄로 막는다.
 새로 추가하려면 test_feeds.py로 먼저 검증할 것.
 """
 
@@ -155,6 +156,21 @@ SOURCES = [
         # 분리한다(표시명은 동일하므로 화면·중복제거상으로는 같은 매체로 취급된다).
         "id": "donga_health", "name": "동아일보", "language": "ko", "region": "domestic", "limit": 15,
         "feeds": {"life": "https://rss.donga.com/health.xml"},
+    },
+    {
+        # 아래 셋은 한때 오래된 기사만 내보내 제거했다가 요청에 따라 되살렸다.
+        # 3일 초과 기사는 news_aggregator가 일괄로 걸러내므로, 피드가 다시 멈춰도
+        # 옛날 기사가 지면에 오르지는 않는다(그동안 0건으로 보일 뿐이다).
+        "id": "wsj", "name": "WSJ Markets", "language": "en", "region": "overseas", "limit": 10,
+        "feeds": {"economy": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml"},
+    },
+    {
+        "id": "cnn", "name": "CNN", "language": "en", "region": "overseas", "limit": 10,
+        "feeds": {"world": "http://rss.cnn.com/rss/edition_world.rss"},
+    },
+    {
+        "id": "khan_sci", "name": "경향신문", "language": "ko", "region": "domestic", "limit": 15,
+        "feeds": {"science": "https://www.khan.co.kr/rss/rssdata/kh_science.xml"},
     },
     {
         "id": "asiae", "name": "아시아경제", "language": "ko", "region": "domestic", "limit": 15,
