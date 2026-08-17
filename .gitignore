@@ -8,6 +8,9 @@
 data/raw/page_salt.txt
 page_salt.txt
 
+# 디자인 훅 세션 캐시 (설정 .impeccable/config.json은 커밋한다)
+.impeccable/hook.cache.json
+
 # Python
 __pycache__/
 *.py[cod]
