@@ -5,7 +5,9 @@ LLM Summarizer Orchestration
 담당한다. LLM 호출이 실패하면 항상 규칙기반으로 자동 폴백한다 — 이 파일이
 파이프라인을 죽이는 일은 없다.
 """
+import html
 import os
+import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, List, Optional
 
@@ -65,11 +67,54 @@ CATEGORY_WORKERS = 8
 CHUNK_WORKERS = 3
 
 
+_SENTENCE_END = re.compile(r'[.!?]\s|다\.\s|요\.\s|다\.$|요\.$')
+# 자르는 위치가 엔티티 안쪽이면 '&quo' 같은 조각이 남아 화면에 그대로 노출된다
+_PARTIAL_ENTITY = re.compile(r'&[#a-zA-Z0-9]{0,7}$')
+
+
+def _one_line(text: str) -> str:
+    """번호 목록에 넣을 값의 개행·연속 공백을 한 줄로 눌러 준다."""
+    return re.sub(r'\s+', ' ', (text or '')).strip()
+
+
+def clean_llm_text(value: str) -> str:
+    """
+    LLM 출력 정리. 모델이 입력에 있던 HTML 엔티티(&#8212; &quot; 등)를 그대로
+    되뱉는 경우가 있어 한 번 더 풀어준다 — 안 풀면 화면·텔레그램에 엔티티가
+    글자 그대로 노출된다(실측: 제목에 '&#8212;'가 남은 사례).
+    """
+    return html.unescape((value or "").strip())
+
+
+def trim_at_boundary(text: str, limit: int) -> str:
+    """
+    limit 안에서 문장(없으면 어절) 경계까지만 남긴다.
+    글자 수로 그냥 자르면 단어가 반토막 나고, 엔티티가 걸리면 '&quot' 같은
+    깨진 조각이 그대로 노출된다(Top10 헤드라인이 정확히 32자에서 잘려 나왔다).
+    """
+    text = (text or "").strip()
+    if len(text) <= limit:
+        return text
+
+    window = text[:limit]
+    ends = [m.end() for m in _SENTENCE_END.finditer(window)]
+    if ends and ends[-1] >= limit * 0.5:
+        return _PARTIAL_ENTITY.sub('', window[:ends[-1]].strip())
+
+    space = window.rfind(' ')
+    if space >= limit * 0.5:
+        window = window[:space]
+    return _PARTIAL_ENTITY.sub('', window.rstrip(' ,·-')) + '…'
+
+
 def _rule_based_fallback(article: NewsArticle) -> None:
     """LLM 실패 시 Phase1 규칙기반 동작으로 복귀 (번역은 생략, 원문 그대로 유지)."""
     article.summary = clean_html(article.summary)
     article.summary = strip_title_prefix(article.summary, article.title)
     article.is_important = _analyzer.analyze(article.title, article.summary)
+    # 재시도 스윕 대상 표시 — LLM 실패는 실행마다 편차가 커서(같은 코드로 0%~26%)
+    # 한 번 더 훑어주면 그날 운에 따라 품질이 흔들리는 걸 줄일 수 있다
+    article.llm_failed = True
 
 
 def _summarize_chunk(category_name: str, articles: List[NewsArticle],
@@ -79,9 +124,12 @@ def _summarize_chunk(category_name: str, articles: List[NewsArticle],
     want_detail=True(해외 기사)면 상세 요약 페이지용 detail_summary도 같이 받는다 —
     별도 호출로 나누면 호출 수가 두 배가 되어 30분 제한에 걸린다.
     """
+    # 항목 하나는 반드시 한 줄이어야 한다. RSS 요약문(clean_html 통과분)에 개행이
+    # 남아 있으면 번호 목록 한 항목이 여러 줄로 쪼개지고, 모델이 번호와 기사를
+    # 잘못 대응시켜 일부 기사가 응답에서 누락된다 — 그 기사는 규칙기반으로 떨어진다.
     listing = "\n".join(
-        f"{i + 1}. [{a.source}/{getattr(a, 'language', 'ko')}] {a.title} — "
-        f"{getattr(a, 'body', '') or a.summary}"
+        f"{i + 1}. [{a.source}/{getattr(a, 'language', 'ko')}] "
+        f"{_one_line(a.title)} — {_one_line(getattr(a, 'body', '') or a.summary)}"
         for i, a in enumerate(articles)
     )
     detail_field = (
@@ -137,8 +185,8 @@ def _summarize_chunk(category_name: str, articles: List[NewsArticle],
         if item.get("exclude") or item.get("off_topic"):
             continue
 
-        new_title = (item.get("paraphrased_title") or "").strip()
-        new_summary = (item.get("summary_250") or "").strip()
+        new_title = clean_llm_text(item.get("paraphrased_title"))
+        new_summary = clean_llm_text(item.get("summary_250"))
         new_summary = strip_title_prefix(new_summary, new_title)
         if not new_title or not new_summary:
             _rule_based_fallback(article)
@@ -152,8 +200,9 @@ def _summarize_chunk(category_name: str, articles: List[NewsArticle],
         article.title = new_title
         article.summary = new_summary
         article.is_important = bool(item.get("is_important"))
+        article.llm_failed = False
         if want_detail:
-            article.detail_summary = (item.get("detail_600") or "").strip()
+            article.detail_summary = clean_llm_text(item.get("detail_600"))
         kept.append(article)
 
     return kept
@@ -269,6 +318,61 @@ def summarize_all(buckets: Dict[str, Dict[str, List[NewsArticle]]]) -> None:
     with ThreadPoolExecutor(max_workers=min(len(keys), CATEGORY_WORKERS)) as pool:
         list(pool.map(run, keys))
 
+    _retry_failed(buckets, resolved)
+
+
+def _retry_failed(buckets: Dict[str, Dict[str, List[NewsArticle]]],
+                   resolved: Dict[str, Optional[str]]) -> int:
+    """
+    1차 통과에서 폴백된 기사만 한 번 더 요약한다.
+    같은 코드로 같은 시간대에 돌려도 폴백 비율이 0%~26%로 튀는데(429·타임아웃 등
+    그날 API 사정), 실패분만 다시 훑으면 그 편차가 크게 줄어든다.
+    남은 시간 예산 안에서만 돌고, 예산이 없으면 call_llm이 즉시 None을 주므로
+    추가로 시간을 잡아먹지 않는다.
+    """
+    failed = {
+        key: [a for region in ("domestic", "overseas")
+              for a in buckets[key].get(region, []) if getattr(a, "llm_failed", False)]
+        for key in buckets
+    }
+    total = sum(len(v) for v in failed.values())
+    if not total:
+        return 0
+
+    # 1차에서 성공한 호출이 하나도 없으면 키·모델 자체가 문제라 다시 해도 똑같다.
+    # 무효 키로 돌렸을 때 헛호출 34건이 더 나갔다.
+    if llm_client.LLM_STATS.get("ok", 0) == 0:
+        logger.warning(f"Retry sweep skipped — no LLM call succeeded ({total} articles stay rule-based)")
+        return 0
+
+    logger.info(f"Retry sweep: {total} articles fell back on the first pass")
+
+    def run(category_key):
+        articles = failed[category_key]
+        if not articles:
+            return
+        api_key = resolved.get(category_key) or category_api_key(category_key)
+        category_name = CATEGORY_META[category_key]["name"]
+        for start in range(0, len(articles), CHUNK_SIZE):
+            chunk = articles[start:start + CHUNK_SIZE]
+            try:
+                # 재시도에서는 want_detail을 끈다 — 상세 요약까지 다시 받으면
+                # 출력이 커져 또 실패할 확률이 높다. 250자 요약을 살리는 게 우선.
+                _summarize_chunk(category_name, chunk, api_key, want_detail=False)
+            except Exception as e:
+                logger.warning(f"[{category_key}] retry sweep chunk failed: {e}")
+
+    with ThreadPoolExecutor(max_workers=min(len(buckets), CATEGORY_WORKERS)) as pool:
+        list(pool.map(run, list(buckets.keys())))
+
+    recovered = total - sum(
+        1 for key in buckets for region in ("domestic", "overseas")
+        for a in buckets[key].get(region, []) if getattr(a, "llm_failed", False)
+    )
+    llm_client.LLM_STATS["retry_recovered"] = recovered
+    logger.info(f"Retry sweep recovered {recovered}/{total} articles")
+    return recovered
+
 
 def extract_ai_items(articles: List[NewsArticle], api_key: Optional[str] = None) -> None:
     """
@@ -278,7 +382,10 @@ def extract_ai_items(articles: List[NewsArticle], api_key: Optional[str] = None)
     if not articles:
         return
 
-    listing = "\n".join(f"{i + 1}. {a.title} — {a.summary}" for i, a in enumerate(articles))
+    listing = "\n".join(
+        f"{i + 1}. {_one_line(a.title)} — {_one_line(a.summary)}"
+        for i, a in enumerate(articles)
+    )
     user_prompt = (
         "입력은 'IT' 카테고리에서 이미 요약된 기사 목록입니다. 이 중 다음에 해당하는 "
         "기사만 골라내세요:\n"
@@ -315,6 +422,11 @@ def extract_ai_items(articles: List[NewsArticle], api_key: Optional[str] = None)
 
 
 TOP10_COUNT = 10
+# 폴백으로 기사 제목/요약을 그대로 쓸 때의 상한. 글자 수로 자르지 않고
+# trim_at_boundary가 문장·어절 경계를 찾는다.
+CARD_HEADLINE_LIMIT = 40
+CARD_BLURB_LIMIT = 110
+
 TOP10_CANDIDATES_PER_CATEGORY = 6  # 8개 카테고리 × 6 = 48건 후보 (10건 고르기엔 충분)
 
 
@@ -339,7 +451,8 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
         return []
 
     listing = "\n".join(
-        f"{i + 1}. [{e['category']}] {e['article'].title} — {e['article'].summary[:120]} "
+        f"{i + 1}. [{e['category']}] {_one_line(e['article'].title)} — "
+        f"{_one_line(e['article'].summary)[:120]} "
         f"(is_important={e['article'].is_important})"
         for i, e in enumerate(flat)
     )
@@ -377,8 +490,8 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
                 # 해외 기사는 원문이 유료일 수 있어 한국어 상세 요약 링크도 같이 준다
                 "detail_path": getattr(article, "detail_path", ""),
                 "detail_rel": getattr(article, "detail_rel", ""),
-                "card_headline": (item.get("card_headline") or article.title[:32]).strip(),
-                "card_blurb": (item.get("card_blurb") or article.summary[:90]).strip(),
+                "card_headline": clean_llm_text(item.get("card_headline")) or trim_at_boundary(article.title, CARD_HEADLINE_LIMIT),
+                "card_blurb": clean_llm_text(item.get("card_blurb")) or trim_at_boundary(article.summary, CARD_BLURB_LIMIT),
             })
         if cards:
             cards.sort(key=lambda c: c["rank"])
@@ -397,8 +510,8 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
             "source": article.source,
             "detail_path": getattr(article, "detail_path", ""),
             "detail_rel": getattr(article, "detail_rel", ""),
-            "card_headline": article.title[:32],
-            "card_blurb": article.summary[:90],
+            "card_headline": trim_at_boundary(article.title, CARD_HEADLINE_LIMIT),
+            "card_blurb": trim_at_boundary(article.summary, CARD_BLURB_LIMIT),
         })
     return cards
 

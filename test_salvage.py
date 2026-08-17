@@ -8,6 +8,7 @@
 끊어 호출하는지 (3) 한 청크가 죽어도 나머지는 살아남는지.
 """
 import os
+import re
 from datetime import datetime, timedelta, timezone
 
 from src.collectors.base_collector import NewsArticle
@@ -355,6 +356,87 @@ def test_cross_day_links_are_loaded_from_snapshots():
         shutil.rmtree(root, ignore_errors=True)
 
 
+def test_listing_keeps_one_line_per_article():
+    """
+    번호 목록의 한 항목이 여러 줄로 쪼개지면 모델이 번호와 기사를 잘못 대응시켜
+    일부 기사가 응답에서 누락되고, 그 기사는 규칙기반으로 떨어진다.
+    RSS 요약문에는 개행이 남아 있는 경우가 흔하다(clean_html이 태그만 지운다).
+    """
+    articles = [_article(0), _article(1)]
+    articles[0].summary = "첫 문장입니다.\n\n두 번째 단락입니다.\n세 번째 줄."
+    articles[1].title = "제목에\n개행이 있는 경우"
+
+    captured = {}
+
+    def capture(system, user, **kwargs):
+        captured['user'] = user
+        return "[]"
+
+    original = llm_client.call_llm
+    llm_client.call_llm = capture
+    try:
+        summarizer._summarize_chunk("정치", articles, "k", want_detail=False)
+    finally:
+        llm_client.call_llm = original
+
+    listing = captured['user'].split("기사 목록:\n", 1)[1]
+    lines = [l for l in listing.split("\n") if l.strip()]
+    assert len(lines) == len(articles), \
+        f"기사 {len(articles)}건인데 목록이 {len(lines)}줄로 쪼개졌다:\n{listing}"
+    numbered = sum(1 for l in lines if re.match(r'^\d+\.\s', l))
+    assert numbered == len(articles), f"번호가 붙지 않은 줄이 있다:\n{listing}"
+
+
+def test_trim_at_boundary_does_not_cut_mid_word_or_entity():
+    """
+    글자 수로 그냥 자르면 Top10 헤드라인이 단어 중간에서 끊긴다(실측: 헤드라인
+    11개가 정확히 32자에서 잘려 나왔다). 엔티티가 걸리면 '&quot' 같은 깨진
+    조각까지 노출된다.
+    """
+    long_ko = "정부가 부동산 대책을 발표하면서 시장 안정을 위한 추가 공급 계획을 내놨다. 업계는 실효성을 두고 엇갈린 반응을 보였다."
+    out = summarizer.trim_at_boundary(long_ko, 60)
+    assert len(out) <= 61, f"상한을 넘었다: {len(out)}"
+    assert out.endswith(("다.", "…")), f"문장/어절 경계에서 끝나지 않았다: {out!r}"
+
+    # 자르는 위치가 엔티티 안쪽이어도 '&quo' 같은 조각이 남지 않아야 한다
+    mid_entity = "정부보고서발표내용요약본문시작부분입니다&quot;인용구간"
+    cut = summarizer.trim_at_boundary(mid_entity, 22)
+    assert "&" not in cut, f"엔티티 조각이 남았다: {cut!r}"
+    # 짧으면 그대로
+    assert summarizer.trim_at_boundary("짧은 제목", 40) == "짧은 제목"
+    assert summarizer.trim_at_boundary("", 10) == ""
+
+
+def test_clean_llm_text_unescapes_entities():
+    """모델이 입력에 있던 엔티티를 그대로 되뱉으면 화면에 글자로 노출된다."""
+    assert summarizer.clean_llm_text("연애가 필요할까 &#8212; 무연애사회") == "연애가 필요할까 — 무연애사회"
+    assert summarizer.clean_llm_text(" &quot;인용&quot; 제목 ") == '"인용" 제목'
+    assert summarizer.clean_llm_text(None) == ""
+
+
+def test_telegram_escapes_ampersand_in_titles():
+    """
+    parse_mode='HTML'로 보내므로 'S&P500'의 &를 그대로 두면 텔레그램 파서가
+    엔티티로 읽으려 해 글자가 깨지거나 전송이 거부된다.
+    """
+    from src.telegram_bot import TelegramNotifier
+
+    cards = {"domestic": [{
+        "rank": 1, "card_headline": "S&P500 최고치 <경신>", "link": "https://e/a",
+        "category_name": "경제", "source": "연합뉴스 & 로이터",
+    }]}
+    # Bot 인스턴스를 만들지 않고 메시지 조립만 검사
+    notifier = TelegramNotifier.__new__(TelegramNotifier)
+    notifier.base_url = "https://example.com"
+    text = TelegramNotifier._build_lead_message(notifier, {}, cards, "2026-08-17")
+
+    assert "S&amp;P500" in text, f"&가 이스케이프되지 않았다: {text[:200]}"
+    assert "&lt;경신&gt;" in text, "부등호가 이스케이프되지 않았다"
+    assert "연합뉴스 &amp; 로이터" in text, "출처의 &가 이스케이프되지 않았다"
+    # 우리가 의도한 태그는 살아 있어야 한다
+    assert "<b>" in text and "<a href=" in text
+
+
 def test_canonical_link_keeps_article_id_in_query():
     """
     국내 매체 상당수가 기사 ID를 쿼리에 담는다(zdnet ?no=, SBS ?news_id=,
@@ -461,6 +543,10 @@ def main():
     test_rate_limited_key_is_kept()
     test_concurrency_scales_with_working_keys()
     test_cross_day_links_are_loaded_from_snapshots()
+    test_listing_keeps_one_line_per_article()
+    test_trim_at_boundary_does_not_cut_mid_word_or_entity()
+    test_clean_llm_text_unescapes_entities()
+    test_telegram_escapes_ampersand_in_titles()
     test_canonical_link_keeps_article_id_in_query()
     test_sparkline_color_follows_displayed_pct()
     test_prose_score_separates_body_from_headline_list()

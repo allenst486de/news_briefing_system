@@ -50,6 +50,7 @@ def main():
 
         generator = HTMLGenerator(template_dir, output_dir, base_url, raw_data_dir=raw_data_dir)
         page_urls, top10_by_region = generator.generate_all(categorized_news)
+        _record_fallback_rate(categorized_news)
 
         # 3. 텔레그램 전송
         logger.info("Step 3: Sending Telegram notification...")
@@ -95,6 +96,18 @@ def main():
         sys.exit(1)
 
 
+def _record_fallback_rate(buckets) -> None:
+    """
+    기사 단위로 몇 건이 규칙기반으로 떨어졌는지 센다.
+    호출 성공률만 보면 '✅ 정상'인데 화면에는 영문 기사가 남아 있는 경우가 있다
+    (청크 일부만 실패). 지면에 실제로 반영된 비율을 따로 봐야 한다.
+    """
+    articles = [a for regions in buckets.values() for arts in regions.values() for a in arts]
+    failed = sum(1 for a in articles if getattr(a, 'llm_failed', False))
+    llm_client.LLM_STATS['articles_total'] = len(articles)
+    llm_client.LLM_STATS['articles_fallback'] = failed
+
+
 def _report_llm_status(logger) -> None:
     """
     LLM은 실패해도 규칙기반으로 조용히 폴백하기 때문에, 번역/요약이 몇 주째 안 되는 걸
@@ -104,8 +117,19 @@ def _report_llm_status(logger) -> None:
     summary = llm_client.stats_summary()
     keys = llm_client.key_status_report()
     stats = llm_client.LLM_STATS
-    degraded = stats["ok"] == 0 and stats["calls"] > 0
-    headline = "❌ LLM 전부 실패 — 요약/번역이 규칙기반으로 대체됨" if degraded else "✅ LLM 정상 동작"
+    total = stats.get('articles_total') or 0
+    failed = stats.get('articles_fallback') or 0
+    rate = (failed * 100 // total) if total else 0
+
+    if stats["ok"] == 0 and stats["calls"] > 0:
+        headline = "❌ LLM 전부 실패 — 요약/번역이 규칙기반으로 대체됨"
+    elif rate >= 10:
+        # 호출은 일부 성공했지만 지면에 영문·원문 그대로 남은 기사가 많은 상태
+        headline = f"⚠️ LLM 부분 실패 — 기사 {failed}/{total}건({rate}%)이 규칙기반으로 대체됨"
+    else:
+        headline = f"✅ LLM 정상 동작 (규칙기반 대체 {failed}/{total}건)"
+    if stats.get('retry_recovered'):
+        headline += f" · 재시도로 {stats['retry_recovered']}건 복구"
 
     logger.info(f"LLM status: {headline} | {summary}")
 

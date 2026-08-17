@@ -25,6 +25,7 @@ class NewsArticle:
         self.language = "ko"
         self.detail_path = ""  # 해외 기사 상세 요약 페이지 href (base_path 포함)
         self.detail_rel = ""   # 같은 페이지의 상대경로 (텔레그램 링크 조립용)
+        self.llm_failed = False  # 요약이 규칙기반으로 떨어졌는지 (재시도 스윕 대상)
         
     def to_dict(self) -> Dict:
         """딕셔너리로 변환"""

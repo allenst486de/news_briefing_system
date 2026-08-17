@@ -15,6 +15,7 @@ Top10은 이미지와 텍스트 목록을 함께 보낸다 — 웹 홈 화면의
 팝업 없음보다 우선한 트레이드오프다.
 """
 import asyncio
+import html
 from typing import Dict, List, Optional, Tuple
 from telegram import Bot
 from telegram.error import TelegramError
@@ -42,6 +43,15 @@ class TelegramNotifier:
     def _full_url(self, relative: str) -> str:
         return f"{self.base_url}/{relative.lstrip('/')}"
 
+    @staticmethod
+    def _esc(text: str) -> str:
+        """
+        parse_mode='HTML'로 보내므로 본문에 들어가는 값은 반드시 이스케이프해야 한다.
+        제목에 '&'가 들어가면(예: 'S&P500 최고치') 텔레그램 파서가 &P500...을
+        엔티티로 읽으려 해서 글자가 깨지거나 메시지 전송이 거부된다.
+        """
+        return html.escape(str(text or ""), quote=False)
+
     def _build_lead_message(self, page_urls: Dict[str, str],
                              top10_by_region: Dict[str, List[Dict]], date_str: str) -> str:
         parts = [f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>", ""]
@@ -52,13 +62,14 @@ class TelegramNotifier:
                 continue
             parts.append(f"🔥 <b>오늘의 {label} Top 10</b>")
             for item in cards:
-                parts.append(f'{item["rank"]}. <b>{item["card_headline"]}</b>')
-                links = f'<a href="{item["link"]}">원문 보기</a>'
+                parts.append(f'{item["rank"]}. <b>{self._esc(item["card_headline"])}</b>')
+                links = f'<a href="{self._esc(item["link"])}">원문 보기</a>'
                 # 해외 기사는 원문이 유료라 못 여는 경우가 있어 한국어 요약을 함께 건다
                 detail = item.get("detail_rel")
                 if detail:
-                    links += f' · <a href="{self._full_url(detail)}">한국어 상세 요약</a>'
-                parts.append(f'{item.get("category_name", "")} · {item.get("source", "")} · {links}')
+                    links += f' · <a href="{self._esc(self._full_url(detail))}">한국어 상세 요약</a>'
+                parts.append(f'{self._esc(item.get("category_name", ""))} · '
+                              f'{self._esc(item.get("source", ""))} · {links}')
             parts.append("")
 
         parts.append("📂 <b>분야별 바로가기</b>")
@@ -68,7 +79,8 @@ class TelegramNotifier:
             if not url:
                 continue
             meta = CATEGORY_META[key]
-            nav_links.append(f'<a href="{self._full_url(url)}">{meta["icon"]} {meta["name"]}</a>')
+            nav_links.append(f'<a href="{self._esc(self._full_url(url))}">'
+                              f'{meta["icon"]} {self._esc(meta["name"])}</a>')
         parts.append(" · ".join(nav_links))
 
         parts.append("")
