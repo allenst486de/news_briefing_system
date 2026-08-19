@@ -1,5 +1,42 @@
 [
   {
+    "date": "2026-08-20",
+    "categories": [
+      {
+        "name": "🏛️ 정치",
+        "path": "/news_briefing_system/2026/08/20/politics-5Kx4hJYzhE.html"
+      },
+      {
+        "name": "💰 경제",
+        "path": "/news_briefing_system/2026/08/20/economy-DDTtua2CHt.html"
+      },
+      {
+        "name": "👥 사회",
+        "path": "/news_briefing_system/2026/08/20/society-i5Fu4Gadju.html"
+      },
+      {
+        "name": "🌱 생활",
+        "path": "/news_briefing_system/2026/08/20/life-xjdklnwoot.html"
+      },
+      {
+        "name": "🎭 문화",
+        "path": "/news_briefing_system/2026/08/20/culture-ICinZl7rl0.html"
+      },
+      {
+        "name": "💻 IT",
+        "path": "/news_briefing_system/2026/08/20/it-6ZLv104f3t.html"
+      },
+      {
+        "name": "🔬 과학",
+        "path": "/news_briefing_system/2026/08/20/science-1WoGe9EV97.html"
+      },
+      {
+        "name": "🌍 국제",
+        "path": "/news_briefing_system/2026/08/20/world-NmXj0cAeTe.html"
+      }
+    ]
+  },
+  {
     "date": "2026-08-19",
     "categories": [
       {
