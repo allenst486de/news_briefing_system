@@ -49,6 +49,9 @@ ENV/
 *.log
 logs/
 
+# 로컬 gh-pages 배포용 git worktree (scripts/run_daily_briefing.sh)
+.ghpages_worktree/
+
 # OS
 .DS_Store
 Thumbs.db
