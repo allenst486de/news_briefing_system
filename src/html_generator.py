@@ -154,7 +154,9 @@ class HTMLGenerator:
         self._save_raw_snapshot(buckets, stock_picks, date_str)
 
         self.logger.info("HTML generation completed")
-        return page_urls, top10_by_region
+        # archive_file은 난수 파일명이라 호출부가 스스로 만들어낼 수 없다 —
+        # 텔레그램 메시지에서 링크하려면 여기서 돌려줘야 한다.
+        return page_urls, top10_by_region, archive_file
 
     def _make_path(self, relative: str) -> str:
         clean = relative.lstrip('/')

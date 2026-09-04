@@ -436,13 +436,62 @@ def test_telegram_escapes_ampersand_in_titles():
     # Bot 인스턴스를 만들지 않고 메시지 조립만 검사
     notifier = TelegramNotifier.__new__(TelegramNotifier)
     notifier.base_url = "https://example.com"
-    text = TelegramNotifier._build_lead_message(notifier, {}, cards, "2026-08-17")
+    # Top10 목록은 지역별 메시지로 분리됐다(국내/해외를 합치면 4096자를 넘길 수 있다)
+    text = TelegramNotifier._build_region_message(
+        notifier, "domestic", "국내", cards, "2026-08-17")
 
     assert "S&amp;P500" in text, f"&가 이스케이프되지 않았다: {text[:200]}"
     assert "&lt;경신&gt;" in text, "부등호가 이스케이프되지 않았다"
     assert "연합뉴스 &amp; 로이터" in text, "출처의 &가 이스케이프되지 않았다"
     # 우리가 의도한 태그는 살아 있어야 한다
     assert "<b>" in text and "<a href=" in text
+
+
+def test_telegram_splits_regions_into_separate_messages():
+    """
+    국내/해외를 한 메시지에 합쳐 보내면 4096자 상한에 걸려 그날 텍스트가 통째로
+    전송 거부될 수 있다(해외만 2,600자대까지 나온다). 지역별로 나뉘는지 확인한다.
+    """
+    from src.telegram_bot import TelegramNotifier
+
+    def cards(label):
+        return [{"rank": i + 1, "card_headline": f"{label} 헤드라인 {i}",
+                 "link": f"https://e/{label}/{i}", "category_name": "경제",
+                 "source": "출처"} for i in range(10)]
+
+    by_region = {"domestic": cards("국내"), "overseas": cards("해외")}
+    notifier = TelegramNotifier.__new__(TelegramNotifier)
+    notifier.base_url = "https://example.com"
+
+    dom = TelegramNotifier._build_region_message(
+        notifier, "domestic", "국내", by_region, "2026-08-17")
+    ovs = TelegramNotifier._build_region_message(
+        notifier, "overseas", "해외", by_region, "2026-08-17")
+
+    assert "국내 헤드라인 0" in dom and "해외 헤드라인 0" not in dom, "국내 메시지에 해외가 섞였다"
+    assert "해외 헤드라인 0" in ovs and "국내 헤드라인 0" not in ovs, "해외 메시지에 국내가 섞였다"
+    for name, text in (("국내", dom), ("해외", ovs)):
+        assert len(text) <= 4096, f"{name} 메시지가 텔레그램 상한을 넘었다: {len(text)}자"
+
+    # 기사가 없는 지역은 빈 메시지를 보내지 않는다
+    assert TelegramNotifier._build_region_message(
+        notifier, "overseas", "해외", {"domestic": cards("국내")}, "2026-08-17") is None
+
+
+def test_telegram_lead_message_links_archive():
+    """아카이브는 파일명이 난수라 호출부가 만들어낼 수 없다 — 넘겨준 경로를 링크해야 한다."""
+    from src.telegram_bot import TelegramNotifier
+
+    notifier = TelegramNotifier.__new__(TelegramNotifier)
+    notifier.base_url = "https://example.com"
+
+    with_archive = TelegramNotifier._build_lead_message(
+        notifier, {}, "2026-08-17", "archive-nau9hcFBTD.html")
+    assert "archive-nau9hcFBTD.html" in with_archive, "아카이브 링크가 없다"
+
+    # 경로가 없으면 깨진 링크를 내보내지 않는다
+    without = TelegramNotifier._build_lead_message(notifier, {}, "2026-08-17", None)
+    assert "아카이브" not in without, "아카이브 경로가 없는데 링크가 나갔다"
 
 
 def test_canonical_link_keeps_article_id_in_query():
@@ -555,6 +604,8 @@ def main():
     test_trim_at_boundary_does_not_cut_mid_word_or_entity()
     test_clean_llm_text_unescapes_entities()
     test_telegram_escapes_ampersand_in_titles()
+    test_telegram_splits_regions_into_separate_messages()
+    test_telegram_lead_message_links_archive()
     test_canonical_link_keeps_article_id_in_query()
     test_sparkline_color_follows_displayed_pct()
     test_prose_score_separates_body_from_headline_list()

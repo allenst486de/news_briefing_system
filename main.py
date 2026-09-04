@@ -49,7 +49,7 @@ def main():
         base_url = os.getenv('PAGES_BASE_URL', '')
 
         generator = HTMLGenerator(template_dir, output_dir, base_url, raw_data_dir=raw_data_dir)
-        page_urls, top10_by_region = generator.generate_all(categorized_news)
+        page_urls, top10_by_region, archive_file = generator.generate_all(categorized_news)
         _record_fallback_rate(categorized_news)
 
         # 3. 텔레그램 전송
@@ -75,7 +75,8 @@ def main():
                     images.append((path, label))
 
             notifier = TelegramNotifier(bot_token, chat_id, base_url)
-            notifier.send_briefing_sync(page_urls, top10_by_region, date_str, images)
+            notifier.send_briefing_sync(page_urls, top10_by_region, date_str, images,
+                                         archive_rel=archive_file)
 
         # 4. 3개월 지난 자료 압축 롤오버 (실패해도 전체 실행은 성공으로 취급)
         try:

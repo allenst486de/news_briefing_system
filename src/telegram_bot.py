@@ -52,25 +52,35 @@ class TelegramNotifier:
         """
         return html.escape(str(text or ""), quote=False)
 
-    def _build_lead_message(self, page_urls: Dict[str, str],
-                             top10_by_region: Dict[str, List[Dict]], date_str: str) -> str:
-        parts = [f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>", ""]
+    def _build_region_message(self, region: str, label: str,
+                               top10_by_region: Dict[str, List[Dict]], date_str: str) -> Optional[str]:
+        """
+        국내/해외 Top10을 각각 별도 메시지로 만든다.
 
-        for region, label in (("domestic", "국내"), ("overseas", "해외")):
-            cards = top10_by_region.get(region) or []
-            if not cards:
-                continue
-            parts.append(f"🔥 <b>오늘의 {label} Top 10</b>")
-            for item in cards:
-                parts.append(f'{item["rank"]}. <b>{self._esc(item["card_headline"])}</b>')
-                links = f'<a href="{self._esc(item["link"])}">원문 보기</a>'
-                # 해외 기사는 원문이 유료라 못 여는 경우가 있어 한국어 요약을 함께 건다
-                detail = item.get("detail_rel")
-                if detail:
-                    links += f' · <a href="{self._esc(self._full_url(detail))}">한국어 상세 요약</a>'
-                parts.append(f'{self._esc(item.get("category_name", ""))} · '
-                              f'{self._esc(item.get("source", ""))} · {links}')
-            parts.append("")
+        예전에는 둘을 한 메시지에 붙여 보냈는데, 20건이 한 덩어리로 오면 읽기 어렵고
+        텔레그램 메시지 상한(4096자)에도 가까워진다 — 상한을 넘으면 전송이 통째로
+        거부되어 그날 브리핑 텍스트가 아예 안 간다. 지역별로 나누면 절반이 된다.
+        """
+        cards = top10_by_region.get(region) or []
+        if not cards:
+            return None
+
+        parts = [f"🔥 <b>오늘의 {label} Top 10</b> ({date_str})", ""]
+        for item in cards:
+            parts.append(f'{item["rank"]}. <b>{self._esc(item["card_headline"])}</b>')
+            links = f'<a href="{self._esc(item["link"])}">원문 보기</a>'
+            # 해외 기사는 원문이 유료라 못 여는 경우가 있어 한국어 요약을 함께 건다
+            detail = item.get("detail_rel")
+            if detail:
+                links += f' · <a href="{self._esc(self._full_url(detail))}">한국어 상세 요약</a>'
+            parts.append(f'{self._esc(item.get("category_name", ""))} · '
+                          f'{self._esc(item.get("source", ""))} · {links}')
+        return "\n".join(parts)
+
+    def _build_lead_message(self, page_urls: Dict[str, str], date_str: str,
+                             archive_rel: Optional[str] = None) -> str:
+        """분야별 바로가기 + 홈/아카이브 링크 + 고지. Top10 목록은 지역별 메시지가 따로 나간다."""
+        parts = [f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>", ""]
 
         parts.append("📂 <b>분야별 바로가기</b>")
         nav_links = []
@@ -84,33 +94,60 @@ class TelegramNotifier:
         parts.append(" · ".join(nav_links))
 
         parts.append("")
-        # 아카이브는 링크하지 않는다 — 과거 기록은 직접 링크를 아는 사람만 보도록(요청사항)
-        parts.append(f'🏠 <a href="{self._full_url("index.html")}">홈(최신 브리핑)</a>')
+        home = f'🏠 <a href="{self._full_url("index.html")}">홈(최신 브리핑)</a>'
+        if archive_rel:
+            home += (f' · 🗂️ <a href="{self._esc(self._full_url(archive_rel))}">'
+                      f'지난 브리핑 아카이브</a>')
+        parts.append(home)
         parts.append("")
         parts.append("<i>분야별 링크를 누르면 국내·해외 탭과 기사별 요약이 있는 전체 목록으로 이동합니다.</i>")
-        parts.append("<i>매일 오전 6시에 자동으로 업데이트됩니다.</i>")
+        parts.append("<i>매일 새벽에 자동으로 업데이트됩니다.</i>")
         parts.append("⚠️ 경제 분야의 종목 추천은 정보 제공 목적이며 투자 자문이 아닙니다.")
         return "\n".join(parts)
 
     async def send_briefing(self, page_urls: Dict[str, str],
                              top10_by_region: Dict[str, List[Dict]], date_str: str,
-                             images: Optional[List[Tuple[str, str]]] = None):
-        """국내/해외 Top10 인포그래픽(있으면) + 일일 뉴스 브리핑 메시지 1개 전송."""
+                             images: Optional[List[Tuple[str, str]]] = None,
+                             archive_rel: Optional[str] = None):
+        """
+        지역별로 [인포그래픽 + Top10 텍스트]를 한 쌍씩 보내고, 마지막에 분야별
+        바로가기 메시지를 보낸다.
+
+        국내/해외를 한 메시지에 합쳐 보내던 것을 나눈 이유는 가독성과 4096자 상한
+        때문이다. 이미지 바로 뒤에 그 지역 목록이 붙어야 어느 이미지의 목록인지 안다.
+        """
         self.logger.info("Sending Telegram notification...")
+        images_by_label = {label: path for path, label in (images or [])}
 
         try:
-            for path, label in (images or []):
+            for region, label in (("domestic", "국내"), ("overseas", "해외")):
+                text = self._build_region_message(region, label, top10_by_region, date_str)
+                if text is None:
+                    continue
+
+                path = images_by_label.get(label)
+                if path:
+                    try:
+                        with open(path, 'rb') as photo:
+                            await self.bot.send_photo(
+                                chat_id=self.chat_id, photo=photo,
+                                caption=f"🔥 오늘의 {label} Top 10 ({date_str})")
+                    except (TelegramError, OSError) as e:
+                        # 이미지가 실패해도 아래 텍스트 목록은 그대로 나간다
+                        self.logger.warning(f"Top10 {label} image send failed: {e}")
+
                 try:
-                    with open(path, 'rb') as photo:
-                        await self.bot.send_photo(chat_id=self.chat_id, photo=photo,
-                                                   caption=f"🔥 오늘의 {label} Top 10 ({date_str})")
-                except (TelegramError, OSError) as e:
-                    # 이미지가 실패해도 아래 텍스트 목록은 그대로 나간다
-                    self.logger.warning(f"Top10 {label} image send failed: {e}")
+                    await self.bot.send_message(
+                        chat_id=self.chat_id, text=text, parse_mode='HTML',
+                        disable_web_page_preview=True,
+                    )
+                except TelegramError as e:
+                    # 한 지역이 실패해도 나머지 지역과 바로가기는 보낸다
+                    self.logger.warning(f"Top10 {label} text send failed: {e}")
 
             await self.bot.send_message(
                 chat_id=self.chat_id,
-                text=self._build_lead_message(page_urls, top10_by_region, date_str),
+                text=self._build_lead_message(page_urls, date_str, archive_rel),
                 parse_mode='HTML',
                 disable_web_page_preview=True,
             )
@@ -122,7 +159,8 @@ class TelegramNotifier:
 
     def send_briefing_sync(self, page_urls: Dict[str, str],
                             top10_by_region: Dict[str, List[Dict]], date_str: str,
-                            images: Optional[List[Tuple[str, str]]] = None):
+                            images: Optional[List[Tuple[str, str]]] = None,
+                            archive_rel: Optional[str] = None):
         """동기 방식으로 브리핑 전송"""
         try:
             try:
@@ -133,7 +171,7 @@ class TelegramNotifier:
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
             loop.run_until_complete(
-                self.send_briefing(page_urls, top10_by_region, date_str, images)
+                self.send_briefing(page_urls, top10_by_region, date_str, images, archive_rel)
             )
         except Exception as e:
             self.logger.error(f"Error in send_briefing_sync: {e}")

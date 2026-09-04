@@ -16,6 +16,7 @@ src/templates/static/fonts/에 번들했다 — CI 환경에 한글 폰트가
 없어도 항상 동작하도록.
 """
 import os
+import re
 from typing import Dict, List, Optional, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
@@ -55,8 +56,21 @@ def _pastel(rgb: Tuple[int, int, int], white_ratio: float = 0.78) -> Tuple[int, 
     return tuple(int(c + (255 - c) * white_ratio) for c in rgb)
 
 
+def _one_line(text: str) -> str:
+    """
+    개행·연속 공백을 한 칸으로 눌러 준다.
+
+    Pillow의 draw.textlength()는 개행이 든 문자열에 "can't measure length of
+    multiline text" 예외를 던진다. 헤드라인은 LLM이 만들어 개행이 섞여 들어올 수
+    있고, 그러면 카드 이미지 생성이 통째로 실패해 텔레그램에 인포그래픽이 한 장만
+    간다(실제 발생 — 국내/해외 2장 중 1장만 도착했다).
+    """
+    return re.sub(r'\s+', ' ', str(text or '')).strip()
+
+
 def _wrap_lines(draw, text: str, font, max_width: float, max_lines: int = 3) -> List[str]:
     """글자 단위로 폭에 맞춰 줄바꿈 (한국어는 어절 간격이 일정하지 않아 글자 단위가 더 안전)."""
+    text = _one_line(text)
     lines, current = [], ""
     for ch in text:
         trial = current + ch
@@ -115,12 +129,12 @@ def generate_top10_card(top10: List[Dict], date_str: str, output_path: str,
             badge_r = 22
             bx, by = x + pad + badge_r, y + pad + badge_r
             draw.ellipse([bx - badge_r, by - badge_r, bx + badge_r, by + badge_r], fill=accent)
-            rank_text = str(item.get('rank', i + 1))
+            rank_text = _one_line(item.get('rank', i + 1))
             rw = draw.textlength(rank_text, font=font_rank)
             draw.text((bx - rw / 2, by - 15), rank_text, font=font_rank, fill=_WHITE)
 
             # 분야 태그
-            tag_text = item.get('category_name', '')
+            tag_text = _one_line(item.get('category_name', ''))
             tag_x = bx + badge_r + 14
             tw = draw.textlength(tag_text, font=font_tag)
             tag_y = by - 15
@@ -135,7 +149,7 @@ def generate_top10_card(top10: List[Dict], date_str: str, output_path: str,
                 draw.text((x + pad, headline_y + li * 40), line, font=font_headline, fill=_INK)
 
             # 출처
-            source_text = item.get('source', '')
+            source_text = _one_line(item.get('source', ''))
             if source_text:
                 draw.text((x + pad, y + _CELL_H - pad - 22), source_text, font=font_source,
                           fill=tuple(int(c * 0.55) for c in _INK))
