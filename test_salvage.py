@@ -2,6 +2,11 @@
 잘린 JSON 복구 + 요약 청킹 self-check (프레임워크 없음, assert 기반).
 실제 LLM API는 호출하지 않는다 — call_llm을 가짜 함수로 바꿔치기해서 검증한다.
 
+주의: 이 파일은 call_llm만 바꿔치기하므로 로컬 폴백 티어를 반드시 꺼야 한다.
+켜져 있으면 '구제 불가능해야 할' 청크를 진짜 로컬 LLM 서버가 받아 살려버려서,
+LM Studio가 떠 있는 날에만 테스트가 깨진다(실제로 겪었다). 로컬 티어 자체의
+동작은 test_llm_client.py가 검증한다.
+
 배경: 카테고리 30건을 한 번에 요청하면 응답이 max_tokens에 걸려 배열이 닫히기 전에
 잘리고, 그러면 카테고리 전체가 규칙기반으로 폴백됐다(실제로 매일 그랬다).
 여기서 검증하는 건 (1) 잘린 응답에서 완성된 객체만 건져내는지 (2) 청크 단위로
@@ -10,6 +15,9 @@
 import os
 import re
 from datetime import datetime, timedelta, timezone
+
+# src 임포트보다 먼저 꺼야 한다 — llm_client가 호출 시점에 이 값을 읽는다
+os.environ["LOCAL_LLM_ENABLED"] = "0"
 
 from src.collectors.base_collector import NewsArticle
 from src.utils import article_body, llm_client

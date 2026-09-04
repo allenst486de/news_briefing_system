@@ -19,6 +19,23 @@ git merge --ff-only origin/main || { echo "fast-forward 실패 - 로컬 main이 
 
 source venv/bin/activate
 
+# --- 로컬 LLM 폴백 준비 ---
+# 클라우드가 실패한 청크를 받아낼 안전망. 여기서 못 띄워도 파이프라인은 그대로
+# 진행한다(클라우드 → 규칙기반). 안전망이 없는 것뿐이지 장애는 아니다.
+export PATH="$PATH:$HOME/.lmstudio/bin"
+LOCAL_MODEL="${LOCAL_LLM_MODEL:-google/gemma-4-31b-qat}"
+if command -v lms >/dev/null 2>&1; then
+  lms server start >/dev/null 2>&1
+  # 미리 올려둔다. 안 올려도 첫 요청 때 JIT로 로드되지만 그 호출만 1분 가까이 늘어진다.
+  if ! lms ps 2>/dev/null | grep -q "$LOCAL_MODEL"; then
+    echo "로컬 폴백 모델 로드: $LOCAL_MODEL"
+    lms load "$LOCAL_MODEL" --yes >/dev/null 2>&1 || echo "로컬 모델 로드 실패 — 폴백 없이 진행"
+  fi
+  lms ps 2>/dev/null | grep -q "$LOCAL_MODEL" && echo "로컬 폴백 준비됨: $LOCAL_MODEL"
+else
+  echo "lms CLI 없음 — 로컬 폴백 없이 진행"
+fi
+
 echo "--- main.py 실행 ---"
 python main.py
 MAIN_EXIT=$?
