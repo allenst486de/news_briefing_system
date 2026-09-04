@@ -46,7 +46,7 @@
         </div>
 
         <footer>
-            <p>자동 생성된 뉴스 브리핑</p>
+            <p>자동 생성된 뉴스 브리핑{% if archive_path %} · <a href="{{ archive_path }}">🗂️ 지난 브리핑 아카이브</a>{% endif %}</p>
         </footer>
     </div>
     <script src="{{ site_js_path }}"></script>

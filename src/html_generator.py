@@ -142,11 +142,13 @@ class HTMLGenerator:
             page_urls[category] = f"{date_path}/{html_file}"
             self.logger.info(f"Generated {category}: {file_path}")
 
-        # 아카이브는 홈에서 링크하지 않는다 — 과거 기록은 직접 링크를 아는 사람만
+        # 아카이브는 홈 푸터에서 링크한다. 파일명 자체는 계속 난수화되어 있어
+        # 주소를 추측해서 들어올 수는 없다(저장소가 public이면 파일 목록이 보이므로
+        # 어차피 접근 제어가 아니다 — 주소 추측 차단이 목적).
         archive_file = obfuscate('archive.html', salt, 'archive')
         self._update_archive(date_str, date_path, archive_file, nav_categories)
         self._generate_index_page(buckets, date_str, date_full, date_path, nav_categories,
-                                   top10_by_region, indicators)
+                                   top10_by_region, indicators, archive_file=archive_file)
         self._generate_feed_xml(buckets, date_str)
         self._generate_robots_txt()
         self._save_raw_snapshot(buckets, stock_picks, date_str)
@@ -324,13 +326,14 @@ class HTMLGenerator:
 
         with open(archive_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
-        self.logger.info(f"Archive written to {archive_file_name} (not linked from home)")
+        self.logger.info(f"Archive written to {archive_file_name} (linked from home footer)")
 
     def _generate_index_page(self, buckets: Dict[str, Dict[str, List[NewsArticle]]],
                               date_str: str, date_full: str, date_path: str,
                               nav_categories: List[Dict],
                               top10_by_region: Dict[str, List[Dict]],
-                              indicators: Optional[Dict] = None):
+                              indicators: Optional[Dict] = None,
+                              archive_file: Optional[str] = None):
         """포털형 홈페이지 생성 — Top10 카드 + 카테고리 미리보기 + AI 소식 미리보기 + 헤더"""
         index_file = os.path.join(self.output_dir, 'index.html')
         template = self.env.get_template('index.html')
@@ -371,6 +374,8 @@ class HTMLGenerator:
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
             feed_path=self._make_path('/feed.xml'),
+            # 없으면 템플릿이 링크를 통째로 감춘다 — 깨진 링크를 내보내지 않도록
+            archive_path=self._make_path(f'/{archive_file}') if archive_file else None,
             **self._og_context('일일 뉴스 브리핑', f'{date_str} 오늘의 뉴스를 한눈에', '/index.html'),
         )
 
