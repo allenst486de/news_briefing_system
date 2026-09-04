@@ -116,7 +116,13 @@ python main.py
 
 일일 브리핑은 **로컬 맥에서** 실행됩니다. GitHub Actions의 30분 하드 타임아웃이 LLM 호출을 중간에 끊어 뉴스가 고르게 생성되지 않는 문제가 있었기 때문입니다(`daily_briefing.yml`의 cron은 제거하고 `workflow_dispatch` 수동 실행만 남겨두었습니다).
 
-- 스케줄: `~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist` — 매일 06:00(KST)
+- 스케줄: `~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist` — 매일 **04:30(KST) 시작**
+  - 06시 전후로 받기 위해 여유를 둔 시각입니다. 클라우드가 정상이면 약 10분이면 끝나지만, 클라우드가 죽어 로컬 폴백이 많이 도는 날은 최대 70분까지 걸립니다(04:30 시작이면 최악에도 05:40 완료).
+  - 시각 변경은 plist의 `StartCalendarInterval` > `Hour`/`Minute`을 고친 뒤 **반드시 재등록**해야 반영됩니다(launchd가 메모리에 올려둔 설정을 쓰기 때문):
+    ```bash
+    launchctl bootout gui/$(id -u)/com.allenst486de.newsbriefing.daily
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist
+    ```
 - 실행 스크립트: `scripts/run_daily_briefing.sh`
   1. `origin/main` 최신화(fast-forward만 — 갈라져 있으면 중단하고 사람이 확인)
   2. LM Studio 서버 기동 + 폴백 모델 예열(실패해도 계속 진행)
