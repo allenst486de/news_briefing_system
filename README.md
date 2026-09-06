@@ -116,8 +116,15 @@ python main.py
 
 일일 브리핑은 **로컬 맥에서** 실행됩니다. GitHub Actions의 30분 하드 타임아웃이 LLM 호출을 중간에 끊어 뉴스가 고르게 생성되지 않는 문제가 있었기 때문입니다(`daily_briefing.yml`의 cron은 제거하고 `workflow_dispatch` 수동 실행만 남겨두었습니다).
 
-- 스케줄: `~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist` — 매일 **04:30(KST) 시작**
+- 스케줄: `~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist` — 매일 **03:30(KST) 시작**
 - 실행 경로: launchd → `~/bin/news_briefing_launch.sh`(래퍼) → `scripts/run_daily_briefing.sh`
+- 시각 변경은 plist의 `StartCalendarInterval` > `Hour`/`Minute`을 고친 뒤 **반드시 재등록**해야 반영됩니다(launchd가 메모리에 올려둔 설정을 쓰기 때문):
+  ```bash
+  launchctl bootout gui/$(id -u)/com.allenst486de.newsbriefing.daily
+  launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist
+  ```
+
+> **왜 06시보다 2시간 반이나 앞서 시작하나.** 소요 시간이 그날 클라우드 사정에 크게 좌우되기 때문이다. 실측: 2026-09-06(일) 클라우드 정상 **9분 42초** / 2026-09-07(월) NVIDIA `ReadTimeout` 다발 **1시간 41분**(로컬 폴백 23청크). 예산 상한까지 가면 클라우드 30분 + 로컬 90분 + 수집·발송 10분 = **약 130분**이라, 04:30 시작으로는 나쁜 날 06:40이 된다(실제로 09-07에 06:11 도착해 늦었다). 03:30이면 상한에 걸려도 05:40이라 6시 안에 들어온다.
 
 > ⚠️ **launchd가 만지는 경로는 전부 내장 디스크에 둬야 한다.** 이 저장소는 외장 USB 볼륨(`/Volumes/D`)에 있는데, **launchd 에이전트는 외장 볼륨에 접근하지 못한다.** plist의 `StandardOutPath`를 저장소 안(`logs/`)에 두면 launchd가 로그 파일조차 만들지 못해 스크립트를 시작하기도 전에 `EX_CONFIG(78)`로 죽는다.
 >
@@ -126,12 +133,7 @@ python main.py
 > 그래서 launchd가 직접 만지는 것(래퍼 스크립트 + launchd 로그)은 홈에 두고, 외장 볼륨 접근은 래퍼가 시작된 **뒤에만** 일어나게 했다. launchd가 스폰한 bash 자체는 외장 볼륨을 정상적으로 읽고 쓴다 — 막히는 건 launchd 본체뿐이다.
 >
 > launchd 단계의 로그: `~/Library/Logs/news-briefing/launchd.{out,err}.log`
-  - 06시 전후로 받기 위해 여유를 둔 시각입니다. 클라우드가 정상이면 약 10분이면 끝나지만, 클라우드가 죽어 로컬 폴백이 많이 도는 날은 최대 70분까지 걸립니다(04:30 시작이면 최악에도 05:40 완료).
-  - 시각 변경은 plist의 `StartCalendarInterval` > `Hour`/`Minute`을 고친 뒤 **반드시 재등록**해야 반영됩니다(launchd가 메모리에 올려둔 설정을 쓰기 때문):
-    ```bash
-    launchctl bootout gui/$(id -u)/com.allenst486de.newsbriefing.daily
-    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist
-    ```
+
 - 실행 스크립트: `scripts/run_daily_briefing.sh`
   1. `origin/main` 최신화(fast-forward만 — 갈라져 있으면 중단하고 사람이 확인)
   2. LM Studio 서버 기동 + 폴백 모델 예열(실패해도 계속 진행)
