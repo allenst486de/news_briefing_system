@@ -98,36 +98,6 @@ def compact_month(archive_dir: str, year_month: str, day_snapshots: List[Dict]) 
     return summary
 
 
-def query_stock_history(archive_dir: str, symbol: str, market: str, since: date) -> List[Dict]:
-    """압축 아카이브에서 특정 종목의 과거 추천 이력을 조회 (Phase3 종목 추천 근거 생성 시 선택적으로 활용 가능)."""
-    results = []
-    if not os.path.isdir(archive_dir):
-        return results
-
-    for year_month in sorted(os.listdir(archive_dir)):
-        try:
-            ym = datetime.strptime(year_month, '%Y-%m').date()
-        except ValueError:
-            continue
-        if ym.replace(day=1) < since.replace(day=1):
-            continue
-
-        summary = load_month_summary(archive_dir, year_month)
-        if not summary:
-            continue
-        for pick in summary.get('categories', {}).get('economy', {}).get('stock_picks', []):
-            if pick.get('symbol') != symbol or pick.get('market') != market:
-                continue
-            try:
-                pick_date = datetime.strptime(pick['date'], '%Y-%m-%d').date()
-            except (KeyError, ValueError):
-                continue
-            if pick_date >= since:
-                results.append(pick)
-
-    return results
-
-
 def _remove_from_archive_data(docs_dir: str, date_str: str) -> None:
     archive_data_file = os.path.join(docs_dir, 'archive_data.json')
     if not os.path.exists(archive_data_file):

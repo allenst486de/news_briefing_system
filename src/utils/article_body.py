@@ -13,7 +13,7 @@ import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
-from typing import List, Optional
+from typing import List
 
 import requests
 from lxml import html as lxml_html

@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 from typing import Dict, List
 
 from .collectors.rss_collector import RSSCollector
-from .collectors.sources import SOURCES, CATEGORIES, CATEGORY_META, REGIONS
+from .collectors.sources import SOURCES, CATEGORIES, REGIONS
 from .collectors.base_collector import NewsArticle
 from .utils import article_body
 from .utils.dedup import normalize_title, load_recent_links, _canonical_link
