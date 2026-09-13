@@ -112,40 +112,21 @@ python main.py
 
 실행 후 `docs/`에 8개 분야 HTML + 포털 홈(`index.html`)이, `data/raw/`에 압축용 원본 스냅샷이 생성됩니다.
 
-### 자동 실행 (로컬 맥 / launchd)
+### 자동 실행 (GitHub Actions)
 
-일일 브리핑은 **로컬 맥에서** 실행됩니다. GitHub Actions의 30분 하드 타임아웃이 LLM 호출을 중간에 끊어 뉴스가 고르게 생성되지 않는 문제가 있었기 때문입니다(`daily_briefing.yml`의 cron은 제거하고 `workflow_dispatch` 수동 실행만 남겨두었습니다).
+> 이 브랜치는 **GitHub만으로 호스팅하던 방식**을 보존한 것입니다. 기본 운영은 `main`(로컬 맥 실행)이며,
+> 여기서는 수집·요약·발행이 전부 GitHub Actions 러너에서 끝납니다. 맥이 없어도 돌아갑니다.
 
-- 스케줄: `~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist` — 매일 **03:30(KST) 시작**
-- 실행 경로: launchd → `~/bin/news_briefing_launch.sh`(래퍼) → `scripts/run_daily_briefing.sh`
-- 시각 변경은 plist의 `StartCalendarInterval` > `Hour`/`Minute`을 고친 뒤 **반드시 재등록**해야 반영됩니다(launchd가 메모리에 올려둔 설정을 쓰기 때문):
-  ```bash
-  launchctl bootout gui/$(id -u)/com.allenst486de.newsbriefing.daily
-  launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist
-  ```
+- 매일 오전 6시(KST)에 자동 실행됩니다 (`.github/workflows/daily_briefing.yml`의 cron `0 21 * * *`, UTC 기준).
+- 수동 실행: GitHub Actions 탭 > Daily News Briefing > Run workflow
+- 워크플로는 실행이 끝나면 생성물(`docs/`·`data/`·`archive/`)을 `main`에 직접 커밋합니다. 브리핑 생성에 수 분~수십 분이 걸려 그 사이 다른 push가 들어오면 커밋 단계가 non-fast-forward로 거절되므로, push 실패 시 `git pull --rebase` 후 최대 3회 재시도합니다.
+- 러너에는 LM Studio가 없으므로 워크플로가 `LOCAL_LLM_ENABLED=0`을 넣어 **로컬 LLM 폴백을 끕니다.** 즉 폴백 사다리가 `클라우드 → 규칙기반` 2단으로 줄어듭니다.
 
-> **왜 06시보다 2시간 반이나 앞서 시작하나.** 소요 시간이 그날 클라우드 사정에 크게 좌우되기 때문이다. 실측: 2026-09-06(일) 클라우드 정상 **9분 42초** / 2026-09-07(월) NVIDIA `ReadTimeout` 다발 **1시간 41분**(로컬 폴백 23청크). 예산 상한까지 가면 클라우드 30분 + 로컬 90분 + 수집·발송 10분 = **약 130분**이라, 04:30 시작으로는 나쁜 날 06:40이 된다(실제로 09-07에 06:11 도착해 늦었다). 03:30이면 상한에 걸려도 05:40이라 6시 안에 들어온다.
-
-> ⚠️ **launchd가 만지는 경로는 전부 내장 디스크에 둬야 한다.** 이 저장소는 외장 USB 볼륨(`/Volumes/D`)에 있는데, **launchd 에이전트는 외장 볼륨에 접근하지 못한다.** plist의 `StandardOutPath`를 저장소 안(`logs/`)에 두면 launchd가 로그 파일조차 만들지 못해 스크립트를 시작하기도 전에 `EX_CONFIG(78)`로 죽는다.
->
-> 2026-09-05 04:30 예약 실행이 이렇게 실패했다 — `runs = 1`, `last exit code = 78`인데 **로그 파일이 0바이트도 안 생겨서** 겉으로는 "아무 일도 안 일어난" 것처럼 보였다. 동일한 `/bin/echo` 작업으로 확인했다: 로그를 홈에 두면 `exit 0`, 외장 볼륨에 두면 `EX_CONFIG`.
->
-> 그래서 launchd가 직접 만지는 것(래퍼 스크립트 + launchd 로그)은 홈에 두고, 외장 볼륨 접근은 래퍼가 시작된 **뒤에만** 일어나게 했다. launchd가 스폰한 bash 자체는 외장 볼륨을 정상적으로 읽고 쓴다 — 막히는 건 launchd 본체뿐이다.
->
-> launchd 단계의 로그: `~/Library/Logs/news-briefing/launchd.{out,err}.log`
-
-- 실행 스크립트: `scripts/run_daily_briefing.sh`
-  1. `origin/main` 최신화(fast-forward만 — 갈라져 있으면 중단하고 사람이 확인)
-  2. LM Studio 서버 기동 + 폴백 모델 예열(실패해도 계속 진행)
-  3. `python main.py`
-  4. `docs/`·`data/`·`archive/`를 `main`에 커밋·push (실패 시 `git pull --rebase` 후 최대 3회 재시도 — 지표 갱신 워크플로가 GitHub 쪽에서 `main`에 push하므로 충돌이 실제로 난다)
-  5. `docs/`를 `gh-pages` 워크트리(`.ghpages_worktree/`)에 rsync 후 push → GitHub Pages 배포
-- 로그: `logs/run_YYYY-MM-DD_HHMMSS.log`
-- 수동 실행: `bash scripts/run_daily_briefing.sh`
-
-> 맥이 잠들어 있으면 launchd가 깨어난 직후에 밀린 작업을 실행합니다. 결과물 보관과 서빙은 계속 GitHub이 맡으므로, **맥이 꺼져 있어도 이미 발행된 페이지는 정상적으로 열립니다.**
-
-장중 지표 갱신(`indicators.yml`)은 뉴스·LLM과 무관한 가벼운 작업이라 GitHub Actions에 그대로 두었습니다 — 맥이 꺼져 있어도 지표는 갱신됩니다.
+> ⚠️ **이 방식의 알려진 한계 — 30분 하드 타임아웃.** GitHub Actions 워크플로는 30분을 넘기면 취소됩니다.
+> 실측 실행 시간이 8.9 / 15.2 / 26.9분으로 편차가 커서 26.9분짜리는 벽까지 3분밖에 남지 않았고,
+> 무료 API가 느린 날에는 LLM 호출이 중간에 끊겨 **그날 기사 상당수가 규칙기반으로 떨어졌습니다**
+> (영문 원문이 지면에 그대로 노출). 이 문제 때문에 `main`에서는 실행을 로컬 맥으로 옮겼습니다.
+> 로컬 폴백까지 꺼지므로 클라우드가 흔들리는 날의 품질 저하는 `main`보다 큽니다.
 
 ### 자체 점검 스크립트
 

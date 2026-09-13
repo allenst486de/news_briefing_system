@@ -1,8 +1,9 @@
 name: Daily News Briefing
 
 on:
-  # 자동 스케줄은 로컬 맥으로 이전 — GitHub Actions 30분 제한 때문에 LLM 호출이
-  # 중간에 끊겨 뉴스가 고르게 오지 않는 문제가 있었음. 이제 필요할 때 수동 실행만.
+  schedule:
+    # 한국 시간 오전 6시 = UTC 전날 21시 (KST = UTC+9)
+    - cron: '0 21 * * *'
   workflow_dispatch:
 
 permissions:
@@ -48,6 +49,9 @@ jobs:
           # 페이지 URL 난수화 salt — 없으면 data/ 아래에 자동 생성되지만,
           # 매 실행이 새 러너라 Secret으로 주지 않으면 날마다 링크가 달라진다
           echo "PAGE_SALT=${{ secrets.PAGE_SALT }}" >> .env
+          # 러너에는 LM Studio가 없다. 켜두면 청크마다 연결 실패를 기록하며
+          # 헛돌기만 하므로 명시적으로 끈다(클라우드 → 규칙기반 폴백만 사용).
+          echo "LOCAL_LLM_ENABLED=0" >> .env
       
       - name: Run news briefing
         run: python main.py
