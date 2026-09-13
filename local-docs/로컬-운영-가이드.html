@@ -1,0 +1,693 @@
+﻿<title>로컬 운영 가이드 — 일일 뉴스 브리핑</title>
+<style>
+  :root {
+    --desk-1:#DCE3F0; --desk-2:#C7D2E8; --desk-3:#E7ECF6;
+    --win-solid:#FFFFFF; --bar:rgba(246,246,248,.8);
+    --panel:#F5F5F7; --card:#FFFFFF;
+    --ink:#1D1D1F; --ink-2:#55555A; --ink-3:#86868B;
+    --line:#E3E3E6; --line-soft:#EEEEF0;
+    --accent:#007AFF; --accent-ink:#0060DF; --accent-soft:#E7F0FF;
+    --green:#1EA64A; --green-soft:#E4F6EA;
+    --orange:#C77700; --orange-soft:#FBEEDA;
+    --red:#E0352B; --red-soft:#FCE9E8;
+    --purple:#8E44D0; --cyan:#0AA2C0; --pink:#E0356B;
+    --tl-r:#FF5F57; --tl-y:#FEBC2E; --tl-g:#28C840;
+    --shadow:0 40px 80px -20px rgba(20,30,60,.35),0 12px 32px -8px rgba(20,30,60,.22);
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",system-ui,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    --mono:ui-monospace,"SF Mono","Menlo","Consolas",monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --desk-1:#101318; --desk-2:#05070B; --desk-3:#1A1F27;
+      --win-solid:#1C1C1E; --bar:rgba(40,40,43,.72);
+      --panel:#2C2C2E; --card:#2C2C2E;
+      --ink:#F5F5F7; --ink-2:#B0B0B6; --ink-3:#8A8A8F;
+      --line:#3A3A3C; --line-soft:#323234;
+      --accent:#0A84FF; --accent-ink:#5AB0FF; --accent-soft:#14304F;
+      --green:#30D158; --green-soft:#12331F;
+      --orange:#FF9F0A; --orange-soft:#3A2A10;
+      --red:#FF453A; --red-soft:#3A1A18;
+      --purple:#BF5AF2; --cyan:#5AC8FA; --pink:#FF375F;
+      --shadow:0 40px 90px -20px rgba(0,0,0,.7),0 12px 32px -8px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="light"]{--desk-1:#DCE3F0;--desk-2:#C7D2E8;--desk-3:#E7ECF6;--win-solid:#FFFFFF;--bar:rgba(246,246,248,.8);--panel:#F5F5F7;--card:#FFFFFF;--ink:#1D1D1F;--ink-2:#55555A;--ink-3:#86868B;--line:#E3E3E6;--line-soft:#EEEEF0;--accent:#007AFF;--accent-ink:#0060DF;--accent-soft:#E7F0FF;--green:#1EA64A;--green-soft:#E4F6EA;--orange:#C77700;--orange-soft:#FBEEDA;--red:#E0352B;--red-soft:#FCE9E8;--purple:#8E44D0;--cyan:#0AA2C0;--pink:#E0356B;--shadow:0 40px 80px -20px rgba(20,30,60,.35),0 12px 32px -8px rgba(20,30,60,.22);}
+  :root[data-theme="dark"]{--desk-1:#101318;--desk-2:#05070B;--desk-3:#1A1F27;--win-solid:#1C1C1E;--bar:rgba(40,40,43,.72);--panel:#2C2C2E;--card:#2C2C2E;--ink:#F5F5F7;--ink-2:#B0B0B6;--ink-3:#8A8A8F;--line:#3A3A3C;--line-soft:#323234;--accent:#0A84FF;--accent-ink:#5AB0FF;--accent-soft:#14304F;--green:#30D158;--green-soft:#12331F;--orange:#FF9F0A;--orange-soft:#3A2A10;--red:#FF453A;--red-soft:#3A1A18;--purple:#BF5AF2;--cyan:#5AC8FA;--pink:#FF375F;--shadow:0 40px 90px -20px rgba(0,0,0,.7),0 12px 32px -8px rgba(0,0,0,.5);}
+
+  :root{--term-bg:#FBFBFD;--term-head:#EDEDF0;--term-ink:#1D1D1F;--term-cmt:#8A8F98;--term-kw:#0060DF;--term-pr:#1EA64A}
+  @media (prefers-color-scheme:dark){:root{--term-bg:#161618;--term-head:#242427;--term-ink:#E9E9EC;--term-cmt:#8A8F98;--term-kw:#6AB7FF;--term-pr:#30D158}}
+  :root[data-theme="light"]{--term-bg:#FBFBFD;--term-head:#EDEDF0;--term-ink:#1D1D1F;--term-cmt:#8A8F98;--term-kw:#0060DF;--term-pr:#1EA64A}
+  :root[data-theme="dark"]{--term-bg:#161618;--term-head:#242427;--term-ink:#E9E9EC;--term-cmt:#8A8F98;--term-kw:#6AB7FF;--term-pr:#30D158}
+
+  *{box-sizing:border-box}
+  body{margin:0;word-break:keep-all;overflow-wrap:break-word}
+  .desktop{
+    min-height:100vh;
+    background:radial-gradient(1200px 700px at 12% -10%,var(--desk-3),transparent 60%),linear-gradient(150deg,var(--desk-1),var(--desk-2));
+    padding:clamp(.75rem,3.5vw,3rem) clamp(.5rem,3vw,2.5rem);
+    font-family:var(--sans); -webkit-font-smoothing:antialiased;
+    display:flex; justify-content:center;
+  }
+  .window{
+    width:100%; max-width:900px;
+    background:var(--win-solid); border-radius:14px;
+    box-shadow:var(--shadow); overflow:hidden;
+    border:.5px solid rgba(255,255,255,.16);
+    animation:winIn .5s cubic-bezier(.2,.8,.2,1) both;
+  }
+  @keyframes winIn{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.window{animation:none}}
+
+  .titlebar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:.75rem;
+    padding:.8rem 1.1rem; background:var(--bar);
+    -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:.5px solid var(--line);
+  }
+  .traffic{display:flex;gap:8px}
+  .traffic i{width:12px;height:12px;border-radius:50%;display:block}
+  .traffic .r{background:var(--tl-r)}.traffic .y{background:var(--tl-y)}.traffic .g{background:var(--tl-g)}
+  .tb-title{flex:1;text-align:center;font-size:.8rem;font-weight:600;color:var(--ink-2);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  .content{
+    padding:clamp(1.5rem,4vw,3rem) clamp(1rem,4.5vw,3.25rem) 3.5rem;
+    color:var(--ink); font-size:16.5px; line-height:1.72; letter-spacing:-.003em;
+  }
+  .content>*{max-width:46rem;margin-left:auto;margin-right:auto}
+
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 .9rem}
+  h1{font-size:clamp(1.85rem,4.6vw,2.7rem);font-weight:700;line-height:1.12;letter-spacing:-.028em;text-wrap:balance;margin:0 0 1rem}
+  .lede{font-size:1.08rem;color:var(--ink-2);margin:0;text-wrap:pretty}
+
+  section{margin-top:3.5rem}
+  .sec-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.55rem}
+  .sec-num{font-family:var(--mono);font-size:.72rem;font-weight:700;color:#fff;background:var(--accent);width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0}
+  h2{font-size:clamp(1.3rem,2.9vw,1.65rem);font-weight:700;line-height:1.25;letter-spacing:-.02em;text-wrap:balance;margin:0 0 1rem}
+  h3{font-size:1.1rem;font-weight:700;letter-spacing:-.015em;margin:0}
+  p{margin:0 0 1.05rem}
+  p:last-child{margin-bottom:0}
+  strong{font-weight:600}
+  .hl{color:var(--accent-ink);font-weight:600}
+  code{font-family:var(--mono);font-size:.84em;background:var(--panel);padding:.12em .42em;border-radius:5px;color:var(--accent-ink)}
+
+  .termwin{margin:1rem 0;border:.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--term-bg);box-shadow:0 1px 2px rgba(20,30,60,.06)}
+  .termbar{position:relative;display:flex;align-items:center;padding:.5rem .8rem;background:var(--term-head);border-bottom:.5px solid var(--line)}
+  .termbar .dots{width:11px;height:11px;border-radius:50%;background:var(--tl-r);box-shadow:16px 0 0 var(--tl-y),32px 0 0 var(--tl-g)}
+  .termbar .tt{position:absolute;left:0;right:0;text-align:center;font-family:var(--mono);font-size:.68rem;font-weight:600;color:var(--term-cmt);letter-spacing:.02em;pointer-events:none}
+  pre.term{margin:0;background:transparent;border:0;border-radius:0;padding:1rem 1.1rem;overflow-x:auto;font-family:var(--mono);font-size:.82rem;line-height:1.75;color:var(--term-ink);white-space:pre}
+  pre.term .c{color:var(--term-cmt)}
+  pre.term .k{color:var(--term-kw);font-weight:600}
+  pre.term .p{color:var(--term-pr)}
+
+  .note{border-radius:14px;padding:1.05rem 1.3rem;margin:1.25rem 0;font-size:.95rem;line-height:1.62}
+  .note .lbl{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-weight:600}
+  .note p{margin:0 0 .55rem}.note p:last-child{margin:0}
+  .note.info{background:var(--accent-soft);color:var(--ink-2)} .note.info .lbl{color:var(--accent-ink)} .note.info strong{color:var(--accent-ink)}
+  .note.warn{background:var(--orange-soft);color:var(--ink-2)} .note.warn .lbl{color:var(--orange)} .note.warn strong{color:var(--orange)}
+  .note.danger{background:var(--red-soft);color:var(--ink-2)} .note.danger .lbl{color:var(--red)} .note.danger strong{color:var(--red)}
+  .note.ok{background:var(--green-soft);color:var(--ink-2)} .note.ok .lbl{color:var(--green)} .note.ok strong{color:var(--green)}
+  .note.plain{background:var(--panel);color:var(--ink-2)} .note.plain .lbl{color:var(--ink-3)} .note.plain strong{color:var(--ink)}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem;margin:1.25rem 0}
+  .cd{background:var(--panel);border-radius:13px;padding:.9rem 1.05rem}
+  .cd .t{font-size:.86rem;font-weight:700;margin-bottom:.2rem;letter-spacing:-.01em}
+  .cd .d{font-size:.8rem;color:var(--ink-3);line-height:1.5}
+
+  figure{margin:1.5rem 0;padding:1.25rem;background:var(--card);border:.5px solid var(--line);border-radius:16px}
+  .fig-scroll{overflow-x:auto}
+  .fig-scroll svg{display:block;width:100%;min-width:640px;height:auto}
+  .fig-scroll img{display:block;height:auto;max-width:none}
+  .dg text{font-family:var(--sans)}
+  .dg .ttl{font-size:12.5px;font-weight:700;fill:var(--ink)}
+  .dg .lbl{font-size:11px;font-weight:600;fill:var(--ink-2)}
+  .dg .cap{font-size:9.5px;fill:var(--ink-3)}
+  .dg .nd{fill:var(--panel);stroke:var(--line)}
+  .dg .nd-a{fill:var(--card);stroke:var(--accent);stroke-width:1.5}
+  .dg .ar{stroke:var(--ink-3);stroke-width:1.5;fill:none;marker-end:url(#ah)}
+  .dg .ar-d{stroke:var(--ink-3);stroke-width:1.4;fill:none;stroke-dasharray:4 4;marker-end:url(#ah)}
+  figcaption{margin-top:.9rem;font-size:.83rem;color:var(--ink-3);text-align:center;line-height:1.5}
+  .scroll-hint{display:none;font-size:.72rem;color:var(--ink-3);text-align:right;margin-bottom:.4rem;font-family:var(--mono)}
+  @media (max-width:680px){.scroll-hint{display:block}}
+
+  .pts{list-style:none;margin:0;padding:0}
+  .pts li{position:relative;padding-left:1.3rem;margin-bottom:.55rem;font-size:.94rem;color:var(--ink-2);line-height:1.6}
+  .pts li:last-child{margin-bottom:0}
+  .pts li::before{content:"";position:absolute;left:.15rem;top:.66em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .pts li.warn::before{background:var(--orange)}
+  .pts li.no::before{background:var(--red)}
+  .pts li strong{color:var(--ink)}
+
+  .sub-h{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:1.35rem 0 .6rem;font-weight:600}
+
+  .ex{display:flex;gap:.7rem;align-items:flex-start;background:var(--panel);border-radius:11px;padding:.7rem .9rem;margin-bottom:.5rem;font-size:.88rem;color:var(--ink-2);line-height:1.55}
+  .ex:last-child{margin-bottom:0}
+  .ex .n{font-family:var(--mono);font-size:.7rem;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:.12rem .45rem;border-radius:5px;flex:0 0 auto;margin-top:.12rem}
+  .ex.bad .n{color:var(--red);background:var(--red-soft)}
+  .ex strong{color:var(--ink)}
+
+  .table-wrap{overflow-x:auto;margin-top:1.25rem;border:.5px solid var(--line);border-radius:16px}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:.88rem;background:var(--card)}
+  th,td{text-align:left;padding:.8rem 1rem;vertical-align:top}
+  thead th{font-size:.74rem;font-weight:700;color:var(--ink);background:var(--panel);border-bottom:.5px solid var(--line)}
+  thead th .sub{display:block;font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink-3);letter-spacing:.03em;margin-top:.12rem}
+  tbody th{font-weight:600;color:var(--ink-2);white-space:nowrap;font-size:.8rem}
+  tbody td{color:var(--ink-2)}
+  tbody tr{border-top:.5px solid var(--line-soft)}
+  .yes{color:var(--green);font-weight:600}
+  .no-c{color:var(--red);font-weight:600}
+  .par{color:var(--orange);font-weight:600}
+
+  .check{background:var(--card);border:.5px solid var(--line);border-radius:16px;overflow:hidden;margin-top:1.25rem}
+  .ck{display:flex;gap:.75rem;align-items:flex-start;padding:.9rem 1.1rem;border-top:.5px solid var(--line-soft);font-size:.92rem;color:var(--ink-2);line-height:1.55}
+  .ck:first-child{border-top:0}
+  .ck .box{width:17px;height:17px;border-radius:5px;border:1.5px solid var(--accent);flex:0 0 auto;margin-top:.22rem;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:.62rem;font-weight:700}
+  .ck strong{color:var(--ink)}
+
+  footer{margin-top:3rem;padding-top:1.2rem;border-top:.5px solid var(--line);font-size:.79rem;color:var(--ink-3);line-height:1.55}
+
+  .layout{width:100%;max-width:900px;margin:0 auto}
+  .toc-panel{
+    position:fixed;top:0;left:0;height:100vh;width:min(300px,86vw);
+    background:var(--card);border-right:.5px solid var(--line);
+    box-shadow:0 0 40px rgba(0,0,0,.22);
+    transform:translateX(-100%);transition:transform .28s cubic-bezier(.2,.8,.2,1);
+    z-index:50;display:flex;flex-direction:column;overflow:hidden;
+  }
+  html[data-toc="open"] .toc-panel{transform:translateX(0)}
+  .toc-head{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1rem;border-bottom:.5px solid var(--line);flex:0 0 auto}
+  .toc-head .toc-title{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+  .toc-close{display:flex;width:26px;height:26px;border-radius:7px;border:0;background:var(--panel);color:var(--ink-3);font-size:.9rem;line-height:1;cursor:pointer;align-items:center;justify-content:center}
+  .toc-close:hover{background:var(--line-soft);color:var(--ink)}
+  .toc-list{overflow-y:auto;padding:.55rem;flex:1}
+  .toc-item{margin-bottom:.1rem}
+  .toc-row{display:flex;align-items:center;gap:.3rem}
+  .toc-link{flex:1;min-width:0;display:flex;align-items:center;gap:.55rem;padding:.48rem .55rem;border-radius:9px;font-size:.83rem;color:var(--ink-2);text-decoration:none;line-height:1.32}
+  .toc-link span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .toc-link:hover{background:var(--panel);color:var(--ink)}
+  .toc-link.active{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+  .toc-num{font-family:var(--mono);font-size:.6rem;font-weight:700;color:#fff;background:var(--ink-3);width:17px;height:17px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .toc-link.active .toc-num{background:var(--accent)}
+  .toc-expand{width:20px;height:20px;flex:0 0 auto;border:0;background:none;color:var(--ink-3);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:6px;transition:transform .18s}
+  .toc-expand.open{transform:rotate(90deg)}
+  .toc-expand:hover{background:var(--panel)}
+  .toc-expand-spacer{width:20px;flex:0 0 auto}
+  .toc-sub{list-style:none;margin:.05rem 0 .35rem 1.55rem;padding:0;display:none}
+  .toc-sub.open{display:block}
+  .toc-subitem a{display:block;padding:.32rem .55rem;border-radius:7px;font-size:.76rem;color:var(--ink-3);text-decoration:none;line-height:1.3}
+  .toc-subitem a:hover{background:var(--panel);color:var(--ink-2)}
+  .toc-subitem a.active{color:var(--accent-ink);font-weight:600}
+  .toc-backdrop{position:fixed;inset:0;background:rgba(10,14,24,.32);z-index:45;opacity:0;pointer-events:none;transition:opacity .25s}
+  html[data-toc="open"] .toc-backdrop{opacity:1;pointer-events:auto}
+  .toc-btn{flex:0 0 auto;width:28px;height:28px;border-radius:8px;border:0;background:transparent;color:var(--ink-2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s,color .15s}
+  .toc-btn:hover{background:var(--panel);color:var(--ink)}
+  .toc-btn:active{transform:scale(.93)}
+  @media (min-width:1181px){
+    .layout{max-width:1200px;display:flex;gap:22px;align-items:flex-start;justify-content:center}
+    .window{flex:1 1 auto;max-width:900px}
+    .toc-panel{
+      position:sticky;top:1.4rem;left:auto;height:auto;max-height:calc(100vh - 2.8rem);
+      width:258px;flex:0 0 258px;transform:none;
+      border-right:0;border:.5px solid var(--line);border-radius:14px;
+      box-shadow:0 10px 30px -10px rgba(20,30,60,.18);
+      transition:opacity .2s ease,flex-basis .2s ease,width .2s ease;
+    }
+    html[data-toc="closed"] .toc-panel{flex:0 0 0;width:0;padding:0;border:0;box-shadow:none;opacity:0;pointer-events:none;overflow:hidden}
+    html[data-toc="closed"] .layout{gap:0}
+    .toc-close,.toc-backdrop{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.toc-panel,.toc-backdrop,.toc-expand{transition:none}}
+
+  .term-copy{margin-left:auto;flex:0 0 auto;display:flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.64rem;font-weight:600;letter-spacing:.02em;color:var(--term-cmt);background:transparent;border:.5px solid var(--line);border-radius:7px;padding:.26rem .5rem;cursor:pointer;transition:background .15s,color .15s,border-color .15s;position:relative;z-index:2}
+  .term-copy:hover{background:var(--panel);color:var(--ink-2);border-color:var(--ink-3)}
+  .term-copy.copied{color:var(--green);border-color:var(--green)}
+  .term-copy svg{display:block;flex:0 0 auto}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="ah" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,1 L8,4.5 L0,8 Z" fill="var(--ink-3)"/></marker>
+</defs></svg>
+
+<div class="desktop">
+  <div id="tocBackdrop" class="toc-backdrop"></div>
+  <div class="layout">
+  <aside id="tocPanel" class="toc-panel" aria-label="문서 목차">
+    <div class="toc-head">
+      <span class="toc-title">목차</span>
+      <button type="button" class="toc-close" aria-label="목차 닫기">✕</button>
+    </div>
+    <div id="tocList" class="toc-list"></div>
+  </aside>
+  <div class="window">
+
+    <div class="titlebar">
+      <div class="traffic"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+      <div class="tb-title">로컬 운영 가이드 — 일일 뉴스 브리핑</div>
+      <button type="button" class="toc-btn" aria-label="목차 토글">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="content">
+
+      <header>
+        <p class="eyebrow">Local Operations · 2026-09-14</p>
+        <h1>로컬 운영 가이드</h1>
+        <p class="lede">매일 새벽 <strong>03:30</strong>, 이 맥이 36개 언론사에서 뉴스를 모아 LLM으로 번역·요약하고 웹과 텔레그램으로 내보낸다. 이 문서는 <strong>그 과정이 어디서 어떻게 도는지</strong>와, <strong>NVIDIA build를 정확히 어떤 방식으로 쓰고 있는지</strong>를 정리한 것이다.</p>
+      </header>
+
+      <section>
+        <div class="sec-head"><span class="sec-num">1</span><p class="kicker">Route Map</p></div>
+        <h2>전체 노선도</h2>
+        <p>파란 노선이 <span class="hl">국내 기사</span>, 초록 노선이 <span class="hl">해외 기사</span>다. 두 노선은 수집·선별까지 함께 달리다 요약 단계에서 갈라진다 — 국내는 8건씩, 해외는 3건씩 끊어 부르고, 해외만 상세요약 페이지를 따로 만든다.</p>
+
+        <figure>
+          <p class="scroll-hint">← 좌우 스크롤</p>
+          <div class="fig-scroll">
+            <img src="briefing-metro.svg" alt="일일 뉴스 브리핑 로컬 파이프라인 노선도" width="3577" height="576">
+          </div>
+          <figcaption>6개 구간을 좌에서 우로 한 번에 통과한다. 원본 스펙은 <code>briefing-metro.mmd</code>이며 <code>nf-metro</code>로 다시 그릴 수 있다.</figcaption>
+        </figure>
+
+        <div class="note plain">
+          <span class="lbl">노선도 다시 그리기</span>
+          <p>이 프로젝트 venv는 Python 3.9라 <code>nf-metro</code>(3.10+ 필요)를 못 쓴다. 별도 인터프리터로 렌더한다.</p>
+        </div>
+
+        <div class="termwin">
+          <div class="termbar"><span class="dots"></span><span class="tt">local-docs — Terminal</span></div>
+          <pre class="term"><span class="c"># 최초 1회: 3.10+ 인터프리터로 별도 디렉터리에 설치</span>
+<span class="k">pip install</span> --target ~/pylib nf-metro
+
+<span class="c"># 렌더 (한글 라벨 때문에 PYTHONUTF8=1 필요)</span>
+<span class="k">PYTHONUTF8=1 PYTHONPATH=</span>~/pylib python -m nf_metro render \
+  local-docs/briefing-metro.mmd -o local-docs/briefing-metro.svg \
+  --theme light --animate --x-spacing 150 --y-spacing 80</pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span class="sec-num">2</span><p class="kicker">Boot Chain</p></div>
+        <h2>무엇이 무엇을 실행하는가</h2>
+        <p>실행 사슬은 3단계다. 각 단계가 따로 존재하는 데는 이유가 있다.</p>
+
+        <figure>
+          <p class="scroll-hint">← 좌우 스크롤</p>
+          <div class="fig-scroll">
+            <svg class="dg" viewBox="0 0 700 150" role="img" aria-label="launchd에서 실행 스크립트까지의 사슬">
+              <rect x="20" y="46" width="170" height="54" rx="12" class="nd-a"/>
+              <text x="105" y="68" class="ttl" fill="var(--accent-ink)" text-anchor="middle">launchd</text>
+              <text x="105" y="84" class="cap" text-anchor="middle">03:30 · plist</text>
+              <line x1="190" y1="73" x2="230" y2="73" class="ar"/>
+
+              <rect x="234" y="46" width="190" height="54" rx="12" fill="var(--green-soft)" stroke="none"/>
+              <text x="329" y="68" class="ttl" fill="var(--green)" text-anchor="middle">래퍼 (홈 디렉터리)</text>
+              <text x="329" y="84" class="cap" text-anchor="middle">~/bin/news_briefing_launch.sh</text>
+              <line x1="424" y1="73" x2="464" y2="73" class="ar"/>
+
+              <rect x="468" y="46" width="212" height="54" rx="12" class="nd"/>
+              <text x="574" y="68" class="ttl" text-anchor="middle">실행 스크립트 (외장 볼륨)</text>
+              <text x="574" y="84" class="cap" text-anchor="middle">scripts/run_daily_briefing.sh</text>
+
+              <text x="105" y="122" class="cap" text-anchor="middle" fill="var(--ink-3)">내장 디스크</text>
+              <text x="329" y="122" class="cap" text-anchor="middle" fill="var(--green)">내장 디스크 ✓</text>
+              <text x="574" y="122" class="cap" text-anchor="middle" fill="var(--ink-3)">/Volumes/D</text>
+            </svg>
+          </div>
+          <figcaption>launchd가 만지는 것(래퍼·로그)은 전부 <strong>내장 디스크</strong>에 있어야 한다.</figcaption>
+        </figure>
+
+        <div class="note danger">
+          <span class="lbl">래퍼가 존재하는 이유</span>
+          <p><strong>launchd는 외장 USB 볼륨에 접근하지 못한다.</strong> plist의 <code>StandardOutPath</code>를 저장소 안(<code>logs/</code>)에 두면 launchd가 로그 파일조차 만들지 못해 스크립트를 시작하기도 전에 <code>EX_CONFIG(78)</code>로 죽는다.</p>
+          <p>2026-09-05 04:30 예약 실행이 이렇게 실패했는데, <strong>로그가 0바이트도 안 생겨서</strong> 겉으로는 아무 일도 없었던 것처럼 보였다. 동일한 <code>/bin/echo</code> 작업으로 격리 확인했다 — 로그를 홈에 두면 <code>exit 0</code>, 외장 볼륨에 두면 <code>EX_CONFIG</code>.</p>
+          <p>launchd가 <em>스폰한</em> bash는 외장 볼륨을 정상적으로 읽고 쓴다. 막히는 건 launchd 본체뿐이라, 래퍼가 시작된 뒤부터는 문제가 없다.</p>
+        </div>
+
+        <p class="sub-h">실행 스크립트가 하는 일</p>
+        <ul class="pts">
+          <li><strong>1. origin/main 최신화</strong> — fast-forward만 허용. 갈라져 있으면 중단하고 사람이 확인한다</li>
+          <li><strong>2. LM Studio 준비</strong> — HTTP로 생존 확인 후 필요시 기동·모델 로드(전부 시한 걸림)</li>
+          <li><strong>3. main.py 실행</strong> — 수집부터 텔레그램 발송까지</li>
+          <li><strong>4. main 커밋·push</strong> — 충돌 시 <code>git pull --rebase</code> 후 최대 3회 재시도</li>
+          <li><strong>5. gh-pages 배포</strong> — <code>docs/</code>를 워크트리에 rsync 후 push</li>
+        </ul>
+
+        <div class="note warn">
+          <span class="lbl">lms 호출에 반드시 시한을 건다</span>
+          <p>TTY가 없는 launchd 환경에서 <code>lms server start</code>는 <strong>서버가 이미 떠 있어도 반환하지 않는다</strong>(<code>lms ps</code>도 마찬가지). 안전망을 준비하다가 본 파이프라인을 멈춰 세우는 상황이라, 생존 확인은 <code>curl --max-time 5</code>로 하고 남은 <code>lms</code> 호출은 직접 만든 시한 래퍼로 감싼다(macOS에는 GNU <code>timeout</code>이 없다).</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span class="sec-num">3</span><p class="kicker">NVIDIA Build</p></div>
+        <h2>NVIDIA build를 어떻게 쓰고 있나</h2>
+        <p>무료 티어 <strong>NVIDIA NIM</strong>을 OpenAI 호환 엔드포인트로 직접 호출한다. SDK 없이 <code>requests.post</code> 한 번이 전부다.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>항목</th><th>값<span class="sub">src/utils/llm_client.py</span></th></tr></thead>
+            <tbody>
+              <tr><th>엔드포인트</th><td><code>https://integrate.api.nvidia.com/v1/chat/completions</code></td></tr>
+              <tr><th>모델</th><td><code>google/gemma-4-31b-it</code> — 31B. 카탈로그에서 폐기되면 갱신 필요</td></tr>
+              <tr><th>인증</th><td><code>Authorization: Bearer &lt;키&gt;</code> · 키는 <code>.env</code>에서만 읽는다</td></tr>
+              <tr><th>호출당 타임아웃</th><td>180초</td></tr>
+              <tr><th>온도</th><td>0.3</td></tr>
+              <tr><th>thinking</th><td><code>chat_template_kwargs: {enable_thinking: false}</code> — 켜두면 추론 텍스트가 JSON 앞에 붙어 파싱이 깨진다</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>카테고리별 전용 키 8개</h3>
+        <p>무료 티어의 rate limit을 나누기 위해 <strong>카테고리마다 다른 API 키</strong>를 쓴다. 키가 갈려 있으면 8개 카테고리를 동시에 돌려도 한 계정에 요청이 몰리지 않는다. 없는 카테고리는 공용 <code>NVIDIA_API_KEY</code>로 폴백한다.</p>
+
+        <div class="note info">
+          <span class="lbl">실행 시작 시 키 점검</span>
+          <p>키 8개를 <strong>병렬로</strong> 찔러 보고 결과를 남긴다(순차로 하면 콜드스타트 지연이 앞선 키에 몰린다). 이 호출은 모델 예열도 겸한다.</p>
+          <p><strong>키를 버리는 건 400·401·403·404처럼 확실한 경우뿐이다.</strong> 타임아웃·네트워크 오류는 '확인 불가'로 남기고 그대로 쓴다 — NIM은 모델이 식어 있으면 첫 요청에 수십 초가 걸리는데, 이걸 죽은 키로 판정해 멀쩡한 키 8개 중 7개를 버린 적이 있다. 429도 rate limit이지 키 문제가 아니다.</p>
+        </div>
+
+        <p>살아있는 키 개수에 맞춰 전체 동시 호출 수가 정해진다 — <code>키 수 × 2</code>, 최소 3 최대 16. 카테고리 8개를 <code>CATEGORY_WORKERS</code>로 돌리고 각 카테고리 안에서 청크를 <code>CHUNK_WORKERS</code>(3)로 돌리므로, 키 하나에 몰리는 동시 요청은 3개뿐이다.</p>
+
+        <h3>왜 기사를 끊어서 부르는가</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>구분</th><th>청크 크기</th><th>max_tokens</th><th>이유</th></tr></thead>
+            <tbody>
+              <tr><th>국내</th><td>8건</td><td>10,240</td><td>30건을 한 번에 요청하면 한국어 출력이 상한을 넘겨 JSON 배열이 닫히기 전에 잘린다</td></tr>
+              <tr><th>해외</th><td>3건</td><td>8,192</td><td>250자 요약 + 600~800자 상세를 한 호출에서 받아 기사당 출력이 3배 이상이다</td></tr>
+              <tr><th>Top10</th><td>—</td><td>8,192</td><td>8개 분야를 통틀어 국내·해외 각 10건 선정</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note danger">
+          <span class="lbl">청크 크기를 키우면 타임아웃도 같이 키울 것</span>
+          <p>기사 8건 배치는 한국어 요약 3,500토큰가량을 생성해 호출 하나가 <strong>90초 안팎</strong> 걸린다. 예전 기본값 60초로는 정상 생성 중인 요청이 잘려 나가 카테고리가 통째로 규칙기반으로 폴백됐다. 화면에는 그냥 "번역이 안 된 기사"로만 보여서 원인을 찾기 어려웠다.</p>
+        </div>
+
+        <h3>실패를 다루는 방식</h3>
+        <ul class="pts">
+          <li><strong>429 (rate limit)</strong> — 서버가 주는 <code>Retry-After</code>를 우선 따르고, 없으면 5초 → 15초 백오프(최대 30초 대기)</li>
+          <li><strong>5xx·네트워크 오류</strong> — 지수 백오프로 최대 2회 재시도</li>
+          <li class="warn"><strong>4xx</strong> — 재시도해도 안 바뀌므로 응답 본문을 로그에 남기고 즉시 포기</li>
+          <li><strong>잘린 JSON</strong> — 재요청하면 똑같이 잘리므로, 먼저 <code>_salvage_array()</code>가 완성된 객체만 건져낸다. 30건 중 22건이 멀쩡한데 0건으로 버리는 건 아깝다</li>
+          <li><strong>JSON이 아닌 응답</strong> — "설명 없이 JSON만 출력하라"는 재프롬프트 1회, 그래도 실패하면 로컬 LLM에 넘긴다</li>
+          <li class="no"><strong>시간 예산 초과</strong> — 남은 호출은 즉시 <code>None</code>을 반환하고 폴백으로 넘어간다</li>
+        </ul>
+
+        <div class="note plain">
+          <span class="lbl">시간 예산</span>
+          <p>클라우드 LLM 총합 <strong>1,800초</strong>. 예전에는 900초였는데, GitHub Actions의 30분 하드 제한 안에서 수집·본문(약 4분)과 HTML·텔레그램(약 2분)까지 끝나야 했기 때문이다. 로컬로 옮겨 그 벽이 사라져 올렸다.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span class="sec-num">4</span><p class="kicker">Fallback Ladder</p></div>
+        <h2>LLM 3단 사다리</h2>
+        <p>노선도에서는 한 줄로 지나가지만, 실제로 <strong>2단·3단은 앞 단계가 실패했을 때만 들르는 우회로</strong>다.</p>
+
+        <figure>
+          <p class="scroll-hint">← 좌우 스크롤</p>
+          <div class="fig-scroll">
+            <svg class="dg" viewBox="0 0 700 250" role="img" aria-label="LLM 3단 폴백 사다리">
+              <rect x="26" y="20" width="300" height="56" rx="13" class="nd-a"/>
+              <text x="44" y="42" class="ttl" fill="var(--accent-ink)">1단 · NVIDIA NIM</text>
+              <text x="44" y="60" class="cap">gemma-4-31b-it · 청크당 약 87초</text>
+              <text x="358" y="46" font-size="11" font-weight="700" fill="var(--green)">✓ 평소 여기서 끝난다</text>
+              <text x="358" y="63" class="cap">2026-09-06: 72/72 성공</text>
+
+              <line x1="176" y1="76" x2="176" y2="104" class="ar"/>
+              <text x="206" y="95" class="cap" fill="var(--red)">실패한 청크만</text>
+
+              <rect x="26" y="108" width="300" height="56" rx="13" fill="var(--card)" stroke="var(--purple)" stroke-width="1.5"/>
+              <text x="44" y="130" class="ttl" fill="var(--purple)">2단 · 로컬 LM Studio</text>
+              <text x="44" y="148" class="cap">gemma-4-31b-qat · 청크당 약 277초</text>
+              <text x="358" y="134" font-size="11" font-weight="700" fill="var(--green)">✓ 같은 품질, 느릴 뿐</text>
+              <text x="358" y="151" class="cap">2026-09-07: 23청크 구제</text>
+
+              <line x1="176" y1="164" x2="176" y2="192" class="ar"/>
+              <text x="206" y="183" class="cap" fill="var(--red)">서버 꺼짐 · 예산 초과</text>
+
+              <rect x="26" y="196" width="300" height="46" rx="13" fill="var(--orange-soft)" stroke="none"/>
+              <text x="44" y="224" class="ttl" fill="var(--orange)">3단 · 규칙기반</text>
+              <text x="358" y="216" font-size="11" font-weight="700" fill="var(--orange)">△ 영문 원문 노출</text>
+              <text x="358" y="233" class="cap">발행 자체는 반드시 끝난다</text>
+            </svg>
+          </div>
+          <figcaption>3단까지 내려가야만 품질이 떨어진다. 2단이 받아내면 지면은 <strong>1단과 구분되지 않는다.</strong></figcaption>
+        </figure>
+
+        <div class="note warn">
+          <span class="lbl">지켜볼 신호</span>
+          <p>실행 로그의 <code>로컬 폴백: 성공 N</code>이 0이 아니면 <strong>클라우드가 흔들린 날</strong>이다. 지면은 멀쩡해 보이므로 이 줄을 보지 않으면 며칠씩 모르고 지나간다. 실행 시간이 길어지는 것도 같은 신호다.</p>
+        </div>
+
+        <p class="sub-h">로컬 모델을 gemma로 고른 이유</p>
+        <p>M4 Pro / 48GB에서 같은 기사·같은 프롬프트로 실측했다.</p>
+        <div class="ex"><span class="n">채택</span><div><strong>gemma-4-31b-qat</strong> 277초 — 클라우드와 같은 계열이라 폴백돼도 품질이 일정하다. "포클랜드 제도" ✓, 원어 병기 ✓, 근거가 부족하면 짧게 끝냄 ✓</div></div>
+        <div class="ex bad"><span class="n">탈락</span><div><strong>gpt-oss-20b</strong> 19초 — 14배 빠르지만 Falkland를 "팔리케이 제도"로 오역하고 상세요약에 없는 내용을 지어낸다</div></div>
+        <div class="ex bad"><span class="n">탈락</span><div><strong>nemotron-3-nano-omni</strong> — <code>enable_thinking: false</code>를 무시한다. 해외 청크에서 max_tokens 8,192를 추론 24,883자로 전부 태우고 본문은 0자로 끝났다</div></div>
+
+        <div class="note danger">
+          <span class="lbl">로컬을 주력으로 못 쓰는 이유</span>
+          <p>하루 70여 호출을 전부 로컬로 돌리면 <strong>약 5시간</strong>이다. 병렬화로도 해결되지 않는다 — 통합 메모리 대역폭이 병목이라 단일 48.8 tok/s에서 4병렬 집계 57.5 tok/s로 <strong>18%밖에 늘지 않는다.</strong> 그래서 <code>LOCAL_LLM_CONCURRENCY</code>는 2로 좁게 둔다.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span class="sec-num">5</span><p class="kicker">Timing</p></div>
+        <h2>왜 03:30에 시작하나</h2>
+        <p>소요 시간이 그날 클라우드 사정에 크게 좌우된다. 실측 두 날이 극과 극이었다.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>날짜</th><th>클라우드</th><th>로컬 폴백</th><th>소요</th><th>완료</th></tr></thead>
+            <tbody>
+              <tr><th>09-06(일)</th><td class="yes">72/72 성공</td><td>0청크</td><td>9분 42초</td><td>04:39</td></tr>
+              <tr><th>09-07(월)</th><td class="par">48/72 · ReadTimeout</td><td>23청크</td><td>1시간 41분</td><td class="no-c">06:11 (지각)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>예산 상한까지 가면 <strong>클라우드 30분 + 로컬 90분 + 수집·발송 10분 ≈ 130분</strong>이다. 04:30 시작으로는 나쁜 날 06:40이 되므로, 03:30이면 상한에 걸려도 05:40에 끝나 6시 안에 들어온다.</p>
+
+        <div class="note ok">
+          <span class="lbl">09-07이 알려준 것</span>
+          <p>클라우드가 24청크를 놓쳤는데도 <strong>규칙기반 대체는 0/247건</strong>이었다. 늦었을 뿐 품질은 지켜졌다 — 폴백 사다리가 값을 한 날이다.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span class="sec-num">6</span><p class="kicker">Operations</p></div>
+        <h2>운영 명령어</h2>
+
+        <p class="sub-h">지금 한 번 돌리기</p>
+        <div class="termwin">
+          <div class="termbar"><span class="dots"></span><span class="tt">news_briefing_system — Terminal</span></div>
+          <pre class="term"><span class="k">cd</span> /Volumes/D/AI_Projects/Claude/01_Projects/20260203_news_brefing_system
+<span class="k">bash</span> scripts/run_daily_briefing.sh
+
+<span class="c"># 또는 예약 작업을 그대로 한 번 깨우기(래퍼 경유까지 검증됨)</span>
+<span class="k">launchctl</span> kickstart -p gui/$(<span class="k">id</span> -u)/com.allenst486de.newsbriefing.daily</pre>
+        </div>
+
+        <p class="sub-h">그날 상태 판독</p>
+        <div class="termwin">
+          <div class="termbar"><span class="dots"></span><span class="tt">로그 판독 — Terminal</span></div>
+          <pre class="term"><span class="k">grep</span> -E <span class="p">"LLM status|로컬 폴백"</span> $(<span class="k">ls</span> -t logs/run_*.log | <span class="k">head</span> -1)
+
+<span class="c"># 예약 실행이 아예 안 돌았을 때는 이 둘을 먼저 본다</span>
+<span class="k">launchctl</span> print gui/$(<span class="k">id</span> -u)/com.allenst486de.newsbriefing.daily | <span class="k">grep</span> -E <span class="p">"runs|last exit"</span>
+<span class="k">tail</span> -20 ~/Library/Logs/news-briefing/launchd.out.log</pre>
+        </div>
+
+        <p class="sub-h">스케줄 변경</p>
+        <div class="termwin">
+          <div class="termbar"><span class="dots"></span><span class="tt">launchd 재등록 — Terminal</span></div>
+          <pre class="term"><span class="c"># plist의 Hour/Minute 수정 후 반드시 재등록 (파일만 고치면 안 바뀐다)</span>
+<span class="k">launchctl</span> bootout gui/$(<span class="k">id</span> -u)/com.allenst486de.newsbriefing.daily
+<span class="k">launchctl</span> bootstrap gui/$(<span class="k">id</span> -u) ~/Library/LaunchAgents/com.allenst486de.newsbriefing.daily.plist
+<span class="k">launchctl</span> print gui/$(<span class="k">id</span> -u)/com.allenst486de.newsbriefing.daily | <span class="k">grep</span> -A4 descriptor</pre>
+        </div>
+
+        <p class="sub-h">소스 추가 전 검증</p>
+        <div class="termwin">
+          <div class="termbar"><span class="dots"></span><span class="tt">피드 검증 — Terminal</span></div>
+          <pre class="term"><span class="c"># 등재된 모든 피드 생존 확인</span>
+<span class="k">python</span> test_feeds.py
+
+<span class="c"># 생존만으로는 부족하다 — 발행일 중앙값과 제목 표본까지 볼 것</span>
+<span class="c"># (죽지 않았지만 갱신을 멈춘 피드, 분야와 내용이 다른 피드가 실제로 있었다)</span></pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head"><span class="sec-num">7</span><p class="kicker">Failure Modes</p></div>
+        <h2>겪은 장애와 증상</h2>
+        <p>같은 증상을 다시 만났을 때 빨리 짚기 위한 기록이다.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>증상</th><th>진짜 원인</th><th>대응</th></tr></thead>
+            <tbody>
+              <tr><th>아무 일도 안 일어남<span class="sub">로그 0바이트</span></th><td>launchd가 외장 볼륨에 로그를 못 만듦 · <code>exit 78</code></td><td>launchd 관련 경로를 전부 내장 디스크로</td></tr>
+              <tr><th>시작은 했는데 진행 없음</th><td><code>lms</code> CLI가 TTY 없는 환경에서 무한 대기</td><td>HTTP 확인 + 시한 래퍼</td></tr>
+              <tr><th>시각을 고쳤는데 옛 시각에 실행</th><td>plist만 수정하고 재등록 안 함</td><td><code>bootout</code> + <code>bootstrap</code></td></tr>
+              <tr><th>인포그래픽이 1장만 옴</th><td>헤드라인에 개행 → Pillow <code>textlength()</code> 예외</td><td>측정 전 공백 정규화</td></tr>
+              <tr><th>지면에 영문 원문이 남음</th><td>클라우드 실패 후 규칙기반으로 직행</td><td>로컬 LLM 2단 추가</td></tr>
+              <tr><th>브리핑이 6시 넘어 도착</th><td>클라우드 지연 → 느린 로컬 폴백이 다수</td><td>시작 시각 03:30으로</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note info">
+          <span class="lbl">건강한 실행의 기준</span>
+          <p><code>규칙기반 대체 0/N건</code> + <code>로컬 폴백: 성공 0</code> — 이 두 줄이면 클라우드가 온전히 일한 날이다.</p>
+        </div>
+      </section>
+
+      <footer>
+        작성일 2026-09-14 · 측정 환경 Mac mini M4 Pro / 48GB · 성능 수치는 단일 실행 측정값이며 무료 API 사정에 따라 날마다 달라진다.<br>
+        이 문서는 저장소의 <code>local-docs/</code>에 있고 GitHub Pages로 발행되지 않는다(발행 대상은 <code>docs/</code>뿐).
+      </footer>
+
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var mq=window.matchMedia('(min-width:1181px)');
+  var userSet=false;
+  function isOpen(){return root.getAttribute('data-toc')==='open';}
+  function setOpen(v){userSet=true;root.setAttribute('data-toc',v?'open':'closed');}
+  function applyDefault(){if(!userSet)root.setAttribute('data-toc',mq.matches?'open':'closed');}
+  applyDefault();
+  if(mq.addEventListener){mq.addEventListener('change',applyDefault);}else if(mq.addListener){mq.addListener(applyDefault);}
+
+  Array.prototype.forEach.call(document.querySelectorAll('.toc-btn'),function(b){b.addEventListener('click',function(){setOpen(!isOpen());});});
+  Array.prototype.forEach.call(document.querySelectorAll('.toc-close'),function(b){b.addEventListener('click',function(){setOpen(false);});});
+  var backdrop=document.getElementById('tocBackdrop');
+  if(backdrop){backdrop.addEventListener('click',function(){setOpen(false);});}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!mq.matches&&isOpen()){setOpen(false);}});
+
+  var list=document.getElementById('tocList');
+  if(list){
+    var sections=Array.prototype.slice.call(document.querySelectorAll('.content > section'));
+    var entries=[];
+    sections.forEach(function(sec,i){
+      var h2=sec.querySelector('h2');
+      if(!h2){return;}
+      if(!sec.id){sec.id='sec-'+(i+1);}
+      var numEl=sec.querySelector('.sec-num');
+      var num=numEl?numEl.textContent.trim():String(i+1);
+      var h3s=Array.prototype.slice.call(sec.querySelectorAll('h3'));
+
+      var item=document.createElement('div');item.className='toc-item';
+      var row=document.createElement('div');row.className='toc-row';
+      var expandBtn=null;
+      if(h3s.length){
+        expandBtn=document.createElement('button');
+        expandBtn.type='button';expandBtn.className='toc-expand';expandBtn.setAttribute('aria-label','하위 항목 펼치기');
+        expandBtn.innerHTML='<svg width="9" height="9" viewBox="0 0 10 10"><path d="M2,1 L8,5 L2,9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+        row.appendChild(expandBtn);
+      }else{
+        var sp=document.createElement('span');sp.className='toc-expand-spacer';row.appendChild(sp);
+      }
+      var a=document.createElement('a');a.className='toc-link';a.href='#'+sec.id;
+      a.innerHTML='<span class="toc-num">'+num+'</span><span>'+h2.textContent.trim()+'</span>';
+      row.appendChild(a);
+      item.appendChild(row);
+      entries.push({a:a,target:sec});
+
+      if(h3s.length){
+        var sub=document.createElement('ul');sub.className='toc-sub';
+        h3s.forEach(function(h3,j){
+          if(!h3.id){h3.id=sec.id+'-'+(j+1);}
+          var li=document.createElement('li');li.className='toc-subitem';
+          var sa=document.createElement('a');sa.href='#'+h3.id;sa.textContent=h3.textContent.trim();
+          li.appendChild(sa);sub.appendChild(li);
+          entries.push({a:sa,target:h3});
+        });
+        item.appendChild(sub);
+        expandBtn.addEventListener('click',function(){
+          var open=sub.classList.toggle('open');
+          expandBtn.classList.toggle('open',open);
+        });
+      }
+      list.appendChild(item);
+    });
+
+    list.addEventListener('click',function(e){
+      var a=e.target.closest?e.target.closest('a'):null;
+      if(!a){return;}
+      e.preventDefault();
+      var id=a.getAttribute('href').slice(1);
+      var target=document.getElementById(id);
+      if(target){target.scrollIntoView({behavior:'smooth',block:'start'});}
+      if(!mq.matches){setOpen(false);}
+    });
+
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(list_){
+        list_.forEach(function(en){
+          var m=null;
+          for(var k=0;k<entries.length;k++){if(entries[k].target===en.target){m=entries[k];break;}}
+          if(!m){return;}
+          if(en.isIntersecting){
+            entries.forEach(function(e){e.a.classList.remove('active');});
+            m.a.classList.add('active');
+            var subUl=m.a.closest('ul.toc-sub');
+            if(subUl && !subUl.classList.contains('open')){
+              subUl.classList.add('open');
+              var prevItem=subUl.parentElement;
+              var btn=prevItem?prevItem.querySelector('.toc-expand'):null;
+              if(btn){btn.classList.add('open');}
+            }
+          }
+        });
+      },{rootMargin:'-15% 0px -70% 0px',threshold:0});
+      sections.forEach(function(s){io.observe(s);});
+    }
+  }
+
+  function legacyCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.top='-9999px';ta.style.left='-9999px';
+    document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,text.length);
+    var ok=false;
+    try{ok=document.execCommand('copy');}catch(e){ok=false;}
+    document.body.removeChild(ta);
+    return ok;
+  }
+  var ICON_COPY='<svg class="i-cp" width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="5.2" y="5.2" width="8.3" height="8.3" rx="1.8" stroke="currentColor" stroke-width="1.3"/><path d="M2.7 10.2V3.7A1.5 1.5 0 0 1 4.2 2.2h6" stroke="currentColor" stroke-width="1.3"/></svg><span>복사</span>';
+  var ICON_DONE='<svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8.3l3.3 3.3L13 4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>복사됨</span>';
+  Array.prototype.forEach.call(document.querySelectorAll('.termwin'),function(win){
+    var bar=win.querySelector('.termbar');
+    var pre=win.querySelector('pre.term');
+    if(!bar||!pre){return;}
+    var btn=document.createElement('button');
+    btn.type='button';btn.className='term-copy';btn.setAttribute('aria-label','코드 복사');
+    btn.innerHTML=ICON_COPY;
+    bar.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var text=pre.textContent.replace(/\n$/,'');
+      var done=function(){
+        btn.classList.add('copied');
+        btn.innerHTML=ICON_DONE;
+        setTimeout(function(){btn.classList.remove('copied');btn.innerHTML=ICON_COPY;},1600);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(done).catch(function(){legacyCopy(text);done();});
+      }else{
+        legacyCopy(text);done();
+      }
+    });
+  });
+})();
+</script>

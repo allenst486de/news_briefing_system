@@ -1,0 +1,74 @@
+%%metro title: 일일 뉴스 브리핑 — 로컬 파이프라인
+%%metro style: light
+%%metro legend: bottom
+%%metro line: dom | 국내 기사 · 청크 8건 | #0570b0
+%%metro line: ovs | 해외 기사 · 청크 3건 + 상세요약 | #2db572
+%%metro off_track: local_llm
+%%metro off_track: rulebased
+%%metro file: rss | RSS
+%%metro file: telegram | TG
+%%metro file: ghpages | WEB
+%%metro grid: boot | 0,0
+%%metro grid: collect | 1,0
+%%metro grid: select | 2,0
+%%metro grid: summarize | 3,0
+%%metro grid: build | 4,0
+%%metro grid: ship | 5,0
+
+graph LR
+    subgraph boot [기동 03:30 KST]
+        %%metro entry: left | dom,ovs
+        %%metro exit: right | dom,ovs
+        launchd[launchd] -->|dom,ovs| wrapper[래퍼 홈 디렉터리]
+        wrapper -->|dom,ovs| runner[run_daily_briefing.sh]
+        runner -->|dom,ovs| lms[LM Studio 예열]
+    end
+
+    subgraph collect [수집]
+        %%metro entry: left | dom,ovs
+        %%metro exit: right | dom,ovs
+        lms -->|dom,ovs| rss[RSS 36개 매체]
+        lms -->|dom,ovs| gnews[구글 뉴스 경유 전문지]
+        rss -->|dom,ovs| body[원문 본문 추출]
+        gnews -->|dom,ovs| body
+    end
+
+    subgraph select [선별]
+        %%metro entry: left | dom,ovs
+        %%metro exit: right | dom,ovs
+        body -->|dom,ovs| agefilter[3일 경과 기사 제거]
+        agefilter -->|dom,ovs| dedup[전날 중복 · 공지성 제거]
+        dedup -->|dom,ovs| balance[매체 균형 라운드로빈]
+    end
+
+    subgraph summarize [요약 · LLM 3단 사다리]
+        %%metro entry: left | dom,ovs
+        %%metro exit: right | dom,ovs
+        balance -->|dom| chunk_dom[국내 청크 분할]
+        balance -->|ovs| chunk_ovs[해외 청크 분할]
+        chunk_dom -->|dom| nim[NVIDIA NIM gemma-4-31b]
+        chunk_ovs -->|ovs| nim
+        nim -->|dom,ovs| top10[Top10 선정]
+        nim -->|dom,ovs| local_llm[로컬 LM Studio 폴백]
+        local_llm -->|dom,ovs| top10
+        local_llm -->|dom,ovs| rulebased[규칙기반 폴백]
+        rulebased -->|dom,ovs| top10
+    end
+
+    subgraph build [생성]
+        %%metro entry: left | dom,ovs
+        %%metro exit: right | dom,ovs
+        top10 -->|dom,ovs| html[분야별 HTML 8종]
+        html -->|ovs| detail[해외 상세요약 페이지]
+        html -->|dom| indicators[지표 · 종목 대시보드]
+        detail -->|ovs| card[Top10 인포그래픽 PNG]
+        indicators -->|dom| card
+    end
+
+    subgraph ship [배포 · 발송]
+        %%metro entry: left | dom,ovs
+        %%metro exit: right | dom,ovs
+        card -->|dom,ovs| telegram[텔레그램 5건]
+        card -->|dom,ovs| commit[main 커밋 push]
+        commit -->|dom,ovs| ghpages[gh-pages 배포]
+    end
