@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>시사용어 — 일일 뉴스 브리핑</title>
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_description }}">
+    <meta property="og:url" content="{{ og_url }}">
+    <link rel="stylesheet" href="{{ css_path }}">
+</head>
+<body>
+    <div class="container">
+        {% include '_menu.html' %}
+        {% include '_theme_toggle.html' %}
+
+        <header class="page-header">
+            <h1>📚 시사용어</h1>
+            <p class="page-sub">그날 기사에 실제로 등장한 용어만 골라 쌓습니다. 용어마다 출처 기사로 이어집니다.</p>
+        </header>
+
+        <section class="top10-section">
+            <div class="tab-box" data-tabs>
+                <div class="tab-buttons">
+                    {% for block in term_blocks %}
+                    <button type="button" class="tab-button {% if loop.first %}active{% endif %}"
+                            data-tab-target="terms-{{ block.key }}">{{ block.name }} <span class="term-count">{{ block.terms|length }}</span></button>
+                    {% endfor %}
+                </div>
+
+                {% for block in term_blocks %}
+                <div class="tab-panel {% if loop.first %}active{% endif %}" data-tab-panel="terms-{{ block.key }}">
+                    {% if block.terms %}
+                    {# 분야 필터 + 정렬. 목록이 길어지는 '올해' 탭에서 특히 필요하다. #}
+                    <div class="term-controls" data-term-controls>
+                        <div class="term-filters">
+                            <button type="button" class="term-filter active" data-filter="all">전체</button>
+                            {% for cat in block.categories %}
+                            <button type="button" class="term-filter" data-filter="{{ cat.key }}"
+                                    style="--chip:var(--tag-{{ cat.key }}, var(--tag-general))">{{ cat.name }} <span>{{ cat.count }}</span></button>
+                            {% endfor %}
+                        </div>
+                        <label class="term-sort">
+                            정렬
+                            <select data-term-sort>
+                                <option value="newest">최신순</option>
+                                <option value="oldest">오래된순</option>
+                                <option value="term">가나다순</option>
+                                <option value="category">분야순</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="top10-grid" data-term-grid>
+                        {% for item in block.terms %}
+                        <div class="top10-card" data-term-card
+                             data-category="{{ item.category }}"
+                             data-date="{{ item.date }}"
+                             data-term="{{ item.term }}"
+                             data-category-name="{{ item.category_name }}">
+                            <a class="top10-card-main" href="{{ item.link }}" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-{{ item.category }}, var(--tag-general))">{{ item.category_name }}</span>
+                                <span class="term-date">{{ item.date }}</span>
+                                <h3>{{ item.term }}</h3>
+                                <p>{{ item.definition }}</p>
+                                <span class="top10-source">출처 · {{ item.source }}</span>
+                            </a>
+                            {% if item.detail_path %}
+                            {# 해외 기사는 원문이 유료라 못 여는 경우가 있어 한국어 요약을 함께 건다 #}
+                            <a class="top10-detail-link" href="{{ item.detail_path }}">한국어 상세 요약 →</a>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <p class="term-empty" data-term-empty hidden>이 분야의 용어가 없습니다.</p>
+                    {% else %}
+                    <p class="term-empty">아직 쌓인 용어가 없습니다.</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <footer>
+            <p>자동 생성된 뉴스 브리핑 · <a href="{{ index_path }}">홈으로</a></p>
+        </footer>
+    </div>
+    <script src="{{ site_js_path }}"></script>
+</body>
+</html>

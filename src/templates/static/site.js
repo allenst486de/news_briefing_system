@@ -90,6 +90,65 @@
     });
   }
 
+  // 시사용어 탭의 분야 필터 + 정렬. 용어는 날마다 쌓여서 '올해' 탭이 수백 건까지
+  // 길어지므로, 서버에서 미리 나눠 내려주는 대신 브라우저에서 걸러 쓴다
+  // (정적 호스팅이라 서버 쪽 질의가 없다).
+  function setupTermControls() {
+    document.querySelectorAll('[data-term-controls]').forEach(function (controls) {
+      var panel = controls.closest('[data-tab-panel]') || document;
+      var grid = panel.querySelector('[data-term-grid]');
+      var empty = panel.querySelector('[data-term-empty]');
+      if (!grid) { return; }
+
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-term-card]'));
+      var filters = controls.querySelectorAll('[data-filter]');
+      var sortSelect = controls.querySelector('[data-term-sort]');
+      var current = 'all';
+
+      function apply() {
+        var shown = 0;
+        cards.forEach(function (card) {
+          var hit = current === 'all' || card.getAttribute('data-category') === current;
+          card.hidden = !hit;
+          if (hit) { shown++; }
+        });
+        if (empty) { empty.hidden = shown !== 0; }
+      }
+
+      function sortBy(mode) {
+        var sorted = cards.slice().sort(function (a, b) {
+          var ad = a.getAttribute('data-date') || '';
+          var bd = b.getAttribute('data-date') || '';
+          if (mode === 'oldest') { return ad.localeCompare(bd); }
+          if (mode === 'term') {
+            return (a.getAttribute('data-term') || '').localeCompare(b.getAttribute('data-term') || '', 'ko');
+          }
+          if (mode === 'category') {
+            var ac = a.getAttribute('data-category-name') || '';
+            var bc = b.getAttribute('data-category-name') || '';
+            // 같은 분야 안에서는 최신순을 유지해야 목록이 뒤죽박죽으로 보이지 않는다
+            return ac.localeCompare(bc, 'ko') || bd.localeCompare(ad);
+          }
+          return bd.localeCompare(ad);   // newest
+        });
+        sorted.forEach(function (card) { grid.appendChild(card); });
+      }
+
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          current = btn.getAttribute('data-filter');
+          filters.forEach(function (b) { b.classList.toggle('active', b === btn); });
+          apply();
+        });
+      });
+
+      if (sortSelect) {
+        sortSelect.addEventListener('change', function () { sortBy(sortSelect.value); });
+      }
+      apply();
+    });
+  }
+
   // 장중 지표 갱신 — 별도 워크플로가 15분마다 덮어쓰는 indicators.json을 읽어
   // 값/등락률만 바꿔치기한다. 네이버 지표 API는 CORS를 허용하지 않아 브라우저에서
   // 직접 부를 수 없기 때문에 같은 도메인의 JSON을 경유한다.
@@ -163,6 +222,7 @@
     loadWeather();
     setupThemeToggle();
     setupTabs();
+    setupTermControls();
     setupMenu();
     refreshIndicators();
   });

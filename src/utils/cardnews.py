@@ -161,3 +161,100 @@ def generate_top10_card(top10: List[Dict], date_str: str, output_path: str,
     except Exception as e:
         logger.warning(f"Top10 card image generation failed: {e}")
         return None
+
+
+# ── 시사용어 카드 ────────────────────────────────────────────────────────
+# Top10 카드가 2열×5행 포스터라면 이쪽은 1열×5행 목록형이다. 용어는 제목이 짧고
+# 뜻풀이가 길어서, 가로로 넓은 칸에 용어와 설명을 위아래로 놓는 편이 읽기 좋다.
+_TERM_CARD_W = 1000
+_TERM_ROW_H = 190
+_TERM_ROWS = 5
+_TERM_HEADER_H = 150
+_TERM_HEIGHT = _MARGIN + _TERM_HEADER_H + _TERM_ROW_H * _TERM_ROWS \
+    + _GAP * (_TERM_ROWS - 1) + _FOOTER_H + _MARGIN
+_TERM_WIDTH = _MARGIN * 2 + _TERM_CARD_W
+
+
+def generate_terms_card(terms: List[Dict], date_str: str, output_path: str,
+                        page: int = 1, total_pages: int = 1) -> Optional[str]:
+    """
+    시사용어 5개를 한 장에 담는다. 성공 시 경로, 실패 시 None.
+    page/total_pages는 제목 옆의 '1/2' 표시에만 쓴다.
+    """
+    if not terms:
+        return None
+
+    try:
+        img = Image.new('RGB', (_TERM_WIDTH, _TERM_HEIGHT), _BG)
+        draw = ImageDraw.Draw(img)
+
+        font_title = ImageFont.truetype(_FONT_BOLD, 44)
+        font_date = ImageFont.truetype(_FONT_REGULAR, 26)
+        font_tag = ImageFont.truetype(_FONT_BOLD, 20)
+        font_term = ImageFont.truetype(_FONT_BOLD, 34)
+        font_def = ImageFont.truetype(_FONT_REGULAR, 24)
+        font_source = ImageFont.truetype(_FONT_REGULAR, 20)
+        font_footer = ImageFont.truetype(_FONT_REGULAR, 22)
+
+        # 번들 폰트(나눔고딕)에 이모지 글리프가 없어 제목에 이모지를 쓰면 빈칸만 남는다
+        title = "오늘의 시사용어"
+        if total_pages > 1:
+            title += f"  {page}/{total_pages}"
+        draw.text((_MARGIN, _MARGIN + 10), title, font=font_title, fill=_TEXT_PRIMARY)
+        draw.text((_MARGIN, _MARGIN + 74), date_str, font=font_date, fill=_TEXT_SECONDARY)
+
+        pad = 26
+        for i, item in enumerate(terms[:_TERM_ROWS]):
+            y = _MARGIN + _TERM_HEADER_H + i * (_TERM_ROW_H + _GAP)
+            accent = _CATEGORY_COLORS.get(item.get('category'), (91, 141, 238))
+
+            draw.rounded_rectangle([_MARGIN, y, _MARGIN + _TERM_CARD_W, y + _TERM_ROW_H],
+                                   radius=18, fill=_pastel(accent))
+            # 왼쪽 색 띠 — 분야를 한눈에 구분하는 장치(웹 카드의 태그 색과 같은 팔레트)
+            draw.rounded_rectangle([_MARGIN, y, _MARGIN + 10, y + _TERM_ROW_H],
+                                   radius=5, fill=accent)
+
+            tag_text = _one_line(item.get('category_name', ''))
+            tw = draw.textlength(tag_text, font=font_tag)
+            tag_x = _MARGIN + pad
+            draw.rounded_rectangle([tag_x, y + pad - 2, tag_x + tw + 22, y + pad + 28],
+                                   radius=15, fill=accent)
+            draw.text((tag_x + 11, y + pad + 2), tag_text, font=font_tag, fill=_WHITE)
+
+            term_lines = _wrap_lines(draw, item.get('term', ''), font_term,
+                                     _TERM_CARD_W - pad * 2 - tw - 40, max_lines=1)
+            if term_lines:
+                draw.text((tag_x + tw + 40, y + pad - 1), term_lines[0], font=font_term, fill=_INK)
+
+            def_lines = _wrap_lines(draw, item.get('definition', ''), font_def,
+                                    _TERM_CARD_W - pad * 2, max_lines=3)
+            for li, line in enumerate(def_lines):
+                draw.text((tag_x, y + pad + 48 + li * 33), line, font=font_def,
+                          fill=tuple(int(c * 0.82) for c in _INK))
+
+            source_text = _one_line(item.get('source', ''))
+            if source_text:
+                draw.text((tag_x, y + _TERM_ROW_H - pad - 20), f"출처 · {source_text}",
+                          font=font_source, fill=tuple(int(c * 0.55) for c in _INK))
+
+        draw.text((_MARGIN, _TERM_HEIGHT - _FOOTER_H + 4), "일일 뉴스 브리핑 · 시사용어",
+                  font=font_footer, fill=_TEXT_SECONDARY)
+
+        img.save(output_path, 'PNG')
+        return output_path
+    except Exception as e:
+        logger.warning(f"Terms card image generation failed: {e}")
+        return None
+
+
+def generate_terms_cards(terms: List[Dict], date_str: str, output_dir: str) -> List[str]:
+    """용어 목록을 5개씩 끊어 여러 장 생성. 생성된 파일 경로 목록을 순서대로 반환."""
+    paths = []
+    pages = [terms[i:i + _TERM_ROWS] for i in range(0, len(terms), _TERM_ROWS)]
+    pages = [p for p in pages if len(p) == _TERM_ROWS]  # 반쯤 빈 장은 만들지 않는다
+    for idx, chunk in enumerate(pages, start=1):
+        path = os.path.join(output_dir, f'terms_{date_str}_{idx}.png')
+        made = generate_terms_card(chunk, date_str, path, page=idx, total_pages=len(pages))
+        if made:
+            paths.append(made)
+    return paths

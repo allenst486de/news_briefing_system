@@ -1,13 +1,21 @@
-{# 홈 최상단 크로스카테고리 Top10 — 국내/해외를 탭으로 나눠 각각 10건 #}
-{% if top10_blocks and top10_blocks | selectattr('cards') | list %}
+{# 홈 최상단 크로스카테고리 Top10 — 국내/해외를 탭으로 나눠 각각 10건.
+   시사용어가 세 번째 탭으로 같은 박스에 붙는다. Top10 선정이 실패한 날에도
+   시사용어는 나와야 하므로 조건을 둘 중 하나라도 있으면으로 둔다
+   (예전에는 Top10 조건 안에 있어 Top10이 비면 시사용어까지 통째로 사라졌다). #}
+{% set has_top10 = top10_blocks and top10_blocks | selectattr('cards') | list %}
+{% if has_top10 or terms_today %}
 <section class="top10-section">
-    <h2 class="section-title">🔥 오늘의 Top 10</h2>
+    <h2 class="section-title">{% if has_top10 %}🔥 오늘의 Top 10{% else %}📚 오늘의 시사용어{% endif %}</h2>
     <div class="tab-box" data-tabs>
         <div class="tab-buttons">
             {% for block in top10_blocks %}
             <button type="button" class="tab-button {% if loop.first %}active{% endif %}"
                     data-tab-target="top10-{{ block.key }}">{{ block.icon }} {{ block.name }}</button>
             {% endfor %}
+            {% if terms_today %}
+            <button type="button" class="tab-button {% if not has_top10 %}active{% endif %}"
+                    data-tab-target="top10-terms">📚 시사용어</button>
+            {% endif %}
         </div>
         {% for block in top10_blocks %}
         <div class="tab-panel {% if loop.first %}active{% endif %}" data-tab-panel="top10-{{ block.key }}">
@@ -30,6 +38,32 @@
             </div>
         </div>
         {% endfor %}
+
+        {# 시사용어 — 국내/해외와 나란한 세 번째 탭. 카드 마크업은 위와 같은 것을 쓴다
+           (제목 자리에 용어, 요약 자리에 뜻풀이). 전체 목록은 아카이브 페이지로 보낸다. #}
+        {% if terms_today %}
+        <div class="tab-panel {% if not has_top10 %}active{% endif %}" data-tab-panel="top10-terms">
+            <div class="top10-grid">
+                {% for item in terms_today %}
+                <div class="top10-card">
+                    <a class="top10-card-main" href="{{ item.link }}" target="_blank" rel="noopener">
+                        <span class="top10-rank-badge">{{ loop.index }}</span>
+                        <span class="top10-category-tag" style="background:var(--tag-{{ item.category }}, var(--tag-general))">{{ item.category_name }}</span>
+                        <h3>{{ item.term }}</h3>
+                        <p>{{ item.definition }}</p>
+                        <span class="top10-source">출처 · {{ item.source }}</span>
+                    </a>
+                    {% if item.detail_path %}
+                    <a class="top10-detail-link" href="{{ item.detail_path }}">한국어 상세 요약 →</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% if terms_path %}
+            <p class="terms-more"><a href="{{ terms_path }}">📚 시사용어 전체 보기 (오늘 · 이달 · 올해) →</a></p>
+            {% endif %}
+        </div>
+        {% endif %}
     </div>
 </section>
 {% endif %}

@@ -15,7 +15,7 @@ from src.news_aggregator import NewsAggregator
 from src.html_generator import HTMLGenerator
 from src.telegram_bot import TelegramNotifier
 from src.utils.logger import setup_logger
-from src.utils.cardnews import generate_top10_card
+from src.utils.cardnews import generate_top10_card, generate_terms_cards
 from src.utils import llm_client
 from src import archiver
 
@@ -49,7 +49,8 @@ def main():
         base_url = os.getenv('PAGES_BASE_URL', '')
 
         generator = HTMLGenerator(template_dir, output_dir, base_url, raw_data_dir=raw_data_dir)
-        page_urls, top10_by_region, archive_file = generator.generate_all(categorized_news)
+        (page_urls, top10_by_region, archive_file,
+         terms_today, terms_file) = generator.generate_all(categorized_news)
         _record_fallback_rate(categorized_news)
 
         # 3. 텔레그램 전송
@@ -74,9 +75,15 @@ def main():
                 if path:
                     images.append((path, label))
 
+            # 시사용어 인포그래픽 — 5개씩 끊어 2~4장. 용어가 없는 날은 빈 목록이라
+            # 아무것도 보내지 않는다.
+            term_images = generate_terms_cards(terms_today, date_str, tempfile.gettempdir())
+
             notifier = TelegramNotifier(bot_token, chat_id, base_url)
             notifier.send_briefing_sync(page_urls, top10_by_region, date_str, images,
-                                         archive_rel=archive_file)
+                                         archive_rel=archive_file,
+                                         term_images=term_images,
+                                         terms_rel=terms_file if terms_today else '')
 
         # 4. 3개월 지난 자료 압축 롤오버 (실패해도 전체 실행은 성공으로 취급)
         try:

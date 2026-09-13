@@ -78,7 +78,8 @@ class TelegramNotifier:
         return "\n".join(parts)
 
     def _build_lead_message(self, page_urls: Dict[str, str], date_str: str,
-                             archive_rel: Optional[str] = None) -> str:
+                             archive_rel: Optional[str] = None,
+                             terms_rel: str = '') -> str:
         """분야별 바로가기 + 홈/아카이브 링크 + 고지. Top10 목록은 지역별 메시지가 따로 나간다."""
         parts = [f"<b>📰 일일 뉴스 브리핑 ({date_str})</b>", ""]
 
@@ -95,6 +96,9 @@ class TelegramNotifier:
 
         parts.append("")
         home = f'🏠 <a href="{self._full_url("index.html")}">홈(최신 브리핑)</a>'
+        if terms_rel:
+            home += (f' · 📚 <a href="{self._esc(self._full_url(terms_rel))}">'
+                      f'시사용어</a>')
         if archive_rel:
             home += (f' · 🗂️ <a href="{self._esc(self._full_url(archive_rel))}">'
                       f'지난 브리핑 아카이브</a>')
@@ -108,7 +112,9 @@ class TelegramNotifier:
     async def send_briefing(self, page_urls: Dict[str, str],
                              top10_by_region: Dict[str, List[Dict]], date_str: str,
                              images: Optional[List[Tuple[str, str]]] = None,
-                             archive_rel: Optional[str] = None):
+                             archive_rel: Optional[str] = None,
+                             term_images: Optional[List[str]] = None,
+                             terms_rel: str = ''):
         """
         지역별로 [인포그래픽 + Top10 텍스트]를 한 쌍씩 보내고, 마지막에 분야별
         바로가기 메시지를 보낸다.
@@ -145,9 +151,24 @@ class TelegramNotifier:
                     # 한 지역이 실패해도 나머지 지역과 바로가기는 보낸다
                     self.logger.warning(f"Top10 {label} text send failed: {e}")
 
+            # 시사용어 인포그래픽 — 뉴스 뒤에 이어 보낸다. 5개씩 끊은 2~4장이라
+            # 캡션에 몇 장 중 몇 번째인지 적어 준다.
+            term_images = term_images or []
+            for idx, path in enumerate(term_images, start=1):
+                try:
+                    with open(path, 'rb') as photo:
+                        caption = f"📚 오늘의 시사용어 ({date_str})"
+                        if len(term_images) > 1:
+                            caption += f" {idx}/{len(term_images)}"
+                        await self.bot.send_photo(chat_id=self.chat_id, photo=photo,
+                                                   caption=caption)
+                except (TelegramError, OSError) as e:
+                    # 한 장이 실패해도 나머지와 아래 메시지는 그대로 나간다
+                    self.logger.warning(f"시사용어 이미지 {idx} 전송 실패: {e}")
+
             await self.bot.send_message(
                 chat_id=self.chat_id,
-                text=self._build_lead_message(page_urls, date_str, archive_rel),
+                text=self._build_lead_message(page_urls, date_str, archive_rel, terms_rel),
                 parse_mode='HTML',
                 disable_web_page_preview=True,
             )
@@ -160,7 +181,9 @@ class TelegramNotifier:
     def send_briefing_sync(self, page_urls: Dict[str, str],
                             top10_by_region: Dict[str, List[Dict]], date_str: str,
                             images: Optional[List[Tuple[str, str]]] = None,
-                            archive_rel: Optional[str] = None):
+                            archive_rel: Optional[str] = None,
+                            term_images: Optional[List[str]] = None,
+                            terms_rel: str = ''):
         """동기 방식으로 브리핑 전송"""
         try:
             try:
@@ -171,7 +194,8 @@ class TelegramNotifier:
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
             loop.run_until_complete(
-                self.send_briefing(page_urls, top10_by_region, date_str, images, archive_rel)
+                self.send_briefing(page_urls, top10_by_region, date_str, images,
+                                    archive_rel, term_images, terms_rel)
             )
         except Exception as e:
             self.logger.error(f"Error in send_briefing_sync: {e}")

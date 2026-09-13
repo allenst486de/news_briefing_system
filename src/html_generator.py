@@ -7,6 +7,7 @@ import json
 import shutil
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
+from collections import OrderedDict
 from typing import Dict, List, Optional
 from urllib.parse import urlparse
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -16,7 +17,9 @@ from .utils.logger import setup_logger
 from .utils.indicators import get_market_indicators, write_indicators_json
 from .utils.pagekey import load_or_create_salt, obfuscate
 from .utils import stock_data
+from .utils import terms_store
 from . import summarizer
+from . import terms_extractor
 
 PREVIEW_COUNT = 5
 AI_PREVIEW_COUNT = 3
@@ -142,21 +145,68 @@ class HTMLGenerator:
             page_urls[category] = f"{date_path}/{html_file}"
             self.logger.info(f"Generated {category}: {file_path}")
 
+        # 시사용어 — 오늘 기사에서 뽑아 연 단위 저장소에 쌓는다. 추출이 실패해도
+        # 그날 브리핑은 그대로 나간다(빈 목록이면 탭 자체가 안 생긴다).
+        terms_today = self._collect_terms(buckets, date_str, date_path, salt)
+
         # 아카이브는 홈 푸터에서 링크한다. 파일명 자체는 계속 난수화되어 있어
         # 주소를 추측해서 들어올 수는 없다(저장소가 public이면 파일 목록이 보이므로
         # 어차피 접근 제어가 아니다 — 주소 추측 차단이 목적).
         archive_file = obfuscate('archive.html', salt, 'archive')
         self._update_archive(date_str, date_path, archive_file, nav_categories)
+
+        terms_file = obfuscate('terms.html', salt, 'terms')
+        term_buckets = terms_store.collect_buckets(self._terms_dir())
+        for bucket in term_buckets.values():
+            for term in bucket:
+                term['detail_path'] = self._make_path(f"/{term['detail_rel']}") if term.get('detail_rel') else ''
+        self._generate_terms_page(
+            os.path.join(self.output_dir, terms_file), term_buckets, date_str,
+            nav_categories, page_rel=f'/{terms_file}',
+        )
+        terms_path = self._make_path(f'/{terms_file}')
+
         self._generate_index_page(buckets, date_str, date_full, date_path, nav_categories,
-                                   top10_by_region, indicators, archive_file=archive_file)
+                                   top10_by_region, indicators, archive_file=archive_file,
+                                   terms_today=terms_today, terms_path=terms_path)
         self._generate_feed_xml(buckets, date_str)
         self._generate_robots_txt()
         self._save_raw_snapshot(buckets, stock_picks, date_str)
 
         self.logger.info("HTML generation completed")
-        # archive_file은 난수 파일명이라 호출부가 스스로 만들어낼 수 없다 —
+        # archive_file·terms_file은 난수 파일명이라 호출부가 스스로 만들어낼 수 없다 —
         # 텔레그램 메시지에서 링크하려면 여기서 돌려줘야 한다.
-        return page_urls, top10_by_region, archive_file
+        # terms_today는 텔레그램 인포그래픽 생성에 그대로 쓴다(다시 뽑으면 LLM 호출이 두 배).
+        return page_urls, top10_by_region, archive_file, terms_today, terms_file
+
+    def _terms_dir(self) -> str:
+        """시사용어 누적 저장소 — docs/ 밖에 둔다(발행 대상이 아니다)."""
+        base = self.raw_data_dir or os.path.dirname(self.output_dir)
+        return os.path.join(os.path.dirname(base) if self.raw_data_dir else base, 'terms')
+
+    def _collect_terms(self, buckets, date_str: str, date_path: str, salt: str) -> List[Dict]:
+        """오늘의 시사용어를 뽑아 저장소에 쌓고, 오늘치를 화면용으로 돌려준다."""
+        terms_dir = self._terms_dir()
+        try:
+            known = [t.get('term', '') for t in
+                     terms_store.load_year(terms_dir, datetime.now(KST).year)]
+            extracted = terms_extractor.extract_terms(
+                buckets, known_terms=known,
+                api_key=summarizer.category_api_key('society'),
+                date_str=date_str,
+            )
+            if not extracted:
+                return []
+            terms_store.append_terms(terms_dir, extracted)
+        except Exception as e:
+            # 시사용어는 부가 기능이다 — 실패해도 브리핑 발행을 막지 않는다
+            self.logger.warning(f"시사용어 추출/저장 실패 (건너뜀): {e}")
+            return []
+
+        for term in extracted:
+            term['detail_path'] = self._make_path(f"/{term['detail_rel']}") if term.get('detail_rel') else ''
+        self.logger.info(f"시사용어 {len(extracted)}건 생성")
+        return extracted
 
     def _make_path(self, relative: str) -> str:
         clean = relative.lstrip('/')
@@ -279,6 +329,47 @@ class HTMLGenerator:
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
+    def _generate_terms_page(self, output_file: str, term_buckets: Dict[str, List[Dict]],
+                              date_str: str, nav_categories: List[Dict], page_rel: str = ''):
+        """
+        시사용어 페이지 — 오늘 / 이달 / 올해를 탭으로 나눠 누적 목록을 보여준다.
+
+        분야 필터 버튼에 붙일 건수는 여기서 세어 넘긴다(템플릿에서 세면 같은 목록을
+        분야 수만큼 훑게 된다). 필터링·정렬 자체는 site.js가 브라우저에서 처리한다 —
+        정적 호스팅이라 서버 쪽 질의가 없고, '올해' 목록은 수백 건까지 길어진다.
+        """
+        template = self.env.get_template('terms.html')
+
+        blocks = []
+        for key, name in (('today', '오늘의 시사용어'), ('month', '이달의 시사용어'),
+                           ('year', '올해의 시사용어')):
+            terms = term_buckets.get(key) or []
+            counts = OrderedDict()
+            for term in terms:
+                cat = term.get('category')
+                if cat not in counts:
+                    counts[cat] = {'key': cat, 'name': term.get('category_name', cat), 'count': 0}
+                counts[cat]['count'] += 1
+            blocks.append({
+                'key': key,
+                'name': name,
+                'terms': terms,
+                'categories': sorted(counts.values(), key=lambda c: -c['count']),
+            })
+
+        html_content = template.render(
+            term_blocks=blocks,
+            date=date_str,
+            css_path=self._make_path('/style.css'),
+            site_js_path=self._make_path('/site.js'),
+            index_path=self._make_path('/index.html'),
+            nav_categories=nav_categories,
+            base_path=self.base_path,
+            **self._og_context('시사용어', f'{date_str} 기준 누적 시사용어 목록', page_rel),
+        )
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+
     def _update_archive(self, date_str: str, date_path: str, archive_file_name: str,
                          nav_categories=None):
         """
@@ -335,7 +426,9 @@ class HTMLGenerator:
                               nav_categories: List[Dict],
                               top10_by_region: Dict[str, List[Dict]],
                               indicators: Optional[Dict] = None,
-                              archive_file: Optional[str] = None):
+                              archive_file: Optional[str] = None,
+                              terms_today: Optional[List[Dict]] = None,
+                              terms_path: str = ''):
         """포털형 홈페이지 생성 — Top10 카드 + 카테고리 미리보기 + AI 소식 미리보기 + 헤더"""
         index_file = os.path.join(self.output_dir, 'index.html')
         template = self.env.get_template('index.html')
@@ -378,6 +471,10 @@ class HTMLGenerator:
             feed_path=self._make_path('/feed.xml'),
             # 없으면 템플릿이 링크를 통째로 감춘다 — 깨진 링크를 내보내지 않도록
             archive_path=self._make_path(f'/{archive_file}') if archive_file else None,
+            # 시사용어는 국내/해외와 나란한 세 번째 탭으로만 노출한다
+            # (뉴스 미리보기 영역에는 넣지 않는다)
+            terms_today=terms_today or [],
+            terms_path=terms_path,
             **self._og_context('일일 뉴스 브리핑', f'{date_str} 오늘의 뉴스를 한눈에', '/index.html'),
         )
 
