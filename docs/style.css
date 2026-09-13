@@ -763,7 +763,7 @@ footer {
     width: 264px;
     padding: 10px;
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-md);
     background: var(--bg-card);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
 }
@@ -887,7 +887,7 @@ footer {
 .article-detail {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-md);
     padding: 28px;
 }
 
@@ -1174,3 +1174,58 @@ footer {
     background: var(--accent-glow);
     color: var(--text-primary);
 }
+
+/* ── 시사용어 ─────────────────────────────────────────────────────────
+   카드 자체는 Top10 카드(.top10-card)를 그대로 쓴다 — 제목 자리에 용어,
+   요약 자리에 뜻풀이가 들어간다. 아래는 시사용어에만 붙는 것들. */
+.terms-more { margin: 1.2rem 0 0; text-align: center; }
+.terms-more a {
+    display: inline-block; padding: .6rem 1.1rem; border-radius: 999px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); text-decoration: none; font-size: .9rem; font-weight: 600;
+}
+.terms-more a:hover { border-color: var(--accent); color: var(--accent); }
+
+.term-count {
+    display: inline-block; margin-left: .3rem; padding: .05rem .4rem;
+    border-radius: 999px; background: var(--border); color: var(--text-secondary);
+    font-size: .72rem; font-weight: 700;
+}
+.tab-button.active .term-count { background: var(--accent); color: #fff; }
+
+.term-controls {
+    display: flex; flex-wrap: wrap; gap: .75rem; align-items: center;
+    justify-content: space-between; margin: 0 0 1.1rem;
+}
+.term-filters { display: flex; flex-wrap: wrap; gap: .4rem; }
+.term-filter {
+    display: inline-flex; align-items: center; gap: .3rem;
+    padding: .34rem .75rem; border-radius: 999px; cursor: pointer;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-secondary); font-size: .82rem; font-weight: 600;
+    font-family: inherit; transition: background .15s, color .15s, border-color .15s;
+}
+.term-filter span { font-size: .72rem; opacity: .75; }
+.term-filter:hover { color: var(--text-primary); border-color: var(--chip, var(--accent)); }
+.term-filter.active {
+    background: var(--chip, var(--accent)); border-color: var(--chip, var(--accent));
+    color: #fff;
+}
+.term-filter.active span { opacity: .9; }
+
+.term-sort {
+    display: inline-flex; align-items: center; gap: .45rem;
+    font-size: .82rem; color: var(--text-secondary); font-weight: 600;
+}
+.term-sort select {
+    padding: .32rem .6rem; border-radius: 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); font-size: .82rem; font-family: inherit; cursor: pointer;
+}
+
+/* 누적 목록이라 카드마다 날짜가 필요하다 — 언제 실린 용어인지 */
+.term-date {
+    display: inline-block; margin-left: .4rem;
+    font-size: .72rem; color: var(--text-secondary); font-weight: 600;
+}
+.term-empty { margin: 1.4rem 0; text-align: center; color: var(--text-secondary); font-size: .9rem; }
