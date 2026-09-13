@@ -15,6 +15,21 @@ Reuters(404), AP(403), 블로터(403), 이데일리(연결 실패).
 발행일까지 확인할 것. 셋은 요청에 따라 목록에 유지하되, 오래된 기사는
 news_aggregator의 MAX_ARTICLE_AGE_DAYS 필터가 일괄로 막는다.
 새로 추가하려면 test_feeds.py로 먼저 검증할 것.
+
+2026-09 전문지 보강: 과학·생활의 국내 소스가 종합일간지뿐이라 전문지를 찾아 28개
+후보를 검증했고 4곳(헬로디디·AI타임스·청년의사·바이라인네트워크)만 통과했다.
+다시 시도하지 않도록 탈락 사유를 남긴다.
+  - RSS 자체가 없음(모든 경로 404 또는 HTML 반환): 동아사이언스(과학동아 발행처),
+    사이언스타임즈, 씨네21, 조선비즈, 이코노미스트, 디지털데일리, 메디칼타임즈,
+    헬스조선, 텐아시아, 비즈워치. 한국 매체는 RSS를 걷어낸 곳이 많다.
+  - 갱신 중단: IT조선 S1N1(기사 중앙값 1058일 — 2023년 국감 기사가 최신),
+    시사IN(821일).
+  - 피드 내용이 분야와 불일치: IT조선(allArticle·S1N2 모두 '농심 3세 결혼' 같은
+    재계 가십이 섞인 종합 피드), 한국경제 life 피드(내용이 연예·문화).
+    전자신문 Section901 사고와 같은 유형이라 등재하지 않는다.
+  - 발행일 파싱 불가: 한겨레21(항목 30건, 날짜 0건).
+  - 전문성 기준 미달: 코메디닷컴(연성 건강 기사·클릭베이트성 제목),
+    법률신문(부고가 피드에 섞이고 날짜 중앙값이 -1일로 미래 날짜).
 """
 
 CATEGORIES = ["politics", "economy", "society", "life", "culture", "it", "science", "world"]
@@ -233,5 +248,36 @@ SOURCES = [
     {
         "id": "arstechnica", "name": "Ars Technica", "language": "en", "region": "overseas", "limit": 10,
         "feeds": {"it": "https://feeds.arstechnica.com/arstechnica/index"},
+    },
+
+    # ── 분야별 전문지 (2026-09 추가) ─────────────────────────────────────
+    # 종합일간지보다 소식이 빠르고 깊다. 특히 과학·생활은 그전까지 국내 소스가
+    # 종합일간지뿐이었다. 아래는 전부 등재 전에 항목 수·발행일 중앙값·제목 표본까지
+    # 확인했다(검증 기준은 이 파일 상단 참고).
+    {
+        # 대덕연구단지 기반 과학기술 전문지. 표본: KAIST-롯데 R&D센터, 대만 양자산업,
+        # 생체 뇌영상 기술 — 종합지가 다루지 않는 연구 현장 소식이 주력이다.
+        "id": "hellodd", "name": "헬로디디", "language": "ko", "region": "domestic", "limit": 15,
+        "feeds": {"science": "https://www.hellodd.com/rss/allArticle.xml"},
+    },
+    {
+        # AI 전문지. 표본 50건이 전부 AI/모델/인프라 소식으로 IT 분야 적중률이 높다.
+        # IT 페이지의 AI 서브섹션(importance_analyzer가 분류)과 특히 잘 맞는다.
+        "id": "aitimes", "name": "AI타임스", "language": "ko", "region": "domestic", "limit": 15,
+        "feeds": {"it": "https://www.aitimes.com/rss/allArticle.xml"},
+    },
+    {
+        # 의료계 전문지. 표본: 폐암 국제학회(WCLC), 중소병원 외과, 전자약 개발 —
+        # 건강 정보성 기사가 아니라 의료 현장·연구 소식이라 전문성이 확보된다.
+        "id": "docdocdoc", "name": "청년의사", "language": "ko", "region": "domestic", "limit": 15,
+        "feeds": {"life": "https://www.docdocdoc.co.kr/rss/allArticle.xml"},
+    },
+    {
+        # 테크 전문 매체. 다만 기사 발행일 중앙값이 3일로 MAX_ARTICLE_AGE_DAYS 경계에
+        # 걸쳐 있어 실제로 지면에 오르는 건 절반 남짓이고, 유통·커머스 기사도 일부
+        # 섞인다(분야 무관 건은 요약 단계의 off_topic 필터가 걸러낸다).
+        # 수확량이 적은 대신 다른 매체가 안 다루는 각도를 가져오는 자리다.
+        "id": "byline", "name": "바이라인네트워크", "language": "ko", "region": "domestic", "limit": 10,
+        "feeds": {"it": "https://byline.network/feed/"},
     },
 ]
