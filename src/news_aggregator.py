@@ -94,7 +94,8 @@ class NewsAggregator:
         def fetch(job):
             source, category = job
             collector = RSSCollector(
-                source["id"], source["name"], source["feeds"], source.get("language", "ko")
+                source["id"], source["name"], source["feeds"], source.get("language", "ko"),
+                source.get("via", ""),
             )
             try:
                 articles = collector.collect(category, limit=source.get("limit", 15))

@@ -15,11 +15,16 @@ from ..utils.rss_utils import (
 class RSSCollector(BaseCollector):
     """설정 기반 범용 RSS 수집기"""
 
-    def __init__(self, source_id: str, display_name: str, feeds: Dict[str, str], language: str = "ko"):
+    def __init__(self, source_id: str, display_name: str, feeds: Dict[str, str], language: str = "ko",
+                 via: str = ""):
         super().__init__(display_name)
         self.source_id = source_id
         self.feeds = feeds
         self.language = language
+        # 구글 뉴스를 경유해 받아오는 소스인지(sources.google_site_feed 참고).
+        # 예전에는 source_id == "googlenews"로 하드코딩돼 있어, 구글을 경유하는
+        # 소스를 새로 추가하면 제목 접미사가 그대로 남았다.
+        self.via = via
         self.logger = logging.getLogger(__name__)
 
     def collect(self, category: str = None, limit: int = 15) -> List[NewsArticle]:
@@ -41,7 +46,7 @@ class RSSCollector(BaseCollector):
                 # 요약은 clean_html로 엔티티가 풀리는데 제목은 그냥 두면 "&amp;"가
                 # 그대로 남고, 템플릿이 한 번 더 이스케이프해 화면에 "&amp;"로 보인다.
                 title = clean_html(entry.get("title", "")).strip()
-                if self.source_id == "googlenews":
+                if self.via == "googlenews" or self.source_id == "googlenews":
                     title = strip_google_news_title_suffix(title)
                 summary = clean_html(entry.get("description", "") or entry.get("summary", ""))
                 summary = strip_title_prefix(summary, title)

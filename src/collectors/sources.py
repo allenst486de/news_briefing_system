@@ -30,7 +30,40 @@ news_aggregator의 MAX_ARTICLE_AGE_DAYS 필터가 일괄로 막는다.
   - 발행일 파싱 불가: 한겨레21(항목 30건, 날짜 0건).
   - 전문성 기준 미달: 코메디닷컴(연성 건강 기사·클릭베이트성 제목),
     법률신문(부고가 피드에 섞이고 날짜 중앙값이 -1일로 미래 날짜).
+
+2026-09 2차(구글 뉴스 경유): RSS 미제공 매체를 google_site_feed()로 다시 검토해
+5곳(동아사이언스·씨네21·농민신문·디지털데일리·비즈워치)을 추가했다. 탈락 사유:
+  - 피드에 기사가 아닌 페이지가 섞임: 사이언스타임즈('통합검색'), 하이닥('건강Q&A',
+    '의사·병원찾기'), 아트인사이트('테스트1'), 한국문화예술위(공연소개·공지사항).
+  - 제목이 비거나 깨짐: 메디칼타임즈(전부 '- Medicaltimes'),
+    헬스조선(제목이 영어로 나옴 — 구글이 번역본을 물어온다).
+  - 분야 불일치: 조선비즈(연예 가십 혼입), 여성신문(내용이 정치·사회).
+  - 전문성 기준 미달: 텐아시아·맥스무비(연예 가십·인터뷰 위주).
+  - 검색 결과 0건: 월간미술, 월간객석.
 """
+
+import urllib.parse
+
+
+def google_site_feed(domain: str, days: int = 3) -> str:
+    """
+    RSS를 제공하지 않는 매체를 구글 뉴스 검색 RSS로 우회 수집한다.
+
+    한국 매체는 RSS를 걷어낸 곳이 많아(동아사이언스·씨네21·조선비즈 등) 자체 피드로는
+    등재할 수 없다. 구글 뉴스의 `site:` 검색 결과를 RSS로 받으면 그 매체 기사만
+    골라 올 수 있다.
+
+    ⚠️ 대가가 있다. 링크가 구글 리다이렉트(news.google.com/rss/articles/...)라
+    article_body가 본문을 못 가져온다 — 서버 리다이렉트가 아니라 JS로 넘기는
+    페이지여서 그렇고, URL 디코딩도 막혀 있다(2026-09 확인). 그래서 이 소스들의
+    요약은 RSS 요약문만 근거로 쓰며, 근거가 얇으면 요약이 짧아진다(환각 방지 규칙이
+    분량을 채우지 못하게 막는다). 자체 RSS가 있는 매체는 반드시 그쪽을 쓸 것.
+
+    when:Nd로 기간을 제한해 오래된 기사가 딸려오지 않게 한다.
+    """
+    query = urllib.parse.quote_plus(f"site:{domain} when:{days}d")
+    return f"https://news.google.com/rss/search?q={query}&hl=ko&gl=KR&ceid=KR:ko"
+
 
 CATEGORIES = ["politics", "economy", "society", "life", "culture", "it", "science", "world"]
 
@@ -63,6 +96,7 @@ SOURCES = [
     },
     {
         "id": "googlenews", "name": "구글 뉴스", "language": "ko", "region": "domestic", "limit": 15,
+        "via": "googlenews",
         "feeds": {
             "politics": "https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRFZ4ZERBU0FtdHZLQUFQAQ?hl=ko&gl=KR&ceid=KR:ko",
             "economy":  "https://news.google.com/rss/topics/CAAqIggKIhxDQkFTRHdvSkwyMHZNR2RtY0hNekVnSnJieWdBUAE?hl=ko&gl=KR&ceid=KR:ko",
@@ -279,5 +313,43 @@ SOURCES = [
         # 수확량이 적은 대신 다른 매체가 안 다루는 각도를 가져오는 자리다.
         "id": "byline", "name": "바이라인네트워크", "language": "ko", "region": "domestic", "limit": 10,
         "feeds": {"it": "https://byline.network/feed/"},
+    },
+
+    # ── 구글 뉴스 경유 전문지 (2026-09 추가) ─────────────────────────────
+    # RSS를 제공하지 않아 자체 피드로는 못 넣는 매체들. google_site_feed()의
+    # 주의사항(본문 추출 불가 → 요약이 RSS 요약문에만 의존)을 반드시 읽을 것.
+    # 자체 RSS가 생기면 그쪽으로 갈아타는 편이 낫다.
+    {
+        # 과학동아·수학동아 발행처. 자체 RSS가 없어졌다(홈페이지에 링크조차 없음).
+        # 표본: 접착제 없이 붙는 플라스틱, 우주항공청 캔위성, 휴머노이드 — 연구 소식이 주력.
+        "id": "dongascience", "name": "동아사이언스", "language": "ko", "region": "domestic",
+        "limit": 12, "via": "googlenews",
+        "feeds": {"science": google_site_feed("dongascience.com")},
+    },
+    {
+        # 영화 전문지. 문화 분야는 그전까지 국내 전문지가 하나도 없었다.
+        # 표본: 베니스영화제 중간 점검, 편집장 오프닝, OTT리뷰.
+        "id": "cine21", "name": "씨네21", "language": "ko", "region": "domestic",
+        "limit": 12, "via": "googlenews",
+        "feeds": {"culture": google_site_feed("cine21.com")},
+    },
+    {
+        # 농업 전문지. 생활 분야를 종합일간지 바깥에서 채운다.
+        # 표본: 농지 전수조사, 직불금 교육 감액, 수입콩 GMO 표시.
+        "id": "nongmin", "name": "농민신문", "language": "ko", "region": "domestic",
+        "limit": 12, "via": "googlenews",
+        "feeds": {"life": google_site_feed("nongmin.com")},
+    },
+    {
+        # IT 전문지. 표본: ISDS 소송, 현대차 자율주행 전략, LCK — 일부 e스포츠가 섞인다.
+        "id": "ddaily", "name": "디지털데일리", "language": "ko", "region": "domestic",
+        "limit": 12, "via": "googlenews",
+        "feeds": {"it": google_site_feed("ddaily.co.kr")},
+    },
+    {
+        # 경제·금융 전문지. 표본: 금양 물적분할, 빗썸 FIU 재판, OTT 해킹 보상.
+        "id": "bizwatch", "name": "비즈워치", "language": "ko", "region": "domestic",
+        "limit": 12, "via": "googlenews",
+        "feeds": {"economy": google_site_feed("bizwatch.co.kr")},
     },
 ]
