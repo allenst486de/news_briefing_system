@@ -43,7 +43,7 @@ _FATAL_KEY = (401, 403)
 _FATAL_REQUEST = (400, 404, 422)
 
 # 전용 키(NVIDIA_API_KEY_TERMS)가 있으면 맨 앞에 둔다. 없으면 브리핑 키를 함께 쓰는데,
-# 브리핑은 03:30 에 시작해 늦어도 05:40 에 끝나고 이 작업은 06:20 부터라 호출 제한이 겹치지 않는다.
+# 브리핑은 03:30 에 시작해 늦어도 05:40 에 끝나고 이 작업은 05:50 부터라 호출 제한이 겹치지 않는다.
 KEY_ENV_NAMES = [
     "NVIDIA_API_KEY_TERMS", "NVIDIA_API_KEY",
     "NVIDIA_API_KEY_POLITICS", "NVIDIA_API_KEY_ECONOMY", "NVIDIA_API_KEY_SOCIETY",

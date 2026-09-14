@@ -464,6 +464,22 @@ def test_fill_day_uses_the_terms_own_category():
         assert saved["IPO"]["category"] == "it", "모르는 분야 코드면 기사 분야를 그대로 쓴다"
 
 
+def test_plan_run_finishes_before_the_app_opens():
+    from datetime import datetime, timedelta, timezone
+    kst = timezone(timedelta(hours=9))
+
+    def at(hour, minute):
+        return datetime(2026, 9, 14, hour, minute, tzinfo=kst)
+
+    assert pipeline.plan_run(DAY, at(5, 50), 600) == (600, False, ""), "06:40 전에는 맥의 기사 목록을 기다린다"
+    assert pipeline.plan_run(DAY, at(7, 15), 600) == (600, True, "")
+    assert pipeline.plan_run(DAY, at(7, 45), 600) == (300, True, ""), "마감까지 남은 시간만 쓴다"
+    budget, _, skip = pipeline.plan_run(DAY, at(7, 50), 600)
+    assert budget == 0 and "마감" in skip
+    assert pipeline.plan_run(DAY, at(17, 0), 600, explicit_date=True) == (600, True, ""), "날짜를 적으면 마감 없음"
+    assert pipeline.plan_run(date(2026, 9, 13), at(17, 0), 600) == (600, True, "")
+
+
 def test_summary_is_readable():
     text = pipeline.format_summary({"date": "2026-09-14", "before": 3, "after": 10, "added": 7,
                                     "via": ["news_terms", "raw"], "rejected": {"no_wiki": 4},

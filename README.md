@@ -151,7 +151,7 @@ python main.py
 
 낱말퍼즐 매거진 앱에 싣는 시사 용어만 따로 채우는 작업입니다(`app_terms.yml` → `app_terms.py`).
 브리핑의 시사용어는 맥의 새벽 실행 안에서 요약이 다 끝난 뒤 한 번에 뽑기 때문에, 맥이 멈추거나
-NVIDIA 응답이 늘어진 날에는 통째로 비었습니다. 이 작업은 GitHub 서버에서 **하루 세 번(06:20·08:20·11:20 KST)**
+NVIDIA 응답이 늘어진 날에는 통째로 비었습니다. 이 작업은 GitHub 서버에서 **하루 네 번(05:50·06:20·06:50·07:15 KST)**
 돌며 빈 만큼만 채웁니다. 이미 채워졌으면 NVIDIA를 부르지 않고 바로 끝납니다.
 
 - 결과: `data/app_terms/YYYY/MM-DD.json` — 하루 목표 10개(앱은 5개를 싣고 나머지는 NVIDIA가 실패한 날 쓸 비축분)
@@ -162,7 +162,8 @@ NVIDIA 응답이 늘어진 날에는 통째로 비었습니다. 이 작업은 Gi
 - 끊김 대책(`src/app_terms/nim.py`): 스트리밍으로 받아 45초 동안 조각이 안 오면 끊고 다른 키로 재시도, 429는 그 키만 Retry-After만큼 쉬게, 5개 묶음마다 저장, 작업 전체 600초 상한
 - 브리핑과 파일이 겹치지 않습니다(브리핑은 `data/terms/`, 이 작업은 `data/app_terms/`) — 맥이 늦게 끝난 날에도 push 충돌이 나지 않습니다
 - NVIDIA 키: 전용 `NVIDIA_API_KEY_TERMS` Secret이 있으면 먼저 쓰고, 없으면 기존 공용·분야 키를 돌아가며 씁니다(브리핑과 시간대가 겹치지 않음)
-- 수동 실행: Actions 탭 → **App Terms** → Run workflow(날짜를 비우면 오늘). 로컬 시험: `python app_terms.py --out /tmp/app_terms`
+- **앱은 매일 오전 8시에 그날 용어를 엽니다.** 예약 실행은 07:50이 지나면 오늘 몫의 새 호출을 시작하지 않아, 호출 하나가 늘어져도 커밋까지 8시 전에 끝납니다. 06:40 전에는 RSS로 대신 모으지 않고 맥의 기사 목록을 기다립니다
+- 수동 실행: Actions 탭 → **App Terms** → Run workflow. 날짜를 비우면 오늘(07:50 마감 적용), **날짜를 적으면 마감 없이** 그 날짜를 채웁니다. 로컬 시험: `python app_terms.py --date 2026-09-14 --out /tmp/app_terms`
 
 실행 요약 화면에 이렇게 남습니다(2026-09-14 로컬 시험, 206초).
 
@@ -248,7 +249,7 @@ news_briefing_system/
 ├── .github/workflows/
 │   ├── daily_briefing.yml        # 수동 실행 전용(cron 제거 — 로컬 맥으로 이전)
 │   ├── indicators.yml            # 평일 장중 15분마다 docs/indicators.json만 갱신
-│   └── app_terms.yml             # 앱용 시사 용어만 하루 세 번 채움 (맥과 무관)
+│   └── app_terms.yml             # 앱용 시사 용어를 매일 오전 8시 전에 채움 (맥과 무관)
 ├── scripts/
 │   ├── run_daily_briefing.sh     # 로컬 일일 실행: LM Studio 예열 → main.py → main 커밋·push → gh-pages 배포
 │   └── news_briefing_launch.sh   # launchd용 래퍼 사본 — 실제로는 ~/bin/ 에 설치해 쓴다(외장 볼륨 제약)

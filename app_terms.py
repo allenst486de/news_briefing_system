@@ -1,11 +1,11 @@
 """
 앱용 시사 용어 채우기 — 낱말퍼즐 매거진 앱에 싣는 용어만 따로 채운다.
 
-GitHub Actions(.github/workflows/app_terms.yml)가 하루 세 번 부른다.
+GitHub Actions(.github/workflows/app_terms.yml)가 하루 네 번(모두 오전 8시 전) 부른다.
 맥의 일일 브리핑과 따로 돌아서, 맥이 멈춘 날에도 용어가 쌓인다. 설계는 src/app_terms/.
 
     python app_terms.py                          # 오늘(KST) 채우기
-    python app_terms.py --date 2026-09-14        # 특정 날짜
+    python app_terms.py --date 2026-09-14        # 특정 날짜 (07:50 마감 없이)
     python app_terms.py --out /tmp/app_terms     # 저장소 대신 다른 폴더에 (시험용)
     python app_terms.py --no-rss                 # 기사 목록이 없어도 RSS 를 모으지 않음
 
@@ -35,7 +35,8 @@ def main(argv=None) -> int:
     load_dotenv(os.path.join(ROOT, ".env"))
 
     parser = argparse.ArgumentParser(description="앱용 시사 용어를 그날 파일에 채운다")
-    parser.add_argument("--date", type=_date, help="KST 날짜 YYYY-MM-DD (기본: 오늘)")
+    parser.add_argument("--date", type=_date,
+                        help="KST 날짜 YYYY-MM-DD — 적으면 07:50 마감 없이 그 날짜를 채운다 (기본: 오늘)")
     parser.add_argument("--out", help="저장 폴더 (기본: data/app_terms)")
     parser.add_argument("--target", type=int, default=pipeline.TARGET, help="하루 목표 개수")
     parser.add_argument("--budget", type=int, default=pipeline.JOB_BUDGET_SECONDS,
@@ -43,10 +44,17 @@ def main(argv=None) -> int:
     parser.add_argument("--no-rss", action="store_true", help="기사 목록이 없어도 RSS 를 모으지 않음")
     args = parser.parse_args(argv)
 
-    day = args.date or datetime.now(KST).date()
-    result = pipeline.fill_day(day, repo_root=ROOT, out_root=args.out, target=args.target,
-                               budget=args.budget, allow_rss=not args.no_rss)
-    text = pipeline.format_summary(result)
+    now = datetime.now(KST)
+    day = args.date or now.date()
+    budget, rss_ok, skip = pipeline.plan_run(day, now, args.budget, explicit_date=args.date is not None)
+    if skip:
+        text = f"앱용 시사 용어 {day.isoformat()}: {skip}"
+    else:
+        result = pipeline.fill_day(day, repo_root=ROOT, out_root=args.out, target=args.target,
+                                   budget=budget, allow_rss=rss_ok and not args.no_rss)
+        text = pipeline.format_summary(result)
+        if not rss_ok and not args.no_rss:
+            text += f"\n(RSS 대체 수집은 {pipeline.RSS_NOT_BEFORE:%H:%M} 이후 회차에서)"
     print(text)
 
     step_summary = os.getenv("GITHUB_STEP_SUMMARY")

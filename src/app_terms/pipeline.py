@@ -25,6 +25,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from concurrent.futures import TimeoutError as FuturesTimeout
 from datetime import date as Date
 from datetime import datetime, timedelta, timezone
+from datetime import time as dtime
 from typing import Callable, Dict, List, Optional, Tuple
 
 from ..collectors.sources import CATEGORIES, CATEGORY_META
@@ -49,6 +50,15 @@ MEANING_MIN, MEANING_MAX = 30, 140
 
 RSS_MAX_AGE_DAYS = 2
 RSS_TIME_LIMIT = 150
+
+# 앱은 매일 오전 8시(KST)에 그날 용어를 연다. 예약 실행은 그 전에 오늘 몫을 끝내야 한다.
+#   TODAY_CUTOFF    이 시각이 지나면 오늘 몫의 새 호출을 시작하지 않는다. 호출 하나가 늘어져도
+#                   (최대 150초) 커밋까지 8시 전에 끝나게 10분 여유를 둔다.
+#   RSS_NOT_BEFORE  이 시각 전에는 RSS 로 대신 모으지 않고 맥이 올릴 기사 목록을 기다린다
+#                   (맥 브리핑은 늦어도 05:40 에 끝난다).
+APP_OPENS_AT = dtime(8, 0)
+TODAY_CUTOFF = dtime(7, 50)
+RSS_NOT_BEFORE = dtime(6, 40)
 
 VIA_LABELS = {"news_terms": "브리핑 용어", "raw": "기사 목록", "rss": "RSS 제목"}
 REJECT_LABELS = {
@@ -325,6 +335,24 @@ def write_meanings(batch: List[Dict], *, pool, chat, deadline: float) -> Dict[in
 
 # ── 한 회차 ───────────────────────────────────────────────────────────────
 
+def plan_run(day: Date, now: datetime, budget: int,
+             explicit_date: bool = False) -> Tuple[int, bool, str]:
+    """(이번 회차에 쓸 초, RSS 허용 여부, 건너뛸 이유).
+
+    예약 실행(날짜를 적지 않음)은 오늘 몫을 TODAY_CUTOFF 전에 끝낸다.
+    날짜를 직접 적은 실행은 밀린 날을 손으로 채우는 것이라 마감이 없다.
+    """
+    if explicit_date or day != now.date():
+        return budget, True, ""
+    cutoff = datetime.combine(day, TODAY_CUTOFF, tzinfo=now.tzinfo)
+    remaining = int((cutoff - now).total_seconds())
+    if remaining <= 0:
+        return 0, False, (f"오늘 몫 마감({TODAY_CUTOFF:%H:%M}) 지남 — 앱은 {APP_OPENS_AT:%H:%M}에 "
+                          "비축분을 연다. 그래도 채우려면 날짜를 적어 실행")
+    return min(budget, remaining), now.time() >= RSS_NOT_BEFORE, ""
+
+
+
 def fill_day(day: Date, *, repo_root: str, out_root: Optional[str] = None,
              target: int = TARGET, budget: int = JOB_BUDGET_SECONDS, allow_rss: bool = True,
              pool=None, chat=None, wiki_lookup=None, rss_loader=None,
@@ -332,7 +360,9 @@ def fill_day(day: Date, *, repo_root: str, out_root: Optional[str] = None,
     out_root = out_root or os.path.join(repo_root, "data", "app_terms")
     chat = chat or nim.chat
     wiki_lookup = wiki_lookup or wiki.lookup
-    rss_loader = rss_loader or articles_from_rss
+    # RSS 수집도 마감을 넘지 않게 남은 시간의 절반까지만 쓴다
+    rss_loader = rss_loader or (lambda: articles_from_rss(
+        time_limit=max(10, min(RSS_TIME_LIMIT, int(deadline - clock()) // 2))))
     nim.reset_stats()
     deadline = clock() + budget
 
