@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>시사용어 — 일일 뉴스 브리핑</title>
     <meta property="og:title" content="시사용어">
-    <meta property="og:description" content="2026-09-14 기준 누적 시사용어 목록">
+    <meta property="og:description" content="2026-09-15 기준 누적 시사용어 목록">
     <meta property="og:url" content="https://allenst486de.github.io/news_briefing_system/news_briefing_system/terms-IRvAX0GNOG.html">
     <link rel="stylesheet" href="/news_briefing_system/style.css">
 </head>
@@ -19,31 +19,43 @@
         <span class="site-menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <nav class="site-menu-panel" id="site-menu-panel" data-menu-panel hidden>
-        <a class="site-menu-home" href="/news_briefing_system/index.html">🏠 홈 (최신 브리핑)</a>
+        
+        <div class="site-menu-top">
+            <a class="site-menu-home" href="/news_briefing_system/index.html">🏠 홈 (최신 브리핑)</a>
+            
+            <a class="site-menu-home site-menu-terms current"
+               href="/news_briefing_system/terms-IRvAX0GNOG.html">📚 시사용어</a>
+            
+        </div>
         
         <div class="site-menu-grid">
             
-            <a href="/news_briefing_system/2026/09/14/politics-t1gQ4cjCbB.html" >🏛️ 정치</a>
+            <a href="/news_briefing_system/2026/09/15/politics-vHEj1Cd9No.html" >🏛️ 정치</a>
             
-            <a href="/news_briefing_system/2026/09/14/economy-wS40VlOPw7.html" >💰 경제</a>
+            <a href="/news_briefing_system/2026/09/15/economy-U8uzUzv6do.html" >💰 경제</a>
             
-            <a href="/news_briefing_system/2026/09/14/society-0SRgMr7xIV.html" >👥 사회</a>
+            <a href="/news_briefing_system/2026/09/15/society-RL2Rld5Yyo.html" >👥 사회</a>
             
-            <a href="/news_briefing_system/2026/09/14/life-iQL8VK5YxY.html" >🌱 생활</a>
+            <a href="/news_briefing_system/2026/09/15/life-FdUZFaUA8c.html" >🌱 생활</a>
             
-            <a href="/news_briefing_system/2026/09/14/culture-wHwFgXF1GH.html" >🎭 문화</a>
+            <a href="/news_briefing_system/2026/09/15/culture-sUoHBBl4P9.html" >🎭 문화</a>
             
-            <a href="/news_briefing_system/2026/09/14/it-TnpJ1WjUTd.html" >💻 IT</a>
+            <a href="/news_briefing_system/2026/09/15/it-pvcfKwqr84.html" >💻 IT</a>
             
-            <a href="/news_briefing_system/2026/09/14/science-LDoyHcXBXC.html" >🔬 과학</a>
+            <a href="/news_briefing_system/2026/09/15/science-CyjZ0eQeaH.html" >🔬 과학</a>
             
-            <a href="/news_briefing_system/2026/09/14/world-5bGRKbamuT.html" >🌍 국제</a>
+            <a href="/news_briefing_system/2026/09/15/world-02MBBiV46y.html" >🌍 국제</a>
             
         </div>
         
     </nav>
 </div>
+
         
+        <header>
+            <h1>📚 시사용어</h1>
+            <p class="subtitle">그날 기사에 실제로 등장한 용어만 골라 쌓습니다. 용어마다 출처 기사로 이어집니다.</p>
+            
 <button type="button" id="theme-toggle" class="theme-switch" role="switch"
         aria-checked="false" aria-label="다크 모드 전환">
     <span class="theme-switch-track" aria-hidden="true">
@@ -52,10 +64,6 @@
         <span class="theme-switch-thumb"></span>
     </span>
 </button>
-
-        <header class="page-header">
-            <h1>📚 시사용어</h1>
-            <p class="page-sub">그날 기사에 실제로 등장한 용어만 골라 쌓습니다. 용어마다 출처 기사로 이어집니다.</p>
         </header>
 
         <section class="top10-section">
@@ -66,10 +74,10 @@
                             data-tab-target="terms-today">오늘의 시사용어 <span class="term-count">15</span></button>
                     
                     <button type="button" class="tab-button "
-                            data-tab-target="terms-month">이달의 시사용어 <span class="term-count">15</span></button>
+                            data-tab-target="terms-month">이달의 시사용어 <span class="term-count">30</span></button>
                     
                     <button type="button" class="tab-button "
-                            data-tab-target="terms-year">올해의 시사용어 <span class="term-count">15</span></button>
+                            data-tab-target="terms-year">올해의 시사용어 <span class="term-count">30</span></button>
                     
                 </div>
 
@@ -81,26 +89,23 @@
                         <div class="term-filters">
                             <button type="button" class="term-filter active" data-filter="all">전체</button>
                             
+                            <button type="button" class="term-filter" data-filter="politics"
+                                    style="--chip:var(--tag-politics, var(--tag-general))">정치 <span>5</span></button>
+                            
                             <button type="button" class="term-filter" data-filter="economy"
                                     style="--chip:var(--tag-economy, var(--tag-general))">경제 <span>4</span></button>
-                            
-                            <button type="button" class="term-filter" data-filter="politics"
-                                    style="--chip:var(--tag-politics, var(--tag-general))">정치 <span>3</span></button>
-                            
-                            <button type="button" class="term-filter" data-filter="it"
-                                    style="--chip:var(--tag-it, var(--tag-general))">IT <span>3</span></button>
                             
                             <button type="button" class="term-filter" data-filter="life"
                                     style="--chip:var(--tag-life, var(--tag-general))">생활 <span>2</span></button>
                             
-                            <button type="button" class="term-filter" data-filter="culture"
-                                    style="--chip:var(--tag-culture, var(--tag-general))">문화 <span>1</span></button>
+                            <button type="button" class="term-filter" data-filter="it"
+                                    style="--chip:var(--tag-it, var(--tag-general))">IT <span>2</span></button>
+                            
+                            <button type="button" class="term-filter" data-filter="society"
+                                    style="--chip:var(--tag-society, var(--tag-general))">사회 <span>1</span></button>
                             
                             <button type="button" class="term-filter" data-filter="science"
                                     style="--chip:var(--tag-science, var(--tag-general))">과학 <span>1</span></button>
-                            
-                            <button type="button" class="term-filter" data-filter="world"
-                                    style="--chip:var(--tag-world, var(--tag-general))">국제 <span>1</span></button>
                             
                         </div>
                         <label class="term-sort">
@@ -118,14 +123,14 @@
                         
                         <div class="top10-card" data-term-card
                              data-category="politics"
-                             data-date="2026-09-14"
-                             data-term="공소청"
+                             data-date="2026-09-15"
+                             data-term="자율성"
                              data-category-name="정치">
-                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMickFVX3lxTE80eDFqbUtEN3pVajEzUzQ0RExHZVptSXE0LWhyMVN4a2NUd05MbmgxRXNmbktXaEdkQmdsQk93enhldktHelc3c0hSRko0ZXVMaXB5Y2sxekh5X2p2b3c2SnZjNUpIQ20tU2dTVHRmR1JwUQ?oc=5" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5pTEJrRF9WcjZHNDFXcWlPSTdyR1ozdjNmSFVhbzFOb0ZZVGhVMm1jRVpfbWZvbVFNX0RTeE1xOTU5cnN2NTNfczdGTl9tX1o4NEwtUmdLUzV2SWR3eExEYkpnaTM?oc=5" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>공소청</h3>
-                                <p>법무부 산하 기관으로, 최근 수사 인력을 대폭 감축하고 사법통제부의 명칭을 불송치 사건 심사부로 변경하는 등 경찰 개혁과 연계된 조직 개편이 추진되고 있습니다.</p>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>자율성</h3>
+                                <p>외부의 강제나 간섭 없이 자신의 의지에 따라 스스로 결정하고 행동하는 성질을 의미합니다.</p>
                                 <span class="top10-source">출처 · 구글 뉴스</span>
                             </a>
                             
@@ -133,14 +138,29 @@
                         
                         <div class="top10-card" data-term-card
                              data-category="politics"
-                             data-date="2026-09-14"
-                             data-term="인사청문회"
+                             data-date="2026-09-15"
+                             data-term="파기환송"
                              data-category-name="정치">
-                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609132104015/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=politic_news" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMickFVX3lxTE1vbE5TRlJRVHBBYjI5ekxEVHgwRWhXM2I1czBScG45UWp3Z2wwU3NxbEJ6Wm5sMDcwX0trNEt4UklZZVMzbl90ZnV5NC1hMkctTGtObVlXTTJ4MHg2V1NNRmpGSzllbWNGdW5ZRWlyX19Kdw?oc=5" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>인사청문회</h3>
-                                <p>고위 공직 후보자의 자질과 도덕성을 검증하는 절차입니다. 최근 증인 채택 없이 진행되는 사례가 늘어나며 검증 기능이 상실되었다는 비판이 제기되고 있습니다.</p>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>파기환송</h3>
+                                <p>상급 법원이 하급 법원의 판결이 잘못되었다고 판단하여 이를 취소하고, 다시 재판하라고 사건을 돌려보내는 절차입니다.</p>
+                                <span class="top10-source">출처 · 구글 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="수사·기소 분리"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142147015/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=politic_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>수사·기소 분리</h3>
+                                <p>범죄를 조사하는 수사 권한과 재판을 청구하는 기소 권한을 서로 다른 기관이나 인물에게 나누어 부여하는 체계입니다.</p>
                                 <span class="top10-source">출처 · 경향신문</span>
                             </a>
                             
@@ -148,32 +168,50 @@
                         
                         <div class="top10-card" data-term-card
                              data-category="politics"
-                             data-date="2026-09-14"
-                             data-term="인플레이션(Inflation)"
+                             data-date="2026-09-15"
+                             data-term="국유화"
                              data-category-name="정치">
-                            <a class="top10-card-main" href="https://www.nytimes.com/2026/09/13/us/politics/political-candidates-affordability-midterms.html" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://www.theguardian.com/business/2026/sep/14/government-nationalise-speciality-steel-uk-jobs-ssuk" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>인플레이션(Inflation)</h3>
-                                <p>물가가 지속적으로 상승하여 화폐 가치가 하락하는 현상입니다. 미국 중간선거에서 생활비 부담과 함께 핵심 쟁점으로 다뤄지고 있습니다.</p>
-                                <span class="top10-source">출처 · New York Times</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>국유화</h3>
+                                <p>민간이 소유하고 운영하던 기업이나 자산을 국가가 강제적으로 또는 합의하에 인수하여 국가 소유로 만드는 것입니다.</p>
+                                <span class="top10-source">출처 · The Guardian</span>
                             </a>
                             
                             
-                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/14/a-5KUhbzWH1X.html">한국어 상세 요약 →</a>
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-Ymhk2oCslQ.html">한국어 상세 요약 →</a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="웨스트민스터 체제"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://www.bbc.co.uk/news/articles/c62enegxyl9o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>웨스트민스터 체제</h3>
+                                <p>영국 의회 민주주의의 전통적인 정치 체제로, 여기서는 영국 중앙정부가 행사하는 통치 권력을 상징합니다.</p>
+                                <span class="top10-source">출처 · BBC News</span>
+                            </a>
+                            
+                            
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-Mf6iNlzZR8.html">한국어 상세 요약 →</a>
                             
                         </div>
                         
                         <div class="top10-card" data-term-card
                              data-category="economy"
-                             data-date="2026-09-14"
-                             data-term="킬 스위치(kill switch)"
+                             data-date="2026-09-15"
+                             data-term="미 국채 10년물"
                              data-category-name="경제">
-                            <a class="top10-card-main" href="https://news.einfomax.co.kr/news/articleView.html?idxno=4434610" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://news.einfomax.co.kr/news/articleView.html?idxno=4434802" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>킬 스위치(kill switch)</h3>
-                                <p>위험한 상황이 발생했을 때 시스템을 강제로 즉시 종료시키는 장치입니다. AI의 기술적 위험을 제어하기 위한 방안으로 제안되었습니다.</p>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>미 국채 10년물</h3>
+                                <p>미국 정부가 자금을 조달하기 위해 발행한 채권 중 만기가 10년인 상품으로, 글로벌 금융 시장의 기준 금리 역할을 합니다.</p>
                                 <span class="top10-source">출처 · 연합인포맥스</span>
                             </a>
                             
@@ -181,180 +219,138 @@
                         
                         <div class="top10-card" data-term-card
                              data-category="economy"
-                             data-date="2026-09-14"
-                             data-term="애프터마켓(After-market)"
+                             data-date="2026-09-15"
+                             data-term="FOMC"
                              data-category-name="경제">
-                            <a class="top10-card-main" href="https://www.donga.com/news/Economy/article/all/20260913/134659279/2" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE53ZlBuZDNWUVhqR1VUX1R6a0VLQmhPZ2FWYXh2ZVV6MDYyUDhTQ0tQN3lfNVNtZm9kX2I5ZEQ1YlVHYlhWcEN3YmkwR1oyZkJtcGNmeGJpaEdDQQ?oc=5" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>애프터마켓(After-market)</h3>
-                                <p>정규 거래 시간 이후에 주식을 거래할 수 있는 시간 외 접속매매 시장입니다. 한국거래소는 직장인 편의를 위해 오후 4시부터 8시까지 운영을 시작했습니다.</p>
-                                <span class="top10-source">출처 · 동아일보</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>FOMC</h3>
+                                <p>미국 연방준비제도(Fed)의 연방공개시장위원회로, 미국의 기준금리 결정 등 통화정책을 수립하는 핵심 기구입니다.</p>
+                                <span class="top10-source">출처 · 구글 뉴스</span>
                             </a>
                             
                         </div>
                         
                         <div class="top10-card" data-term-card
                              data-category="economy"
-                             data-date="2026-09-14"
-                             data-term="통화정책"
+                             data-date="2026-09-15"
+                             data-term="ICT"
                              data-category-name="경제">
-                            <a class="top10-card-main" href="https://view.asiae.co.kr/article/2026091014380041893" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142152015/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=economy_news" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>통화정책</h3>
-                                <p>중앙은행이 금리나 통화량을 조절하여 경제를 안정시키는 정책입니다. 미국과 일본의 정책 차별화 기대감이 엔화 가치 상승에 영향을 주고 있습니다.</p>
-                                <span class="top10-source">출처 · 아시아경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>ICT</h3>
+                                <p>정보통신기술(Information and Communications Technology)의 약자로, 정보 기술과 통신 기술을 통합한 개념입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
                             </a>
                             
                         </div>
                         
                         <div class="top10-card" data-term-card
                              data-category="economy"
-                             data-date="2026-09-14"
-                             data-term="스킴플레이션(skimpflation)"
+                             data-date="2026-09-15"
+                             data-term="생산능력지수"
                              data-category-name="경제">
-                            <a class="top10-card-main" href="https://www.bbc.co.uk/news/articles/crm9xk9eg88o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142148005/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=economy_news" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>스킴플레이션(skimpflation)</h3>
-                                <p>가격은 유지하되 제품의 품질을 낮추거나 저렴한 원료로 대체하여 실질적으로 비용을 절감하는 현상입니다. 고등어 통조림의 원료 변경 사례가 대표적입니다.</p>
-                                <span class="top10-source">출처 · BBC News</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>생산능력지수</h3>
+                                <p>특정 산업이나 기업이 보유한 설비와 인력으로 최대로 생산할 수 있는 능력을 수치화하여 나타낸 지표입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
                             </a>
                             
-                            
-                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/14/a-H8tuHtO5Jf.html">한국어 상세 요약 →</a>
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="society"
+                             data-date="2026-09-15"
+                             data-term="통상임금"
+                             data-category-name="사회">
+                            <a class="top10-card-main" href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008752910" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-society, var(--tag-general))">사회</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>통상임금</h3>
+                                <p>근로자에게 정기적이고 일률적으로 지급하기로 정해진 시간급, 일급, 월급 등의 기본급과 수당을 의미합니다.</p>
+                                <span class="top10-source">출처 · SBS 뉴스</span>
+                            </a>
                             
                         </div>
                         
                         <div class="top10-card" data-term-card
                              data-category="life"
-                             data-date="2026-09-14"
-                             data-term="전자약(Electroceuticals)"
+                             data-date="2026-09-15"
+                             data-term="경피적 승모판막 재치환술(TMVR)"
                              data-category-name="생활">
-                            <a class="top10-card-main" href="http://www.docdocdoc.co.kr/news/articleView.html?idxno=3042716" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609141404001/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=life_news" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-life, var(--tag-general))">생활</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>전자약(Electroceuticals)</h3>
-                                <p>전기 자극을 통해 질병을 치료하거나 통증을 관리하는 약물 대체 기술입니다. 최근 스마트폰으로 원격 제어가 가능한 부착형 플랫폼이 개발되었습니다.</p>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>경피적 승모판막 재치환술(TMVR)</h3>
+                                <p>가슴을 여는 수술 대신 카테터를 이용해 심장의 승모판막에 새로운 인공판막을 삽입하는 고난도 치료법입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="life"
+                             data-date="2026-09-15"
+                             data-term="급여 등재"
+                             data-category-name="생활">
+                            <a class="top10-card-main" href="http://www.docdocdoc.co.kr/news/articleView.html?idxno=3042783" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-life, var(--tag-general))">생활</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>급여 등재</h3>
+                                <p>특정 의약품이나 치료법을 건강보험 적용 대상으로 등록하여, 환자가 비용의 일부만 부담하게 하는 조치입니다.</p>
                                 <span class="top10-source">출처 · 청년의사</span>
                             </a>
                             
                         </div>
                         
                         <div class="top10-card" data-term-card
-                             data-category="life"
-                             data-date="2026-09-14"
-                             data-term="대화적 나르시시즘(conversational narcissism)"
-                             data-category-name="생활">
-                            <a class="top10-card-main" href="https://www.theguardian.com/lifeandstyle/2026/sep/13/monologuists-interrupters-trauma-dumpers-survival-guide-one-sided-conversations" target="_blank" rel="noopener">
-                                <span class="top10-category-tag" style="background:var(--tag-life, var(--tag-general))">생활</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>대화적 나르시시즘(conversational narcissism)</h3>
-                                <p>상대방의 이야기에 귀 기울이지 않고 오직 자신의 이야기만 계속해서 늘어놓는 자기중심적인 대화 방식을 의미합니다.</p>
-                                <span class="top10-source">출처 · The Guardian</span>
-                            </a>
-                            
-                            
-                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/14/a-F9JxtvCAJy.html">한국어 상세 요약 →</a>
-                            
-                        </div>
-                        
-                        <div class="top10-card" data-term-card
-                             data-category="culture"
-                             data-date="2026-09-14"
-                             data-term="합의된 현실의 붕괴(collapse of consensual reality)"
-                             data-category-name="문화">
-                            <a class="top10-card-main" href="https://www.theguardian.com/books/2026/sep/13/emily-st-john-mandel-when-half-the-electorate-disagrees-on-basic-reality-how-do-you-come-back-from-that" target="_blank" rel="noopener">
-                                <span class="top10-category-tag" style="background:var(--tag-culture, var(--tag-general))">문화</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>합의된 현실의 붕괴(collapse of consensual reality)</h3>
-                                <p>현대 민주주의의 위기로, 사회 구성원들이 기본적으로 동의해야 할 사실조차 합의되지 않는 현상을 말합니다.</p>
-                                <span class="top10-source">출처 · The Guardian</span>
-                            </a>
-                            
-                            
-                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/14/a-mSQcmsF6Ee.html">한국어 상세 요약 →</a>
-                            
-                        </div>
-                        
-                        <div class="top10-card" data-term-card
                              data-category="it"
-                             data-date="2026-09-14"
-                             data-term="AI 전환(AX)"
+                             data-date="2026-09-15"
+                             data-term="에이전틱 AI(Agentic AI)"
                              data-category-name="IT">
-                            <a class="top10-card-main" href="https://www.hankyung.com/article/2026091313871" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://byline.network/2026/09/0914-2/" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>AI 전환(AX)</h3>
-                                <p>인공지능 기술을 기업 경영이나 산업 전반에 도입하여 근본적인 체질을 바꾸는 디지털 전환의 확장된 개념입니다.</p>
-                                <span class="top10-source">출처 · 한국경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>에이전틱 AI(Agentic AI)</h3>
+                                <p>단순한 응답을 넘어 스스로 목표를 설정하고, 판단하며, 실행까지 수행하는 능동적인 인공지능 형태입니다.</p>
+                                <span class="top10-source">출처 · 바이라인네트워크</span>
                             </a>
                             
                         </div>
                         
                         <div class="top10-card" data-term-card
                              data-category="it"
-                             data-date="2026-09-14"
-                             data-term="커넥톰(Connectome)"
+                             data-date="2026-09-15"
+                             data-term="캡차(CAPTCHA)"
                              data-category-name="IT">
-                            <a class="top10-card-main" href="https://www.aitimes.com/news/articleView.html?idxno=215207" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="https://techcrunch.com/2026/09/14/clickfix-attacks-are-tricking-mac-and-windows-users-into-hacking-themselves/" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>커넥톰(Connectome)</h3>
-                                <p>뇌 속의 신경세포들이 어떻게 연결되어 있는지 보여주는 전체 신경망 지도입니다. 최근 초파리의 전체 신경망 시뮬레이션 모델이 공개되었습니다.</p>
-                                <span class="top10-source">출처 · AI타임스</span>
-                            </a>
-                            
-                        </div>
-                        
-                        <div class="top10-card" data-term-card
-                             data-category="it"
-                             data-date="2026-09-14"
-                             data-term="기업공개(IPO)"
-                             data-category-name="IT">
-                            <a class="top10-card-main" href="https://www.theguardian.com/us-news/2026/sep/12/openai-delays-ipo-sam-altman-ai-safety-concerns" target="_blank" rel="noopener">
-                                <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>기업공개(IPO)</h3>
-                                <p>비상장 기업이 외부 투자자에게 주식을 공개 매도하여 상장 기업이 되는 과정입니다. OpenAI는 안전성 문제로 2026년 내 진행 계획이 없다고 밝혔습니다.</p>
-                                <span class="top10-source">출처 · The Guardian</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>캡차(CAPTCHA)</h3>
+                                <p>웹사이트에서 사용자가 인간인지 아니면 자동화된 프로그램(봇)인지 구별하기 위해 사용하는 인증 방식입니다.</p>
+                                <span class="top10-source">출처 · TechCrunch</span>
                             </a>
                             
                             
-                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/14/a-tMHpT2JCgB.html">한국어 상세 요약 →</a>
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-j2zh0PS6Xq.html">한국어 상세 요약 →</a>
                             
                         </div>
                         
                         <div class="top10-card" data-term-card
                              data-category="science"
-                             data-date="2026-09-14"
-                             data-term="드립덕션(dripduction)"
+                             data-date="2026-09-15"
+                             data-term="소부장"
                              data-category-name="과학">
-                            <a class="top10-card-main" href="https://www.sciencedaily.com/releases/2026/09/260911214305.htm" target="_blank" rel="noopener">
+                            <a class="top10-card-main" href="http://www.hellodd.com/news/articleView.html?idxno=113162" target="_blank" rel="noopener">
                                 <span class="top10-category-tag" style="background:var(--tag-science, var(--tag-general))">과학</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>드립덕션(dripduction)</h3>
-                                <p>고대 지구에서 물이 맨틀 내부 깊숙이 유입되어 마그마 생성을 촉진하고 화산 폭발을 유도했던 지질학적 과정입니다.</p>
-                                <span class="top10-source">출처 · ScienceDaily</span>
-                            </a>
-                            
-                            
-                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/14/a-BhWFIXfxAt.html">한국어 상세 요약 →</a>
-                            
-                        </div>
-                        
-                        <div class="top10-card" data-term-card
-                             data-category="world"
-                             data-date="2026-09-14"
-                             data-term="USMCA"
-                             data-category-name="국제">
-                            <a class="top10-card-main" href="https://www.yonhapnewstv.co.kr/news/AKR2026091323525272V" target="_blank" rel="noopener">
-                                <span class="top10-category-tag" style="background:var(--tag-world, var(--tag-general))">국제</span>
-                                <span class="term-date">2026-09-14</span>
-                                <h3>USMCA</h3>
-                                <p>미국, 멕시코, 캐나다 간의 무역 협정입니다. 최근 미국과 캐나다 사이의 무역 갈등 속에서 탈퇴 가능성과 합의 여부가 논의되고 있습니다.</p>
-                                <span class="top10-source">출처 · 연합뉴스TV</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>소부장</h3>
+                                <p>소재, 부품, 장비의 줄임말로, 제조업의 근간이 되는 핵심 기초 산업 분야를 통칭합니다.</p>
+                                <span class="top10-source">출처 · 헬로디디</span>
                             </a>
                             
                         </div>
@@ -371,23 +367,26 @@
                         <div class="term-filters">
                             <button type="button" class="term-filter active" data-filter="all">전체</button>
                             
-                            <button type="button" class="term-filter" data-filter="economy"
-                                    style="--chip:var(--tag-economy, var(--tag-general))">경제 <span>4</span></button>
-                            
                             <button type="button" class="term-filter" data-filter="politics"
-                                    style="--chip:var(--tag-politics, var(--tag-general))">정치 <span>3</span></button>
+                                    style="--chip:var(--tag-politics, var(--tag-general))">정치 <span>8</span></button>
+                            
+                            <button type="button" class="term-filter" data-filter="economy"
+                                    style="--chip:var(--tag-economy, var(--tag-general))">경제 <span>8</span></button>
                             
                             <button type="button" class="term-filter" data-filter="it"
-                                    style="--chip:var(--tag-it, var(--tag-general))">IT <span>3</span></button>
+                                    style="--chip:var(--tag-it, var(--tag-general))">IT <span>5</span></button>
                             
                             <button type="button" class="term-filter" data-filter="life"
-                                    style="--chip:var(--tag-life, var(--tag-general))">생활 <span>2</span></button>
+                                    style="--chip:var(--tag-life, var(--tag-general))">생활 <span>4</span></button>
+                            
+                            <button type="button" class="term-filter" data-filter="science"
+                                    style="--chip:var(--tag-science, var(--tag-general))">과학 <span>2</span></button>
+                            
+                            <button type="button" class="term-filter" data-filter="society"
+                                    style="--chip:var(--tag-society, var(--tag-general))">사회 <span>1</span></button>
                             
                             <button type="button" class="term-filter" data-filter="culture"
                                     style="--chip:var(--tag-culture, var(--tag-general))">문화 <span>1</span></button>
-                            
-                            <button type="button" class="term-filter" data-filter="science"
-                                    style="--chip:var(--tag-science, var(--tag-general))">과학 <span>1</span></button>
                             
                             <button type="button" class="term-filter" data-filter="world"
                                     style="--chip:var(--tag-world, var(--tag-general))">국제 <span>1</span></button>
@@ -405,6 +404,240 @@
                     </div>
 
                     <div class="top10-grid" data-term-grid>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="자율성"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5pTEJrRF9WcjZHNDFXcWlPSTdyR1ozdjNmSFVhbzFOb0ZZVGhVMm1jRVpfbWZvbVFNX0RTeE1xOTU5cnN2NTNfczdGTl9tX1o4NEwtUmdLUzV2SWR3eExEYkpnaTM?oc=5" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>자율성</h3>
+                                <p>외부의 강제나 간섭 없이 자신의 의지에 따라 스스로 결정하고 행동하는 성질을 의미합니다.</p>
+                                <span class="top10-source">출처 · 구글 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="파기환송"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMickFVX3lxTE1vbE5TRlJRVHBBYjI5ekxEVHgwRWhXM2I1czBScG45UWp3Z2wwU3NxbEJ6Wm5sMDcwX0trNEt4UklZZVMzbl90ZnV5NC1hMkctTGtObVlXTTJ4MHg2V1NNRmpGSzllbWNGdW5ZRWlyX19Kdw?oc=5" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>파기환송</h3>
+                                <p>상급 법원이 하급 법원의 판결이 잘못되었다고 판단하여 이를 취소하고, 다시 재판하라고 사건을 돌려보내는 절차입니다.</p>
+                                <span class="top10-source">출처 · 구글 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="수사·기소 분리"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142147015/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=politic_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>수사·기소 분리</h3>
+                                <p>범죄를 조사하는 수사 권한과 재판을 청구하는 기소 권한을 서로 다른 기관이나 인물에게 나누어 부여하는 체계입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="국유화"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://www.theguardian.com/business/2026/sep/14/government-nationalise-speciality-steel-uk-jobs-ssuk" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>국유화</h3>
+                                <p>민간이 소유하고 운영하던 기업이나 자산을 국가가 강제적으로 또는 합의하에 인수하여 국가 소유로 만드는 것입니다.</p>
+                                <span class="top10-source">출처 · The Guardian</span>
+                            </a>
+                            
+                            
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-Ymhk2oCslQ.html">한국어 상세 요약 →</a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="웨스트민스터 체제"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://www.bbc.co.uk/news/articles/c62enegxyl9o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>웨스트민스터 체제</h3>
+                                <p>영국 의회 민주주의의 전통적인 정치 체제로, 여기서는 영국 중앙정부가 행사하는 통치 권력을 상징합니다.</p>
+                                <span class="top10-source">출처 · BBC News</span>
+                            </a>
+                            
+                            
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-Mf6iNlzZR8.html">한국어 상세 요약 →</a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="economy"
+                             data-date="2026-09-15"
+                             data-term="미 국채 10년물"
+                             data-category-name="경제">
+                            <a class="top10-card-main" href="https://news.einfomax.co.kr/news/articleView.html?idxno=4434802" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>미 국채 10년물</h3>
+                                <p>미국 정부가 자금을 조달하기 위해 발행한 채권 중 만기가 10년인 상품으로, 글로벌 금융 시장의 기준 금리 역할을 합니다.</p>
+                                <span class="top10-source">출처 · 연합인포맥스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="economy"
+                             data-date="2026-09-15"
+                             data-term="FOMC"
+                             data-category-name="경제">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE53ZlBuZDNWUVhqR1VUX1R6a0VLQmhPZ2FWYXh2ZVV6MDYyUDhTQ0tQN3lfNVNtZm9kX2I5ZEQ1YlVHYlhWcEN3YmkwR1oyZkJtcGNmeGJpaEdDQQ?oc=5" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>FOMC</h3>
+                                <p>미국 연방준비제도(Fed)의 연방공개시장위원회로, 미국의 기준금리 결정 등 통화정책을 수립하는 핵심 기구입니다.</p>
+                                <span class="top10-source">출처 · 구글 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="economy"
+                             data-date="2026-09-15"
+                             data-term="ICT"
+                             data-category-name="경제">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142152015/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=economy_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>ICT</h3>
+                                <p>정보통신기술(Information and Communications Technology)의 약자로, 정보 기술과 통신 기술을 통합한 개념입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="economy"
+                             data-date="2026-09-15"
+                             data-term="생산능력지수"
+                             data-category-name="경제">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142148005/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=economy_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>생산능력지수</h3>
+                                <p>특정 산업이나 기업이 보유한 설비와 인력으로 최대로 생산할 수 있는 능력을 수치화하여 나타낸 지표입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="society"
+                             data-date="2026-09-15"
+                             data-term="통상임금"
+                             data-category-name="사회">
+                            <a class="top10-card-main" href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008752910" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-society, var(--tag-general))">사회</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>통상임금</h3>
+                                <p>근로자에게 정기적이고 일률적으로 지급하기로 정해진 시간급, 일급, 월급 등의 기본급과 수당을 의미합니다.</p>
+                                <span class="top10-source">출처 · SBS 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="life"
+                             data-date="2026-09-15"
+                             data-term="경피적 승모판막 재치환술(TMVR)"
+                             data-category-name="생활">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609141404001/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=life_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-life, var(--tag-general))">생활</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>경피적 승모판막 재치환술(TMVR)</h3>
+                                <p>가슴을 여는 수술 대신 카테터를 이용해 심장의 승모판막에 새로운 인공판막을 삽입하는 고난도 치료법입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="life"
+                             data-date="2026-09-15"
+                             data-term="급여 등재"
+                             data-category-name="생활">
+                            <a class="top10-card-main" href="http://www.docdocdoc.co.kr/news/articleView.html?idxno=3042783" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-life, var(--tag-general))">생활</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>급여 등재</h3>
+                                <p>특정 의약품이나 치료법을 건강보험 적용 대상으로 등록하여, 환자가 비용의 일부만 부담하게 하는 조치입니다.</p>
+                                <span class="top10-source">출처 · 청년의사</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="it"
+                             data-date="2026-09-15"
+                             data-term="에이전틱 AI(Agentic AI)"
+                             data-category-name="IT">
+                            <a class="top10-card-main" href="https://byline.network/2026/09/0914-2/" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>에이전틱 AI(Agentic AI)</h3>
+                                <p>단순한 응답을 넘어 스스로 목표를 설정하고, 판단하며, 실행까지 수행하는 능동적인 인공지능 형태입니다.</p>
+                                <span class="top10-source">출처 · 바이라인네트워크</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="it"
+                             data-date="2026-09-15"
+                             data-term="캡차(CAPTCHA)"
+                             data-category-name="IT">
+                            <a class="top10-card-main" href="https://techcrunch.com/2026/09/14/clickfix-attacks-are-tricking-mac-and-windows-users-into-hacking-themselves/" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>캡차(CAPTCHA)</h3>
+                                <p>웹사이트에서 사용자가 인간인지 아니면 자동화된 프로그램(봇)인지 구별하기 위해 사용하는 인증 방식입니다.</p>
+                                <span class="top10-source">출처 · TechCrunch</span>
+                            </a>
+                            
+                            
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-j2zh0PS6Xq.html">한국어 상세 요약 →</a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="science"
+                             data-date="2026-09-15"
+                             data-term="소부장"
+                             data-category-name="과학">
+                            <a class="top10-card-main" href="http://www.hellodd.com/news/articleView.html?idxno=113162" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-science, var(--tag-general))">과학</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>소부장</h3>
+                                <p>소재, 부품, 장비의 줄임말로, 제조업의 근간이 되는 핵심 기초 산업 분야를 통칭합니다.</p>
+                                <span class="top10-source">출처 · 헬로디디</span>
+                            </a>
+                            
+                        </div>
                         
                         <div class="top10-card" data-term-card
                              data-category="politics"
@@ -661,23 +894,26 @@
                         <div class="term-filters">
                             <button type="button" class="term-filter active" data-filter="all">전체</button>
                             
-                            <button type="button" class="term-filter" data-filter="economy"
-                                    style="--chip:var(--tag-economy, var(--tag-general))">경제 <span>4</span></button>
-                            
                             <button type="button" class="term-filter" data-filter="politics"
-                                    style="--chip:var(--tag-politics, var(--tag-general))">정치 <span>3</span></button>
+                                    style="--chip:var(--tag-politics, var(--tag-general))">정치 <span>8</span></button>
+                            
+                            <button type="button" class="term-filter" data-filter="economy"
+                                    style="--chip:var(--tag-economy, var(--tag-general))">경제 <span>8</span></button>
                             
                             <button type="button" class="term-filter" data-filter="it"
-                                    style="--chip:var(--tag-it, var(--tag-general))">IT <span>3</span></button>
+                                    style="--chip:var(--tag-it, var(--tag-general))">IT <span>5</span></button>
                             
                             <button type="button" class="term-filter" data-filter="life"
-                                    style="--chip:var(--tag-life, var(--tag-general))">생활 <span>2</span></button>
+                                    style="--chip:var(--tag-life, var(--tag-general))">생활 <span>4</span></button>
+                            
+                            <button type="button" class="term-filter" data-filter="science"
+                                    style="--chip:var(--tag-science, var(--tag-general))">과학 <span>2</span></button>
+                            
+                            <button type="button" class="term-filter" data-filter="society"
+                                    style="--chip:var(--tag-society, var(--tag-general))">사회 <span>1</span></button>
                             
                             <button type="button" class="term-filter" data-filter="culture"
                                     style="--chip:var(--tag-culture, var(--tag-general))">문화 <span>1</span></button>
-                            
-                            <button type="button" class="term-filter" data-filter="science"
-                                    style="--chip:var(--tag-science, var(--tag-general))">과학 <span>1</span></button>
                             
                             <button type="button" class="term-filter" data-filter="world"
                                     style="--chip:var(--tag-world, var(--tag-general))">국제 <span>1</span></button>
@@ -695,6 +931,240 @@
                     </div>
 
                     <div class="top10-grid" data-term-grid>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="자율성"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5pTEJrRF9WcjZHNDFXcWlPSTdyR1ozdjNmSFVhbzFOb0ZZVGhVMm1jRVpfbWZvbVFNX0RTeE1xOTU5cnN2NTNfczdGTl9tX1o4NEwtUmdLUzV2SWR3eExEYkpnaTM?oc=5" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>자율성</h3>
+                                <p>외부의 강제나 간섭 없이 자신의 의지에 따라 스스로 결정하고 행동하는 성질을 의미합니다.</p>
+                                <span class="top10-source">출처 · 구글 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="파기환송"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMickFVX3lxTE1vbE5TRlJRVHBBYjI5ekxEVHgwRWhXM2I1czBScG45UWp3Z2wwU3NxbEJ6Wm5sMDcwX0trNEt4UklZZVMzbl90ZnV5NC1hMkctTGtObVlXTTJ4MHg2V1NNRmpGSzllbWNGdW5ZRWlyX19Kdw?oc=5" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>파기환송</h3>
+                                <p>상급 법원이 하급 법원의 판결이 잘못되었다고 판단하여 이를 취소하고, 다시 재판하라고 사건을 돌려보내는 절차입니다.</p>
+                                <span class="top10-source">출처 · 구글 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="수사·기소 분리"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142147015/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=politic_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>수사·기소 분리</h3>
+                                <p>범죄를 조사하는 수사 권한과 재판을 청구하는 기소 권한을 서로 다른 기관이나 인물에게 나누어 부여하는 체계입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="국유화"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://www.theguardian.com/business/2026/sep/14/government-nationalise-speciality-steel-uk-jobs-ssuk" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>국유화</h3>
+                                <p>민간이 소유하고 운영하던 기업이나 자산을 국가가 강제적으로 또는 합의하에 인수하여 국가 소유로 만드는 것입니다.</p>
+                                <span class="top10-source">출처 · The Guardian</span>
+                            </a>
+                            
+                            
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-Ymhk2oCslQ.html">한국어 상세 요약 →</a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="politics"
+                             data-date="2026-09-15"
+                             data-term="웨스트민스터 체제"
+                             data-category-name="정치">
+                            <a class="top10-card-main" href="https://www.bbc.co.uk/news/articles/c62enegxyl9o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-politics, var(--tag-general))">정치</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>웨스트민스터 체제</h3>
+                                <p>영국 의회 민주주의의 전통적인 정치 체제로, 여기서는 영국 중앙정부가 행사하는 통치 권력을 상징합니다.</p>
+                                <span class="top10-source">출처 · BBC News</span>
+                            </a>
+                            
+                            
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-Mf6iNlzZR8.html">한국어 상세 요약 →</a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="economy"
+                             data-date="2026-09-15"
+                             data-term="미 국채 10년물"
+                             data-category-name="경제">
+                            <a class="top10-card-main" href="https://news.einfomax.co.kr/news/articleView.html?idxno=4434802" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>미 국채 10년물</h3>
+                                <p>미국 정부가 자금을 조달하기 위해 발행한 채권 중 만기가 10년인 상품으로, 글로벌 금융 시장의 기준 금리 역할을 합니다.</p>
+                                <span class="top10-source">출처 · 연합인포맥스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="economy"
+                             data-date="2026-09-15"
+                             data-term="FOMC"
+                             data-category-name="경제">
+                            <a class="top10-card-main" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE53ZlBuZDNWUVhqR1VUX1R6a0VLQmhPZ2FWYXh2ZVV6MDYyUDhTQ0tQN3lfNVNtZm9kX2I5ZEQ1YlVHYlhWcEN3YmkwR1oyZkJtcGNmeGJpaEdDQQ?oc=5" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>FOMC</h3>
+                                <p>미국 연방준비제도(Fed)의 연방공개시장위원회로, 미국의 기준금리 결정 등 통화정책을 수립하는 핵심 기구입니다.</p>
+                                <span class="top10-source">출처 · 구글 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="economy"
+                             data-date="2026-09-15"
+                             data-term="ICT"
+                             data-category-name="경제">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142152015/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=economy_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>ICT</h3>
+                                <p>정보통신기술(Information and Communications Technology)의 약자로, 정보 기술과 통신 기술을 통합한 개념입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="economy"
+                             data-date="2026-09-15"
+                             data-term="생산능력지수"
+                             data-category-name="경제">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609142148005/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=economy_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-economy, var(--tag-general))">경제</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>생산능력지수</h3>
+                                <p>특정 산업이나 기업이 보유한 설비와 인력으로 최대로 생산할 수 있는 능력을 수치화하여 나타낸 지표입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="society"
+                             data-date="2026-09-15"
+                             data-term="통상임금"
+                             data-category-name="사회">
+                            <a class="top10-card-main" href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008752910" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-society, var(--tag-general))">사회</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>통상임금</h3>
+                                <p>근로자에게 정기적이고 일률적으로 지급하기로 정해진 시간급, 일급, 월급 등의 기본급과 수당을 의미합니다.</p>
+                                <span class="top10-source">출처 · SBS 뉴스</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="life"
+                             data-date="2026-09-15"
+                             data-term="경피적 승모판막 재치환술(TMVR)"
+                             data-category-name="생활">
+                            <a class="top10-card-main" href="https://www.khan.co.kr/article/202609141404001/?utm_source=khan_rss&amp;utm_medium=rss&amp;utm_campaign=life_news" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-life, var(--tag-general))">생활</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>경피적 승모판막 재치환술(TMVR)</h3>
+                                <p>가슴을 여는 수술 대신 카테터를 이용해 심장의 승모판막에 새로운 인공판막을 삽입하는 고난도 치료법입니다.</p>
+                                <span class="top10-source">출처 · 경향신문</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="life"
+                             data-date="2026-09-15"
+                             data-term="급여 등재"
+                             data-category-name="생활">
+                            <a class="top10-card-main" href="http://www.docdocdoc.co.kr/news/articleView.html?idxno=3042783" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-life, var(--tag-general))">생활</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>급여 등재</h3>
+                                <p>특정 의약품이나 치료법을 건강보험 적용 대상으로 등록하여, 환자가 비용의 일부만 부담하게 하는 조치입니다.</p>
+                                <span class="top10-source">출처 · 청년의사</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="it"
+                             data-date="2026-09-15"
+                             data-term="에이전틱 AI(Agentic AI)"
+                             data-category-name="IT">
+                            <a class="top10-card-main" href="https://byline.network/2026/09/0914-2/" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>에이전틱 AI(Agentic AI)</h3>
+                                <p>단순한 응답을 넘어 스스로 목표를 설정하고, 판단하며, 실행까지 수행하는 능동적인 인공지능 형태입니다.</p>
+                                <span class="top10-source">출처 · 바이라인네트워크</span>
+                            </a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="it"
+                             data-date="2026-09-15"
+                             data-term="캡차(CAPTCHA)"
+                             data-category-name="IT">
+                            <a class="top10-card-main" href="https://techcrunch.com/2026/09/14/clickfix-attacks-are-tricking-mac-and-windows-users-into-hacking-themselves/" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-it, var(--tag-general))">IT</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>캡차(CAPTCHA)</h3>
+                                <p>웹사이트에서 사용자가 인간인지 아니면 자동화된 프로그램(봇)인지 구별하기 위해 사용하는 인증 방식입니다.</p>
+                                <span class="top10-source">출처 · TechCrunch</span>
+                            </a>
+                            
+                            
+                            <a class="top10-detail-link" href="/news_briefing_system/2026/09/15/a-j2zh0PS6Xq.html">한국어 상세 요약 →</a>
+                            
+                        </div>
+                        
+                        <div class="top10-card" data-term-card
+                             data-category="science"
+                             data-date="2026-09-15"
+                             data-term="소부장"
+                             data-category-name="과학">
+                            <a class="top10-card-main" href="http://www.hellodd.com/news/articleView.html?idxno=113162" target="_blank" rel="noopener">
+                                <span class="top10-category-tag" style="background:var(--tag-science, var(--tag-general))">과학</span>
+                                <span class="term-date">2026-09-15</span>
+                                <h3>소부장</h3>
+                                <p>소재, 부품, 장비의 줄임말로, 제조업의 근간이 되는 핵심 기초 산업 분야를 통칭합니다.</p>
+                                <span class="top10-source">출처 · 헬로디디</span>
+                            </a>
+                            
+                        </div>
                         
                         <div class="top10-card" data-term-card
                              data-category="politics"
