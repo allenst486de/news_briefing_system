@@ -491,13 +491,16 @@ def test_fill_day_skips_terms_whose_meaning_failed():
 
 def test_fill_day_uses_the_terms_own_category():
     with tempfile.TemporaryDirectory() as root:
-        make_repo(root, news_terms=[("인플레이션(Inflation)", "politics"), ("기업공개(IPO)", "it")])
-        chat = FakeChat(concepts={"Inflation (인플레이션)": "economy", "IPO (기업공개)": "banana"})
+        make_repo(root, news_terms=[("인플레이션(Inflation)", "politics"), ("기업공개(IPO)", "it"),
+                                    ("밈코인", "economy")])
+        chat = FakeChat(concepts={"Inflation (인플레이션)": "economy", "IPO (기업공개)": "banana",
+                                  "밈코인": "other"})
         pipeline.fill_day(DAY, repo_root=root, target=5, pool=one_key_pool(), chat=chat,
                           wiki_lookup=FakeWiki(), rss_loader=lambda: {})
         saved = {e["term"]: e for e in store.load_day(os.path.join(root, "data", "app_terms"), DAY)["terms"]}
         assert saved["Inflation"]["category"] == "economy" and saved["Inflation"]["categoryName"] == "경제"
         assert saved["IPO"]["category"] == "it", "모르는 분야 코드면 기사 분야를 그대로 쓴다"
+        assert saved["밈코인"]["category"] == "other" and saved["밈코인"]["categoryName"] == "기타"
 
 
 def test_plan_run_finishes_before_the_app_opens():

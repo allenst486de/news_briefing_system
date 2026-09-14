@@ -85,7 +85,7 @@ MEANING_SYSTEM = """당신은 한국어 사전 편찬자입니다. 용어의 일
 5. 위키백과 문서 제목이 가리키는 개념을 풀이합니다. 그 문서가 용어와 다른 뜻을 가리키는 것 같거나
    뜻을 확실히 모르면 meaning 을 빈 문자열로 둡니다. 추측하지 않습니다.
 6. category 는 용어 자체가 속한 분야를 politics·economy·society·life·culture·it·science·world 중
-   하나로 고릅니다. 함께 적힌 '기사 분야'는 그 용어가 나온 기사의 분야일 뿐이니 참고만 합니다.
+   하나로 고르고, 어디에도 맞지 않으면 other 로 둡니다. 함께 적힌 '기사 분야'는 그 용어가 나온 기사의 분야일 뿐이니 참고만 합니다.
    예: 장치·소프트웨어·인터넷 기술은 it.
 7. 반드시 JSON 배열만 출력합니다. 설명 문구를 붙이지 않습니다.
 예시 출력: [{"n": 1, "meaning": "물가가 전반적으로 오르고 돈의 가치가 떨어지는 현상을 말한다.", "category": "economy"}]"""
@@ -175,7 +175,13 @@ def _reply(value) -> Tuple[Optional[str], Optional[str]]:
     return value, None
 
 
+# 8개 분야 어디에도 들지 않는 용어 — 앱은 "기타" 칩으로 보여 준다
+OTHER_CATEGORY = "other"
+
+
 def _category_name(category: str) -> str:
+    if category == OTHER_CATEGORY:
+        return "기타"
     return CATEGORY_META.get(category, {}).get("name", "")
 
 
@@ -355,7 +361,8 @@ def write_meanings(batch: List[Dict], *, pool, chat,
         text = valid_meaning(item.get("meaning"))
         concept = str(item.get("category") or "").strip().lower()
         if text and 1 <= number <= len(batch):
-            meanings[number] = (text, concept if concept in CATEGORIES else None, model)
+            known = concept in CATEGORIES or concept == OTHER_CATEGORY
+            meanings[number] = (text, concept if known else None, model)
     return meanings
 
 
