@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-14",
+  "terms": [
+    {
+      "term": "공소청",
+      "reading": "",
+      "meaning": "검찰의 수사권과 기소권을 분리하여, 기소와 공소 유지 업무만을 전담하는 국가 기관을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "공소청",
+      "url": "https://ko.wikipedia.org/wiki/공소청",
+      "date": "2026-09-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Kill Switch",
+      "reading": "킬 스위치",
+      "meaning": "비상 상황 시 시스템이나 장치의 작동을 즉시 중단시켜 피해를 막기 위해 설치한 긴급 정지 장치를 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "킬 스위치",
+      "url": "https://ko.wikipedia.org/wiki/킬_스위치",
+      "date": "2026-09-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "인사청문회",
+      "reading": "",
+      "meaning": "고위 공직 후보자의 도덕성과 직무 수행 능력을 검증하기 위해 국회에서 실시하는 청문회를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "인사청문회",
+      "url": "https://ko.wikipedia.org/wiki/인사청문회",
+      "date": "2026-09-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Connectome",
+      "reading": "커넥톰",
+      "meaning": "뇌 속에 있는 신경 세포들의 연결망을 지도로 나타낸 뇌 신경망 지도를 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "커넥톰",
+      "url": "https://ko.wikipedia.org/wiki/커넥톰",
+      "date": "2026-09-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Inflation",
+      "reading": "인플레이션",
+      "meaning": "물가가 지속적으로 상승하여 화폐 가치가 하락하는 경제 현상을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "인플레이션",
+      "url": "https://ko.wikipedia.org/wiki/인플레이션",
+      "date": "2026-09-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "통화정책",
+      "reading": "",
+      "meaning": "중앙은행이 금리나 통화량 조절을 통해 경제의 안정과 성장을 도모하는 정책을 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "통화 정책",
+      "url": "https://ko.wikipedia.org/wiki/통화_정책",
+      "date": "2026-09-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "IPO",
+      "reading": "기업공개",
+      "meaning": "Initial Public Offering의 약자로, 비상장 기업이 외부 투자자에게 주식을 공개하여 증권 시장에 상장하는 절차를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "기업공개",
+      "url": "https://ko.wikipedia.org/wiki/기업공개",
+      "date": "2026-09-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "위성정당",
+      "reading": "",
+      "meaning": "거대 정당의 지지를 받아 사실상 그 정당을 대변하며, 선거법 회피나 의석 확보를 위해 만들어진 소수 정당을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "위성정당",
+      "url": "https://ko.wikipedia.org/wiki/위성정당",
+      "date": "2026-09-14",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "은사자상",
+      "reading": "",
+      "meaning": "베네치아 국제영화제에서 황금사자상 다음 가는 상으로, 작품·감독·배우 등 부문에 수여되는 은사자 형상의 트로피를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "은사자상",
+      "url": "https://ko.wikipedia.org/wiki/은사자상",
+      "date": "2026-09-14",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "BRICS",
+      "reading": "브릭스",
+      "meaning": "브라질·러시아·인도·중국·남아프리카공화국 등 신흥 경제국들이 연합한 다자 협력체를 말한다. 각국 영어 국명 첫 글자를 딴 합성어다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "BRICS",
+      "url": "https://ko.wikipedia.org/wiki/BRICS",
+      "date": "2026-09-14",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-14T22:04:27+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
