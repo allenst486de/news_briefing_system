@@ -5,7 +5,16 @@
         <span class="site-menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <nav class="site-menu-panel" id="site-menu-panel" data-menu-panel hidden>
-        <a class="site-menu-home" href="{{ index_path }}">🏠 홈 (최신 브리핑)</a>
+        {# 첫 줄: 홈 + 시사용어. 시사용어는 분야가 아니라 분야를 가로지르는 목록이라
+           아래 분야 격자에 섞지 않고 홈 오른쪽에 둔다. terms_path는 html_generator가
+           전역으로 넣는다 — 없으면(템플릿 단독 렌더 등) 깨진 링크 대신 링크를 감춘다. #}
+        <div class="site-menu-top">
+            <a class="site-menu-home" href="{{ index_path }}">🏠 홈 (최신 브리핑)</a>
+            {% if terms_path %}
+            <a class="site-menu-home site-menu-terms {% if menu_current == 'terms' %}current{% endif %}"
+               href="{{ terms_path }}">📚 시사용어</a>
+            {% endif %}
+        </div>
         {% if nav_categories %}
         <div class="site-menu-grid">
             {% for cat in nav_categories %}

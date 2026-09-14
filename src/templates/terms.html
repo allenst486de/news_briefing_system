@@ -13,11 +13,13 @@
 <body>
     <div class="container">
         {% include '_menu.html' %}
-        {% include '_theme_toggle.html' %}
 
-        <header class="page-header">
+        {# 토글은 분야 페이지(briefing.html)처럼 헤더 안에 둔다. 예전엔 헤더 바깥
+           .container 맨 위에 있어서 좌상단에 고정된 메뉴 버튼과 정확히 겹쳤다. #}
+        <header>
             <h1>📚 시사용어</h1>
-            <p class="page-sub">그날 기사에 실제로 등장한 용어만 골라 쌓습니다. 용어마다 출처 기사로 이어집니다.</p>
+            <p class="subtitle">그날 기사에 실제로 등장한 용어만 골라 쌓습니다. 용어마다 출처 기사로 이어집니다.</p>
+            {% include '_theme_toggle.html' %}
         </header>
 
         <section class="top10-section">

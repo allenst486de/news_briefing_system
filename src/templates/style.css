@@ -598,11 +598,6 @@ footer {
     background-clip: text;
 }
 
-.home-title-row .theme-toggle-btn {
-    position: absolute;
-    right: 0;
-}
-
 .home-datetime {
     display: flex;
     align-items: center;
@@ -1148,11 +1143,6 @@ footer {
     .home-title-row h1 {
         font-size: 1.4rem;
     }
-
-    .home-title-row .theme-toggle-btn {
-        position: static;
-        margin-top: 10px;
-    }
 }
 
 /* ===== Scrollbar ===== */
@@ -1229,3 +1219,36 @@ footer {
     font-size: .72rem; color: var(--text-secondary); font-weight: 600;
 }
 .term-empty { margin: 1.4rem 0; text-align: center; color: var(--text-secondary); font-size: .9rem; }
+
+/* hidden 속성은 브라우저 기본 스타일이 display:none으로 처리하는데, 작성자 CSS가
+   display를 지정하면 그쪽이 이긴다. .top10-card가 display:block이라 시사용어 필터가
+   카드에 hidden을 걸어도(실측: 15장 중 11장) 화면에서는 한 장도 사라지지 않았다.
+   컴포넌트마다 [hidden] 규칙을 따로 달지 않도록 전역으로 막는다. */
+[hidden] {
+    display: none !important;
+}
+
+/* 메뉴 첫 줄: 홈 + 시사용어. 시사용어는 분야가 아니라 분야를 가로지르는 목록이라
+   아래 분야 격자에 섞지 않고 홈 오른쪽에 둔다. 한 줄에 둘이 들어가도록 패널을 넓힌다. */
+.site-menu-panel {
+    width: 300px;
+    max-width: calc(100vw - 32px);
+}
+
+.site-menu-top {
+    display: flex;
+    gap: 4px;
+}
+
+.site-menu-top .site-menu-home {
+    flex: 1 1 auto;
+    white-space: nowrap;
+}
+
+.site-menu-top .site-menu-terms {
+    flex: 0 0 auto;
+}
+
+.site-menu-top .site-menu-home.current {
+    background: var(--bg-secondary);
+}

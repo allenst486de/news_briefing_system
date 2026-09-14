@@ -96,6 +96,11 @@ class HTMLGenerator:
         self._copy_static()
 
         salt = self.salt
+        # 시사용어 페이지 경로는 salt만으로 정해진다. 모든 페이지의 공통 메뉴가 이 링크를
+        # 걸어야 하므로 어떤 페이지보다 먼저(상세 요약 페이지가 가장 먼저 렌더된다) 전역으로
+        # 박아 둔다 — 렌더 호출마다 넘기면 하나라도 빠뜨리는 순간 그 페이지 메뉴에서 사라진다.
+        terms_file = obfuscate('terms.html', salt, 'terms')
+        self.env.globals['terms_path'] = self._make_path(f'/{terms_file}')
         category_files = {
             key: obfuscate(f'{key}.html', salt, date_str) for key in CATEGORIES
         }
@@ -155,7 +160,6 @@ class HTMLGenerator:
         archive_file = obfuscate('archive.html', salt, 'archive')
         self._update_archive(date_str, date_path, archive_file, nav_categories)
 
-        terms_file = obfuscate('terms.html', salt, 'terms')
         term_buckets = terms_store.collect_buckets(self._terms_dir())
         for bucket in term_buckets.values():
             for term in bucket:
@@ -359,6 +363,7 @@ class HTMLGenerator:
 
         html_content = template.render(
             term_blocks=blocks,
+            menu_current='terms',
             date=date_str,
             css_path=self._make_path('/style.css'),
             site_js_path=self._make_path('/site.js'),
