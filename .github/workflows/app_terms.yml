@@ -1,0 +1,89 @@
+name: App Terms
+
+# 낱말퍼즐 매거진 앱에 싣는 시사 용어만 채우는 가벼운 작업.
+# 맥의 일일 브리핑과 따로 GitHub 서버에서 돌아, 맥이 멈춘 날에도 용어가 쌓인다.
+# 하루 세 번 돌지만 이미 채워졌으면 NVIDIA 를 부르지 않고 바로 끝난다. 설계는 src/app_terms/.
+on:
+  schedule:
+    # KST 06:20 · 08:20 · 11:20 = UTC 21:20(전날) · 23:20 · 02:20
+    # 06:20 은 맥 브리핑이 가장 늦게 끝나는 05:40 뒤. 뒤의 두 번은 빈 곳만 채운다
+    # (GitHub 예약 실행은 늦거나 가끔 빠진다).
+    - cron: '20 21 * * *'
+    - cron: '20 23 * * *'
+    - cron: '20 2 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'KST 날짜 YYYY-MM-DD (비우면 오늘)'
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  # 같은 날 파일을 두 실행이 동시에 고치지 않게 — 앞 실행이 끝날 때까지 기다린다
+  group: app-terms
+  cancel-in-progress: false
+
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    # 코드 쪽 작업 상한 600초 + RSS 수집·설치 여유
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        # 브리핑 전체(pandas·텔레그램 등)는 필요 없다 — RSS 수집과 HTTP 만
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests feedparser python-dotenv
+
+      - name: Fill app terms
+        env:
+          INPUT_DATE: ${{ inputs.date }}
+          # 전용 키가 없으면 빈 값 — 공용·분야 키로 돌아간다
+          NVIDIA_API_KEY_TERMS: ${{ secrets.NVIDIA_API_KEY_TERMS }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          NVIDIA_API_KEY_POLITICS: ${{ secrets.NVIDIA_API_KEY_POLITICS }}
+          NVIDIA_API_KEY_ECONOMY: ${{ secrets.NVIDIA_API_KEY_ECONOMY }}
+          NVIDIA_API_KEY_SOCIETY: ${{ secrets.NVIDIA_API_KEY_SOCIETY }}
+          NVIDIA_API_KEY_LIFE: ${{ secrets.NVIDIA_API_KEY_LIFE }}
+          NVIDIA_API_KEY_CULTURE: ${{ secrets.NVIDIA_API_KEY_CULTURE }}
+          NVIDIA_API_KEY_IT: ${{ secrets.NVIDIA_API_KEY_IT }}
+          NVIDIA_API_KEY_SCIENCE: ${{ secrets.NVIDIA_API_KEY_SCIENCE }}
+          NVIDIA_API_KEY_WORLD: ${{ secrets.NVIDIA_API_KEY_WORLD }}
+        # 입력값은 스크립트에 직접 끼워 넣지 않고 환경변수로 넘긴다(명령 주입 방지).
+        # 날짜 형식은 app_terms.py 가 다시 검사한다.
+        run: python app_terms.py ${INPUT_DATE:+--date "$INPUT_DATE"}
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [[ -z $(git status --porcelain data/app_terms/) ]]; then
+            echo "No app term change"
+            exit 0
+          fi
+
+          git add data/app_terms/
+          git commit -m "chore: fill app terms $(TZ=Asia/Seoul date +'%Y-%m-%d')"
+
+          # 지표 갱신·맥 브리핑과 겹치면 non-fast-forward 가 난다. 고치는 파일이 서로 달라
+          # rebase 는 충돌 없이 끝난다.
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) — rebasing onto origin/main"
+            git pull --rebase origin main
+          done
+          exit 1

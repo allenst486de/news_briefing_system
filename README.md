@@ -147,6 +147,35 @@ python main.py
 
 장중 지표 갱신(`indicators.yml`)은 뉴스·LLM과 무관한 가벼운 작업이라 GitHub Actions에 그대로 두었습니다 — 맥이 꺼져 있어도 지표는 갱신됩니다.
 
+### 앱용 시사 용어 (GitHub Actions)
+
+낱말퍼즐 매거진 앱에 싣는 시사 용어만 따로 채우는 작업입니다(`app_terms.yml` → `app_terms.py`).
+브리핑의 시사용어는 맥의 새벽 실행 안에서 요약이 다 끝난 뒤 한 번에 뽑기 때문에, 맥이 멈추거나
+NVIDIA 응답이 늘어진 날에는 통째로 비었습니다. 이 작업은 GitHub 서버에서 **하루 세 번(06:20·08:20·11:20 KST)**
+돌며 빈 만큼만 채웁니다. 이미 채워졌으면 NVIDIA를 부르지 않고 바로 끝납니다.
+
+- 결과: `data/app_terms/YYYY/MM-DD.json` — 하루 목표 10개(앱은 5개를 싣고 나머지는 NVIDIA가 실패한 날 쓸 비축분)
+- 후보는 싼 것부터: ① 브리핑이 뽑은 용어 이름 ② `data/raw/` 기사 목록에서 분야별 작은 호출로 고르기 ③ 기사 목록도 없으면(맥이 멈춘 날) RSS 제목을 직접 모아 고르기
+- 고른 말이 기사 제목·요약에 실제로 있는지 코드로 확인하고, 한국어 위키백과로 문서 있음·동음이의 아님·사람 아님을 확인합니다
+- **뜻풀이는 기사를 보여 주지 않고 씁니다.** 앱은 상업용인데 연합뉴스·경향신문·동아일보·NYT·Guardian 등은 RSS를 개인·비상업 용도로만 허락합니다(2026-09-14 각 사 안내 확인). 그래서 앱 데이터에는 기사 문장·기사 링크·언론사 이름을 넣지 않고, 뜻풀이에 시점 표현(최근·올해 등)이 섞이면 버립니다
+- 분야는 기사 분야가 아니라 용어 자체의 분야로 정합니다(선거 기사에 나온 인플레이션은 경제)
+- 끊김 대책(`src/app_terms/nim.py`): 스트리밍으로 받아 45초 동안 조각이 안 오면 끊고 다른 키로 재시도, 429는 그 키만 Retry-After만큼 쉬게, 5개 묶음마다 저장, 작업 전체 600초 상한
+- 브리핑과 파일이 겹치지 않습니다(브리핑은 `data/terms/`, 이 작업은 `data/app_terms/`) — 맥이 늦게 끝난 날에도 push 충돌이 나지 않습니다
+- NVIDIA 키: 전용 `NVIDIA_API_KEY_TERMS` Secret이 있으면 먼저 쓰고, 없으면 기존 공용·분야 키를 돌아가며 씁니다(브리핑과 시간대가 겹치지 않음)
+- 수동 실행: Actions 탭 → **App Terms** → Run workflow(날짜를 비우면 오늘). 로컬 시험: `python app_terms.py --out /tmp/app_terms`
+
+실행 요약 화면에 이렇게 남습니다(2026-09-14 로컬 시험, 206초).
+
+```
+앱용 시사 용어 2026-09-14: 0개 → 10개 (+10)
+후보 출처: 브리핑 용어 → 기사 목록
+걸러짐: 동음이의 문서 2 · 올해 중복 1 · 위키백과 문서 없음 7
+NVIDIA: 호출 6건 · 성공 5 · 호출제한(429) 0 · 응답멈춤 1 · 네트워크 0 · HTTP오류 0 · 뺀 키 0
+종료: 목표 달성
+```
+
+`응답멈춤`은 45초 동안 조각이 오지 않아 끊고 다른 키로 넘어간 횟수입니다. 이날도 1건이 있었지만 그대로 목표를 채웠습니다.
+
 ### 자체 점검 스크립트
 
 프레임워크 없이 `assert` 기반으로 작성된 수동 점검 스크립트들입니다. 코드를 크게 건드릴 때 실행하세요.
@@ -157,6 +186,7 @@ python test_feeds.py       # sources.py의 모든 RSS 피드 생존 확인
 python test_llm_client.py  # LLM JSON 파싱/복구/폴백 로직 검증 (실제 API 호출 없음)
 python test_archiver.py    # 3개월 롤오버/압축/멱등성 검증
 python test_salvage.py     # 잘린 JSON 복구 + 청크 병렬/순서 유지 + 시간 예산 + 본문 추출 판별
+python test_app_terms.py   # 앱용 시사 용어: 응답 멈춤·429·키 교체·위키백과·중복·기사 정보 미포함 (실제 호출 없음)
 ```
 
 ### LLM이 실제로 동작했는지 확인하는 법
@@ -217,11 +247,13 @@ science          확인 불가(ReadTimeout) — 그대로 사용
 news_briefing_system/
 ├── .github/workflows/
 │   ├── daily_briefing.yml        # 수동 실행 전용(cron 제거 — 로컬 맥으로 이전)
-│   └── indicators.yml            # 평일 장중 15분마다 docs/indicators.json만 갱신
+│   ├── indicators.yml            # 평일 장중 15분마다 docs/indicators.json만 갱신
+│   └── app_terms.yml             # 앱용 시사 용어만 하루 세 번 채움 (맥과 무관)
 ├── scripts/
 │   ├── run_daily_briefing.sh     # 로컬 일일 실행: LM Studio 예열 → main.py → main 커밋·push → gh-pages 배포
 │   └── news_briefing_launch.sh   # launchd용 래퍼 사본 — 실제로는 ~/bin/ 에 설치해 쓴다(외장 볼륨 제약)
 ├── src/
+│   ├── app_terms/                # 앱용 시사 용어 — pipeline(흐름)·nim(끊김 대책 호출기)·wiki·store
 │   ├── collectors/
 │   │   ├── base_collector.py     # NewsArticle, 수집기 공통 인터페이스 (위험 링크 스킴 차단)
 │   │   ├── rss_collector.py      # 설정 기반 범용 RSS 수집기 (모든 언론사 공용)
@@ -260,7 +292,9 @@ news_briefing_system/
 │   └── telegram_bot.py           # 텔레그램 전송 (인포그래픽 2장 + 브리핑 메시지 1)
 ├── docs/                         # 생성된 HTML (GitHub Pages, 최근 90일)
 ├── update_indicators.py          # 지표만 갱신 (indicators.yml 워크플로가 실행)
+├── app_terms.py                  # 앱용 시사 용어 채우기 (app_terms.yml 워크플로가 실행)
 ├── data/raw/                     # 일일 원본 JSON 스냅샷 (docs 밖, 비공개)
+├── data/app_terms/               # 앱용 시사 용어 (하루 한 파일, 기사 문장·링크 없음)
 ├── archive/                      # 90일 지난 자료의 월별 압축 요약 (docs 밖, 비공개)
 ├── test_*.py                     # 자체 점검 스크립트
 ├── main.py
