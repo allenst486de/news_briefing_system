@@ -9,7 +9,7 @@ on:
     # KST 05:50 · 06:20 · 06:50 · 07:15 = UTC 20:50 · 21:20 · 21:50 · 22:15 (전날)
     # 05:50 은 맥 브리핑이 가장 늦게 끝나는 05:40 뒤. 뒤의 세 번은 빈 곳만 채운다
     # (GitHub 예약 실행은 늦거나 가끔 빠진다). 정각은 붐벼서 피했다.
-    # 늦게 시작해도 07:50 이후에는 코드가 새 호출을 시작하지 않아 8시 전에 끝난다.
+    # 늦게 시작해도 07:40 이후에는 코드가 새 호출을 시작하지 않아 8시 전에 끝난다.
     - cron: '50 20 * * *'
     - cron: '20 21 * * *'
     - cron: '50 21 * * *'
@@ -17,7 +17,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: 'KST 날짜 YYYY-MM-DD — 비우면 오늘(07:50 마감 적용), 적으면 마감 없이 그 날짜를 채움'
+        description: 'KST 날짜 YYYY-MM-DD — 비우면 오늘(07:40 마감 적용), 적으면 마감 없이 그 날짜를 채움'
         required: false
 
 permissions:
@@ -31,8 +31,8 @@ concurrency:
 jobs:
   fill:
     runs-on: ubuntu-latest
-    # 코드 쪽 작업 상한 600초 + RSS 수집·설치 여유
-    timeout-minutes: 20
+    # 코드 쪽 작업 상한 1500초(NVIDIA 대기열을 기다리는 시간 포함) + 설치 여유
+    timeout-minutes: 40
 
     steps:
       - name: Checkout repository
@@ -63,6 +63,8 @@ jobs:
           NVIDIA_API_KEY_IT: ${{ secrets.NVIDIA_API_KEY_IT }}
           NVIDIA_API_KEY_SCIENCE: ${{ secrets.NVIDIA_API_KEY_SCIENCE }}
           NVIDIA_API_KEY_WORLD: ${{ secrets.NVIDIA_API_KEY_WORLD }}
+          # 모델 순서를 바꾸려면 저장소 변수 APP_TERMS_MODELS 에 쉼표로 적는다(비우면 코드 기본값)
+          APP_TERMS_MODELS: ${{ vars.APP_TERMS_MODELS }}
         # 입력값은 스크립트에 직접 끼워 넣지 않고 환경변수로 넘긴다(명령 주입 방지).
         # 날짜 형식은 app_terms.py 가 다시 검사한다.
         run: python app_terms.py ${INPUT_DATE:+--date "$INPUT_DATE"}

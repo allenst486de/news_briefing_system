@@ -39,8 +39,10 @@ logger = setup_logger()
 KST = timezone(timedelta(hours=9))
 
 TARGET = 10
-MEANING_BATCH = 5
-JOB_BUDGET_SECONDS = 600
+MEANING_BATCH = 10           # 한 호출에 열 개 — NVIDIA 대기열에서 기다리는 횟수를 줄인다
+JOB_BUDGET_SECONDS = 1500    # 대기열(최대 300초)과 대체 모델까지 기다릴 여유
+DISCOVERY_WORKERS = 4        # 분야별 고르기 호출을 동시에 몇 개까지
+MEANING_WORKERS = 2
 
 DISCOVERY_ARTICLES = 12      # 분야당 보여 줄 기사 수 — 입력을 작게 해야 응답이 빨리 온다
 DISCOVERY_TERMS = 3          # 분야당 고를 용어 수
@@ -53,11 +55,11 @@ RSS_TIME_LIMIT = 150
 
 # 앱은 매일 오전 8시(KST)에 그날 용어를 연다. 예약 실행은 그 전에 오늘 몫을 끝내야 한다.
 #   TODAY_CUTOFF    이 시각이 지나면 오늘 몫의 새 호출을 시작하지 않는다. 호출 하나가 늘어져도
-#                   (최대 150초) 커밋까지 8시 전에 끝나게 10분 여유를 둔다.
+#                   (최대 330초) 커밋까지 8시 전에 끝나게 20분 여유를 둔다.
 #   RSS_NOT_BEFORE  이 시각 전에는 RSS 로 대신 모으지 않고 맥이 올릴 기사 목록을 기다린다
 #                   (맥 브리핑은 늦어도 05:40 에 끝난다).
 APP_OPENS_AT = dtime(8, 0)
-TODAY_CUTOFF = dtime(7, 50)
+TODAY_CUTOFF = dtime(7, 40)
 RSS_NOT_BEFORE = dtime(6, 40)
 
 VIA_LABELS = {"news_terms": "브리핑 용어", "raw": "기사 목록", "rss": "RSS 제목"}
@@ -77,19 +79,23 @@ DISCOVERY_SYSTEM = """당신은 시사 용어 사전의 편집자입니다. 기�
 MEANING_SYSTEM = """당신은 한국어 사전 편찬자입니다. 용어의 일반적인 뜻을 풀이하고 분야를 정합니다.
 1. 누구에게나 늘 참인 일반적인 뜻만 씁니다. 특정 사건·기사·인물·회사·날짜·수치는 쓰지 않습니다.
 2. '최근', '올해', '이번' 같은 시점 표현을 쓰지 않습니다.
-3. 한두 문장, 50~100자로, '~을 말한다', '~을 뜻한다'처럼 한다체로 씁니다.
+3. 한두 문장, 50~100자로 씁니다. 문장은 반드시 '~을 말한다', '~을 뜻한다', '~이다'처럼 한다체로 끝냅니다.
+   '~입니다', '~합니다' 같은 존댓말로 끝내지 않습니다.
 4. 영어에서 온 말이면 무엇의 줄임말이나 합성어인지 짧게 밝혀도 좋습니다.
 5. 위키백과 문서 제목이 가리키는 개념을 풀이합니다. 그 문서가 용어와 다른 뜻을 가리키는 것 같거나
    뜻을 확실히 모르면 meaning 을 빈 문자열로 둡니다. 추측하지 않습니다.
 6. category 는 용어 자체가 속한 분야를 politics·economy·society·life·culture·it·science·world 중
    하나로 고릅니다. 함께 적힌 '기사 분야'는 그 용어가 나온 기사의 분야일 뿐이니 참고만 합니다.
-7. 반드시 JSON 배열만 출력합니다. 설명 문구를 붙이지 않습니다."""
+   예: 장치·소프트웨어·인터넷 기술은 it.
+7. 반드시 JSON 배열만 출력합니다. 설명 문구를 붙이지 않습니다.
+예시 출력: [{"n": 1, "meaning": "물가가 전반적으로 오르고 돈의 가치가 떨어지는 현상을 말한다.", "category": "economy"}]"""
 
 _PAREN = re.compile(r"^\s*(.+?)\s*[\(（]\s*([^)）]+?)\s*[\)）]\s*$")
 _LATIN = re.compile(r"[A-Za-z]")
 _SQUASH = re.compile(r"[^0-9A-Za-z가-힣]+")
 _TIME_WORDS = re.compile(
     r"최근|요즘|올해|지난해|작년|이번|오늘(?!날)|어제|내일|지난달|이달|\d{4}년|\d{1,2}월\s*\d{1,2}일")
+_POLITE = re.compile(r"(니다|세요|어요|아요|해요)[.!]?$")
 
 
 # ── 글자 다루기 ───────────────────────────────────────────────────────────
@@ -148,6 +154,8 @@ def valid_meaning(value) -> Optional[str]:
         return None
     if _TIME_WORDS.search(text) or "http" in text.lower():
         return None
+    if _POLITE.search(text):        # 앱의 다른 해설과 문체를 맞춘다(한다체)
+        return None
     return text
 
 
@@ -158,6 +166,13 @@ def _json_list(raw: Optional[str]) -> List[Dict]:
     if not isinstance(parsed, list):
         parsed = _salvage_array(raw or "") or []   # max_tokens 에 잘린 응답에서 완성된 것만
     return [item for item in parsed if isinstance(item, dict)]
+
+
+def _reply(value) -> Tuple[Optional[str], Optional[str]]:
+    """chat 이 (본문, 모델) 을 주든 본문만 주든 같게 다룬다."""
+    if isinstance(value, tuple):
+        return value[0], value[1]
+    return value, None
 
 
 def _category_name(category: str) -> str:
@@ -264,20 +279,19 @@ def articles_from_rss(time_limit: int = RSS_TIME_LIMIT) -> Dict[str, List[Dict]]
 
 
 def discover(articles_by_category: Dict[str, List[Dict]], *, pool, chat, deadline: float,
-             exclude_names: List[str], need: int, rejected: Counter,
+             exclude_names: List[str], rejected: Counter,
              clock: Callable[[], float] = time.monotonic) -> List[Dict]:
-    """분야마다 작은 호출 한 번으로 용어만 고른다. 필요한 만큼 모이면 멈춘다."""
+    """분야마다 작은 호출 한 번으로 용어만 고른다. 분야끼리는 동시에 부른다
+    — NVIDIA 대기열이 길면 차례대로 부를 경우 분야 수만큼 기다린다."""
     exclude_block = ""
     if exclude_names:
         exclude_block = "이미 실은 용어이니 고르지 마세요: " + ", ".join(exclude_names) + "\n"
 
-    found: List[Dict] = []
+    jobs = []
     for category in CATEGORIES:
         articles = articles_by_category.get(category) or []
         if not articles:
             continue
-        if len(found) >= need or clock() >= deadline:
-            break
         listing = "\n".join(f"{i}. {one_line(a['title'])} — {one_line(a['summary'])[:160]}"
                             for i, a in enumerate(articles, 1))
         user_prompt = (
@@ -289,8 +303,19 @@ def discover(articles_by_category: Dict[str, List[Dict]], *, pool, chat, deadlin
             '형식: [{"id": 기사번호, "term": "용어"}]\n\n'
             f"기사 목록:\n{listing}"
         )
-        raw = chat(pool, DISCOVERY_SYSTEM, user_prompt, max_tokens=400, temperature=0.2,
-                   deadline=deadline)
+        jobs.append((category, articles, user_prompt))
+    if not jobs or clock() >= deadline:
+        return []
+
+    def ask(job):
+        return _reply(chat(pool, DISCOVERY_SYSTEM, job[2], max_tokens=400, temperature=0.2,
+                           deadline=deadline))[0]
+
+    with ThreadPoolExecutor(max_workers=min(len(jobs), DISCOVERY_WORKERS)) as workers:
+        replies = list(workers.map(ask, jobs))
+
+    found: List[Dict] = []
+    for (category, articles, _), raw in zip(jobs, replies):
         for item in _json_list(raw)[:DISCOVERY_TERMS]:
             try:
                 index = int(item.get("id"))
@@ -309,8 +334,9 @@ def discover(articles_by_category: Dict[str, List[Dict]], *, pool, chat, deadlin
 
 # ── 뜻풀이 ────────────────────────────────────────────────────────────────
 
-def write_meanings(batch: List[Dict], *, pool, chat, deadline: float) -> Dict[int, Tuple[str, Optional[str]]]:
-    """{묶음 안 번호: (뜻풀이, 용어 분야)}. 기사 글은 넘기지 않는다."""
+def write_meanings(batch: List[Dict], *, pool, chat,
+                   deadline: float) -> Dict[int, Tuple[str, Optional[str], Optional[str]]]:
+    """{묶음 안 번호: (뜻풀이, 용어 분야, 쓴 모델)}. 기사 글은 넘기지 않는다."""
     lines = []
     for number, candidate in enumerate(batch, 1):
         label = candidate["head"] + (f" ({candidate['reading']})" if candidate["reading"] else "")
@@ -318,8 +344,8 @@ def write_meanings(batch: List[Dict], *, pool, chat, deadline: float) -> Dict[in
         lines.append(f"{number}. {label} · 기사 분야: {category} · 위키백과 문서: {candidate['wiki']['title']}")
     user_prompt = ("아래 용어의 뜻을 풀이하세요.\n\n" + "\n".join(lines)
                    + '\n\n형식: [{"n": 1, "meaning": "...", "category": "economy"}]')
-    raw = chat(pool, MEANING_SYSTEM, user_prompt, max_tokens=900, temperature=0.2,
-               deadline=deadline)
+    raw, model = _reply(chat(pool, MEANING_SYSTEM, user_prompt, max_tokens=1500, temperature=0.2,
+                             deadline=deadline))
     meanings = {}
     for item in _json_list(raw):
         try:
@@ -329,7 +355,7 @@ def write_meanings(batch: List[Dict], *, pool, chat, deadline: float) -> Dict[in
         text = valid_meaning(item.get("meaning"))
         concept = str(item.get("category") or "").strip().lower()
         if text and 1 <= number <= len(batch):
-            meanings[number] = (text, concept if concept in CATEGORIES else None)
+            meanings[number] = (text, concept if concept in CATEGORIES else None, model)
     return meanings
 
 
@@ -358,7 +384,7 @@ def fill_day(day: Date, *, repo_root: str, out_root: Optional[str] = None,
              pool=None, chat=None, wiki_lookup=None, rss_loader=None,
              clock: Callable[[], float] = time.monotonic) -> Dict:
     out_root = out_root or os.path.join(repo_root, "data", "app_terms")
-    chat = chat or nim.chat
+    chat = chat or nim.chat_with_model
     wiki_lookup = wiki_lookup or wiki.lookup
     # RSS 수집도 마감을 넘지 않게 남은 시간의 절반까지만 쓴다
     rss_loader = rss_loader or (lambda: articles_from_rss(
@@ -398,8 +424,8 @@ def fill_day(day: Date, *, repo_root: str, out_root: Optional[str] = None,
     def from_articles(load_articles):
         def load():
             return discover(load_articles(), pool=pool, chat=chat, deadline=deadline,
-                            exclude_names=exclude_names(), need=remaining() * 3,
-                            rejected=result["rejected"], clock=clock)
+                            exclude_names=exclude_names(), rejected=result["rejected"],
+                            clock=clock)
         return load
 
     sources = [("news_terms", lambda: news_term_candidates(repo_root, day))]
@@ -469,16 +495,22 @@ def _admit(fresh: List[Dict], *, via: str, day: Date, doc: Dict, out_root: str, 
         known.add(wiki_key)
         approved.append({**candidate, "wiki": info})
 
-    for start in range(0, len(approved), MEANING_BATCH):
-        if len(doc["terms"]) >= target or clock() >= deadline:
-            break
-        batch = approved[start:start + MEANING_BATCH]
-        meanings = write_meanings(batch, pool=pool, chat=chat, deadline=deadline)
+    needed = target - len(doc["terms"])
+    approved = approved[:needed + MEANING_BATCH // 2]      # 뜻풀이에 실패하는 몫만큼 여유
+    batches = [approved[i:i + MEANING_BATCH] for i in range(0, len(approved), MEANING_BATCH)]
+    if not batches or clock() >= deadline:
+        return
+    # 묶음끼리는 서로 기다릴 필요가 없다 — NVIDIA 대기열에서 동시에 차례를 기다린다
+    with ThreadPoolExecutor(max_workers=min(len(batches), MEANING_WORKERS)) as workers:
+        results = list(workers.map(
+            lambda batch: write_meanings(batch, pool=pool, chat=chat, deadline=deadline), batches))
+
+    for batch, meanings in zip(batches, results):
         added = 0
         for number, candidate in enumerate(batch, 1):
             if len(doc["terms"]) >= target:
                 break
-            meaning, concept = meanings.get(number, (None, None))
+            meaning, concept, model = meanings.get(number, (None, None, None))
             if not meaning:
                 rejected["no_meaning"] += 1
                 continue
@@ -495,6 +527,8 @@ def _admit(fresh: List[Dict], *, via: str, day: Date, doc: Dict, out_root: str, 
                 "date": day.isoformat(),
                 "via": via,
             }
+            if model:       # 대체 모델이 쓴 뜻풀이는 나중에 골라 검토할 수 있게
+                entry["model"] = model
             doc["terms"].append(entry)
             known |= store.term_keys(entry)
             added += 1

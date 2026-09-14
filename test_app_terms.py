@@ -69,10 +69,12 @@ class FakePost:
     def __init__(self, responses):
         self.responses = list(responses)
         self.keys = []
+        self.models = []
 
     def __call__(self, url, headers=None, json=None, stream=None, timeout=None):
         assert stream is True and json["stream"] is True, "스트리밍으로 불러야 한다"
         self.keys.append(headers["Authorization"].split()[-1])
+        self.models.append(json["model"])
         response = self.responses.pop(0)
         if isinstance(response, Exception):
             raise response
@@ -104,8 +106,9 @@ class FakeWiki:
 class FakeChat:
     """시스템 프롬프트로 고르기/뜻풀이를 구분한다."""
 
-    def __init__(self, discoveries=(), fail_meanings=(), down=False, concepts=None):
-        self.discoveries = list(discoveries)
+    def __init__(self, discoveries=None, fail_meanings=(), down=False, concepts=None, model=None):
+        self.discoveries = discoveries or {}
+        self.model = model
         self.fail_meanings = set(fail_meanings)
         self.concepts = concepts or {}
         self.down = down
@@ -117,7 +120,9 @@ class FakeChat:
         if self.down:
             return None
         if kind == "discovery":
-            return json.dumps(self.discoveries.pop(0) if self.discoveries else [], ensure_ascii=False)
+            # 분야끼리 동시에 부르므로 호출 순서가 아니라 분야 이름으로 답을 고른다
+            name = re.search(r"^분야: (.+)$", user_prompt, flags=re.M).group(1)
+            return json.dumps(self.discoveries.get(name, []), ensure_ascii=False)
         assert "기사 목록" not in user_prompt and " — " not in user_prompt, "뜻풀이 호출에 기사 글이 섞이면 안 된다"
         items = []
         for number, label in re.findall(r"^(\d+)\. (.+?) · 기사 분야", user_prompt, flags=re.M):
@@ -127,7 +132,8 @@ class FakeChat:
             if label in self.concepts:
                 item["category"] = self.concepts[label]
             items.append(item)
-        return json.dumps(items, ensure_ascii=False)
+        text = json.dumps(items, ensure_ascii=False)
+        return (text, self.model) if self.model else text
 
 
 def make_repo(root, news_terms=(), raw=None):
@@ -173,31 +179,50 @@ def test_key_pool_cool_and_drop():
 
 # ── nim: 호출 ─────────────────────────────────────────────────────────────
 
+def test_model_chain_defaults_and_override():
+    chain = nim.model_chain({})
+    assert chain[0] == nim.NVIDIA_MODEL and len(chain) >= 2
+    assert nim.model_chain({"APP_TERMS_MODELS": "a/b, c/d"}) == ["a/b", "c/d"]
+
+
 def test_chat_joins_stream_pieces():
     nim.reset_stats()
     post = FakePost([FakeResponse(lines=sse("안녕", "하세요"))])
-    assert nim.chat(one_key_pool(), "s", "u", post=post) == "안녕하세요"
-    assert nim.STATS["ok"] == 1
+    assert nim.chat_with_model(one_key_pool(), "s", "u", post=post, models=["m1", "m2"]) == ("안녕하세요", "m1")
+    assert nim.STATS["ok"] == 1 and nim.STATS["fallback"] == 0
 
 
-def test_chat_429_moves_to_another_key():
+def test_chat_waits_long_enough_for_the_queue():
+    post = FakePost([FakeResponse(lines=sse("ok"))])
+    seen = {}
+
+    def spy(url, headers=None, json=None, stream=None, timeout=None):
+        seen["timeout"] = timeout
+        return post(url, headers=headers, json=json, stream=stream, timeout=timeout)
+
+    nim.chat(one_key_pool(), "s", "u", post=spy, models=["m1"])
+    assert seen["timeout"][1] >= 240, "대기열(9/14 실측 160~170초)보다 먼저 끊으면 안 된다"
+
+
+def test_chat_429_keeps_the_model_and_moves_to_another_key():
     nim.reset_stats()
     clock = FakeClock()
     pool = nim.KeyPool([("A", "a"), ("B", "b")], clock)
     post = FakePost([FakeResponse(status=429, headers={"Retry-After": "30"}),
                      FakeResponse(lines=sse("ok"))])
-    assert nim.chat(pool, "s", "u", post=post, clock=clock, sleep=clock.sleep) == "ok"
-    assert post.keys == ["a", "b"] and nim.STATS["rate_limited"] == 1
+    assert nim.chat(pool, "s", "u", post=post, clock=clock, sleep=clock.sleep, models=["m1", "m2"]) == "ok"
+    assert post.keys == ["a", "b"] and post.models == ["m1", "m1"] and nim.STATS["rate_limited"] == 1
     assert pool.acquire()[0][0] == "B", "429 난 키는 Retry-After 동안 쉬어야 한다"
 
 
-def test_chat_stalled_stream_retries_on_other_key():
+def test_chat_no_response_moves_to_fallback_model():
     nim.reset_stats()
     post = FakePost([FakeResponse(lines=sse("반쪽", "응답"), fail_after=1),
-                     FakeResponse(lines=sse("완성"))])
+                     FakeResponse(lines=sse("대체"))])
     pool = nim.KeyPool([("A", "a"), ("B", "b")])
-    assert nim.chat(pool, "s", "u", post=post, sleep=lambda s: None) == "완성"
-    assert nim.STATS["stalled"] == 1 and post.keys == ["a", "b"]
+    assert nim.chat_with_model(pool, "s", "u", post=post, sleep=lambda s: None,
+                               models=["m1", "m2"]) == ("대체", "m2")
+    assert nim.STATS["stalled"] == 1 and nim.STATS["fallback"] == 1 and post.models == ["m1", "m2"]
 
 
 def test_chat_slow_drip_hits_call_timeout():
@@ -205,12 +230,12 @@ def test_chat_slow_drip_hits_call_timeout():
     clock = FakeClock()
 
     def tick():
-        clock.now += 100    # 조각은 오지만 한 조각에 100초 — idle 에는 안 걸리고 늘어지는 경우
+        clock.now += 200    # 조각은 오지만 한 조각에 200초 — 읽기 대기에는 안 걸리고 늘어지는 경우
 
     post = FakePost([FakeResponse(lines=sse("가", "나", "다"), on_line=tick),
                      FakeResponse(lines=sse("빠른 응답"))])
     pool = nim.KeyPool([("A", "a"), ("B", "b")], clock)
-    assert nim.chat(pool, "s", "u", post=post, clock=clock, sleep=clock.sleep) == "빠른 응답"
+    assert nim.chat(pool, "s", "u", post=post, clock=clock, sleep=clock.sleep, models=["m1", "m2"]) == "빠른 응답"
     assert nim.STATS["stalled"] == 1
 
 
@@ -218,18 +243,28 @@ def test_chat_connect_error_then_success():
     nim.reset_stats()
     post = FakePost([requests.exceptions.ConnectTimeout("connect timed out"),
                      FakeResponse(lines=sse("ok"))])
-    assert nim.chat(nim.KeyPool([("A", "a"), ("B", "b")]), "s", "u", post=post) == "ok"
+    assert nim.chat(nim.KeyPool([("A", "a"), ("B", "b")]), "s", "u", post=post, models=["m1", "m2"]) == "ok"
 
 
-def test_chat_drops_rejected_keys_and_stops_on_bad_request():
+def test_chat_empty_reply_moves_to_next_model():
+    post = FakePost([FakeResponse(lines=[b"data: [DONE]"]), FakeResponse(lines=sse("ok"))])
+    assert nim.chat_with_model(nim.KeyPool([("A", "a"), ("B", "b")]), "s", "u", post=post,
+                               models=["m1", "m2"]) == ("ok", "m2")
+
+
+def test_chat_drops_rejected_keys_and_handles_bad_requests():
     nim.reset_stats()
     post = FakePost([FakeResponse(status=401), FakeResponse(status=403)])
-    assert nim.chat(nim.KeyPool([("A", "a"), ("B", "b")]), "s", "u", post=post) is None
+    assert nim.chat(nim.KeyPool([("A", "a"), ("B", "b")]), "s", "u", post=post, models=["m1"]) is None
     assert nim.STATS["dropped_keys"] == 2 and not post.responses
 
-    post = FakePost([FakeResponse(status=404), FakeResponse(lines=sse("안 불려야 함"))])
-    assert nim.chat(nim.KeyPool([("A", "a"), ("B", "b")]), "s", "u", post=post) is None
-    assert len(post.responses) == 1, "404 는 다른 키로 바꿔도 같으므로 재시도하지 않는다"
+    post = FakePost([FakeResponse(status=404), FakeResponse(lines=sse("대체 모델"))])
+    assert nim.chat_with_model(nim.KeyPool([("A", "a")]), "s", "u", post=post,
+                               models=["m1", "m2"]) == ("대체 모델", "m2"), "모델이 내려가 404 가 나면 다음 모델로"
+
+    post = FakePost([FakeResponse(status=400), FakeResponse(lines=sse("안 불려야 함"))])
+    assert nim.chat(nim.KeyPool([("A", "a"), ("B", "b")]), "s", "u", post=post, models=["m1"]) is None
+    assert len(post.responses) == 1, "넘어갈 모델이 없으면 재시도하지 않는다"
 
 
 def test_chat_respects_deadline():
@@ -244,7 +279,7 @@ def test_chat_gives_up_after_max_attempts():
     post = FakePost([FakeResponse(status=500) for _ in range(nim.MAX_ATTEMPTS)])
     clock = FakeClock()
     pool = nim.KeyPool([("A", "a")], clock)
-    assert nim.chat(pool, "s", "u", post=post, clock=clock, sleep=clock.sleep) is None
+    assert nim.chat(pool, "s", "u", post=post, clock=clock, sleep=clock.sleep, models=["m1", "m2"]) is None
     assert nim.STATS["calls"] == nim.MAX_ATTEMPTS
 
 
@@ -318,6 +353,7 @@ def test_tidy_headword():
 def test_valid_meaning_rejects_news_context():
     ok = "물가가 전반적으로 오르고 돈의 가치가 떨어지는 현상을 말한다. 수요가 늘거나 생산 비용이 오를 때 나타난다."
     assert pipeline.valid_meaning(ok) == ok
+    assert pipeline.valid_meaning("물가가 전반적으로 오르고 돈의 가치가 떨어지는 경제 현상을 뜻합니다.") is None, "존댓말로 끝나면 버린다"
     assert pipeline.valid_meaning("짧은 풀이") is None
     assert pipeline.valid_meaning(ok + " 최근 미국 선거의 쟁점이 됐다.") is None
     assert pipeline.valid_meaning("2026년 도입된 제도로, 공공기관이 일정 조건을 갖춘 기업에 세금을 깎아 주는 것을 말한다.") is None
@@ -388,10 +424,10 @@ def test_fill_day_uses_article_list_when_briefing_terms_run_short():
             "economy": {"domestic": [
                 {"title": "기준금리 동결…스태그플레이션 우려", "summary": "물가와 경기 둔화", "is_important": "False"}]},
         })
-        chat = FakeChat(discoveries=[
-            [{"id": 1, "term": "인사청문회"}, {"id": 1, "term": "양적완화"}],
-            [{"id": 1, "term": "스태그플레이션(stagflation)"}, {"id": 9, "term": "번호 밖"}],
-        ])
+        chat = FakeChat(discoveries={
+            "정치": [{"id": 1, "term": "인사청문회"}, {"id": 1, "term": "양적완화"}],
+            "경제": [{"id": 1, "term": "스태그플레이션(stagflation)"}, {"id": 9, "term": "번호 밖"}],
+        })
         result = pipeline.fill_day(DAY, repo_root=root, target=3, pool=one_key_pool(),
                                    chat=chat, wiki_lookup=FakeWiki(), rss_loader=lambda: {})
         assert result["after"] == 3, result
@@ -412,7 +448,7 @@ def test_fill_day_collects_rss_only_when_article_list_is_missing():
             rss_calls.append(1)
             return {"it": [{"title": "생성형 AI 저작권 소송 확산", "summary": "", "important": False}]}
 
-        chat = FakeChat(discoveries=[[{"id": 1, "term": "생성형 AI"}]])
+        chat = FakeChat(discoveries={"IT": [{"id": 1, "term": "생성형 AI"}]})
         result = pipeline.fill_day(DAY, repo_root=root, target=1, pool=one_key_pool(),
                                    chat=chat, wiki_lookup=FakeWiki(), rss_loader=rss)
         assert rss_calls == [1] and result["via"] == ["rss"] and result["after"] == 1, result
@@ -473,11 +509,21 @@ def test_plan_run_finishes_before_the_app_opens():
 
     assert pipeline.plan_run(DAY, at(5, 50), 600) == (600, False, ""), "06:40 전에는 맥의 기사 목록을 기다린다"
     assert pipeline.plan_run(DAY, at(7, 15), 600) == (600, True, "")
-    assert pipeline.plan_run(DAY, at(7, 45), 600) == (300, True, ""), "마감까지 남은 시간만 쓴다"
-    budget, _, skip = pipeline.plan_run(DAY, at(7, 50), 600)
+    assert pipeline.plan_run(DAY, at(7, 35), 600) == (300, True, ""), "마감까지 남은 시간만 쓴다"
+    budget, _, skip = pipeline.plan_run(DAY, at(7, 40), 600)
     assert budget == 0 and "마감" in skip
     assert pipeline.plan_run(DAY, at(17, 0), 600, explicit_date=True) == (600, True, ""), "날짜를 적으면 마감 없음"
     assert pipeline.plan_run(date(2026, 9, 13), at(17, 0), 600) == (600, True, "")
+
+
+def test_fill_day_records_which_model_wrote_the_meaning():
+    with tempfile.TemporaryDirectory() as root:
+        make_repo(root, news_terms=[("인플레이션(Inflation)", "economy")])
+        pipeline.fill_day(DAY, repo_root=root, target=1, pool=one_key_pool(),
+                          chat=FakeChat(model="z-ai/glm-5.3-flash"), wiki_lookup=FakeWiki(),
+                          rss_loader=lambda: {})
+        entry = store.load_day(os.path.join(root, "data", "app_terms"), DAY)["terms"][0]
+        assert entry["model"] == "z-ai/glm-5.3-flash"
 
 
 def test_summary_is_readable():

@@ -5,24 +5,28 @@
     브리핑은 한 실행에서 70여 번을 부르며 시간 예산·동시 호출 슬롯·로컬 폴백을 한 프로세스
     안에서 나눠 쓴다. 이 작업은 GitHub 서버에서 열 번 안팎만 부르고 로컬 모델도 없다.
     그 상태를 끌어오지 않고, 끊김에만 집중한 작은 호출기를 따로 둔다.
-    모델 이름과 주소는 llm_client 의 것을 그대로 쓴다 — 모델을 바꿀 때 한 곳만 고치면 된다.
 
-끊김 대책
-    1) 스트리밍으로 받는다. 비스트리밍은 응답이 멈춰도 read timeout(브리핑은 180초)이
-       다 찰 때까지 알 수 없다(실측 9/10·9/12 ReadTimeout). 스트리밍은 조각이
-       IDLE_TIMEOUT 초 동안 안 오면 곧바로 끊고 다른 키로 다시 시도한다.
-    2) 호출 하나에도 전체 상한(CALL_TIMEOUT)을 둔다. 조각이 찔끔찔끔 와서 idle 에는
-       안 걸리면서 한없이 늘어지는 경우를 막는다.
-    3) 429 는 Retry-After 만큼 그 키만 쉬게 하고 다른 키로 바로 넘어간다.
-    4) 401·403 이 난 키는 이번 실행에서 뺀다. 400·404·422 는 요청 자체의 문제라
-       다른 키로 바꿔도 똑같으므로 재시도하지 않는다.
-    5) 작업 전체 마감(deadline)을 넘기면 더 부르지 않는다 — 다음 회차가 이어서 채운다.
+NVIDIA 대기열 (2026-09-14 실측)
+    gemma-4-31b 는 붐빌 때 요청을 대기열에 세워 두고, 차례가 오기 전까지 응답 헤더조차
+    보내지 않는다. 17시대에 잰 대기 시간은 160~170초였고, 차례가 오면 1~3초 만에 답을 끝냈다.
+    처음에는 45초 동안 응답이 없으면 끊도록 했는데, 그 때문에 첫 서버 실행에서 14번 모두
+    대기열에서 스스로 끊고 한 개도 채우지 못했다. 그래서
+      1) 첫 응답은 FIRST_RESPONSE_TIMEOUT(300초)까지 기다린다 — 대기열에서 빠져나오지 않는다.
+      2) 그래도 안 오면 대체 모델로 넘어간다(model_chain). 대체 모델은 대기열이 짧지만
+         뜻풀이 정확도가 떨어져 기본으로 쓰지 않는다. 어느 모델이 썼는지 결과에 남긴다.
+      3) 호출 하나에도 전체 상한(CALL_TIMEOUT)을 둔다 — 조각이 찔끔찔끔 와서 늘어지는 경우.
+      4) 429 는 Retry-After 만큼 그 키만 쉬게 하고 같은 모델을 다른 키로 부른다.
+      5) 401·403 이 난 키는 이번 실행에서 뺀다. 404(모델이 내려감)·400·422 는 다음 모델로,
+         더 넘어갈 모델이 없으면 포기한다.
+      6) 작업 전체 마감(deadline)을 넘기면 더 부르지 않는다 — 다음 회차가 이어서 채운다.
 
 실패해도 예외를 던지지 않고 None 을 돌려준다. 호출부는 그 묶음을 건너뛴다.
+여러 스레드에서 동시에 불러도 되게 키 목록과 집계는 잠금으로 보호한다.
 """
 import json
 import os
 import random
+import threading
 import time
 from typing import Callable, Dict, List, Optional, Tuple
 
@@ -34,9 +38,14 @@ from ..utils.logger import setup_logger
 logger = setup_logger()
 
 CONNECT_TIMEOUT = 10
-IDLE_TIMEOUT = 45
-CALL_TIMEOUT = 150
+FIRST_RESPONSE_TIMEOUT = 300
+CALL_TIMEOUT = 330
 MAX_ATTEMPTS = 4
+
+# 기본 모델이 대기열에서 못 빠져나올 때만 쓴다. 9/14 실측 — glm-5.3-flash 는 바로 받지만 생성이
+# 느리고(4개에 약 170초) 뜻풀이가 정확하다. nemotron-3-super 는 5초 안에 끝나지만 뜻이 부정확하거나
+# 빈 응답을 줄 때가 있어 마지막에 둔다. APP_TERMS_MODELS(쉼표 구분)로 바꿀 수 있다.
+FALLBACK_MODELS = ["z-ai/glm-5.3-flash", "nvidia/nemotron-3-super-120b-a12b"]
 
 _RETRY_AFTER_CAP = 60
 _FATAL_KEY = (401, 403)
@@ -52,12 +61,19 @@ KEY_ENV_NAMES = [
 ]
 
 STATS: Dict[str, int] = {}
+_stats_lock = threading.Lock()
 
 
 def reset_stats() -> None:
-    STATS.clear()
-    STATS.update({"calls": 0, "ok": 0, "rate_limited": 0, "stalled": 0,
-                  "network": 0, "http": 0, "dropped_keys": 0})
+    with _stats_lock:
+        STATS.clear()
+        STATS.update({"calls": 0, "ok": 0, "fallback": 0, "rate_limited": 0, "stalled": 0,
+                      "network": 0, "http": 0, "dropped_keys": 0})
+
+
+def _count(name: str) -> None:
+    with _stats_lock:
+        STATS[name] = STATS.get(name, 0) + 1
 
 
 reset_stats()
@@ -65,13 +81,17 @@ reset_stats()
 
 def stats_line() -> str:
     s = STATS
-    return (f"호출 {s['calls']}건 · 성공 {s['ok']} · 호출제한(429) {s['rate_limited']} · "
-            f"응답멈춤 {s['stalled']} · 네트워크 {s['network']} · HTTP오류 {s['http']} · "
-            f"뺀 키 {s['dropped_keys']}")
+    return (f"호출 {s['calls']}건 · 성공 {s['ok']}(대체 모델 {s['fallback']}) · 호출제한(429) {s['rate_limited']} · "
+            f"응답없음 {s['stalled']} · 네트워크 {s['network']} · HTTP오류 {s['http']} · 뺀 키 {s['dropped_keys']}")
 
 
-def model_name() -> str:
-    return os.getenv("APP_TERMS_MODEL") or NVIDIA_MODEL
+def model_chain(environ=None) -> List[str]:
+    """부를 모델 순서. 앞에서부터 쓰고, 실패하면 다음으로 넘어간다."""
+    env = os.environ if environ is None else environ
+    configured = [m.strip() for m in (env.get("APP_TERMS_MODELS") or "").split(",") if m.strip()]
+    if configured:
+        return configured
+    return [NVIDIA_MODEL] + [m for m in FALLBACK_MODELS if m != NVIDIA_MODEL]
 
 
 class KeyPool:
@@ -83,6 +103,7 @@ class KeyPool:
         self._dropped = set()
         self._next = 0
         self._clock = clock
+        self._lock = threading.Lock()
 
     @classmethod
     def from_env(cls, environ=None, clock: Callable[[], float] = time.monotonic) -> "KeyPool":
@@ -96,31 +117,35 @@ class KeyPool:
         return cls(keys, clock)
 
     def alive(self) -> List[Tuple[str, str]]:
-        return [(label, key) for label, key in self._keys if label not in self._dropped]
+        with self._lock:
+            return [(label, key) for label, key in self._keys if label not in self._dropped]
 
     def __len__(self) -> int:
         return len(self.alive())
 
     def acquire(self) -> Tuple[Optional[Tuple[str, str]], float]:
         """쓸 수 있는 키 하나. 모두 쉬는 중이면 (None, 가장 빨리 풀리기까지 남은 초)."""
-        alive = self.alive()
-        if not alive:
-            return None, 0.0
-        now = self._clock()
-        for offset in range(len(alive)):
-            index = (self._next + offset) % len(alive)
-            label, key = alive[index]
-            if self._cool_until.get(label, 0.0) <= now:
-                self._next = (index + 1) % len(alive)
-                return (label, key), 0.0
-        soonest = min(self._cool_until.get(label, 0.0) for label, _ in alive)
-        return None, max(soonest - now, 0.0)
+        with self._lock:
+            alive = [(label, key) for label, key in self._keys if label not in self._dropped]
+            if not alive:
+                return None, 0.0
+            now = self._clock()
+            for offset in range(len(alive)):
+                index = (self._next + offset) % len(alive)
+                label, key = alive[index]
+                if self._cool_until.get(label, 0.0) <= now:
+                    self._next = (index + 1) % len(alive)
+                    return (label, key), 0.0
+            soonest = min(self._cool_until.get(label, 0.0) for label, _ in alive)
+            return None, max(soonest - now, 0.0)
 
     def cool(self, label: str, seconds: float) -> None:
-        self._cool_until[label] = self._clock() + max(seconds, 0.0)
+        with self._lock:
+            self._cool_until[label] = self._clock() + max(seconds, 0.0)
 
     def drop(self, label: str) -> None:
-        self._dropped.add(label)
+        with self._lock:
+            self._dropped.add(label)
 
 
 class _Stalled(Exception):
@@ -147,8 +172,8 @@ def _stream_once(post, key: str, payload: Dict, clock) -> Tuple[int, Optional[st
         headers={"Authorization": f"Bearer {key}", "Accept": "text/event-stream"},
         json=payload,
         stream=True,
-        # (연결, 조각 사이 대기) — 스트리밍에서는 두 번째 값이 '응답이 멈춘 시간' 상한이 된다
-        timeout=(CONNECT_TIMEOUT, IDLE_TIMEOUT),
+        # (연결, 읽기 대기). 대기열에 서 있는 동안은 헤더도 안 오므로 읽기 대기를 넉넉히 준다
+        timeout=(CONNECT_TIMEOUT, FIRST_RESPONSE_TIMEOUT),
     )
     try:
         if resp.status_code != 200:
@@ -178,82 +203,99 @@ def _stream_once(post, key: str, payload: Dict, clock) -> Tuple[int, Optional[st
         resp.close()
 
 
-def chat(pool: KeyPool, system_prompt: str, user_prompt: str, *,
-         max_tokens: int = 1024, temperature: float = 0.2,
-         deadline: Optional[float] = None,
-         post=None, sleep: Callable[[float], None] = time.sleep,
-         clock: Callable[[], float] = time.monotonic) -> Optional[str]:
-    """NIM chat completions 를 스트리밍으로 부른다. 실패하면 None."""
+def chat_with_model(pool: KeyPool, system_prompt: str, user_prompt: str, *,
+                    max_tokens: int = 1024, temperature: float = 0.2,
+                    deadline: Optional[float] = None, models: Optional[List[str]] = None,
+                    post=None, sleep: Callable[[float], None] = time.sleep,
+                    clock: Callable[[], float] = time.monotonic) -> Tuple[Optional[str], Optional[str]]:
+    """NIM chat completions 를 스트리밍으로 부른다. (본문, 답한 모델) — 실패하면 (None, None)."""
     post = post or requests.post
-    payload = {
-        "model": model_name(),
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
-        "temperature": temperature,
-        "max_tokens": max_tokens,
-        "stream": True,
-        # 브리핑과 같은 이유로 thinking 을 끈다 — 켜져 있으면 JSON 앞에 추론 글이 붙는다
-        "chat_template_kwargs": {"enable_thinking": False},
-    }
+    models = models or model_chain()
+    step = 0
 
     for attempt in range(MAX_ATTEMPTS):
         if deadline is not None and clock() >= deadline:
             logger.warning("작업 마감 시각이 지나 호출하지 않음 — 다음 회차에 이어서")
-            return None
+            return None, None
 
         picked, wait = pool.acquire()
         if picked is None:
             if not pool.alive():
                 logger.warning("쓸 수 있는 NVIDIA 키가 없음")
-                return None
+                return None, None
             if deadline is not None and clock() + wait >= deadline:
                 logger.warning("모든 키가 쉬는 중인데 마감 전에 풀리지 않음")
-                return None
+                return None, None
             sleep(wait)
             picked, _ = pool.acquire()
             if picked is None:
-                return None
+                return None, None
         label, key = picked
+        model = models[min(step, len(models) - 1)]
+        payload = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+            "stream": True,
+            # 브리핑과 같은 이유로 thinking 을 끈다 — 켜져 있으면 JSON 앞에 추론 글이 붙는다
+            "chat_template_kwargs": {"enable_thinking": False},
+        }
 
-        STATS["calls"] += 1
+        _count("calls")
         try:
             status, content, retry_after = _stream_once(post, key, payload, clock)
         except (requests.exceptions.RequestException, _Stalled) as error:
             text = str(error).lower()
             stalled = isinstance(error, (_Stalled, requests.exceptions.Timeout)) or "timed out" in text
-            STATS["stalled" if stalled else "network"] += 1
-            logger.warning(f"[{label}] 응답 {'멈춤' if stalled else '끊김'}({type(error).__name__}) "
-                           f"— 다른 키로 재시도 {attempt + 1}/{MAX_ATTEMPTS}")
+            _count("stalled" if stalled else "network")
+            logger.warning(f"[{label} · {model}] {'응답 없음' if stalled else '연결 끊김'}"
+                           f"({type(error).__name__}) — 다음 모델로 {attempt + 1}/{MAX_ATTEMPTS}")
             pool.cool(label, 20)
+            step += 1
             continue
 
         if status == 200:
             if content:
-                STATS["ok"] += 1
-                return content
-            STATS["http"] += 1
-            logger.warning(f"[{label}] 빈 응답 — 재시도")
+                _count("ok")
+                if model != models[0]:
+                    _count("fallback")
+                return content, model
+            _count("http")
+            logger.warning(f"[{label} · {model}] 빈 응답 — 다음 모델로")
+            step += 1
             continue
         if status == 429:
-            STATS["rate_limited"] += 1
+            _count("rate_limited")
             wait = retry_after or _backoff(attempt)
-            logger.warning(f"[{label}] 호출 제한(429) — 이 키는 {wait:.0f}초 쉬고 다른 키로")
+            logger.warning(f"[{label} · {model}] 호출 제한(429) — 이 키는 {wait:.0f}초 쉬고 다른 키로")
             pool.cool(label, wait)
             continue
         if status in _FATAL_KEY:
-            STATS["dropped_keys"] += 1
+            _count("dropped_keys")
             logger.warning(f"[{label}] 인증 거절({status}) — 이번 실행에서 이 키를 뺌")
             pool.drop(label)
             continue
         if status in _FATAL_REQUEST:
-            STATS["http"] += 1
-            logger.warning(f"[{label}] 요청 거절({status}) — 모델 이름·요청 형식 문제라 재시도하지 않음")
-            return None
+            _count("http")
+            if step + 1 < len(models):
+                logger.warning(f"[{label} · {model}] 요청 거절({status}) — 모델이 내려갔을 수 있어 다음 모델로")
+                step += 1
+                continue
+            logger.warning(f"[{label} · {model}] 요청 거절({status}) — 넘어갈 모델이 없어 포기")
+            return None, None
 
-        STATS["http"] += 1
-        logger.warning(f"[{label}] 서버 오류({status}) — 잠시 뒤 재시도")
+        _count("http")
+        logger.warning(f"[{label} · {model}] 서버 오류({status}) — 다음 모델로")
         pool.cool(label, _backoff(attempt))
+        step += 1
 
-    return None
+    return None, None
+
+
+def chat(pool: KeyPool, system_prompt: str, user_prompt: str, **kwargs) -> Optional[str]:
+    """본문만 필요할 때."""
+    return chat_with_model(pool, system_prompt, user_prompt, **kwargs)[0]

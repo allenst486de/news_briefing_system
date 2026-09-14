@@ -5,7 +5,7 @@ GitHub Actions(.github/workflows/app_terms.yml)가 하루 네 번(모두 오전 
 맥의 일일 브리핑과 따로 돌아서, 맥이 멈춘 날에도 용어가 쌓인다. 설계는 src/app_terms/.
 
     python app_terms.py                          # 오늘(KST) 채우기
-    python app_terms.py --date 2026-09-14        # 특정 날짜 (07:50 마감 없이)
+    python app_terms.py --date 2026-09-14        # 특정 날짜 (07:40 마감 없이)
     python app_terms.py --out /tmp/app_terms     # 저장소 대신 다른 폴더에 (시험용)
     python app_terms.py --no-rss                 # 기사 목록이 없어도 RSS 를 모으지 않음
 
@@ -36,7 +36,7 @@ def main(argv=None) -> int:
 
     parser = argparse.ArgumentParser(description="앱용 시사 용어를 그날 파일에 채운다")
     parser.add_argument("--date", type=_date,
-                        help="KST 날짜 YYYY-MM-DD — 적으면 07:50 마감 없이 그 날짜를 채운다 (기본: 오늘)")
+                        help="KST 날짜 YYYY-MM-DD — 적으면 07:40 마감 없이 그 날짜를 채운다 (기본: 오늘)")
     parser.add_argument("--out", help="저장 폴더 (기본: data/app_terms)")
     parser.add_argument("--target", type=int, default=pipeline.TARGET, help="하루 목표 개수")
     parser.add_argument("--budget", type=int, default=pipeline.JOB_BUDGET_SECONDS,
