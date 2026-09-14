@@ -101,6 +101,11 @@
       if (!grid) { return; }
 
       var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-term-card]'));
+      // 같은 날짜끼리는 비교값이 0이라 정렬해도 아무것도 안 바뀐다. '오늘' 탭은 전부
+      // 같은 날짜라 최신순↔오래된순을 눌러도 화면이 그대로여서 고장난 것처럼 보였다.
+      // 처음 순서를 기억해 두고 동률이면 그 순서(오래된순은 역순)로 가른다.
+      var originalIndex = new Map();
+      cards.forEach(function (card, i) { originalIndex.set(card, i); });
       var filters = controls.querySelectorAll('[data-filter]');
       var sortSelect = controls.querySelector('[data-term-sort]');
       var current = 'all';
@@ -119,7 +124,8 @@
         var sorted = cards.slice().sort(function (a, b) {
           var ad = a.getAttribute('data-date') || '';
           var bd = b.getAttribute('data-date') || '';
-          if (mode === 'oldest') { return ad.localeCompare(bd); }
+          var order = originalIndex.get(a) - originalIndex.get(b);
+          if (mode === 'oldest') { return ad.localeCompare(bd) || -order; }
           if (mode === 'term') {
             return (a.getAttribute('data-term') || '').localeCompare(b.getAttribute('data-term') || '', 'ko');
           }
@@ -127,9 +133,9 @@
             var ac = a.getAttribute('data-category-name') || '';
             var bc = b.getAttribute('data-category-name') || '';
             // 같은 분야 안에서는 최신순을 유지해야 목록이 뒤죽박죽으로 보이지 않는다
-            return ac.localeCompare(bc, 'ko') || bd.localeCompare(ad);
+            return ac.localeCompare(bc, 'ko') || bd.localeCompare(ad) || order;
           }
-          return bd.localeCompare(ad);   // newest
+          return bd.localeCompare(ad) || order;   // newest
         });
         sorted.forEach(function (card) { grid.appendChild(card); });
       }
