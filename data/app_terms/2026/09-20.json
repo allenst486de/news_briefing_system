@@ -1,0 +1,122 @@
+{
+  "date": "2026-09-20",
+  "terms": [
+    {
+      "term": "주가 조작",
+      "reading": "",
+      "meaning": "부당한 수단으로 주식 가격을 인위적으로 조작하여 이득을 취하는 행위를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "주가조작",
+      "url": "https://ko.wikipedia.org/wiki/주가조작",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "GDP",
+      "reading": "",
+      "meaning": "Gross Domestic Product의 약자로, 일정 기간 한 나라 안에서 생산된 최종 생산물의 시장 가치를 합산한 것이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "국내총생산",
+      "url": "https://ko.wikipedia.org/wiki/국내총생산",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "기후정의",
+      "reading": "",
+      "meaning": "기후 변화의 원인과 영향, 그리고 그 해결 과정에서 발생하는 불평등을 해소하고 정의로운 전환을 추구하는 개념이다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "기후정의",
+      "url": "https://ko.wikipedia.org/wiki/기후정의",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "초가공식품",
+      "reading": "",
+      "meaning": "식품 원료에 감미료, 착색료, 보존료 등 다양한 식품 첨가물을 넣어 고도로 가공한 식품을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "초가공식품",
+      "url": "https://ko.wikipedia.org/wiki/초가공식품",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "기준금리",
+      "reading": "",
+      "meaning": "중앙은행이 금융 통화 정책을 운용하기 위해 기준으로 삼는 지표 금리를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "기준금리",
+      "url": "https://ko.wikipedia.org/wiki/기준금리",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "양극화",
+      "reading": "",
+      "meaning": "사회 구성원 간의 경제적 격차나 생각의 차이가 극단적으로 벌어져 두 집단으로 나뉘는 현상을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "사회 양극화",
+      "url": "https://ko.wikipedia.org/wiki/사회_양극화",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "급발진",
+      "reading": "",
+      "meaning": "운전자의 의도와 상관없이 차량의 가속 페달이 작동하여 차량이 갑자기 빠르게 돌진하는 현상을 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "급발진",
+      "url": "https://ko.wikipedia.org/wiki/급발진",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "구제역",
+      "reading": "",
+      "meaning": "발굽이 갈라진 우제류 동물에게 발생하는 전염성 강한 바이러스성 질환이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "구제역",
+      "url": "https://ko.wikipedia.org/wiki/구제역",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "MLCC",
+      "reading": "",
+      "meaning": "Multi-Layer Ceramic Capacitor의 약자로, 적층 세라믹 콘덴서라고 하며 전기를 저장했다가 내보내는 전자 부품이다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "세라믹 축전기",
+      "url": "https://ko.wikipedia.org/wiki/세라믹_축전기",
+      "date": "2026-09-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-20T07:31:05+09:00",
+      "added": 9,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}
