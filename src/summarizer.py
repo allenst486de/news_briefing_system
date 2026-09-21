@@ -429,6 +429,71 @@ CARD_BLURB_LIMIT = 110
 
 TOP10_CANDIDATES_PER_CATEGORY = 6  # 8개 카테고리 × 6 = 48건 후보 (10건 고르기엔 충분)
 
+# ── Top10 중복 방지 ─────────────────────────────────────────────────────────
+# 중복 제거는 카테고리×지역 안에서만 돈다. 같은 기사가 정치·사회 두 분야에 모두 살아남으면
+# 후보 풀에 두 번 들어가고, 같은 사건을 여러 매체가 쓴 기사도 그대로 겹친다. 평소엔 LLM이
+# 다양하게 골라 가려졌는데, LLM이 실패해 중요도순 정렬로 떨어진 9/18에는 같은 기사가
+# 8위·10위에 나란히, 풍계리 지진 기사가 10장 중 4장을 차지했다.
+# 그래서 링크가 같으면 한 번만, 같은 사건으로 보이면 한 장만 싣는다.
+#
+# '같은 사건' 판정: 제목(해외는 원문 제목까지)에서 뽑은 낱말이 두 개 이상 겹치면 같다고 본다.
+# 글자 조각 유사도는 '북한 풍계리 인근 지진 증가' / '풍계리 핵실험, 잠든 단층 깨웠나'처럼
+# 표현이 다른 같은 사건을 못 잡았다(9/18 실측 0.25~0.40). 한글 낱말은 조사가 붙어도
+# 같게 보려고 앞부분이 일치하면 같은 낱말로 친다('북한' = '북한이').
+# 어디에나 나오는 낱말은 빼야 엉뚱한 기사끼리 묶이지 않는다('AI' 기사 셋이 한 사건이 됐다).
+_EVENT_STOPWORDS = {
+    "the", "a", "an", "of", "to", "in", "for", "on", "and", "with", "as", "at", "by", "is",
+    "are", "after", "over", "from", "says", "say", "new", "its", "his", "her", "their", "be",
+    "has", "have", "was", "will", "that", "this", "it", "but", "not", "up", "out", "into",
+    "about", "amid", "than", "more", "ai",
+    "미국", "한국", "정부", "발표", "공개", "추진", "관련", "위해", "위한", "통해", "대해",
+    "대한", "이후", "오늘", "지난", "올해", "대통령", "국내", "세계", "전망", "강화", "확대",
+    "가능", "논란", "결정", "계획", "시작", "최대", "역대", "기록", "증가", "감소", "이유",
+    "문제", "대응", "사태", "우려", "경고", "속보", "단독", "종합",
+}
+_HANGUL = re.compile(r"[가-힣]")
+
+
+def _event_words(article: NewsArticle) -> set:
+    text = f"{article.title} {getattr(article, 'original_title', '') or ''}".lower()
+    return {w for w in re.findall(r"[0-9a-z가-힣]+", text)
+            if len(w) >= 2 and w not in _EVENT_STOPWORDS}
+
+
+def _word_match(x: str, y: str) -> bool:
+    if x == y:
+        return True
+    # 앞부분 일치는 한글끼리만 — 영어에서 'war'와 'warn'이 같은 낱말이 되면 안 된다
+    return bool(_HANGUL.match(x) and _HANGUL.match(y)) and (x.startswith(y) or y.startswith(x))
+
+
+def same_event(a: NewsArticle, b: NewsArticle) -> bool:
+    if a.link and a.link == b.link:
+        return True
+    words_b = _event_words(b)
+    shared = sum(1 for x in _event_words(a) if any(_word_match(x, y) for y in words_b))
+    return shared >= 2
+
+
+def _translated(article: NewsArticle) -> bool:
+    """카드에 올릴 만한 상태인가 — LLM 요약에 실패해 영문 원문이 남은 기사는 뒤로 민다."""
+    return not getattr(article, "llm_failed", False) and bool(_HANGUL.search(article.title or ""))
+
+
+def _fallback_card(rank: int, entry: Dict) -> Dict:
+    article = entry["article"]
+    return {
+        "rank": rank,
+        "category": entry["category"],
+        "category_name": CATEGORY_META[entry["category"]]["name"],
+        "link": article.link,
+        "source": article.source,
+        "detail_path": getattr(article, "detail_path", ""),
+        "detail_rel": getattr(article, "detail_rel", ""),
+        "card_headline": trim_at_boundary(article.title, CARD_HEADLINE_LIMIT),
+        "card_blurb": trim_at_boundary(article.summary, CARD_BLURB_LIMIT),
+    }
+
 
 def select_top10(categorized_news: Dict[str, List[NewsArticle]],
                   api_key: Optional[str] = None) -> List[Dict]:
@@ -436,17 +501,21 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
     8개 카테고리에서 이미 요약된 기사 전체 풀에서 크로스카테고리 top10을
     선정한다 (프롬프트 c). 실패 시 중요도→최신순 정렬로 대체.
     국내/해외를 따로 뽑으려면 지역별로 나눈 dict를 각각 넘긴다.
+    어느 경로든 같은 기사·같은 사건은 한 장만 싣는다(위 '중복 방지' 참고).
     반환: [{rank, category, category_name, link, card_headline, card_blurb}, ...]
     """
     # 8개 카테고리 × 30건 전체를 요약문까지 붙여 보내면 입력만 7만 자를 넘는다.
     # top10을 고르는 데는 카테고리별 상위 후보만으로 충분하고, 요약도 앞부분만 있으면 된다.
-    flat = [
-        {"category": category, "article": article}
-        for category, articles in categorized_news.items()
+    flat, seen_links = [], set()
+    for category, articles in categorized_news.items():
         for article in sorted(
             articles, key=lambda a: (a.is_important, a.published), reverse=True
-        )[:TOP10_CANDIDATES_PER_CATEGORY]
-    ]
+        )[:TOP10_CANDIDATES_PER_CATEGORY]:
+            # 두 분야에 걸친 같은 기사는 LLM에게도 한 번만 보여준다
+            if article.link in seen_links:
+                continue
+            seen_links.add(article.link)
+            flat.append({"category": category, "article": article})
     if not flat:
         return []
 
@@ -459,7 +528,8 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
     user_prompt = (
         "입력은 오늘 8개 카테고리에서 요약된 전체 기사 목록입니다. 이 중 오늘 가장 "
         "중요하고 관심도가 높을 것으로 판단되는 10건을 선정하세요 (특정 카테고리에 "
-        "몰리지 않도록 다양성을 고려하되, 중요도가 최우선 기준입니다).\n"
+        "몰리지 않도록 다양성을 고려하되, 중요도가 최우선 기준입니다. 같은 사건을 다룬 "
+        "기사는 한 건만 고르세요).\n"
         "각 항목에 대해:\n"
         " - id: 아래 번호와 동일한 정수\n"
         " - rank: 1~10\n"
@@ -471,18 +541,34 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
         f"전체 기사 목록:\n{listing}"
     )
 
+    chosen: List[NewsArticle] = []
+
+    def is_dup(article: NewsArticle) -> bool:
+        return any(same_event(article, other) for other in chosen)
+
+    cards = []
     result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=TOP10_MAX_TOKENS,
                             api_key=api_key)
     if isinstance(result, list) and result:
-        cards = []
+        picked = []
         for item in result:
             try:
                 entry = flat[int(item["id"]) - 1]
             except (KeyError, TypeError, ValueError, IndexError):
                 continue
+            try:
+                rank = int(item.get("rank") or 99)
+            except (TypeError, ValueError):
+                rank = 99
+            picked.append((rank, item, entry))
+        picked.sort(key=lambda p: p[0])
+        for _, item, entry in picked:
             article = entry["article"]
+            if is_dup(article):
+                continue
+            chosen.append(article)
             cards.append({
-                "rank": item.get("rank", len(cards) + 1),
+                "rank": len(cards) + 1,
                 "category": entry["category"],
                 "category_name": CATEGORY_META[entry["category"]]["name"],
                 "link": article.link,
@@ -493,26 +579,31 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
                 "card_headline": clean_llm_text(item.get("card_headline")) or trim_at_boundary(article.title, CARD_HEADLINE_LIMIT),
                 "card_blurb": clean_llm_text(item.get("card_blurb")) or trim_at_boundary(article.summary, CARD_BLURB_LIMIT),
             })
-        if cards:
-            cards.sort(key=lambda c: c["rank"])
-            return cards[:TOP10_COUNT]
+            if len(cards) == TOP10_COUNT:
+                return cards
+    else:
+        logger.warning("Top10 selection failed — falling back to importance+recency sort")
 
-    logger.warning("Top10 selection failed — falling back to importance+recency sort")
-    flat.sort(key=lambda e: (e["article"].is_important, e["article"].published), reverse=True)
-    cards = []
-    for rank, entry in enumerate(flat[:TOP10_COUNT], start=1):
+    # LLM이 실패했거나 중복을 걸러내고 나니 10장이 안 되면 중요도→최신순으로 채운다.
+    # 번역된 기사를 먼저 올린다 — 영문 원문 카드가 Top10에 끼지 않게.
+    order = sorted(flat, key=lambda e: (_translated(e["article"]), e["article"].is_important,
+                                        e["article"].published), reverse=True)
+    for entry in order:
+        if len(cards) == TOP10_COUNT:
+            break
         article = entry["article"]
-        cards.append({
-            "rank": rank,
-            "category": entry["category"],
-            "category_name": CATEGORY_META[entry["category"]]["name"],
-            "link": article.link,
-            "source": article.source,
-            "detail_path": getattr(article, "detail_path", ""),
-            "detail_rel": getattr(article, "detail_rel", ""),
-            "card_headline": trim_at_boundary(article.title, CARD_HEADLINE_LIMIT),
-            "card_blurb": trim_at_boundary(article.summary, CARD_BLURB_LIMIT),
-        })
+        if article in chosen or is_dup(article):
+            continue
+        chosen.append(article)
+        cards.append(_fallback_card(len(cards) + 1, entry))
+
+    # 같은 사건 걸러내느라 후보가 모자란 날(후보 48건 대부분이 한 사건)엔 중복을 감수하고 채운다
+    for entry in order:
+        if len(cards) == TOP10_COUNT:
+            break
+        if any(entry["article"].link == c["link"] for c in cards):
+            continue
+        cards.append(_fallback_card(len(cards) + 1, entry))
     return cards
 
 

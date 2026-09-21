@@ -33,6 +33,7 @@ def main():
     logger.info("Starting Daily News Briefing System")
     logger.info("=" * 60)
     
+    telegram_failed = False
     try:
         # 1. 뉴스 수집
         logger.info("Step 1: Collecting news from all sources...")
@@ -80,10 +81,18 @@ def main():
             term_images = generate_terms_cards(terms_today, date_str, tempfile.gettempdir())
 
             notifier = TelegramNotifier(bot_token, chat_id, base_url)
-            notifier.send_briefing_sync(page_urls, top10_by_region, date_str, images,
-                                         archive_rel=archive_file,
-                                         term_images=term_images,
-                                         terms_rel=terms_file if terms_today else '')
+            try:
+                notifier.send_briefing_sync(page_urls, top10_by_region, date_str, images,
+                                             archive_rel=archive_file,
+                                             term_images=term_images,
+                                             terms_rel=terms_file if terms_today else '')
+                _mark_delivered(date_str)
+            except Exception as e:
+                # 전송이 실패해도 사이트는 이미 만들어졌다 — 여기서 죽으면 커밋·배포까지
+                # 막혀 사이트도 안 올라간다. 배포는 진행하게 두고 종료 코드로 알린다.
+                # 실행 스크립트가 전송 완료 표시가 없는 것을 보고 만회 실행 때 다시 보낸다.
+                logger.error(f"Telegram 전송 실패 — 사이트 배포는 계속, 만회 실행에서 재전송: {e}")
+                telegram_failed = True
 
         # 4. 3개월 지난 자료 압축 롤오버 (실패해도 전체 실행은 성공으로 취급)
         try:
@@ -95,6 +104,10 @@ def main():
 
         _report_llm_status(logger)
 
+        if telegram_failed:
+            # 3 = 사이트는 만들었지만 전송 실패. 실행 스크립트는 배포까지 하고 만회 실행을 남긴다.
+            sys.exit(EXIT_SITE_ONLY)
+
         logger.info("=" * 60)
         logger.info("Daily News Briefing System completed successfully!")
         logger.info("=" * 60)
@@ -102,6 +115,27 @@ def main():
     except Exception as e:
         logger.error(f"Error in main execution: {e}", exc_info=True)
         sys.exit(1)
+
+
+# 사이트는 만들었는데 텔레그램 전송만 실패한 경우의 종료 코드 (scripts/run_daily_briefing.sh와 맞춘다)
+EXIT_SITE_ONLY = 3
+
+
+def _mark_delivered(date_str: str) -> None:
+    """
+    텔레그램 전송까지 끝났다는 표시. 실행 스크립트가 이 파일을 보고 같은 날 만회 실행
+    (재부팅 후·05:45·07:30 재확인)을 건너뛴다 — 두 번 보내지 않기 위한 장치다.
+    경로는 실행 스크립트가 BRIEFING_SENT_MARKER로 넘긴다(없으면 아무것도 안 한다).
+    """
+    marker = os.getenv('BRIEFING_SENT_MARKER')
+    if not marker:
+        return
+    try:
+        os.makedirs(os.path.dirname(marker), exist_ok=True)
+        with open(marker, 'w', encoding='utf-8') as f:
+            f.write(f"{date_str} {datetime.now(KST).isoformat()}\n")
+    except OSError as e:
+        setup_logger().warning(f"전송 완료 표시를 남기지 못함: {e}")
 
 
 def _record_fallback_rate(buckets) -> None:

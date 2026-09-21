@@ -11,7 +11,7 @@ import os
 import re
 import threading
 import time
-from typing import Optional, Union
+from typing import List, Optional, Tuple, Union
 
 import requests
 
@@ -21,6 +21,126 @@ logger = setup_logger()
 
 NVIDIA_API_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 NVIDIA_MODEL = "google/gemma-4-31b-it"  # NVIDIA NIM 카탈로그에서 모델 폐기/변경 시 갱신 필요
+
+# ── 클라우드 모델 사다리 ──────────────────────────────────────────────────
+# 2026-09-18부터 나흘 연속 번역·시사용어가 무너졌다. 키도 계정도 멀쩡했고, gemma-4-31b-it
+# 한 모델만 NVIDIA 쪽 대기열이 길어져 응답 헤더조차 300초 가까이 안 왔다(9/21 실측:
+# 한 건은 299초 만에 성공, 한 건은 300초에 타임아웃). 우리 타임아웃은 180초 × 3회라
+# 청크마다 9분씩 허공에 쓰고 전부 로컬로 넘겼다. 같은 계정의 다른 모델은 그 시각에도
+# 정상이었다 — 모델 하나에 목을 매지 않고 사다리를 둔다.
+#
+# 9/21 같은 프롬프트(실제 요약 청크)로 잰 후보 (국내 8건 / 해외 3건+상세):
+#   gemma-4-31b-it            품질 최상 · 대기열 때문에 300초 안팎
+#   deepseek-v4-flash-0731    품질 gemma급(고유명사·수치 정확) · 107초 / 182초
+#   nemotron-3-ultra-550b     51초 / 63초 · 해외 기사에서 '메르츠'를 '메르켈'로 바꿈 → 최후 수단
+#   nemotron-3-super-120b     19초 · 한글 사이에 외국어 단어가 섞이고 해외 JSON이 깨짐 → 제외
+#   mistral-nemotron          HTTP 500 · glm-5.3 / kimi-k3 응답 없음 → 제외
+# LLM_CLOUD_MODELS / LLM_LAST_RESORT_MODELS(쉼표 구분)로 바꿀 수 있다. 빈 값이면 끈다.
+_DEFAULT_CLOUD_FALLBACKS = ["deepseek-ai/deepseek-v4-flash-0731"]
+_DEFAULT_LAST_RESORT = ["nvidia/nemotron-3-ultra-550b-a55b"]
+
+# 응답 대기(읽기) 상한. gemma는 붐비면 대기열에서 헤더 없이 서 있다가 차례가 오면
+# 금방 끝낸다 — 평소 청크는 90초 안팎이다. 240초를 넘기면 그날은 대기열이 막힌 것으로
+# 보고 다음 모델로 넘긴다. deepseek은 생성 자체가 길어(해외+상세 182초) 넉넉히 준다.
+_MODEL_READ_TIMEOUT = {NVIDIA_MODEL: 240}
+_DEFAULT_READ_TIMEOUT = 300
+_CONNECT_TIMEOUT = 10
+
+
+def _model_list(env_name: str, default: List[str]) -> List[str]:
+    raw = os.getenv(env_name)
+    if raw is None:
+        return list(default)
+    return [m.strip() for m in raw.split(",") if m.strip()]
+
+
+def cloud_models() -> List[str]:
+    """주력 사다리: 앞에서부터 쓰고, 막힌 모델은 건너뛴다. 맨 앞은 항상 NVIDIA_MODEL."""
+    rest = [m for m in _model_list("LLM_CLOUD_MODELS", _DEFAULT_CLOUD_FALLBACKS) if m != NVIDIA_MODEL]
+    return [NVIDIA_MODEL] + rest
+
+
+def last_resort_models() -> List[str]:
+    """로컬까지 실패했을 때만 부르는 모델. 품질이 한 단계 낮아 앞에 두지 않는다."""
+    return _model_list("LLM_LAST_RESORT_MODELS", _DEFAULT_LAST_RESORT)
+
+
+class _ModelHealth:
+    """
+    모델별 회로 차단기. 한 모델이 연달아 실패하면 한동안 그 모델을 건너뛴다.
+
+    없으면 막힌 모델에 동시 호출 16개가 계속 줄을 서서 각자 타임아웃까지 기다린다
+    (9/18: 청크마다 180초 × 3회). 차단 중에도 COOLDOWN이 지나면 호출 하나만 시험 삼아
+    보내고(half-open), 그게 성공하면 다시 연다 — 대기열이 풀리면 좋은 모델로 돌아온다.
+    """
+    FAIL_THRESHOLD = 3
+    COOLDOWN = 600
+
+    def __init__(self, clock=time.monotonic):
+        self._clock = clock
+        self._lock = threading.Lock()
+        self._state = {}
+
+    def _get(self, model):
+        return self._state.setdefault(model, {"streak": 0, "open_until": 0.0, "trial": False,
+                                              "ok": 0, "fail": 0, "why": ""})
+
+    def try_acquire(self, model: str) -> bool:
+        with self._lock:
+            st = self._get(model)
+            if not st["open_until"]:
+                return True
+            if st["trial"] or self._clock() < st["open_until"]:
+                return False
+            st["trial"] = True          # 시험 호출 하나만 통과시킨다
+            return True
+
+    def success(self, model: str) -> None:
+        with self._lock:
+            st = self._get(model)
+            reopened = bool(st["open_until"])
+            st.update(streak=0, open_until=0.0, trial=False)
+            st["ok"] += 1
+        if reopened:
+            logger.info(f"[{model}] 시험 호출 성공 — 다시 주력으로 씀")
+
+    def failure(self, model: str, why: str) -> None:
+        with self._lock:
+            st = self._get(model)
+            st["streak"] += 1
+            st["fail"] += 1
+            st["why"] = why
+            if st["trial"]:
+                st["trial"] = False
+                st["open_until"] = self._clock() + self.COOLDOWN
+                logger.warning(f"[{model}] 시험 호출도 실패({why}) — {self.COOLDOWN}초 더 건너뜀")
+            elif not st["open_until"] and st["streak"] >= self.FAIL_THRESHOLD:
+                st["open_until"] = self._clock() + self.COOLDOWN
+                logger.warning(f"[{model}] 연속 {st['streak']}회 실패({why}) — "
+                               f"{self.COOLDOWN}초 동안 다음 모델로 우회")
+
+    def kill(self, model: str, why: str) -> None:
+        """모델이 내려간 경우(404/410) — 이번 실행 내내 쓰지 않는다."""
+        with self._lock:
+            st = self._get(model)
+            st.update(open_until=float("inf"), trial=False, why=why)
+            st["fail"] += 1
+        logger.warning(f"[{model}] 사용 불가({why}) — 이번 실행에서 제외")
+
+    def report(self) -> str:
+        with self._lock:
+            used = [(m, s) for m, s in self._state.items() if s["ok"] or s["fail"]]
+            return " · ".join(f"{m.split('/')[-1]} 성공 {s['ok']}/실패 {s['fail']}" for m, s in used)
+
+
+_health = _ModelHealth()
+
+
+def reset_model_health() -> None:
+    """테스트용 — 앞 테스트가 연 차단기가 뒤 테스트에 새지 않게."""
+    global _health
+    _health = _ModelHealth()
+
 
 # ── 로컬 LLM 폴백 티어 ────────────────────────────────────────────────────
 # 클라우드 호출이 실패한 청크만 로컬 모델이 받아낸다. 예전에는 클라우드가 실패하면
@@ -161,6 +281,22 @@ def _local_budget_exhausted() -> bool:
     return time.monotonic() > _local_deadline
 
 
+def reserve_budget(seconds: int) -> None:
+    """
+    지금부터 최소 seconds초는 클라우드·로컬 모두 부를 수 있게 마감을 늦춘다.
+
+    예산은 실행 전체가 나눠 쓰는 스톱워치라, 기사 요약이 느린 날에는 맨 뒤에 붙은
+    Top10 선정·시사용어 추출이 호출해 보지도 못하고 None을 받았다(9/18~9/21 나흘 연속
+    '시사용어 추출 실패'). 뒤 단계는 호출 몇 건뿐이니 요약이 끝난 뒤 따로 몫을 준다.
+    """
+    now = time.monotonic()
+    for name in ("_deadline", "_local_deadline"):
+        current = globals()[name]
+        if current is None or current - now < seconds:
+            globals()[name] = now + seconds
+    logger.info(f"LLM 예산: 마무리 단계용으로 {seconds}초 확보")
+
+
 def stats_summary() -> str:
     s = LLM_STATS
     if local_llm_enabled():
@@ -178,6 +314,9 @@ def stats_summary() -> str:
         f"시간예산초과 {s['budget']}",
         local_line,
     ]
+    models = _health.report()
+    if models:
+        lines.append(f"모델별: {models}")
     if s["errors"]:
         lines.append("첫 오류: " + s["errors"][0])
     return "\n".join(lines)
@@ -259,56 +398,102 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
              max_tokens: int = 4096, timeout: int = 180, retries: int = 2,
              api_key: Optional[str] = None) -> Optional[str]:
     """
-    LLM 호출 사다리: 클라우드(NVIDIA NIM) → 실패 시 로컬 → 그래도 실패면 None.
+    LLM 호출 사다리:
+      클라우드 주력(gemma → deepseek, 막힌 모델은 건너뜀) → 로컬 → 클라우드 최후 수단 → None
 
     클라우드를 주력으로 두는 이유는 속도다(청크당 87초 대 277초). 로컬은 클라우드가
-    실패한 청크만 받아 같은 품질을 유지시키는 안전망이다 — 예전에는 여기서 곧장
-    규칙기반으로 떨어져 지면에 영문 원문이 그대로 노출됐다.
+    실패한 청크만 받아 같은 품질을 유지시키는 안전망이다. 최후 수단 모델은 빠르지만
+    고유명사를 틀린 사례가 있어 로컬 뒤에 둔다 — 그래도 영문 원문을 그대로 싣는
+    규칙기반보다는 낫다.
 
     호출부는 이 함수가 None을 주면 규칙기반으로 넘어간다(기존과 동일).
     """
     with _stats_lock:
         LLM_STATS["calls"] += 1
 
-    content = _call_cloud_llm(
-        system_prompt, user_prompt, temperature=temperature,
-        max_tokens=max_tokens, timeout=timeout, retries=retries, api_key=api_key,
-    )
+    kwargs = dict(temperature=temperature, max_tokens=max_tokens, timeout=timeout,
+                  retries=retries, api_key=api_key)
+    content, stop = _cloud_chain(system_prompt, user_prompt, cloud_models(), **kwargs)
     if content is not None:
         return content
 
     # 클라우드가 어떤 이유로든(키 없음·429·4xx·타임아웃·예산 초과) 못 만들어냈다
-    return call_local_llm(
+    content = call_local_llm(
         system_prompt, user_prompt, temperature=temperature, max_tokens=max_tokens,
     )
+    if content is not None:
+        return content
+
+    # 429(계정 단위 호출 제한)·키 문제·예산 소진이면 다른 모델을 불러도 똑같다
+    last = last_resort_models()
+    if last and stop is None and not _budget_exhausted():
+        content, _ = _cloud_chain(system_prompt, user_prompt, last, **kwargs)
+        if content is not None:
+            logger.info(f"최후 수단 모델로 건짐 ({','.join(last)})")
+    return content
 
 
-def _call_cloud_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
-                    max_tokens: int = 4096, timeout: int = 180, retries: int = 2,
-                    api_key: Optional[str] = None) -> Optional[str]:
+def _call_cloud_llm(system_prompt: str, user_prompt: str, **kwargs) -> Optional[str]:
+    """주력 사다리만 부른다(로컬·최후 수단 없이). 기존 호출부 호환용."""
+    return _cloud_chain(system_prompt, user_prompt, cloud_models(), **kwargs)[0]
+
+
+def _cloud_chain(system_prompt: str, user_prompt: str, models: List[str], *,
+                 temperature: float = 0.3, max_tokens: int = 4096, timeout: int = 180,
+                 retries: int = 2, api_key: Optional[str] = None
+                 ) -> Tuple[Optional[str], Optional[str]]:
     """
-    NVIDIA NIM chat completions 1회 호출(비스트리밍).
-    429/5xx/네트워크 오류 시 지수 백오프로 재시도. 재시도까지 모두 실패하면
-    예외를 던지지 않고 None을 반환한다 — 호출부가 규칙기반 폴백으로 넘어가도록.
-
-    timeout 기본값 주의: 기사 8건 배치는 한국어 요약 3,500토큰가량을 생성해
-    호출 하나가 90초 안팎 걸린다. 예전 기본값 60초로는 정상 생성 중인 요청이
-    잘려 나가 카테고리가 통째로 규칙기반으로 폴백됐다(실제 발생). 청크 크기를
-    키우면 이 값도 같이 키워야 한다.
+    models를 앞에서부터 한 번씩 불러 처음 성공한 응답을 준다. (본문, 중단 사유)
+    중단 사유가 있으면(예산·키·429) 뒤 단계에서도 클라우드를 더 부르지 않는다.
     """
     if _budget_exhausted():
-        _record("budget", f"LLM 시간 예산 {LLM_TIME_BUDGET_SECONDS}초 초과 — 남은 요약은 규칙기반")
-        return None
+        _record("budget", f"LLM 시간 예산 {LLM_TIME_BUDGET_SECONDS}초 초과 — 남은 요약은 로컬/규칙기반")
+        return None, "budget"
 
     api_key = api_key or os.getenv("NVIDIA_API_KEY")
     if not api_key:
         logger.warning("NVIDIA_API_KEY not set — skipping LLM call")
         _record("no_key", "NVIDIA_API_KEY 환경변수가 비어 있음")
-        return None
+        return None, "no_key"
 
+    tried = False
+    for model in models:
+        if not _health.try_acquire(model):
+            continue
+        if tried and _budget_exhausted():
+            _record("budget", f"LLM 시간 예산 {LLM_TIME_BUDGET_SECONDS}초 초과 — 남은 요약은 로컬/규칙기반")
+            return None, "budget"
+        tried = True
+        outcome, content = _call_model(model, system_prompt, user_prompt, api_key,
+                                       temperature=temperature, max_tokens=max_tokens,
+                                       timeout=timeout, retries=retries)
+        if outcome == "ok":
+            return content, None
+        if outcome in ("rate_limited", "bad_key"):
+            return None, outcome
+        # "fail" — 다음 모델로
+
+    if not tried:
+        _record("circuit_open", "클라우드 모델이 전부 차단 중 — 로컬로 넘김")
+    return None, None
+
+
+def _call_model(model: str, system_prompt: str, user_prompt: str, api_key: str, *,
+                temperature: float, max_tokens: int, timeout: int, retries: int
+                ) -> Tuple[str, Optional[str]]:
+    """
+    모델 하나를 비스트리밍으로 1회 호출. ("ok"|"fail"|"rate_limited"|"bad_key", 본문)
+
+    같은 모델 재시도는 429일 때만 한다. 타임아웃·5xx에 같은 모델을 다시 부르면
+    막힌 대기열에 또 줄을 서는 것뿐이라(9/18: 180초 × 3회) 곧장 다음 모델로 넘긴다.
+
+    timeout 기본값 주의: 기사 8건 배치는 한국어 요약 3,500토큰가량을 생성해
+    호출 하나가 90초 안팎 걸린다. 모델별 읽기 상한(_MODEL_READ_TIMEOUT)과 호출부가
+    준 timeout 중 큰 값을 쓴다.
+    """
     headers = {"Authorization": f"Bearer {api_key}"}
     payload = {
-        "model": NVIDIA_MODEL,
+        "model": model,
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -320,43 +505,65 @@ def _call_cloud_llm(system_prompt: str, user_prompt: str, *, temperature: float 
         # 추론 텍스트가 붙어 엄격한 JSON 파싱이 깨질 수 있어 명시적으로 끈다.
         "chat_template_kwargs": {"enable_thinking": False},
     }
+    read_timeout = max(timeout, _MODEL_READ_TIMEOUT.get(model, _DEFAULT_READ_TIMEOUT))
+    short = model.split("/")[-1]
 
     for attempt in range(retries + 1):
         try:
             # 세마포어는 POST 구간만 잡는다 — 백오프 sleep 동안 붙잡고 있으면
             # 다른 스레드가 빈 슬롯을 못 쓴다
             with _slot:
-                resp = requests.post(NVIDIA_API_URL, headers=headers, json=payload, timeout=timeout)
-            if resp.status_code == 429:
-                # 병렬 호출 중이라 rate limit이 실제로 걸린다. 1~2초 후 재시도하면
-                # 대개 또 걸리므로 서버가 알려주는 Retry-After를 우선 따른다.
-                if attempt >= retries:
-                    logger.warning("LLM rate limited (429) — out of retries")
-                    _record("http_error", "HTTP 429: rate limited (재시도 소진)")
-                    return None
-                wait = _retry_after_seconds(resp) or _RATE_LIMIT_BACKOFF[attempt]
-                logger.warning(f"LLM rate limited (429) — waiting {wait}s")
-                time.sleep(wait)
-                continue
-            if resp.status_code >= 500:
-                raise requests.HTTPError(f"retryable status {resp.status_code}")
-            if not resp.ok:
-                # 4xx는 재시도해도 안 바뀌므로 응답 본문을 로그로 남기고 바로 포기
-                logger.warning(f"LLM call rejected ({resp.status_code}): {resp.text[:500]}")
-                _record("http_error", f"HTTP {resp.status_code}: {resp.text[:200]}")
-                return None
-            data = resp.json()
-            content = data["choices"][0]["message"]["content"]
-            _record("ok")
-            return content
+                resp = requests.post(NVIDIA_API_URL, headers=headers, json=payload,
+                                     timeout=(_CONNECT_TIMEOUT, read_timeout))
         except Exception as e:
-            logger.warning(f"LLM call failed (attempt {attempt + 1}/{retries + 1}): {e}")
-            if attempt < retries:
-                time.sleep(2 ** attempt)
-            else:
-                _record("network_error", f"{type(e).__name__}: {str(e)[:200]}")
+            logger.warning(f"[{short}] LLM call failed: {type(e).__name__}: {str(e)[:200]}")
+            _record("network_error", f"{short} {type(e).__name__}: {str(e)[:200]}")
+            _health.failure(model, type(e).__name__)
+            return "fail", None
 
-    return None
+        if resp.status_code == 429:
+            # 병렬 호출 중이라 rate limit이 실제로 걸린다. 1~2초 후 재시도하면
+            # 대개 또 걸리므로 서버가 알려주는 Retry-After를 우선 따른다.
+            if attempt >= retries:
+                logger.warning("LLM rate limited (429) — out of retries")
+                _record("http_error", "HTTP 429: rate limited (재시도 소진)")
+                return "rate_limited", None
+            wait = _retry_after_seconds(resp) or _RATE_LIMIT_BACKOFF[min(attempt, len(_RATE_LIMIT_BACKOFF) - 1)]
+            logger.warning(f"LLM rate limited (429) — waiting {wait}s")
+            time.sleep(wait)
+            continue
+        if resp.status_code in (401, 403):
+            logger.warning(f"[{short}] 키 인증 거절({resp.status_code})")
+            _record("http_error", f"HTTP {resp.status_code}: {resp.text[:200]}")
+            return "bad_key", None
+        if resp.status_code in (404, 410):
+            _record("http_error", f"{short} HTTP {resp.status_code}: {resp.text[:200]}")
+            _health.kill(model, f"HTTP {resp.status_code}")
+            return "fail", None
+        if not resp.ok:
+            # 5xx·400·422 — 이 모델로는 이 요청을 못 받는다. 다음 모델로
+            logger.warning(f"[{short}] LLM call rejected ({resp.status_code}): {resp.text[:300]}")
+            _record("http_error", f"{short} HTTP {resp.status_code}: {resp.text[:200]}")
+            _health.failure(model, f"HTTP {resp.status_code}")
+            return "fail", None
+
+        try:
+            content = resp.json()["choices"][0]["message"].get("content")
+        except (KeyError, IndexError, ValueError, TypeError, AttributeError) as e:
+            _record("http_error", f"{short} 응답 형식 이상: {type(e).__name__}")
+            _health.failure(model, "응답 형식 이상")
+            return "fail", None
+        if not content:
+            # thinking이 안 꺼지는 모델은 추론만 채우고 본문을 비운 채 끝난다
+            _record("http_error", f"{short} 응답 content가 비어 있음")
+            _health.failure(model, "빈 응답")
+            return "fail", None
+
+        _record("ok")
+        _health.success(model)
+        return "ok", content
+
+    return "fail", None
 
 
 def _retry_after_seconds(resp) -> Optional[int]:
@@ -404,12 +611,16 @@ def probe_key(api_key: Optional[str], label: str) -> bool:
             timeout=PROBE_TIMEOUT,
         )
     except Exception as e:
-        # 판단 불가 — 키를 버리지 않고 그대로 쓴다
+        # 판단 불가 — 키를 버리지 않고 그대로 쓴다. 다만 모델 대기열이 막혔다는 신호라
+        # 차단기에 알린다: 점검 8건이 전부 이렇게 끝나면 본 요약은 처음부터 다음 모델로
+        # 가서, 막힌 대기열에 16건이 줄을 서 240초씩 버리지 않는다(10분 뒤 시험 호출로 복귀).
         KEY_STATUS[label] = f"확인 불가({type(e).__name__}) — 그대로 사용"
+        _health.failure(NVIDIA_MODEL, f"키 점검 {type(e).__name__}")
         return True
 
     if resp.ok:
         KEY_STATUS[label] = "정상"
+        _health.success(NVIDIA_MODEL)
         return True
     if resp.status_code in _FATAL_KEY_STATUSES:
         KEY_STATUS[label] = f"사용 불가 HTTP {resp.status_code}: {resp.text[:100]}"

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.allenst486de.newsbriefing.daily</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Users/garonjena/bin/news_briefing_launch.sh</string>
+	</array>
+	<!-- 03:30 본 실행. 05:45·07:30은 재확인 — 오늘 이미 보냈으면 즉시 끝나고,
+	     못 보냈으면(앞 실행 실패) 그때 만든다. RunAtLoad는 재부팅·로그인 직후 만회용.
+	     설치: cp 이 파일 ~/Library/LaunchAgents/ 후 launchctl bootout/bootstrap -->
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Hour</key>
+			<integer>3</integer>
+			<key>Minute</key>
+			<integer>30</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>5</integer>
+			<key>Minute</key>
+			<integer>45</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>7</integer>
+			<key>Minute</key>
+			<integer>30</integer>
+		</dict>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/garonjena/Library/Logs/news-briefing/launchd.err.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/garonjena/Library/Logs/news-briefing/launchd.out.log</string>
+</dict>
+</plist>

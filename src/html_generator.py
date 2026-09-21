@@ -18,12 +18,17 @@ from .utils.indicators import get_market_indicators, write_indicators_json
 from .utils.pagekey import load_or_create_salt, obfuscate
 from .utils import stock_data
 from .utils import terms_store
+from .utils import llm_client
 from . import summarizer
 from . import terms_extractor
 
 PREVIEW_COUNT = 5
 AI_PREVIEW_COUNT = 3
 FEED_ITEMS_PER_CATEGORY = 3
+# 마무리 단계(종목 설명·Top10 2회·시사용어) 전용 LLM 시간. 호출 4~5건이 모델 사다리를
+# 한 번씩 다 타도 들어가는 값이다.
+FINAL_PHASE_LLM_SECONDS = 1200
+TERMS_LLM_SECONDS = 600
 KST = timezone(timedelta(hours=9))
 _WEEKDAYS_KO = ['월', '화', '수', '목', '금', '토', '일']
 
@@ -120,6 +125,9 @@ class HTMLGenerator:
         # site.js의 fetch가 404로 실패하지 않는다
         write_indicators_json(indicators, os.path.join(self.output_dir, 'indicators.json'))
         stock_picks = {"domestic": stock_data.get_domestic_picks(), "overseas": stock_data.get_overseas_picks()}
+        # 여기서부터는 호출이 몇 건뿐인 마무리 단계(종목 설명·Top10·시사용어)다.
+        # 기사 요약이 예산을 다 쓴 날에도 이 단계는 반드시 한 번은 불러 보게 몫을 따로 준다.
+        llm_client.reserve_budget(FINAL_PHASE_LLM_SECONDS)
         summarizer.generate_stock_reasons(stock_picks)
 
         # 해외 기사 상세 요약 페이지를 먼저 만들어야 목록에서 링크를 걸 수 있다
@@ -152,6 +160,8 @@ class HTMLGenerator:
 
         # 시사용어 — 오늘 기사에서 뽑아 연 단위 저장소에 쌓는다. 추출이 실패해도
         # 그날 브리핑은 그대로 나간다(빈 목록이면 탭 자체가 안 생긴다).
+        # 맨 마지막 호출이라 앞의 Top10이 마무리 몫을 다 써도 시사용어 몫은 남게 한 번 더 확보한다.
+        llm_client.reserve_budget(TERMS_LLM_SECONDS)
         terms_today = self._collect_terms(buckets, date_str, date_path, salt)
 
         # 아카이브는 홈 푸터에서 링크한다. 파일명 자체는 계속 난수화되어 있어
@@ -192,8 +202,17 @@ class HTMLGenerator:
         """오늘의 시사용어를 뽑아 저장소에 쌓고, 오늘치를 화면용으로 돌려준다."""
         terms_dir = self._terms_dir()
         try:
-            known = [t.get('term', '') for t in
-                     terms_store.load_year(terms_dir, datetime.now(KST).year)]
+            year_terms = terms_store.load_year(terms_dir, datetime.now(KST).year)
+            # 같은 날 두 번째 실행(첫 실행이 전송 전에 실패해 만회 실행이 도는 경우)에서
+            # 또 뽑으면 이미 쌓인 용어를 피해 새 용어를 더 뽑아 오늘치가 두 배가 된다.
+            # 오늘치가 이미 있으면 그대로 쓴다. 상세 페이지 경로는 링크로 정해져 같다.
+            extracted = [dict(t) for t in year_terms if t.get('date') == date_str]
+            if extracted:
+                self.logger.info(f"시사용어: 오늘 이미 뽑은 {len(extracted)}건을 그대로 사용")
+                for term in extracted:
+                    term['detail_path'] = self._make_path(f"/{term['detail_rel']}") if term.get('detail_rel') else ''
+                return extracted
+            known = [t.get('term', '') for t in year_terms]
             extracted = terms_extractor.extract_terms(
                 buckets, known_terms=known,
                 api_key=summarizer.category_api_key('society'),
