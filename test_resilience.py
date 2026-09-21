@@ -22,7 +22,8 @@ from src import summarizer
 from src.collectors.base_collector import NewsArticle
 
 GEMMA = llm_client.NVIDIA_MODEL
-BACKUP = "deepseek-ai/deepseek-v4-flash-0731"
+BACKUP = "meta/muse-glimmer-30b"
+BACKUP2 = "deepseek-ai/deepseek-v4-flash-0731"
 LAST = "nvidia/nemotron-3-ultra-550b-a55b"
 
 
@@ -127,16 +128,35 @@ def test_gone_model_is_dropped_for_the_run():
         assert GEMMA not in h.calls, "내려간(410) 모델을 계속 불렀다"
 
 
-def test_last_resort_runs_only_after_local_fails():
+def test_ladder_order_is_faithful_first_then_local():
+    """gemma → muse-glimmer → deepseek → 로컬. 최후 수단 모델은 기본으로 없다."""
     timeout = requests.exceptions.ReadTimeout("read timed out")
-    with Harness({GEMMA: timeout, BACKUP: timeout, LAST: Resp(200, "최후")}, local=None) as h:
-        assert llm_client.call_llm("s", "u") == "최후"
-        assert h.calls == [GEMMA, BACKUP, LAST], f"순서가 틀림: {h.calls}"
-        assert h.local_calls == 1, "최후 수단보다 로컬을 먼저 불러야 한다"
+    with Harness({GEMMA: timeout, BACKUP: timeout, BACKUP2: Resp(200, "딥시크")}) as h:
+        assert llm_client.call_llm("s", "u") == "딥시크"
+        assert h.calls == [GEMMA, BACKUP, BACKUP2], f"순서가 틀림: {h.calls}"
+        assert h.local_calls == 0
 
-    with Harness({GEMMA: timeout, BACKUP: timeout}, local="로컬") as h:
-        assert llm_client.call_llm("s", "u") == "로컬"
-        assert LAST not in h.calls, "로컬이 건졌는데 최후 수단까지 불렀다"
+    with Harness({GEMMA: timeout, BACKUP: timeout, BACKUP2: timeout}, local=None) as h:
+        assert llm_client.call_llm("s", "u") is None
+        assert h.calls == [GEMMA, BACKUP, BACKUP2], f"기본값인데 최후 수단 모델을 불렀다: {h.calls}"
+        assert h.local_calls == 1, "클라우드가 모두 실패하면 로컬을 불러야 한다"
+
+
+def test_last_resort_runs_only_after_local_fails_when_enabled():
+    timeout = requests.exceptions.ReadTimeout("read timed out")
+    os.environ["LLM_LAST_RESORT_MODELS"] = LAST
+    try:
+        with Harness({GEMMA: timeout, BACKUP: timeout, BACKUP2: timeout,
+                      LAST: Resp(200, "최후")}, local=None) as h:
+            assert llm_client.call_llm("s", "u") == "최후"
+            assert h.calls == [GEMMA, BACKUP, BACKUP2, LAST], f"순서가 틀림: {h.calls}"
+            assert h.local_calls == 1, "최후 수단보다 로컬을 먼저 불러야 한다"
+
+        with Harness({GEMMA: timeout, BACKUP: timeout, BACKUP2: timeout}, local="로컬") as h:
+            assert llm_client.call_llm("s", "u") == "로컬"
+            assert LAST not in h.calls, "로컬이 건졌는데 최후 수단까지 불렀다"
+    finally:
+        os.environ.pop("LLM_LAST_RESORT_MODELS", None)
 
 
 def test_probe_timeouts_open_breaker_before_summaries_start():

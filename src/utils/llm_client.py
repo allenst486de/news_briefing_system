@@ -24,25 +24,32 @@ NVIDIA_MODEL = "google/gemma-4-31b-it"  # NVIDIA NIM 카탈로그에서 모델 �
 
 # ── 클라우드 모델 사다리 ──────────────────────────────────────────────────
 # 2026-09-18부터 나흘 연속 번역·시사용어가 무너졌다. 키도 계정도 멀쩡했고, gemma-4-31b-it
-# 한 모델만 NVIDIA 쪽 대기열이 길어져 응답 헤더조차 300초 가까이 안 왔다(9/21 실측:
-# 한 건은 299초 만에 성공, 한 건은 300초에 타임아웃). 우리 타임아웃은 180초 × 3회라
-# 청크마다 9분씩 허공에 쓰고 전부 로컬로 넘겼다. 같은 계정의 다른 모델은 그 시각에도
-# 정상이었다 — 모델 하나에 목을 매지 않고 사다리를 둔다.
+# 한 모델만 NVIDIA 무료 서버의 대기열이 밀렸다. 9/21 실측: "hi" 한 줄도 대기열에서
+# 239~300초를 기다렸고 생성은 1~2초, 기사 8건 청크는 대기 122초 + 생성 64초.
+# 대기가 300초를 넘으면 NVIDIA 게이트웨이가 504로 끊는다. 밀림은 들쭉날쭉해서 한 시간
+# 뒤에는 27~43초로 정상이었다. 우리 타임아웃은 180초 × 3회라 막힌 날엔 청크마다 9분씩
+# 허공에 쓰고 전부 로컬로 넘겼다 — 모델 하나에 목을 매지 않고 사다리를 둔다.
 #
-# 9/21 같은 프롬프트(실제 요약 청크)로 잰 후보 (국내 8건 / 해외 3건+상세):
-#   gemma-4-31b-it            품질 최상 · 대기열 때문에 300초 안팎
-#   deepseek-v4-flash-0731    품질 gemma급(고유명사·수치 정확) · 107초 / 182초
-#   nemotron-3-ultra-550b     51초 / 63초 · 해외 기사에서 '메르츠'를 '메르켈'로 바꿈 → 최후 수단
-#   nemotron-3-super-120b     19초 · 한글 사이에 외국어 단어가 섞이고 해외 JSON이 깨짐 → 제외
-#   mistral-nemotron          HTTP 500 · glm-5.3 / kimi-k3 응답 없음 → 제외
+# 9/21 같은 프롬프트(실제 요약 청크, 기사 17건)로 비교한 후보:
+#   gemma-4-31b-it          기준. 원문에 없는 내용을 덧붙이지 않음 · 번역 정확
+#   muse-glimmer-30b        gemma와 가장 비슷 — 원문 밖 내용을 거의 안 붙임 · 9~55초.
+#                           대신 영어 이름·단어를 번역 안 하고 남기거나 오역이 가끔 있음
+#                           ('아이티 대통령'을 요약 한 곳에서 '자메이카'로)
+#   deepseek-v4-flash-0731  문장은 매끄럽지만 원문에 없는 배경·반응을 지어 붙임 · 76~119초
+#   nemotron-3-ultra-550b   가장 매끄럽지만 지어 붙이는 게 가장 많음('메르츠'→'메르켈',
+#                           '시민 의견이 엇갈렸다' 창작) → 쓰지 않음
+#   gemma-3 12b/4b 등 다른 gemma는 NVIDIA에서 내려감(404)
+# 뉴스 요약은 '원문에 없는 내용 금지'가 우선이라 충실한 순서로 둔다:
+#   gemma → muse-glimmer → deepseek → (로컬 gemma-qat) → 규칙기반
 # LLM_CLOUD_MODELS / LLM_LAST_RESORT_MODELS(쉼표 구분)로 바꿀 수 있다. 빈 값이면 끈다.
-_DEFAULT_CLOUD_FALLBACKS = ["deepseek-ai/deepseek-v4-flash-0731"]
-_DEFAULT_LAST_RESORT = ["nvidia/nemotron-3-ultra-550b-a55b"]
+_DEFAULT_CLOUD_FALLBACKS = ["meta/muse-glimmer-30b", "deepseek-ai/deepseek-v4-flash-0731"]
+_DEFAULT_LAST_RESORT = []
 
 # 응답 대기(읽기) 상한. gemma는 붐비면 대기열에서 헤더 없이 서 있다가 차례가 오면
-# 금방 끝낸다 — 평소 청크는 90초 안팎이다. 240초를 넘기면 그날은 대기열이 막힌 것으로
-# 보고 다음 모델로 넘긴다. deepseek은 생성 자체가 길어(해외+상세 182초) 넉넉히 준다.
-_MODEL_READ_TIMEOUT = {NVIDIA_MODEL: 240}
+# 금방 끝낸다. 대기열이 밀린 날에도 239~300초 사이에 응답이 오는 경우가 있었고,
+# 300초를 넘기면 어차피 NVIDIA가 504로 끊으므로 그 직후까지 기다린다.
+# 대체 모델은 생성 자체가 길 수 있어(deepseek 해외+상세 182초) 넉넉히 준다.
+_MODEL_READ_TIMEOUT = {NVIDIA_MODEL: 310}
 _DEFAULT_READ_TIMEOUT = 300
 _CONNECT_TIMEOUT = 10
 
@@ -61,7 +68,7 @@ def cloud_models() -> List[str]:
 
 
 def last_resort_models() -> List[str]:
-    """로컬까지 실패했을 때만 부르는 모델. 품질이 한 단계 낮아 앞에 두지 않는다."""
+    """로컬까지 실패했을 때만 부르는 모델. 기본은 없음(지어 붙이는 모델을 쓰느니 원문을 싣는다)."""
     return _model_list("LLM_LAST_RESORT_MODELS", _DEFAULT_LAST_RESORT)
 
 
@@ -399,12 +406,11 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
              api_key: Optional[str] = None) -> Optional[str]:
     """
     LLM 호출 사다리:
-      클라우드 주력(gemma → deepseek, 막힌 모델은 건너뜀) → 로컬 → 클라우드 최후 수단 → None
+      클라우드(gemma → muse-glimmer → deepseek, 막힌 모델은 건너뜀) → 로컬
+      → 최후 수단 모델(기본 없음, 환경변수로만 켬) → None
 
     클라우드를 주력으로 두는 이유는 속도다(청크당 87초 대 277초). 로컬은 클라우드가
-    실패한 청크만 받아 같은 품질을 유지시키는 안전망이다. 최후 수단 모델은 빠르지만
-    고유명사를 틀린 사례가 있어 로컬 뒤에 둔다 — 그래도 영문 원문을 그대로 싣는
-    규칙기반보다는 낫다.
+    모두 실패한 청크만 받아 같은 품질(gemma)을 유지시키는 안전망이다.
 
     호출부는 이 함수가 None을 주면 규칙기반으로 넘어간다(기존과 동일).
     """
