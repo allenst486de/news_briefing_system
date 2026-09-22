@@ -1,0 +1,123 @@
+{
+  "date": "2026-09-23",
+  "terms": [
+    {
+      "term": "LNG",
+      "reading": "",
+      "meaning": "천연가스를 극저온으로 냉각해 액체 상태로 만든 것을 말한다. 부피가 크게 줄어 해상 운송과 저장이 쉬워 에너지 자원으로 널리 쓰인다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "액화천연가스",
+      "url": "https://ko.wikipedia.org/wiki/액화천연가스",
+      "date": "2026-09-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "APEC",
+      "reading": "",
+      "meaning": "아시아 태평양 경제협력체의 줄임말로, 태평양 연안 국가들이 무역·투자 자유화 등 경제 협력을 논의하는 정부 간 협의체를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "아시아 태평양 경제협력체",
+      "url": "https://ko.wikipedia.org/wiki/아시아_태평양_경제협력체",
+      "date": "2026-09-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "차고스 제도",
+      "reading": "",
+      "meaning": "인도양 중부에 있는 군도를 말한다. 영국령 인도양 지역에 속하며 그중 디에고가르시아 석에는 미국의 군사 기지가 자리한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "차고스 제도",
+      "url": "https://ko.wikipedia.org/wiki/차고스_제도",
+      "date": "2026-09-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "오바마케어",
+      "reading": "",
+      "meaning": "미국의 의료보험 개혁법인 환자보호 및 부담적정보험법을 이르는 말로, 국민이 의료보험에 가입하도록 의무화한 제도다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "환자보호 및 부담적정보험법",
+      "url": "https://ko.wikipedia.org/wiki/환자보호_및_부담적정보험법",
+      "date": "2026-09-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "공중급유",
+      "reading": "",
+      "meaning": "비행 중인 항공기가 공중급유기에서 연료를 공급받는 기술을 말한다. 군용기의 항속 거리와 체공 시간을 늘리는 데 쓰인다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "공중 급유",
+      "url": "https://ko.wikipedia.org/wiki/공중_급유",
+      "date": "2026-09-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "OECD",
+      "reading": "",
+      "meaning": "경제협력개발기구의 영어 약자로, 여러 나라가 경제 발전과 상호 협력을 논의하기 위해 만든 국제기구를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "경제협력개발기구",
+      "url": "https://ko.wikipedia.org/wiki/경제협력개발기구",
+      "date": "2026-09-23",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "부신피질암",
+      "reading": "",
+      "meaning": "신장 위에 자리한 부신의 겉부분인 피질 세포에서 발생하는 드문 악성 종양을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "부신피질암",
+      "url": "https://ko.wikipedia.org/wiki/부신피질암",
+      "date": "2026-09-23",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "유엔본부",
+      "reading": "",
+      "meaning": "국제 평화와 협력을 담당하는 기구인 유엔의 중앙 사무소로, 미국 뉴욕에 자리한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "유엔 본부",
+      "url": "https://ko.wikipedia.org/wiki/유엔_본부",
+      "date": "2026-09-23",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "벤조피렌",
+      "reading": "",
+      "meaning": "유기물이 탈 때 생기는 발암 물질로, 탄소 고리 여럿이 이어진 다환 방향족 화합물을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "벤조피렌",
+      "url": "https://ko.wikipedia.org/wiki/벤조피렌",
+      "date": "2026-09-23",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-23T03:51:20+09:00",
+      "added": 9,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
