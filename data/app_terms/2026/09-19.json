@@ -1,0 +1,110 @@
+{
+  "date": "2026-09-19",
+  "terms": [
+    {
+      "term": "가격 담합",
+      "reading": "",
+      "meaning": "기업들이 서로 짜고 상품의 가격을 일정 수준으로 유지하거나 조정하여 경쟁을 제한하는 행위를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "가격 협정",
+      "url": "https://ko.wikipedia.org/wiki/가격_협정",
+      "date": "2026-09-19",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "기초과학",
+      "reading": "",
+      "meaning": "자연 현상의 근본 원리를 탐구하며, 응용 과학의 토대가 되는 물리학, 화학, 생물학 등의 학문을 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "기초과학",
+      "url": "https://ko.wikipedia.org/wiki/기초과학",
+      "date": "2026-09-19",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "특별감찰관",
+      "reading": "",
+      "meaning": "특정 고위 공직자의 비위 사실을 독립적으로 조사하고 감찰하기 위해 임명되는 직책을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "특별감찰관",
+      "url": "https://ko.wikipedia.org/wiki/특별감찰관",
+      "date": "2026-09-19",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "호르무즈 해협",
+      "reading": "",
+      "meaning": "페르시아만과 오만만을 잇는 좁은 해로로, 전 세계 원유 수송의 핵심 경로가 되는 전략적 요충지이다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "호르무즈 해협",
+      "url": "https://ko.wikipedia.org/wiki/호르무즈_해협",
+      "date": "2026-09-19",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "SC",
+      "reading": "피하주사",
+      "meaning": "SC는 Subcutaneous의 줄임말로, 약물을 피부 아래의 피하 조직에 직접 주입하는 투여 방식을 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "피하투여",
+      "url": "https://ko.wikipedia.org/wiki/피하투여",
+      "date": "2026-09-19",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Hodge Conjecture",
+      "reading": "호지 추측",
+      "meaning": "복소 대수 다양체에서 호지 사이클이 대수적 사이클과 일치하는지를 다루는 수학의 미해결 난제이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "호지 추측",
+      "url": "https://ko.wikipedia.org/wiki/호지_추측",
+      "date": "2026-09-19",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "매출채권",
+      "reading": "",
+      "meaning": "기업이 상품을 판매하거나 서비스를 제공한 후, 아직 받지 못한 대금에 대한 청구 권리를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "매출채권",
+      "url": "https://ko.wikipedia.org/wiki/매출채권",
+      "date": "2026-09-19",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "네트워크 슬라이싱",
+      "reading": "",
+      "meaning": "물리적인 네트워크 인프라 하나를 가상화 기술을 통해 여러 개의 독립적인 가상 네트워크로 나누어 사용하는 기술이다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "5G 네트워크 슬라이싱",
+      "url": "https://ko.wikipedia.org/wiki/5G_네트워크_슬라이싱",
+      "date": "2026-09-19",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-22T15:38:01+09:00",
+      "added": 8,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}

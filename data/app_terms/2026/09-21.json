@@ -1,0 +1,141 @@
+{
+  "date": "2026-09-21",
+  "terms": [
+    {
+      "term": "보이스피싱",
+      "reading": "",
+      "meaning": "전화를 이용해 금융기관이나 수사기관 등을 사칭해 개인정보를 빼내거나 돈을 편취하는 전화 금융사기를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "보이스 피싱",
+      "url": "https://ko.wikipedia.org/wiki/보이스_피싱",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "홍역",
+      "reading": "",
+      "meaning": "홍역 바이러스가 일으키는 급성 전염병으로, 발열·기침·콧물과 온몸에 발진이 생기는 병을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "홍역",
+      "url": "https://ko.wikipedia.org/wiki/홍역",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "피지컬 AI",
+      "reading": "",
+      "meaning": "로봇 등 실제 공간에서 물리적으로 움직이며 인공지능으로 환경을 인식하고 판단해 행동하는 기술을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "피지컬 AI",
+      "url": "https://ko.wikipedia.org/wiki/피지컬_AI",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "MOU",
+      "reading": "양해각서",
+      "meaning": "영어 머리글자 MOU(양해각서)에서 온 말로, 공식 계약 전에 협력 의사와 방향을 확인하기 위해 당사자 간에 주고받는 문서를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "양해각서",
+      "url": "https://ko.wikipedia.org/wiki/양해각서",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "식도암",
+      "reading": "",
+      "meaning": "식도 점막에 생기는 악성 종양으로, 음식을 삼킬 때 걸리는 느낌이나 통증 등이 나타나는 병을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "식도암",
+      "url": "https://ko.wikipedia.org/wiki/식도암",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "중성미자",
+      "reading": "",
+      "meaning": "전하가 없고 질량이 매우 작은 기본 입자로, 물질과 거의 상호작용하지 않아 관측이 어려운 입자를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "중성미자",
+      "url": "https://ko.wikipedia.org/wiki/중성미자",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "탄도미사일",
+      "reading": "",
+      "meaning": "발사 후 일정 고도까지 추진제로 상승했다가 추진력이 끊긴 뒤 중력에 의해 포물선을 그리며 목표물로 낙하하는 미사일을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "탄도 미사일",
+      "url": "https://ko.wikipedia.org/wiki/탄도_미사일",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "포렌식",
+      "reading": "",
+      "meaning": "범죄 수사를 위해 디지털 기기에 저장된 데이터를 수집, 복구, 분석하여 법적 증거를 확보하는 과학 수사 기법을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "법과학",
+      "url": "https://ko.wikipedia.org/wiki/법과학",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "중력 상수",
+      "reading": "",
+      "meaning": "두 질량 사이의 만유인력을 계산할 때 사용하는 물리 상수로, 질량과 거리의 관계를 정의하는 기본 상수이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "중력 상수",
+      "url": "https://ko.wikipedia.org/wiki/중력_상수",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "SRBM",
+      "reading": "단거리탄도미사일",
+      "meaning": "Short-Range Ballistic Missile의 약자로, 사거리가 짧은 탄도미사일을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "단거리 탄도 미사일",
+      "url": "https://ko.wikipedia.org/wiki/단거리_탄도_미사일",
+      "date": "2026-09-21",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-22T14:19:49+09:00",
+      "added": 6,
+      "via": [
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-09-22T15:54:32+09:00",
+      "added": 4,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}

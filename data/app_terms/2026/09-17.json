@@ -1,0 +1,148 @@
+{
+  "date": "2026-09-17",
+  "terms": [
+    {
+      "term": "헌법불합치",
+      "reading": "",
+      "meaning": "법률이 헌법에 맞지 않지만 곧바로 효력을 잃지 않게 하고, 입법자가 일정 기간 안에 고치도록 유예하는 헌법재판소의 판결 유형을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "헌법불합치",
+      "url": "https://ko.wikipedia.org/wiki/헌법불합치",
+      "date": "2026-09-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Rave",
+      "reading": "레이브",
+      "meaning": "테크노, 하우스 등 전자 음악을 DJ가 틀어주는 대규모 심야 파티나 축제를 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "레이브",
+      "url": "https://ko.wikipedia.org/wiki/레이브",
+      "date": "2026-09-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Foundation Model",
+      "reading": "파운데이션 모델",
+      "meaning": "방대한 데이터를 대규모로 사전학습해 번역, 요약 등 다양한 작업에 응용할 수 있는 범용 인공지능 모델을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "파운데이션 모델",
+      "url": "https://ko.wikipedia.org/wiki/파운데이션_모델",
+      "date": "2026-09-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Tightening",
+      "reading": "긴축",
+      "meaning": "정부 지출을 줄이거나 금리를 올리는 등 재정·통화 정책을 조여 경기 과열과 물가 상승을 억제하는 것을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "긴축",
+      "url": "https://ko.wikipedia.org/wiki/긴축",
+      "date": "2026-09-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Vitiligo",
+      "reading": "백반증",
+      "meaning": "피부의 멜라닌 세포가 파괴되어 피부 일부에 하얀 반점이 나타나는 질환을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "백반증",
+      "url": "https://ko.wikipedia.org/wiki/백반증",
+      "date": "2026-09-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "MCP",
+      "reading": "모델 컨텍스트 프로토콜",
+      "meaning": "Model Context Protocol의 줄임말로, 인공지능 모델이 외부 도구나 데이터와 표준화된 방식으로 연결되어 상호작용하도록 하는 개방형 프로토콜을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "모델 컨텍스트 프로토콜",
+      "url": "https://ko.wikipedia.org/wiki/모델_컨텍스트_프로토콜",
+      "date": "2026-09-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "PUE",
+      "reading": "전력효율",
+      "meaning": "Power Usage Effectiveness의 줄임말로, 데이터 센터 전체 사용 전력 대비 컴퓨팅 장비가 쓰는 전력의 비율로 나타내는 에너지 효율 지표를 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "전성비",
+      "url": "https://ko.wikipedia.org/wiki/전성비",
+      "date": "2026-09-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Anthropomorphising",
+      "reading": "의인화",
+      "meaning": "동물, 사물, 자연 현상 등 사람이 아닌 대상에 인간의 성격이나 감정, 행동을 빌려 표현하는 기법을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "의인화",
+      "url": "https://ko.wikipedia.org/wiki/의인화",
+      "date": "2026-09-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "GLP-1",
+      "reading": "",
+      "meaning": "인슐린 분비를 촉진하고 식욕을 억제하는 호르몬의 일종인 글루카곤 유사 펩타이드-1을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "글루카곤 유사 펩타이드-1",
+      "url": "https://ko.wikipedia.org/wiki/글루카곤_유사_펩타이드-1",
+      "date": "2026-09-17",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "부산국제영화제",
+      "reading": "",
+      "meaning": "부산광역시에서 개최되는 국제적인 영화제로, 아시아 영화의 발굴과 영화 예술의 발전을 목적으로 한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "부산국제영화제",
+      "url": "https://ko.wikipedia.org/wiki/부산국제영화제",
+      "date": "2026-09-17",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-22T13:17:20+09:00",
+      "added": 4,
+      "via": [
+        "news_terms"
+      ]
+    },
+    {
+      "at": "2026-09-22T14:54:06+09:00",
+      "added": 4,
+      "via": [
+        "news_terms"
+      ]
+    },
+    {
+      "at": "2026-09-22T16:21:20+09:00",
+      "added": 2,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}

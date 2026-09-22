@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-15",
+  "terms": [
+    {
+      "term": "자율성",
+      "reading": "",
+      "meaning": "국가가 외부의 간섭 없이 스스로 통치할 수 있는 권리를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "자주권",
+      "url": "https://ko.wikipedia.org/wiki/자주권",
+      "date": "2026-09-15",
+      "via": "news_terms",
+      "model": "nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "term": "통상임금",
+      "reading": "",
+      "meaning": "근로자에게 정기적이고 일률적으로 지급되는 기본급과 정기수당을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "임금 (경제학)",
+      "url": "https://ko.wikipedia.org/wiki/임금_(경제학)",
+      "date": "2026-09-15",
+      "via": "news_terms",
+      "model": "nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "term": "에이전틱 AI",
+      "reading": "",
+      "meaning": "목표를 설정하고 스스로 판단하며 행동하는 인공지능 시스템을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "AI 에이전트",
+      "url": "https://ko.wikipedia.org/wiki/AI_에이전트",
+      "date": "2026-09-15",
+      "via": "news_terms",
+      "model": "nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "term": "파기환송",
+      "reading": "",
+      "meaning": "상급법원이 하급법원의 판결을 파기하고 사건을 다시 심리하도록 환송하는 것을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "파기환송",
+      "url": "https://ko.wikipedia.org/wiki/파기환송",
+      "date": "2026-09-15",
+      "via": "news_terms",
+      "model": "nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "term": "FOMC",
+      "reading": "",
+      "meaning": "미국 연방준비제도 내 공개시장 운영을 담당하는 위원회를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "연방공개시장위원회",
+      "url": "https://ko.wikipedia.org/wiki/연방공개시장위원회",
+      "date": "2026-09-15",
+      "via": "news_terms",
+      "model": "nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "term": "CAPTCHA",
+      "reading": "캡차",
+      "meaning": "사람은 쉽게 풀 수 있지만 자동화된 프로그램은 풀기 어려운 시험을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "CAPTCHA",
+      "url": "https://ko.wikipedia.org/wiki/CAPTCHA",
+      "date": "2026-09-15",
+      "via": "news_terms",
+      "model": "nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "term": "국유화",
+      "reading": "",
+      "meaning": "사유 재산을 국가가 소유하고 관리하도록 하는 조치를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "국유화",
+      "url": "https://ko.wikipedia.org/wiki/국유화",
+      "date": "2026-09-15",
+      "via": "news_terms",
+      "model": "nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "term": "웨스트민스터 체제",
+      "reading": "",
+      "meaning": "영국의 의회 민주주의 체제를 본떠 입법부와 행정부가 통합된 정부 형태를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "웨스트민스터 체제",
+      "url": "https://ko.wikipedia.org/wiki/웨스트민스터_체제",
+      "date": "2026-09-15",
+      "via": "news_terms",
+      "model": "nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "term": "AI",
+      "reading": "인공지능",
+      "meaning": "인공지능(Artificial Intelligence)의 약자로, 인간의 학습 능력과 추론 능력 등을 컴퓨터 프로그램으로 구현한 기술을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "인공지능",
+      "url": "https://ko.wikipedia.org/wiki/인공지능",
+      "date": "2026-09-15",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "딥페이크",
+      "reading": "",
+      "meaning": "딥러닝(Deep learning)과 가짜(Fake)의 합성어로, 인공지능 기술을 이용해 기존의 이미지나 영상을 정교하게 조작한 가짜 콘텐츠를 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "딥페이크",
+      "url": "https://ko.wikipedia.org/wiki/딥페이크",
+      "date": "2026-09-15",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-22T12:28:14+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}

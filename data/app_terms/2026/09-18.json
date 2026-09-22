@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-18",
+  "terms": [
+    {
+      "term": "Patulous Eustachian Tube",
+      "reading": "이관개방증",
+      "meaning": "귀와 코를 연결하는 이관이 비정상적으로 열려 있어 자기 목소리나 숨소리가 크게 울려 들리는 귀 질환을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "이관개방증",
+      "url": "https://ko.wikipedia.org/wiki/이관개방증",
+      "date": "2026-09-18",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "자폐 스펙트럼 장애",
+      "reading": "",
+      "meaning": "사회적 상호작용과 의사소통에 어려움을 보이고 제한적·반복적인 행동 특성을 나타내는 신경발달장애를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "자폐 스펙트럼",
+      "url": "https://ko.wikipedia.org/wiki/자폐_스펙트럼",
+      "date": "2026-09-18",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "핵실험",
+      "reading": "",
+      "meaning": "핵분열이나 핵융합 반응을 통해 발생하는 에너지를 확인하기 위해 핵무기나 핵장치를 폭발시키는 실험을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "핵실험",
+      "url": "https://ko.wikipedia.org/wiki/핵실험",
+      "date": "2026-09-18",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "문화인류학자",
+      "reading": "",
+      "meaning": "인류의 문화적 특성과 사회 구조, 관습 등을 연구하여 인간의 다양성과 보편성을 탐구하는 학자를 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "문화인류학",
+      "url": "https://ko.wikipedia.org/wiki/문화인류학",
+      "date": "2026-09-18",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "지진활동",
+      "reading": "",
+      "meaning": "지각 내부의 에너지가 방출되면서 지표면이 흔들리는 지진 현상이 발생하는 일련의 활동을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "지진 활동",
+      "url": "https://ko.wikipedia.org/wiki/지진_활동",
+      "date": "2026-09-18",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-22T13:44:44+09:00",
+      "added": 2,
+      "via": [
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-09-22T15:21:02+09:00",
+      "added": 3,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}

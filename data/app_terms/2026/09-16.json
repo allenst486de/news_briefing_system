@@ -1,0 +1,141 @@
+{
+  "date": "2026-09-16",
+  "terms": [
+    {
+      "term": "Pyroprocessing",
+      "reading": "파이로프로세싱",
+      "meaning": "사용후핵연료를 고온의 전기화학적 방법으로 처리해 재활용 가능한 물질을 추출하는 핵연료 재처리 기술을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "파이로프로세싱",
+      "url": "https://ko.wikipedia.org/wiki/파이로프로세싱",
+      "date": "2026-09-16",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Parameter",
+      "reading": "매개변수",
+      "meaning": "함수나 프로그램에 전달되어 처리 결과에 영향을 주는 변수를 뜻하며, 시스템이나 모델의 특성을 정하는 값도 가리킨다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "매개변수",
+      "url": "https://ko.wikipedia.org/wiki/매개변수",
+      "date": "2026-09-16",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "QT",
+      "reading": "양적 긴축",
+      "meaning": "중앙은행이 보유 자산을 매각하는 등의 방법으로 시중에 풀린 화폐량을 줄이는 통화정책을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "양적 긴축",
+      "url": "https://ko.wikipedia.org/wiki/양적_긴축",
+      "date": "2026-09-16",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "지지율",
+      "reading": "",
+      "meaning": "특정 정치인이나 정당, 정책 등에 대해 찬성하거나 지지하는 사람의 비율을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "여론 조사",
+      "url": "https://ko.wikipedia.org/wiki/여론_조사",
+      "date": "2026-09-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "핫 100",
+      "reading": "",
+      "meaning": "미국 내에서 가장 인기 있는 곡들을 집계하여 순위로 나타낸 음악 차트를 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "빌보드 핫 100",
+      "url": "https://ko.wikipedia.org/wiki/빌보드_핫_100",
+      "date": "2026-09-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "군집위성",
+      "reading": "",
+      "meaning": "동일한 목적을 수행하기 위해 여러 대의 위성을 네트워크 형태로 운용하는 위성 집단을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "위성군",
+      "url": "https://ko.wikipedia.org/wiki/위성군",
+      "date": "2026-09-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "우주 무기",
+      "reading": "",
+      "meaning": "우주 공간에 배치하거나 우주를 향해 발사하여 공격 또는 방어 목적으로 사용하는 무기 체계를 뜻한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "우주 무기",
+      "url": "https://ko.wikipedia.org/wiki/우주_무기",
+      "date": "2026-09-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "대부업체",
+      "reading": "",
+      "meaning": "금전을 빌려주고 그 대가로 이자를 받는 것을 영업으로 하는 사업자를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "대부업",
+      "url": "https://ko.wikipedia.org/wiki/대부업",
+      "date": "2026-09-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "마일리지",
+      "reading": "",
+      "meaning": "서비스 이용 실적에 따라 포인트를 적립해 주고, 이를 나중에 혜택으로 교환해 주는 제도를 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "로열티 프로그램",
+      "url": "https://ko.wikipedia.org/wiki/로열티_프로그램",
+      "date": "2026-09-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "에미상",
+      "reading": "",
+      "meaning": "미국 텔레비전 예술 및 과학 아카데미가 수여하는 TV 프로그램 관련 시상식이다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "에미상",
+      "url": "https://ko.wikipedia.org/wiki/에미상",
+      "date": "2026-09-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-22T12:51:21+09:00",
+      "added": 3,
+      "via": [
+        "news_terms"
+      ]
+    },
+    {
+      "at": "2026-09-22T14:38:16+09:00",
+      "added": 7,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}
