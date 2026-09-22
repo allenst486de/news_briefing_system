@@ -19,9 +19,16 @@ SENT_MARKER="${STATE_DIR}/sent-${TODAY}"
 LOCK_DIR="${STATE_DIR}/run.lock"
 mkdir -p "$STATE_DIR"
 
+# 낱말퍼즐 앱용 용어 채우기 — 브리핑과 별개로 항상 확인한다(아래 fill_app_terms).
+# 이미 보낸 날에도 이 확인은 한다: 앱은 08:00에 오늘 용어를 여는데 GitHub 예약 실행은
+# 1~2시간 늦게 돌아 07:40 마감을 넘기는 날이 많았다(9/15~9/22 중 6일 비어 있었다).
+# 맥은 03:30·05:45·07:30에 확실히 도므로 여기서 먼저 채운다. 목표 개수가 이미 있으면
+# app_terms.py가 NVIDIA를 부르지 않고 바로 끝난다.
 if [ -f "$SENT_MARKER" ]; then
-  echo "$(date '+%F %T') 오늘 브리핑은 이미 전송됨 — 건너뜀"
-  exit 0
+  echo "$(date '+%F %T') 오늘 브리핑은 이미 전송됨 — 브리핑은 건너뜀, 앱용 용어만 확인"
+  SKIP_BRIEFING=1
+else
+  SKIP_BRIEFING=0
 fi
 
 # 만회 실행 허용 시간: 03:25~17:59. 새벽 3시 전 재부팅으로 불린 경우는 03:30 본 실행에
@@ -83,6 +90,73 @@ if ! git merge --ff-only origin/main; then
 fi
 
 source venv/bin/activate
+
+# --- 낱말퍼즐 앱용 용어 ---
+# 채운 뒤 data/app_terms만 따로 커밋해 main에 올린다(앱이 여기서 읽어 간다).
+# 날짜 없이 부르면 07:40 마감이 적용되고, 마감이 지난 뒤(재부팅 후 만회 등)에는
+# 오늘 날짜를 지정해 마감 없이 채운다 — 늦어도 안 채우는 것보다 낫다.
+# GitHub 쪽 예약 실행도 같은 파일을 만질 수 있어 push가 겹치면 내 커밋만 버리고
+# origin 것을 따른다(다음 확인 때 빈 곳이 있으면 다시 채운다). 브리핑 커밋은 건드리지 않는다.
+# 오늘 앱용 파일에 든 용어 수(파일이 없거나 깨졌으면 0)
+app_terms_count() {
+  python - "$(date +%Y-%m-%d)" <<'PY'
+import json, sys
+day = sys.argv[1]
+try:
+    with open(f"data/app_terms/{day[:4]}/{day[5:]}.json", encoding="utf-8") as f:
+        print(len(json.load(f).get("terms", [])))
+except Exception:
+    print(0)
+PY
+}
+
+# 앱은 하루 5개를 싣는다. 재확인 실행(05:45·07:30·로그인 후)은 5개가 이미 있으면 건너뛴다 —
+# 위키백과 확인에서 후보가 많이 탈락하는 날(9/22: 후보 중 17개 탈락, 6개 확보)에 목표 10개를
+# 채우려고 매 회차 20분씩 NVIDIA를 다시 부르지 않게. 브리핑 직후 실행만 10개까지 시도한다.
+APP_MIN_TERMS=5
+
+fill_app_terms() {
+  echo "--- 앱용 시사용어 ---"
+  if [ "${1:-}" = "recheck" ]; then
+    local have
+    have="$(app_terms_count)"
+    if [ "$have" -ge "$APP_MIN_TERMS" ]; then
+      echo "오늘 앱용 용어 ${have}개 — 앱 최소(${APP_MIN_TERMS}개)를 채웠으므로 건너뜀"
+      return 0
+    fi
+    echo "오늘 앱용 용어 ${have}개 — ${APP_MIN_TERMS}개 미만이라 채움"
+  fi
+  local args=()
+  if [ "$((10#$(date +%H%M)))" -ge 740 ]; then
+    args=(--date "$(date +%Y-%m-%d)")
+  fi
+  run_bounded 1800 python app_terms.py ${args[@]+"${args[@]}"} || echo "app_terms.py 실패/시한 초과 — 다음 확인 때 이어서"
+
+  if [[ -z $(git status --porcelain data/app_terms/) ]]; then
+    echo "앱용 용어 변경 없음"
+    return 0
+  fi
+  git add data/app_terms/
+  git commit -q -m "chore: fill app terms $(date +%Y-%m-%d)"
+  for attempt in 1 2 3; do
+    if run_bounded 120 git push origin main; then
+      echo "앱용 용어 push 완료"
+      return 0
+    fi
+    run_bounded 120 git pull --rebase origin main && continue
+    git rebase --abort 2>/dev/null
+    break
+  done
+  echo "앱용 용어 push 실패 — 방금 만든 커밋을 버리고 origin을 따른다(다음 확인 때 다시 채움)"
+  git reset -q --hard HEAD~1
+  return 1
+}
+
+if [ "$SKIP_BRIEFING" -eq 1 ]; then
+  fill_app_terms recheck
+  echo "===== $(date) 실행 종료 (앱용 용어 확인만) ====="
+  exit 0
+fi
 
 # --- 로컬 LLM 폴백 준비 ---
 # 클라우드가 실패한 청크를 받아낼 안전망. 여기서 못 띄워도 파이프라인은 그대로
@@ -214,5 +288,9 @@ else
   done
   [ "$DEPLOYED" -eq 1 ] || echo "gh-pages 배포 최종 실패 — 다음 실행 때 같이 올라감"
 fi
+
+# 브리핑이 방금 오늘 시사용어(data/terms)를 쌓았으니 앱용은 그 이름을 그대로 가져와
+# 호출 한 번으로 끝난다. 여기서 실패해도 브리핑은 이미 나갔다.
+fill_app_terms || true
 
 echo "===== $(date) 실행 종료 (main exit $MAIN_EXIT) ====="

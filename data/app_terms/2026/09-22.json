@@ -1,0 +1,86 @@
+{
+  "date": "2026-09-22",
+  "terms": [
+    {
+      "term": "비핵화",
+      "reading": "",
+      "meaning": "핵무기를 폐기하거나 더 이상 보유하지 않도록 하여 핵무기가 없는 상태로 만드는 일을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "비핵화",
+      "url": "https://ko.wikipedia.org/wiki/비핵화",
+      "date": "2026-09-22",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "부정맥",
+      "reading": "",
+      "meaning": "심장 박동이 규칙적이지 않거나 비정상적으로 빠르거나 느린 상태를 뜻하는 의학 용어이다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "부정맥",
+      "url": "https://ko.wikipedia.org/wiki/부정맥",
+      "date": "2026-09-22",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "국빈 방문",
+      "reading": "",
+      "meaning": "한 나라의 국가 원수가 상대국 정부의 공식 초청을 받아 최고의 예우로 방문하는 외교 행사를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "국빈 방문",
+      "url": "https://ko.wikipedia.org/wiki/국빈_방문",
+      "date": "2026-09-22",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "대만해협",
+      "reading": "",
+      "meaning": "대만과 중국 대륙 사이에 있는 해협으로, 동중국해와 남중국해를 잇는 해상 요충지이다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "대만 해협",
+      "url": "https://ko.wikipedia.org/wiki/대만_해협",
+      "date": "2026-09-22",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "CPTPP",
+      "reading": "",
+      "meaning": "미국이 탈퇴한 환태평양 경제 동반자 협정(TPP)을 나머지 회원국이 수정해 체결한 포괄적·점진적 자유무역 협정의 줄임말이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "포괄적·점진적 환태평양 경제 동반자 협정",
+      "url": "https://ko.wikipedia.org/wiki/포괄적·점진적_환태평양_경제_동반자_협정",
+      "date": "2026-09-22",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "퀴어",
+      "reading": "",
+      "meaning": "이성애자나 시스젠더에 속하지 않는 성소수자를 포괄적으로 이르는 말이다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "퀴어",
+      "url": "https://ko.wikipedia.org/wiki/퀴어",
+      "date": "2026-09-22",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-22T08:49:26+09:00",
+      "added": 6,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}
