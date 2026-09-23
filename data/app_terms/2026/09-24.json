@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-24",
+  "terms": [
+    {
+      "term": "MDL",
+      "reading": "군사분계선",
+      "meaning": "MDL은 군사분계선(Military Demarcation Line)의 줄임말로, 정전 협정에 따라 남북한을 가르는 군사적 경계선을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "군사분계선",
+      "url": "https://ko.wikipedia.org/wiki/군사분계선",
+      "date": "2026-09-24",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "프롬프트 인젝션",
+      "reading": "",
+      "meaning": "언어 모델 등 인공지능에 악의적인 지시가 담긴 입력을 넣어 원래의 명령을 무시하거나 의도하지 않은 동작을 유도하는 공격 기법을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "프롬프트 인젝션",
+      "url": "https://ko.wikipedia.org/wiki/프롬프트_인젝션",
+      "date": "2026-09-24",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "인류세",
+      "reading": "",
+      "meaning": "인간의 활동이 지구의 지질과 생태계에 결정적인 영향을 미치는 시대를 뜻하는 지질학적 시대 구분 개념이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "인류세",
+      "url": "https://ko.wikipedia.org/wiki/인류세",
+      "date": "2026-09-24",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "팹",
+      "reading": "",
+      "meaning": "팹(fab)은 반도체 칩을 생산하는 공장을 뜻하며, 다른 회사의 의뢰를 받아 칩을 대신 만들어 주는 파운드리 기업을 가리키는 말로도 쓰인다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "파운드리",
+      "url": "https://ko.wikipedia.org/wiki/파운드리",
+      "date": "2026-09-24",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-24T03:49:35+09:00",
+      "added": 4,
+      "via": [
+        "news_terms"
+      ]
+    }
+  ]
+}
