@@ -36,6 +36,90 @@
       "date": "2026-09-25",
       "via": "news_terms",
       "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Made in Europe",
+      "reading": "메이드 인 유럽",
+      "meaning": "제품이 유럽에서 제조되었음을 나타내는 원산지 표시를 말한다. 유럽산 제품의 품질과 정체성을 강조하는 데 쓰인다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "Made in Europe",
+      "url": "https://ko.wikipedia.org/wiki/Made_in_Europe",
+      "date": "2026-09-25",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "조선민주주의인민공화국",
+      "reading": "",
+      "meaning": "아시아 동부 한반도 북부에 있는 나라로, 수도는 평양이다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "조선민주주의인민공화국",
+      "url": "https://ko.wikipedia.org/wiki/조선민주주의인민공화국",
+      "date": "2026-09-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "갑상선수질암",
+      "reading": "",
+      "meaning": "갑상선의 부여포 세포에서 발생하는 암으로, 칼시토닌을 분비하는 세포에서 생기는 갑상선 암을 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "갑상샘수질암",
+      "url": "https://ko.wikipedia.org/wiki/갑상샘수질암",
+      "date": "2026-09-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "북한 비핵화",
+      "reading": "",
+      "meaning": "조선민주주의인민공화국이 핵무기와 핵 개발 프로그램을 포기하고 없애는 것을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "조선민주주의인민공화국의 비핵화",
+      "url": "https://ko.wikipedia.org/wiki/조선민주주의인민공화국의_비핵화",
+      "date": "2026-09-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "국채",
+      "reading": "",
+      "meaning": "국가가 재정 자금을 마련하기 위해 발행하는 채권을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "국채",
+      "url": "https://ko.wikipedia.org/wiki/국채",
+      "date": "2026-09-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "자폐",
+      "reading": "",
+      "meaning": "사회적 상호작용과 의사소통의 어려움, 제한적이고 반복적인 행동이 나타나는 발달 장애를 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "자폐",
+      "url": "https://ko.wikipedia.org/wiki/자폐",
+      "date": "2026-09-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "고혈압",
+      "reading": "",
+      "meaning": "동맥 안의 혈압이 지속적으로 정상 범위보다 높은 상태를 말하는 만성 질환이다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "고혈압",
+      "url": "https://ko.wikipedia.org/wiki/고혈압",
+      "date": "2026-09-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -44,6 +128,14 @@
       "added": 3,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-09-25T05:45:08+09:00",
+      "added": 7,
+      "via": [
+        "news_terms",
+        "raw"
       ]
     }
   ]
