@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-25",
+  "terms": [
+    {
+      "term": "불가항력",
+      "reading": "",
+      "meaning": "사람의 힘으로는 어찌할 수 없는 불가피한 상황이나 외부의 강한 힘을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "불가항력",
+      "url": "https://ko.wikipedia.org/wiki/불가항력",
+      "date": "2026-09-25",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "PER",
+      "reading": "주가수익비율",
+      "meaning": "Price Earnings Ratio의 약자로, 주가를 주당순이익으로 나눈 값이며 주식의 가치 평가 지표로 쓰인다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "주가수익률",
+      "url": "https://ko.wikipedia.org/wiki/주가수익률",
+      "date": "2026-09-25",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Distillation",
+      "reading": "증류",
+      "meaning": "액체 혼합물을 가열하여 끓는점 차이를 이용해 성분을 분리하는 화학적 공정을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "증류",
+      "url": "https://ko.wikipedia.org/wiki/증류",
+      "date": "2026-09-25",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-25T05:14:00+09:00",
+      "added": 3,
+      "via": [
+        "news_terms"
+      ]
+    }
+  ]
+}
