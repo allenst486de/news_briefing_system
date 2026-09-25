@@ -45,7 +45,10 @@ MAX_ATTEMPTS = 4
 # 기본 모델이 대기열에서 못 빠져나올 때만 쓴다. 9/14 실측 — glm-5.3-flash 는 바로 받지만 생성이
 # 느리고(4개에 약 170초) 뜻풀이가 정확하다. nemotron-3-super 는 5초 안에 끝나지만 뜻이 부정확하거나
 # 빈 응답을 줄 때가 있어 마지막에 둔다. APP_TERMS_MODELS(쉼표 구분)로 바꿀 수 있다.
-FALLBACK_MODELS = ["z-ai/glm-5.3-flash", "nvidia/nemotron-3-super-120b-a12b"]
+# 9/25 추가 — deepseek-v4.1-flash: 대기열이 짧고(뜻풀이 3개 34초) 뜻이 정확하다. glm 뒤, nemotron 앞.
+# nemotron-super 는 9/24 '벤처캐피털'을 it 로 분류하는 등 가장 부정확해 맨 뒤에 둔다.
+FALLBACK_MODELS = ["z-ai/glm-5.3-flash", "deepseek-ai/deepseek-v4.1-flash",
+                   "nvidia/nemotron-3-super-120b-a12b"]
 
 _RETRY_AFTER_CAP = 60
 _FATAL_KEY = (401, 403)

@@ -65,7 +65,8 @@ RSS_NOT_BEFORE = dtime(6, 40)
 VIA_LABELS = {"news_terms": "브리핑 용어", "raw": "기사 목록", "rss": "RSS 제목"}
 REJECT_LABELS = {
     "duplicate": "올해 중복", "not_in_article": "기사에 없는 말", "no_wiki": "위키백과 문서 없음",
-    "disambiguation": "동음이의 문서", "person": "사람 문서", "no_meaning": "뜻풀이 실패",
+    "disambiguation": "동음이의 문서", "person": "사람 문서", "entity": "나라·지명·단체·작품 문서",
+    "no_meaning": "뜻풀이 실패",
 }
 
 DISCOVERY_SYSTEM = """당신은 시사 용어 사전의 편집자입니다. 기사 목록에서 독자가 뜻을 알아야 할 용어를 고릅니다.
@@ -82,10 +83,15 @@ MEANING_SYSTEM = """당신은 한국어 사전 편찬자입니다. 용어의 일
 3. 한두 문장, 50~100자로 씁니다. 문장은 반드시 '~을 말한다', '~을 뜻한다', '~이다'처럼 한다체로 끝냅니다.
    '~입니다', '~합니다' 같은 존댓말로 끝내지 않습니다.
 4. 영어에서 온 말이면 무엇의 줄임말이나 합성어인지 짧게 밝혀도 좋습니다.
-5. 위키백과 문서 제목이 가리키는 개념을 풀이합니다. 그 문서가 용어와 다른 뜻을 가리키는 것 같거나
-   뜻을 확실히 모르면 meaning 을 빈 문자열로 둡니다. 추측하지 않습니다.
+5. 함께 적힌 '기사 분야'에서 그 용어가 쓰이는 뜻으로 풀이합니다. 같은 말이 분야마다 뜻이 다르면
+   기사 분야의 뜻을 따릅니다. 예: 기사 분야가 IT인 'Distillation'은 화학의 증류가 아니라
+   인공지능 모델의 지식 증류입니다.
+   위키백과 문서가 그 분야의 뜻과 다른 개념을 가리키면(예: 위 Distillation에 문서가 '증류') 또는
+   뜻을 확실히 모르면 meaning 을 빈 문자열로 둡니다. 문서 링크와 풀이가 어긋나면 안 되기 때문입니다.
+   추측하지 않습니다.
 6. category 는 용어 자체가 속한 분야를 politics·economy·society·life·culture·it·science·world 중
-   하나로 고르고, 어디에도 맞지 않으면 other 로 둡니다. 함께 적힌 '기사 분야'는 그 용어가 나온 기사의 분야일 뿐이니 참고만 합니다.
+   하나로 고르고, 어디에도 맞지 않으면 other 로 둡니다. 기사 분야는 뜻을 고르는 데 쓰고,
+   category 는 용어 자체로 정합니다(선거 기사에 나온 인플레이션은 economy, 벤처캐피털은 economy).
    예: 장치·소프트웨어·인터넷 기술은 it.
 7. 반드시 JSON 배열만 출력합니다. 설명 문구를 붙이지 않습니다.
 예시 출력: [{"n": 1, "meaning": "물가가 전반적으로 오르고 돈의 가치가 떨어지는 현상을 말한다.", "category": "economy"}]"""
@@ -494,6 +500,9 @@ def _admit(fresh: List[Dict], *, via: str, day: Date, doc: Dict, out_root: str, 
             continue
         if info.get("person"):
             rejected["person"] += 1
+            continue
+        if info.get("entity"):
+            rejected["entity"] += 1
             continue
         wiki_key = "wiki:" + info["title"]
         if wiki_key in known:           # 다른 이름으로 같은 문서를 가리키는 경우

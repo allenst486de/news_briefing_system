@@ -326,6 +326,61 @@ def test_wiki_lookup_follows_redirects_and_flags_pages():
     assert asked[1]["clcontinue"] == "123|x"
 
 
+def test_wiki_lookup_flags_countries_places_orgs_and_works():
+    """9/25: '조선민주주의인민공화국'(나라)이 앱에 실렸고 'Made in Europe'은 음반 문서로 연결됐다."""
+    wiki_resp = {"query": {"pages": [
+        {"title": "조선민주주의인민공화국", "fullurl": "https://ko.wikipedia.org/wiki/x",
+         "pageprops": {"wikibase_item": "Q423"}, "categories": [{"title": "분류:공산주의 국가"}]},
+        {"title": "Made in Europe", "fullurl": "https://ko.wikipedia.org/wiki/y",
+         "pageprops": {"wikibase_item": "Q935438"}},
+        {"title": "국제 통화 기금", "fullurl": "https://ko.wikipedia.org/wiki/z",
+         "pageprops": {"wikibase_item": "Q7804"}, "categories": [{"title": "분류:1944년 설립된 단체"}]},
+        {"title": "인류세", "fullurl": "https://ko.wikipedia.org/wiki/w",
+         "pageprops": {"wikibase_item": "Q26841"}, "categories": [{"title": "분류:인간 활동"}]},
+    ]}}
+
+    def claim(qid):
+        return {"mainsnak": {"datavalue": {"value": {"id": qid}}}}
+
+    wikidata_resp = {"entities": {
+        "Q423": {"claims": {"P31": [claim("Q3624078"), claim("Q6256")]}},
+        "Q935438": {"claims": {"P31": [claim("Q482994")]}},
+        "Q7804": {"claims": {"P31": [claim("Q1345691")]}},
+        "Q26841": {"claims": {"P31": [claim("Q754897")]}},
+    }}
+
+    class Resp:
+        def __init__(self, data):
+            self.data = data
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return self.data
+
+    def get(url, params=None, headers=None, timeout=None):
+        return Resp(wikidata_resp if "wikidata" in url else wiki_resp)
+
+    found = wiki.lookup(["조선민주주의인민공화국", "Made in Europe", "국제 통화 기금", "인류세"],
+                        get=get, sleep=lambda s: None)
+    assert found["조선민주주의인민공화국"]["entity"], "나라"
+    assert found["Made in Europe"]["entity"], "음반"
+    assert found["국제 통화 기금"]["entity"], "국제기구"
+    assert not found["인류세"]["entity"], "개념 문서는 통과해야 한다"
+
+    # 위키데이터가 죽어도 분류로 거르고, 묶음 전체를 버리지 않는다
+    def get_no_wikidata(url, params=None, headers=None, timeout=None):
+        if "wikidata" in url:
+            raise requests.exceptions.ConnectionError("down")
+        return Resp(wiki_resp)
+
+    found = wiki.lookup(["조선민주주의인민공화국", "국제 통화 기금", "인류세"],
+                        get=get_no_wikidata, sleep=lambda s: None)
+    assert set(found) == {"조선민주주의인민공화국", "국제 통화 기금", "인류세"}
+    assert found["국제 통화 기금"]["entity"] and not found["인류세"]["entity"]
+
+
 def test_wiki_lookup_survives_errors():
     def get(*args, **kwargs):
         raise requests.exceptions.ConnectionError("down")

@@ -8,6 +8,9 @@
   - 동음이의 문서인가. 링크가 목록 페이지로 가면 쓸모가 없어 뺀다.
   - 사람 문서인가. 'OOOO년 출생' 같은 분류로 가려낸다. 고르는 단계에서 인명을 빼라고
     해도 섞여 들어오는 경우를 막는다.
+  - 나라·지명·단체·작품 문서인가. 고르는 단계에서 빼라고 해도 9/25에 '조선민주주의인민공화국'이
+    실렸고, 'Made in Europe'은 딥 퍼플의 라이브 음반 문서로 연결됐다. 위키데이터의 '무엇인가(P31)'로
+    먼저 보고, 위키데이터를 못 읽으면 한국어 위키백과 분류('1948년 설립', '유엔 회원국' 등)로 본다.
 
 글은 가져오지 않는다. 문서가 있는지와 제목·주소만 본다 — 뜻풀이는 따로 쓴다.
 실패하면 그 묶음은 빈 결과다. 확인하지 못한 용어는 싣지 않고 다음 회차에 다시 본다.
@@ -29,11 +32,30 @@ USER_AGENT = ("NewsBriefingSystem/1.0 "
 BATCH = 50
 _MAX_CONTINUE = 5
 _PERSON_CATEGORY = re.compile(r"^\d+년 (출생|사망)$|^살아있는 사람$|^생년 미상$|^몰년 미상$")
+# 나라·도시·단체·작품 문서에 붙는 분류. 개념 문서에는 거의 안 붙는다.
+_ENTITY_CATEGORY = re.compile(
+    r"^\d+년 (설립|설치)|설립된 (단체|기업|정당|기관)|회원국$|에 위치한 수도$|의 도시$|의 거리$"
+    r"|의 정당$|음반$|영화$|소설$|싱글$|텔레비전 프로그램$")
+WIKIDATA_API = "https://www.wikidata.org/w/api.php"
+# 위키데이터 P31(무엇인가) 값 중 앱 용어로 싣지 않는 것 — 사람·나라·지명·단체·작품·브랜드
+_ENTITY_TYPES = {
+    "Q5",                                                                    # 사람
+    "Q6256", "Q3624078", "Q7275", "Q1335818", "Q4120211",                    # 나라·국가 연합
+    "Q515", "Q1549591", "Q5119", "Q486972", "Q200250", "Q1637706",           # 도시·수도·정착지
+    "Q34876", "Q10864048", "Q56061", "Q82794", "Q5107", "Q23442", "Q8502",   # 행정구역·지역·대륙·섬·산
+    "Q4022", "Q79007",                                                       # 강·거리
+    "Q43229", "Q4830453", "Q6881511", "Q891723", "Q783794", "Q7278",         # 단체·기업·정당
+    "Q484652", "Q245065", "Q327333", "Q163740", "Q2659904", "Q15925165",     # 국제기구·정부기관·비영리
+    "Q1345691", "Q31855", "Q3918", "Q431289", "Q167270",                     # 금융기구·연구소·대학·브랜드
+    "Q11032", "Q1110794", "Q41298", "Q2085381",                              # 신문·잡지·출판사
+    "Q482994", "Q209939", "Q134556", "Q7366", "Q11424", "Q5398426",          # 음반·노래·영화·드라마
+    "Q571", "Q7725634", "Q47461344", "Q7889", "Q13406463",                   # 책·작품·게임·목록 문서
+}
 
 
 def lookup(titles: Iterable[str], *, get=None,
            sleep: Callable[[float], None] = time.sleep) -> Dict[str, Dict]:
-    """{물어본 제목: {title, url, disambiguation, person}} — 문서가 없으면 키가 없다."""
+    """{물어본 제목: {title, url, disambiguation, person, entity}} — 문서가 없으면 키가 없다."""
     get = get or requests.get
     wanted = [t for t in dict.fromkeys((t or "").strip() for t in titles) if t]
     found: Dict[str, Dict] = {}
@@ -51,7 +73,7 @@ def lookup(titles: Iterable[str], *, get=None,
 def _lookup_chunk(chunk: List[str], get) -> Dict[str, Dict]:
     params = {
         "action": "query", "format": "json", "formatversion": "2", "redirects": "1",
-        "prop": "info|pageprops|categories", "inprop": "url", "ppprop": "disambiguation",
+        "prop": "info|pageprops|categories", "inprop": "url", "ppprop": "disambiguation|wikibase_item",
         "clshow": "!hidden", "cllimit": "max", "titles": "|".join(chunk),
     }
     pages: Dict[str, Dict] = {}
@@ -82,6 +104,14 @@ def _lookup_chunk(chunk: List[str], get) -> Dict[str, Dict]:
             break
         extra = {k: str(v) for k, v in data["continue"].items()}
 
+    # 위키데이터 종류 — 못 읽으면 분류로만 판단한다(그 묶음을 버리지는 않는다)
+    qids = {title: (page.get("pageprops") or {}).get("wikibase_item") for title, page in pages.items()}
+    try:
+        types = _wikidata_types([q for q in qids.values() if q], get)
+    except Exception as error:
+        logger.warning(f"위키데이터 조회 실패 ({type(error).__name__}: {error}) — 분류로만 거른다")
+        types = {}
+
     result = {}
     for asked in chunk:
         title = normalized.get(asked, asked)
@@ -96,5 +126,26 @@ def _lookup_chunk(chunk: List[str], get) -> Dict[str, Dict]:
             "url": urllib.parse.unquote(url),
             "disambiguation": "disambiguation" in (page.get("pageprops") or {}),
             "person": any(_PERSON_CATEGORY.match(name) for name in categories.get(title, ())),
+            "entity": bool(types.get(qids.get(title), set()) & _ENTITY_TYPES)
+                      or any(_ENTITY_CATEGORY.search(name) for name in categories.get(title, ())),
         }
     return result
+
+
+def _wikidata_types(qids: List[str], get) -> Dict[str, set]:
+    """{Q번호: P31 값 집합}"""
+    types: Dict[str, set] = {}
+    for start in range(0, len(qids), BATCH):
+        chunk = qids[start:start + BATCH]
+        resp = get(WIKIDATA_API, params={"action": "wbgetentities", "ids": "|".join(chunk),
+                                         "props": "claims", "format": "json"},
+                   headers={"User-Agent": USER_AGENT}, timeout=30)
+        resp.raise_for_status()
+        for qid, entity in (resp.json().get("entities") or {}).items():
+            values = set()
+            for claim in (entity.get("claims") or {}).get("P31", []):
+                value = ((claim.get("mainsnak") or {}).get("datavalue") or {}).get("value") or {}
+                if isinstance(value, dict) and value.get("id"):
+                    values.add(value["id"])
+            types[qid] = values
+    return types

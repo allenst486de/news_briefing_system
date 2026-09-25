@@ -110,21 +110,22 @@ except Exception:
 PY
 }
 
-# 앱은 하루 5개를 싣는다. 재확인 실행(05:45·07:30·로그인 후)은 5개가 이미 있으면 건너뛴다 —
-# 위키백과 확인에서 후보가 많이 탈락하는 날(9/22: 후보 중 17개 탈락, 6개 확보)에 목표 10개를
-# 채우려고 매 회차 20분씩 NVIDIA를 다시 부르지 않게. 브리핑 직후 실행만 10개까지 시도한다.
-APP_MIN_TERMS=5
+# 앱은 하루 5개를 싣고, 남는 것은 LLM이 실패한 날 앱이 끌어 쓰는 비축분이다(퍼즐 저장소
+# .github/affairs/publish.py가 지난 이틀치의 남은 용어로 채운다). 그래서 재확인 실행
+# (05:45·07:30·로그인 후)도 하루 목표 10개까지 채운다. 브리핑이 끝난 뒤라 NVIDIA 시간을
+# 더 써도 브리핑에는 영향이 없다. 10개가 이미 있으면 NVIDIA를 부르지 않고 건너뛴다.
+APP_TARGET_TERMS=10
 
 fill_app_terms() {
   echo "--- 앱용 시사용어 ---"
   if [ "${1:-}" = "recheck" ]; then
     local have
     have="$(app_terms_count)"
-    if [ "$have" -ge "$APP_MIN_TERMS" ]; then
-      echo "오늘 앱용 용어 ${have}개 — 앱 최소(${APP_MIN_TERMS}개)를 채웠으므로 건너뜀"
+    if [ "$have" -ge "$APP_TARGET_TERMS" ]; then
+      echo "오늘 앱용 용어 ${have}개 — 목표(${APP_TARGET_TERMS}개)를 채웠으므로 건너뜀"
       return 0
     fi
-    echo "오늘 앱용 용어 ${have}개 — ${APP_MIN_TERMS}개 미만이라 채움"
+    echo "오늘 앱용 용어 ${have}개 — 목표 ${APP_TARGET_TERMS}개까지 채움(5개 넘는 몫은 비축분)"
   fi
   local args=()
   if [ "$((10#$(date +%H%M)))" -ge 740 ]; then
