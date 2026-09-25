@@ -154,8 +154,62 @@ fill_app_terms() {
   return 1
 }
 
+# --- 낱말퍼즐 앱에 올리기 ---
+# 앱은 natmalpuzzle 저장소의 affairs/YYYY-MM.json(GitHub Pages)을 읽는다. 원래 GitHub Actions
+# 'Affairs'가 올리는데, 예약 실행이 새벽에 통째로 빠지는 날이 있다(2026-09-26: KST 04:48~06:18
+# 네 회차 모두 안 돎 — 앱이 08:00에 빈 목록을 열 뻔했다). 맥이 app_terms를 채운 직후 같은
+# 스크립트(publish.py)를 한 번 더 부른다. Actions 예약은 맥이 꺼진 날을 위해 그대로 둔다.
+#
+# 낱말퍼즐 세션과 정한 조건(2026-09-26):
+#   · 자동화 전용 사본에서만 한다 — 퍼즐 폴더의 docs는 그 세션의 작업 사본이라 섞이면 안 된다
+#   · 날짜 없이 부른다 — 오늘+지난 이틀 빈 날 보충, 비축분은 07:30 이후만 등 규칙이 그 안에 있다
+#   · pull --rebase → publish → --check(문제면 올리지 않음) → affairs/만 커밋 → push(거절되면 재시도)
+#   · 실패해도 브리핑은 멈추지 않는다, 인증은 SSH 별칭(github-allenst486de)만
+PUZZLE_DIR="${STATE_DIR}/natmalpuzzle"
+publish_app_terms() {
+  echo "--- 낱말퍼즐 앱에 올리기 ---"
+  if [ ! -d "$PUZZLE_DIR/.git" ]; then
+    echo "자동화용 사본 없음($PUZZLE_DIR) — 건너뜀"
+    return 0
+  fi
+  (
+    cd "$PUZZLE_DIR" || exit 1
+    if [ -n "$(git status --porcelain)" ]; then
+      echo "자동화용 사본에 남은 변경이 있어 치움"
+      git reset -q --hard origin/main && git clean -qfd
+    fi
+    run_bounded 120 git pull -q --rebase origin main || { echo "pull 실패 — 이번 회차 건너뜀"; exit 1; }
+    run_bounded 180 python .github/affairs/publish.py || { echo "publish.py 실패"; exit 1; }
+    if ! python .github/affairs/publish.py --check; then
+      echo "앱 파일 검사 실패 — 올리지 않고 되돌림"
+      git checkout -q -- affairs/
+      exit 1
+    fi
+    if [ -z "$(git status --porcelain affairs/)" ]; then
+      echo "앱 용어 바뀐 것 없음"
+      exit 0
+    fi
+    git add affairs/
+    git commit -q -m "시사 용어 $(date +%F) (맥)"
+    for attempt in 1 2 3; do
+      if run_bounded 120 git push -q origin main; then
+        echo "앱 용어 push 완료"
+        exit 0
+      fi
+      echo "push 거절(시도 $attempt) — Actions와 겹쳤을 수 있어 다시 맞춘 뒤 재시도"
+      run_bounded 120 git pull -q --rebase origin main || { git rebase --abort 2>/dev/null; break; }
+    done
+    echo "앱 용어 push 최종 실패 — 다음 회차·Actions가 이어서"
+    git reset -q --hard origin/main
+    exit 1
+  ) || echo "낱말퍼즐 앱 올리기 실패(브리핑에는 영향 없음)"
+  # 이 사본이 만든 파이썬 캐시가 다음 pull을 막지 않게
+  rm -rf "$PUZZLE_DIR/.github/affairs/__pycache__"
+}
+
 if [ "$SKIP_BRIEFING" -eq 1 ]; then
   fill_app_terms recheck
+  publish_app_terms
   echo "===== $(date) 실행 종료 (앱용 용어 확인만) ====="
   exit 0
 fi
@@ -294,5 +348,6 @@ fi
 # 브리핑이 방금 오늘 시사용어(data/terms)를 쌓았으니 앱용은 그 이름을 그대로 가져와
 # 호출 한 번으로 끝난다. 여기서 실패해도 브리핑은 이미 나갔다.
 fill_app_terms || true
+publish_app_terms
 
 echo "===== $(date) 실행 종료 (main exit $MAIN_EXIT) ====="
