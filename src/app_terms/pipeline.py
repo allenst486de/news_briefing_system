@@ -65,7 +65,7 @@ RSS_NOT_BEFORE = dtime(6, 40)
 VIA_LABELS = {"news_terms": "브리핑 용어", "raw": "기사 목록", "rss": "RSS 제목"}
 REJECT_LABELS = {
     "duplicate": "올해 중복", "not_in_article": "기사에 없는 말", "no_wiki": "위키백과 문서 없음",
-    "disambiguation": "동음이의 문서", "person": "사람 문서", "entity": "나라·지명·단체·작품 문서",
+    "disambiguation": "동음이의 문서", "person": "사람 문서", "entity": "나라·지명·작품·기업 문서",
     "no_meaning": "뜻풀이 실패",
 }
 

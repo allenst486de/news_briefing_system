@@ -50,18 +50,6 @@
       "model": "google/gemma-4-31b-it"
     },
     {
-      "term": "핫 100",
-      "reading": "",
-      "meaning": "미국 내에서 가장 인기 있는 곡들을 집계하여 순위로 나타낸 음악 차트를 뜻한다.",
-      "category": "culture",
-      "categoryName": "문화",
-      "wikiTitle": "빌보드 핫 100",
-      "url": "https://ko.wikipedia.org/wiki/빌보드_핫_100",
-      "date": "2026-09-16",
-      "via": "raw",
-      "model": "google/gemma-4-31b-it"
-    },
-    {
       "term": "군집위성",
       "reading": "",
       "meaning": "동일한 목적을 수행하기 위해 여러 대의 위성을 네트워크 형태로 운용하는 위성 집단을 말한다.",

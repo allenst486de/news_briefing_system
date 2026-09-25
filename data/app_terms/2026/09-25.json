@@ -38,30 +38,6 @@
       "model": "google/gemma-4-31b-it"
     },
     {
-      "term": "Made in Europe",
-      "reading": "메이드 인 유럽",
-      "meaning": "제품이 유럽에서 제조되었음을 나타내는 원산지 표시를 말한다. 유럽산 제품의 품질과 정체성을 강조하는 데 쓰인다.",
-      "category": "economy",
-      "categoryName": "경제",
-      "wikiTitle": "Made in Europe",
-      "url": "https://ko.wikipedia.org/wiki/Made_in_Europe",
-      "date": "2026-09-25",
-      "via": "news_terms",
-      "model": "z-ai/glm-5.3-flash"
-    },
-    {
-      "term": "조선민주주의인민공화국",
-      "reading": "",
-      "meaning": "아시아 동부 한반도 북부에 있는 나라로, 수도는 평양이다.",
-      "category": "world",
-      "categoryName": "국제",
-      "wikiTitle": "조선민주주의인민공화국",
-      "url": "https://ko.wikipedia.org/wiki/조선민주주의인민공화국",
-      "date": "2026-09-25",
-      "via": "raw",
-      "model": "z-ai/glm-5.3-flash"
-    },
-    {
       "term": "갑상선수질암",
       "reading": "",
       "meaning": "갑상선의 부여포 세포에서 발생하는 암으로, 칼시토닌을 분비하는 세포에서 생기는 갑상선 암을 뜻한다.",

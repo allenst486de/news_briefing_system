@@ -330,7 +330,7 @@ def test_wiki_lookup_flags_countries_places_orgs_and_works():
     """9/25: '조선민주주의인민공화국'(나라)이 앱에 실렸고 'Made in Europe'은 음반 문서로 연결됐다."""
     wiki_resp = {"query": {"pages": [
         {"title": "조선민주주의인민공화국", "fullurl": "https://ko.wikipedia.org/wiki/x",
-         "pageprops": {"wikibase_item": "Q423"}, "categories": [{"title": "분류:공산주의 국가"}]},
+         "pageprops": {"wikibase_item": "Q423"}, "categories": [{"title": "분류:유엔 회원국"}]},
         {"title": "Made in Europe", "fullurl": "https://ko.wikipedia.org/wiki/y",
          "pageprops": {"wikibase_item": "Q935438"}},
         {"title": "국제 통화 기금", "fullurl": "https://ko.wikipedia.org/wiki/z",
@@ -366,7 +366,7 @@ def test_wiki_lookup_flags_countries_places_orgs_and_works():
                         get=get, sleep=lambda s: None)
     assert found["조선민주주의인민공화국"]["entity"], "나라"
     assert found["Made in Europe"]["entity"], "음반"
-    assert found["국제 통화 기금"]["entity"], "국제기구"
+    assert not found["국제 통화 기금"]["entity"], "국제기구는 시사용어로 남긴다"
     assert not found["인류세"]["entity"], "개념 문서는 통과해야 한다"
 
     # 위키데이터가 죽어도 분류로 거르고, 묶음 전체를 버리지 않는다
@@ -378,7 +378,8 @@ def test_wiki_lookup_flags_countries_places_orgs_and_works():
     found = wiki.lookup(["조선민주주의인민공화국", "국제 통화 기금", "인류세"],
                         get=get_no_wikidata, sleep=lambda s: None)
     assert set(found) == {"조선민주주의인민공화국", "국제 통화 기금", "인류세"}
-    assert found["국제 통화 기금"]["entity"] and not found["인류세"]["entity"]
+    assert found["조선민주주의인민공화국"]["entity"], "위키데이터가 없으면 '유엔 회원국' 분류로 거른다"
+    assert not found["국제 통화 기금"]["entity"] and not found["인류세"]["entity"]
 
 
 def test_wiki_lookup_survives_errors():
