@@ -1,0 +1,123 @@
+{
+  "date": "2026-09-26",
+  "terms": [
+    {
+      "term": "비무장지대",
+      "reading": "",
+      "meaning": "군사적 충돌을 방지하기 위해 적대 관계에 있는 양측 군대가 서로 일정 거리 이상 떨어져 배치되는 완충 지대를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "비무장 지대",
+      "url": "https://ko.wikipedia.org/wiki/비무장_지대",
+      "date": "2026-09-26",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "블랙리스트",
+      "reading": "",
+      "meaning": "특정 서비스나 시스템의 이용을 제한하거나 차단하기 위해 관리자가 지정한 대상의 목록을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "블랙리스트",
+      "url": "https://ko.wikipedia.org/wiki/블랙리스트",
+      "date": "2026-09-26",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "정상회담",
+      "reading": "",
+      "meaning": "국가의 정상들이 만나 외교·안보·경제 등 주요 현안을 논의하는 회담을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "정상회담",
+      "url": "https://ko.wikipedia.org/wiki/정상회담",
+      "date": "2026-09-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "대상포진",
+      "reading": "",
+      "meaning": "수두를 일으키는 바이러스가 몸속에 남았다가 재활성화되어 신경을 따라 띠 모양의 물집과 통증이 생기는 피부 질환을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "대상포진",
+      "url": "https://ko.wikipedia.org/wiki/대상포진",
+      "date": "2026-09-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "출연연",
+      "reading": "",
+      "meaning": "정부가 출연금을 지원해 설립·운영하는 연구기관을 줄여 이르는 말로, 과학기술 분야의 공공 연구를 수행한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "정부출연연구기관",
+      "url": "https://ko.wikipedia.org/wiki/정부출연연구기관",
+      "date": "2026-09-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "연방준비제도",
+      "reading": "",
+      "meaning": "미국의 중앙은행에 해당하는 기관으로, 통화정책을 수행하고 금리와 화폐 발행을 관리한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "연방준비제도",
+      "url": "https://ko.wikipedia.org/wiki/연방준비제도",
+      "date": "2026-09-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "ADHD",
+      "reading": "",
+      "meaning": "주의력결핍 과잉행동장애를 뜻하며, 주의 집중이 어렵고 과잉행동·충동성이 나타나는 발달장애이다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "주의력결핍 과잉행동장애",
+      "url": "https://ko.wikipedia.org/wiki/주의력결핍_과잉행동장애",
+      "date": "2026-09-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "투자보장협정",
+      "reading": "",
+      "meaning": "국가 간에 상호 투자를 보호하고 투자 환경을 보장하기 위해 체결하는 협정을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "투자 보장 협정",
+      "url": "https://ko.wikipedia.org/wiki/투자_보장_협정",
+      "date": "2026-09-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "사회적기업",
+      "reading": "",
+      "meaning": "이윤보다 사회적 가치 실현을 목적으로 사업을 영위하는 기업을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "사회적 기업",
+      "url": "https://ko.wikipedia.org/wiki/사회적_기업",
+      "date": "2026-09-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-26T03:41:40+09:00",
+      "added": 9,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
