@@ -42,7 +42,9 @@ NVIDIA_MODEL = "google/gemma-4-31b-it"  # NVIDIA NIM 카탈로그에서 모델 �
 # 뉴스 요약은 '원문에 없는 내용 금지'가 우선이라 충실한 순서로 둔다:
 #   gemma → muse-glimmer → deepseek → (로컬 gemma-qat) → 규칙기반
 # LLM_CLOUD_MODELS / LLM_LAST_RESORT_MODELS(쉼표 구분)로 바꿀 수 있다. 빈 값이면 끈다.
-_DEFAULT_CLOUD_FALLBACKS = ["meta/muse-glimmer-30b", "deepseek-ai/deepseek-v4-flash-0731"]
+# 2026-09-25: deepseek-v4-flash-0731이 410(수명 종료)으로 내려가 후속 deepseek-v4.1-flash로 교체.
+# 같은 기사 17건 비교에서 원문 충실도·고유명사 정확도가 muse-glimmer 이상이었다.
+_DEFAULT_CLOUD_FALLBACKS = ["meta/muse-glimmer-30b", "deepseek-ai/deepseek-v4.1-flash"]
 _DEFAULT_LAST_RESORT = []
 
 # 응답 대기(읽기) 상한. gemma는 붐비면 대기열에서 헤더 없이 서 있다가 차례가 오면
@@ -542,9 +544,16 @@ def _call_model(model: str, system_prompt: str, user_prompt: str, api_key: str, 
             logger.warning(f"[{short}] 키 인증 거절({resp.status_code})")
             _record("http_error", f"HTTP {resp.status_code}: {resp.text[:200]}")
             return "bad_key", None
-        if resp.status_code in (404, 410):
-            _record("http_error", f"{short} HTTP {resp.status_code}: {resp.text[:200]}")
-            _health.kill(model, f"HTTP {resp.status_code}")
+        if resp.status_code == 410:
+            # 410은 수명 종료(모델 폐기) — 이번 실행 내내 쓰지 않는다
+            _record("http_error", f"{short} HTTP 410: {resp.text[:200]}")
+            _health.kill(model, "HTTP 410")
+            return "fail", None
+        if resp.status_code == 404:
+            # 404는 NVIDIA 쪽 순간 장애일 때도 나온다(9/25 muse-glimmer: 시작 직후 404 → 30초 뒤 정상).
+            # 폐기로 단정하지 않고 차단기에 맡긴다 — 계속 404면 연속 실패로 차단된다.
+            _record("http_error", f"{short} HTTP 404: {resp.text[:200]}")
+            _health.failure(model, "HTTP 404")
             return "fail", None
         if not resp.ok:
             # 5xx·400·422 — 이 모델로는 이 요청을 못 받는다. 다음 모델로

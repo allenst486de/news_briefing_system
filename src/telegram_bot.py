@@ -18,7 +18,8 @@ import asyncio
 import html
 from typing import Dict, List, Optional, Tuple
 from telegram import Bot
-from telegram.error import TelegramError
+from telegram.error import NetworkError, TelegramError, TimedOut
+from telegram.request import HTTPXRequest
 from .collectors.sources import CATEGORIES, CATEGORY_META
 from .utils.logger import setup_logger
 
@@ -35,10 +36,33 @@ class TelegramNotifier:
                       (예: https://user.github.io/news_briefing_system)
         """
         self.logger = setup_logger()
-        self.bot = Bot(token=bot_token)
+        # 기본값은 응답 대기 5초라 이미지 업로드가 조금만 늦어도 'Timed out'으로 끊겼다
+        # (2026-09-25 국내 Top10 이미지가 5초 만에 끊겨 안 감). 넉넉히 기다린다.
+        self.bot = Bot(token=bot_token, request=HTTPXRequest(
+            connect_timeout=20, read_timeout=60, write_timeout=60,
+            media_write_timeout=120, pool_timeout=10))
         self.chat_id = chat_id
         self.base_url = base_url.rstrip('/')
         self.logger.info(f"Telegram bot initialized with base URL: {self.base_url}")
+
+    async def _send(self, what: str, fn, *args, **kwargs):
+        """
+        전송 1건. 시간 초과·네트워크 오류면 잠깐 쉬고 두 번 더 시도한다.
+        시간 초과는 텔레그램이 이미 받은 뒤 응답만 늦은 경우일 수도 있어 같은 게 두 번 갈
+        수 있지만, 안 가는 것보다 낫다(대기 60초로 늘려 그런 경우 자체가 드물다).
+        """
+        for attempt in range(3):
+            try:
+                return await fn(*args, **kwargs)
+            except (TimedOut, NetworkError) as e:
+                if attempt == 2:
+                    raise
+                self.logger.warning(f"{what} 전송 실패({e}) — {5 * (attempt + 1)}초 뒤 재시도")
+                await asyncio.sleep(5 * (attempt + 1))
+                # 파일은 이미 끝까지 읽혔으니 처음으로 되감아야 다시 올라간다
+                photo = kwargs.get("photo")
+                if hasattr(photo, "seek"):
+                    photo.seek(0)
 
     def _full_url(self, relative: str) -> str:
         return f"{self.base_url}/{relative.lstrip('/')}"
@@ -135,7 +159,8 @@ class TelegramNotifier:
                 if path:
                     try:
                         with open(path, 'rb') as photo:
-                            await self.bot.send_photo(
+                            await self._send(
+                                f"Top10 {label} 이미지", self.bot.send_photo,
                                 chat_id=self.chat_id, photo=photo,
                                 caption=f"🔥 오늘의 {label} Top 10 ({date_str})")
                     except (TelegramError, OSError) as e:
@@ -143,7 +168,8 @@ class TelegramNotifier:
                         self.logger.warning(f"Top10 {label} image send failed: {e}")
 
                 try:
-                    await self.bot.send_message(
+                    await self._send(
+                        f"Top10 {label} 목록", self.bot.send_message,
                         chat_id=self.chat_id, text=text, parse_mode='HTML',
                         disable_web_page_preview=True,
                     )
@@ -160,13 +186,14 @@ class TelegramNotifier:
                         caption = f"📚 오늘의 시사용어 ({date_str})"
                         if len(term_images) > 1:
                             caption += f" {idx}/{len(term_images)}"
-                        await self.bot.send_photo(chat_id=self.chat_id, photo=photo,
-                                                   caption=caption)
+                        await self._send(f"시사용어 이미지 {idx}", self.bot.send_photo,
+                                         chat_id=self.chat_id, photo=photo, caption=caption)
                 except (TelegramError, OSError) as e:
                     # 한 장이 실패해도 나머지와 아래 메시지는 그대로 나간다
                     self.logger.warning(f"시사용어 이미지 {idx} 전송 실패: {e}")
 
-            await self.bot.send_message(
+            await self._send(
+                "바로가기 메시지", self.bot.send_message,
                 chat_id=self.chat_id,
                 text=self._build_lead_message(page_urls, date_str, archive_rel, terms_rel),
                 parse_mode='HTML',

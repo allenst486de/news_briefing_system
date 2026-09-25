@@ -23,7 +23,7 @@ from src.collectors.base_collector import NewsArticle
 
 GEMMA = llm_client.NVIDIA_MODEL
 BACKUP = "meta/muse-glimmer-30b"
-BACKUP2 = "deepseek-ai/deepseek-v4-flash-0731"
+BACKUP2 = "deepseek-ai/deepseek-v4.1-flash"
 LAST = "nvidia/nemotron-3-ultra-550b-a55b"
 
 
@@ -126,6 +126,16 @@ def test_gone_model_is_dropped_for_the_run():
         h.calls.clear()
         llm_client.call_llm("s", "u")
         assert GEMMA not in h.calls, "내려간(410) 모델을 계속 불렀다"
+
+
+def test_single_404_is_not_fatal():
+    """9/25 muse-glimmer: 시작 직후 404 → 30초 뒤 정상. 404 한 번으로 실행 내내 빼면 안 된다."""
+    with Harness({GEMMA: Resp(404)}) as h:
+        llm_client.call_llm("s", "u")
+        h.calls.clear()
+        h.behaviour[GEMMA] = Resp(200, "복구")
+        assert llm_client.call_llm("s", "u") == "복구"
+        assert h.calls == [GEMMA], f"404 한 번에 모델을 빼 버렸다: {h.calls}"
 
 
 def test_ladder_order_is_faithful_first_then_local():
