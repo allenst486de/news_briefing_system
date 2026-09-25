@@ -108,6 +108,18 @@
       "date": "2026-09-26",
       "via": "raw",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "CRISPR",
+      "reading": "",
+      "meaning": "특정 DNA 염기 서열을 찾아내어 절단함으로써 유전자를 편집하는 기술을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "CRISPR",
+      "url": "https://ko.wikipedia.org/wiki/CRISPR",
+      "date": "2026-09-26",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
     }
   ],
   "runs": [
@@ -116,6 +128,13 @@
       "added": 9,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-09-26T05:45:06+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
