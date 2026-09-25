@@ -47,18 +47,21 @@ class TelegramNotifier:
 
     async def _send(self, what: str, fn, *args, **kwargs):
         """
-        전송 1건. 시간 초과·네트워크 오류면 잠깐 쉬고 두 번 더 시도한다.
+        전송 1건. 시간 초과·네트워크 오류면 잠깐 쉬고 세 번 더 시도한다.
         시간 초과는 텔레그램이 이미 받은 뒤 응답만 늦은 경우일 수도 있어 같은 게 두 번 갈
         수 있지만, 안 가는 것보다 낫다(대기 60초로 늘려 그런 경우 자체가 드물다).
         """
-        for attempt in range(3):
+        # 새벽 첫 연결이 1분 가까이 안 붙는 날이 있다(9/26: 20초씩 두 번 끊긴 뒤 세 번째에 성공).
+        # 기다리는 간격을 늘려 2분 남짓까지 버틴다.
+        waits = [5, 15, 30]
+        for attempt in range(len(waits) + 1):
             try:
                 return await fn(*args, **kwargs)
             except (TimedOut, NetworkError) as e:
-                if attempt == 2:
+                if attempt == len(waits):
                     raise
-                self.logger.warning(f"{what} 전송 실패({e}) — {5 * (attempt + 1)}초 뒤 재시도")
-                await asyncio.sleep(5 * (attempt + 1))
+                self.logger.warning(f"{what} 전송 실패({e}) — {waits[attempt]}초 뒤 재시도")
+                await asyncio.sleep(waits[attempt])
                 # 파일은 이미 끝까지 읽혔으니 처음으로 되감아야 다시 올라간다
                 photo = kwargs.get("photo")
                 if hasattr(photo, "seek"):

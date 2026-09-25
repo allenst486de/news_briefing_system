@@ -18,6 +18,7 @@ from .utils.llm_client import call_llm_json
 from .utils.importance_analyzer import ImportanceAnalyzer, AI_SUBTYPE_LABELS
 from .utils.rss_utils import clean_html, strip_title_prefix
 from .utils.logger import setup_logger
+from .utils.text_guard import foreign_leak
 
 logger = setup_logger()
 _analyzer = ImportanceAnalyzer()
@@ -189,6 +190,15 @@ def _summarize_chunk(category_name: str, articles: List[NewsArticle],
         new_summary = clean_llm_text(item.get("summary_250"))
         new_summary = strip_title_prefix(new_summary, new_title)
         if not new_title or not new_summary:
+            _rule_based_fallback(article)
+            kept.append(article)
+            continue
+        # 대체 모델이 중국어·일본어를 섞어 쓴 요약은 받지 않는다 — 재시도 스윕이 다시 요약한다
+        source_text = f"{article.title} {article.summary} {getattr(article, 'body', '') or ''}"
+        detail = clean_llm_text(item.get("detail_600")) if want_detail else ""
+        if foreign_leak(f"{new_title} {new_summary} {detail}", source_text):
+            logger.warning(f"[{category_name}] 요약에 외국 문자가 섞여 다시 요약 대상으로: {new_title[:40]}")
+            llm_client.LLM_STATS["foreign_leak"] = llm_client.LLM_STATS.get("foreign_leak", 0) + 1
             _rule_based_fallback(article)
             kept.append(article)
             continue
@@ -480,6 +490,14 @@ def _translated(article: NewsArticle) -> bool:
     return not getattr(article, "llm_failed", False) and bool(_HANGUL.search(article.title or ""))
 
 
+def _card_text(generated, fallback: str, limit: int, article: NewsArticle) -> str:
+    """카드 문구 — 비었거나 외국 문자가 섞였으면 기사 제목·요약을 줄여 쓴다"""
+    text = clean_llm_text(generated)
+    if not text or foreign_leak(text, f"{article.title} {article.summary}"):
+        return trim_at_boundary(fallback, limit)
+    return text
+
+
 def _fallback_card(rank: int, entry: Dict) -> Dict:
     article = entry["article"]
     return {
@@ -576,8 +594,8 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
                 # 해외 기사는 원문이 유료일 수 있어 한국어 상세 요약 링크도 같이 준다
                 "detail_path": getattr(article, "detail_path", ""),
                 "detail_rel": getattr(article, "detail_rel", ""),
-                "card_headline": clean_llm_text(item.get("card_headline")) or trim_at_boundary(article.title, CARD_HEADLINE_LIMIT),
-                "card_blurb": clean_llm_text(item.get("card_blurb")) or trim_at_boundary(article.summary, CARD_BLURB_LIMIT),
+                "card_headline": _card_text(item.get("card_headline"), article.title, CARD_HEADLINE_LIMIT, article),
+                "card_blurb": _card_text(item.get("card_blurb"), article.summary, CARD_BLURB_LIMIT, article),
             })
             if len(cards) == TOP10_COUNT:
                 return cards

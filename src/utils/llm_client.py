@@ -326,6 +326,8 @@ def stats_summary() -> str:
     models = _health.report()
     if models:
         lines.append(f"모델별: {models}")
+    if s.get("foreign_leak"):
+        lines.append(f"외국 문자가 섞여 다시 요약한 기사: {s['foreign_leak']}건")
     if s["errors"]:
         lines.append("첫 오류: " + s["errors"][0])
     return "\n".join(lines)

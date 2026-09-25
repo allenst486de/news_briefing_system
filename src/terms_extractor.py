@@ -17,6 +17,7 @@ from .summarizer import COMMON_RULES, _one_line, clean_llm_text
 from .utils.llm_client import call_llm_json
 from .utils.logger import setup_logger
 from .utils.terms_store import normalize_term
+from .utils.text_guard import foreign_leak
 
 logger = setup_logger()
 
@@ -82,8 +83,11 @@ def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
         "\n각 용어에 대해 다음을 생성하세요:\n"
         " - id: 그 용어가 등장한 기사의 아래 번호(정수). 반드시 실제 등장한 기사여야 함\n"
         " - term: 용어 (한국어. 원어가 있으면 괄호로 병기, 예: 이그젬션(Exemption))\n"
-        " - definition: 80~120자의 간결한 뜻풀이. 카드에 들어갈 분량이며, "
-        "기사에 담긴 내용으로만 설명하고 확인되지 않은 수치·전망을 덧붙이지 말 것\n\n"
+        " - 특정 정부·회사가 이번에 만든 사업·시스템·제품 이름(예: 'OO 프로그램', 'OO 데이터베이스')은 "
+        "제외. 다른 기사에서도 쓰이는 일반 용어만 고를 것\n"
+        " - definition: 80~120자의 간결한 뜻풀이. 먼저 **용어의 일반적인 뜻**을 쓰고, "
+        "필요하면 오늘 기사에서 왜 나왔는지를 한 구절만 덧붙일 것. "
+        "확인되지 않은 수치·전망을 덧붙이지 말 것\n\n"
         "반드시 아래 JSON 배열 형식으로만 응답하세요:\n"
         '[{"id": 1, "term": "...", "definition": "..."}]\n\n'
         f"기사 목록:\n{listing}"
@@ -107,6 +111,9 @@ def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
         definition = clean_llm_text(item.get("definition"))
         if not term or not definition:
             continue
+        article = entry["article"]
+        if foreign_leak(f"{term} {definition}", f"{article.title} {article.summary}"):
+            continue            # 대체 모델이 중국어 등을 섞어 쓴 뜻풀이
 
         key = normalize_term(term)
         # 모델이 제외 목록을 무시하는 경우가 있어 여기서 한 번 더 막는다
@@ -114,7 +121,6 @@ def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
             continue
         seen.add(key)
 
-        article = entry["article"]
         category = entry["category"]
         terms.append({
             "term": term,
@@ -132,12 +138,39 @@ def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
         if len(terms) >= MAX_TERMS:
             break
 
+    terms = _drop_names(terms)
+
     # 이미지는 5개 단위로 채운다 — 12개면 2장(10개)만 쓰고 2개는 다음으로 넘기지 않고 버린다.
     # 카드가 반쯤 빈 채로 나가는 것보다 낫다.
+    # 기본은 2장(10개)이지만, 걸러내고 5~9개가 남은 날은 1장이라도 보낸다 — 예전에는 10개가
+    # 안 되면 그날 시사용어를 통째로 버렸다. 5개도 안 되면 카드가 반쯤 비므로 건너뛴다.
     usable = (len(terms) // TERMS_PER_CARD) * TERMS_PER_CARD
-    if usable < MIN_TERMS:
-        logger.warning(f"시사용어 {len(terms)}개 — 카드 {MIN_CARDS}장을 못 채워 건너뛴다")
+    if usable < TERMS_PER_CARD:
+        logger.warning(f"시사용어 {len(terms)}개 — 카드 1장도 못 채워 건너뛴다")
         return []
+    if usable < MIN_TERMS:
+        logger.warning(f"시사용어 {len(terms)}개 — 기본 {MIN_CARDS}장 대신 {usable // TERMS_PER_CARD}장만")
 
     logger.info(f"시사용어 {usable}개 추출 (카드 {usable // TERMS_PER_CARD}장)")
     return terms[:usable]
+
+
+def _drop_names(terms: List[Dict]) -> List[Dict]:
+    """
+    나라·지명·작품·기업 이름을 뺀다 — 프롬프트로 빼라고 해도 '호르무즈 해협' 같은 지명이 섞였다(9/26).
+    낱말퍼즐 앱용 용어와 같은 기준(위키데이터 종류)을 쓴다. 위키백과에 물어볼 수 없으면
+    그대로 둔다 — 시사용어 때문에 브리핑이 멈추면 안 된다.
+    """
+    import re
+    from .app_terms import wiki
+    heads = {t["term"]: re.sub(r"\s*[\(（].*?[\)）]\s*", "", t["term"]).strip() or t["term"] for t in terms}
+    try:
+        found = wiki.lookup(heads.values())
+    except Exception as error:
+        logger.warning(f"시사용어 이름 확인 실패({error}) — 거르지 않고 진행")
+        return terms
+    kept = [t for t in terms if not found.get(heads[t["term"]], {}).get("entity")]
+    dropped = [t["term"] for t in terms if t not in kept]
+    if dropped:
+        logger.info(f"시사용어에서 이름(지명·기관명 등) 제외: {', '.join(dropped)}")
+    return kept

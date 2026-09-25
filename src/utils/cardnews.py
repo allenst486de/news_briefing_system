@@ -52,6 +52,75 @@ _GRID_TOP = _MARGIN + _HEADER_H
 _HEIGHT = _GRID_TOP + _CELL_H * _ROWS + _GAP * (_ROWS - 1) + _FOOTER_H + _MARGIN
 
 
+# 나눔고딕에는 한자가 없어 '이란 美에 휴전안'이 '이란    에'로 빈칸이 되었다(2026-09-26).
+# 번들 폰트에 없는 글자만 한자가 있는 폰트로 그린다. 맥 기본 폰트(애플 SD 산돌고딕 Neo)는
+# 한국 신문이 쓰는 한자(美·中·北·韓·日)를 갖고 있다. 어느 폰트에도 없는 글자는 그대로 둔다.
+_FALLBACK_FONTS = [
+    '/System/Library/Fonts/AppleSDGothicNeo.ttc',
+    '/System/Library/Fonts/Supplemental/AppleGothic.ttf',
+    '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
+]
+_fallback_cache: Dict[Tuple[int, int], object] = {}
+_glyph_cache: Dict[Tuple[int, str], bool] = {}
+
+
+def _fallback_for(font):
+    """같은 크기·같은 굵기의 대체 폰트 (없으면 None)"""
+    key = (id(font), font.size)
+    if key not in _fallback_cache:
+        _fallback_cache[key] = None
+        bold = 'Bold' in (font.getname()[1] or '')
+        for path in _FALLBACK_FONTS:
+            if not os.path.exists(path):
+                continue
+            # 애플 SD 산돌고딕 Neo 묶음에서 6번이 Bold, 0번이 Regular
+            index = 6 if bold and path.endswith('AppleSDGothicNeo.ttc') else 0
+            try:
+                _fallback_cache[key] = ImageFont.truetype(path, font.size, index=index)
+                break
+            except OSError:
+                continue
+    return _fallback_cache[key]
+
+
+def _has_glyph(font, char: str) -> bool:
+    """글리프가 있는가 — 없는 글자는 빈 그림(나눔고딕)이나 '없음' 네모(애플 폰트)가 나온다"""
+    key = (id(font), char)
+    if key not in _glyph_cache:
+        mask = font.getmask(char)
+        blank = mask.getbbox() is None
+        notdef = bytes(font.getmask('\uE000')) == bytes(mask)
+        _glyph_cache[key] = not blank and not notdef
+    return _glyph_cache[key]
+
+
+def _runs(text: str, font) -> List[Tuple[str, object]]:
+    """[(글자 묶음, 그릴 폰트)] — 번들 폰트에 없는 글자만 대체 폰트로"""
+    fallback = _fallback_for(font)
+    runs: List[Tuple[str, object]] = []
+    for char in str(text):
+        use = font
+        if fallback is not None and not char.isspace() and not _has_glyph(font, char) \
+                and _has_glyph(fallback, char):
+            use = fallback
+        if runs and runs[-1][1] is use:
+            runs[-1] = (runs[-1][0] + char, use)
+        else:
+            runs.append((char, use))
+    return runs
+
+
+def _len(draw, text: str, font) -> float:
+    return sum(draw.textlength(part, font=use) for part, use in _runs(text, font))
+
+
+def _text(draw, xy, text: str, font, fill) -> None:
+    x, y = xy
+    for part, use in _runs(text, font):
+        draw.text((x, y), part, font=use, fill=fill)
+        x += draw.textlength(part, font=use)
+
+
 def _pastel(rgb: Tuple[int, int, int], white_ratio: float = 0.78) -> Tuple[int, int, int]:
     return tuple(int(c + (255 - c) * white_ratio) for c in rgb)
 
@@ -60,7 +129,7 @@ def _one_line(text: str) -> str:
     """
     개행·연속 공백을 한 칸으로 눌러 준다.
 
-    Pillow의 draw.textlength()는 개행이 든 문자열에 "can't measure length of
+    Pillow의 _len(draw, )는 개행이 든 문자열에 "can't measure length of
     multiline text" 예외를 던진다. 헤드라인은 LLM이 만들어 개행이 섞여 들어올 수
     있고, 그러면 카드 이미지 생성이 통째로 실패해 텔레그램에 인포그래픽이 한 장만
     간다(실제 발생 — 국내/해외 2장 중 1장만 도착했다).
@@ -74,7 +143,7 @@ def _wrap_lines(draw, text: str, font, max_width: float, max_lines: int = 3) -> 
     lines, current = [], ""
     for ch in text:
         trial = current + ch
-        if draw.textlength(trial, font=font) > max_width and current:
+        if _len(draw, trial, font=font) > max_width and current:
             lines.append(current)
             current = ch
             if len(lines) == max_lines:
@@ -84,11 +153,11 @@ def _wrap_lines(draw, text: str, font, max_width: float, max_lines: int = 3) -> 
     if len(lines) < max_lines and current:
         lines.append(current)
 
-    if len(lines) == max_lines and draw.textlength(text, font=font) > sum(
-        draw.textlength(l, font=font) for l in lines
+    if len(lines) == max_lines and _len(draw, text, font=font) > sum(
+        _len(draw, l, font=font) for l in lines
     ):
         last = lines[-1]
-        while last and draw.textlength(last + '…', font=font) > max_width:
+        while last and _len(draw, last + '…', font=font) > max_width:
             last = last[:-1]
         lines[-1] = last + '…'
     return lines
@@ -112,9 +181,10 @@ def generate_top10_card(top10: List[Dict], date_str: str, output_path: str,
         img = Image.new('RGB', (_WIDTH, _HEIGHT), _BG)
         draw = ImageDraw.Draw(img)
 
-        heading = f"🔥 오늘의 {region_label} 뉴스 Top 10" if region_label else "🔥 오늘의 뉴스 Top 10"
-        draw.text((_MARGIN, 48), heading, font=font_title, fill=_TEXT_PRIMARY)
-        draw.text((_MARGIN, 106), date_str, font=font_date, fill=_TEXT_SECONDARY)
+        # 이모지는 그릴 폰트가 없어 빈칸만 남는다(제목 앞이 비어 보였다) — 시사용어 카드처럼 뺀다
+        heading = f"오늘의 {region_label} 뉴스 Top 10" if region_label else "오늘의 뉴스 Top 10"
+        _text(draw, (_MARGIN, 48), heading, font=font_title, fill=_TEXT_PRIMARY)
+        _text(draw, (_MARGIN, 106), date_str, font=font_date, fill=_TEXT_SECONDARY)
 
         pad = 24
         for i, item in enumerate(top10[:_COLS * _ROWS]):
@@ -130,31 +200,31 @@ def generate_top10_card(top10: List[Dict], date_str: str, output_path: str,
             bx, by = x + pad + badge_r, y + pad + badge_r
             draw.ellipse([bx - badge_r, by - badge_r, bx + badge_r, by + badge_r], fill=accent)
             rank_text = _one_line(item.get('rank', i + 1))
-            rw = draw.textlength(rank_text, font=font_rank)
-            draw.text((bx - rw / 2, by - 15), rank_text, font=font_rank, fill=_WHITE)
+            rw = _len(draw, rank_text, font=font_rank)
+            _text(draw, (bx - rw / 2, by - 15), rank_text, font=font_rank, fill=_WHITE)
 
             # 분야 태그
             tag_text = _one_line(item.get('category_name', ''))
             tag_x = bx + badge_r + 14
-            tw = draw.textlength(tag_text, font=font_tag)
+            tw = _len(draw, tag_text, font=font_tag)
             tag_y = by - 15
             draw.rounded_rectangle([tag_x, tag_y, tag_x + tw + 22, tag_y + 30], radius=15, fill=accent)
-            draw.text((tag_x + 11, tag_y + 4), tag_text, font=font_tag, fill=_WHITE)
+            _text(draw, (tag_x + 11, tag_y + 4), tag_text, font=font_tag, fill=_WHITE)
 
             # 헤드라인 (최대 3줄)
             headline_y = y + pad + badge_r * 2 + 22
             max_text_w = _CELL_W - pad * 2
             lines = _wrap_lines(draw, item.get('card_headline', ''), font_headline, max_text_w, max_lines=3)
             for li, line in enumerate(lines):
-                draw.text((x + pad, headline_y + li * 40), line, font=font_headline, fill=_INK)
+                _text(draw, (x + pad, headline_y + li * 40), line, font=font_headline, fill=_INK)
 
             # 출처
             source_text = _one_line(item.get('source', ''))
             if source_text:
-                draw.text((x + pad, y + _CELL_H - pad - 22), source_text, font=font_source,
+                _text(draw, (x + pad, y + _CELL_H - pad - 22), source_text, font=font_source,
                           fill=tuple(int(c * 0.55) for c in _INK))
 
-        draw.text((_MARGIN, _HEIGHT - _FOOTER_H + 4), "일일 뉴스 브리핑", font=font_footer, fill=_TEXT_SECONDARY)
+        _text(draw, (_MARGIN, _HEIGHT - _FOOTER_H + 4), "일일 뉴스 브리핑", font=font_footer, fill=_TEXT_SECONDARY)
 
         img.save(output_path, 'PNG')
         return output_path
@@ -200,8 +270,8 @@ def generate_terms_card(terms: List[Dict], date_str: str, output_path: str,
         title = "오늘의 시사용어"
         if total_pages > 1:
             title += f"  {page}/{total_pages}"
-        draw.text((_MARGIN, _MARGIN + 10), title, font=font_title, fill=_TEXT_PRIMARY)
-        draw.text((_MARGIN, _MARGIN + 74), date_str, font=font_date, fill=_TEXT_SECONDARY)
+        _text(draw, (_MARGIN, _MARGIN + 10), title, font=font_title, fill=_TEXT_PRIMARY)
+        _text(draw, (_MARGIN, _MARGIN + 74), date_str, font=font_date, fill=_TEXT_SECONDARY)
 
         pad = 26
         for i, item in enumerate(terms[:_TERM_ROWS]):
@@ -215,29 +285,29 @@ def generate_terms_card(terms: List[Dict], date_str: str, output_path: str,
                                    radius=5, fill=accent)
 
             tag_text = _one_line(item.get('category_name', ''))
-            tw = draw.textlength(tag_text, font=font_tag)
+            tw = _len(draw, tag_text, font=font_tag)
             tag_x = _MARGIN + pad
             draw.rounded_rectangle([tag_x, y + pad - 2, tag_x + tw + 22, y + pad + 28],
                                    radius=15, fill=accent)
-            draw.text((tag_x + 11, y + pad + 2), tag_text, font=font_tag, fill=_WHITE)
+            _text(draw, (tag_x + 11, y + pad + 2), tag_text, font=font_tag, fill=_WHITE)
 
             term_lines = _wrap_lines(draw, item.get('term', ''), font_term,
                                      _TERM_CARD_W - pad * 2 - tw - 40, max_lines=1)
             if term_lines:
-                draw.text((tag_x + tw + 40, y + pad - 1), term_lines[0], font=font_term, fill=_INK)
+                _text(draw, (tag_x + tw + 40, y + pad - 1), term_lines[0], font=font_term, fill=_INK)
 
             def_lines = _wrap_lines(draw, item.get('definition', ''), font_def,
                                     _TERM_CARD_W - pad * 2, max_lines=3)
             for li, line in enumerate(def_lines):
-                draw.text((tag_x, y + pad + 48 + li * 33), line, font=font_def,
+                _text(draw, (tag_x, y + pad + 48 + li * 33), line, font=font_def,
                           fill=tuple(int(c * 0.82) for c in _INK))
 
             source_text = _one_line(item.get('source', ''))
             if source_text:
-                draw.text((tag_x, y + _TERM_ROW_H - pad - 20), f"출처 · {source_text}",
+                _text(draw, (tag_x, y + _TERM_ROW_H - pad - 20), f"출처 · {source_text}",
                           font=font_source, fill=tuple(int(c * 0.55) for c in _INK))
 
-        draw.text((_MARGIN, _TERM_HEIGHT - _FOOTER_H + 4), "일일 뉴스 브리핑 · 시사용어",
+        _text(draw, (_MARGIN, _TERM_HEIGHT - _FOOTER_H + 4), "일일 뉴스 브리핑 · 시사용어",
                   font=font_footer, fill=_TEXT_SECONDARY)
 
         img.save(output_path, 'PNG')

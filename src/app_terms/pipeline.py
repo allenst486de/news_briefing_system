@@ -32,6 +32,7 @@ from ..collectors.sources import CATEGORIES, CATEGORY_META
 from ..utils.llm_client import _salvage_array, _try_parse
 from ..utils.logger import setup_logger
 from ..utils.terms_store import normalize_term
+from ..utils.text_guard import foreign_leak
 from . import nim, store, wiki
 
 logger = setup_logger()
@@ -161,6 +162,8 @@ def valid_meaning(value) -> Optional[str]:
     if _TIME_WORDS.search(text) or "http" in text.lower():
         return None
     if _POLITE.search(text):        # 앱의 다른 해설과 문체를 맞춘다(한다체)
+        return None
+    if foreign_leak(text):          # 대체 모델이 중국어·일본어를 섞은 뜻풀이 (2026-09-26 요약에서 발생)
         return None
     return text
 

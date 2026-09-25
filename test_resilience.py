@@ -282,6 +282,71 @@ def test_top10_llm_path_also_dedups():
     assert heads[:2] == ["풍계리1", "주택"], f"LLM이 같은 사건을 두 번 골랐을 때 걸러야 한다: {heads}"
 
 
+def test_foreign_script_in_summary_is_rejected():
+    """9/26: muse-glimmer가 '앞두고对华 강경 발언'처럼 중국어를 섞었다 — 받지 않고 재요약 대상으로"""
+    a = _art("Trump softens China rhetoric", "https://x/cn", important=False)
+    a.language = "en"
+    saved = summarizer.call_llm_json
+    summarizer.call_llm_json = lambda *x, **k: [{
+        "id": 1, "paraphrased_title": "트럼프, 중국 발언 누그러뜨려",
+        "summary_250": "트럼프 대통령이 중국 지도자 접대를 앞두고对华 강경 발언을 누그러뜨렸다.",
+        "is_important": False, "off_topic": False, "exclude": False}]
+    try:
+        kept = summarizer._summarize_chunk("국제", [a])
+    finally:
+        summarizer.call_llm_json = saved
+    assert kept[0].llm_failed, "중국어가 섞인 요약을 그대로 받았다"
+
+    from src.utils.text_guard import foreign_leak
+    assert not foreign_leak("이란 美에 7일 휴전안 재제안"), "신문 한자(美)는 허용해야 한다"
+    assert foreign_leak("두 달간同居하며")
+    assert not foreign_leak("鄭 의원 발언", "鄭 의원이 말했다"), "원문에 있던 한자는 허용"
+
+
+def test_terms_keep_one_card_when_names_are_filtered():
+    """지명 등을 걸러 10개가 안 되면 예전엔 그날 시사용어를 통째로 버렸다 — 5개 이상이면 1장"""
+    from src import terms_extractor
+    from src.app_terms import wiki
+    arts = [_art(f"기사 {i}", f"https://x/t{i}") for i in range(8)]
+    buckets = {"economy": {"domestic": arts, "overseas": []}}
+    reply = [{"id": i + 1, "term": f"용어{i}", "definition": "일반적인 뜻을 설명하는 문장이다."} for i in range(8)]
+    reply[0]["term"] = "호르무즈 해협"
+    reply[1]["term"] = "뜻에 중국어"
+    reply[1]["definition"] = "두 달간同居하며 생긴 말이다."
+    saved = (terms_extractor.call_llm_json, wiki.lookup)
+    terms_extractor.call_llm_json = lambda *x, **k: reply
+    wiki.lookup = lambda titles: {"호르무즈 해협": {"entity": True}}
+    try:
+        terms = terms_extractor.extract_terms(buckets, date_str="2026-09-26")
+    finally:
+        terms_extractor.call_llm_json, wiki.lookup = saved
+    names = [t["term"] for t in terms]
+    assert len(names) == 5, f"6개 남으면 1장(5개)을 보내야 한다: {names}"
+    assert "호르무즈 해협" not in names and "뜻에 중국어" not in names, names
+
+    # 위키백과를 못 읽어도 시사용어는 나간다
+    wiki.lookup = lambda titles: (_ for _ in ()).throw(RuntimeError("down"))
+    terms_extractor.call_llm_json = lambda *x, **k: reply
+    try:
+        terms = terms_extractor.extract_terms(buckets, date_str="2026-09-26")
+    finally:
+        terms_extractor.call_llm_json, wiki.lookup = saved
+    assert len(terms) == 5, "위키백과 장애로 시사용어가 사라지면 안 된다"
+
+
+def test_card_draws_hanja_with_fallback_font():
+    """나눔고딕에 한자가 없어 '이란 美에'가 '이란    에'로 빈칸이 됐다(9/26)"""
+    from PIL import ImageFont
+    from src.utils import cardnews
+    font = ImageFont.truetype(cardnews._FONT_BOLD, 30)
+    runs = cardnews._runs("이란 美에", font)
+    if cardnews._fallback_for(font) is None:
+        print("   (이 환경엔 한자 대체 폰트가 없어 건너뜀)")
+        return
+    assert any("美" in part and use is not font for part, use in runs), f"美를 대체 폰트로 그리지 않았다: {runs}"
+    assert all(use is font for part, use in runs if "이" in part), "한글은 번들 폰트 그대로여야 한다"
+
+
 if __name__ == "__main__":
     os.environ["LOCAL_LLM_ENABLED"] = "1"
     for name, fn in list(globals().items()):

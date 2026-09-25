@@ -149,7 +149,8 @@ fill_app_terms() {
     break
   done
   echo "앱용 용어 push 실패 — 방금 만든 커밋을 버리고 origin을 따른다(다음 확인 때 다시 채움)"
-  git reset -q --hard HEAD~1
+  # --hard 는 저장소의 다른 파일에 있던 저장 안 한 수정까지 지운다 — 방금 커밋 하나만 되돌린다
+  git reset -q --keep HEAD~1 || echo "커밋 되돌리기 실패 — 로컬에 남겨 두고 다음 실행 때 다시 push"
   return 1
 }
 
