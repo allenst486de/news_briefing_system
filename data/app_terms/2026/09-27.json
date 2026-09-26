@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-27",
+  "terms": [
+    {
+      "term": "군사정전위원회",
+      "reading": "",
+      "meaning": "정전 협정의 준수 여부를 감독하고 위반 사항을 처리하기 위해 설치된 기구를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "유엔군사령부 군사정전위원회",
+      "url": "https://ko.wikipedia.org/wiki/유엔군사령부_군사정전위원회",
+      "date": "2026-09-27",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "관세",
+      "reading": "",
+      "meaning": "수입하거나 수출하는 물품에 대하여 국가가 부과하는 세금을 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "관세",
+      "url": "https://ko.wikipedia.org/wiki/관세",
+      "date": "2026-09-27",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "보호무역",
+      "reading": "",
+      "meaning": "자국 산업을 보호하기 위해 관세 부과나 수입 제한 등의 조치로 외국 상품의 유입을 억제하는 무역 정책을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "보호무역",
+      "url": "https://ko.wikipedia.org/wiki/보호무역",
+      "date": "2026-09-27",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "국민소득",
+      "reading": "",
+      "meaning": "한 나라의 국민이 일정 기간 동안 생산 활동을 통해 벌어들인 소득의 합계를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "국민 총소득",
+      "url": "https://ko.wikipedia.org/wiki/국민_총소득",
+      "date": "2026-09-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "다태아",
+      "reading": "",
+      "meaning": "한 번의 임신으로 둘 이상의 태아가 동시에 자라는 상태를 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "다태아",
+      "url": "https://ko.wikipedia.org/wiki/다태아",
+      "date": "2026-09-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Wet Lab",
+      "reading": "습식 실험실",
+      "meaning": "액체 상태의 시약이나 화학 물질을 사용하여 실험을 수행하는 실험실을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "습식 실험실",
+      "url": "https://ko.wikipedia.org/wiki/습식_실험실",
+      "date": "2026-09-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "해상 봉쇄",
+      "reading": "",
+      "meaning": "해군력을 이용하여 특정 지역의 항구와 해안을 둘러싸서 외부와의 교류를 차단하는 행위를 뜻한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "봉쇄",
+      "url": "https://ko.wikipedia.org/wiki/봉쇄",
+      "date": "2026-09-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "존속살해",
+      "reading": "",
+      "meaning": "자신의 직계존속이나 배우자의 직계존속을 살해하는 범죄를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "존속 살해",
+      "url": "https://ko.wikipedia.org/wiki/존속_살해",
+      "date": "2026-09-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "범성애자",
+      "reading": "",
+      "meaning": "상대방의 성별이나 성 정체성에 관계없이 모든 성별에 대해 정서적, 성적 끌림을 느끼는 사람을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "범성애",
+      "url": "https://ko.wikipedia.org/wiki/범성애",
+      "date": "2026-09-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "경제 전쟁",
+      "reading": "",
+      "meaning": "국가 간의 경제적 이익을 위해 관세, 무역 제한, 환율 조작 등의 수단을 동원하여 벌이는 갈등을 뜻한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "경제전",
+      "url": "https://ko.wikipedia.org/wiki/경제전",
+      "date": "2026-09-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-27T03:54:31+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
