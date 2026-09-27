@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-28",
+  "terms": [
+    {
+      "term": "휴머노이드",
+      "reading": "",
+      "meaning": "인간과 모습이나 형태가 닮은 로봇을 말한다. 영어 'human'에 '~을 닮은'이라는 뜻의 접미사 '-oid'가 붙은 말이다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "휴머노이드",
+      "url": "https://ko.wikipedia.org/wiki/휴머노이드",
+      "date": "2026-09-28",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-28T03:56:17+09:00",
+      "added": 1,
+      "via": [
+        "news_terms"
+      ]
+    }
+  ]
+}
