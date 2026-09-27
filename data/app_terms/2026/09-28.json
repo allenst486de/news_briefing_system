@@ -12,6 +12,114 @@
       "date": "2026-09-28",
       "via": "news_terms",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "퇴직연금",
+      "reading": "",
+      "meaning": "근로자가 퇴직할 때 받는 연금으로, 사용자와 근로자가 재직 중에 적립한 재원으로 지급되는 제도를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "연금",
+      "url": "https://ko.wikipedia.org/wiki/연금",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "두 국가 해법",
+      "reading": "",
+      "meaning": "두 개의 국가가 공존하는 방식으로 분쟁을 해결하는 방안을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "두 국가 해법",
+      "url": "https://ko.wikipedia.org/wiki/두_국가_해법",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "포화지방",
+      "reading": "",
+      "meaning": "탄소 원자 사이에 이중 결합이 없어 수소가 최대로 결합된 지방산으로, 상온에서 고체 상태인 지방을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "포화 지방산",
+      "url": "https://ko.wikipedia.org/wiki/포화_지방산",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "시뮬레이션",
+      "reading": "",
+      "meaning": "실제와 유사한 환경이나 조건을 인공적으로 만들어 그 결과를 예측하거나 실험하는 것을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "시뮬레이션",
+      "url": "https://ko.wikipedia.org/wiki/시뮬레이션",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "중대범죄수사청",
+      "reading": "",
+      "meaning": "중대 범죄를 전문적으로 수사하기 위해 설치하는 독립 수사 기구를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "중대범죄수사청",
+      "url": "https://ko.wikipedia.org/wiki/중대범죄수사청",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "체질량지수",
+      "reading": "",
+      "meaning": "몸무게를 키의 제곱으로 나눈 값으로, 비만도를 판정하는 데 쓰는 지표를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "체질량 지수",
+      "url": "https://ko.wikipedia.org/wiki/체질량_지수",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "말뭉치",
+      "reading": "",
+      "meaning": "언어 연구나 자연어 처리에 쓰기 위해 대량으로 모아 놓은 언어 자료의 집합을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "말뭉치",
+      "url": "https://ko.wikipedia.org/wiki/말뭉치",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "고음악",
+      "reading": "",
+      "meaning": "중세와 르네상스 시대에 작곡된 서양 고전 음악을 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "고음악",
+      "url": "https://ko.wikipedia.org/wiki/고음악",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "희토류",
+      "reading": "",
+      "meaning": "주기율표의 란타넘족 원소와 스칸듐, 이트륨을 통틀어 이르는 말로, 첨단 산업에 쓰이는 금속 원소를 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "희토류 원소",
+      "url": "https://ko.wikipedia.org/wiki/희토류_원소",
+      "date": "2026-09-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
     }
   ],
   "runs": [
@@ -20,6 +128,13 @@
       "added": 1,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-09-28T05:45:08+09:00",
+      "added": 9,
+      "via": [
+        "raw"
       ]
     }
   ]
