@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-29",
+  "terms": [
+    {
+      "term": "면역글로불린A",
+      "reading": "",
+      "meaning": "점막 조직에서 주로 생성되어 외부 항원의 침입을 막는 역할을 하는 면역글로불린의 한 종류이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "면역글로불린 A",
+      "url": "https://ko.wikipedia.org/wiki/면역글로불린_A",
+      "date": "2026-09-29",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Payload",
+      "reading": "탑재체",
+      "meaning": "우주선이나 로켓이 운송 목적으로 싣고 가는 인공위성, 탐사선, 승무원 등의 유효 하중을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "페이로드 (우주선)",
+      "url": "https://ko.wikipedia.org/wiki/페이로드_(우주선)",
+      "date": "2026-09-29",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "담합",
+      "reading": "",
+      "meaning": "기업들이 서로 짜고 가격이나 생산량 등을 결정하여 경쟁을 제한함으로써 부당한 이익을 얻는 행위를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "담합",
+      "url": "https://ko.wikipedia.org/wiki/담합",
+      "date": "2026-09-29",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "특검",
+      "reading": "",
+      "meaning": "특정 사건의 진상을 규명하기 위해 특별법에 따라 임명되는 검사를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "대한민국의 특별검사제도",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_특별검사제도",
+      "date": "2026-09-29",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "노쇠",
+      "reading": "",
+      "meaning": "나이가 들면서 신체 기능이 점차 쇠퇴하는 현상을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "생물학적 노화",
+      "url": "https://ko.wikipedia.org/wiki/생물학적_노화",
+      "date": "2026-09-29",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "위성항법시스템",
+      "reading": "",
+      "meaning": "인공위성을 이용해 지구상 어디서나 위치와 시각 정보를 제공하는 시스템을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "범지구 위성 항법 시스템",
+      "url": "https://ko.wikipedia.org/wiki/범지구_위성_항법_시스템",
+      "date": "2026-09-29",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "딥스테이트",
+      "reading": "",
+      "meaning": "정부 뒤에서 실질적인 권력을 행사한다고 여겨지는 은밀한 조직이나 세력을 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "딥 스테이트",
+      "url": "https://ko.wikipedia.org/wiki/딥_스테이트",
+      "date": "2026-09-29",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "박스오피스",
+      "reading": "",
+      "meaning": "영화나 공연의 흥행 성적을 집계한 순위나 매출을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "박스오피스",
+      "url": "https://ko.wikipedia.org/wiki/박스오피스",
+      "date": "2026-09-29",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "글로벌리스트",
+      "reading": "",
+      "meaning": "세계화를 지지하거나 세계주의적 가치를 추구하는 사람이나 세력을 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "세계화주의",
+      "url": "https://ko.wikipedia.org/wiki/세계화주의",
+      "date": "2026-09-29",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "필리버스터",
+      "reading": "",
+      "meaning": "의회에서 소수파가 다수파의 법안 처리를 막기 위해 장시간 발언으로 진행을 지연시키는 행위를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "필리버스터",
+      "url": "https://ko.wikipedia.org/wiki/필리버스터",
+      "date": "2026-09-29",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-09-29T03:52:13+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
