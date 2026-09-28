@@ -246,11 +246,21 @@ sys.exit(0 if any(m.get("id") == want and m.get("state") == "loaded" for m in da
 ' "$LOCAL_MODEL"
 }
 
+# 켤 때만 켰다가 쓰고 나면 끈다 — 계속 떠 있으면 모델(18GB 안팎)이 메모리에 남아
+# 다른 작업(ComfyUI 등)이 느려진다는 사용자 보고(2026-09-28). 사용자가 직접 띄워
+# 자기 작업에 쓰고 있던 경우는 건드리지 않는다 — 그때만 server_up이 이미 참이다.
+WE_STARTED_SERVER=0
+WE_LOADED_MODEL=0
+
 if server_up; then
-  echo "로컬 LLM 서버 이미 실행 중"
+  echo "로컬 LLM 서버 이미 실행 중(다른 용도로 띄워 둔 것으로 보고 종료 시 건드리지 않음)"
 elif command -v lms >/dev/null 2>&1; then
   echo "로컬 LLM 서버 기동 시도"
-  run_bounded 60 lms server start >/dev/null 2>&1 || echo "lms server start 시한 초과/실패 — 계속 진행"
+  if run_bounded 60 lms server start >/dev/null 2>&1; then
+    WE_STARTED_SERVER=1
+  else
+    echo "lms server start 시한 초과/실패 — 계속 진행"
+  fi
 else
   echo "lms CLI 없음 — 로컬 폴백 없이 진행"
 fi
@@ -272,6 +282,7 @@ if server_up; then
     fi
     if model_loaded; then
       echo "로컬 폴백 준비됨: $LOCAL_MODEL"
+      WE_LOADED_MODEL=1
     else
       echo "로컬 폴백 모델을 올리지 못함 — 클라우드 사다리 → 규칙기반으로 진행"
     fi
@@ -280,12 +291,32 @@ else
   echo "로컬 LLM 서버 응답 없음 — 폴백 없이 진행(클라우드 → 규칙기반)"
 fi
 
+# 우리가 서버까지 띄웠으면(WE_STARTED_SERVER) 앱째로 끈다 — 헬퍼 프로세스까지 정리된다.
+# 서버는 원래 떠 있었는데 모델만 우리가 올렸으면(WE_LOADED_MODEL) 그 모델만 내리고
+# 서버·앱은 사용자 몫이니 손대지 않는다.
+stop_local_llm() {
+  if [ "$WE_STARTED_SERVER" = "1" ]; then
+    echo "로컬 LLM 정리: 이번 실행에서 띄웠으므로 모델 언로드 후 앱까지 종료"
+    run_bounded 30 lms unload --all >/dev/null 2>&1
+    run_bounded 15 lms server stop >/dev/null 2>&1
+    pkill -f "/Applications/Bionic.app" 2>/dev/null
+  elif [ "$WE_LOADED_MODEL" = "1" ]; then
+    echo "로컬 LLM 정리: 서버는 원래 떠 있던 것이라 이번에 올린 모델만 내림"
+    run_bounded 30 lms unload "$LOCAL_MODEL" >/dev/null 2>&1
+  fi
+}
+
 echo "--- main.py 실행 ---"
 # main.py는 전송이 끝나면 이 파일을 남긴다. 다음 호출(05:45·07:30·로그인)이 보고 건너뛴다.
 export BRIEFING_SENT_MARKER="$SENT_MARKER"
 # 무엇이 매달리든 3시간이면 끊는다 — 그래야 다음 재확인 실행이 만회할 수 있다.
 run_bounded 10800 python main.py
 MAIN_EXIT=$?
+
+# 로컬 모델은 여기까지만 쓴다(main.py 안에서만 호출됨) — 커밋·배포 전에 정리해서
+# main.py가 어떻게 끝났든(성공·실패·시한초과) 메모리에 남지 않게 한다.
+stop_local_llm
+
 case $MAIN_EXIT in
   0) ;;
   3) echo "main.py: 사이트는 만들었지만 텔레그램 전송 실패 — 배포는 진행, 다음 재확인 때 다시 보냄" ;;
