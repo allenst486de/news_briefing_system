@@ -347,6 +347,35 @@ def test_card_draws_hanja_with_fallback_font():
     assert all(use is font for part, use in runs if "이" in part), "한글은 번들 폰트 그대로여야 한다"
 
 
+def test_terms_card_source_never_overlaps_a_three_line_definition():
+    """
+    9/29 'CPTPP' 카드: 영문 정식 명칭까지 풀어 쓴 뜻풀이가 3줄로 wrap되며
+    마지막 줄("...무역 장벽을...")과 "출처 · 동아일보"가 겹쳐 보였다.
+    뜻풀이는 최대 3줄까지 나올 수 있으므로(_wrap_lines max_lines=3), 3줄일 때도
+    출처 줄이 그 아래에 오는지 실제 렌더 코드가 쓰는 오프셋 계산으로 확인한다.
+    """
+    from src.utils import cardnews
+
+    # 실제 CPTPP 뜻풀이 — 3줄로 wrap되는 걸 이 테스트에서도 재확인
+    long_def = ("포괄적·점진적 환태평양경제동반자협정(Comprehensive and Progressive "
+                "Agreement for Trans-Pacific Partnership)의 약자로, 아시아·태평양 "
+                "지역 국가들이 관세를 낮추고 무역 장벽을 허물기 위해 체결한 거대 "
+                "자유무역협정입니다.")
+    from PIL import Image, ImageDraw, ImageFont
+    draw = ImageDraw.Draw(Image.new('RGB', (10, 10)))
+    font_def = ImageFont.truetype(cardnews._FONT_REGULAR, 24)
+    def_lines = cardnews._wrap_lines(draw, long_def, font_def,
+                                     cardnews._TERM_CARD_W - cardnews._TERM_PAD * 2, max_lines=3)
+    assert len(def_lines) == 3, f"이 테스트 자체가 3줄 wrap을 전제로 한다: {def_lines}"
+
+    last_def_line_bottom = cardnews._term_def_line_y(len(def_lines) - 1) + cardnews._TERM_DEF_LINE_GLYPH_H
+    source_y = cardnews._term_source_y()
+    assert source_y > last_def_line_bottom, (
+        f"3줄 정의의 마지막 줄(바닥 {last_def_line_bottom})과 출처 줄({source_y})이 겹친다")
+    # 카드 배경(행 높이) 밖으로 출처 줄이 삐져나가지도 않아야 한다
+    assert source_y + 21 < cardnews._TERM_ROW_H, "출처 줄이 카드 바닥 밖으로 나간다"
+
+
 if __name__ == "__main__":
     os.environ["LOCAL_LLM_ENABLED"] = "1"
     for name, fn in list(globals().items()):

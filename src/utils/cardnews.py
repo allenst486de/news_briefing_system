@@ -237,12 +237,33 @@ def generate_top10_card(top10: List[Dict], date_str: str, output_path: str,
 # Top10 카드가 2열×5행 포스터라면 이쪽은 1열×5행 목록형이다. 용어는 제목이 짧고
 # 뜻풀이가 길어서, 가로로 넓은 칸에 용어와 설명을 위아래로 놓는 편이 읽기 좋다.
 _TERM_CARD_W = 1000
-_TERM_ROW_H = 190
+# 뜻풀이는 최대 3줄(_wrap_lines max_lines=3)까지 그리는데, 예전 190은 2줄 기준
+# 여백이라 3줄째가 출처 줄과 겹쳤다(2026-09-29 'CPTPP' 카드: 영문 정식 명칭까지
+# 풀어 쓴 뜻풀이가 3줄로 wrap되며 "포괄적…무역 장"과 "출처 · 동아일보"가 겹쳐 보임).
+# 출처는 행 바닥에서 고정 오프셋(pad+20)으로 그리므로, 3줄이 나와도 안 겹치려면
+# 행 높이가 "pad + 정의 시작(48) + 줄간격(33)×3 + 정의 한 줄 실제 높이(~25) + 여유(10)"
+# 이상이어야 한다 — 26+48+99+25+10=208, 여유를 더 두어 230으로 잡는다.
+_TERM_ROW_H = 230
 _TERM_ROWS = 5
 _TERM_HEADER_H = 150
 _TERM_HEIGHT = _MARGIN + _TERM_HEADER_H + _TERM_ROW_H * _TERM_ROWS \
     + _GAP * (_TERM_ROWS - 1) + _FOOTER_H + _MARGIN
 _TERM_WIDTH = _MARGIN * 2 + _TERM_CARD_W
+
+_TERM_PAD = 26
+_TERM_DEF_START = 48       # 정의 첫 줄의 y 오프셋(행 위쪽 + pad로부터)
+_TERM_DEF_LINE_H = 33       # 정의 줄 간격
+_TERM_DEF_LINE_GLYPH_H = 25  # font_def(24pt) 실제 글자 높이(ascent+descent) 근사치
+
+
+def _term_def_line_y(li: int) -> int:
+    """정의 li번째 줄(0-base)의 y 오프셋 — 행 위쪽 기준, pad 포함."""
+    return _TERM_PAD + _TERM_DEF_START + li * _TERM_DEF_LINE_H
+
+
+def _term_source_y() -> int:
+    """출처 줄의 y 오프셋 — 행 위쪽 기준, pad 포함. 행 바닥에 고정."""
+    return _TERM_ROW_H - _TERM_PAD - 20
 
 
 def generate_terms_card(terms: List[Dict], date_str: str, output_path: str,
@@ -273,7 +294,7 @@ def generate_terms_card(terms: List[Dict], date_str: str, output_path: str,
         _text(draw, (_MARGIN, _MARGIN + 10), title, font=font_title, fill=_TEXT_PRIMARY)
         _text(draw, (_MARGIN, _MARGIN + 74), date_str, font=font_date, fill=_TEXT_SECONDARY)
 
-        pad = 26
+        pad = _TERM_PAD
         for i, item in enumerate(terms[:_TERM_ROWS]):
             y = _MARGIN + _TERM_HEADER_H + i * (_TERM_ROW_H + _GAP)
             accent = _CATEGORY_COLORS.get(item.get('category'), (91, 141, 238))
@@ -299,12 +320,12 @@ def generate_terms_card(terms: List[Dict], date_str: str, output_path: str,
             def_lines = _wrap_lines(draw, item.get('definition', ''), font_def,
                                     _TERM_CARD_W - pad * 2, max_lines=3)
             for li, line in enumerate(def_lines):
-                _text(draw, (tag_x, y + pad + 48 + li * 33), line, font=font_def,
+                _text(draw, (tag_x, y + _term_def_line_y(li)), line, font=font_def,
                           fill=tuple(int(c * 0.82) for c in _INK))
 
             source_text = _one_line(item.get('source', ''))
             if source_text:
-                _text(draw, (tag_x, y + _TERM_ROW_H - pad - 20), f"출처 · {source_text}",
+                _text(draw, (tag_x, y + _term_source_y()), f"출처 · {source_text}",
                           font=font_source, fill=tuple(int(c * 0.55) for c in _INK))
 
         _text(draw, (_MARGIN, _TERM_HEIGHT - _FOOTER_H + 4), "일일 뉴스 브리핑 · 시사용어",
