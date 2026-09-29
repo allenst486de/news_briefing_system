@@ -48,6 +48,42 @@
       "date": "2026-09-30",
       "via": "news_terms",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "공직선거법",
+      "reading": "",
+      "meaning": "공직자 선출을 위한 선거 절차, 선거운동, 선거비용 등을 규정하는 대한민국의 법률을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "대한민국 공직선거법",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_공직선거법",
+      "date": "2026-09-30",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "신자유주의",
+      "reading": "",
+      "meaning": "시장의 자율성과 자유경쟁을 강조하고 국가의 개입을 축소하려는 경제적 사상을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "신자유주의",
+      "url": "https://ko.wikipedia.org/wiki/신자유주의",
+      "date": "2026-09-30",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "반유대주의",
+      "reading": "",
+      "meaning": "유대인을 혐오하거나 차별하고 배척하는 사상과 태도를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "반유대주의",
+      "url": "https://ko.wikipedia.org/wiki/반유대주의",
+      "date": "2026-09-30",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -56,6 +92,13 @@
       "added": 4,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-09-30T05:45:08+09:00",
+      "added": 3,
+      "via": [
+        "raw"
       ]
     }
   ]
