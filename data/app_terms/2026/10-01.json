@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-01",
+  "terms": [
+    {
+      "term": "안락사",
+      "reading": "",
+      "meaning": "회복할 가망이 없는 환자의 고통을 덜어 주기 위해 인위적으로 생명을 끊는 행위를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "안락사",
+      "url": "https://ko.wikipedia.org/wiki/안락사",
+      "date": "2026-10-01",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "면역항암제",
+      "reading": "",
+      "meaning": "면역 체계가 암세포를 공격하도록 돕는 방식으로 암을 치료하는 약을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "면역항암요법",
+      "url": "https://ko.wikipedia.org/wiki/면역항암요법",
+      "date": "2026-10-01",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "팩션",
+      "reading": "",
+      "meaning": "사실을 바탕으로 하면서 허구를 섞어 쓴 이야기나 그런 형식의 글을 말한다. 사실을 뜻하는 팩트와 허구를 뜻하는 픽션을 합친 말이다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "팩션",
+      "url": "https://ko.wikipedia.org/wiki/팩션",
+      "date": "2026-10-01",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "노란봉투법",
+      "reading": "",
+      "meaning": "노동조합의 쟁의행위에 대한 사용자의 손해배상 청구를 제한하는 내용의 법률을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "노란봉투법",
+      "url": "https://ko.wikipedia.org/wiki/노란봉투법",
+      "date": "2026-10-01",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "국정감사",
+      "reading": "",
+      "meaning": "국회가 행정부의 업무를 감사하고 조사하는 권한이나 그 활동을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "국정감사권",
+      "url": "https://ko.wikipedia.org/wiki/국정감사권",
+      "date": "2026-10-01",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "하네스",
+      "reading": "",
+      "meaning": "여러 전선이나 케이블을 묶어 정리한 다발, 또는 전선을 연결하고 고정하는 데 쓰는 부품을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "케이블 하니스",
+      "url": "https://ko.wikipedia.org/wiki/케이블_하니스",
+      "date": "2026-10-01",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-01T05:45:08+09:00",
+      "added": 6,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}
