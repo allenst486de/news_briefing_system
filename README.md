@@ -136,11 +136,14 @@ python main.py
 
 - 실행 스크립트: `scripts/run_daily_briefing.sh`
   1. `origin/main` 최신화(fast-forward만 — 갈라져 있으면 중단하고 사람이 확인)
+  1.5. ComfyUI에 자원 양보 요청(아래 참고) — 로컬 LLM을 켜기 전에
   2. LM Studio 서버 기동 + 폴백 모델 예열(실패해도 계속 진행 — 이미 떠 있었으면 손대지 않고 그대로 씀)
   3. `python main.py`
-  3.5. 로컬 LLM 정리 — 이번 실행에서 서버를 띄웠으면 모델 언로드 후 앱까지 종료, 서버는 원래 떠 있었는데 모델만 올렸으면 그 모델만 언로드(둘 다 아니면 아무것도 안 함)
+  3.5. 로컬 LLM 정리 — 이번 실행에서 서버를 띄웠으면 모델 언로드 후 앱까지 종료, 서버는 원래 떠 있었는데 모델만 올렸으면 그 모델만 언로드(둘 다 아니면 아무것도 안 함) — 이어서 ComfyUI 양보도 즉시 해제
   4. `docs/`·`data/`·`archive/`를 `main`에 커밋·push (실패 시 `git pull --rebase` 후 최대 3회 재시도 — 지표 갱신 워크플로가 GitHub 쪽에서 `main`에 push하므로 충돌이 실제로 난다)
   5. `docs/`를 `gh-pages` 워크트리(`.ghpages_worktree/`)에 rsync 후 push → GitHub Pages 배포
+
+> **ComfyUI와 자원 양보 (2026-10-01).** 다른 세션이 맥에서 ComfyUI로 캐릭터 이미지를 대량 생성하는데, 이게 계속 떠 있으면(그날 27GB를 쥔 채 며칠째 실행 중이었다) 로컬 LLM과 메모리·GPU를 다퉈 로컬 호출이 시간 초과 나기 쉽다(아래 "단발 호출" 항목 참고). 대기열이 비기를 기다리는 방식은 안 통한다 — 그 세션의 생성기가 한 장 끝나면 바로 다음 장을 넣어 대기열이 빌 틈이 없기 때문이다. 그래서 그 세션이 지원하는 **PAUSE 파일** 프로토콜로 양보를 요청한다: 로컬 LLM을 켜기 전에 `COMFYUI_PAUSE_FILE`(기본 `/Volumes/D/AI_Projects/Claude/01_Projects/20260930_캐릭터생성/PAUSE`)을 만들면 생성기가 새 이미지를 넣지 않고 진행 중인 1장만 마친다. 대기열(`GET /queue`)의 `queue_running`이 비는 걸 최대 `COMFYUI_WAIT_SECONDS`(기본 300초)까지 기다렸다가, 비었으면 `POST /free {"unload_models": true, "free_memory": true}`로 메모리를 비운다(모델은 재개 시 다시 불러올 뿐이라 안전하다) — 그래도 안 비면 강제로 끊지 않고 그냥 진행한다(이번 실행은 로컬이 평소보다 느릴 수 있음을 감수). `python main.py`가 끝나면 즉시 PAUSE 파일을 지워 양보를 풀고, 스크립트가 어떻게 끝나든(성공·실패·시한초과) EXIT 트랩에서 한 번 더 지운다. **STOP 파일·`gen.pid`·생성기 프로세스·ComfyUI 프로세스 자체는 건드리지 않는다** — 그 세션이 관리하는 영역이다.
 - 로그: `logs/run_YYYY-MM-DD_HHMMSS.log`
 - 수동 실행: `bash scripts/run_daily_briefing.sh`
 
@@ -255,7 +258,7 @@ news_briefing_system/
 │   ├── indicators.yml            # 평일 장중 15분마다 docs/indicators.json만 갱신
 │   └── app_terms.yml             # 앱용 시사 용어를 매일 오전 8시 전에 채움 (맥과 무관)
 ├── scripts/
-│   ├── run_daily_briefing.sh     # 로컬 일일 실행: LM Studio 예열 → main.py → main 커밋·push → gh-pages 배포
+│   ├── run_daily_briefing.sh     # 로컬 일일 실행: ComfyUI 양보 요청 → LM Studio 예열 → main.py → main 커밋·push → gh-pages 배포
 │   └── news_briefing_launch.sh   # launchd용 래퍼 사본 — 실제로는 ~/bin/ 에 설치해 쓴다(외장 볼륨 제약)
 ├── src/
 │   ├── app_terms/                # 앱용 시사 용어 — pipeline(흐름)·nim(끊김 대책 호출기)·wiki·store

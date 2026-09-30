@@ -51,7 +51,15 @@ if ! mkdir "$LOCK_DIR" 2>/dev/null; then
   mkdir "$LOCK_DIR" || exit 1
 fi
 echo $$ > "$LOCK_DIR/pid"
-trap 'rm -rf "$LOCK_DIR"' EXIT
+# ComfyUI에 양보를 요청했으면(comfyui_yield) 그 PAUSE 파일 경로가 여기 들어간다.
+# 스크립트가 어떻게 끝나든(성공·실패·시한초과) EXIT 트랩에서 반드시 치운다 —
+# 그래야 브리핑이 죽어도 다른 세션의 생성 작업이 영영 멈춰 있지 않는다.
+PAUSE_FILE=""
+cleanup_on_exit() {
+  rm -rf "$LOCK_DIR"
+  [ -n "$PAUSE_FILE" ] && rm -f "$PAUSE_FILE"
+}
+trap cleanup_on_exit EXIT
 
 LOG_FILE="${REPO_DIR}/logs/run_$(date +%Y-%m-%d_%H%M%S).log"
 exec >>"$LOG_FILE" 2>&1
@@ -214,6 +222,63 @@ if [ "$SKIP_BRIEFING" -eq 1 ]; then
   exit 0
 fi
 
+# --- ComfyUI에 자원 양보 요청 ---
+# 로컬 LLM이 다른 세션의 ComfyUI 대량 생성과 메모리·GPU를 다투면 그 호출이 느려지거나
+# 시간 초과된다(2026-10-01: ComfyUI가 27GB를 쥔 채 며칠째 떠 있었고, 로컬 LLM 호출이
+# 900초 만에 실패했다). 대기열이 비기를 기다리는 방식은 안 통한다 — 그 세션의 생성기는
+# 한 장 끝나면 바로 다음 장을 넣어 대기열이 빌 틈이 없다(캐릭터 생성 세션 확인,
+# 2026-10-01). 대신 그 세션이 지원하는 PAUSE 파일로 양보를 요청한다: 파일이 있으면
+# 생성기는 새 이미지를 넣지 않고 진행 중인 1장만 마친다.
+#
+# ⚠️ STOP 파일·gen.pid·생성기 프로세스·ComfyUI 프로세스는 절대 건드리지 않는다
+# (그 세션이 관리) — 우리는 PAUSE 파일 하나와 ComfyUI의 /free API만 쓴다.
+COMFYUI_URL="${COMFYUI_URL:-http://127.0.0.1:8188}"
+COMFYUI_PAUSE_FILE="${COMFYUI_PAUSE_FILE:-/Volumes/D/AI_Projects/Claude/01_Projects/20260930_캐릭터생성/PAUSE}"
+COMFYUI_WAIT_SECONDS="${COMFYUI_WAIT_SECONDS:-300}"
+
+comfyui_queue_running() {
+  python3 - "$COMFYUI_URL" <<'PY' 2>/dev/null
+import json, sys, urllib.request
+try:
+    with urllib.request.urlopen(f"{sys.argv[1]}/queue", timeout=5) as r:
+        d = json.load(r)
+except Exception:
+    sys.exit(1)     # 응답 없음 — ComfyUI가 안 떠 있는 것으로 보고 '안 바쁨' 취급
+sys.exit(0 if d.get("queue_running") else 1)
+PY
+}
+
+comfyui_yield() {
+  [ -d "$(dirname "$COMFYUI_PAUSE_FILE")" ] || { echo "ComfyUI 생성기 폴더 없음 — 건너뜀"; return 0; }
+  touch "$COMFYUI_PAUSE_FILE" 2>/dev/null || { echo "PAUSE 파일을 만들지 못함 — 건너뜀"; return 0; }
+  PAUSE_FILE="$COMFYUI_PAUSE_FILE"
+  echo "ComfyUI에 양보 요청(PAUSE 생성) — 진행 중인 1장만 마치길 최대 ${COMFYUI_WAIT_SECONDS}초 기다림"
+  local waited=0
+  while comfyui_queue_running && [ "$waited" -lt "$COMFYUI_WAIT_SECONDS" ]; do
+    sleep 10
+    waited=$((waited + 10))
+  done
+  if comfyui_queue_running; then
+    echo "ComfyUI가 ${COMFYUI_WAIT_SECONDS}초 넘게 안 비어 그냥 진행 — 이번엔 로컬 LLM이 평소보다 느릴 수 있음"
+  else
+    echo "ComfyUI 대기열 비움 확인(대기 ${waited}초) — 메모리 해제 요청"
+    curl -s --max-time 5 -X POST "$COMFYUI_URL/free" -H 'Content-Type: application/json' \
+      -d '{"unload_models": true, "free_memory": true}' >/dev/null 2>&1 \
+      && echo "ComfyUI 메모리 해제 완료(모델은 재개 시 다시 불러옴)" \
+      || echo "메모리 해제 요청 실패(치명적이지 않음)"
+  fi
+}
+
+comfyui_resume() {
+  if [ -n "$PAUSE_FILE" ]; then
+    rm -f "$PAUSE_FILE"
+    echo "ComfyUI PAUSE 해제 — 생성기가 곧 재개함"
+    PAUSE_FILE=""
+  fi
+}
+
+comfyui_yield
+
 # --- 로컬 LLM 폴백 준비 ---
 # 클라우드가 실패한 청크를 받아낼 안전망. 여기서 못 띄워도 파이프라인은 그대로
 # 진행한다(클라우드 → 규칙기반). 안전망이 없는 것뿐이지 장애는 아니다.
@@ -316,6 +381,9 @@ MAIN_EXIT=$?
 # 로컬 모델은 여기까지만 쓴다(main.py 안에서만 호출됨) — 커밋·배포 전에 정리해서
 # main.py가 어떻게 끝났든(성공·실패·시한초과) 메모리에 남지 않게 한다.
 stop_local_llm
+# ComfyUI 양보도 여기서 바로 풀어준다 — main.py exit 코드와 무관하게, 더 기다릴 필요가
+# 없어지는 즉시 돌려준다(실패해도 EXIT 트랩이 한 번 더 보장한다).
+comfyui_resume
 
 case $MAIN_EXIT in
   0) ;;
