@@ -334,7 +334,7 @@ def stats_summary() -> str:
 
 
 def call_local_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
-                   max_tokens: int = 4096) -> Optional[str]:
+                   max_tokens: int = 4096, local_timeout: Optional[int] = None) -> Optional[str]:
     """
     로컬 OpenAI 호환 서버(LM Studio 등)에 1회 호출. 클라우드가 실패한 청크만 온다.
 
@@ -343,6 +343,12 @@ def call_local_llm(system_prompt: str, user_prompt: str, *, temperature: float =
     안전망'이지 필수 의존이 되어서는 안 된다.
 
     재시도는 하지 않는다. 호출 하나가 약 277초라 재시도하면 예산만 태운다.
+
+    local_timeout: 기본(None)이면 _local_llm_timeout()(900초)를 쓴다. Top10·시사용어처럼
+    청크 분할·재시도 없는 단발 호출은 짧게 줄여서 넘긴다 — 900초는 본문 요약처럼 실패해도
+    다음 청크가 있는 호출을 위한 값이라, 단발 호출이 그대로 쓰면 로컬이 맥 위 다른 작업과
+    자원을 다투는 날 그 호출 하나가 15분을 통째로 날린다(2026-10-01: 시사용어 추출이
+    클라우드 5분 + 로컬 15분 = 20분 만에 실패 — 그동안 로컬은 이 호출 하나만 잡고 있었다).
     """
     if not local_llm_enabled():
         return None
@@ -378,7 +384,7 @@ def call_local_llm(system_prompt: str, user_prompt: str, *, temperature: float =
                         f"로컬 LLM 시간 예산 {local_llm_time_budget()}초 초과(대기 중)")
                 return None
             resp = requests.post(_local_llm_url(), json=payload,
-                                 timeout=_local_llm_timeout())
+                                 timeout=local_timeout or _local_llm_timeout())
     except Exception as e:
         logger.warning(f"Local LLM call failed: {type(e).__name__}: {e}")
         _record("local_fail", f"로컬 LLM {type(e).__name__}: {str(e)[:150]}")
@@ -407,7 +413,7 @@ def call_local_llm(system_prompt: str, user_prompt: str, *, temperature: float =
 
 def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
              max_tokens: int = 4096, timeout: int = 180, retries: int = 2,
-             api_key: Optional[str] = None) -> Optional[str]:
+             api_key: Optional[str] = None, local_timeout: Optional[int] = None) -> Optional[str]:
     """
     LLM 호출 사다리:
       클라우드(gemma → muse-glimmer → deepseek, 막힌 모델은 건너뜀) → 로컬
@@ -417,6 +423,10 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
     모두 실패한 청크만 받아 같은 품질(gemma)을 유지시키는 안전망이다.
 
     호출부는 이 함수가 None을 주면 규칙기반으로 넘어간다(기존과 동일).
+
+    local_timeout: call_local_llm()로 그대로 넘긴다 — 청크 분할·재시도가 없는 단발
+    호출(Top10·시사용어·종목 코멘트)은 짧게 줄여서 로컬 정체가 그 호출 하나를 통째로
+    붙들지 않게 한다.
     """
     with _stats_lock:
         LLM_STATS["calls"] += 1
@@ -430,6 +440,7 @@ def call_llm(system_prompt: str, user_prompt: str, *, temperature: float = 0.3,
     # 클라우드가 어떤 이유로든(키 없음·429·4xx·타임아웃·예산 초과) 못 만들어냈다
     content = call_local_llm(
         system_prompt, user_prompt, temperature=temperature, max_tokens=max_tokens,
+        local_timeout=local_timeout,
     )
     if content is not None:
         return content
@@ -739,7 +750,7 @@ def call_llm_json(system_prompt: str, user_prompt: str, *, retries: int = 2,
     logger.warning("Cloud JSON unparseable — handing this chunk to the local model")
     raw3 = call_local_llm(
         system_prompt + "\n\n설명 없이 JSON만 출력하세요.", user_prompt,
-        **{k: v for k, v in llm_kwargs.items() if k in ("temperature", "max_tokens")},
+        **{k: v for k, v in llm_kwargs.items() if k in ("temperature", "max_tokens", "local_timeout")},
     )
     parsed3 = _try_parse(raw3)
     if parsed3 is not None:

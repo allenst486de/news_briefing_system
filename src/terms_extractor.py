@@ -32,6 +32,14 @@ MAX_TERMS = TERMS_PER_CARD * MAX_CARDS   # 20
 CANDIDATES_PER_CATEGORY = 8
 TERMS_MAX_TOKENS = 8192
 
+# 단발 호출(재시도·청크 분할 없음)이라 로컬 폴백의 기본 타임아웃(900초)을 그대로 쓰면
+# 안 된다 — html_generator가 이 단계에 예약해 준 예산이 600초뿐인데, 로컬 하나가
+# 정체되면 그 예산과 무관하게 15분을 혼자 붙든다(2026-10-01: 클라우드 5분 + 로컬 15분
+# = 20분 만에 실패, 그날 로컬은 이 호출 하나만 잡고 있었다 — 맥 위 다른 작업과 자원을
+# 다투면 더 쉽게 벌어진다). 로컬 청크 실측(277초)보다 약간 여유 있게 잡아 정상 호출은
+# 대부분 통과시키면서 정체된 날은 빨리 포기하고 다음 회차로 넘긴다.
+TERMS_LOCAL_TIMEOUT = 300
+
 # 제외 목록을 통째로 넣으면 프롬프트가 무한정 길어진다(연말이면 수백 개).
 # 최근 것부터 이만큼만 넘기고, 나머지는 저장 단계의 중복 제거가 막는다.
 _EXCLUDE_SAMPLE = 120
@@ -94,7 +102,7 @@ def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
     )
 
     result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=TERMS_MAX_TOKENS,
-                            api_key=api_key)
+                            api_key=api_key, local_timeout=TERMS_LOCAL_TIMEOUT)
     if not isinstance(result, list) or not result:
         logger.warning("시사용어 추출 실패 — 오늘은 시사용어 없이 진행")
         return []

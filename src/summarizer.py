@@ -57,6 +57,14 @@ CHUNK_SIZE = 8
 CHUNK_MAX_TOKENS = 10240
 TOP10_MAX_TOKENS = 8192
 
+# Top10 선정·종목 코멘트는 단발 호출(재시도·청크 분할 없음)이라 로컬 폴백의 기본
+# 타임아웃(900초)을 그대로 쓰면 안 된다 — 이 마무리 단계 전체에 예약된 예산은
+# FINAL_PHASE_LLM_SECONDS(html_generator.py, 1200초)뿐인데, 로컬 하나가 정체되면
+# 그 예산과 무관하게 15분을 혼자 붙든다(2026-10-01 시사용어에서 같은 문제로 클라우드
+# 5분 + 로컬 15분 = 20분 만에 실패 — 이 상수와 이유는 terms_extractor.TERMS_LOCAL_TIMEOUT
+# 과 같다). 로컬 청크 실측(277초)보다 약간 여유 있게 잡는다.
+FINAL_PHASE_LOCAL_TIMEOUT = 300
+
 # 해외 기사는 250자 요약에 600~800자 상세 요약까지 한 호출에서 받으므로
 # 기사당 출력이 3배 이상이다 — 청크를 작게 잡아야 응답이 안 잘린다.
 DETAIL_CHUNK_SIZE = 3
@@ -566,7 +574,7 @@ def select_top10(categorized_news: Dict[str, List[NewsArticle]],
 
     cards = []
     result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=TOP10_MAX_TOKENS,
-                            api_key=api_key)
+                            api_key=api_key, local_timeout=FINAL_PHASE_LOCAL_TIMEOUT)
     if isinstance(result, list) and result:
         picked = []
         for item in result:
@@ -675,7 +683,8 @@ def generate_stock_reasons(picks_by_market: Dict[str, Dict[str, List[Dict]]]) ->
     )
 
     result = call_llm_json(STOCK_REASON_SYSTEM_PROMPT, user_prompt,
-                            api_key=category_api_key("economy"))
+                            api_key=category_api_key("economy"),
+                            local_timeout=FINAL_PHASE_LOCAL_TIMEOUT)
     reasons = {}
     if isinstance(result, list):
         for item in result:

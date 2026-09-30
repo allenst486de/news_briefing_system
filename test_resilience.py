@@ -200,6 +200,62 @@ def test_reserve_budget_reopens_exhausted_budget():
         llm_client._deadline, llm_client._local_deadline = saved
 
 
+def test_one_shot_calls_bound_the_local_timeout():
+    """
+    2026-10-01: 시사용어 추출이 클라우드 5분 + 로컬 15분 = 20분 만에 실패했다.
+    이 호출엔 청크 분할도 재시도도 없어서, 로컬이 맥 위 다른 작업과 자원을 다투던 날
+    정체된 호출 하나가 마무리 단계 예산(600초)과 무관하게 900초(로컬 기본 타임아웃)를
+    혼자 붙들었다. Top10·시사용어·종목 코멘트는 local_timeout을 넘겨 짧게 잡아야 한다.
+    """
+    from src import terms_extractor
+    assert terms_extractor.TERMS_LOCAL_TIMEOUT < 900, "단발 호출인데 기본 타임아웃(900초)을 그대로 쓴다"
+    assert summarizer.FINAL_PHASE_LOCAL_TIMEOUT < 900, "단발 호출인데 기본 타임아웃(900초)을 그대로 쓴다"
+
+    captured = {}
+    orig_post, orig_deadline, orig_local_deadline = requests.post, llm_client._deadline, llm_client._local_deadline
+
+    def fake_post(url, **kw):
+        if "localhost" in url or "1234" in url:
+            captured["timeout"] = kw.get("timeout")
+            return Resp(200, "로컬 응답")
+        raise requests.exceptions.ReadTimeout("클라우드도 막혔다고 가정")
+
+    requests.post = fake_post
+    llm_client._deadline = None
+    llm_client._local_deadline = None
+    os.environ["NVIDIA_API_KEY"] = "test-key"
+    try:
+        # 기본값(local_timeout 생략)은 그대로 900초(또는 환경변수 값)를 써야 한다 —
+        # 청크 요약처럼 재시도할 기회가 있는 호출의 동작을 바꾸면 안 된다
+        llm_client.reset_model_health()
+        assert llm_client.call_llm("s", "u") == "로컬 응답"
+        assert captured["timeout"] == llm_client._local_llm_timeout()
+
+        # Top10·시사용어처럼 local_timeout을 넘기면 그 값이 실제 HTTP 타임아웃으로 간다
+        llm_client.reset_model_health()
+        assert llm_client.call_llm("s", "u", local_timeout=42) == "로컬 응답"
+        assert captured["timeout"] == 42, f"local_timeout이 실제 요청에 반영되지 않았다: {captured}"
+
+        # call_llm_json도 **kwargs로 그대로 흘려보내야 한다(terms_extractor·select_top10이 이렇게 쓴다)
+        llm_client.reset_model_health()
+        captured.clear()
+
+        def fake_post_json(url, **kw):
+            if "localhost" in url or "1234" in url:
+                captured["timeout"] = kw.get("timeout")
+                return Resp(200, '{"ok": true}')
+            raise requests.exceptions.ReadTimeout("클라우드도 막혔다고 가정")
+
+        requests.post = fake_post_json
+        assert llm_client.call_llm_json("s", "u", local_timeout=42) == {"ok": True}
+        assert captured["timeout"] == 42
+    finally:
+        requests.post = orig_post
+        llm_client._deadline, llm_client._local_deadline = orig_deadline, orig_local_deadline
+        os.environ.pop("NVIDIA_API_KEY", None)
+        llm_client.reset_model_health()
+
+
 KST = timezone(timedelta(hours=9))
 
 
