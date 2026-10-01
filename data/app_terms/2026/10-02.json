@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-02",
+  "terms": [
+    {
+      "term": "산업안전보건법",
+      "reading": "",
+      "meaning": "산업 현장에서 일하는 사람의 안전과 건강을 지키기 위해 필요한 기준과 의무를 정한 법률을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "산업안전보건법",
+      "url": "https://ko.wikipedia.org/wiki/산업안전보건법",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "무성영화",
+      "reading": "",
+      "meaning": "소리 없이 화면의 움직임과 자막만으로 이야기를 전달하는 영화를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "무성 영화",
+      "url": "https://ko.wikipedia.org/wiki/무성_영화",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "차세대중형위성",
+      "reading": "",
+      "meaning": "기존 중형 위성보다 성능을 높여 다양한 임무를 수행하도록 개발한 중형급 인공위성 시리즈를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "차세대중형위성 1호",
+      "url": "https://ko.wikipedia.org/wiki/차세대중형위성_1호",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "연방거래위원회",
+      "reading": "",
+      "meaning": "미국에서 소비자 보호와 공정한 거래 질서를 위해 기업의 불공정 행위를 감시하고 규제하는 연방 정부 기구를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "연방거래위원회",
+      "url": "https://ko.wikipedia.org/wiki/연방거래위원회",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "과징금",
+      "reading": "",
+      "meaning": "법이나 계약을 위반한 상대에게 부과하는 벌금 성격의 금전적 제재를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "과징금",
+      "url": "https://ko.wikipedia.org/wiki/과징금",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "교모세포종",
+      "reading": "",
+      "meaning": "뇌를 구성하는 신경교세포에서 발생하는 악성 종양을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "교모세포종",
+      "url": "https://ko.wikipedia.org/wiki/교모세포종",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "LLM",
+      "reading": "",
+      "meaning": "대규모 텍스트 데이터로 학습해 자연어를 이해하고 생성하는 인공지능 언어 모델을 말한다. 대형 언어 모델(Large Language Model)의 줄임말이다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "대형 언어 모델",
+      "url": "https://ko.wikipedia.org/wiki/대형_언어_모델",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "질소산화물",
+      "reading": "",
+      "meaning": "질소와 산소가 결합해 만들어진 화합물로, 대기 오염과 산성비의 원인이 되는 기체를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "질소 산화물",
+      "url": "https://ko.wikipedia.org/wiki/질소_산화물",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "GPU 가상화",
+      "reading": "",
+      "meaning": "하나의 물리적 그래픽 처리 장치를 여러 사용자나 프로그램이 나누어 쓰도록 소프트웨어로 분할하는 기술을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "GPU 가상화",
+      "url": "https://ko.wikipedia.org/wiki/GPU_가상화",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-02T04:00:49+09:00",
+      "added": 9,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}
