@@ -108,12 +108,31 @@
       "date": "2026-10-02",
       "via": "raw",
       "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "염소가스",
+      "reading": "",
+      "meaning": "염소 원소의 기체 상태로, 자극적인 냄새가 나며 유독한 황록색 기체를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "염소 (원소)",
+      "url": "https://ko.wikipedia.org/wiki/염소_(원소)",
+      "date": "2026-10-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
     }
   ],
   "runs": [
     {
       "at": "2026-10-02T04:00:49+09:00",
       "added": 9,
+      "via": [
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-02T05:45:08+09:00",
+      "added": 1,
       "via": [
         "raw"
       ]
