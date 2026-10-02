@@ -230,3 +230,33 @@ class TelegramNotifier:
         except Exception as e:
             self.logger.error(f"Error in send_briefing_sync: {e}")
             raise
+
+    async def send_terms(self, term_images: List[str], date_str: str, terms_rel: str):
+        """
+        시사용어만 따로 보낸다 — 새벽 브리핑에서 빠진 시사용어를 재확인 실행(terms_catchup)이
+        뒤늦게 채웠을 때. 카드 이미지 뒤에 시사용어 페이지 링크 한 줄을 붙인다.
+        """
+        for idx, path in enumerate(term_images, start=1):
+            try:
+                with open(path, 'rb') as photo:
+                    caption = f"📚 오늘의 시사용어 ({date_str})"
+                    if len(term_images) > 1:
+                        caption += f" {idx}/{len(term_images)}"
+                    await self._send(f"시사용어 이미지 {idx}", self.bot.send_photo,
+                                     chat_id=self.chat_id, photo=photo, caption=caption)
+            except (TelegramError, OSError) as e:
+                self.logger.warning(f"시사용어 이미지 {idx} 전송 실패: {e}")
+        text = (f'📚 <b>오늘의 시사용어</b> ({self._esc(date_str)}) — 새벽 브리핑에서 늦어져 따로 보냅니다\n'
+                f'<a href="{self._esc(self._full_url(terms_rel))}">시사용어 전체 보기</a>')
+        await self._send("시사용어 링크", self.bot.send_message, chat_id=self.chat_id, text=text,
+                         parse_mode='HTML', disable_web_page_preview=True)
+
+    def send_terms_sync(self, term_images: List[str], date_str: str, terms_rel: str):
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_closed():
+                raise RuntimeError
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+        loop.run_until_complete(self.send_terms(term_images, date_str, terms_rel))

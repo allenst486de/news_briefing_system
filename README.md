@@ -143,6 +143,8 @@ python main.py
   4. `docs/`·`data/`·`archive/`를 `main`에 커밋·push (실패 시 `git pull --rebase` 후 최대 3회 재시도 — 지표 갱신 워크플로가 GitHub 쪽에서 `main`에 push하므로 충돌이 실제로 난다)
   5. `docs/`를 `gh-pages` 워크트리(`.ghpages_worktree/`)에 rsync 후 push → GitHub Pages 배포
 
+> **시사용어는 나눠서 부르고, 빠지면 재확인 실행이 채운다 (2026-10-02).** 8개 분야를 한 번에 보내던 시사용어 요청(입력 1만2천~1만6천 토큰)이 새벽 NVIDIA 순간 장애로 gemma 504·muse 502·deepseek 502를 맞고 이틀 연속 통째로 실패했다(같은 요청을 낮에 보내면 muse 95초·deepseek 42초에 정상). 그래서 ① 두 분야씩 4개 묶음으로 나눠 동시에 부르고(`terms_extractor.CATEGORIES_PER_GROUP`), 실패한 묶음만 60초 쉬었다가 모델 차단기를 초기화하고 한 번 더 부른다 — 한 묶음이 끝내 죽어도 나머지로 나간다. ② 로컬 백업이 실제로 되도록 동시 호출을 1로 줄이고(2개면 호출마다 두 배 느려져 제한을 넘겼다) 묶음 제한 시간을 420초로 늘렸다(실측 156~286초). ③ 그래도 빠진 날은 05:45·07:30 재확인 실행이 `python -m src.terms_catchup`으로 그날 저장된 기사 스냅샷에서 다시 뽑아 저장소·시사용어 페이지에 반영하고 텔레그램으로 카드를 보낸다(오늘치가 이미 있으면 LLM을 부르지 않고 끝난다).
+
 > **ComfyUI와 자원 양보 (2026-10-01).** 다른 세션이 맥에서 ComfyUI로 캐릭터 이미지를 대량 생성하는데, 이게 계속 떠 있으면(그날 27GB를 쥔 채 며칠째 실행 중이었다) 로컬 LLM과 메모리·GPU를 다퉈 로컬 호출이 시간 초과 나기 쉽다(아래 "단발 호출" 항목 참고). 대기열이 비기를 기다리는 방식은 안 통한다 — 그 세션의 생성기가 한 장 끝나면 바로 다음 장을 넣어 대기열이 빌 틈이 없기 때문이다. 그래서 그 세션이 지원하는 **PAUSE 파일** 프로토콜로 양보를 요청한다: 로컬 LLM을 켜기 전에 `COMFYUI_PAUSE_FILE`(기본 `/Volumes/D/AI_Projects/Claude/01_Projects/20260930_캐릭터생성/PAUSE`)을 만들면 생성기가 새 이미지를 넣지 않고 진행 중인 1장만 마친다. 대기열(`GET /queue`)의 `queue_running`이 비는 걸 최대 `COMFYUI_WAIT_SECONDS`(기본 300초)까지 기다렸다가, 비었으면 `POST /free {"unload_models": true, "free_memory": true}`로 메모리를 비운다(모델은 재개 시 다시 불러올 뿐이라 안전하다) — 그래도 안 비면 강제로 끊지 않고 그냥 진행한다(이번 실행은 로컬이 평소보다 느릴 수 있음을 감수). `python main.py`가 끝나면 즉시 PAUSE 파일을 지워 양보를 풀고, 스크립트가 어떻게 끝나든(성공·실패·시한초과) EXIT 트랩에서 한 번 더 지운다. **STOP 파일·`gen.pid`·생성기 프로세스·ComfyUI 프로세스 자체는 건드리지 않는다** — 그 세션이 관리하는 영역이다.
 - 로그: `logs/run_YYYY-MM-DD_HHMMSS.log`
 - 수동 실행: `bash scripts/run_daily_briefing.sh`
@@ -336,7 +338,9 @@ news_briefing_system/
 | 클라우드 LLM 호출 1건 | 180초 | `llm_client.call_llm(timeout=)` |
 | 클라우드 LLM 총합 | 실행 전체 1800초 | `llm_client.LLM_TIME_BUDGET_SECONDS` |
 | 로컬 LLM 호출 1건(본문 요약 청크) | 900초 | `LOCAL_LLM_TIMEOUT` (.env) |
-| 로컬 LLM 호출 1건(Top10·시사용어·종목 코멘트) | 300초 | `call_llm(..., local_timeout=)` |
+| 로컬 LLM 호출 1건(Top10·종목 코멘트) | 300초 | `call_llm(..., local_timeout=)` |
+| 로컬 LLM 호출 1건(시사용어 묶음) | 420초 | `terms_extractor.TERMS_LOCAL_TIMEOUT` |
+| 로컬 LLM 동시 호출 | 1건 | `LOCAL_LLM_CONCURRENCY` (.env) |
 | 로컬 LLM 총합 | 실행 전체 5400초 | `LOCAL_LLM_TIME_BUDGET_SECONDS` (.env) |
 | 원문 본문 수집 | 실행 전체 300초 | `article_body._TOTAL_BUDGET_SECONDS` |
 | 주식 시세 조회 | 90초 | `stock_data` |

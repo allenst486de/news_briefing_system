@@ -215,7 +215,78 @@ publish_app_terms() {
   rm -rf "$PUZZLE_DIR/.github/affairs/__pycache__"
 }
 
+# --- 커밋·배포 ---
+# docs/·data/·archive/를 main에 올리고 docs/를 gh-pages에 배포한다. 본 실행과 시사용어
+# 만회(재확인 실행)가 같이 쓴다. 인자: 커밋 메시지.
+commit_and_deploy() {
+  mkdir -p docs data archive
+
+  if [[ -z $(git status --porcelain docs/ data/ archive/) ]]; then
+    echo "docs/data/archive 변경 없음 - 커밋 생략"
+  else
+    git add docs/ data/ archive/
+    git commit -m "$1"
+
+    PUSHED=0
+    for attempt in 1 2 3; do
+      if run_bounded 120 git push origin main; then
+        PUSHED=1
+        break
+      fi
+      echo "push 실패 (시도 $attempt) - origin/main으로 rebase 후 재시도"
+      run_bounded 120 git pull --rebase origin main || git rebase --abort 2>/dev/null
+      sleep 10
+    done
+    if [ "$PUSHED" -ne 1 ]; then
+      # main push가 안 돼도 사이트 배포(gh-pages)는 따로 된다 — 여기서 끝내지 않는다
+      echo "main push 최종 실패 — 커밋은 로컬에 남음(다음 실행 때 같이 올라감). gh-pages 배포는 계속"
+    fi
+  fi
+
+  echo "--- gh-pages 배포 ---"
+  if [ ! -d "$WORKTREE_DIR" ]; then
+    git fetch origin gh-pages
+    git worktree add "$WORKTREE_DIR" gh-pages
+  fi
+
+  git -C "$WORKTREE_DIR" fetch origin gh-pages
+  git -C "$WORKTREE_DIR" reset --hard origin/gh-pages
+
+  rsync -a --delete --exclude '.git' "${REPO_DIR}/docs/" "${WORKTREE_DIR}/"
+
+  if [[ -z $(git -C "$WORKTREE_DIR" status --porcelain) ]]; then
+    echo "gh-pages 변경 없음 - 배포 생략"
+  else
+    git -C "$WORKTREE_DIR" add -A
+    git -C "$WORKTREE_DIR" commit -m "Deploy docs - $(date +'%Y-%m-%d')"
+    DEPLOYED=0
+    for attempt in 1 2 3; do
+      if run_bounded 120 git -C "$WORKTREE_DIR" push origin gh-pages; then
+        DEPLOYED=1
+        break
+      fi
+      echo "gh-pages push 실패 (시도 $attempt) — 30초 뒤 재시도"
+      sleep 30
+    done
+    [ "$DEPLOYED" -eq 1 ] || echo "gh-pages 배포 최종 실패 — 다음 실행 때 같이 올라감"
+  fi
+}
+
+# --- 시사용어 만회 ---
+# 새벽 실행에서 시사용어만 빠진 날(NVIDIA 순간 장애 — 2026-10-01·10-02), 재확인 실행이
+# 그날 저장된 기사 스냅샷으로 시사용어를 다시 뽑아 페이지에 반영하고 텔레그램으로 보낸다.
+# 오늘 용어가 이미 있으면 terms_catchup.py가 LLM을 부르지 않고 바로 끝난다.
+# 앱용 용어보다 먼저 돈다 — 앱용은 브리핑 시사용어 이름을 첫 후보로 쓴다.
+catchup_terms() {
+  echo "--- 시사용어 만회 확인 ---"
+  run_bounded 2400 python -m src.terms_catchup || echo "시사용어 만회 실패/시한 초과 — 다음 재확인 때 다시"
+  if [[ -n $(git status --porcelain docs/ data/terms/) ]]; then
+    commit_and_deploy "Add terms catch-up - $(date +'%Y-%m-%d')"
+  fi
+}
+
 if [ "$SKIP_BRIEFING" -eq 1 ]; then
+  catchup_terms
   fill_app_terms recheck
   publish_app_terms
   echo "===== $(date) 실행 종료 (앱용 용어 확인만) ====="
@@ -392,57 +463,7 @@ case $MAIN_EXIT in
   *) echo "main.py 실패 (exit $MAIN_EXIT) - 커밋/배포 중단, 다음 재확인 때 다시 시도"; exit 1 ;;
 esac
 
-mkdir -p docs data archive
-
-if [[ -z $(git status --porcelain docs/ data/ archive/) ]]; then
-  echo "docs/data/archive 변경 없음 - 커밋 생략"
-else
-  git add docs/ data/ archive/
-  git commit -m "Update daily news briefing - $(date +'%Y-%m-%d')"
-
-  PUSHED=0
-  for attempt in 1 2 3; do
-    if run_bounded 120 git push origin main; then
-      PUSHED=1
-      break
-    fi
-    echo "push 실패 (시도 $attempt) - origin/main으로 rebase 후 재시도"
-    run_bounded 120 git pull --rebase origin main || git rebase --abort 2>/dev/null
-    sleep 10
-  done
-  if [ "$PUSHED" -ne 1 ]; then
-    # main push가 안 돼도 사이트 배포(gh-pages)는 따로 된다 — 여기서 끝내지 않는다
-    echo "main push 최종 실패 — 커밋은 로컬에 남음(다음 실행 때 같이 올라감). gh-pages 배포는 계속"
-  fi
-fi
-
-echo "--- gh-pages 배포 ---"
-if [ ! -d "$WORKTREE_DIR" ]; then
-  git fetch origin gh-pages
-  git worktree add "$WORKTREE_DIR" gh-pages
-fi
-
-git -C "$WORKTREE_DIR" fetch origin gh-pages
-git -C "$WORKTREE_DIR" reset --hard origin/gh-pages
-
-rsync -a --delete --exclude '.git' "${REPO_DIR}/docs/" "${WORKTREE_DIR}/"
-
-if [[ -z $(git -C "$WORKTREE_DIR" status --porcelain) ]]; then
-  echo "gh-pages 변경 없음 - 배포 생략"
-else
-  git -C "$WORKTREE_DIR" add -A
-  git -C "$WORKTREE_DIR" commit -m "Deploy docs - $(date +'%Y-%m-%d')"
-  DEPLOYED=0
-  for attempt in 1 2 3; do
-    if run_bounded 120 git -C "$WORKTREE_DIR" push origin gh-pages; then
-      DEPLOYED=1
-      break
-    fi
-    echo "gh-pages push 실패 (시도 $attempt) — 30초 뒤 재시도"
-    sleep 30
-  done
-  [ "$DEPLOYED" -eq 1 ] || echo "gh-pages 배포 최종 실패 — 다음 실행 때 같이 올라감"
-fi
+commit_and_deploy "Update daily news briefing - $(date +'%Y-%m-%d')"
 
 # 브리핑이 방금 오늘 시사용어(data/terms)를 쌓았으니 앱용은 그 이름을 그대로 가져와
 # 호출 한 번으로 끝난다. 여기서 실패해도 브리핑은 이미 나갔다.

@@ -9,11 +9,14 @@
 저장 단계(terms_store.append_terms)에서 한 번 더 거른다 — 모델이 제외 목록을
 지키지 않는 경우가 있어 두 겹으로 막는다.
 """
+import time
+from concurrent.futures import ThreadPoolExecutor
 from typing import Dict, List, Optional
 
 from .collectors.base_collector import NewsArticle
 from .collectors.sources import CATEGORY_META
 from .summarizer import COMMON_RULES, _one_line, clean_llm_text
+from .utils import llm_client
 from .utils.llm_client import call_llm_json
 from .utils.logger import setup_logger
 from .utils.terms_store import normalize_term
@@ -29,7 +32,10 @@ MIN_TERMS = TERMS_PER_CARD * MIN_CARDS   # 10
 MAX_TERMS = TERMS_PER_CARD * MAX_CARDS   # 20
 
 # 후보가 너무 많으면 입력이 커진다. 카테고리별 상위 기사만 후보로 쓴다.
-CANDIDATES_PER_CATEGORY = 8
+# 8 → 6(2026-10-02): 입력이 길면 클라우드는 순간 장애(502)에 약하고, 로컬은 입력을 읽는 데만
+# 2분 가까이 걸려(묶음당 119초) 제한 시간을 넘겼다. 분야당 지역별 6건이면 용어 후보로 충분하다.
+CANDIDATES_PER_CATEGORY = 6
+SUMMARY_CHARS = 120
 TERMS_MAX_TOKENS = 8192
 
 # 단발 호출(재시도·청크 분할 없음)이라 로컬 폴백의 기본 타임아웃(900초)을 그대로 쓰면
@@ -38,11 +44,27 @@ TERMS_MAX_TOKENS = 8192
 # = 20분 만에 실패, 그날 로컬은 이 호출 하나만 잡고 있었다 — 맥 위 다른 작업과 자원을
 # 다투면 더 쉽게 벌어진다). 로컬 청크 실측(277초)보다 약간 여유 있게 잡아 정상 호출은
 # 대부분 통과시키면서 정체된 날은 빨리 포기하고 다음 회차로 넘긴다.
-TERMS_LOCAL_TIMEOUT = 300
+# 300 → 420(2026-10-02 실측): 두 분야 묶음 하나가 ComfyUI를 멈춘 상태에서도 156~286초 걸렸다
+# (입력 읽기 119초 + 생성). 300초는 정상 호출도 반쯤 잘랐다.
+TERMS_LOCAL_TIMEOUT = 420
 
 # 제외 목록을 통째로 넣으면 프롬프트가 무한정 길어진다(연말이면 수백 개).
 # 최근 것부터 이만큼만 넘기고, 나머지는 저장 단계의 중복 제거가 막는다.
-_EXCLUDE_SAMPLE = 120
+_EXCLUDE_SAMPLE = 80
+
+# 분야 묶음 — 8개 분야를 한 번에 보내면 입력이 1만2천~1만6천 토큰이다(2026-10-02 실측).
+# 새벽 NVIDIA가 불안정한 날 이 한 건만 gemma 504·muse 502·deepseek 502로 통째로 실패했고,
+# 같은 시각 같은 모델들이 작게 나눈 본문 요약 80건은 다 받아냈다(같은 요청을 낮에
+# 다시 보내면 muse 95초·deepseek 42초에 정상 응답 — 순간 장애였다). 호출이 한 번뿐이라
+# 순간 장애 하나가 그날 시사용어 전체를 날렸다. 본문 요약처럼 나눠서 부른다:
+# 두 분야씩 4건을 동시에 부르고, 실패한 묶음만 한 번 더 부른다. 한 묶음이 죽어도
+# 나머지는 살아남고, 요청이 작아져 로컬 모델도 제한 시간(300초) 안에 끝낼 수 있다.
+CATEGORIES_PER_GROUP = 2
+TERMS_PER_GROUP = (3, 5)
+GROUP_WORKERS = 4
+GROUP_MAX_TOKENS = 4096
+# 재시도 전에 잠깐 쉰다 — 새벽 NVIDIA 순간 장애(502·504)가 지나갈 틈을 준다.
+RETRY_PAUSE_SECONDS = 60
 
 
 def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
@@ -64,12 +86,6 @@ def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
     if not flat:
         return []
 
-    listing = "\n".join(
-        f"{i + 1}. [{e['category']}] {_one_line(e['article'].title)} — "
-        f"{_one_line(e['article'].summary)[:160]}"
-        for i, e in enumerate(flat)
-    )
-
     exclude_block = ""
     if known_terms:
         sample = known_terms[:_EXCLUDE_SAMPLE]
@@ -78,43 +94,51 @@ def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
             + ", ".join(sample) + "\n"
         )
 
-    user_prompt = (
-        "입력은 오늘 수집·요약된 기사 목록입니다. 이 중에서 일반 독자가 뜻을 모르면 "
-        "기사를 이해하기 어려운 **시사용어**를 골라 설명하세요.\n\n"
-        f"{MIN_TERMS}개 이상 {MAX_TERMS}개 이하로 선정하되, 다음을 지키세요:\n"
-        " - 반드시 **아래 기사 목록에 실제로 등장한 용어만** 고를 것. "
-        "기사에 없는 용어를 당신의 지식에서 가져오지 마세요\n"
-        " - 특정 분야에 몰리지 않게 여러 분야에서 고를 것\n"
-        " - 너무 당연한 일반 단어(예: 대통령, 회사, 학교)는 제외\n"
-        " - 인명·지명 자체는 용어가 아니므로 제외 (제도·현상·기술·정책 개념을 고를 것)\n"
-        f"{exclude_block}"
-        "\n각 용어에 대해 다음을 생성하세요:\n"
-        " - id: 그 용어가 등장한 기사의 아래 번호(정수). 반드시 실제 등장한 기사여야 함\n"
-        " - term: 용어 (한국어. 원어가 있으면 괄호로 병기, 예: 이그젬션(Exemption))\n"
-        " - 특정 정부·회사가 이번에 만든 사업·시스템·제품 이름(예: 'OO 프로그램', 'OO 데이터베이스')은 "
-        "제외. 다른 기사에서도 쓰이는 일반 용어만 고를 것\n"
-        " - definition: 80~120자의 간결한 뜻풀이. 먼저 **용어의 일반적인 뜻**을 쓰고, "
-        "필요하면 오늘 기사에서 왜 나왔는지를 한 구절만 덧붙일 것. "
-        "확인되지 않은 수치·전망을 덧붙이지 말 것\n\n"
-        "반드시 아래 JSON 배열 형식으로만 응답하세요:\n"
-        '[{"id": 1, "term": "...", "definition": "..."}]\n\n'
-        f"기사 목록:\n{listing}"
-    )
+    categories = list(dict.fromkeys(e["category"] for e in flat))
+    groups = [categories[i:i + CATEGORIES_PER_GROUP]
+              for i in range(0, len(categories), CATEGORIES_PER_GROUP)]
+    group_entries = [[e for e in flat if e["category"] in group] for group in groups]
 
-    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=TERMS_MAX_TOKENS,
-                            api_key=api_key, local_timeout=TERMS_LOCAL_TIMEOUT)
-    if not isinstance(result, list) or not result:
+    def run(index: int):
+        return _extract_group(group_entries[index], groups[index], exclude_block, api_key)
+
+    with ThreadPoolExecutor(max_workers=min(GROUP_WORKERS, len(groups))) as pool:
+        results: List[Optional[List]] = list(pool.map(run, range(len(groups))))
+
+    # 실패한 묶음만 한 번 더 — 새벽 NVIDIA 순간 장애(502·504)는 다시 부르면 대개 지나간다
+    failed = [i for i, found in enumerate(results) if found is None]
+    if failed:
+        names = ", ".join("·".join(CATEGORY_META[c]["name"] for c in groups[i]) for i in failed)
+        logger.warning(f"시사용어 {len(failed)}개 묶음 실패({names}) — {RETRY_PAUSE_SECONDS}초 뒤 한 번 더 시도")
+        time.sleep(RETRY_PAUSE_SECONDS)
+        # 1차에서 묶음 4개가 같은 모델로 동시에 실패하면 모델별 차단기가 열려(연속 3회 실패 → 10분)
+        # 재시도가 클라우드를 아예 건너뛰고 로컬로만 간다. 시사용어는 이 실행의 마지막 LLM
+        # 호출이라 차단기를 초기화해도 다른 단계에 영향이 없다.
+        llm_client.reset_model_health()
+        with ThreadPoolExecutor(max_workers=min(GROUP_WORKERS, len(failed))) as pool:
+            for index, found in zip(failed, pool.map(run, failed)):
+                results[index] = found
+
+    if all(found is None for found in results):
         logger.warning("시사용어 추출 실패 — 오늘은 시사용어 없이 진행")
         return []
+    still_failed = [i for i, found in enumerate(results) if found is None]
+    if still_failed:
+        names = ", ".join("·".join(CATEGORY_META[c]["name"] for c in groups[i]) for i in still_failed)
+        logger.warning(f"시사용어 일부 묶음은 끝내 실패({names}) — 나머지 분야로 진행")
+
+    # 묶음을 번갈아 섞는다 — 앞에서부터 5개씩 카드가 되므로 한 장이 한 분야로 몰리지 않게
+    picked = []
+    queues = [list(found or []) for found in results]
+    while any(queues):
+        for queue in queues:
+            if queue:
+                picked.append(queue.pop(0))
 
     known_keys = {normalize_term(t) for t in (known_terms or [])}
     seen = set()
     terms = []
-    for item in result:
-        try:
-            entry = flat[int(item["id"]) - 1]
-        except (KeyError, TypeError, ValueError, IndexError):
-            continue
+    for entry, item in picked:
         term = clean_llm_text(item.get("term"))
         definition = clean_llm_text(item.get("definition"))
         if not term or not definition:
@@ -161,6 +185,59 @@ def extract_terms(buckets: Dict[str, Dict[str, List[NewsArticle]]],
 
     logger.info(f"시사용어 {usable}개 추출 (카드 {usable // TERMS_PER_CARD}장)")
     return terms[:usable]
+
+
+def _extract_group(entries: List[Dict], group: List[str], exclude_block: str,
+                   api_key: Optional[str]) -> Optional[List]:
+    """
+    한 묶음(두 분야)에서 용어를 뽑는다. 반환은 [(후보 entry, 모델 응답 항목)].
+    호출이 실패하면 None(재시도 대상), 응답은 왔는데 고를 게 없으면 빈 목록.
+    """
+    if not entries:
+        return []
+    names = "·".join(CATEGORY_META[c]["name"] for c in group)
+    low, high = TERMS_PER_GROUP
+    listing = "\n".join(
+        f"{i + 1}. [{e['category']}] {_one_line(e['article'].title)} — "
+        f"{_one_line(e['article'].summary)[:SUMMARY_CHARS]}"
+        for i, e in enumerate(entries)
+    )
+    user_prompt = (
+        f"입력은 오늘 수집·요약된 {names} 분야 기사 목록입니다. 이 중에서 일반 독자가 뜻을 모르면 "
+        "기사를 이해하기 어려운 **시사용어**를 골라 설명하세요.\n\n"
+        f"{low}개 이상 {high}개 이하로 선정하되, 다음을 지키세요:\n"
+        " - 반드시 **아래 기사 목록에 실제로 등장한 용어만** 고를 것. "
+        "기사에 없는 용어를 당신의 지식에서 가져오지 마세요\n"
+        " - 목록에 있는 분야에서 고루 고를 것\n"
+        " - 너무 당연한 일반 단어(예: 대통령, 회사, 학교)는 제외\n"
+        " - 인명·지명 자체는 용어가 아니므로 제외 (제도·현상·기술·정책 개념을 고를 것)\n"
+        f"{exclude_block}"
+        "\n각 용어에 대해 다음을 생성하세요:\n"
+        " - id: 그 용어가 등장한 기사의 아래 번호(정수). 반드시 실제 등장한 기사여야 함\n"
+        " - term: 용어 (한국어. 원어가 있으면 괄호로 병기, 예: 이그젬션(Exemption))\n"
+        " - 특정 정부·회사가 이번에 만든 사업·시스템·제품 이름(예: 'OO 프로그램', 'OO 데이터베이스')은 "
+        "제외. 다른 기사에서도 쓰이는 일반 용어만 고를 것\n"
+        " - definition: 80~120자의 간결한 뜻풀이. 먼저 **용어의 일반적인 뜻**을 쓰고, "
+        "필요하면 오늘 기사에서 왜 나왔는지를 한 구절만 덧붙일 것. "
+        "확인되지 않은 수치·전망을 덧붙이지 말 것\n\n"
+        "반드시 아래 JSON 배열 형식으로만 응답하세요:\n"
+        '[{"id": 1, "term": "...", "definition": "..."}]\n\n'
+        f"기사 목록:\n{listing}"
+    )
+    result = call_llm_json(COMMON_RULES, user_prompt, max_tokens=GROUP_MAX_TOKENS,
+                           api_key=api_key, local_timeout=TERMS_LOCAL_TIMEOUT)
+    if not isinstance(result, list):
+        return None
+    pairs = []
+    for item in result:
+        if not isinstance(item, dict):
+            continue
+        try:
+            entry = entries[int(item["id"]) - 1]
+        except (KeyError, TypeError, ValueError, IndexError):
+            continue
+        pairs.append((entry, item))
+    return pairs
 
 
 def _drop_names(terms: List[Dict]) -> List[Dict]:

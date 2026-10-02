@@ -365,7 +365,9 @@ def test_terms_keep_one_card_when_names_are_filtered():
     from src.app_terms import wiki
     arts = [_art(f"기사 {i}", f"https://x/t{i}") for i in range(8)]
     buckets = {"economy": {"domestic": arts, "overseas": []}}
-    reply = [{"id": i + 1, "term": f"용어{i}", "definition": "일반적인 뜻을 설명하는 문장이다."} for i in range(8)]
+    # 한 기사에서 용어가 여러 개 나올 수 있다 — 후보(분야·지역당 CANDIDATES_PER_CATEGORY건) 안에서 나눠 단다
+    reply = [{"id": i % terms_extractor.CANDIDATES_PER_CATEGORY + 1, "term": f"용어{i}",
+              "definition": "일반적인 뜻을 설명하는 문장이다."} for i in range(8)]
     reply[0]["term"] = "호르무즈 해협"
     reply[1]["term"] = "뜻에 중국어"
     reply[1]["definition"] = "두 달간同居하며 생긴 말이다."
@@ -388,6 +390,105 @@ def test_terms_keep_one_card_when_names_are_filtered():
     finally:
         terms_extractor.call_llm_json, wiki.lookup = saved
     assert len(terms) == 5, "위키백과 장애로 시사용어가 사라지면 안 된다"
+
+
+def test_terms_survive_a_failing_group_and_retry_once():
+    """
+    2026-10-02: 8개 분야를 한 번에 보내던 시사용어 요청(1만6천 토큰)이 새벽 순간 장애로
+    gemma 504·muse 502·deepseek 502를 맞고 통째로 실패했다. 두 분야씩 나눠 부르고,
+    실패한 묶음만 한 번 더 부른다 — 한 묶음이 끝내 죽어도 나머지로 시사용어가 나가야 한다.
+    """
+    from src import terms_extractor
+    from src.app_terms import wiki
+    cats = ["politics", "economy", "society", "life", "culture", "it", "science", "world"]
+    buckets = {c: {"domestic": [_art(f"{c} 기사 {i}", f"https://x/{c}/{i}") for i in range(3)],
+                   "overseas": []} for c in cats}
+    calls = []
+
+    def fake(system, user, **kw):
+        group = next(c for c in cats if f"[{c}]" in user)
+        calls.append(group)
+        if group == "politics":               # 정치·경제 묶음은 두 번 다 실패
+            return None
+        if group == "culture" and calls.count("culture") == 1:   # 문화·IT 묶음은 첫 번째만 실패
+            return None
+        return [{"id": i + 1, "term": f"{group} 용어 {i}",
+                 "definition": "이 용어의 일반적인 뜻을 설명하는 충분히 긴 문장이다."} for i in range(3)]
+
+    saved = (terms_extractor.call_llm_json, wiki.lookup, terms_extractor.RETRY_PAUSE_SECONDS)
+    terms_extractor.call_llm_json = fake
+    wiki.lookup = lambda titles: {}
+    terms_extractor.RETRY_PAUSE_SECONDS = 0
+    try:
+        terms = terms_extractor.extract_terms(buckets, date_str="2026-10-02")
+    finally:
+        terms_extractor.call_llm_json, wiki.lookup, terms_extractor.RETRY_PAUSE_SECONDS = saved
+
+    assert calls.count("politics") == 2, f"실패한 묶음은 한 번 더 불러야 한다: {calls}"
+    assert calls.count("society") == 1, f"성공한 묶음은 다시 부르면 안 된다: {calls}"
+    groups_seen = {t["category"] for t in terms}
+    assert "culture" in groups_seen or "it" in groups_seen, f"재시도로 살아난 묶음이 빠졌다: {groups_seen}"
+    assert not groups_seen & {"politics", "economy"}, "끝내 실패한 묶음에서 용어가 나올 수 없다"
+    assert len(terms) == 5 * (len(terms) // 5) and len(terms) >= 5, f"카드 단위(5개)로 나와야 한다: {len(terms)}"
+    # 첫 카드 5개가 한 묶음으로 몰리지 않게 번갈아 섞여야 한다
+    assert len({t["category"] for t in terms[:5]}) > 1, f"한 카드가 한 분야로 몰렸다: {terms[:5]}"
+
+
+def test_terms_catchup_fills_a_missing_day_once():
+    """
+    새벽에 시사용어가 빠진 날, 재확인 실행(terms_catchup)이 그날 스냅샷으로 다시 뽑아
+    저장·페이지 갱신·텔레그램 전송까지 한다. 이미 있으면 LLM도 텔레그램도 부르지 않는다.
+    """
+    import json, shutil, tempfile
+    from src import terms_catchup, terms_extractor
+    from src.telegram_bot import TelegramNotifier
+    from src.utils import terms_store
+
+    root = tempfile.mkdtemp()
+    try:
+        today = datetime.now(KST)
+        date_str = today.strftime("%Y-%m-%d")
+        raw_dir = os.path.join(root, "data", "raw", today.strftime("%Y"), today.strftime("%m"))
+        os.makedirs(raw_dir)
+        os.makedirs(os.path.join(root, "docs"))
+        shutil.copytree(os.path.join(os.path.dirname(os.path.abspath(__file__)), "src", "templates"),
+                        os.path.join(root, "src", "templates"))
+        arts = [_art(f"기사 {i}", f"https://x/{i}").to_dict() for i in range(6)]
+        with open(os.path.join(raw_dir, f"{today.strftime('%d')}.json"), "w", encoding="utf-8") as f:
+            json.dump({"date": date_str, "categories": {"economy": {"domestic": arts, "overseas": []}}}, f)
+
+        calls, sent = [], []
+        fake_terms = [{"term": f"용어{i}", "definition": "일반적인 뜻을 설명하는 문장이다.",
+                       "category": "economy", "category_name": "경제", "date": date_str,
+                       "source": "테스트", "link": f"https://x/{i}", "region": "domestic",
+                       "detail_rel": "", "ko_summary": ""} for i in range(5)]
+        saved = (terms_catchup.ROOT, terms_extractor.extract_terms, TelegramNotifier.send_terms_sync,
+                 os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID"))
+        terms_catchup.ROOT = root
+        terms_extractor.extract_terms = lambda *a, **k: (calls.append(1), fake_terms)[1]
+        TelegramNotifier.send_terms_sync = lambda self, images, d, rel: sent.append((len(images), rel))
+        os.environ["TELEGRAM_BOT_TOKEN"], os.environ["TELEGRAM_CHAT_ID"] = "123:abc", "1"
+        try:
+            assert terms_catchup.main() == 0
+            assert calls == [1], "빠진 날엔 다시 뽑아야 한다"
+            assert len(sent) == 1 and sent[0][0] == 1 and sent[0][1].startswith("terms-"), sent
+            stored = [t for t in terms_store.load_year(os.path.join(root, "data", "terms"), today.year)
+                      if t["date"] == date_str]
+            assert len(stored) == 5, "저장소에 쌓여야 한다"
+            assert os.path.exists(os.path.join(root, "docs", sent[0][1])), "시사용어 페이지가 다시 만들어져야 한다"
+
+            # 두 번째 재확인(07:30): 이미 있으니 아무것도 안 한다
+            assert terms_catchup.main() == 0
+            assert calls == [1] and len(sent) == 1, "이미 채운 날에 또 뽑거나 또 보내면 안 된다"
+        finally:
+            (terms_catchup.ROOT, terms_extractor.extract_terms, TelegramNotifier.send_terms_sync) = saved[:3]
+            for name, value in (("TELEGRAM_BOT_TOKEN", saved[3]), ("TELEGRAM_CHAT_ID", saved[4])):
+                if value is None:
+                    os.environ.pop(name, None)
+                else:
+                    os.environ[name] = value
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
 
 
 def test_card_draws_hanja_with_fallback_font():

@@ -193,6 +193,43 @@ class HTMLGenerator:
         # terms_today는 텔레그램 인포그래픽 생성에 그대로 쓴다(다시 뽑으면 LLM 호출이 두 배).
         return page_urls, top10_by_region, archive_file, terms_today, terms_file
 
+    def regenerate_terms_page(self, date_str: str) -> str:
+        """
+        시사용어 페이지만 다시 만든다 — 새벽 실행에서 시사용어가 빠진 날, 05:45·07:30 재확인
+        실행(terms_catchup)이 뒤늦게 뽑은 용어를 반영할 때 쓴다. 홈·분야 페이지는 건드리지
+        않는다(그건 이미 발행됐다). 반환: 시사용어 페이지의 상대 경로(텔레그램 링크용).
+        """
+        date_path = date_str.replace('-', '/')
+        salt = self.salt
+        terms_file = obfuscate('terms.html', salt, 'terms')
+        self.env.globals['terms_path'] = self._make_path(f'/{terms_file}')
+        nav_categories = [
+            {
+                'key': key,
+                'name': CATEGORY_META[key]['name'],
+                'icon': CATEGORY_META[key]['icon'],
+                'url': self._make_path(f"/{date_path}/{obfuscate(f'{key}.html', salt, date_str)}"),
+            }
+            for key in CATEGORIES
+        ]
+        term_buckets = terms_store.collect_buckets(self._terms_dir())
+        for bucket in term_buckets.values():
+            for term in bucket:
+                term['detail_path'] = self._make_path(f"/{term['detail_rel']}") if term.get('detail_rel') else ''
+        self._generate_terms_page(
+            os.path.join(self.output_dir, terms_file), term_buckets, date_str,
+            nav_categories, page_rel=f'/{terms_file}',
+        )
+        return terms_file
+
+    def detail_rel_for(self, article_link: str, date_str: str) -> str:
+        """해외 기사 상세 요약 페이지의 상대 경로 — 그 페이지가 실제로 있을 때만."""
+        date_path = date_str.replace('-', '/')
+        filename = obfuscate('a.html', self.salt, date_str, article_link)
+        if os.path.exists(os.path.join(self.output_dir, date_path, filename)):
+            return f'{date_path}/{filename}'
+        return ''
+
     def _terms_dir(self) -> str:
         """시사용어 누적 저장소 — docs/ 밖에 둔다(발행 대상이 아니다)."""
         base = self.raw_data_dir or os.path.dirname(self.output_dir)

@@ -199,7 +199,10 @@ def _get_local_slot() -> threading.Semaphore:
     global _local_slot
     with _local_slot_lock:
         if _local_slot is None:
-            limit = int(os.getenv("LOCAL_LLM_CONCURRENCY", "2"))
+            # 1(2026-10-02): 2개를 동시에 돌리면 호출 하나하나가 두 배 가까이 느려져 제한 시간을
+            # 넘겼고(시사용어 묶음 156초 → 동시 2개면 300초 초과), 시간 초과로 버린 요청도 서버는
+            # 입력 읽기를 끝까지 마친 뒤에야 멈춰 다음 요청을 막았다. 처리량은 +18%뿐이라 1로 둔다.
+            limit = int(os.getenv("LOCAL_LLM_CONCURRENCY", "1"))
             _local_slot = threading.Semaphore(limit)
             logger.info(f"Local LLM concurrency set to {limit}")
         return _local_slot
