@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-03",
+  "terms": [
+    {
+      "term": "적응증",
+      "reading": "",
+      "meaning": "어떤 약이나 치료법이 특정 질환이나 상태에 효과가 있다고 인정되어 사용될 수 있는 범위를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "적응증",
+      "url": "https://ko.wikipedia.org/wiki/적응증",
+      "date": "2026-10-03",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "보궐선거",
+      "reading": "",
+      "meaning": "선거로 뽑힌 사람이 임기 중에 사망하거나 사퇴하는 등의 이유로 빈 자리가 생겼을 때 그 자리를 채우기 위해 다시 치르는 선거를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "재보궐선거",
+      "url": "https://ko.wikipedia.org/wiki/재보궐선거",
+      "date": "2026-10-03",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "자율신경계",
+      "reading": "",
+      "meaning": "의지와 관계없이 심장 박동, 호흡, 소화, 체온 조절 등 생명 유지에 필요한 기능을 조절하는 신경 계통을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "자율신경계",
+      "url": "https://ko.wikipedia.org/wiki/자율신경계",
+      "date": "2026-10-03",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "On-premises",
+      "reading": "온프레미스",
+      "meaning": "소프트웨어나 서버를 외부 클라우드가 아닌 조직이 직접 보유한 전산 설비에 설치하여 운영하는 방식을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "온프레미시즈 소프트웨어",
+      "url": "https://ko.wikipedia.org/wiki/온프레미시즈_소프트웨어",
+      "date": "2026-10-03",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "기술 부채",
+      "reading": "",
+      "meaning": "빠른 개발을 위해 임시방편으로 처리한 설계나 코드가 쌓여, 나중에 유지·보수 비용과 부담으로 돌아오는 상태를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "기술 부채",
+      "url": "https://ko.wikipedia.org/wiki/기술_부채",
+      "date": "2026-10-03",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "국제에너지기구",
+      "reading": "",
+      "meaning": "에너지 정책의 협력과 조정을 위해 설립된 정부 간 국제기구이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "국제 에너지 기구",
+      "url": "https://ko.wikipedia.org/wiki/국제_에너지_기구",
+      "date": "2026-10-03",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "형사소송법",
+      "reading": "",
+      "meaning": "형사 사건의 수사와 재판, 형의 집행 등 절차를 규정한 법률을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "형사소송법",
+      "url": "https://ko.wikipedia.org/wiki/형사소송법",
+      "date": "2026-10-03",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "천식",
+      "reading": "",
+      "meaning": "기도의 염증으로 인해 기도가 좁아져 호흡 곤란과 기침, 쌕쌕거리는 숨소리가 나타나는 만성 질환이다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "천식",
+      "url": "https://ko.wikipedia.org/wiki/천식",
+      "date": "2026-10-03",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "그래미 어워즈",
+      "reading": "",
+      "meaning": "미국 그래미 기록 예술 과학 협회가 주관하는 세계적인 권위의 음악 시상식이다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "그래미 어워드",
+      "url": "https://ko.wikipedia.org/wiki/그래미_어워드",
+      "date": "2026-10-03",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "나토",
+      "reading": "",
+      "meaning": "북대서양 조약 기구(NATO)의 줄임말로, 북미와 유럽 국가들이 결성한 군사 동맹 기구이다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "북대서양 조약 기구",
+      "url": "https://ko.wikipedia.org/wiki/북대서양_조약_기구",
+      "date": "2026-10-03",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-03T04:27:44+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
