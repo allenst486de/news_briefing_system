@@ -96,6 +96,30 @@
       "date": "2026-10-04",
       "via": "raw",
       "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "가처분소득",
+      "reading": "",
+      "meaning": "세금과 사회보험료 등 법정 부담금을 낸 뒤 개인이 자유롭게 쓸 수 있는 소득을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "가처분 소득",
+      "url": "https://ko.wikipedia.org/wiki/가처분_소득",
+      "date": "2026-10-04",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "오차범위",
+      "reading": "",
+      "meaning": "조사나 측정 결과가 참값에서 벗어날 수 있는 범위를 나타내는 수치를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "허용 오차",
+      "url": "https://ko.wikipedia.org/wiki/허용_오차",
+      "date": "2026-10-04",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
     }
   ],
   "runs": [
@@ -104,6 +128,13 @@
       "added": 8,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-04T05:45:16+09:00",
+      "added": 2,
+      "via": [
         "raw"
       ]
     }
