@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-04",
+  "terms": [
+    {
+      "term": "AI 거품",
+      "reading": "",
+      "meaning": "인공지능 기술에 대한 기대가 실제 성과보다 지나치게 커져 관련 기업의 가치가 과대평가된 상태를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "AI 버블",
+      "url": "https://ko.wikipedia.org/wiki/AI_버블",
+      "date": "2026-10-04",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Fraternity",
+      "reading": "프래터니티",
+      "meaning": "대학에서 학생들이 친목과 교류를 목적으로 조직한 사교 단체를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "대학 형제회·자매회",
+      "url": "https://ko.wikipedia.org/wiki/대학_형제회·자매회",
+      "date": "2026-10-04",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Ketamine",
+      "reading": "케타민",
+      "meaning": "마취와 진통 목적으로 사용되는 약물로, 오남용 시 환각과 의존성을 일으키는 물질을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "케타민",
+      "url": "https://ko.wikipedia.org/wiki/케타민",
+      "date": "2026-10-04",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "2금융권",
+      "reading": "",
+      "meaning": "은행을 제외한 보험·증권·저축은행 등 제2금융권에 속하는 금융기관을 통틀어 이르는 말이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "제2금융권",
+      "url": "https://ko.wikipedia.org/wiki/제2금융권",
+      "date": "2026-10-04",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "중간선거",
+      "reading": "",
+      "meaning": "대통령 임기 중간에 치러지는 의회 의원 선거를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "중간선거",
+      "url": "https://ko.wikipedia.org/wiki/중간선거",
+      "date": "2026-10-04",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "암표",
+      "reading": "",
+      "meaning": "공식 판매처가 아닌 곳에서 표를 사고팔며 웃돈을 붙여 거래하는 행위를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "암표",
+      "url": "https://ko.wikipedia.org/wiki/암표",
+      "date": "2026-10-04",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "생성형 AI",
+      "reading": "",
+      "meaning": "학습한 데이터를 바탕으로 글·그림·음성 등 새로운 결과물을 만들어 내는 인공지능을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "생성형 인공지능",
+      "url": "https://ko.wikipedia.org/wiki/생성형_인공지능",
+      "date": "2026-10-04",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "비밀 투표",
+      "reading": "",
+      "meaning": "누가 누구에게 투표했는지 알 수 없도록 비밀이 보장되는 투표 방식을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "비밀 선거",
+      "url": "https://ko.wikipedia.org/wiki/비밀_선거",
+      "date": "2026-10-04",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-04T04:03:20+09:00",
+      "added": 8,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
