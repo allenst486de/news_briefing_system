@@ -96,6 +96,30 @@
       "date": "2026-10-05",
       "via": "raw",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "정리매매",
+      "reading": "",
+      "meaning": "상장폐지가 결정된 주식을 일정 기간 동안만 거래할 수 있도록 허용하는 절차를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "정리매매",
+      "url": "https://ko.wikipedia.org/wiki/정리매매",
+      "date": "2026-10-05",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "크리덴셜 스터핑",
+      "reading": "",
+      "meaning": "이미 유출된 아이디와 비밀번호를 여러 사이트에 무작위로 대입해 계정을 탈취하는 공격 수법을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "크리덴셜 스터핑",
+      "url": "https://ko.wikipedia.org/wiki/크리덴셜_스터핑",
+      "date": "2026-10-05",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
     }
   ],
   "runs": [
@@ -104,6 +128,13 @@
       "added": 8,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-05T05:45:11+09:00",
+      "added": 2,
+      "via": [
         "raw"
       ]
     }
