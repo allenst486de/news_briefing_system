@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-05",
+  "terms": [
+    {
+      "term": "FIAPF",
+      "reading": "국제영화제작자연맹",
+      "meaning": "전 세계 영화 제작자들의 권익을 보호하고 영화 산업의 표준을 설정하기 위해 설립된 국제 기구인 국제영화제작자연맹을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "국제 영화 제작자 연맹",
+      "url": "https://ko.wikipedia.org/wiki/국제_영화_제작자_연맹",
+      "date": "2026-10-05",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "극초음속 미사일",
+      "reading": "",
+      "meaning": "음속의 5배 이상의 매우 빠른 속도로 비행하며 목표물을 타격하는 미사일을 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "극초음속 무기",
+      "url": "https://ko.wikipedia.org/wiki/극초음속_무기",
+      "date": "2026-10-05",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "시온주의",
+      "reading": "",
+      "meaning": "유대인이 팔레스타인 지역에 유대인 국가를 건설하려는 민족주의 운동을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "시온주의",
+      "url": "https://ko.wikipedia.org/wiki/시온주의",
+      "date": "2026-10-05",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Service Charge",
+      "reading": "서비스 차지",
+      "meaning": "제공된 서비스에 대한 대가로 상품 가격 외에 추가로 지불하는 봉사료를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "팁",
+      "url": "https://ko.wikipedia.org/wiki/팁",
+      "date": "2026-10-05",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "고독사",
+      "reading": "",
+      "meaning": "가족이나 주변 사람과 단절된 채 홀로 살다가 아무도 모르게 죽음을 맞이하고 시간이 흐른 뒤에 발견되는 죽음을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "고독사",
+      "url": "https://ko.wikipedia.org/wiki/고독사",
+      "date": "2026-10-05",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "달러인덱스",
+      "reading": "",
+      "meaning": "미국 달러의 가치를 유로화, 엔화 등 주요 통화에 대한 환율을 종합해 나타낸 지수를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "미국 달러 인덱스",
+      "url": "https://ko.wikipedia.org/wiki/미국_달러_인덱스",
+      "date": "2026-10-05",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "네트워크 패킷",
+      "reading": "",
+      "meaning": "네트워크에서 데이터를 작은 단위로 나누어 전송할 때 송수신 정보를 담은 헤더를 붙인 데이터 묶음을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "네트워크 패킷",
+      "url": "https://ko.wikipedia.org/wiki/네트워크_패킷",
+      "date": "2026-10-05",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "삼권분립",
+      "reading": "",
+      "meaning": "국가 권력을 입법, 행정, 사법의 세 기관으로 나누어 서로 견제와 균형을 이루게 하는 권력 분립 원리를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "권력 분립",
+      "url": "https://ko.wikipedia.org/wiki/권력_분립",
+      "date": "2026-10-05",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-05T03:55:10+09:00",
+      "added": 8,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
