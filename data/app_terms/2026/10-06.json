@@ -72,6 +72,54 @@
       "date": "2026-10-06",
       "via": "news_terms",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "중수청",
+      "reading": "",
+      "meaning": "중대범죄수사청의 줄임말로, 검찰의 수사권과 기소권을 분리하여 중대 범죄 수사를 전담하기 위해 설립을 추진하는 수사 기관을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "대한민국 중대범죄수사청",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_중대범죄수사청",
+      "date": "2026-10-06",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "비출혈",
+      "reading": "",
+      "meaning": "혈관 밖으로 피가 나오지 않는 상태를 뜻하며, 의학적으로는 출혈이 없는 상태를 가리킨다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "코피",
+      "url": "https://ko.wikipedia.org/wiki/코피",
+      "date": "2026-10-06",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "다큐멘터리",
+      "reading": "",
+      "meaning": "허구적인 설정보다는 실제 인물, 사건, 현상을 객관적으로 기록하여 전달하는 영상 장르를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "다큐멘터리 영화",
+      "url": "https://ko.wikipedia.org/wiki/다큐멘터리_영화",
+      "date": "2026-10-06",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "초소형군집위성",
+      "reading": "",
+      "meaning": "소형 위성을 여러 대 묶어 하나의 시스템처럼 운용함으로써 관측 효율과 정밀도를 높이는 위성 체계를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "초소형군집위성",
+      "url": "https://ko.wikipedia.org/wiki/초소형군집위성",
+      "date": "2026-10-06",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
     }
   ],
   "runs": [
@@ -80,6 +128,13 @@
       "added": 6,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-10-06T05:45:12+09:00",
+      "added": 4,
+      "via": [
+        "raw"
       ]
     }
   ]
