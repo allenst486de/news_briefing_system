@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-06",
+  "terms": [
+    {
+      "term": "전시작전통제권",
+      "reading": "",
+      "meaning": "전시에 군사 작전을 지휘·통제하는 권한을 말한다. 한국에서는 주로 전시 한국군에 대한 지휘권을 뜻하며, 현재는 한미연합사령관이 행사한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "전시 작전통제권",
+      "url": "https://ko.wikipedia.org/wiki/전시_작전통제권",
+      "date": "2026-10-06",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Optogenetics",
+      "reading": "광유전학",
+      "meaning": "유전자 조작으로 신경세포가 빛에 반응하게 만든 뒤 빛으로 세포 활동을 조절하여 뇌와 신경의 기능을 연구하는 기술을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "광유전학",
+      "url": "https://ko.wikipedia.org/wiki/광유전학",
+      "date": "2026-10-06",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Self-supervised Learning",
+      "reading": "자기지도 학습",
+      "meaning": "인공지능이 정답이 없는 데이터에서 스스로 문제와 정답을 만들어 학습하는 기계학습 방식을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "자기 지도 학습",
+      "url": "https://ko.wikipedia.org/wiki/자기_지도_학습",
+      "date": "2026-10-06",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "산재",
+      "reading": "",
+      "meaning": "산업 재해의 줄임말로, 노동자가 일터에서 사고나 과로 등으로 다치거나 병들거나 죽는 일을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "산업 재해",
+      "url": "https://ko.wikipedia.org/wiki/산업_재해",
+      "date": "2026-10-06",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "BCI",
+      "reading": "뇌-컴퓨터 인터페이스",
+      "meaning": "뇌에서 나오는 신호를 컴퓨터와 직접 연결해 몸을 움직이지 않고도 기기를 조작하게 하는 기술을 말한다. Brain-Computer Interface의 줄임말이다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "뇌-컴퓨터 인터페이스",
+      "url": "https://ko.wikipedia.org/wiki/뇌-컴퓨터_인터페이스",
+      "date": "2026-10-06",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "SPR",
+      "reading": "전략비축유",
+      "meaning": "전략비축유의 줄임말로, 전쟁이나 공급 차질 같은 비상사태에 대비해 정부가 미리 비축해 두는 원유를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "전략비축유",
+      "url": "https://ko.wikipedia.org/wiki/전략비축유",
+      "date": "2026-10-06",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-06T03:52:07+09:00",
+      "added": 6,
+      "via": [
+        "news_terms"
+      ]
+    }
+  ]
+}
