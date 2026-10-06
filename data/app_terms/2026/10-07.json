@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-07",
+  "terms": [
+    {
+      "term": "문민통제",
+      "reading": "",
+      "meaning": "군대 등 무력 조직이 민간의 정치적 지도와 감시 아래 놓여야 한다는 원칙을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "문민통제",
+      "url": "https://ko.wikipedia.org/wiki/문민통제",
+      "date": "2026-10-07",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Biological Weapon",
+      "reading": "생물무기",
+      "meaning": "세균·바이러스·독소 등 생물학적 작용을 이용해 사람이나 동식물을 해치는 무기를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "생물무기",
+      "url": "https://ko.wikipedia.org/wiki/생물무기",
+      "date": "2026-10-07",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "외환보유액",
+      "reading": "",
+      "meaning": "한 나라의 중앙은행이나 정부가 보유하고 있는 외국 통화 및 외화 자산을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "외환보유고",
+      "url": "https://ko.wikipedia.org/wiki/외환보유고",
+      "date": "2026-10-07",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Open Weight",
+      "reading": "오픈웨이트",
+      "meaning": "인공지능 모델의 학습된 매개변수 값을 공개해 누구나 내려받아 쓸 수 있게 한 것을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "무제한급",
+      "url": "https://ko.wikipedia.org/wiki/무제한급",
+      "date": "2026-10-07",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Metroidvania",
+      "reading": "메트로이드배니아",
+      "meaning": "탐험과 능력 습득을 중심으로 하는 2차원 횡스크롤 액션 게임의 한 장르를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "메트로이드배니아",
+      "url": "https://ko.wikipedia.org/wiki/메트로이드배니아",
+      "date": "2026-10-07",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "회복탄력성",
+      "reading": "",
+      "meaning": "스트레스나 역경을 겪은 뒤에도 원래 상태로 되돌아오거나 더 성장하는 심리적 능력을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "심리 탄성",
+      "url": "https://ko.wikipedia.org/wiki/심리_탄성",
+      "date": "2026-10-07",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "무역적자",
+      "reading": "",
+      "meaning": "한 나라의 수입액이 수출액보다 더 많은 상태, 즉 무역수지가 적자인 것을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "무역수지",
+      "url": "https://ko.wikipedia.org/wiki/무역수지",
+      "date": "2026-10-07",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "쿼크",
+      "reading": "",
+      "meaning": "양성자와 중성자 등을 이루는 물질의 기본 입자를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "쿼크",
+      "url": "https://ko.wikipedia.org/wiki/쿼크",
+      "date": "2026-10-07",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "페스트",
+      "reading": "",
+      "meaning": "쥐 등의 설치류에 기생하는 벼룩이 옮기는 세균에 의해 생기는 급성 전염병을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "페스트",
+      "url": "https://ko.wikipedia.org/wiki/페스트",
+      "date": "2026-10-07",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-07T03:53:31+09:00",
+      "added": 9,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
