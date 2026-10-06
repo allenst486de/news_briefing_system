@@ -108,6 +108,18 @@
       "date": "2026-10-07",
       "via": "raw",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "골관절염",
+      "reading": "",
+      "meaning": "관절을 보호하고 있는 연골의 손상이나 퇴행성 변화로 인해 관절에 염증이 생기는 질환을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "뼈관절염",
+      "url": "https://ko.wikipedia.org/wiki/뼈관절염",
+      "date": "2026-10-07",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
     }
   ],
   "runs": [
@@ -116,6 +128,13 @@
       "added": 9,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-07T05:45:19+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
