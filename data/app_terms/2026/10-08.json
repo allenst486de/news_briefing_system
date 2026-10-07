@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-08",
+  "terms": [
+    {
+      "term": "인구감소지역",
+      "reading": "",
+      "meaning": "인구가 지속적으로 줄어 지역 소멸 위기에 놓였다고 판단되어 법으로 지정한 지역을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "인구감소지역",
+      "url": "https://ko.wikipedia.org/wiki/인구감소지역",
+      "date": "2026-10-08",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "제로 트러스트",
+      "reading": "",
+      "meaning": "네트워크 안팎 구분 없이 모든 접속을 기본적으로 신뢰하지 않고 인증과 검증을 요구하는 보안 모델을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "제로 트러스트 보안 모델",
+      "url": "https://ko.wikipedia.org/wiki/제로_트러스트_보안_모델",
+      "date": "2026-10-08",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "자기촉매",
+      "reading": "",
+      "meaning": "화학 반응에서 생성물이 그 반응의 촉매로 작용하여 반응을 스스로 더 빠르게 진행시키는 현상을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "자기촉매",
+      "url": "https://ko.wikipedia.org/wiki/자기촉매",
+      "date": "2026-10-08",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "상속세",
+      "reading": "",
+      "meaning": "사람이 사망했을 때 그 재산을 상속받는 사람에게 부과하는 세금을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "상속세",
+      "url": "https://ko.wikipedia.org/wiki/상속세",
+      "date": "2026-10-08",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "거울상 이성질체",
+      "reading": "",
+      "meaning": "분자 구조가 서로 거울에 비친 모습처럼 대칭이지만 서로 겹쳐 놓을 수 없는 이성질체를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "광학 이성질체",
+      "url": "https://ko.wikipedia.org/wiki/광학_이성질체",
+      "date": "2026-10-08",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "탄핵",
+      "reading": "",
+      "meaning": "고위 공직자가 직무 수행 중 헌법이나 법률을 위반했을 때, 국회나 법원이 그 직위를 박탈하는 제도를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "탄핵",
+      "url": "https://ko.wikipedia.org/wiki/탄핵",
+      "date": "2026-10-08",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "환매조건부채권",
+      "reading": "",
+      "meaning": "채권을 매도한 후 일정 기간이 지나면 다시 사는 조건으로 발행하는 채권을 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "환매조건부채권",
+      "url": "https://ko.wikipedia.org/wiki/환매조건부채권",
+      "date": "2026-10-08",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "합병",
+      "reading": "",
+      "meaning": "두 개 이상의 회사가 하나로 합쳐져 새로운 회사를 만들거나 한 회사가 다른 회사를 흡수하여 통합하는 것을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "인수 합병",
+      "url": "https://ko.wikipedia.org/wiki/인수_합병",
+      "date": "2026-10-08",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "정치자금법",
+      "reading": "",
+      "meaning": "정치자금의 수입과 지출을 투명하게 관리하여 정치 부패를 방지하기 위해 제정된 법률을 뜻한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "정치자금법",
+      "url": "https://ko.wikipedia.org/wiki/정치자금법",
+      "date": "2026-10-08",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "양자내성암호",
+      "reading": "",
+      "meaning": "양자 컴퓨터의 강력한 연산 능력으로도 해독하기 어렵게 설계된 암호 체계를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "양자 후 암호",
+      "url": "https://ko.wikipedia.org/wiki/양자_후_암호",
+      "date": "2026-10-08",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-08T04:11:27+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
