@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-09",
+  "terms": [
+    {
+      "term": "HGV",
+      "reading": "극초음속 활공 비행체",
+      "meaning": "극초음속으로 비행하며 대기권을 활공하는 무기체계를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "극초음속 활공체",
+      "url": "https://ko.wikipedia.org/wiki/극초음속_활공체",
+      "date": "2026-10-09",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Abstract Expressionism",
+      "reading": "추상표현주의",
+      "meaning": "20세기 중반 미국에서 일어난, 추상적 형태와 강렬한 감정 표현을 중시한 미술 사조를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "추상표현주의",
+      "url": "https://ko.wikipedia.org/wiki/추상표현주의",
+      "date": "2026-10-09",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "큐브위성",
+      "reading": "",
+      "meaning": "한 변이 약 10센티미터인 정육면체 모양의 초소형 인공위성을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "큐브위성",
+      "url": "https://ko.wikipedia.org/wiki/큐브위성",
+      "date": "2026-10-09",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "gTLD",
+      "reading": "최상위 도메인",
+      "meaning": "인터넷 주소 체계에서 일반적으로 등록·사용되는 최상위 도메인을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "최상위 도메인",
+      "url": "https://ko.wikipedia.org/wiki/최상위_도메인",
+      "date": "2026-10-09",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "환경 DNA",
+      "reading": "",
+      "meaning": "환경 시료에 섞여 있는 생물의 유전 물질을 분석해 생물의 존재를 확인하는 기법을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "환경 DNA",
+      "url": "https://ko.wikipedia.org/wiki/환경_DNA",
+      "date": "2026-10-09",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "어드벤트 캘린더",
+      "reading": "",
+      "meaning": "크리스마스 전까지 날짜별로 작은 선물이나 과자를 열어 보는 달력 형태의 물건을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "재림절 달력",
+      "url": "https://ko.wikipedia.org/wiki/재림절_달력",
+      "date": "2026-10-09",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "전자발찌",
+      "reading": "",
+      "meaning": "성범죄 등의 재범 방지를 위해 특정 대상자의 위치를 전자적으로 추적하는 장치를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "전자팔찌",
+      "url": "https://ko.wikipedia.org/wiki/전자팔찌",
+      "date": "2026-10-09",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "백색왜성",
+      "reading": "",
+      "meaning": "핵융합 반응이 끝난 뒤 남은 별이 식어서 작고 밝게 빛나는 천체를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "백색왜성",
+      "url": "https://ko.wikipedia.org/wiki/백색왜성",
+      "date": "2026-10-09",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "가석방",
+      "reading": "",
+      "meaning": "징역 또는 금고의 형을 받고 있는 수형자가 개전의 정이 뚜렷할 때 형기 만료 전에 조건부로 석방하는 제도이다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "가석방",
+      "url": "https://ko.wikipedia.org/wiki/가석방",
+      "date": "2026-10-09",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "역학조사",
+      "reading": "",
+      "meaning": "질병의 발생 원인과 분포를 파악하여 전파 경로를 차단하고 예방 대책을 세우기 위해 실시하는 조사이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "역학조사",
+      "url": "https://ko.wikipedia.org/wiki/역학조사",
+      "date": "2026-10-09",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-09T04:26:00+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
