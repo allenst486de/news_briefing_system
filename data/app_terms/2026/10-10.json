@@ -72,6 +72,54 @@
       "date": "2026-10-10",
       "via": "news_terms",
       "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "지자체",
+      "reading": "",
+      "meaning": "지방자치를 실시하는 지역 단위의 행정 기관이나 그 공공 단체를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "지방자치체",
+      "url": "https://ko.wikipedia.org/wiki/지방자치체",
+      "date": "2026-10-10",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "비둘기파",
+      "reading": "",
+      "meaning": "경제 정책에서 물가 안정보다 경기 부양과 고용 확대를 중시하는 온건한 입장을 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "비둘기파",
+      "url": "https://ko.wikipedia.org/wiki/비둘기파",
+      "date": "2026-10-10",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "DDoS",
+      "reading": "",
+      "meaning": "여러 컴퓨터를 동원해 특정 서버나 네트워크에 대량의 접속을 보내 서비스를 마비시키는 공격을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "서비스 거부 공격",
+      "url": "https://ko.wikipedia.org/wiki/서비스_거부_공격",
+      "date": "2026-10-10",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "ICC",
+      "reading": "국제형사재판소",
+      "meaning": "집단살해·전쟁범죄·반인도범죄 등 국제적 중대 범죄를 저지른 개인을 처벌하는 상설 국제 재판소를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "국제형사재판소",
+      "url": "https://ko.wikipedia.org/wiki/국제형사재판소",
+      "date": "2026-10-10",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
     }
   ],
   "runs": [
@@ -80,6 +128,13 @@
       "added": 6,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-10-10T05:45:09+09:00",
+      "added": 4,
+      "via": [
+        "raw"
       ]
     }
   ]
