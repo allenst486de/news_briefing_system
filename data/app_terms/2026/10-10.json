@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-10",
+  "terms": [
+    {
+      "term": "Counterintelligence",
+      "reading": "방첩",
+      "meaning": "상대방의 첩보 활동을 탐지·방해·차단하여 국가 기밀과 정보를 보호하는 활동을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "방첩",
+      "url": "https://ko.wikipedia.org/wiki/방첩",
+      "date": "2026-10-10",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "NDA",
+      "reading": "비밀유지계약",
+      "meaning": "당사자 간에 공유된 기밀 정보를 제3자에게 공개하지 않기로 약속하는 법적 계약을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "기밀유지 협약",
+      "url": "https://ko.wikipedia.org/wiki/기밀유지_협약",
+      "date": "2026-10-10",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "강화학습",
+      "reading": "",
+      "meaning": "인공지능이 시행착오를 통해 보상을 최대화하는 행동을 스스로 학습하는 기계학습 방법을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "강화 학습",
+      "url": "https://ko.wikipedia.org/wiki/강화_학습",
+      "date": "2026-10-10",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "H-1B 비자",
+      "reading": "",
+      "meaning": "미국이 전문직 외국인에게 발급하는 취업 비자로, 특정 전문 분야 종사자를 대상으로 한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "H-1B 비자",
+      "url": "https://ko.wikipedia.org/wiki/H-1B_비자",
+      "date": "2026-10-10",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "프론트 로우",
+      "reading": "",
+      "meaning": "무대나 경기장 등에서 관객과 가장 가까운 앞쪽 자리나 위치를 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "프런트로",
+      "url": "https://ko.wikipedia.org/wiki/프런트로",
+      "date": "2026-10-10",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "저궤도 위성",
+      "reading": "",
+      "meaning": "지구 표면에 비교적 가까운 낮은 고도에서 지구를 도는 인공위성을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "인공위성",
+      "url": "https://ko.wikipedia.org/wiki/인공위성",
+      "date": "2026-10-10",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-10T04:12:48+09:00",
+      "added": 6,
+      "via": [
+        "news_terms"
+      ]
+    }
+  ]
+}
