@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-11",
+  "terms": [
+    {
+      "term": "중대재해처벌법",
+      "reading": "",
+      "meaning": "사업주나 경영책임자가 안전 보건 확보 의무를 위반하여 중대산업재해나 중대시민재해가 발생했을 때 처벌하도록 규정한 법률을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "중대재해 처벌 등에 관한 법률",
+      "url": "https://ko.wikipedia.org/wiki/중대재해_처벌_등에_관한_법률",
+      "date": "2026-10-11",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Neurodivergence",
+      "reading": "신경다양성",
+      "meaning": "자폐증이나 ADHD와 같이 뇌의 기능적 차이로 인해 나타나는 신경학적 다양성을 비정상적인 상태가 아닌 인간의 자연스러운 변이로 보는 관점을 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "신경다양성",
+      "url": "https://ko.wikipedia.org/wiki/신경다양성",
+      "date": "2026-10-11",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Organoid",
+      "reading": "오가노이드",
+      "meaning": "줄기세포를 배양하여 인체 장기의 세포 구성과 기능을 유사하게 구현한 3차원 유사 장기 조직을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "오가노이드",
+      "url": "https://ko.wikipedia.org/wiki/오가노이드",
+      "date": "2026-10-11",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "비후성 심근증",
+      "reading": "",
+      "meaning": "심장 근육이 비정상적으로 두꺼워져 심장 내부 공간이 좁아지고 혈액 순환에 장애가 생기는 질환을 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "비후성 심근병증",
+      "url": "https://ko.wikipedia.org/wiki/비후성_심근병증",
+      "date": "2026-10-11",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Ribosome",
+      "reading": "리보솜",
+      "meaning": "세포 내에서 유전 정보에 따라 아미노산을 연결하여 단백질을 합성하는 세포 소기관을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "리보솜",
+      "url": "https://ko.wikipedia.org/wiki/리보솜",
+      "date": "2026-10-11",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Current Account Balance",
+      "reading": "경상수지",
+      "meaning": "국가 간의 상품, 서비스 거래 및 자본 이동 등으로 발생하는 소득의 수지를 나타내는 경제 지표를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "경상수지",
+      "url": "https://ko.wikipedia.org/wiki/경상수지",
+      "date": "2026-10-11",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "분양가 상한제",
+      "reading": "",
+      "meaning": "새 아파트의 분양 가격에 정부가 상한선을 정해 그 이상 팔 수 없도록 하는 제도를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "분양가 상한제",
+      "url": "https://ko.wikipedia.org/wiki/분양가_상한제",
+      "date": "2026-10-11",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "침투 테스트",
+      "reading": "",
+      "meaning": "컴퓨터 시스템이나 네트워크의 보안 취약점을 찾아내기 위해 실제 공격과 같은 방식으로 허가를 받아 시도하는 보안 검사를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "침투 테스트",
+      "url": "https://ko.wikipedia.org/wiki/침투_테스트",
+      "date": "2026-10-11",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "임상시험",
+      "reading": "",
+      "meaning": "새로 개발된 약이나 치료법이 사람에게 안전하고 효과가 있는지 확인하기 위해 사람을 대상으로 진행하는 시험을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "임상시험",
+      "url": "https://ko.wikipedia.org/wiki/임상시험",
+      "date": "2026-10-11",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "기면증",
+      "reading": "",
+      "meaning": "낮에 지나치게 졸리고 아무 데서나 갑자기 잠들어 버리는 만성 수면 장애를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "기면증",
+      "url": "https://ko.wikipedia.org/wiki/기면증",
+      "date": "2026-10-11",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-11T04:17:16+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
