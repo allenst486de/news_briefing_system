@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-12",
+  "terms": [
+    {
+      "term": "Nuclear Clock",
+      "reading": "핵시계",
+      "meaning": "원자핵의 에너지 준위 전이를 이용해 시간을 재는 시계로, 기존 원자시계보다 훨씬 정밀할 것으로 기대되는 차세대 시간 측정 장치를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "핵시계",
+      "url": "https://ko.wikipedia.org/wiki/핵시계",
+      "date": "2026-10-12",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Houthi",
+      "reading": "후티 반군",
+      "meaning": "예멘 북부를 근거지로 활동하는 시아파 계열의 무장 반군 조직으로, 공식 명칭은 '안사르 알라'이다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "후티",
+      "url": "https://ko.wikipedia.org/wiki/후티",
+      "date": "2026-10-12",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Net Zero",
+      "reading": "넷제로",
+      "meaning": "온실가스를 배출하는 만큼 흡수·제거하여 순 배출량을 0으로 만드는 것을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "순 제로 배출",
+      "url": "https://ko.wikipedia.org/wiki/순_제로_배출",
+      "date": "2026-10-12",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "자본시장법",
+      "reading": "",
+      "meaning": "자본시장에서 금융투자업을 영위하는 자의 건전한 영업질서를 확립하고 투자자를 보호하기 위한 법률을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "자본시장과 금융투자업에 관한 법률",
+      "url": "https://ko.wikipedia.org/wiki/자본시장과_금융투자업에_관한_법률",
+      "date": "2026-10-12",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "전문의",
+      "reading": "",
+      "meaning": "의사 면허를 가진 사람이 일정한 전문 분야의 수련을 마치고 보건복지부 장관의 자격 인정을 받은 의사를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "의사",
+      "url": "https://ko.wikipedia.org/wiki/의사",
+      "date": "2026-10-12",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "웹툰",
+      "reading": "",
+      "meaning": "인터넷을 통해 연재되어 웹 브라우저에서 볼 수 있도록 만든 만화를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "웹툰",
+      "url": "https://ko.wikipedia.org/wiki/웹툰",
+      "date": "2026-10-12",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "역공학",
+      "reading": "",
+      "meaning": "완성된 제품이나 프로그램의 구조와 동작 원리를 분석하여 설계 정보를 알아내는 작업을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "역공학",
+      "url": "https://ko.wikipedia.org/wiki/역공학",
+      "date": "2026-10-12",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "D램",
+      "reading": "",
+      "meaning": "축전기에 전하를 저장하는 방식으로 정보를 기록하는 반도체 기억 소자를 말한다. Dynamic Random Access Memory의 줄임말이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "동적 램",
+      "url": "https://ko.wikipedia.org/wiki/동적_램",
+      "date": "2026-10-12",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "휴전",
+      "reading": "",
+      "meaning": "전쟁을 하는 양쪽이 서로 합의하여 싸움을 일시적으로 멈추는 것을 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "휴전",
+      "url": "https://ko.wikipedia.org/wiki/휴전",
+      "date": "2026-10-12",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "코리아 디스카운트",
+      "reading": "",
+      "meaning": "한국 증시의 기업 가치가 해외 증시에 비해 낮게 평가되는 현상을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "코리아 디스카운트",
+      "url": "https://ko.wikipedia.org/wiki/코리아_디스카운트",
+      "date": "2026-10-12",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-12T03:42:28+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
