@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-13",
+  "terms": [
+    {
+      "term": "Miranda Warning",
+      "reading": "미란다 원칙",
+      "meaning": "경찰 등 수사 기관이 피의자를 체포할 때 변호인의 도움을 받을 권리와 진술 거부권 등이 있음을 미리 알려주어야 한다는 원칙을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "미란다 원칙",
+      "url": "https://ko.wikipedia.org/wiki/미란다_원칙",
+      "date": "2026-10-13",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "색깔론",
+      "reading": "",
+      "meaning": "정치적 상대방을 특정 이념이나 색깔로 규정하여 공격함으로써 부정적인 이미지를 씌우는 정치적 수법을 뜻한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "레드 콤플렉스",
+      "url": "https://ko.wikipedia.org/wiki/레드_콤플렉스",
+      "date": "2026-10-13",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "이부프로펜",
+      "reading": "",
+      "meaning": "비스테로이드성 항염증제에 속하는 약물로, 해열, 진통, 소염 작용을 하는 성분을 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "이부프로펜",
+      "url": "https://ko.wikipedia.org/wiki/이부프로펜",
+      "date": "2026-10-13",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "의전원",
+      "reading": "",
+      "meaning": "의학전문대학원의 줄임말로, 학사 학위를 가진 사람이 입학하여 의사 양성 과정을 이수하는 전문 대학원 체제를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "대한민국의 의학전문대학원",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_의학전문대학원",
+      "date": "2026-10-13",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-13T04:05:18+09:00",
+      "added": 4,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
