@@ -48,6 +48,30 @@
       "date": "2026-10-13",
       "via": "raw",
       "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "공권력",
+      "reading": "",
+      "meaning": "국가 기관이 국민에 대하여 강제력을 행사할 수 있는 법적인 권한을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "공권력",
+      "url": "https://ko.wikipedia.org/wiki/공권력",
+      "date": "2026-10-13",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "FDA",
+      "reading": "",
+      "meaning": "미국 식품의약국(Food and Drug Administration)의 약자로, 식품, 의약품, 의료기기 등의 안전성과 유효성을 관리하고 감독하는 미국의 정부 기관이다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "미국 식품의약국",
+      "url": "https://ko.wikipedia.org/wiki/미국_식품의약국",
+      "date": "2026-10-13",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
     }
   ],
   "runs": [
@@ -56,6 +80,13 @@
       "added": 4,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-13T05:45:07+09:00",
+      "added": 2,
+      "via": [
         "raw"
       ]
     }
