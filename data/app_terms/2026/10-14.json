@@ -60,6 +60,66 @@
       "date": "2026-10-14",
       "via": "news_terms",
       "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "헤지펀드",
+      "reading": "",
+      "meaning": "소수의 투자자에게서 자금을 모아 레버리지와 다양한 전략으로 높은 수익을 추구하는 사모 투자 펀드를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "헤지펀드",
+      "url": "https://ko.wikipedia.org/wiki/헤지펀드",
+      "date": "2026-10-14",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "압수수색",
+      "reading": "",
+      "meaning": "수사기관이 증거물이나 범죄 관련 물건을 강제로 확보하기 위해 사람의 주거나 물건을 뒤지는 수사 절차를 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "압수수색",
+      "url": "https://ko.wikipedia.org/wiki/압수수색",
+      "date": "2026-10-14",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "여순항쟁",
+      "reading": "",
+      "meaning": "제주 4·3 사건 진압에 투입된 군부대가 여수와 순천 지역에서 일으킨 무장 충돌과 민간인 희생 사건을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "여수·순천 사건",
+      "url": "https://ko.wikipedia.org/wiki/여수·순천_사건",
+      "date": "2026-10-14",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "A/B 테스트",
+      "reading": "",
+      "meaning": "두 가지 이상의 버전을 무작위로 나누어 사용자 반응을 비교해 더 나은 쪽을 선택하는 실험 방법을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "A/B 테스트",
+      "url": "https://ko.wikipedia.org/wiki/A/B_테스트",
+      "date": "2026-10-14",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "유전자 편집",
+      "reading": "",
+      "meaning": "생명체의 유전체 서열을 인위적으로 바꾸는 기술을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "유전체 편집",
+      "url": "https://ko.wikipedia.org/wiki/유전체_편집",
+      "date": "2026-10-14",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
     }
   ],
   "runs": [
@@ -68,6 +128,13 @@
       "added": 5,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-10-14T05:45:06+09:00",
+      "added": 5,
+      "via": [
+        "raw"
       ]
     }
   ]
