@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-14",
+  "terms": [
+    {
+      "term": "Graphic Novel",
+      "reading": "그래픽 노블",
+      "meaning": "만화의 형식을 빌려 소설처럼 복잡한 서사와 예술적 구성을 갖춘 작품을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "그래픽 노블",
+      "url": "https://ko.wikipedia.org/wiki/그래픽_노블",
+      "date": "2026-10-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "비문증",
+      "reading": "",
+      "meaning": "눈앞에 먼지나 벌레 같은 작은 물체가 떠다니는 것처럼 보이는 증상을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "비문증",
+      "url": "https://ko.wikipedia.org/wiki/비문증",
+      "date": "2026-10-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Connected Car",
+      "reading": "커넥티드카",
+      "meaning": "인터넷에 연결되어 실시간으로 정보를 주고받으며 다양한 서비스를 제공하는 자동차를 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "커넥티드 카",
+      "url": "https://ko.wikipedia.org/wiki/커넥티드_카",
+      "date": "2026-10-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "자가면역 질환",
+      "reading": "",
+      "meaning": "면역 체계가 자신의 신체 조직을 외부 물질로 오인하여 공격함으로써 발생하는 질환을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "자가 면역 질환",
+      "url": "https://ko.wikipedia.org/wiki/자가_면역_질환",
+      "date": "2026-10-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Ontology",
+      "reading": "온톨로지",
+      "meaning": "지식 영역 내의 개념들과 그들 사이의 관계를 컴퓨터가 처리할 수 있도록 정의한 체계를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "온톨로지",
+      "url": "https://ko.wikipedia.org/wiki/온톨로지",
+      "date": "2026-10-14",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-14T04:12:08+09:00",
+      "added": 5,
+      "via": [
+        "news_terms"
+      ]
+    }
+  ]
+}
