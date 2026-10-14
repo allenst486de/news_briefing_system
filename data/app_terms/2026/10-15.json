@@ -12,6 +12,78 @@
       "date": "2026-10-15",
       "via": "news_terms",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "상급종합병원",
+      "reading": "",
+      "meaning": "중증 질환을 가진 환자에게 전문적인 진료를 제공하도록 보건복지부 장관이 지정한 종합병원을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "상급종합병원",
+      "url": "https://ko.wikipedia.org/wiki/상급종합병원",
+      "date": "2026-10-15",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "식민주의",
+      "reading": "",
+      "meaning": "한 나라가 다른 지역이나 민족을 지배하고 통치하며 그 문화와 제도를 강요하는 사상이나 정책을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "식민주의",
+      "url": "https://ko.wikipedia.org/wiki/식민주의",
+      "date": "2026-10-15",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "소비자물가지수",
+      "reading": "",
+      "meaning": "소비자가 구입하는 상품과 서비스의 가격 변동을 나타내는 지수로, 물가 수준을 측정하는 데 쓰인다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "소비자 물가지수",
+      "url": "https://ko.wikipedia.org/wiki/소비자_물가지수",
+      "date": "2026-10-15",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "공중보건의사",
+      "reading": "",
+      "meaning": "농어촌 등 의료 취약 지역에서 공중 보건 업무와 진료를 담당하는 의사를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "공중보건의사",
+      "url": "https://ko.wikipedia.org/wiki/공중보건의사",
+      "date": "2026-10-15",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "스핀오프",
+      "reading": "",
+      "meaning": "기존 작품이나 사업에서 파생되어 독립적으로 만들어지거나 분리된 새로운 작품이나 회사를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "스핀오프",
+      "url": "https://ko.wikipedia.org/wiki/스핀오프",
+      "date": "2026-10-15",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "이온주입",
+      "reading": "",
+      "meaning": "반도체 제조에서 불순물 이온을 가속시켜 실리콘 기판에 주입하는 공정을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "이온 주입",
+      "url": "https://ko.wikipedia.org/wiki/이온_주입",
+      "date": "2026-10-15",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
     }
   ],
   "runs": [
@@ -20,6 +92,13 @@
       "added": 1,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-10-15T05:45:05+09:00",
+      "added": 6,
+      "via": [
+        "raw"
       ]
     }
   ]
