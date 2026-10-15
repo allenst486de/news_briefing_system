@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-16",
+  "terms": [
+    {
+      "term": "경계선 지능",
+      "reading": "",
+      "meaning": "지능 지수가 정상 범위와 지적 장애 범위의 경계에 위치하여 사회적 적응에 어려움을 겪는 상태를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "경계선 지적 기능",
+      "url": "https://ko.wikipedia.org/wiki/경계선_지적_기능",
+      "date": "2026-10-16",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Chirality",
+      "reading": "비대칭성",
+      "meaning": "어떤 객체가 그 거울상과 겹쳐지지 않는 비대칭적 성질을 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "비대칭",
+      "url": "https://ko.wikipedia.org/wiki/비대칭",
+      "date": "2026-10-16",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "이원집정제",
+      "reading": "",
+      "meaning": "대통령과 총리가 권한을 나누어 가지며, 대통령은 외교와 국방을, 총리는 내정을 담당하는 정부 형태를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "이원집정부제",
+      "url": "https://ko.wikipedia.org/wiki/이원집정부제",
+      "date": "2026-10-16",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "PPI",
+      "reading": "생산자물가지수",
+      "meaning": "Producer Price Index의 약자로, 국내 생산자가 국내 시장에 공급하는 상품과 서비스의 가격 변동을 측정하는 지수이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "생산자 물가지수",
+      "url": "https://ko.wikipedia.org/wiki/생산자_물가지수",
+      "date": "2026-10-16",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "CBT-I",
+      "reading": "인지행동치료",
+      "meaning": "Cognitive Behavioral Therapy for Insomnia의 약자로, 불면증을 유발하는 생각과 행동을 교정하여 수면 질을 높이는 심리 치료법이다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "인지 행동 치료",
+      "url": "https://ko.wikipedia.org/wiki/인지_행동_치료",
+      "date": "2026-10-16",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "RSI",
+      "reading": "재귀적 자기 개선",
+      "meaning": "Recursive Self-Improvement의 약자로, 인공지능이 스스로 자신의 설계나 코드를 개선하여 지능을 비약적으로 높이는 과정을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "재귀적 자기 개선",
+      "url": "https://ko.wikipedia.org/wiki/재귀적_자기_개선",
+      "date": "2026-10-16",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Circuit Breaker",
+      "reading": "서킷브레이커",
+      "meaning": "주가가 급격히 하락할 때 시장의 충격을 완화하기 위해 일시적으로 매매를 중단시키는 제도이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "회로 차단기",
+      "url": "https://ko.wikipedia.org/wiki/회로_차단기",
+      "date": "2026-10-16",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "통화스와프",
+      "reading": "",
+      "meaning": "두 국가가 서로의 통화를 맞교환하여 외환 위기 시 유동성을 확보하기 위해 체결하는 계약을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "통화 스와프",
+      "url": "https://ko.wikipedia.org/wiki/통화_스와프",
+      "date": "2026-10-16",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "권한쟁의심판",
+      "reading": "",
+      "meaning": "국가기관 상호 간에 권한의 존부나 범위에 대해 다툼이 있을 때 헌법재판소가 이를 결정하는 심판을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "권한쟁의심판",
+      "url": "https://ko.wikipedia.org/wiki/권한쟁의심판",
+      "date": "2026-10-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "리베이트",
+      "reading": "",
+      "meaning": "거래 당사자 중 한쪽이 상품 판매 대금의 일부를 구매자에게 되돌려 주는 행위를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "리베이트",
+      "url": "https://ko.wikipedia.org/wiki/리베이트",
+      "date": "2026-10-16",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-16T03:56:00+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
