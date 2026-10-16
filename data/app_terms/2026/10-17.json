@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-17",
+  "terms": [
+    {
+      "term": "전원합의체",
+      "reading": "",
+      "meaning": "법원에서 사건의 심리와 재판에 그 법원의 전체 판사가 함께 참여하는 것을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "전원합의체",
+      "url": "https://ko.wikipedia.org/wiki/전원합의체",
+      "date": "2026-10-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "브렉시트",
+      "reading": "",
+      "meaning": "영국이 유럽 연합(EU)에서 탈퇴한 사건을 뜻한다. '브리튼(Britain)'과 '출구(exit)'의 합성어이다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "브렉시트",
+      "url": "https://ko.wikipedia.org/wiki/브렉시트",
+      "date": "2026-10-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "NEET",
+      "reading": "",
+      "meaning": "취업하지도, 교육이나 직업훈련을 받지도 않는 청년을 뜻한다. 'Not in Education, Employment or Training'의 머리글자이다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "니트족",
+      "url": "https://ko.wikipedia.org/wiki/니트족",
+      "date": "2026-10-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Opt-out",
+      "reading": "옵트아웃",
+      "meaning": "개인정보 수집이나 마케팅 등에 대해 사용자가 거부 의사를 밝혀 빠지는 방식이나 그 행위를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "옵트아웃",
+      "url": "https://ko.wikipedia.org/wiki/옵트아웃",
+      "date": "2026-10-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Polymarket",
+      "reading": "폴리마켓",
+      "meaning": "미래 사건의 결과에 참여자들이 거래하며 확률을 예측하는 온라인 예측 시장 플랫폼을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "폴리마켓",
+      "url": "https://ko.wikipedia.org/wiki/폴리마켓",
+      "date": "2026-10-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "직무유기",
+      "reading": "",
+      "meaning": "공무원이 정당한 이유 없이 직무를 수행하지 않거나 버리는 죄를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "직무유기죄",
+      "url": "https://ko.wikipedia.org/wiki/직무유기죄",
+      "date": "2026-10-17",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "워크아웃",
+      "reading": "",
+      "meaning": "금융기관의 지원을 통해 부실 기업의 채무를 조정하고 경영 구조를 개선하여 회생시키는 절차를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "재무 개선 작업",
+      "url": "https://ko.wikipedia.org/wiki/재무_개선_작업",
+      "date": "2026-10-17",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "저작권",
+      "reading": "",
+      "meaning": "인간의 사상이나 감정을 표현한 창작물에 대해 저작자가 가지는 법적 권리를 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "저작권",
+      "url": "https://ko.wikipedia.org/wiki/저작권",
+      "date": "2026-10-17",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "칩렛",
+      "reading": "",
+      "meaning": "여러 개의 작은 반도체 조각을 하나로 연결하여 하나의 큰 칩처럼 작동하게 만드는 설계 방식을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "칩렛",
+      "url": "https://ko.wikipedia.org/wiki/칩렛",
+      "date": "2026-10-17",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "전임의",
+      "reading": "",
+      "meaning": "전문의 자격을 취득한 후 특정 분과에서 세부 전공을 수련하는 임상 강사 또는 펠로우를 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "전임의",
+      "url": "https://ko.wikipedia.org/wiki/전임의",
+      "date": "2026-10-17",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-17T03:58:32+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
