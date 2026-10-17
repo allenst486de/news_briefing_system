@@ -108,6 +108,18 @@
       "date": "2026-10-18",
       "via": "raw",
       "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "간경변증",
+      "reading": "",
+      "meaning": "간이 만성 손상으로 딱딱하게 굳어 제 기능을 잃어가는 만성 간 질환을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "간경화증",
+      "url": "https://ko.wikipedia.org/wiki/간경화증",
+      "date": "2026-10-18",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -116,6 +128,13 @@
       "added": 9,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-18T05:45:09+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
