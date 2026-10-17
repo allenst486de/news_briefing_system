@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-18",
+  "terms": [
+    {
+      "term": "메트로섹슈얼",
+      "reading": "",
+      "meaning": "메트로폴리탄과 섹슈얼의 합성어로, 외모와 패션, 그루밍에 세심한 관심을 기울이는 도시 남성을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "메트로섹슈얼",
+      "url": "https://ko.wikipedia.org/wiki/메트로섹슈얼",
+      "date": "2026-10-18",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "미엘린",
+      "reading": "",
+      "meaning": "신경 세포의 축삭을 둘러싸서 신경 신호의 전달 속도를 높이는, 지질과 단백질로 이루어진 절연 피막(수초)을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "미엘린",
+      "url": "https://ko.wikipedia.org/wiki/미엘린",
+      "date": "2026-10-18",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "옥조근정훈장",
+      "reading": "",
+      "meaning": "대한민국 정부가 공무원이나 사회 유공자에게 수여하는 훈장 가운데 다섯 번째 등급인 근정훈장의 등급 중 하나를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "근정훈장",
+      "url": "https://ko.wikipedia.org/wiki/근정훈장",
+      "date": "2026-10-18",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "야스쿠니 신사",
+      "reading": "",
+      "meaning": "일본 도쿄에 있는 신사로, 전몰자를 신으로 모시는 시설을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "야스쿠니 신사",
+      "url": "https://ko.wikipedia.org/wiki/야스쿠니_신사",
+      "date": "2026-10-18",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "복제수 변이",
+      "reading": "",
+      "meaning": "유전체에서 특정 유전자 구간의 복제수가 개인마다 다르게 나타나는 현상을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "유전자 복제수 변이",
+      "url": "https://ko.wikipedia.org/wiki/유전자_복제수_변이",
+      "date": "2026-10-18",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "소방위",
+      "reading": "",
+      "meaning": "소방공무원의 계급 가운데 하나로, 소방경의 아래에 해당하는 계급을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "소방위",
+      "url": "https://ko.wikipedia.org/wiki/소방위",
+      "date": "2026-10-18",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "부커상",
+      "reading": "",
+      "meaning": "영국에서 매년 영어로 쓰인 뛰어난 장편 소설에 수여하는 문학상을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "부커상",
+      "url": "https://ko.wikipedia.org/wiki/부커상",
+      "date": "2026-10-18",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "추서",
+      "reading": "",
+      "meaning": "죽은 뒤에 관직이나 훈장 따위를 올려 주는 일을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "추증",
+      "url": "https://ko.wikipedia.org/wiki/추증",
+      "date": "2026-10-18",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "폐경",
+      "reading": "",
+      "meaning": "여성의 난소 기능이 저하되어 월경이 영구히 멈추는 생리적 변화를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "폐경기",
+      "url": "https://ko.wikipedia.org/wiki/폐경기",
+      "date": "2026-10-18",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-18T04:05:36+09:00",
+      "added": 9,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
