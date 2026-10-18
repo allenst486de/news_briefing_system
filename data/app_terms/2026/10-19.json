@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-19",
+  "terms": [
+    {
+      "term": "Leap Second",
+      "reading": "윤초",
+      "meaning": "지구 자전 속도의 변화를 반영해 협정 세계시(UTC)에 간헐적으로 1초를 더하거나 빼는 조정을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "윤초",
+      "url": "https://ko.wikipedia.org/wiki/윤초",
+      "date": "2026-10-19",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "입법예고",
+      "reading": "",
+      "meaning": "정부가 법률이나 명령을 제정·개정·폐지하기 전에 그 내용을 미리 공개하고 국민의 의견을 듣는 절차를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "입법예고",
+      "url": "https://ko.wikipedia.org/wiki/입법예고",
+      "date": "2026-10-19",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "웹 크롤링",
+      "reading": "",
+      "meaning": "크롤러라는 프로그램이 인터넷상의 웹 문서를 자동으로 따라 다니며 내용을 수집하는 작업을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "웹 크롤러",
+      "url": "https://ko.wikipedia.org/wiki/웹_크롤러",
+      "date": "2026-10-19",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "타원곡선",
+      "reading": "",
+      "meaning": "대수 기하학에서 정의되는 곡선으로, IT에서는 타원곡선 암호 방식의 기반으로 활용되는 곡선을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "타원곡선",
+      "url": "https://ko.wikipedia.org/wiki/타원곡선",
+      "date": "2026-10-19",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "동맹",
+      "reading": "",
+      "meaning": "국가나 단체가 공동의 이익이나 목적을 위해 상호 협력하기로 맺은 관계 또는 조약을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "동맹",
+      "url": "https://ko.wikipedia.org/wiki/동맹",
+      "date": "2026-10-19",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "아웃팅",
+      "reading": "",
+      "meaning": "타인의 성적 지향이나 성별 정체성 등을 본인의 의사와 무관하게 공개하는 행위를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "아웃팅",
+      "url": "https://ko.wikipedia.org/wiki/아웃팅",
+      "date": "2026-10-19",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "블랙 코미디",
+      "reading": "",
+      "meaning": "죽음, 전쟁, 질병 등 무겁거나 금기시되는 주제를 웃음거리로 다루는 코미디 장르를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "블랙 코미디",
+      "url": "https://ko.wikipedia.org/wiki/블랙_코미디",
+      "date": "2026-10-19",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "친일파",
+      "reading": "",
+      "meaning": "일제강점기에 일본의 식민 지배에 협조했던 사람들이나 그러한 성향의 세력을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "친일파",
+      "url": "https://ko.wikipedia.org/wiki/친일파",
+      "date": "2026-10-19",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-19T03:42:26+09:00",
+      "added": 8,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
