@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-20",
+  "terms": [
+    {
+      "term": "우선협상대상자",
+      "reading": "",
+      "meaning": "여러 후보 가운데 계약 체결을 위해 가장 먼저 협상할 자격을 갖춘 사람이나 단체를 말한다. 영화 투자·배급 등 콘텐츠 분야에서 자주 쓰인다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "우선협상대상자",
+      "url": "https://ko.wikipedia.org/wiki/우선협상대상자",
+      "date": "2026-10-20",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "오픈소스",
+      "reading": "",
+      "meaning": "소스 코드를 공개하여 누구나 자유롭게 보고, 고치고, 배포할 수 있도록 한 소프트웨어 개발 방식을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "오픈 소스",
+      "url": "https://ko.wikipedia.org/wiki/오픈_소스",
+      "date": "2026-10-20",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "위험비",
+      "reading": "",
+      "meaning": "두 집단 간의 사건 발생률을 비교하여 특정 요인이 결과에 미치는 영향의 정도를 나타낸 수치를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "상대위험도",
+      "url": "https://ko.wikipedia.org/wiki/상대위험도",
+      "date": "2026-10-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "컨소시엄",
+      "reading": "",
+      "meaning": "공통의 목적을 달성하기 위해 여러 기업이나 단체가 결성한 연합체를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "연합체",
+      "url": "https://ko.wikipedia.org/wiki/연합체",
+      "date": "2026-10-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "수소불화탄소",
+      "reading": "",
+      "meaning": "탄소, 수소, 불소로 이루어진 유기 화합물로, 주로 냉매나 세척제로 사용되는 물질을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "수소불화탄소",
+      "url": "https://ko.wikipedia.org/wiki/수소불화탄소",
+      "date": "2026-10-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "최저임금법",
+      "reading": "",
+      "meaning": "국가가 노동자에게 지급해야 할 최저 수준의 임금을 정하여 근로자의 기본 생활을 보장하기 위한 법률이다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "최저임금법",
+      "url": "https://ko.wikipedia.org/wiki/최저임금법",
+      "date": "2026-10-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "큐비트",
+      "reading": "",
+      "meaning": "양자 컴퓨터에서 정보의 기본 단위로, 0과 1의 상태를 동시에 가질 수 있는 양자 비트를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "큐비트",
+      "url": "https://ko.wikipedia.org/wiki/큐비트",
+      "date": "2026-10-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "제왕절개",
+      "reading": "",
+      "meaning": "복부와 자궁을 절개하여 태아를 출산시키는 수술 방법을 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "제왕 절개",
+      "url": "https://ko.wikipedia.org/wiki/제왕_절개",
+      "date": "2026-10-20",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-20T03:53:54+09:00",
+      "added": 8,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
