@@ -96,6 +96,30 @@
       "date": "2026-10-20",
       "via": "raw",
       "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "분홍 소음",
+      "reading": "",
+      "meaning": "주파수가 높아질수록 에너지가 반비례해 줄어들어 사람 귀에 흰 소음보다 부드럽게 들리는 잡음을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "분홍색 잡음",
+      "url": "https://ko.wikipedia.org/wiki/분홍색_잡음",
+      "date": "2026-10-20",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "코스피",
+      "reading": "",
+      "meaning": "한국거래소에 상장된 주식들의 가격 변동을 종합해 나타내는 한국 종합주가지수로, Korea Composite Stock Price Index의 줄임말이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "코스피",
+      "url": "https://ko.wikipedia.org/wiki/코스피",
+      "date": "2026-10-20",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -104,6 +128,13 @@
       "added": 8,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-20T05:45:09+09:00",
+      "added": 2,
+      "via": [
         "raw"
       ]
     }
