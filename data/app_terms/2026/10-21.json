@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-21",
+  "terms": [
+    {
+      "term": "3기 신도시",
+      "reading": "",
+      "meaning": "수도권의 주택 시장 안정과 주거 복지 향상을 위해 정부가 추진하는 세 번째 대규모 신도시 건설 계획을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "3기 신도시",
+      "url": "https://ko.wikipedia.org/wiki/3기_신도시",
+      "date": "2026-10-21",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "진경산수",
+      "reading": "",
+      "meaning": "실제 존재하는 자연 경관을 직접 보고 그리는 한국의 전통 산수화 양식을 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "진경산수",
+      "url": "https://ko.wikipedia.org/wiki/진경산수",
+      "date": "2026-10-21",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "엘니뇨",
+      "reading": "",
+      "meaning": "동태평양의 해수면 온도가 평년보다 높아져 전 지구적인 기상 이변을 일으키는 현상을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "엘니뇨",
+      "url": "https://ko.wikipedia.org/wiki/엘니뇨",
+      "date": "2026-10-21",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "ITU",
+      "reading": "",
+      "meaning": "ITU(International Telecommunication Union)의 약자로, 정보 통신 기술의 표준화와 전파 관리를 담당하는 유엔 산하의 전문 기구이다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "국제전기통신연합",
+      "url": "https://ko.wikipedia.org/wiki/국제전기통신연합",
+      "date": "2026-10-21",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "가상자산",
+      "reading": "",
+      "meaning": "전자적 형태로 발행·유통되며 경제적 가치를 지니는 자산을 말한다. 비트코인 같은 암호화폐가 대표적이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "가상자산",
+      "url": "https://ko.wikipedia.org/wiki/가상자산",
+      "date": "2026-10-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "나비에-스토크스 방정식",
+      "reading": "",
+      "meaning": "점성이 있는 유체의 운동을 압력·속도·외력 사이의 관계로 기술하는 편미분 방정식이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "나비에-스토크스 방정식",
+      "url": "https://ko.wikipedia.org/wiki/나비에-스토크스_방정식",
+      "date": "2026-10-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "정치활동위원회",
+      "reading": "",
+      "meaning": "미국에서 특정 후보나 정당을 지지하기 위해 정치자금을 모아 지원하는 단체를 말한다. PAC(Political Action Committee)의 번역어다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "정치행동위원회",
+      "url": "https://ko.wikipedia.org/wiki/정치행동위원회",
+      "date": "2026-10-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "탄소중립",
+      "reading": "",
+      "meaning": "인간 활동으로 배출되는 온실가스를 흡수·제거하는 양과 같게 하여 실질 배출량을 0으로 만드는 것을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "탄소 중립",
+      "url": "https://ko.wikipedia.org/wiki/탄소_중립",
+      "date": "2026-10-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "기뢰",
+      "reading": "",
+      "meaning": "수중이나 해저에 설치해 접근하는 선박을 폭파시키는 무기를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "기뢰",
+      "url": "https://ko.wikipedia.org/wiki/기뢰",
+      "date": "2026-10-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "국민참여재판",
+      "reading": "",
+      "meaning": "일반 국민이 배심원으로 재판에 참여해 유죄 여부 등에 대한 의견을 제시하는 제도를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "국민참여재판제도",
+      "url": "https://ko.wikipedia.org/wiki/국민참여재판제도",
+      "date": "2026-10-21",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-21T03:42:14+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
