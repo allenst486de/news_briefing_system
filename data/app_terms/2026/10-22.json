@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-22",
+  "terms": [
+    {
+      "term": "구상권",
+      "reading": "",
+      "meaning": "채무자를 대신해 변제한 사람이 그 채무자에게 상환을 청구할 수 있는 권리를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "구상권",
+      "url": "https://ko.wikipedia.org/wiki/구상권",
+      "date": "2026-10-22",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "비정규직",
+      "reading": "",
+      "meaning": "고용 기간이 정해져 있거나 고용 형태가 불안정한 근로 형태를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "비정규직",
+      "url": "https://ko.wikipedia.org/wiki/비정규직",
+      "date": "2026-10-22",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "영리병원",
+      "reading": "",
+      "meaning": "이윤 추구를 목적으로 설립되어 운영되는 의료기관을 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "영리병원",
+      "url": "https://ko.wikipedia.org/wiki/영리병원",
+      "date": "2026-10-22",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "전세",
+      "reading": "",
+      "meaning": "전세금을 지급하고 타인의 부동산을 점유하여 사용하는 한국 특유의 임대차 제도를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "전세권",
+      "url": "https://ko.wikipedia.org/wiki/전세권",
+      "date": "2026-10-22",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-22T03:58:07+09:00",
+      "added": 4,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}
