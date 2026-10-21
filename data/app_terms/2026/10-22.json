@@ -48,6 +48,78 @@
       "date": "2026-10-22",
       "via": "raw",
       "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "심리전",
+      "reading": "",
+      "meaning": "상대방의 심리 상태에 영향을 주어 의사 결정이나 행동을 조작함으로써 원하는 목적을 달성하려는 전략을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "심리전",
+      "url": "https://ko.wikipedia.org/wiki/심리전",
+      "date": "2026-10-22",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Digital Services Act",
+      "reading": "디지털서비스법",
+      "meaning": "Digital Services Act의 약자로, 온라인 플랫폼의 책임을 강화하고 이용자 보호 및 불법 콘텐츠 차단을 위해 유럽연합이 제정한 법률을 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "디지털 서비스법",
+      "url": "https://ko.wikipedia.org/wiki/디지털_서비스법",
+      "date": "2026-10-22",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "스테이블코인",
+      "reading": "",
+      "meaning": "법정 화폐나 특정 자산의 가치에 고정되어 가격 변동성을 최소화하도록 설계된 가상 자산을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "스테이블코인",
+      "url": "https://ko.wikipedia.org/wiki/스테이블코인",
+      "date": "2026-10-22",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Mosh Pit",
+      "reading": "모쉬핏",
+      "meaning": "공연장 앞쪽에서 관객들이 서로 몸을 부딪치며 격렬하게 춤을 추는 구역이나 그러한 행위를 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "모싱",
+      "url": "https://ko.wikipedia.org/wiki/모싱",
+      "date": "2026-10-22",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "슈퍼팩",
+      "reading": "",
+      "meaning": "미국에서 특정 후보의 당선을 돕기 위해 무제한으로 자금을 모금하고 지출할 수 있는 독립적인 정치자금 단체를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "슈퍼팩",
+      "url": "https://ko.wikipedia.org/wiki/슈퍼팩",
+      "date": "2026-10-22",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "AI 슬롭",
+      "reading": "",
+      "meaning": "인공지능이 생성한 내용 중 품질이 낮고 무의미하며 가치 없는 저급한 콘텐츠를 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "AI 슬롭",
+      "url": "https://ko.wikipedia.org/wiki/AI_슬롭",
+      "date": "2026-10-22",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
     }
   ],
   "runs": [
@@ -56,6 +128,13 @@
       "added": 4,
       "via": [
         "raw"
+      ]
+    },
+    {
+      "at": "2026-10-22T05:45:09+09:00",
+      "added": 6,
+      "via": [
+        "news_terms"
       ]
     }
   ]
