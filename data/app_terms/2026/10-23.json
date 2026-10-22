@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-23",
+  "terms": [
+    {
+      "term": "구속영장",
+      "reading": "",
+      "meaning": "수사 기관의 청구에 따라 법원이 피의자를 구속하는 것을 허가하기 위해 발부하는 영장을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "구속영장",
+      "url": "https://ko.wikipedia.org/wiki/구속영장",
+      "date": "2026-10-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "경기선행지수",
+      "reading": "",
+      "meaning": "경기에 앞서 움직이는 지표들을 종합하여 장래의 경기 동향을 예측하는 데 쓰이는 지수를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "경기순환",
+      "url": "https://ko.wikipedia.org/wiki/경기순환",
+      "date": "2026-10-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Pop-up Store",
+      "reading": "팝업스토어",
+      "meaning": "한정된 기간 동안 임시로 열렸다가 없어지는 매장으로, 상품 홍보나 체험형 마케팅 수단으로 쓰인다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "팝업 스토어",
+      "url": "https://ko.wikipedia.org/wiki/팝업_스토어",
+      "date": "2026-10-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "표현형",
+      "reading": "",
+      "meaning": "유전자형과 환경의 상호작용 결과로 생물체에 나타나는 관찰 가능한 형질을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "표현형",
+      "url": "https://ko.wikipedia.org/wiki/표현형",
+      "date": "2026-10-23",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "펀더멘털",
+      "reading": "",
+      "meaning": "경제의 기초 여건이나 기업의 본질적 가치를 뜻하는 말로, 주가나 환율의 장기적 흐름을 좌우하는 실물 경제 요인을 가리킨다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "펀더멘털",
+      "url": "https://ko.wikipedia.org/wiki/펀더멘털",
+      "date": "2026-10-23",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "아르테미스 계획",
+      "reading": "",
+      "meaning": "미국이 주도하는 달 재착륙과 유인 탐사 등을 목표로 하는 우주 탐사 계획을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "아르테미스 계획",
+      "url": "https://ko.wikipedia.org/wiki/아르테미스_계획",
+      "date": "2026-10-23",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "계엄",
+      "reading": "",
+      "meaning": "전시나 사변 등 비상사태에서 군대가 행정과 사법을 대신 맡아 통제하는 국가 비상 조치를 뜻한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "계엄",
+      "url": "https://ko.wikipedia.org/wiki/계엄",
+      "date": "2026-10-23",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "K뷰티",
+      "reading": "",
+      "meaning": "한국의 화장품과 미용 산업 및 그 문화가 세계적으로 확산된 현상을 이르는 말이다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "K뷰티",
+      "url": "https://ko.wikipedia.org/wiki/K뷰티",
+      "date": "2026-10-23",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "MoE",
+      "reading": "",
+      "meaning": "여러 개의 전문가 신경망을 두고 입력에 따라 일부만 골라 쓰는 인공지능 구조로, 전문가 혼합의 줄임말이다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "전문가 혼합",
+      "url": "https://ko.wikipedia.org/wiki/전문가_혼합",
+      "date": "2026-10-23",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "병자호란",
+      "reading": "",
+      "meaning": "조선 인조 때 청나라가 침입해 인조가 남한산성에서 항복한 전쟁을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "병자호란",
+      "url": "https://ko.wikipedia.org/wiki/병자호란",
+      "date": "2026-10-23",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-23T03:51:09+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
