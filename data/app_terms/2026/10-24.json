@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-24",
+  "terms": [
+    {
+      "term": "브렌트유",
+      "reading": "",
+      "meaning": "북해에서 생산되는 원유로, 국제 유가의 기준이 되는 대표적인 유종을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "브렌트 원유",
+      "url": "https://ko.wikipedia.org/wiki/브렌트_원유",
+      "date": "2026-10-24",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "국제 일반명",
+      "reading": "",
+      "meaning": "세계보건기구(WHO)가 의약품 성분마다 정한 공식적인 일반명을 말한다. 영어 'International Nonproprietary Name'의 줄임말인 INN으로도 부른다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "국제일반명",
+      "url": "https://ko.wikipedia.org/wiki/국제일반명",
+      "date": "2026-10-24",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "면책특권",
+      "reading": "",
+      "meaning": "국회의원이나 대통령 등이 직무 수행 중 한 발언이나 행위에 대해 법적 책임을 지지 않는 특권을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "면책특권",
+      "url": "https://ko.wikipedia.org/wiki/면책특권",
+      "date": "2026-10-24",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "상호운용성",
+      "reading": "",
+      "meaning": "서로 다른 시스템이나 기기, 소프트웨어가 정보를 교환하고 함께 사용될 수 있는 능력을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "상호운용성",
+      "url": "https://ko.wikipedia.org/wiki/상호운용성",
+      "date": "2026-10-24",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "인증",
+      "reading": "",
+      "meaning": "어떤 대상이나 사실이 진실임을 공적 기관이나 권위 있는 기관이 증명하는 일을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "인증",
+      "url": "https://ko.wikipedia.org/wiki/인증",
+      "date": "2026-10-24",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "사모펀드",
+      "reading": "",
+      "meaning": "소수의 투자자로부터 자금을 모아 기업이나 자산에 투자하고 수익을 배분하는 펀드를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "사모펀드",
+      "url": "https://ko.wikipedia.org/wiki/사모펀드",
+      "date": "2026-10-24",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "유니콘",
+      "reading": "",
+      "meaning": "기업 가치가 10억 달러 이상으로 평가되는 비상장 스타트업을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "유니콘",
+      "url": "https://ko.wikipedia.org/wiki/유니콘",
+      "date": "2026-10-24",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-24T03:44:06+09:00",
+      "added": 7,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
