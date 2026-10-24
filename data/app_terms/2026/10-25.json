@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-25",
+  "terms": [
+    {
+      "term": "사회주택",
+      "reading": "",
+      "meaning": "공공기관이나 비영리 단체 등이 저렴한 임대료로 공급하여 서민의 주거 안정을 도모하는 주택을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "사회주택",
+      "url": "https://ko.wikipedia.org/wiki/사회주택",
+      "date": "2026-10-25",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Fabless",
+      "reading": "팹리스",
+      "meaning": "반도체 제조 공정인 팹(Fab)을 갖추지 않고 설계만을 전문으로 하는 기업을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "팹리스 반도체 기업",
+      "url": "https://ko.wikipedia.org/wiki/팹리스_반도체_기업",
+      "date": "2026-10-25",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "노란조끼",
+      "reading": "",
+      "meaning": "프랑스에서 유류세 인상에 반대하며 노란색 안전 조끼를 입고 시작된 사회 운동을 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "노란 조끼 운동",
+      "url": "https://ko.wikipedia.org/wiki/노란_조끼_운동",
+      "date": "2026-10-25",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "혼잡통행료",
+      "reading": "",
+      "meaning": "교통 혼잡을 줄이기 위해 특정 시간대에 특정 구간을 통행하는 차량에 부과하는 통행료를 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "혼잡통행료",
+      "url": "https://ko.wikipedia.org/wiki/혼잡통행료",
+      "date": "2026-10-25",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "Red Team",
+      "reading": "레드팀",
+      "meaning": "조직의 전략이나 보안 체계의 취약점을 찾기 위해 적군이나 공격자의 관점에서 모의 공격을 수행하는 팀을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "레드 팀",
+      "url": "https://ko.wikipedia.org/wiki/레드_팀",
+      "date": "2026-10-25",
+      "via": "news_terms",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "국수본",
+      "reading": "",
+      "meaning": "대한민국 경찰청 산하에서 중대 범죄 수사를 담당하는 국가수사본부의 줄임말을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "국가수사본부",
+      "url": "https://ko.wikipedia.org/wiki/국가수사본부",
+      "date": "2026-10-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "관객",
+      "reading": "",
+      "meaning": "공연, 영화, 스포츠 경기 따위를 구경하러 온 사람들을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "관객",
+      "url": "https://ko.wikipedia.org/wiki/관객",
+      "date": "2026-10-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "항미원조기념관",
+      "reading": "",
+      "meaning": "중국 단둥에 세워진 박물관으로, 중국이 한국전쟁을 이르는 말인 항미원조를 기념하기 위해 만들어졌다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "항미원조기념관",
+      "url": "https://ko.wikipedia.org/wiki/항미원조기념관",
+      "date": "2026-10-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "미니 앨범",
+      "reading": "",
+      "meaning": "정규 음반보다 수록곡 수가 적은 음반으로, 익스텐디드 플레이(EP)를 이르는 말이다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "익스텐디드 플레이",
+      "url": "https://ko.wikipedia.org/wiki/익스텐디드_플레이",
+      "date": "2026-10-25",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-25T03:53:02+09:00",
+      "added": 9,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
