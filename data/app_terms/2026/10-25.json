@@ -108,6 +108,18 @@
       "date": "2026-10-25",
       "via": "raw",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "파이프라인",
+      "reading": "",
+      "meaning": "여러 단계의 처리 과정이 연속적으로 이어져 데이터나 물질이 흘러가는 체계를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "파이프라인",
+      "url": "https://ko.wikipedia.org/wiki/파이프라인",
+      "date": "2026-10-25",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
     }
   ],
   "runs": [
@@ -116,6 +128,13 @@
       "added": 9,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-25T05:45:08+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
