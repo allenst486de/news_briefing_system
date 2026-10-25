@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-26",
+  "terms": [
+    {
+      "term": "S&P500",
+      "reading": "",
+      "meaning": "미국 증권거래소에 상장된 대형 기업 500개의 주가를 종합해 산출하는 주가지수를 말한다. 스탠더드 앤 푸어스(Standard & Poor's)에서 이름이 유래했다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "S&P 500",
+      "url": "https://ko.wikipedia.org/wiki/S&P_500",
+      "date": "2026-10-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "그린벨트",
+      "reading": "",
+      "meaning": "도시 주변의 무분별한 확장을 막고 자연환경을 보호하기 위해 건축과 개발 행위를 제한하는 구역을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "개발제한구역",
+      "url": "https://ko.wikipedia.org/wiki/개발제한구역",
+      "date": "2026-10-26",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-26T03:59:44+09:00",
+      "added": 2,
+      "via": [
+        "raw"
+      ]
+    }
+  ]
+}
