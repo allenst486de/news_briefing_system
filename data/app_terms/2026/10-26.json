@@ -24,6 +24,102 @@
       "date": "2026-10-26",
       "via": "raw",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "미세플라스틱",
+      "reading": "",
+      "meaning": "크기가 5밀리미터 이하로 매우 작아 환경에 오래 남아 생태계와 생물에 해를 끼칠 수 있는 플라스틱 조각을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "미세 플라스틱",
+      "url": "https://ko.wikipedia.org/wiki/미세_플라스틱",
+      "date": "2026-10-26",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "광촉매",
+      "reading": "",
+      "meaning": "빛을 받으면 화학 반응을 촉진시켜 오염 물질을 분해하거나 정화하는 물질을 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "광촉매",
+      "url": "https://ko.wikipedia.org/wiki/광촉매",
+      "date": "2026-10-26",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "항뮐러관 호르몬",
+      "reading": "",
+      "meaning": "난소에서 분비되어 난포의 발달을 조절하는 호르몬으로, 난소 예비능을 평가하는 지표로 쓰인다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "항뮐러관 호르몬",
+      "url": "https://ko.wikipedia.org/wiki/항뮐러관_호르몬",
+      "date": "2026-10-26",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "자가 격리",
+      "reading": "",
+      "meaning": "전염병에 감염되었거나 감염이 의심되는 사람이 다른 사람과 접촉하지 않도록 일정 기간 스스로 시설이나 집에 머무는 것을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "격리",
+      "url": "https://ko.wikipedia.org/wiki/격리",
+      "date": "2026-10-26",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "국정조사",
+      "reading": "",
+      "meaning": "국회에서 특정한 국정 사안에 대하여 조사하여 보고서를 작성하고 이를 통해 책임 소재를 규명하는 활동을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "국정조사권",
+      "url": "https://ko.wikipedia.org/wiki/국정조사권",
+      "date": "2026-10-26",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "스타링크",
+      "reading": "",
+      "meaning": "저궤도 위성 네트워크를 통해 전 세계에 초고속 인터넷 서비스를 제공하는 위성 인터넷 시스템을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "스타링크",
+      "url": "https://ko.wikipedia.org/wiki/스타링크",
+      "date": "2026-10-26",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "아카데미",
+      "reading": "",
+      "meaning": "예술이나 학문 분야에서 전문적인 교육을 실시하거나, 특정 분야의 권위 있는 전문가 집단 또는 그들이 주관하는 시상식을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "아카데미",
+      "url": "https://ko.wikipedia.org/wiki/아카데미",
+      "date": "2026-10-26",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "자율주행",
+      "reading": "",
+      "meaning": "운전자의 조작 없이 컴퓨터와 센서, 통신 기술을 통해 차량이 스스로 주변 환경을 인식하고 주행하는 기술을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "무인 자동차",
+      "url": "https://ko.wikipedia.org/wiki/무인_자동차",
+      "date": "2026-10-26",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
     }
   ],
   "runs": [
@@ -31,6 +127,14 @@
       "at": "2026-10-26T03:59:44+09:00",
       "added": 2,
       "via": [
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-26T05:45:09+09:00",
+      "added": 8,
+      "via": [
+        "news_terms",
         "raw"
       ]
     }
