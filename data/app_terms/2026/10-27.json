@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-27",
+  "terms": [
+    {
+      "term": "Backpropagation",
+      "reading": "역전파",
+      "meaning": "인공 신경망 학습에서 출력의 오차를 입력 쪽으로 거슬러 전파시키며 각 층의 가중치를 갱신하는 알고리즘을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "역전파",
+      "url": "https://ko.wikipedia.org/wiki/역전파",
+      "date": "2026-10-27",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "전사 인쇄",
+      "reading": "",
+      "meaning": "잉크나 미세 소자를 중간 매개체에 옮긴 뒤 다른 기판에 눌러 찍어 전달하는 인쇄 방식을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "전사 프린터",
+      "url": "https://ko.wikipedia.org/wiki/전사_프린터",
+      "date": "2026-10-27",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "국가유산",
+      "reading": "",
+      "meaning": "문화유산, 자연유산, 무형유산 등 국가가 보존하고 활용하도록 지정·관리하는 유산을 통틀어 이르는 말이다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "국가유산",
+      "url": "https://ko.wikipedia.org/wiki/국가유산",
+      "date": "2026-10-27",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Skyrmion",
+      "reading": "스커미온",
+      "meaning": "자성체 안에서 스핀이 소용돌이 모양으로 배열된 위상적 자기 구조를 말하며 준입자처럼 다룬다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "스커미온",
+      "url": "https://ko.wikipedia.org/wiki/스커미온",
+      "date": "2026-10-27",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "언어모델",
+      "reading": "",
+      "meaning": "텍스트 데이터의 확률 분포를 학습하여 다음에 올 단어나 문장을 예측하는 인공지능 모델을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "언어 모델",
+      "url": "https://ko.wikipedia.org/wiki/언어_모델",
+      "date": "2026-10-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "전고체전지",
+      "reading": "",
+      "meaning": "액체 전해질 대신 고체 전해질을 사용하여 안정성과 에너지 밀도를 높인 이차 전지를 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "전고체 전지",
+      "url": "https://ko.wikipedia.org/wiki/전고체_전지",
+      "date": "2026-10-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "민통선",
+      "reading": "",
+      "meaning": "군사적 목적이나 보안을 위해 민간인의 출입을 제한하는 경계선을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "민간인출입통제구역",
+      "url": "https://ko.wikipedia.org/wiki/민간인출입통제구역",
+      "date": "2026-10-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "요실금",
+      "reading": "",
+      "meaning": "본인의 의지와 상관없이 소변이 새어 나오는 증상을 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "요실금",
+      "url": "https://ko.wikipedia.org/wiki/요실금",
+      "date": "2026-10-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "고체전해질",
+      "reading": "",
+      "meaning": "이온이 빠르게 이동할 수 있는 통로를 가진 고체 상태의 전해질을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "고속 이온 전도체",
+      "url": "https://ko.wikipedia.org/wiki/고속_이온_전도체",
+      "date": "2026-10-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    },
+    {
+      "term": "풍자",
+      "reading": "",
+      "meaning": "사회적 대상이나 현상의 부정적인 면을 비판하거나 조롱하여 웃음을 유발하는 표현 기법을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "풍자",
+      "url": "https://ko.wikipedia.org/wiki/풍자",
+      "date": "2026-10-27",
+      "via": "raw",
+      "model": "google/gemma-4-31b-it"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-27T03:57:23+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
