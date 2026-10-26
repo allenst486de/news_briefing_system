@@ -497,11 +497,15 @@ def test_card_draws_hanja_with_fallback_font():
     from src.utils import cardnews
     font = ImageFont.truetype(cardnews._FONT_BOLD, 30)
     runs = cardnews._runs("이란 美에", font)
-    if cardnews._fallback_for(font) is None:
-        print("   (이 환경엔 한자 대체 폰트가 없어 건너뜀)")
+    if not cardnews._fallbacks_for(font):
+        print("   (이 환경엔 대체 폰트가 없어 건너뜀)")
         return
     assert any("美" in part and use is not font for part, use in runs), f"美를 대체 폰트로 그리지 않았다: {runs}"
     assert all(use is font for part, use in runs if "이" in part), "한글은 번들 폰트 그대로여야 한다"
+    # 10/27 '애프레스키(après-ski)'의 è가 한국어 폰트에 없어 빈칸이 됐다 — 라틴 대체 폰트가 맡아야 한다
+    runs = cardnews._runs("après-ski", font)
+    assert any("\u00e8" in part and use is not font for part, use in runs), f"è를 대체 폰트로 그리지 않았다: {runs}"
+    assert all(cardnews._has_glyph(use, "\u00e8") for part, use in runs if "\u00e8" in part), "è를 그릴 폰트에 글리프가 없다"
 
 
 def test_terms_card_source_never_overlaps_a_three_line_definition():

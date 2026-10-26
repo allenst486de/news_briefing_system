@@ -59,16 +59,21 @@ _FALLBACK_FONTS = [
     '/System/Library/Fonts/AppleSDGothicNeo.ttc',
     '/System/Library/Fonts/Supplemental/AppleGothic.ttf',
     '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
+    # 한국어 폰트들엔 é·è 같은 악센트 라틴 글자가 없다(2026-10-27 'après-ski'의 è가 빈칸이 됨).
+    # 라틴 글리프를 가진 폰트를 마지막에 둔다. 굵은 쪽을 쓸 수 없는 폰트는 보통체로 대신한다.
+    '/System/Library/Fonts/Supplemental/Arial Bold.ttf',
+    '/System/Library/Fonts/Supplemental/Arial.ttf',
+    '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
 ]
-_fallback_cache: Dict[Tuple[int, int], object] = {}
+_fallback_cache: Dict[Tuple[int, int], List[object]] = {}
 _glyph_cache: Dict[Tuple[int, str], bool] = {}
 
 
-def _fallback_for(font):
-    """같은 크기·같은 굵기의 대체 폰트 (없으면 None)"""
+def _fallbacks_for(font):
+    """같은 크기·굵기의 대체 폰트들 (우선순위순, 없으면 빈 목록)"""
     key = (id(font), font.size)
     if key not in _fallback_cache:
-        _fallback_cache[key] = None
+        found = []
         bold = 'Bold' in (font.getname()[1] or '')
         for path in _FALLBACK_FONTS:
             if not os.path.exists(path):
@@ -76,10 +81,10 @@ def _fallback_for(font):
             # 애플 SD 산돌고딕 Neo 묶음에서 6번이 Bold, 0번이 Regular
             index = 6 if bold and path.endswith('AppleSDGothicNeo.ttc') else 0
             try:
-                _fallback_cache[key] = ImageFont.truetype(path, font.size, index=index)
-                break
+                found.append(ImageFont.truetype(path, font.size, index=index))
             except OSError:
                 continue
+        _fallback_cache[key] = found
     return _fallback_cache[key]
 
 
@@ -96,13 +101,12 @@ def _has_glyph(font, char: str) -> bool:
 
 def _runs(text: str, font) -> List[Tuple[str, object]]:
     """[(글자 묶음, 그릴 폰트)] — 번들 폰트에 없는 글자만 대체 폰트로"""
-    fallback = _fallback_for(font)
+    fallbacks = _fallbacks_for(font)
     runs: List[Tuple[str, object]] = []
     for char in str(text):
         use = font
-        if fallback is not None and not char.isspace() and not _has_glyph(font, char) \
-                and _has_glyph(fallback, char):
-            use = fallback
+        if not char.isspace() and not _has_glyph(font, char):
+            use = next((fb for fb in fallbacks if _has_glyph(fb, char)), font)
         if runs and runs[-1][1] is use:
             runs[-1] = (runs[-1][0] + char, use)
         else:
