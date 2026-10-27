@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-28",
+  "terms": [
+    {
+      "term": "SMR",
+      "reading": "소형모듈원자로",
+      "meaning": "출력을 수십~수백 메가와트 수준으로 줄이고, 공장에서 모듈 단위로 제작해 현장에서 조립하는 소형 원자로를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "소형모듈원자로",
+      "url": "https://ko.wikipedia.org/wiki/소형모듈원자로",
+      "date": "2026-10-28",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "TPU",
+      "reading": "텐서 프로세싱 유닛",
+      "meaning": "텐서 처리 장치의 줄임말로, 인공지능의 텐서·행렬 연산을 빠르게 처리하도록 만든 특수 목적 반도체 칩을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "텐서 처리 장치",
+      "url": "https://ko.wikipedia.org/wiki/텐서_처리_장치",
+      "date": "2026-10-28",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "오페라 글러브",
+      "reading": "",
+      "meaning": "팔꿈치 위까지 길게 이어지는 형태로, 예복 차림에 함께 착용하는 정장용 장갑을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "이브닝 장갑",
+      "url": "https://ko.wikipedia.org/wiki/이브닝_장갑",
+      "date": "2026-10-28",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "육불화황",
+      "reading": "",
+      "meaning": "황 원자 하나에 불소 원자 여섯 개가 결합된 불활성 기체로, 절연성이 뛰어나 전기 설비에 쓰이며 강한 온실가스이기도 하다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "육플루오린화 황",
+      "url": "https://ko.wikipedia.org/wiki/육플루오린화_황",
+      "date": "2026-10-28",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "미프진",
+      "reading": "",
+      "meaning": "임신 중절에 사용되는 약물로, 자궁 수축을 유도해 임신을 종료시키는 성분을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "미페프리스톤",
+      "url": "https://ko.wikipedia.org/wiki/미페프리스톤",
+      "date": "2026-10-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "협심증",
+      "reading": "",
+      "meaning": "심장에 혈액을 공급하는 관상동맥이 좁아져 가슴에 통증이나 압박감이 나타나는 질환을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "협심증",
+      "url": "https://ko.wikipedia.org/wiki/협심증",
+      "date": "2026-10-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "B2B",
+      "reading": "",
+      "meaning": "기업과 기업 사이에 이루어지는 거래나 그를 위한 사업을 뜻한다. 영어 비투비(Business to Business)의 줄임말이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "B2B",
+      "url": "https://ko.wikipedia.org/wiki/B2B",
+      "date": "2026-10-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "유상증자",
+      "reading": "",
+      "meaning": "회사가 새로 주식을 발행해 투자자에게 팔고 자금을 조달하는 것을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "유상증자",
+      "url": "https://ko.wikipedia.org/wiki/유상증자",
+      "date": "2026-10-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "모성사망비",
+      "reading": "",
+      "meaning": "출생아 10만 명당 임신과 분만 관련 원인으로 사망한 여성의 수를 나타내는 지표를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "모성사망비",
+      "url": "https://ko.wikipedia.org/wiki/모성사망비",
+      "date": "2026-10-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "심근경색",
+      "reading": "",
+      "meaning": "심장에 혈액을 공급하는 관상동맥이 막혀 심장 근육이 괴사하는 질환을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "심근 경색",
+      "url": "https://ko.wikipedia.org/wiki/심근_경색",
+      "date": "2026-10-28",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-28T03:51:48+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
