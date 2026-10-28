@@ -36,6 +36,54 @@
       "date": "2026-10-29",
       "via": "news_terms",
       "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "바이오의약품",
+      "reading": "",
+      "meaning": "생물체나 생명공학 기술을 이용해 만든 의약품으로, 단백질·항체·백신 같은 약물을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "생체의약품",
+      "url": "https://ko.wikipedia.org/wiki/생체의약품",
+      "date": "2026-10-29",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "연방기금금리",
+      "reading": "",
+      "meaning": "미국에서 은행들이 남는 지급준비금을 서로 단기간 빌려줄 때 적용하는 금리로, 연방준비제도가 정하는 기준 금리 역할을 한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "페더럴 펀드 금리",
+      "url": "https://ko.wikipedia.org/wiki/페더럴_펀드_금리",
+      "date": "2026-10-29",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "선거구",
+      "reading": "",
+      "meaning": "선거에서 의원을 뽑기 위해 유권자와 지역을 나눈 구역을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "선거구",
+      "url": "https://ko.wikipedia.org/wiki/선거구",
+      "date": "2026-10-29",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "이재민",
+      "reading": "",
+      "meaning": "화재·홍수·지진 같은 재난으로 집과 재산을 잃거나 고향을 떠나 고통을 겪는 사람을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "이재민",
+      "url": "https://ko.wikipedia.org/wiki/이재민",
+      "date": "2026-10-29",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -44,6 +92,13 @@
       "added": 3,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-10-29T05:45:05+09:00",
+      "added": 4,
+      "via": [
+        "raw"
       ]
     }
   ]
