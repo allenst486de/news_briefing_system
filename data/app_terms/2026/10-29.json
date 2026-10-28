@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-29",
+  "terms": [
+    {
+      "term": "Microcystin",
+      "reading": "마이크로시스틴",
+      "meaning": "남조류가 만들어 내는 독소의 하나로, 물을 오염시키고 사람이나 동물에 간 손상 등을 일으킬 수 있는 물질을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "마이크로시스틴",
+      "url": "https://ko.wikipedia.org/wiki/마이크로시스틴",
+      "date": "2026-10-29",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "건정심",
+      "reading": "",
+      "meaning": "건강보험정책심의위원회의 줄임말로, 건강보험의 보험료와 급여 등 주요 정책을 심의·의결하는 기구를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "건강보험정책심의위원회",
+      "url": "https://ko.wikipedia.org/wiki/건강보험정책심의위원회",
+      "date": "2026-10-29",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "어닐링",
+      "reading": "",
+      "meaning": "금속이나 반도체 등의 재료를 가열한 뒤 서서히 식혀 내부 조직을 안정시키는 열처리 과정을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "어닐링",
+      "url": "https://ko.wikipedia.org/wiki/어닐링",
+      "date": "2026-10-29",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-29T03:50:52+09:00",
+      "added": 3,
+      "via": [
+        "news_terms"
+      ]
+    }
+  ]
+}
