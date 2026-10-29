@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-30",
+  "terms": [
+    {
+      "term": "다발골수종",
+      "reading": "",
+      "meaning": "골수의 형질세포가 암세포로 변해 비정상적으로 증식하면서 뼈를 파괴하고 빈혈·신장 장애 등을 일으키는 혈액암을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "다발성 골수종",
+      "url": "https://ko.wikipedia.org/wiki/다발성_골수종",
+      "date": "2026-10-30",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "HPV",
+      "reading": "인유두종바이러스",
+      "meaning": "사람의 피부와 점막에 감염되어 사마귀나 자궁경부암 등을 일으킬 수 있는 바이러스를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "인유두종 바이러스",
+      "url": "https://ko.wikipedia.org/wiki/인유두종_바이러스",
+      "date": "2026-10-30",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "역차별",
+      "reading": "",
+      "meaning": "특정 집단을 보호하거나 배려하려는 조치가 오히려 다른 집단에게 불리하게 작용하는 차별을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "역차별",
+      "url": "https://ko.wikipedia.org/wiki/역차별",
+      "date": "2026-10-30",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "올해의 작가상",
+      "reading": "",
+      "meaning": "한 해 동안 뛰어난 작품 활동을 한 작가에게 주는 상을 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "올해의 작가상",
+      "url": "https://ko.wikipedia.org/wiki/올해의_작가상",
+      "date": "2026-10-30",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-30T03:56:28+09:00",
+      "added": 4,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
