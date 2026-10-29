@@ -48,6 +48,42 @@
       "date": "2026-10-30",
       "via": "raw",
       "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "턱관절 장애",
+      "reading": "",
+      "meaning": "턱관절과 씹는 근육에 통증이나 기능 이상이 생겨 입을 벌리기 어렵거나 턱에서 소리가 나는 등의 증상을 보이는 질환을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "턱관절 장애",
+      "url": "https://ko.wikipedia.org/wiki/턱관절_장애",
+      "date": "2026-10-30",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "구인두암",
+      "reading": "",
+      "meaning": "목구멍과 인두의 가운데 부분인 구인두에 생기는 악성 종양을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "구인두암",
+      "url": "https://ko.wikipedia.org/wiki/구인두암",
+      "date": "2026-10-30",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "알고리즘",
+      "reading": "",
+      "meaning": "문제를 풀기 위한 절차나 계산 방법을 뜻하며, 컴퓨터가 처리하는 명령의 순서와 방법을 말하기도 한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "알고리즘",
+      "url": "https://ko.wikipedia.org/wiki/알고리즘",
+      "date": "2026-10-30",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -56,6 +92,13 @@
       "added": 4,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-30T05:45:11+09:00",
+      "added": 3,
+      "via": [
         "raw"
       ]
     }
