@@ -72,6 +72,54 @@
       "date": "2026-10-31",
       "via": "raw",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "허리디스크",
+      "reading": "",
+      "meaning": "척추뼈 사이의 추간판이 원래 자리를 벗어나 밀려 나와 신경을 눌러 허리 통증이나 다리 저림을 일으키는 병을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "추간판 탈출증",
+      "url": "https://ko.wikipedia.org/wiki/추간판_탈출증",
+      "date": "2026-10-31",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "환경영향평가",
+      "reading": "",
+      "meaning": "개발 사업이 환경에 미칠 영향을 사전에 조사하고 예측·평가하여 피해를 줄이는 방안을 마련하는 제도를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "환경 영향 평가",
+      "url": "https://ko.wikipedia.org/wiki/환경_영향_평가",
+      "date": "2026-10-31",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "유로존",
+      "reading": "",
+      "meaning": "유로화를 공식 통화로 사용하는 유럽 연합 회원국들로 이루어진 경제권을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "유로존",
+      "url": "https://ko.wikipedia.org/wiki/유로존",
+      "date": "2026-10-31",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "AI 거버넌스",
+      "reading": "",
+      "meaning": "인공지능의 개발과 이용이 안전하고 윤리적으로 이루어지도록 법·제도·기준으로 관리하고 규율하는 체계를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "인공지능 규제",
+      "url": "https://ko.wikipedia.org/wiki/인공지능_규제",
+      "date": "2026-10-31",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -80,6 +128,13 @@
       "added": 6,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-10-31T05:45:09+09:00",
+      "added": 4,
+      "via": [
         "raw"
       ]
     }
