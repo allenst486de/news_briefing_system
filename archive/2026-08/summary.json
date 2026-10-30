@@ -1,0 +1,1839 @@
+{
+  "year_month": "2026-08",
+  "included_dates": [
+    "2026-08-01"
+  ],
+  "categories": {
+    "politics": {
+      "article_count": 30,
+      "headlines": [
+        {
+          "date": "2026-08-01",
+          "title": "[속보] 청와대, 형사소송법 통과에 “국회 최종 판단 존중”",
+          "gist": "성기홍 청와대 홍보소통수석이 10일 청와대 기자회견장에서 브리핑하고 있다. 청와대통신사진기자단청와대는 31일 검찰 보완수사권 완전 폐지를 골자로",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311654001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[형소법 개정]78년만의 수사권 폐지에 검사들 “침통”···경찰 업무 과중 우려도",
+          "gist": "형사소송법 개정안이 국회 통과를 앞둔 31일 더불어민주당 당 대표 후보인 정청래 의원이 의원회관에서 열린 ‘검찰 수사권 폐지 이후 피해자 인권 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311705001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "민주당 당대표 첫 개표 D-1…김민석·정청래 중 누가 먼저 웃을까",
+          "gist": "더불어민주당 송영길·정청래 당 대표 후보가 31일 국회에서 열린 비공개 의원총회에, 민주당 김민석 후보는 같은 날 국회에서 열린 본회의에 각각 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311714001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "미셸 스틸 대사 부임에 극우 유튜버들 집합···“윤 전 대통령 만나달라”",
+          "gist": "한미동맹단과 80여개의 지지단체 및 유튜버들이 31일 서울 종로구 미국 대사관 인근에서 미셸 스틸 주한 미국대사 환영 기자회견을 하고 있다. 최",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311759001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "숙청당했나···‘선전선동부 1인자’ 김정은 최측근이 한달 넘게 자취 감춘 이유[반도 앨리스]",
+          "gist": "리일환 선전선동부장 40일째 공식 석상 불참김정은 옆에서 밀착 수행하는 ‘노동당 내 투톱’전문가, 숙청 가능성 낮게봐···건강상 이유 추정간부 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010832001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "아르헨티나산 원유 88만 배럴 국내 첫 도입···“중동 집중 수급처, 남미로 확대”",
+          "gist": "이 대통령, 아르헨 대통령과 정상회담올해 시범 도입 후 내년부터 본격 수입 개시양국, 천연가스 등 에너지 협력 확대키로이재명 대통령이 31일(현",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010856001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "22년 만에 찾은 아르헨티나…남미 순방 마무리한 이재명 대통령 부부 [현장 화보]",
+          "gist": "이재명 대통령이 31일(현지시간) 아르헨티나 부에노스아이레스 대통령궁에서 열린 환영식에서 하비에르 밀레이 대통령과 기념사진을 촬영하고 있다. 2",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011027001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "인니 대통령 “이재명 대통령, 4월에 ‘북한 방문 의사’ 물었다”",
+          "gist": "이재명 대통령과 프라보워 수비안토 인도네시아 대통령이 지난 4월1일 청와대 본관에서 열린 한-인도네시아 확대정상회담에 앞서 악수하고 있다. 청와",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011059001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“보완수사권 폐지 형소법, 국민이 얼마나 분노하는지 알릴 것”···국힘, 3일 청와대 앞 현장최고위",
+          "gist": "박성훈 “권한쟁의심판·헌법소원 등 다툴 것”나경원 “이 대통령, 애민 있다면 거부권 행사하라”장동혁 국민의힘 대표, 박성훈 대변인, 정희용 사무",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011311001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘민주당 유일 반대’ 곽상언 “보완수사 폐지, 국민 고통 보이는데 찬성 못해”···이언주 “몹시 유감”",
+          "gist": "민주당 주도 형소법 개정안, 당내서 이견 나와31일 국회에서 열린 7월 임시국회 제3차 본회의에서 전날 상정된 형사소송법 개정안이 재석의원 17",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011429001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "한동훈 “악법으로 민주당 이재명 정권 망할 것···이 대통령, 보완수사권 폐지 거부권 행사하라”",
+          "gist": "검찰 보완수사권 완전폐지 법안(형사소송법 개정안)이 여당 주도로 국회 본회의를 통과한 30일 오후, 무소속 한동훈 의원이 국회에서 형소법 개정안",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011448001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘멱살·욕설 논란’ 국힘 권영진 “스스로 탈당 결코 없어”···지도부 권유 거부",
+          "gist": "상임위 바꿔달라며 정점식 원내대표 멱살 잡고 욕설권 “당은 제 인생 전부···합당한 징계 수용할 생각”당, 최고 수위 처분 예고···윤리위는 징",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011531001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "유시민 “이 대통령 비평했더니 날 자폭테러범 묘사···전우애 있지만 내 할말 하는 게 중요”",
+          "gist": "“비평하고 관계 유지 안된다면 말하고 포기한 시기에 마음 맞아도 영원히 갈 수는 없어”유시민 작가. 유튜브 채널 매불쇼 갈무리범여권 논객 유시민",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011843001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "10년 만에 특별감찰관 나오나…이 대통령 요청 1년 만에 후보 추천",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270909.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "청, ‘검사 수사권 폐지’ 형소법 통과에 “차질 없는 시행에 최선 다할 것”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/bluehouse/1270923.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "이 대통령-밀레이 정상회담 “내년부터 아르헨티나산 원유 수입…리튬도 공동투자”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/bluehouse/1270936.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "위성락, 북한 3만명 추가 파병설에 “북·러 군사협력 예의주시”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/bluehouse/1270937.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "검찰 사보타주 우려…대통령·정성호 장관이 기강 잡아야 [논썰]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270945.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "인니 대통령 “이 대통령 지난 4월 방북 의향 물어…‘기꺼이 가겠다’ 답해”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/bluehouse/1270954.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "유시민 “이 대통령과 전우애 있지만…영원히 함께 갈 수는 없어”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270962.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "한국계 신임 주한 미국대사, 남대문시장서 호떡 들고 손하트 날리고…“옛 추억이 새록새록”",
+          "gist": "전일에는 광화문 세종대왕 동상 사진도미셸 스틸 주한 미국대사가 1일 서울 남대문시장을 찾아 야채호떡을 들고 상인과 기념촬영을 하고 있다. 미셸 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011648001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "민주당 당대표 첫 경선지 충청권서 김민석 1위···정청래와 불과 0.44%P차 ‘초박빙’",
+          "gist": "김민석 45.05%, 정청래 44.61%, 송영길 10.34%충남·충북 김민석 우위, 대전·세종 정청래 앞서김 “쉽지 않은 지역, 기대 이상” ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608012054001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "김민석 “‘1차전’ 열세여도 결국 이길 것”…정청래 “추세가 대세 될 것”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/assembly/1270920.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "검사 수사권 완전 폐지, 70여년 사법체계 전면 전환…‘국민적 동의 부족’ 우려도",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270931.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "위성락 “호르무즈 기여, 가능한 방안 검토 중…미국의 구체적 요구는 없어”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/bluehouse/1270938.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "송영길·정청래·김민석 오늘 첫 순회경선…초반 판세 윤곽 드러난다",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270944.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "막 오른 민주 전대 순회경선…김민석·송영길 vs 정청래, ‘2대1 공방’ 치열",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270951.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "김민석, 민주 전대 충청 순회경선 1위…정청래에 303표 차 박빙승",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270961.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "민주 최고위원 충청 순회경선…최민희·박선원·한민수·서미화·김용 당선권",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270963.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "김민석, ‘정청래 고향’ 충청서 깜짝 승리…“변화·혁신 보여준 결과” 자평",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1270965.html"
+        }
+      ]
+    },
+    "economy": {
+      "article_count": 30,
+      "headlines": [
+        {
+          "date": "2026-08-01",
+          "title": "SK하이닉스, 상한가 기록 ···‘최태원 구조대’ 통했나",
+          "gist": "31일 오전 9시 3분 기준 서울 하나은행 본점 딜링룸에 SK하이닉스 주가가 표시되고 있다.SK하이닉스가 31일 급등하며 장중 상한가를 기록했다",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311519001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "홈플러스 “직원 급여 2개월씩 늦춰 지급하기로”···마트노조 “상의없이 일방적 발표”",
+          "gist": "지난 21일 서울 시내 홈플러스 매장 모습. 연합뉴스재개장을 앞둔 홈플러스가 직원 임금 지연 지급 등에 노사가 협력하기로 했다고 밝혔다. 조만간",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311539001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "적자나면 임금 깎고, 성과급은 주식으로?···SK하이닉스 노사 ‘임금체계 개편’ 놓고 충돌",
+          "gist": "23일 경기도 이천시 SK하이닉스 본사 모습. 연합뉴스사측 “적자 땐 임금 조정·주식 지급”노조 “작년 합의 훼손···수용 불가”SK하이닉스 노",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311612001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘삼전닉스 불기둥’, 코스피 역대 최대 18% 폭등…JP모건 “레버리지 ETF 청산 사실상 완료”",
+          "gist": "31일 서울 하나은행 본점 딜링룸에 주가지수가 표시되고 있다. 연합뉴스국내 증시가 31일 역대 최대 상승률을 기록하며 폭등했다. 5500선까지 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311643001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "삼전닉스 레버리지 대책 효과 있었나···거래대금 하루만에 75% 급감",
+          "gist": "31일 서울 하나은행 본점 딜링룸에 SK하이닉스 주가가 표시되고 있다. 연합뉴스삼성전자·SK하이닉스 단일종목 레버리지·인버스 상장지수펀드(ETF",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311711001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "이것이 ‘진정한 롤러코스피’···하루 만에 1000 포인트 ‘역대 최대 폭등’",
+          "gist": "31일 서울 하나은행 본점 딜링룸의 모습. 연합뉴스‘진정한 롤러코스피.’코스피 지수가 31일 사상 최대 규모로 상승하면서 이날 하루만 각종 신기",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311758001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘297만명 고객 정보 유출’ 롯데카드, 1.5개월 영업정지·과징금 50억 ‘중징계’",
+          "gist": "롯데카드 로고.내달 1일부터 9월 15일까지 신규 회원 모집 중단지난 4월 금감원 제재안보다 영업정지 3개월 감경금융위원회가 지난해 해킹사고로 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311800001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[경제뭔데]900원대도 싸다 싶었는데 ‘800원대’ 왔다···다시 만난 엔저, 지금이 환전 기회일까",
+          "gist": "경향신문 경제부 기자들이 쓰는 [경제뭔데] 코너입니다. 한 주간 일어난 경제 관련 뉴스를 쉽고 재미있게 풀어서 전해드립니다.31일 서울 시내의 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010600071/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "인간 없어도 AI가 알아서 다 한다?…업계 화두 떠오른 ‘재귀적 자기개선’ 뭐길래 [산업이지]",
+          "gist": "영국 통계학자 어빙 존 굿은 1965년 기계가 자기보다 나은 기계를 설계할 수 있게 되는 순간 ‘지능 폭발’이 일어날 것이라는 글을 썼습니다. ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010800011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "반도체 호조에 7월 수출도 날개 달았다···1천억달러 육박, 6월 이어 ‘역대 2위’",
+          "gist": "6월 첫 1000억달러 돌파 이은 호실적무역수지도 두달 연속 300억 달러 흑자인천국제공항 화물터미널에서 지난달 30일 홍콩으로 가는 삼성전자와",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011042001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“할 일: 엔 50~100억 달러 매수” 미 재무장관 메모 노출…엔저 방어 개입 정황",
+          "gist": "미국 동부시간(ET) 기준으로 2026년 7월 31일 오전 11시 33분에 미국 메릴랜드주 캠프데이비드에서 열린 미국 연방정부 각료회의에서 촬영",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011603001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "북한 지난해 1인당 국민소득 187만원, 남한의 1/28",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1270854.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "외국인 7조 순매수에 17%↑…폭락 뒤 폭등 ‘투전판’ 증시에 현기증",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1270878.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "코스피, 상승폭 1001 상승률 17.9% 사상 최대…널뛰는 증시에 ‘어질’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1270897.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "환율 13.4원 내려 1424원…외국인 주식 7조원 순매수 효과",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/finance/1270898.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "경남 양산 기온 41.4도까지 올라···사흘 연속 40도대",
+          "gist": "경남 양산시가 살수차를 동원해 기록적 폭염에 대응하고 있다. 양산시 제공31일 경남 양산지역 기온이 41.4도까지 오르면서 지역에서 최고치를 또",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311456001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“얼마나 만들기 싫었으면” “매직마우스냐” 조롱에도··· 페라리 첫 전기차 ‘완판’",
+          "gist": "페라리 ‘루체’ 올해 판매 목표 500대 조기 달성출시 초기 정통 페라리와 거리 먼 디자인 ‘혹평’‘고객 등급 높이기’ 등 중국 부유층 공략 주",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311526001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[속보] SK, SK실트론 지분 70.6% 2.3조에 두산 매각",
+          "gist": "SK실트론 연구원들이 반도체 소재인 실리콘 웨이퍼를 살펴보고 있다. SK실트론 제공SK㈜가 반도체 웨이퍼 제조사인 SK실트론 지분을 ㈜두산에 매",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311753001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "두산, 2.3조에 SK실트론 품는다···중공업 넘어 AI·반도체 기업으로 ‘대전환’",
+          "gist": "경북 구미에 있는 SK실트론 본사와 시설. SK실트론 제공두산이 SK가 보유한 SK실트론 지분을 인수했다. 두산그룹은 에너지와 로봇 사업을 넘어",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311911001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "하루 평균 1214억달러…2분기 은행 외환거래 규모 역대 최대",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1270855.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "사이버한국외국어대학교-(사)건설안전감시단협회, 인재 양성 및 교육 협력 활성화를 위한 산학협력 업무협약 체결",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1270858.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "딱 1억 모자란…최태원, 하이닉스 주식 ‘49억 매수’ 왜?",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1270865.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[영상] 쓰레기봉투 묶고 전구도 간다…구글, 로봇 전신 제어 AI모델 공개",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/marketing/1270876.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "개인정보·아이디어 유출된 ‘모두의 창업’…중기부, 보안 강화 뒤 2기 모집",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/startup/1270884.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "국정원 감청 3년 연속 증가…지난해 통신조회도 35% 늘어",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/it/1270889.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "아모레·LG생건, 중국 매출 주춤해도 북미·유럽서 ‘불티’…글로벌 성장세 계속",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/consumer/1270910.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "레버리지 ‘예탁금 3천만원’ 상향 첫날…거래대금 75% 급감",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/finance/1270912.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "두산, 2조3천억원에 SK실트론 인수…최태원 개인 지분은 제외",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1270918.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "사학연금, 국내 VC 블라인드펀드 위탁운용사 5곳 선정",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1270947.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "7월 수출액 989억달러 ‘역대 2위’…반도체 호황에 전년 대비 62.8%↑",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1270956.html"
+        }
+      ],
+      "stock_picks": [
+        {
+          "date": "2026-08-01",
+          "market": "domestic",
+          "horizon": "daily",
+          "symbol": "000660",
+          "name": "SK하이닉스",
+          "reason": "일일 기준 29.95%의 급격한 가격 상승과 함께 거래량 비율이 1.32배 증가하며 매우 강한 단기 상승세를 보이고 있어 추가 변동 가능성이 있습니다.",
+          "price_at_pick": 1718000.0
+        },
+        {
+          "date": "2026-08-01",
+          "market": "domestic",
+          "horizon": "daily",
+          "symbol": "005930",
+          "name": "삼성전자",
+          "reason": "주간 기준 5.21%의 완만한 상승세와 1.42배의 거래량 비율을 보이며, 중단기적인 우상향 추세를 형성할 가능성이 있어 보입니다.",
+          "price_at_pick": 262500.0
+        },
+        {
+          "date": "2026-08-01",
+          "market": "domestic",
+          "horizon": "weekly",
+          "symbol": "005930",
+          "name": "삼성전자",
+          "reason": "주간 기준 5.21%의 완만한 상승세와 1.42배의 거래량 비율을 보이며, 중단기적인 우상향 추세를 형성할 가능성이 있어 보입니다.",
+          "price_at_pick": 262500.0
+        },
+        {
+          "date": "2026-08-01",
+          "market": "domestic",
+          "horizon": "weekly",
+          "symbol": "068270",
+          "name": "셀트리온",
+          "reason": "주간 가격이 5.12% 상승했으나 거래량 비율은 0.92배로 다소 낮아, 거래량 동반 여부에 따라 향후 추세 지속 여부가 결정될 것으로 보입니다.",
+          "price_at_pick": 186700.0
+        },
+        {
+          "date": "2026-08-01",
+          "market": "domestic",
+          "horizon": "monthly",
+          "symbol": "096770",
+          "name": "SK이노베이션",
+          "reason": "월간 기준 17.43%의 높은 상승률과 2.04배의 거래량 급증이 확인되어, 장기적인 관점에서 강한 상승 모멘텀을 확보한 것으로 분석됩니다.",
+          "price_at_pick": 110500.0
+        },
+        {
+          "date": "2026-08-01",
+          "market": "domestic",
+          "horizon": "monthly",
+          "symbol": "035720",
+          "name": "카카오",
+          "reason": "월간 가격이 6.1% 상승하고 거래량 비율이 1.16배를 기록하며, 장기적으로 완만한 회복세를 나타내는 흐름을 보이고 있습니다.",
+          "price_at_pick": 37400.0
+        },
+        {
+          "date": "2026-08-01",
+          "market": "overseas",
+          "horizon": "daily",
+          "symbol": "AMZN",
+          "name": "Amazon",
+          "reason": "주간 17.0%의 상승률과 2.47배의 높은 거래량 비율을 보이며, 매수세가 강하게 유입되어 추세적인 상승 흐름을 이어갈 가능성이 있습니다.",
+          "price_at_pick": 271.58
+        },
+        {
+          "date": "2026-08-01",
+          "market": "overseas",
+          "horizon": "daily",
+          "symbol": "GOOGL",
+          "name": "Alphabet",
+          "reason": "일일 기준 6.73%의 가격 상승과 1.57배의 거래량 증가가 나타나며, 단기적인 상승 추세로의 전환 가능성이 시사됩니다.",
+          "price_at_pick": 356.13
+        },
+        {
+          "date": "2026-08-01",
+          "market": "overseas",
+          "horizon": "weekly",
+          "symbol": "MSFT",
+          "name": "Microsoft",
+          "reason": "월간 기준 19.01%의 높은 상승률과 1.24배의 거래량 비율을 기록하며, 장기적인 우상향 추세가 안정적으로 유지되는 모습입니다.",
+          "price_at_pick": 464.72
+        },
+        {
+          "date": "2026-08-01",
+          "market": "overseas",
+          "horizon": "weekly",
+          "symbol": "AMZN",
+          "name": "Amazon",
+          "reason": "주간 17.0%의 상승률과 2.47배의 높은 거래량 비율을 보이며, 매수세가 강하게 유입되어 추세적인 상승 흐름을 이어갈 가능성이 있습니다.",
+          "price_at_pick": 271.58
+        },
+        {
+          "date": "2026-08-01",
+          "market": "overseas",
+          "horizon": "monthly",
+          "symbol": "MSFT",
+          "name": "Microsoft",
+          "reason": "월간 기준 19.01%의 높은 상승률과 1.24배의 거래량 비율을 기록하며, 장기적인 우상향 추세가 안정적으로 유지되는 모습입니다.",
+          "price_at_pick": 464.72
+        },
+        {
+          "date": "2026-08-01",
+          "market": "overseas",
+          "horizon": "monthly",
+          "symbol": "CVX",
+          "name": "Chevron",
+          "reason": "월간 가격이 16.33% 상승하고 거래량 비율이 1.37배를 나타내며, 장기적인 관점에서 긍정적인 가격 흐름을 형성하고 있습니다.",
+          "price_at_pick": 196.83
+        }
+      ]
+    },
+    "society": {
+      "article_count": 30,
+      "headlines": [
+        {
+          "date": "2026-08-01",
+          "title": "섬마을 식수부족·과일 햇빛데임···폭염·가뭄에 몸살",
+          "gist": "경남 통영 산양읍 추도에 물병 싣고 이동하는 차랑 모습. 통영시 제공경남 지역에 사흘 연속 40도를 넘어서는 기록적인 폭염과 가뭄, 해역 고수온",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311754001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[속보]“안타깝고 막막한 심정, 책임 통감한다”···구자현 검찰총장 대행, 형소법 통과에 전격 사의",
+          "gist": "검사의 직접, 보완 수사 권한을 전면 폐지하는 형사소송법 개정안이 국회 본회의를 통과한 31일 구자현 검찰총장 직무대행이 서초동 대검찰청을 나서",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311808001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "이태원 특조위 “재난 대응 매뉴얼 전면 개편해야”",
+          "gist": "31일 이태원 특조위가 정책토론회를 열고 재난 상황에서 대응 메뉴얼의 실효성을 높일 수 있는 방안을 논의했다. 김은송 기자이태원 참사와 같은 대",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311856001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘경산 아파트 방화’로 중상 입은 관리직원 숨져···사망자 2명으로 늘어",
+          "gist": "23일 경북 경산시 사동 한 아파트 관리실에서 방화로 인한 화재가 발생해 출입이 통제되고 있다. 연합뉴스경북 경산의 한 아파트 관리사무소 방화 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311922001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "이젠 병원 옮겨도 CT·MRI 안 찍어요···정부, ‘QR코드 의료영상 공유’로 중복 촬영 막는다",
+          "gist": "정부가 병원을 옮길 때마다 컴퓨터단층촬영(CT)이나 자기공명영상(MRI)을 다시 찍는 관행을 줄이기 위해 의료영상정보 공유체계를 구축한다. 사진",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607312000001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "경찰, ‘언론인 금품 제공 의혹’ 안병윤 예천군수 구속영장 신청",
+          "gist": "경북경찰청 전경. 경북경찰청 제공경북경찰청 반부패수사2대는 공직선거법 위반 혐의로 안병윤 경북 예천군수에 대해 구속영장을 신청했다고 31일 밝혔",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607312100001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘대통령실 관저 이전 부당 관여 의혹’ 국힘 윤한홍 종합특검 출석",
+          "gist": "윤한홍 국민의힘 의원이 대통령실 관저 이전 공사를 둘러싼 비위 의혹과 관련해 직권남용권리행사방해 혐의 피의자 신분으로 조사를 받기 위해 1일 과",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011022001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "밖에 안 나가고 집에 있었는데 더위 먹었다?···38도 이상 극한 폭염 땐 ‘자택 온열질환자’ 2배",
+          "gist": "재난안전연구원, 6%서 12% 증가 확인프랑스선 자택 내 사망자 전주대비 91% 급등일본서도 온열질환 구급 이송자 40% ‘자택’행안부 “냉방 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011200011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“새끼라 불쌍해서”···야생 까마귀 집에 데려와 키운 40대 ‘벌금 선고유예’",
+          "gist": "까마귀, 야생생물법상 포획·채취 등 금지 조류해당 여성 “일주일 정도 키우고 다시 돌려놔”재판부 “초범이고 관련법 참작 못한 점 감안”까마귀. ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011620001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "구자현 검찰총장 대행, 사직서 제출…“형소법 통과 책임 통감”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1270924.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "검사 수사권 폐지법 통과에 여성단체들 “피해자 외면한 검찰개혁” 반발",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/women/1270932.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "주말에도 극단적 더위…“경남권 39도 이상, 야외 활동 최대한 중단”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/environment/1270946.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "기술탈취 막겠다던 'K-디스커버리법'…시행 전부터 실효성 논란",
+          "gist": "(서울=연합뉴스) 구정모 기자 = 중소기업 기술탈취 소송에서 증거 확보를 돕기 위해 도입된 '한국형 증거개시 제도(K-디스커버리)'가 시행을 앞",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260801045000030"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "박성재 “1심 판결은 궁예 관심법 논리, 무죄 선고해달라”",
+          "gist": "내란 중요임무 종사 등 혐의를 받는 박성재 전 법무부 장관이 지난 4월 서울 서초구 서울중앙지법에서 열린 1심 공판에 출석하고 있다. 사진공동취",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311747001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘장윤기 사건’ 수사 형사과장, 두 번째 영장도 기각···법원 “다툼 여지”",
+          "gist": "경찰청 특별수사단 수사 차질 불가피장윤기 사건에 대해 살인과 성범죄 사건을 분리 수사하도록 지시한 협의를 받는 전 광산경찰서 형사과장 A 경정이",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607312101001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "8월 첫날부터 푹푹 찐다···전국 체감온도 35도 안팎, 해지고도 ‘열대야’",
+          "gist": "연일 폭염이 이어지고 있는 지난달 30일 서울 여의도 한강공원 마포대교 아래에서 시민들이 더위를 피하고 있다. 문재원 기자8월의 첫날이자 토요일",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010816001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘한낮 40도’ 기록적 폭염 이어지는 경남···서울보다 온열질환자 수 더 많아져",
+          "gist": "경남 환자 161명, 서울 158명 앞질러1/3 인구 수준 감안, 환자 집중도 높아지난달 31일 저수율 7.5%를 기록한 울산 울주군 언양읍 오",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011655001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "8월 첫날부터 잠 못드는 밤···전국 대부분 지역에 ‘열대야주의보’",
+          "gist": "기상청, 실내 냉방 유지 당부기상청 제공.1일 전국 대부분 지역에 열대야주의보가 발효됐다. 폭염은 당분간 지속될 것으로 전망된다.기상청은 이날 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011934001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "1235회 로또 1등 ‘6, 7, 11, 15, 39, 43’…9명 30억씩",
+          "gist": "동행복권 제공.로또복권 운영사인 동행복권은 제1235회 로또복권 추첨 결과 ‘6·7·11·15·39·43 ’이 1등 당첨번호로 결정됐다고 1일 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608012052001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[포토] “발 담그고 더위 식혀요”…청계천서 열린 ‘물 첨벙첨벙’ 피서",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1270913.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘장경태 성추행 혐의’ 피해자에 2차 가해…댓글 작성자 검찰 송치",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1270914.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "연합뉴스TV·YTN, ‘사장추천위원회 구성’ 공전…징계받을 판",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/media/1270919.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "내란특검, 박성재 징역 25년 1심 판결 전부 항소 취하",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1270922.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[단독] ‘인권위 임시회의’ 연다는 안창호, 정작 ‘윤석열 방어권 폐기 안건’은 제외",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1270930.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "특정인 감독 추천 ‘사적 이익’ 의심 사는 전력강화위…이해충돌 피해야 [김창금의 무회전 킥]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1270933.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "정성호 법무 “이제 검사는 수사 못 해…부작용 있다면 신속히 보완·수정해야”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1270935.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "경남 양산 41.6도 찍었다…‘122년 관측 사상 최고기온’ 하루 만에 경신",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/environment/1270952.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "38도 이상이면 ‘집’도 위험…자택 온열질환자 비율 2배 높아져",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1270953.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "부산·울산·경남 낮 최고 35∼41도…\"물 충분히 마셔야\"",
+          "gist": "(창원=연합뉴스) 김선경 기자 = 2일 부산·울산·경남에는 40도 안팎의 폭염이 이어지겠다.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260802003600052"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "택시 타고 흉기로 기사 위협해 돈 뺏으려 한 노숙인 징역 2년",
+          "gist": "(울산=연합뉴스) 김근주 기자 = 택시에 손님인 양 탑승해 흉기로 돈을 빼앗으려 한 50대 노숙인에게 실형이 선고됐다.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260731040200057"
+        }
+      ]
+    },
+    "life": {
+      "article_count": 30,
+      "headlines": [
+        {
+          "date": "2026-08-01",
+          "title": "우리 몸 ‘작은 근육’ 두 곳…기대 수명 예측할 수 있다",
+          "gist": "악력이 5㎏ 감소할 때 전체 사망 위험이 16% 증가하는 것으로 나타났다. 특히 악력 저하는 수축기 혈압보다 전체 사망률과 심혈관 질환 관련 사",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608020600011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "접촉사고 보험금 3천만원…한방병원 경상 치료비 5년만에 27%↑",
+          "gist": "(서울=연합뉴스) 강수련 기자 = 자동차보험 경상환자(12∼14급)의 과잉진료 논란이 이어지는 가운데, 최근 5년간 한방병원의 경상환자 인당 치",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260801039400002"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘Intense, salty, foul’: the best (and worst) supermarket anchovies, tasted and rated",
+          "gist": "We put 10 tinned and jarred varieties to the test to see which anchovies are the",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/thefilter/2026/aug/01/best-worst-supermarket-tinned-anchovies-tasted-rated"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Fiona Allen: ‘The closest I’ve come to death? A trip in a black cab with John Worboys. I had a lucky escape’",
+          "gist": "The actor and comedian on her hatred of selfishness, her unhappy resting face, a",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/01/fiona-allen-actor-writer-edinburgh-festival-fringe"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Tim Dowling: can I conquer my wife’s book club? I can certainly divide it",
+          "gist": "She says I’m not allowed to select books as I’m the only man and not a full memb",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/01/tim-dowling-can-i-conquer-book-club-can-certainly-divide-it"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "강진·해남·영암을 잇는 ‘강해영 티 스테이 tea stay’",
+          "gist": "경계를 지웠다…더 아름다운, 강해영정윤석 옹기장의 공방드디어 ‘강해영’을 만났다. ‘강해영 프로젝트’는 전남광주통합특별시 강진군, 해남군, 영암",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607250800005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[톡톡 30초 건강학]물놀이 후 귓속에 면봉을?…외이도염 위험",
+          "gist": "여름철 수영장이나 바닷가를 다녀온 뒤 귀가 먹먹하거나 간질거리는 증상을 경험하는 경우가 있다. 대부분은 일시적으로 물이 들어간 것으로 여기고 대",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607250900005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "나도 모르게 내 마음이 고장났다",
+          "gist": "일상 유지하지만 무기력 ‘고기능 우울증’번아웃과 달리 직장 밖 벗어나도 증상2주 이상 지속되면 전문의 찾아 상담을고기능 우울증은 단순한 피로로 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607250900015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "탈수 막는 수분 섭취량, 하루 1.8ℓ는 돼야",
+          "gist": "1 한 번에 물 많이 마시지 않기2 갈증 느끼기 전 미리 마시자3 단 음료로 수분 보충은 금물여름철 땀으로 배출되는 수분을 제때 보충하지 않으면",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607250900025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“팁은 얼마를 내야 하죠?” 나라마다 다른 팁 문화가 어렵다면",
+          "gist": "전문가들은 팁 문화를 단순한 예절의 차이가 아니라 각국의 노동시장과 임금 제도의 산물로 이해해야 한다고 설명한다. 팁이 어떤 사회에서는 임금의 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607251100021/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "파리 아파트도, 프라하 게스트하우스도…유럽엔 왜 방충망이 없을까?",
+          "gist": "유럽에도 모기와 파리, 벌은 있다. 다만 우리나라처럼 대부분의 집에 방충망을 설치할 만큼 벌레가 흔한 환경은 아니다.유럽 여행을 하다보면 방충망",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607260900021/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "열대야, 쿨캉스로 날려요!…에버랜드, ‘밤밤 썸머 나이트’ 오픈",
+          "gist": "밤에는 트렌디한 워터파티, 낮에는 온가족 물놀이삼성물산 리조트부문은 여름 휴가철을 맞아 오는 31일부터 8월 16일까지 에버랜드에서 여름밤 워터",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607271313001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "돼지 심장 조직 이식해도 거부반응 없도록···줄기세포 이용한 판막 ‘재세포화’ 성공",
+          "gist": "심장 판막의 구조와 판막질환. 국가건강정보포털국내 연구진이 심장수술에서 쓰는 소·돼지의 조직에 한 종류의 줄기세포만을 주입해 이식 판막을 살아있",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607271340001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "서울로 여행 온 외국인 관광객, K-배달도 쉽게 체험한다",
+          "gist": "한강밤핑 안내 홍보 외국어 포스터. 서울시 제공서울시가 ‘2026 한강 밤핑’을 찾은 외국인 관광객이 쉽게 ‘K-배달’을 체험할 수 있도록 배달",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607291115011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "도나우 강에서 수영해 봤어? 빈을 색다르게 즐기는 여름 사용법",
+          "gist": "알테도나우서 즐기는 일상 피크닉로컬 풍경 누리고 싶다면 2구역옛 도나우강의 일부는 ‘알테도나우’라는 호수 형태의 수역으로 남았다. 홍수를 막기 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010700001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "빵 냄새 맡았는데 파리의 추억이 떠오르네? 후각 여행의 비밀",
+          "gist": "특정한 냄새가 오래전 여행의 한 장면을 생생하게 불러오는 현상은 단순한 기분 탓이 아니다. 신경과학에서는 후각이 다른 감각과는 다른 방식으로 뇌",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010900001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "당뇨 진단 후 운동량 줄이면, 우울증 위험 급증",
+          "gist": "2형 당뇨 환자 합병증 추적 관찰운동량 늘릴수록 위험 큰 폭 감소당뇨병 진단 후 운동을 늘리면 우울증 위험이 낮아지지만, 반대로 몸을 덜 움직이",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010900015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "휴가 후 눈·귓병…손 조심!",
+          "gist": "휴가철 물놀이를 즐길 때는 각·결막염과 외이도염 같은 눈과 귀 질환에 주의해야 한다. 서울 마포구 난지 한강공원 물놀이장에서 시민들이 물놀이하며",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010900025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[수피의 헬스 가이드]포기하고 잤더니 더 잘되네…운동 동작도 몸의 ‘기억’이니까",
+          "gist": "여러분 중 상당수는 처음 연습할 때는 안 됐던 무언가가 며칠 후 갑자기 잘되었던 신기한 경험이 있을 것이다. 첫날 엉망진창이었던 골프 스윙이 다",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010900035/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "'그냥 덥다' 넘겼다간 치명적…열사병 환자, 5년간 3.1배 급증",
+          "gist": "(서울=연합뉴스) 성서호 김잔디 기자 = 온열질환 가운데 가장 치명적인 열사병 환자가 최근 5년 사이 3배 넘게 급증한 것으로 나타났다.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260801033300530"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "온열질환, 서울은 오전·고령층…경기는 오후·작업장 집중",
+          "gist": "(서울=연합뉴스) 고유선 기자 = 같은 수도권이라도 지역별로 온열질환 발생 양상이 다른 것으로 분석됐다. 서울은 고령층과 오전 시간대 환자 비중",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260731144600530"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Purple reign: how shade became British gardeners’ favourite",
+          "gist": "Britons move away from trend of grey paving and pristine lawns in an embrace of ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/01/purple-coloured-plants-british-gardener-favourite"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "서울 전역에 '열대야주의보'…어제 온열질환자 5명 발생",
+          "gist": "(서울=연합뉴스) 김동규 기자 = 연일 이어지는 폭염으로 1일 서울 전역에 열대야주의보가 발효된 가운데 전날 서울에서 5명의 온열질환자가 발생한",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260801050400004"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "The great British switch-off: how floating retreats, mobile-free pubs and sauna book groups are freeing people from their smartphones",
+          "gist": "Sick of doomscrolling? From venues with smartphone swear jars to cabins with abs",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/technology/2026/aug/01/great-british-switch-off-fun-freeing-ways-ditch-smartphone-doomscrolling"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "숨 막히는 폭염 언제 끝나나…충북 피해 이어져(종합)",
+          "gist": "(청주=연합뉴스) 전창해 기자 = 충북에도 30도를 크게 웃도는 폭염이 연일 계속되면서 온열질환과 가축 폐사 등 피해가 쌓이고 있다.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260801032451064"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘We didn’t feel safe’: Booking.com users face battle to get money back",
+          "gist": "From melted electric sockets to shabby alternatives, readers tell of dealings wi",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/money/2026/aug/01/bookingcom-money-back-refund"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "온열질환자 72명 추가 응급실행…경남이 서울 환자수 앞질러",
+          "gist": "(서울=연합뉴스) 성서호 기자 = 영남권을 중심으로 기록적인 폭염이 이어지면서 경남권의 온열질환자 수가 서울의 환자 수를 넘어서게 됐다.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260801041300530"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Exploring Rabat, Morocco – this year’s Unesco World Book Capital",
+          "gist": "Rabat is a gorgeous seaside city with great food and culture, but for book lover",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/travel/2026/aug/01/exploring-rabat-morocco-unesco-world-book-capital"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "순천경실련 \"전남 의대 설립 회의 전과정 생중계해야\"",
+          "gist": "(순천=연합뉴스) 형민우 기자 = 순천경제정의실천시민연합(순천경실련)은 오는 2일 전남광주 장흥에서 열릴 의과대학 및 대학병원 설립 관련 회의를",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260801035600054"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Blind date: ‘I joked we should join the young people for a club night. We didn’t’",
+          "gist": "Richard, 63, a communications consultant, meets Katrina, 60, a GPWhat were you h",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/01/blind-date-richard-katrina"
+        }
+      ]
+    },
+    "culture": {
+      "article_count": 30,
+      "headlines": [
+        {
+          "date": "2026-08-01",
+          "title": "[책과 삶]장수왕은 왜 평양으로 갔을까…기후가 바꾼 한국사의 비밀",
+          "gist": "지리학자가 끈 한국역사서기후 데이터로 한국사 읽어저온기엔 전쟁, 온난기엔 평화기후 위기 시대, 분과 학문 벽 넘어서야홍경래진도는 1811년 평안",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607310600091/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘풍선을 든 소녀’부터 ‘꽃을 던지는 사람’까지…얼굴 없는 거리 예술가 뱅크시 특별전",
+          "gist": "뱅크시 ‘Girl with Balloon’.    뱅크시전시문화 주식회사 제공얼굴도 이름도 공개하지 않은 채 활동해 온 영국의 거리 예술가 뱅크",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607310950001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "정념 스님, 월정사 주지 22년 만에 사퇴…총무원장 도전 본격화",
+          "gist": "월정사 주지 정념스님이 14일 서울 국립현대미술관에서 열린 간담회에서 ‘오대산의 고승’ 출간 취지에 대해 설명하고 있다. 박경은 기자강원도 평창",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311355001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘충주맨’ 김선태, ‘돈선태 성공시대’ 자진 하차···리센느 ‘사투리 논란’에 “능력 부족”",
+          "gist": "유튜브 ‘김선태’ 채널 캡처충북 충주시청 공식 유튜브 채널에서 ‘충주맨’으로 인기를 끌었던 전 충주시 주무관 김선태씨가 KBS 웹 예능 에서 자",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311730001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“월드컵 보이콧” 반발에…트럼프 밀착 FIFA 회장 “민간 매각 철회”",
+          "gist": "잔니 인판티노 국제축구연맹(FIFA) 회장(왼쪽)과 도널드 트럼프 미국 대통령. AP연합뉴스국제축구연맹(FIFA)이 월드컵 대회 운영 자회사를 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010941001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "재선거 ‘악성 민원인 묘사’ 논란 이수지, 자필 사과문···“신중하지 못했다”",
+          "gist": "코미디언 이수지는 유튜브 채널 ‘핫이슈지’에서 극성 민원인을 마주하는 공무원을 연기하다 영상 속 ‘재선거’ 효과음 탓에 곤혹을 치렀다. 유튜브 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011630011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "광주서 부산 가는 KTX는 왜 없을까···“서울로만 향하는 철도가 지방을 말린다”",
+          "gist": "‘외톨이 역을 떠나며’의 전현우 인터뷰도시 중심부와 떨어진 경주·군산·포항역대중교통 어렵고 ‘역전 앞’ 소셜믹스 실종광주~부산 KTX 가능한 그",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607310600101/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“아빠가 딸에게 문제 생기면 못 참는 건 만국 공통이니까···액션, 몸 괜찮을 때 더 하고 싶었다”",
+          "gist": "시청률 20% 돌파 SBS ‘김부장’ 주역 소지섭곧 50에도 꾸준한 운동 “체력적으로 힘들진 않아”제작진에 ‘금 선물’ 화제···“다함께 고생했",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607310700001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "히가시노 게이고 신작, 베스트셀러 순위 진입···입소문 타고 역주행 소설 ‘수족관’ 1위",
+          "gist": "역주행 베스트셀러 ‘수족관’은 종합 1위‘역주행 베스트셀러’가 된 이 교보문고 종합 베스트셀러 1위를 차지했다.교보문고 7월 4주간 종합 베스트",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311023001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[책과 삶]“사람은 혼자 살 수 없다”···히가시노 게이고가 남긴 ‘마지막 고백’",
+          "gist": "‘갈릴레오 시리즈’ 열 번째 책살인 사건의 범인 추적하며,유카와 마나부의 비밀 드러나내달 일본서 ‘영원의 기억’ 출간일본 추리소설 작가 히가시노",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311400001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘대중음악인 등용문’ 제20회 경향실용음악콩쿠르 본선 경연 [화보]",
+          "gist": "제20회 경향실용음악콩쿠르 본선 악기 부문 대학·일반부 참가자가 31일 서울 성동구 호원아트홀에서 베이스를 연주하고 있다. 2026.7.31. ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202607311706001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "중식계의 10%…씩씩해서 살아남았나, 살아남으려 씩씩해졌나 [이진송의 아니 근데]",
+          "gist": "신계숙·정지선·박은영·이문정고군분투하는 여성 셰프의 ‘사회적DNA’에 출연 중인 박은영 셰프. JTBC 제공“중식계는 도대체 어떤 곳입니까?”방",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010600001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[주말의 취향]국현에 등장한 8m 검은 파도···완고한 바위는 움직이지 않아도 ‘무모한 싸움’은 계속된다",
+          "gist": "김 크리스틴 선 ‘완고한 바위, 무모한 싸움’(2026), 페인트, 접착식 비닐, 단채널 영상, 사운드, 가변 크기.   사진 조준용·국립현대미",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010800001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "3대 국제만화상 ‘아이스너상’에서 한국 만화 첫 수상",
+          "gist": "문학동네 인스타그램 캡처미국의 권위 있는 만화상인 아이스너 시상식에서 한국 만화가 처음 수상했다.31일(현지시간) 미국 코믹콘 인터내셔널에 따르",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608010832011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘스파이더맨 4’ 올해 최단기간 200만 돌파···군체·호프보다도 하루 더 빨라",
+          "gist": "개봉 4일차 누적 관객 210만명 넘어시리즈 최초 성인이 된 피터 주인공영화 의 한 장면. 소니픽처스코리아 제공영화 ()가 올해 개봉작 중 가장",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608011009001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "무더위를 떠나, 책의 바다를 서핑하는 여름 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270788.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "미국과 이란은 어떻게 원수가 됐나 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270790.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“넌 우리의 ‘푸토로’, 미래란다”…차별에 맞선 소년 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270791.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "타인에게 줄 수 있는 기쁨, 그것이 어쩌면 ‘당신의 일’ [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270793.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "현실 세계의 ‘골리앗’에겐 ‘불평등’이 가장 큰 약점 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/religion/1270797.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“개인을 돕는 일이 곧 사회를 돕는 일” [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270798.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "고선경의 ‘지금 이 문장’ [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270800.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“사이다 액션 덕분? 아니죠”…소지섭이 밝힌 ‘김부장’ 23.1% 진짜 이유",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/culture_general/1270802.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "유럽인이 처음 만난 ‘중국인 철학자 공자’ [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/religion/1270939.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "글쓰기 연습을 야구나 조깅 하듯 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270940.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "책으로 게임하고 토론하고…“무력감 사라졌어요” [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270941.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘폭염 살인’, 사회는 희생자를 골라낸다…극한 더위의 반대말은 돌봄 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270942.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“마음 편하게 먹어”…난임 친구에겐 위로가 아니었다 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270943.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "좋은 의료인은 왜 문학을 읽는가 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270966.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘슬프다’는 영어 단어가 ‘배부르다’에서 왔다고? [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1270967.html"
+        }
+      ]
+    },
+    "it": {
+      "article_count": 30,
+      "headlines": [
+        {
+          "date": "2026-08-01",
+          "title": "[비즈토크] 삼성전자 DX부문 사상 첫 적자…하반기 돌파구는 - v.daum.net",
+          "gist": "[비즈토크] 삼성전자 DX부문 사상 첫 적자…하반기 돌파구는  v.daum.net",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1idlZDc2xHd1FNRnlkMDJDUjlGajhCYXFUS0lKQ1RkcEhwWnkwTWM5UnZqVnoxQjhLa0thcGhKWklSZkJaSXJEcFExVTVvcE0?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "클래리티 법안 윤리 수정안…트럼프 검토 보도 나왔다 - tokenpost.kr",
+          "gist": "클래리티 법안 윤리 수정안…트럼프 검토 보도 나왔다  tokenpost.kr",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1vZFRTSEtNTkNQRVF1bk8xcEFpNDlmckJpSDNwSG1Mb3lvRzRacXFaLW5reWg5b21zckhYcFZMME9pb3pwYUJFMW0yVDRERmpJZGNvSVJrbGLSAV5BVV95cUxPdzRhcURPVXNienpYN2FJcTNqQnF0TkpVc2xLemh1ckxtc0psdDdVR0NWQ3JYMW44S293VW9DLXJibXRpd0xnUzZvMjZKX3FoRl9zRTB0V0FyTFRRNWZR?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "China’s tech advances are causing chaos from Silicon Valley to the White House",
+          "gist": "New AI models, advanced robots and specialty computer chips are unsettling marke",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/technology/2026/aug/01/china-silicon-valley-white-house"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "매년 2만명 사망하는 ‘이 암’…‘이 증상’ 땐 꼭 병원에",
+          "gist": "매년 8월 1일은 세계 폐암의 날이다. 국내 암 사망 원인 1위인 폐암은 조기 진단이 어렵고 재발률이 높은 것으로 알려져 있다. 매년 약 2만 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Society/article/all/20260801/134405464/1"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“낙상 방지 최고 노르딕워킹…노년엔 잘 걷는 게 최고 행복”[양종구의 100세 시대 건강법]",
+          "gist": "신종 코로나바이러스 감염증(코로나19)이 전 세계적으로 확산하기 시작하던 2019년 말 경기 부천시 한 시민단체에서 함께 활동하던 약사와 간호과",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260731/134400820/1"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "How the Pro-Trump Media Ecosystem Is Splintering Ahead of the Midterms",
+          "gist": "Once united in support of President Trump, right-wing influencers are embroiled ",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/07/31/us/politics/trump-iran-economy-media-critics.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Larry Ellison Bet It All on the A.I. Boom. Will He Be the Face of the A.I. Bubble?",
+          "gist": "Inside the 81-year-old billionaire’s risky, debt-fueled scramble to transform hi",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/07/31/magazine/larry-ellison-ai-oracle.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "누구를 위한 AI인가? 알리바바가 빠진 속도전의 함정[딥다이브]",
+          "gist": "모두가 인공지능(AI)을 이야기하는 시대. 기업들은 경쟁사보다 한발 앞서 AI 기술을 결합한 제품과 서비스를 내고 싶어 안달이죠. AI라는 거대",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260731/134399661/1"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "오픈AI ‘챗GPT’, 활성 사용자 수 10억명 돌파… ‘가격 인하’ 승부수 통했다 - chosun.com",
+          "gist": "오픈AI ‘챗GPT’, 활성 사용자 수 10억명 돌파… ‘가격 인하’ 승부수 통했다  chosun.com",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQYk9FalBNdWFWMGpHT1JFQm9WLVdfSHY0dzF4TVRqenVVVmxHUWNxb0lmakRJLUF1Rll0d2R6YXR0c1hlMzNIR2FyUFVIOFJtUUdEUzV5ZkZqNmUtVzFCanhmck5BVzFFd0hXZVF5dFFRZlVkdVNKcjVVaGNJbUo1SWRlbw?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘알파고의 아버지’ 허사비스 CEO “인간 수준 AI, 5~10년 안에 등장”",
+          "gist": "머스크 장담한 2년보다는 늦어\n\n\n\n‘알파고의 아버지’로 불리는 데미스 허사비스 구글 딥마인드 최고경영자(CEO·사진)가 향후 5~10년 안에 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503182012025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=it_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "SKT ‘에이닷’에 구글 제미나이 추가",
+          "gist": "최신 모델 ‘제미나이 2.0 플래시’ 등 12개 AI 서비스 자유롭게 사용\n\nSK텔레콤이 인공지능(AI) 비서 ‘에이닷(A.)’에 구글의 거대언",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503182012015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=it_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘알파고의 아버지’ 허사비스 “인간 수준 AI까지 5~10년”",
+          "gist": "데미스 허사비스 구글 딥마인드 CEO. AFP연합뉴스\n\n‘알파고의 아버지’로 불리는 데미스 허사비스 구글 딥마인드 최고경영자(CEO)가 향후 5",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503181123001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=it_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "SKT, AI 비서 ‘에이닷’ 더 빠르게…구글 제미나이도 추가",
+          "gist": "SK텔레콤 모델이 ‘에이닷’에 새로 추가된 구글의 ‘제미나이 2.0 플래시’를 이용하고 있다.   SK텔레콤 제공\n\nSK텔레콤이 인공지능(AI)",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503181024001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=it_news"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "비트코인 지갑 해킹 3차 확산…1조8600억 원 피해, 추적 회피도 강화됐다 - tokenpost.kr",
+          "gist": "비트코인 지갑 해킹 3차 확산…1조8600억 원 피해, 추적 회피도 강화됐다  tokenpost.kr",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE92d1g3T0l0aGRWVjc2bUw4Rzk5cVBMQjlUV24wZzJqVmlxT1dfbEpqN3pJcmR3aThsWm9JVWxMWDQ2bkU5ODgtczF4MXlTdWpKdWo4QXM5VU1TNlpxRlpPTNIBZkFVX3lxTE15SXg2WkRuQTFXNG9neFc2NWNMOVR6Um9Dd2dRS3g5LWViN0hkM2dnSk9IY3RoaWFwZ0xoMDdmenVKYmo3TEpOX2htSWl5bjkweDUtei11TXVFaU54ZHNmR1ZSeFdvQQ?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "The German Auto Industry, a Pillar of the National Psyche, Is Trembling",
+          "gist": "The country’s iconic carmakers are struggling with tariffs, the growth of electr",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/07/31/business/germany-mercedes-bmw-volkswagen.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "트레저헌터 in 진안 사전등록…제대로 즐기고 5000만 원 받는 법",
+          "gist": "전라북도 진안군(이하 진안군)과 한국수자원공사가 주최하고 동아일보와 플랫폼 기업 퓨잇이 주관하는 지역탐방형 보물찾기 축제 ‘트레저헌터 in 진안",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260801/134405582/1"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "The great British switch-off: how floating retreats, mobile-free pubs and sauna book groups are freeing people from their smartphones",
+          "gist": "Sick of doomscrolling? From venues with smartphone swear jars to cabins with abs",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/technology/2026/aug/01/great-british-switch-off-fun-freeing-ways-ditch-smartphone-doomscrolling"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "아이패드 에어, 7년 만에 디자인 확 바뀐다 - 지디넷코리아",
+          "gist": "아이패드 에어, 7년 만에 디자인 확 바뀐다  지디넷코리아",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9sTEhhVXFHQzZ1Z3U4RUpYSTdWNmFRVGZCcFVoZ3NPd2tOSVhVNEpTbmh0clhoWlVsNkplX21lOVhIa0w1c1l3d0YtRUFmUU00Y1d0S2Jn?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“20㎏ 뺀 최희가 매일 한다는 이것”…체지방 태운 ‘러닝의 힘’",
+          "gist": "출산 후 20㎏을 감량한 방송인 최희(41)가 최근 자신만의 운동 루틴을 공개했다.최희는 러닝을 통해 우울감과 무기력한 순간을 이겨내는 자신의 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Culture/article/all/20260801/134405342/1"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "갤폴드8 사생활 보호 미탑재… 외신 “탁월한 선택” 호평 왜? - chosun.com",
+          "gist": "갤폴드8 사생활 보호 미탑재… 외신 “탁월한 선택” 호평 왜?  chosun.com",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNWmRqVWQ3SHJuRjFfeTlEUXduRU9GbUpLS2JOZmxRNnFyRTU3WEVaTE14NGJlUFNoV0dCU2UxWGRfQW9wZ3ZaVm1OVWdaZDBabi1DR3NxX0Y3RDlOdTN2TVlCZW1Mdy0yQmJ3Qk55Rk51UXNkSVdPd0ktOVlvVWdwQUFwYw?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘사전예약 D-2’ 갤Z 폴드8, 전작 대비 ‘라방’ 판매량 2배 넘어... 1030 “비싸지만, 예쁘다” - chosun.com",
+          "gist": "‘사전예약 D-2’ 갤Z 폴드8, 전작 대비 ‘라방’ 판매량 2배 넘어... 1030 “비싸지만, 예쁘다”  chosun.com",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSVMxamROWVdDd1VYQkFWZ3ZQSXZoNGFsWldHRVNxSUZwU2JFLUpKcTJSNG5ySXV0RFFmb2l0VVcxT2ZPcXZPZ1NSejdYamM0cnVUZFZ4RnhUOUJGcUFva25uQUFWbTk1MjRHMkVhM0dkeTQ4VmhpcnJHdlpIemtYNDFlcw?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "\"버튼식 기어 만든 자는 당장 자수하라\" [아車차] - edaily.co.kr",
+          "gist": "\"버튼식 기어 만든 자는 당장 자수하라\" [아車차]  edaily.co.kr",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQblFONHFEMGpMd3ByOWZMSHd2UGlQQ0FEYjIzU0JJSU9ZRWtjM0RtMTJCVUVNNldINUJEMUcxTlF5Q1N0QzFLc0dBMEJhUlNZQnJEWG5DTDh5RVhkT09lSnBMeklGU1NDMTNTS20zQmlSZ0Nndi1aOTVSUXFaSFV5ZQ?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "\"투자도 하던 집이 잘해\"…MS·아마존 웃고 메타 울었다 [김인엽의 AI 프런티어]",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/202607316765i"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“더워도 에어컨 끄고 잤는데”…열대야에 뇌혈관 부담 커지는 이유",
+          "gist": "열대야가 이어지면 숙면을 방해할 뿐 아니라 탈수와 혈압 변화로 뇌혈관에도 부담을 줄 수 있다. 고령자와 기저질환자가 특히 주의해야 할 증상과 건",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260731/134379005/2"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "PT PAL, 호위함 1번함 진수… 한국 방산 기술 이전 요구 거세진다 - g-enews.com",
+          "gist": "PT PAL, 호위함 1번함 진수… 한국 방산 기술 이전 요구 거세진다  g-enews.com",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQNkQ4dERVNFpjVzBpbllZRHVFX3FDYmxPQ2c0NGVjQzFCV0NCN3JhZ01MdndjbjBadnF1TFRsc2dxQ0tzWVRjaXBVVldST2hvN3EzVVI1MjhXeDJ2Mk82Z0I5dFV2ZnZtZW5xQ3hXU0F3N2Q1Vi1kN21obVdwelYtVzNHalkteUFW?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "메타 글래스 ‘몰카 방지’, 2달러 스티커에 뚫렸다 - chosun.com",
+          "gist": "메타 글래스 ‘몰카 방지’, 2달러 스티커에 뚫렸다  chosun.com",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQZnYtMmoweFNtZHlXVHpCSHlJVnd1cWpvMXplOUxrbmR0LWR1Y2QtbXA3bE9hSlpDNDk0Yl9VMEYwN19zeHpFV3VsZzNOcC12NEdRdzdNVE5nNmlPQXlPRGZmVzc5alpnSlhua0REUGhaRGhpQXhJcXBnNjhhb1RJZlNVaw?oc=5"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "'호랑이굴'로 DK 부른 젠지, EWC 복수 나선다 [이주현의 로그인 e스포츠]",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/202607306639i"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Snapchat joins other popular platforms in fight against 'AI slop'",
+          "gist": "Snapchat, YouTube, LinkedIn, and Substack are trying to combat the proliferation",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c77g6dm5pr8o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "\"아이폰 대신 갤럭시\" 한국 1020 돌변 이유가…'깜짝 결과'",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026073185231"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "AI firms must answer for rogue bots, says boss of hacked company",
+          "gist": "Clement Delangue said he didn't want cyber attacks on other companies to become ",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cr7k49xjzzeo?at_medium=RSS&at_campaign=rss"
+        }
+      ]
+    },
+    "science": {
+      "article_count": 30,
+      "headlines": [
+        {
+          "date": "2026-08-01",
+          "title": "사막에 홍수, 우기에 가뭄…작년 한 해 동안만 82만명, 기후재난에 살 곳 잃었다",
+          "gist": "WMO ‘전 지구 기후 현황 보고서’\n가뭄·엘니뇨 등으로 식량 불안 ↑\n아프간 홍수·한파로 수백명 사망\n북미 산불에 이재민 30만명 발생\n\n\n지",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503191525001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=kh_science"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "미 연구원 ‘원자로 설계 SW, 한국 반출 시도’ 적발",
+          "gist": "에너지부 산하 연구소 INL\n사용후핵연료 재활용 연구\n한국원자력연구원과 ‘협력’\n\n미국 에너지부(DOE)가 한국을 ‘민감국가’로 지정한 가운데 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503190600005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=kh_science"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“미 원자로 소프트웨어, 한국 유출 시도 적발”…‘정말’ 민감국가 원인 됐을까",
+          "gist": "지난해 의회 제출 반기보고서 적시\nFBI·국토안보수사국 조사 중\n“핵무장론 영향 가능성 여전” 분석도\n\n지난해 미국 에너지부가 의회에 제출하기 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503180924011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=kh_science"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "개혁 필요한 ‘세계기후총회’ 어찌할까…“이행 강화부터 시작”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1269965.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "중국서 ‘뇌 표적’ 유전자 교정 치료받은 6살 아이 사망 파장",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1270609.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Italy putting nearly all major cities on highest heat alert",
+          "gist": "Some 19 major Italian cities - including Rome, Milan and Naples - are already on",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cr7k4gdrgljo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Drifting SpaceX rocket heading for accidental collision with moon",
+          "gist": "Scientists and sky gazers will watch intently as rocket’s upper stage slams into",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/science/2026/jul/31/spacex-rocket-moon-collision"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "A Ton of Space Junk Tumbles Unpredictably to Earth Every Week",
+          "gist": "Flaming chunks of metal crash into homes, farms and parking lots. Who’s to blame",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/07/31/world/asia/space-debris-falling-crashing-earth-risk.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "눈 그쳤지만 찬 바람 ‘쌩쌩’…어제보다 조금 더 추워요",
+          "gist": "전국의 많은 지역에 밤 사이 눈이 내린 18일 서울 경복궁에 눈이 쌓여 있다. 김창길 기자\n\n밤 사이 해안 지역을 제외하곤 전국 대부분 눈이 그",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503190731001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=kh_science"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "온난화로 빨라지는 봄…꽃샘추위 더 잦아진다",
+          "gist": "영하 40도 북극 한파 내려와\n서울 등 ‘가장 늦은 대설특보’\n20일까지 아침 기온 영하권\n\n이례적인 ‘3월 폭설’로 18일 전국 대부분 지역에",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503182036005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=kh_science"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "[오늘의 날씨]2025년 3월 19일 춘분 하루 앞두고 막판까지 요란한 꽃샘추위",
+          "gist": "",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503182006005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=kh_science"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "서울·부산·광주 ‘역대 가장 늦은 대설특보’…‘3월 중순’ 폭설 왜?",
+          "gist": "서울에 역대 가장 늦은 대설주의보가 내려진 18일 서울 중구 남산 일대에 눈이 쌓여 있다. 한수빈 기자\n\n이례적인 ‘3월 폭설’로 18일 전국 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503181556001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=kh_science"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "정진호 신임 한림원장 “조직 운영 개방성 높일 것”",
+          "gist": "“올해 11월 총회에서 정관 개정”\n\n정진호 신임 한국과학기술한림원장이 18일 서울 중구의 한 식당에서 열린 기자간담회에서 발언하고 있다. 한림",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202503181550001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=kh_science"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "북극 해빙 녹는 속도 둔화한 줄 알았더니…‘급반전’ 중",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1269425.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "장수시대의 ‘아픔’…기대수명과 건강수명 격차 커졌다",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1269549.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "보이저 1호, 49년 만에 ‘1광일’ 거리…2030년대 타임캡슐로 남는다",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1269765.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "인공지능 기업들은 왜 철학자를 고용할까",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/future/1269775.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "역대 최강 스타십, ‘무결점’ 준궤도 비행 성공…궤도 진입 도전 ‘성큼’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/technology/1269914.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "중국 로켓 발사하자 ‘쩌억’ 번개 관통…그런데도 계속 우주로? [1분 쇼츠]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/technology/1269947.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "첫 발사에서 성공한 인도 민간 로켓…‘자립 노선’ 60년의 내공",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1270064.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "태양의 1조배 밝기로 물질 분석…‘한국새빛가속기’ 첫 삽",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1270142.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "행성이냐, 위성이냐…갈색왜성 공전하는 목성급 천체에 천문학계 발칵",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1270256.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘설탕 구름’ 진짜 있다…우리 은하 중심부서 ‘당 분자’ 발견",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1270439.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“‘달 기지’는 작은 도시 모습일 것… 한국과도 협력 추진”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1270529.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "올해 ‘슈퍼 엘니뇨’…가장 더웠던 2024년보다 더울 확률 두배 껑충",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1270678.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "남극에 날아든 ‘벌새’ 지형…숨겨진 지구의 이면 포착했다 [소중한 지구]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1270817.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Olga Soffer, Fashion Maven Who Studied Caveman Couture, Dies at 83",
+          "gist": "After working for a department store, she switched to archaeology and made impor",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/01/science/olga-soffer-dead.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Free diver, 21, wants to 'give back' to the ocean that has helped him",
+          "gist": "Iesetyn Morgan regularly free dives and shares the footage of marine life on soc",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/videos/c20e942zpd0o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Scientist's lifelong obsession with mystery of elusive 'pink zebra' seaweed",
+          "gist": "An ancient algae first spotted four decades ago will now join the collection of ",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/czrxepy3vn3o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "England and Wales on course for driest July on record",
+          "gist": "Met Office records indicate England and Wales are likely to have had their dries",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/weather/articles/cddjznv86p3o?at_medium=RSS&at_campaign=rss"
+        }
+      ]
+    },
+    "world": {
+      "article_count": 30,
+      "headlines": [
+        {
+          "date": "2026-08-01",
+          "title": "미-중 경제수장, 9월 정상회담 앞두고 통화…희토류·무역제재 신경전",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/china/1270879.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "젤렌스키 “러, 북한산 탄도미사일 다시 사용 정황”…예비 분석 발표",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/europe/1270916.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘시총 1→6위 추락’ 일본 반도체 키오시아 주가도 튀었다…17% 급등",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1270926.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘스페인 국경’ 몰려든 5만명 이주민 중 57명 사망…4만여명 모로코 귀환",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/europe/1270950.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "가짜 이란 핵시설 사진이…구글 어스, 악용 우려로 ‘AI 편집’ 기능 중단",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1270958.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "미얀마 로힝야족 탄 배 침몰 9명 실종…반군 교전 피해 방글라데시 가려다 사고",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/asiapacific/1270964.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Improvised Bomb Kills 3 at an Upscale Moscow Restaurant",
+          "gist": "Among the victims of the explosion, which also injured 21 people, were a securit",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/01/world/europe/deadly-bombing-moscow-restaurant.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "주인 안 오자 경적 '빵빵'…범인은 '성질 급한 개'",
+          "gist": "운전석에서 경적을 울린 개[더선 캡처][더선 캡처] 자동차 안에 있던 성질 급한 강아지가 연신 경적을 울려 사람들의 웃음을 자아냈습니다. 현지시",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260731163025f0G"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Police say 13 killed as small plane viewing Nazca Lines in Peru crashes",
+          "gist": "Those killed included 11 passengers and two pilots flying over the famous archeo",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/news/2026/8/1/police-say-13-killed-as-small-plane-viewing-nazca-lines-in-peru-crashes?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Israel Bombards Gaza, Days After Trump Announced Deal to Advance Cease-Fire",
+          "gist": "Palestinian officials said at least two people were killed. The deal announced b",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/01/world/middleeast/israel-gaza-strikes-trump-hamas.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Tourist plane crashes in Peru, killing 13",
+          "gist": "The small plane was flying over the Nazca Lines ​archaeological site when it cra",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c70g132erlko?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "페루 나스카 관광 비행기 추락…13명 사망",
+          "gist": "페루 나스카 유적지[AP=연합뉴스 자료사진. 재판매 및 DB 금지][AP=연합뉴스 자료사진. 재판매 및 DB 금지] 남미 페루의 나스카 유적지 ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260802054505ggA"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "콜롬비아서 반군소행 추정 폭탄테러…경찰 11명 부상",
+          "gist": "(뉴욕=연합뉴스) 이지헌 특파원 = 1일(현지시간) 남미 콜롬비아 북서부 접경 도시인 쿠쿠타의 경찰 건물에서 무장 반군 세력의 소행으로 추정되는",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260802002400072"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "At least 13 dead as tourist plane crashes during flight over Peru’s Nazca Lines",
+          "gist": "Aircraft crashes into field after departing from the nearby city of Ica, accordi",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/world/2026/aug/01/at-least-13-dead-as-tourist-plane-crashes-during-flight-over-perus-nazca-lines"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Fighting breaks out in western Tigray as Ethiopia and TPLF trade blame",
+          "gist": "Clashes near Sheraro mark one of the most serious threats yet to the fragile 202",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/news/2026/8/1/fighting-breaks-out-in-western-tigray-as-ethiopia-and-tplf-trade-blame?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "러 모스크바 도심 카페서 폭발…3명 사망·15명 부상",
+          "gist": "1일(현지시간) 모스크바 시내 카페 폭발 현장으로 향하는 구급차들[타스 연합뉴스. 재판매 및 DB 금지][타스 연합뉴스. 재판매 및 DB 금지]",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260802053830wFx"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "이탈리아 나폴리 인근 규모 4.7 지진…26명 부상",
+          "gist": "1일(현지시간) 이탈리아 나폴리 부근 지진으로 산사태가 발생한 현장[EPA 연합뉴스. 재판매 및 DB 금지][EPA 연합뉴스. 재판매 및 DB ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260802053559qV8"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "트럼프 \"사법피해자기금 재추진\"…측근 인준 압박",
+          "gist": "트럼프 대통령[AFP=연합뉴스. 재판매 및 DB 금지][AFP=연합뉴스. 재판매 및 DB 금지] 도널드 트럼프 미국 대통령이 최측근인 토드 블랜",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR202608020533272UL"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "맨몸으로 바다 건너…모로코서 수만명 스페인 진입, 군대 투입됐다",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1270877.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "타지마할 원숭이가 한국인 팔 물어…“출혈에도 구급차 안 왔다”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1270880.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "‘일본판 CIA’ 공식 출범…스파이 방지·국외 내밀한 정보 수집도",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1270886.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "이란 “미군 기지 습격해 전투기 6대 타격”…미 “거짓 주장, 피해 없어”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/arabafrica/1270891.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "중국, 대규모 경기부양 신중모드 속 제조업 다시 ‘위축’ 국면",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/china/1270911.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "“사우디 공격, 이란 감독 아래 후티·이라크 민병대 공조로 이뤄져”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1270928.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "일본, ‘식료품 소비세’ 내년부터 2년간 8%→1%…여행객도 부담 줄어",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1270929.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "미·이스라엘, 주말 내 이란 에너지 시설 타격할 수도…“역대 가장 강력한 공습”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/america/1270948.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "피파, ‘월드컵 지분 매각’ 취소…“축구 팔아넘긴다” 거센 반발에 철회",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1270949.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Spain Installs Floating Barrier in Ceuta After Influx of Migrants",
+          "gist": "Most of those who came to the territory, a Spanish exclave in Africa, have retur",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/01/world/europe/spain-ceuta-migrants-morocco-border.html"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Al Jazeera reports from Ceuta as migrants leave the enclave",
+          "gist": "Spain says “virtually all” of the estimated 60,000 migrants who stormed its Nort",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/8/1/al-jazeera-reports-from-ceuta-as-migrants-leave-the-enclave?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-01",
+          "title": "Three killed after bomb detonated at Moscow restaurant, state media say",
+          "gist": "Security officials said a woman tried to enter the restaurant with explosives bu",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c86n4ljxp63o?at_medium=RSS&at_campaign=rss"
+        }
+      ]
+    }
+  },
+  "compacted_at": "2026-10-31T03:56:19.129858"
+}
