@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-31",
+  "terms": [
+    {
+      "term": "부재자 투표",
+      "reading": "",
+      "meaning": "선거일에 투표소에 직접 가기 어려운 유권자가 우편이나 지정된 장소를 통해 미리 투표하는 제도를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "부재자 투표",
+      "url": "https://ko.wikipedia.org/wiki/부재자_투표",
+      "date": "2026-10-31",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "왜행성",
+      "reading": "",
+      "meaning": "태양 주위를 도는 천체 가운데 질량이 충분해 구형에 가깝지만 궤도 근처의 다른 천체를 쓸어내지 못해 행성에서 제외된 천체를 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "왜행성",
+      "url": "https://ko.wikipedia.org/wiki/왜행성",
+      "date": "2026-10-31",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "금관문화훈장",
+      "reading": "",
+      "meaning": "문화 예술 발전에 기여한 공이 큰 사람에게 수여하는 대한민국 문화훈장의 한 등급을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "문화훈장 (대한민국)",
+      "url": "https://ko.wikipedia.org/wiki/문화훈장_(대한민국)",
+      "date": "2026-10-31",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "초지능",
+      "reading": "",
+      "meaning": "인간의 지능을 모든 영역에서 뛰어넘는 가상의 인공지능을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "초지능",
+      "url": "https://ko.wikipedia.org/wiki/초지능",
+      "date": "2026-10-31",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "용적률",
+      "reading": "",
+      "meaning": "대지 면적에 대한 건축물 연면적의 비율로, 건축 규모의 상한을 정하는 기준을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "용적률",
+      "url": "https://ko.wikipedia.org/wiki/용적률",
+      "date": "2026-10-31",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "대통령표창",
+      "reading": "",
+      "meaning": "대한민국에서 대통령이 공로가 뚜렷한 개인이나 단체에 수여하는 표창을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "대한민국의 표창",
+      "url": "https://ko.wikipedia.org/wiki/대한민국의_표창",
+      "date": "2026-10-31",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-10-31T03:56:38+09:00",
+      "added": 6,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
