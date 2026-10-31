@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-01",
+  "terms": [
+    {
+      "term": "Dendrite",
+      "reading": "덴드라이트",
+      "meaning": "액체가 굳을 때 나뭇가지 모양으로 갈라지며 결정이 자라는 구조를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "덴드라이트",
+      "url": "https://ko.wikipedia.org/wiki/덴드라이트",
+      "date": "2026-11-01",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Cardiac Arrest",
+      "reading": "심정지",
+      "meaning": "심장이 갑자기 멈추어 혈액을 온몸으로 보내지 못하는 상태를 뜻한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "심정지",
+      "url": "https://ko.wikipedia.org/wiki/심정지",
+      "date": "2026-11-01",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "슈퍼앱",
+      "reading": "",
+      "meaning": "여러 기능을 하나의 앱 안에서 모두 제공하는 통합 응용 프로그램을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "슈퍼앱",
+      "url": "https://ko.wikipedia.org/wiki/슈퍼앱",
+      "date": "2026-11-01",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Quorum",
+      "reading": "정족수",
+      "meaning": "회의에서 의결을 성립시키는 데 필요한 최소한의 출석 인원을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "정족수",
+      "url": "https://ko.wikipedia.org/wiki/정족수",
+      "date": "2026-11-01",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "Navier-Stokes problem",
+      "reading": "나비에-스토크스 문제",
+      "meaning": "나비에-스토크스 방정식의 해가 항상 존재하고 매끄러운지 밝히는 수학 난제를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "나비에-스토크스 존재성과 매끄러움",
+      "url": "https://ko.wikipedia.org/wiki/나비에-스토크스_존재성과_매끄러움",
+      "date": "2026-11-01",
+      "via": "news_terms",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "기본소득",
+      "reading": "",
+      "meaning": "국가나 사회가 모든 구성원에게 조건 없이 정기적으로 일정 금액의 돈을 지급해 최소한의 생활을 보장하려는 제도를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "보편적 기본소득",
+      "url": "https://ko.wikipedia.org/wiki/보편적_기본소득",
+      "date": "2026-11-01",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "폐렴구균 백신",
+      "reading": "",
+      "meaning": "폐렴구균이 일으키는 폐렴, 뇌수막염, 중이염 같은 감염병을 예방하기 위해 접종하는 백신을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "폐렴구균 백신",
+      "url": "https://ko.wikipedia.org/wiki/폐렴구균_백신",
+      "date": "2026-11-01",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-01T03:58:19+09:00",
+      "added": 7,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
