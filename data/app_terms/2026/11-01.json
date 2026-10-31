@@ -84,6 +84,30 @@
       "date": "2026-11-01",
       "via": "raw",
       "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "G20",
+      "reading": "",
+      "meaning": "주요 20개국과 유럽연합이 함께 모여 세계 경제와 금융 문제를 논의하는 국제 협의체를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "G20",
+      "url": "https://ko.wikipedia.org/wiki/G20",
+      "date": "2026-11-01",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "헌법재판소",
+      "reading": "",
+      "meaning": "법률이나 국가기관의 행위가 헌법에 어긋나는지를 심사하고 판단하는 국가기관을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "헌법재판소",
+      "url": "https://ko.wikipedia.org/wiki/헌법재판소",
+      "date": "2026-11-01",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -92,6 +116,13 @@
       "added": 7,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-01T05:45:06+09:00",
+      "added": 2,
+      "via": [
         "raw"
       ]
     }
