@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-02",
+  "terms": [
+    {
+      "term": "High-yield Bond",
+      "reading": "고수익 채권",
+      "meaning": "신용등급이 투자적정 수준 이하로 낮아 부도 위험이 크지만, 그 대가로 높은 수익률을 주는 채권을 말한다. 정크본드라고도 부른다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "정크 본드",
+      "url": "https://ko.wikipedia.org/wiki/정크_본드",
+      "date": "2026-11-02",
+      "via": "news_terms",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "Gateway",
+      "reading": "게이트웨이",
+      "meaning": "서로 다른 네트워크나 체계를 연결해 데이터를 주고받을 수 있게 하는 장치나 통로를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "게이트웨이",
+      "url": "https://ko.wikipedia.org/wiki/게이트웨이",
+      "date": "2026-11-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "권역응급의료센터",
+      "reading": "",
+      "meaning": "중증 응급환자를 전문적으로 치료하기 위해 권역별로 지정된 대형 응급의료기관을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "권역응급의료센터",
+      "url": "https://ko.wikipedia.org/wiki/권역응급의료센터",
+      "date": "2026-11-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "CAR-T",
+      "reading": "",
+      "meaning": "환자의 T세포를 유전자 조작해 암세포를 공격하도록 만든 면역항암 치료법을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "키메라 항원 수용체 T 세포",
+      "url": "https://ko.wikipedia.org/wiki/키메라_항원_수용체_T_세포",
+      "date": "2026-11-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "사전투표",
+      "reading": "",
+      "meaning": "선거일 전에 미리 투표소를 찾아 투표할 수 있도록 마련한 제도를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "사전 투표",
+      "url": "https://ko.wikipedia.org/wiki/사전_투표",
+      "date": "2026-11-02",
+      "via": "raw",
+      "model": "deepseek-ai/deepseek-v4.1-flash"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-02T03:51:39+09:00",
+      "added": 5,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
