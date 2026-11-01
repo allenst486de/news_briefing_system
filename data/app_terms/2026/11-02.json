@@ -60,6 +60,30 @@
       "date": "2026-11-02",
       "via": "raw",
       "model": "deepseek-ai/deepseek-v4.1-flash"
+    },
+    {
+      "term": "무인지상차량",
+      "reading": "",
+      "meaning": "UGV(Unmanned Ground Vehicle)로, 사람이 탑승하지 않고 원격 조종이나 자율 주행으로 움직이며 정찰·수송 등 지상의 임무를 수행하는 차량을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "무인 지상 차량",
+      "url": "https://ko.wikipedia.org/wiki/무인_지상_차량",
+      "date": "2026-11-02",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
+    },
+    {
+      "term": "혈뇌장벽",
+      "reading": "",
+      "meaning": "혈액과 뇌 조직 사이에서 물질의 이동을 선택적으로 차단해 뇌를 유해 물질로부터 보호하는 장벽을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "혈액뇌장벽",
+      "url": "https://ko.wikipedia.org/wiki/혈액뇌장벽",
+      "date": "2026-11-02",
+      "via": "raw",
+      "model": "z-ai/glm-5.3-flash"
     }
   ],
   "runs": [
@@ -68,6 +92,13 @@
       "added": 5,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-02T05:45:06+09:00",
+      "added": 2,
+      "via": [
         "raw"
       ]
     }
