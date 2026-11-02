@@ -544,6 +544,22 @@ def _stock_entry(term, title, category="economy"):
             "via": "stock", "foundOn": "2026-03-01"}
 
 
+def test_build_entry_marks_non_wiki_terms_and_stock_keeps_them_back():
+    wiki = {"head": "환율", "reading": "", "category": "economy",
+            "wiki": {"title": "환율", "url": "https://ko.wikipedia.org/wiki/환율"}}
+    web = {"head": "딥페이크", "reading": "", "category": "it",
+           "evidence": {"source": "웹", "url": "https://example.com/a"}}
+    a, b = pipeline.build_entry(wiki, "뜻", None, None), pipeline.build_entry(web, "뜻", "it", "m")
+    assert a["wikiTitle"] == "환율" and "source" not in a and store.is_wiki(a)
+    assert b["source"] == "웹" and b["url"] == "https://example.com/a" and "wikiTitle" not in b
+    assert b["model"] == "m" and not store.is_wiki(b)
+    with tempfile.TemporaryDirectory() as root:
+        stock.save(root, 2026, {"terms": [b, _stock_entry("금리", "금리")], "done": []})
+        taken = stock.take(root, DAY, store.empty_day(DAY), 5)
+        assert [t["term"] for t in taken] == ["금리"], "위키 없는 항목은 앱 준비 전엔 비축에 남는다"
+        assert [t["term"] for t in stock.load(root, 2026)["terms"]] == ["딥페이크"]
+
+
 def test_stock_take_moves_entries_and_skips_ones_used_elsewhere():
     with tempfile.TemporaryDirectory() as root:
         used = {"date": "2026-09-01", "terms": [_stock_entry("가격", "가격")], "runs": []}

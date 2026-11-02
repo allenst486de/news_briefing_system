@@ -65,6 +65,11 @@ def save_day(root: str, day: Date, doc: Dict) -> str:
     return path
 
 
+def is_wiki(entry: Dict) -> bool:
+    """출처가 위키백과인가 — source 가 없으면 위키백과(기존 항목 모양 그대로)."""
+    return entry.get("source", "위키백과") == "위키백과"
+
+
 def term_keys(entry: Dict) -> Set[str]:
     keys = {normalize_term(entry.get("term")), normalize_term(entry.get("reading"))}
     if entry.get("wikiTitle"):

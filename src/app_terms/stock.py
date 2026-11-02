@@ -101,6 +101,9 @@ def take(root: str, day: Date, doc: Dict, count: int) -> List[Dict]:
         keys = store.term_keys(entry)
         if keys & known:
             continue                    # 그사이 다른 경로로 실렸다 — 비축에서도 지운다
+        if not store.is_wiki(entry) and not pipeline.NON_WIKI_IN_DAY:
+            kept.append(entry)          # 앱이 받을 준비가 되기 전까지 비축에 둔다
+            continue
         if len(taken) < count:
             known |= keys
             taken.append({**{k: v for k, v in entry.items() if k != "foundOn"},
@@ -330,13 +333,8 @@ def build(repo_root: str, *, out_root: Optional[str] = None, target: int = 400,
                     if not meaning:
                         stats["no_meaning"] += 1
                         continue
-                    category = concept or candidate.get("category", "")
-                    entry = {"term": candidate["head"], "reading": candidate["reading"], "meaning": meaning,
-                             "category": category, "categoryName": pipeline._category_name(category),
-                             "wikiTitle": candidate["wiki"]["title"], "url": candidate["wiki"]["url"],
+                    entry = {**pipeline.build_entry(candidate, meaning, concept, model),
                              "via": "stock", "foundOn": candidate["foundOn"]}
-                    if model:
-                        entry["model"] = model
                     if not publishable(entry):
                         stats["blocked_by_app"] += 1
                         continue

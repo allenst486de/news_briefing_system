@@ -67,6 +67,9 @@ RSS_NOT_BEFORE = dtime(6, 40)
 # 오늘 몫은 STOCK_AFTER 이후에만: 그 전엔 새벽 회차가 아직 새 용어를 채우는 중일 수 있어서
 # 비축분을 아낀다(낱말퍼즐 쪽 게시도 07:30 이후에 비축분을 쓴다).
 STOCK_FLOOR = 5
+# 위키백과 문서가 없는 용어(source·url 이 기사·웹 근거)를 앱에 넘길지. 앱의 publish.py 가 출처를
+# "위키백과"로 못 박고 있어 앱이 용어별 source 를 받게 바뀌기 전까지는 비축분에만 쌓는다.
+NON_WIKI_IN_DAY = False
 STOCK_AFTER = dtime(7, 20)
 
 VIA_LABELS = {"news_terms": "브리핑 용어", "raw": "기사 목록", "rss": "RSS 제목", "stock": "비축분"}
@@ -192,6 +195,24 @@ def _reply(value) -> Tuple[Optional[str], Optional[str]]:
 
 # 8개 분야 어디에도 들지 않는 용어 — 앱은 "기타" 칩으로 보여 준다
 OTHER_CATEGORY = "other"
+
+
+def build_entry(candidate: Dict, meaning: str, concept: Optional[str], model: Optional[str]) -> Dict:
+    """뜻풀이까지 끝난 후보 → 저장 항목. 날짜·출처 경로(date·via·foundOn)는 부르는 쪽이 붙인다.
+
+    위키백과 문서가 있으면 wikiTitle·url. 없으면 wiki 대신 evidence({url, source})를 받아
+    source("기사"·"웹")와 근거 주소를 싣는다 — 위키 항목에는 source 를 쓰지 않는다(기본값이 위키백과).
+    """
+    category = concept or candidate.get("category", "")
+    entry = {"term": candidate["head"], "reading": candidate["reading"], "meaning": meaning,
+             "category": category, "categoryName": _category_name(category)}
+    if candidate.get("wiki"):
+        entry["wikiTitle"], entry["url"] = candidate["wiki"]["title"], candidate["wiki"]["url"]
+    else:
+        entry["source"], entry["url"] = candidate["evidence"]["source"], candidate["evidence"]["url"]
+    if model:       # 대체 모델이 쓴 뜻풀이는 나중에 골라 검토할 수 있게
+        entry["model"] = model
+    return entry
 
 
 def _category_name(category: str) -> str:
@@ -362,7 +383,8 @@ def write_meanings(batch: List[Dict], *, pool, chat,
     for number, candidate in enumerate(batch, 1):
         label = candidate["head"] + (f" ({candidate['reading']})" if candidate["reading"] else "")
         category = _category_name(candidate.get("category", "")) or "모름"
-        lines.append(f"{number}. {label} · 기사 분야: {category} · 위키백과 문서: {candidate['wiki']['title']}")
+        wiki = f" · 위키백과 문서: {candidate['wiki']['title']}" if candidate.get("wiki") else ""
+        lines.append(f"{number}. {label} · 기사 분야: {category}{wiki}")
     user_prompt = ("아래 용어의 뜻을 풀이하세요.\n\n" + "\n".join(lines)
                    + '\n\n형식: [{"n": 1, "meaning": "...", "category": "economy"}]')
     raw, model = _reply(chat(pool, MEANING_SYSTEM, user_prompt, max_tokens=1500, temperature=0.2,
@@ -567,20 +589,7 @@ def _admit(fresh: List[Dict], *, via: str, day: Date, doc: Dict, out_root: str, 
                 rejected["no_meaning"] += 1
                 continue
             # 색 구분은 기사 분야가 아니라 용어 자체의 분야로 — 선거 기사에 나온 '인플레이션'은 경제
-            category = concept or candidate.get("category", "")
-            entry = {
-                "term": candidate["head"],
-                "reading": candidate["reading"],
-                "meaning": meaning,
-                "category": category,
-                "categoryName": _category_name(category),
-                "wikiTitle": candidate["wiki"]["title"],
-                "url": candidate["wiki"]["url"],
-                "date": day.isoformat(),
-                "via": via,
-            }
-            if model:       # 대체 모델이 쓴 뜻풀이는 나중에 골라 검토할 수 있게
-                entry["model"] = model
+            entry = {**build_entry(candidate, meaning, concept, model), "date": day.isoformat(), "via": via}
             doc["terms"].append(entry)
             known |= store.term_keys(entry)
             added += 1
