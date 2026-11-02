@@ -36,6 +36,18 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-03",
       "via": "news_terms"
+    },
+    {
+      "term": "바이오시밀러",
+      "reading": "",
+      "meaning": "기존에 승인된 생물의약품과 품질·안전성·효능이 실질적으로 같은 모방 생물의약품을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "바이오시밀러",
+      "url": "https://ko.wikipedia.org/wiki/바이오시밀러",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-03",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -44,6 +56,13 @@
       "added": 3,
       "via": [
         "news_terms"
+      ]
+    },
+    {
+      "at": "2026-11-03T05:45:09+09:00",
+      "added": 1,
+      "via": [
+        "raw"
       ]
     }
   ]
