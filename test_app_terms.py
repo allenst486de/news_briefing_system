@@ -544,6 +544,41 @@ def _stock_entry(term, title, category="economy"):
             "via": "stock", "foundOn": "2026-03-01"}
 
 
+def test_web_evidence_prefers_encyclopedia_and_needs_the_term_in_the_text():
+    import os
+    from src.app_terms import web
+
+    class Reply:
+        status_code = 200
+
+        def __init__(self, items):
+            self._items = items
+
+        def json(self):
+            return {"items": self._items}
+
+    desc = "사람이 만든 가짜 영상이나 음성을 인공지능으로 합성하는 기술을 가리키는 말이다."
+
+    def get(url, headers=None, params=None, timeout=None):
+        if url.endswith("/encyc"):
+            return Reply([{"title": "<b>딥페이크</b>", "link": "https://terms.naver.com/e?1", "description": desc}]
+                         if params["query"] == "딥페이크" else [])
+        return Reply([{"title": "무관한 글", "link": "https://a.example/1", "description": "쿠폰 이벤트 안내 " * 4},
+                      {"title": "<b>프롬프트주입</b> - 나무위키", "link": "https://namu.wiki/w/x", "description": desc}]
+                     if params["query"] == "프롬프트주입" else [])
+
+    os.environ["NAVER_CLIENT_ID"], os.environ["NAVER_CLIENT_SECRET"] = "id", "secret"
+    try:
+        found = web.evidence([{"head": "딥페이크", "reading": ""}, {"head": "프롬프트주입", "reading": ""},
+                              {"head": "없는말", "reading": ""}], get=get)
+    finally:
+        del os.environ["NAVER_CLIENT_ID"], os.environ["NAVER_CLIENT_SECRET"]
+    assert found["딥페이크"]["source"] == "네이버 지식백과" and found["딥페이크"]["url"].startswith("https://terms.naver.com")
+    assert found["프롬프트주입"]["source"] == "웹" and found["프롬프트주입"]["url"] == "https://namu.wiki/w/x"
+    assert "없는말" not in found
+    assert web.evidence([{"head": "딥페이크", "reading": ""}], get=get) == {}, "키가 없으면 빈 결과"
+
+
 def test_build_entry_marks_non_wiki_terms_and_stock_keeps_them_back():
     wiki = {"head": "환율", "reading": "", "category": "economy",
             "wiki": {"title": "환율", "url": "https://ko.wikipedia.org/wiki/환율"}}

@@ -33,7 +33,7 @@ from ..utils.llm_client import _salvage_array, _try_parse
 from ..utils.logger import setup_logger
 from ..utils.terms_store import normalize_term
 from ..utils.text_guard import foreign_leak
-from . import nim, store, wiki
+from . import nim, store, web, wiki
 
 logger = setup_logger()
 
@@ -74,7 +74,7 @@ STOCK_AFTER = dtime(7, 20)
 
 VIA_LABELS = {"news_terms": "브리핑 용어", "raw": "기사 목록", "rss": "RSS 제목", "stock": "비축분"}
 REJECT_LABELS = {
-    "duplicate": "올해 중복", "not_in_article": "기사에 없는 말", "no_wiki": "위키백과 문서 없음",
+    "duplicate": "올해 중복", "not_in_article": "기사에 없는 말", "no_wiki": "위키백과 문서 없음", "no_evidence": "검색 근거 없음",
     "disambiguation": "동음이의 문서", "person": "사람 문서", "entity": "나라·지명·작품·기업 문서",
     "no_meaning": "뜻풀이 실패",
 }
@@ -103,7 +103,10 @@ MEANING_SYSTEM = """당신은 한국어 사전 편찬자입니다. 용어의 일
    하나로 고르고, 어디에도 맞지 않으면 other 로 둡니다. 기사 분야는 뜻을 고르는 데 쓰고,
    category 는 용어 자체로 정합니다(선거 기사에 나온 인플레이션은 economy, 벤처캐피털은 economy).
    예: 장치·소프트웨어·인터넷 기술은 it.
-7. 반드시 JSON 배열만 출력합니다. 설명 문구를 붙이지 않습니다.
+7. 위키백과 문서 대신 '검색 근거'가 적힌 용어는 위키백과에 문서가 없는 말입니다. 근거에 적힌 내용만으로 풀이하고,
+   근거가 부족하거나 서로 어긋나거나, 사람·지명·기업·상표·작품·단체의 이름이면 meaning 을 빈 문자열로 둡니다.
+   근거 문장을 그대로 베끼지 말고 1~4번 규칙에 맞게 다시 씁니다.
+8. 반드시 JSON 배열만 출력합니다. 설명 문구를 붙이지 않습니다.
 예시 출력: [{"n": 1, "meaning": "물가가 전반적으로 오르고 돈의 가치가 떨어지는 현상을 말한다.", "category": "economy"}]"""
 
 _PAREN = re.compile(r"^\s*(.+?)\s*[\(（]\s*([^)）]+?)\s*[\)）]\s*$")
@@ -383,7 +386,8 @@ def write_meanings(batch: List[Dict], *, pool, chat,
     for number, candidate in enumerate(batch, 1):
         label = candidate["head"] + (f" ({candidate['reading']})" if candidate["reading"] else "")
         category = _category_name(candidate.get("category", "")) or "모름"
-        wiki = f" · 위키백과 문서: {candidate['wiki']['title']}" if candidate.get("wiki") else ""
+        wiki = f" · 위키백과 문서: {candidate['wiki']['title']}" if candidate.get("wiki") \
+            else f" · 검색 근거: {candidate['evidence']['text']}"
         lines.append(f"{number}. {label} · 기사 분야: {category}{wiki}")
     user_prompt = ("아래 용어의 뜻을 풀이하세요.\n\n" + "\n".join(lines)
                    + '\n\n형식: [{"n": 1, "meaning": "...", "category": "economy"}]')
@@ -546,12 +550,12 @@ def _admit(fresh: List[Dict], *, via: str, day: Date, doc: Dict, out_root: str, 
            run: Dict) -> None:
     """위키백과 확인 → 뜻풀이 → 묶음마다 저장."""
     found = wiki_lookup([title for c in fresh for title in (c["reading"], c["lookup"]) if title])
-    approved = []
+    approved, no_wiki = [], []
     for candidate in interleave(fresh):
         info = (found.get(candidate["reading"]) if candidate["reading"] else None) \
             or found.get(candidate["lookup"])
         if not info:
-            rejected["no_wiki"] += 1
+            no_wiki.append(candidate)
             continue
         if info.get("disambiguation"):
             rejected["disambiguation"] += 1
@@ -568,6 +572,15 @@ def _admit(fresh: List[Dict], *, via: str, day: Date, doc: Dict, out_root: str, 
             continue
         known.add(wiki_key)
         approved.append({**candidate, "wiki": info})
+    if NON_WIKI_IN_DAY:         # 앱이 받을 준비가 되면 켠다 — 그 전엔 비축분 쪽(stock.build)만 쓴다
+        proofs = web.evidence(no_wiki)
+        for candidate in no_wiki:
+            if candidate["head"] in proofs:
+                approved.append({**candidate, "evidence": proofs[candidate["head"]]})
+            else:
+                rejected["no_evidence"] += 1
+    else:
+        rejected["no_wiki"] += len(no_wiki)
 
     needed = target - len(doc["terms"])
     approved = approved[:needed + MEANING_BATCH // 2]      # 뜻풀이에 실패하는 몫만큼 여유

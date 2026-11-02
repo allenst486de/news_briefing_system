@@ -24,7 +24,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Set
 
 from ..utils.logger import setup_logger
-from . import nim, pipeline, store, wiki
+from . import nim, pipeline, store, web, wiki
 
 logger = setup_logger()
 KST = timezone(timedelta(hours=9))
@@ -298,7 +298,7 @@ def build(repo_root: str, *, out_root: Optional[str] = None, target: int = 400,
                 fresh.append({"term": term, "category": category, "head": head,
                               "reading": reading, "lookup": original, "foundOn": found_on})
 
-        approved = []
+        approved, webbed = [], []
         if fresh:
             found = wiki_lookup([t for c in fresh for t in (c["reading"], c["lookup"]) if t])
             for candidate in pipeline.interleave(fresh):
@@ -306,7 +306,8 @@ def build(repo_root: str, *, out_root: Optional[str] = None, target: int = 400,
                     or found.get(candidate["lookup"])
                 reason = None
                 if not info:
-                    reason = "no_wiki"
+                    webbed.append(candidate)
+                    continue
                 elif info.get("disambiguation"):
                     reason = "disambiguation"
                 elif info.get("person"):
@@ -320,6 +321,13 @@ def build(repo_root: str, *, out_root: Optional[str] = None, target: int = 400,
                     continue
                 known.add("wiki:" + info["title"])
                 approved.append({**candidate, "wiki": info})
+
+        proofs = web.evidence(webbed)       # 위키 문서가 없는 말은 검색 근거로(비축분에만 쌓인다)
+        for candidate in webbed:
+            if candidate["head"] in proofs:
+                approved.append({**candidate, "evidence": proofs[candidate["head"]]})
+            else:
+                stats["no_evidence"] += 1
 
         batches = [approved[i:i + pipeline.MEANING_BATCH]
                    for i in range(0, len(approved), pipeline.MEANING_BATCH)]
