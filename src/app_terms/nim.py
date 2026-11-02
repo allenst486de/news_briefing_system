@@ -41,6 +41,7 @@ CONNECT_TIMEOUT = 10
 FIRST_RESPONSE_TIMEOUT = 300
 CALL_TIMEOUT = 330
 MAX_ATTEMPTS = 4
+MODEL_LIMITED_STREAK = 3     # 같은 모델에서 429가 이만큼 연달아 오면 다음 모델로 (모델 전체가 막힌 경우)
 
 # 기본 모델이 대기열에서 못 빠져나올 때만 쓴다. 9/14 실측 — glm-5.3-flash 는 바로 받지만 생성이
 # 느리고(4개에 약 170초) 뜻풀이가 정확하다. nemotron-3-super 는 5초 안에 끝나지만 뜻이 부정확하거나
@@ -215,6 +216,7 @@ def chat_with_model(pool: KeyPool, system_prompt: str, user_prompt: str, *,
     post = post or requests.post
     models = models or model_chain()
     step = 0
+    limited = 0         # 같은 모델에서 연달아 받은 429 — 키 하나가 아니라 모델이 막힌 신호
 
     for attempt in range(MAX_ATTEMPTS):
         if deadline is not None and clock() >= deadline:
@@ -276,6 +278,12 @@ def chat_with_model(pool: KeyPool, system_prompt: str, user_prompt: str, *,
             wait = retry_after or _backoff(attempt)
             logger.warning(f"[{label} · {model}] 호출 제한(429) — 이 키는 {wait:.0f}초 쉬고 다른 키로")
             pool.cool(label, wait)
+            limited += 1
+            if limited >= MODEL_LIMITED_STREAK and step + 1 < len(models):
+                # 2026-11-02: deepseek-v4.1-flash 가 어느 키로 불러도 429 — 키만 바꾸다 다음 모델로 못 넘어갔다
+                logger.warning(f"[{model}] 키를 바꿔도 연달아 429 — 모델이 막혔다고 보고 다음 모델로")
+                step += 1
+                limited = 0
             continue
         if status in _FATAL_KEY:
             _count("dropped_keys")

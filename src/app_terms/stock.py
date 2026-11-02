@@ -34,7 +34,7 @@ WINDOW_DAYS = 3                            # 한 호출에 며칠치 기사를 �
 WINDOW_ARTICLES = 30                       # 호출당 기사 수 (중요 기사 먼저)
 SUMMARY_CHARS = 120
 TERMS_PER_CALL = 6
-CALL_WORKERS = 8
+CALL_WORKERS = 4
 ROUND_WINDOWS = 3                          # 한 회차에 창을 몇 개 함께 부를지 — 응답 대기를 겹쳐 쓴다
 STRIDE = 37                                # 창을 건너뛰며 고른다 — 일찍 멈춰도 해 전체에서 고르게 모이도록
 
@@ -227,6 +227,7 @@ def build(repo_root: str, *, out_root: Optional[str] = None, target: int = 400,
     done = set(doc["done"])
     windows = [w for w in _windows(_days(repo_root, today - timedelta(days=1)))
                if f"{w[0]:%Y-%m-%d}" not in done]
+    quiet_rounds = 0
     stats = Counter()
     result = {"stopped": "", "added": 0, "rejected": stats}
     nim.reset_stats()
@@ -342,8 +343,19 @@ def build(repo_root: str, *, out_root: Optional[str] = None, target: int = 400,
                     doc["terms"].append(entry)
                     known |= store.term_keys(entry)
                     result["added"] += 1
-        doc["done"].extend(f"{w[0]:%Y-%m-%d}" for w in group)
+        # 응답을 한 번도 못 받은 창(429·장애)은 읽은 것으로 치지 않는다 — 다음 실행이 다시 읽는다
+        answered = {job[3] for job, reply in zip(jobs, replies) if reply}
+        silent = [w for w in group if f"{w[0]:%Y-%m-%d}" not in answered and any(j[3] == f"{w[0]:%Y-%m-%d}" for j in jobs)]
+        doc["done"].extend(f"{w[0]:%Y-%m-%d}" for w in group if w not in silent)
         save(out_root, year, doc)
+        if jobs and not answered:
+            quiet_rounds += 1
+            if quiet_rounds >= 3:
+                result["stopped"] = "NVIDIA가 연달아 응답하지 않아 멈춤(호출제한일 수 있음) — 나중에 이어서"
+                break
+            time.sleep(180)             # 호출제한이 풀릴 때까지 쉰다
+        else:
+            quiet_rounds = 0
         logger.info(f"비축 {round_no}회차(창 {len(group)}개, {group[0][0]}~): 비축 {len(doc['terms'])}개 "
                     f"(+{result['added']}) · {nim.stats_line()}")
     else:

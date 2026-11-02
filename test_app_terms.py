@@ -215,6 +215,17 @@ def test_chat_429_keeps_the_model_and_moves_to_another_key():
     assert pool.acquire()[0][0] == "B", "429 난 키는 Retry-After 동안 쉬어야 한다"
 
 
+def test_chat_moves_to_next_model_when_every_key_gets_429_on_it():
+    """2026-11-02 deepseek 가 어느 키로 불러도 429 — 키만 바꾸다 다음 모델로 못 넘어갔다"""
+    nim.reset_stats()
+    clock = FakeClock()
+    pool = nim.KeyPool([("A", "a"), ("B", "b"), ("C", "c"), ("D", "d")], clock)
+    post = FakePost([FakeResponse(status=429), FakeResponse(status=429), FakeResponse(status=429),
+                     FakeResponse(lines=sse("ok"))])
+    assert nim.chat(pool, "s", "u", post=post, clock=clock, sleep=clock.sleep, models=["m1", "m2"]) == "ok"
+    assert post.models == ["m1", "m1", "m1", "m2"], post.models
+
+
 def test_chat_no_response_moves_to_fallback_model():
     nim.reset_stats()
     post = FakePost([FakeResponse(lines=sse("반쪽", "응답"), fail_after=1),
