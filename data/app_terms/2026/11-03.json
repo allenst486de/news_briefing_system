@@ -48,6 +48,18 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-03",
       "via": "raw"
+    },
+    {
+      "term": "코픽스",
+      "reading": "",
+      "meaning": "금융기관이 자금을 조달할 때 기준이 되는 대표적인 단기 금리를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "코픽스",
+      "url": "https://ko.wikipedia.org/wiki/코픽스",
+      "via": "stock",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-03"
     }
   ],
   "runs": [
@@ -63,6 +75,13 @@
       "added": 1,
       "via": [
         "raw"
+      ]
+    },
+    {
+      "at": "2026-11-03T07:30:10+09:00",
+      "added": 1,
+      "via": [
+        "stock"
       ]
     }
   ]
