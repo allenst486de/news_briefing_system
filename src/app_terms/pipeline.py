@@ -63,7 +63,13 @@ APP_OPENS_AT = dtime(8, 0)
 TODAY_CUTOFF = dtime(7, 40)
 RSS_NOT_BEFORE = dtime(6, 40)
 
-VIA_LABELS = {"news_terms": "브리핑 용어", "raw": "기사 목록", "rss": "RSS 제목"}
+# 비축분 — 그날 후보로 STOCK_FLOOR 개가 안 될 때 data/app_terms/stock 에서 채운다(stock.py).
+# 오늘 몫은 STOCK_AFTER 이후에만: 그 전엔 새벽 회차가 아직 새 용어를 채우는 중일 수 있어서
+# 비축분을 아낀다(낱말퍼즐 쪽 게시도 07:30 이후에 비축분을 쓴다).
+STOCK_FLOOR = 5
+STOCK_AFTER = dtime(7, 20)
+
+VIA_LABELS = {"news_terms": "브리핑 용어", "raw": "기사 목록", "rss": "RSS 제목", "stock": "비축분"}
 REJECT_LABELS = {
     "duplicate": "올해 중복", "not_in_article": "기사에 없는 말", "no_wiki": "위키백과 문서 없음",
     "disambiguation": "동음이의 문서", "person": "사람 문서", "entity": "나라·지명·작품·기업 문서",
@@ -398,8 +404,9 @@ def plan_run(day: Date, now: datetime, budget: int,
 def fill_day(day: Date, *, repo_root: str, out_root: Optional[str] = None,
              target: int = TARGET, budget: int = JOB_BUDGET_SECONDS, allow_rss: bool = True,
              pool=None, chat=None, wiki_lookup=None, rss_loader=None,
-             clock: Callable[[], float] = time.monotonic) -> Dict:
+             clock: Callable[[], float] = time.monotonic, now: Optional[datetime] = None) -> Dict:
     out_root = out_root or os.path.join(repo_root, "data", "app_terms")
+    now = now or datetime.now(KST)
     chat = chat or nim.chat_with_model
     wiki_lookup = wiki_lookup or wiki.lookup
     # RSS 수집도 마감을 넘지 않게 남은 시간의 절반까지만 쓴다
@@ -419,6 +426,10 @@ def fill_day(day: Date, *, repo_root: str, out_root: Optional[str] = None,
 
     pool = pool if pool is not None else nim.KeyPool.from_env()
     if not len(pool):
+        _top_up(out_root, day, doc, {"at": datetime.now(KST).isoformat(timespec="seconds"),
+                                     "added": 0, "via": []}, result, now)
+        result["after"] = len(doc["terms"])
+        result["added"] = result["after"] - result["before"]
         result["stopped"] = "NVIDIA 키 없음"
         return _finish(result)
 
@@ -475,6 +486,7 @@ def fill_day(day: Date, *, repo_root: str, out_root: Optional[str] = None,
                pool=pool, chat=chat, wiki_lookup=wiki_lookup, deadline=deadline, clock=clock,
                rejected=result["rejected"], run=run)
 
+    _top_up(out_root, day, doc, run, result, now)
     result["after"] = len(doc["terms"])
     result["added"] = result["after"] - result["before"]
     if result["after"] >= target:
@@ -484,6 +496,27 @@ def fill_day(day: Date, *, repo_root: str, out_root: Optional[str] = None,
     else:
         result["stopped"] = "후보 소진 — 다음 회차에 다시"
     return _finish(result)
+
+
+def _top_up(out_root: str, day: Date, doc: Dict, run: Dict, result: Dict, now: datetime) -> None:
+    """그날 용어가 STOCK_FLOOR 개에 못 미치면 비축분에서 모자란 만큼 옮긴다."""
+    need = STOCK_FLOOR - len(doc["terms"])
+    if need <= 0 or day > now.date() or (day == now.date() and now.time() < STOCK_AFTER):
+        return
+    from . import stock                 # stock.py 가 이 모듈을 쓰므로 여기서 가져온다
+    taken = stock.take(out_root, day, doc, need)
+    if not taken:
+        return
+    run["added"] += len(taken)
+    if "stock" not in run["via"]:
+        run["via"].append("stock")
+    if "stock" not in result["via"]:
+        result["via"].append("stock")
+    if not doc["runs"] or doc["runs"][-1] is not run:
+        doc["runs"].append(run)
+    store.save_day(out_root, day, doc)
+    logger.info(f"앱 용어 +{len(taken)} (비축분) — 오늘 {len(doc['terms'])}개: "
+                + ", ".join(t["term"] for t in taken))
 
 
 def _admit(fresh: List[Dict], *, via: str, day: Date, doc: Dict, out_root: str, known: set,

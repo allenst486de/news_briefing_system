@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import requests  # noqa: E402
 
-from src.app_terms import nim, pipeline, store, wiki  # noqa: E402
+from src.app_terms import nim, pipeline, stock, store, wiki  # noqa: E402
 
 DAY = date(2026, 9, 14)
 
@@ -525,6 +525,55 @@ def test_fill_day_saves_nothing_when_nvidia_is_down():
                                    rss_loader=lambda: {})
         assert result["added"] == 0 and result["stopped"].startswith("후보 소진"), result
         assert not os.path.exists(result["path"]), "추가된 게 없으면 파일을 만들지 않는다(빈 커밋 방지)"
+
+
+def _stock_entry(term, title, category="economy"):
+    return {"term": term, "reading": "", "meaning": f"{term}을 뜻한다. 시험용 풀이이다.", "category": category,
+            "categoryName": "경제", "wikiTitle": title, "url": f"https://ko.wikipedia.org/wiki/{title}",
+            "via": "stock", "foundOn": "2026-03-01"}
+
+
+def test_stock_take_moves_entries_and_skips_ones_used_elsewhere():
+    with tempfile.TemporaryDirectory() as root:
+        used = {"date": "2026-09-01", "terms": [_stock_entry("가격", "가격")], "runs": []}
+        store.save_day(root, date(2026, 9, 1), used)
+        stock.save(root, 2026, {"terms": [_stock_entry("가격", "가격"), _stock_entry("환율", "환율"),
+                                            _stock_entry("금리", "금리"), _stock_entry("물가", "물가")],
+                                "done": ["2026-02-03"]})
+        doc = store.empty_day(DAY)
+        taken = stock.take(root, DAY, doc, 2)
+        assert [t["term"] for t in taken] == ["환율", "금리"], taken
+        assert all(t["date"] == DAY.isoformat() and t["via"] == "stock" and "foundOn" not in t for t in taken)
+        left = stock.load(root, 2026)
+        assert [t["term"] for t in left["terms"]] == ["물가"], "쓴 건 빠지고, 올해 이미 실린 '가격'은 버려진다"
+        assert left["done"] == ["2026-02-03"], "읽은 창 기록은 그대로"
+
+
+def test_fill_day_tops_up_to_five_from_stock_when_nvidia_is_down():
+    with tempfile.TemporaryDirectory() as root:
+        make_repo(root, news_terms=[("인플레이션(Inflation)", "economy")])
+        out = os.path.join(root, "data", "app_terms")
+        stock.save(out, 2026, {"terms": [_stock_entry(f"용어{i}", f"문서{i}") for i in range(8)], "done": []})
+        result = pipeline.fill_day(DAY, repo_root=root, pool=one_key_pool(), chat=FakeChat(down=True),
+                                   wiki_lookup=FakeWiki(), rss_loader=lambda: {})
+        doc = store.load_day(out, DAY)
+        assert len(doc["terms"]) == 5 and result["after"] == 5, result
+        assert "stock" in result["via"] and all(t["via"] == "stock" for t in doc["terms"])
+        assert len(stock.load(out, 2026)["terms"]) == 3
+
+
+def test_stock_waits_until_0720_for_today_and_never_for_the_future():
+    from datetime import datetime
+    from src.app_terms.pipeline import KST
+    with tempfile.TemporaryDirectory() as root:
+        make_repo(root, news_terms=[])
+        out = os.path.join(root, "data", "app_terms")
+        stock.save(out, 2026, {"terms": [_stock_entry(f"용어{i}", f"문서{i}") for i in range(6)], "done": []})
+        today = date(2026, 11, 2)
+        for hour, minute, day, expect in ((6, 0, today, 0), (7, 25, today, 5), (6, 0, date(2026, 11, 3), 0)):
+            r = pipeline.fill_day(day, repo_root=root, pool=nim.KeyPool([]), chat=FakeChat(),
+                                  wiki_lookup=FakeWiki(), now=datetime(2026, 11, 2, hour, minute, tzinfo=KST))
+            assert r["after"] == expect, (hour, minute, day, r)
 
 
 def test_fill_day_without_keys_does_nothing():
