@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-04",
+  "terms": [
+    {
+      "term": "타당성 조사",
+      "reading": "",
+      "meaning": "사업이나 정책을 추진하기 전에 목표 달성이 가능한지, 비용과 효과가 적절한지 따져 실현 가능성을 판단하는 조사를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "타당성 조사",
+      "url": "https://ko.wikipedia.org/wiki/타당성_조사",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-04",
+      "via": "news_terms"
+    },
+    {
+      "term": "행정사무감사",
+      "reading": "",
+      "meaning": "지방의회가 지방자치단체의 행정사무가 법령에 따라 적정하게 처리되었는지 조사하는 제도를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "행정사무감사",
+      "url": "https://ko.wikipedia.org/wiki/행정사무감사",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-04",
+      "via": "news_terms"
+    },
+    {
+      "term": "Botnet",
+      "reading": "봇넷",
+      "meaning": "bot과 network의 합성어로, 악성코드에 감염되어 공격자가 원격으로 조종하는 다수의 컴퓨터들이 이루는 네트워크를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "봇넷",
+      "url": "https://ko.wikipedia.org/wiki/봇넷",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-04",
+      "via": "news_terms"
+    },
+    {
+      "term": "PFAS",
+      "reading": "",
+      "meaning": "과불화화합물로, 화학적으로 매우 안정해 잘 분해되지 않고 환경과 생체에 오래 축적될 수 있는 인공 합성 화학 물질군을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "과불화화합물",
+      "url": "https://ko.wikipedia.org/wiki/과불화화합물",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-04",
+      "via": "news_terms"
+    },
+    {
+      "term": "슈도에페드린",
+      "reading": "",
+      "meaning": "코감기나 비염 치료에 쓰이는 교감신경 흥분제로, 코막힘을 완화하는 성분을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "슈도에페드린",
+      "url": "https://ko.wikipedia.org/wiki/슈도에페드린",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-04",
+      "via": "raw"
+    },
+    {
+      "term": "주방위군",
+      "reading": "",
+      "meaning": "미국 각 주가 평시에는 주지사의 지휘를 받고 연방 정부의 요청 시 연방군에 편입될 수 있는 예비 군사 조직을 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "미국 주방위군",
+      "url": "https://ko.wikipedia.org/wiki/미국_주방위군",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-04",
+      "via": "raw"
+    },
+    {
+      "term": "FTA",
+      "reading": "",
+      "meaning": "Free Trade Agreement의 줄임말로, 둘 이상의 나라가 관세와 무역 장벽을 없애 자유롭게 교역하기로 맺는 협정을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "자유 무역 협정",
+      "url": "https://ko.wikipedia.org/wiki/자유_무역_협정",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-04",
+      "via": "raw"
+    },
+    {
+      "term": "약침",
+      "reading": "",
+      "meaning": "한방에서 약재를 가공한 액체를 경혈에 주입해 질병을 치료하는 침술의 한 갈래를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "약침",
+      "url": "https://ko.wikipedia.org/wiki/약침",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-04",
+      "via": "raw"
+    },
+    {
+      "term": "영업이익",
+      "reading": "",
+      "meaning": "기업이 영업 활동으로 벌어들인 이익에서 매출 원가와 판매비·관리비를 뺀 금액을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "이자 및 세금 차감 전 이익",
+      "url": "https://ko.wikipedia.org/wiki/이자_및_세금_차감_전_이익",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-04",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-04T04:07:13+09:00",
+      "added": 9,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
