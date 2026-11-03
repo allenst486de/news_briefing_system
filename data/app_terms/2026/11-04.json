@@ -108,6 +108,18 @@
       "model": "deepseek-ai/deepseek-v4.1-flash",
       "date": "2026-11-04",
       "via": "raw"
+    },
+    {
+      "term": "희귀의약품",
+      "reading": "",
+      "meaning": "환자 수가 적어 개발 비용이 많이 드는 희귀 질환의 치료를 위해 개발된 의약품을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "희귀의약품",
+      "url": "https://ko.wikipedia.org/wiki/희귀의약품",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-04",
+      "via": "news_terms"
     }
   ],
   "runs": [
@@ -117,6 +129,13 @@
       "via": [
         "news_terms",
         "raw"
+      ]
+    },
+    {
+      "at": "2026-11-04T05:45:12+09:00",
+      "added": 1,
+      "via": [
+        "news_terms"
       ]
     }
   ]
