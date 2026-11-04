@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-05",
+  "terms": [
+    {
+      "term": "Quantum Computer",
+      "reading": "양자컴퓨터",
+      "meaning": "양자 역학의 원리를 이용하여 정보를 처리하는 컴퓨터를 말한다. 큐비트를 기본 단위로 사용하여 기존 컴퓨터보다 훨씬 빠른 연산 속도를 낼 수 있다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "양자 컴퓨터",
+      "url": "https://ko.wikipedia.org/wiki/양자_컴퓨터",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-05",
+      "via": "news_terms"
+    },
+    {
+      "term": "Quantum Error Correction",
+      "reading": "양자 오류 정정",
+      "meaning": "양자 컴퓨터에서 발생하는 양자 결맞음 해제나 연산 오류를 감지하고 수정하는 기술을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "양자 오류 정정",
+      "url": "https://ko.wikipedia.org/wiki/양자_오류_정정",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-05",
+      "via": "news_terms"
+    },
+    {
+      "term": "게실염",
+      "reading": "",
+      "meaning": "장벽 내부에 생긴 작은 주머니 모양의 게실에 염증이 생긴 상태를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "곁주머니염",
+      "url": "https://ko.wikipedia.org/wiki/곁주머니염",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-05",
+      "via": "news_terms"
+    },
+    {
+      "term": "Divided Government",
+      "reading": "여소야대",
+      "meaning": "행정부의 수반이 속한 정당이 입법부의 과반수 의석을 확보하지 못한 정치 상태를 뜻한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "분점정부",
+      "url": "https://ko.wikipedia.org/wiki/분점정부",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-05",
+      "via": "news_terms"
+    },
+    {
+      "term": "서울국제프라이드영화제",
+      "reading": "",
+      "meaning": "서울에서 열리는 성소수자 관련 영화를 상영하는 국제 영화제를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "서울국제프라이드영화제",
+      "url": "https://ko.wikipedia.org/wiki/서울국제프라이드영화제",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-05",
+      "via": "raw"
+    },
+    {
+      "term": "레임덕",
+      "reading": "",
+      "meaning": "임기가 끝나가거나 재선이 어려운 공직자가 정치적 영향력을 잃은 상태를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "레임덕",
+      "url": "https://ko.wikipedia.org/wiki/레임덕",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-05",
+      "via": "raw"
+    },
+    {
+      "term": "AIoT",
+      "reading": "",
+      "meaning": "인공지능(AI)과 사물인터넷(IoT)을 결합한 기술을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "AIoT",
+      "url": "https://ko.wikipedia.org/wiki/AIoT",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-05",
+      "via": "raw"
+    },
+    {
+      "term": "증여세",
+      "reading": "",
+      "meaning": "타인에게 무상으로 재산을 증여받을 때 부과하는 세금을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "증여세",
+      "url": "https://ko.wikipedia.org/wiki/증여세",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-05",
+      "via": "raw"
+    },
+    {
+      "term": "감마선 폭발",
+      "reading": "",
+      "meaning": "우주의 먼 곳에서 감마선이 짧은 시간 동안 매우 강하게 방출되는 현상을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "감마선 폭발",
+      "url": "https://ko.wikipedia.org/wiki/감마선_폭발",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-05",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-05T03:53:04+09:00",
+      "added": 9,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
