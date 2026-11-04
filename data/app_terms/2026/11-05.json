@@ -108,6 +108,18 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-05",
       "via": "raw"
+    },
+    {
+      "term": "탈모",
+      "reading": "",
+      "meaning": "머리카락이나 몸의 털이 비정상적으로 많이 빠지거나 자라지 못해 없어지는 증상을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "탈모증",
+      "url": "https://ko.wikipedia.org/wiki/탈모증",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-05",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -116,6 +128,13 @@
       "added": 9,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-05T05:45:04+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
