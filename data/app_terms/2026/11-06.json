@@ -1,0 +1,135 @@
+{
+  "date": "2026-11-06",
+  "terms": [
+    {
+      "term": "Intangible Heritage",
+      "reading": "무형유산",
+      "meaning": "전통 예술, 공연, 사회적 관습, 전통 공예 기술 등 공동체에 의해 전승되는 무형의 문화적 유산을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "무형유산",
+      "url": "https://ko.wikipedia.org/wiki/무형유산",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "news_terms"
+    },
+    {
+      "term": "Zero-Knowledge Proof",
+      "reading": "영지식 증명",
+      "meaning": "증명자가 자신이 알고 있는 비밀 정보를 공개하지 않고도, 해당 정보를 알고 있다는 사실을 검증자에게 증명하는 암호학적 방법을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "영지식 증명",
+      "url": "https://ko.wikipedia.org/wiki/영지식_증명",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "news_terms"
+    },
+    {
+      "term": "Hybrid warfare",
+      "reading": "하이브리드 전쟁",
+      "meaning": "정규 군사 작전과 비정규전, 사이버 공격, 심리전 등 다양한 수단을 결합하여 수행하는 전쟁 형태를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "하이브리드 전쟁",
+      "url": "https://ko.wikipedia.org/wiki/하이브리드_전쟁",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "news_terms"
+    },
+    {
+      "term": "SoC",
+      "reading": "",
+      "meaning": "System on Chip의 줄임말로, CPU, 메모리, 입출력 인터페이스 등 컴퓨터의 핵심 부품들을 하나의 칩에 통합한 시스템을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "시스템 온 칩",
+      "url": "https://ko.wikipedia.org/wiki/시스템_온_칩",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "news_terms"
+    },
+    {
+      "term": "Rally",
+      "reading": "랠리",
+      "meaning": "주식 시장에서 주가가 일정 기간 동안 지속적으로 상승하는 현상을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "랠리",
+      "url": "https://ko.wikipedia.org/wiki/랠리",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "news_terms"
+    },
+    {
+      "term": "내란",
+      "reading": "",
+      "meaning": "국가 내부에서 헌법 기관을 파괴하거나 국토를 찬탈하기 위해 폭동을 일으키는 행위를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "내란죄",
+      "url": "https://ko.wikipedia.org/wiki/내란죄",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "raw"
+    },
+    {
+      "term": "MSR",
+      "reading": "용융염원자로",
+      "meaning": "액체 상태의 용융염을 냉각재와 연료로 사용하는 원자력 발전 원자로를 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "용융염 원자로",
+      "url": "https://ko.wikipedia.org/wiki/용융염_원자로",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "raw"
+    },
+    {
+      "term": "비준",
+      "reading": "",
+      "meaning": "국가 간에 체결한 조약이나 협정을 국가의 최종 결정권자가 승인하여 확정하는 절차를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "비준",
+      "url": "https://ko.wikipedia.org/wiki/비준",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "raw"
+    },
+    {
+      "term": "예결위",
+      "reading": "",
+      "meaning": "예산결산특별위원회의 줄임말로, 정부의 예산안과 결산을 심사하기 위해 구성된 국회 특별위원회를 뜻한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "대한민국 국회 예산결산특별위원회",
+      "url": "https://ko.wikipedia.org/wiki/대한민국_국회_예산결산특별위원회",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "raw"
+    },
+    {
+      "term": "사이드카",
+      "reading": "",
+      "meaning": "주가 급변 시 프로그램 매매로 인한 시장 충격을 완화하기 위해 일시적으로 거래를 제한하는 제도를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "사이드카",
+      "url": "https://ko.wikipedia.org/wiki/사이드카",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-06",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-06T03:50:06+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
