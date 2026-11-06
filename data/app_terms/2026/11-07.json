@@ -48,6 +48,18 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-07",
       "via": "raw"
+    },
+    {
+      "term": "이해충돌",
+      "reading": "",
+      "meaning": "공직자나 결정권자가 수행하는 공적 임무와 개인적 이익이 서로 충돌하여, 공정한 직무 수행이 저해될 우려가 있는 상태를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "이해충돌",
+      "url": "https://ko.wikipedia.org/wiki/이해충돌",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-07",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -56,6 +68,13 @@
       "added": 4,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-07T07:30:08+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
