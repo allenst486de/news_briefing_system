@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-07",
+  "terms": [
+    {
+      "term": "국부펀드",
+      "reading": "",
+      "meaning": "정부가 국가 자금을 바탕으로 주식·채권·부동산 등에 투자해 수익을 얻기 위해 운용하는 펀드를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "국부 펀드",
+      "url": "https://ko.wikipedia.org/wiki/국부_펀드",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-07",
+      "via": "news_terms"
+    },
+    {
+      "term": "저체온증",
+      "reading": "",
+      "meaning": "추위에 오래 노출되어 몸속의 중심 체온이 정상보다 크게 내려가는 상태를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "저체온증",
+      "url": "https://ko.wikipedia.org/wiki/저체온증",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-07",
+      "via": "news_terms"
+    },
+    {
+      "term": "표적치료",
+      "reading": "",
+      "meaning": "암세포에만 있는 특정 분자나 유전자를 표 삼아 선택적으로 공격해 암을 치료하는 방법을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "표적 치료",
+      "url": "https://ko.wikipedia.org/wiki/표적_치료",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-07",
+      "via": "raw"
+    },
+    {
+      "term": "말라리아",
+      "reading": "",
+      "meaning": "말라리아 원충에 감염된 모기에 물려 옮는 감염병으로, 오한과 고열 같은 증상을 일으키는 병을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "말라리아",
+      "url": "https://ko.wikipedia.org/wiki/말라리아",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-07",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-07T03:59:18+09:00",
+      "added": 4,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
