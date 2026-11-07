@@ -6,11 +6,12 @@
     "2026-08-04",
     "2026-08-05",
     "2026-08-07",
-    "2026-08-08"
+    "2026-08-08",
+    "2026-08-09"
   ],
   "categories": {
     "politics": {
-      "article_count": 178,
+      "article_count": 208,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -1257,11 +1258,221 @@
           "gist": "병무청장이 보충역의 감축 또는 폐지 방안을 검토하는 등 병역제도의 근본적인 개편을 추진하겠다고 밝혔습니다.",
           "source": "연합뉴스",
           "link": "https://www.yna.co.kr/view/AKR20260808024900504"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "장동혁, 당원주권 강화 쇄신안 발표·조직강화특위 재가동…‘친정 체제’ 구축 가속화",
+          "gist": "장동혁 국민의힘 대표가 지난 7일 국회에서 열린 부동산정책 정상화 특별위원회 전체회의에 입장하고 있다. 박민규 선임기자장동혁 국민의힘 대표가 이",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091655001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "한정애, 메가특구 주52시간 예외 “무엇으로 기업 내려갈 수 있게 하겠냐는 고민해야”…기존 ISA 원복 시사",
+          "gist": "한정애 더불어민주당 정책위의장이 9일 국회에서 열린 기자간담회에서 현안 관련 발언을 하고 있다. 연합뉴스한정애 더불어민주당 정책위의장이 9일 폭",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091717001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "핵 군비 경쟁 우려 커지는 동북아?…미국, 중·러 겨냥 전술핵 확대 검토·일본 ‘비핵 3원칙’ 재검토 가능성",
+          "gist": "엘브리지 콜비 미국 국방부 정책차관. AFP·연합뉴스 자료사진.미국 국방부가 동맹국에 대한 중국과 러시아의 공격 가능성에 대비해 단거리 전술핵무",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091736001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "민주당 최고위원 선거 누적투표 1위 최민희…현재 스코어 친청 2명, 친명 3명",
+          "gist": "9일 강원도 횡성국민체육센터에서 열린 더불어민주당 대표·최고위원 후보자 강원 합동연설회에서 후보들이 기념 촬영하고 있다. 왼쪽부터 김영호·임미애",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091953001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "북·중·러 ‘핵 증강’에 미 “전술핵 강화”…동북아 ‘긴장 고조’",
+          "gist": "미 국방차관 언급…‘우방’ 한·일서 소형 핵무기 운용 가능성 나와 일본선 ‘비핵 3원칙’ 재검토 기류…국내 보수 진영서도 핵무장론 실제 배치 땐",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092103005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "장동혁, 이번주 당 쇄신안 발표…‘친정 체제’ 강화 나서",
+          "gist": "‘당원 주권 강화’ 내용 포함 예상조강특위 가동해 당 조직 정비도내부 반발 속 여당 전대도 ‘촉각’장동혁 국민의힘 대표가 이르면 이번주 ‘당원 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092103015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“결혼 페널티 22개, 꼼꼼히 살펴보겠다”…지지율 하향세 이 대통령 ‘청년 챙기기’",
+          "gist": "SNS에 대출·청약·세제 요건 등2030 체감도 높은 정책 개선 거론이재명 대통령이 “결혼이 부담이 아닌 희망찬 새 출발이 될 수 있도록 정부의",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092109005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘주 52시간 예외’ 안에…여 “기업 보내려면 고민 안 할 수 없어”",
+          "gist": "여 정책위, 주요 현안들 간담회정책위의장 발언 한정애 더불어민주당 정책위의장(왼쪽)이 9일 기자간담회를 하고 있다. 연합뉴스한정애 “지역 균형 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092110005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘노무현 유산’ 쟁탈전 된 전당대회…뒤로 가는 민주당",
+          "gist": "9일 오후 대구 인터불고 엑스코 호텔에서 열린 더불어민주당 당 대표 및 최고위원 선출을 위한 대구·경북 합동연설회에서 당 대표 후보자들이 손을 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608100600121/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "김민석, ‘제주·인천’ 당원투표 1위… 정청래 5%p 차이 제쳐",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1271999.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "이재명 정부가 택한 ‘손쉬운’ 개혁, 나쁜 개혁으로 끝나지 않으려면",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272006.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "황희 ‘청년 버스하우스’ 논란…민주 “실현 불가능 제안, 진심으로 송구”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272052.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "한 총리, 인천 모터보트 실종에 '인명구조 최우선' 긴급지시",
+          "gist": "한성숙 국무총리가 인천 옹진해역 자월도 인근에서 발생한 모터보트 실종 사건과 관련해 긴급 대응을 지시했습니다. 한 총리는 먼저 해양수산부와 해양",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH202608100607464XC"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[속보] 민주당, 강원·TK 순회경선서 김민석 48.5%·정청래 44.4%",
+          "gist": "김민석 더불어민주당 당대표 후보가 9일 강원도 횡성국민체육센터에서 열린 민주당 대표·최고위원 후보자 강원 합동연설회에서 연설하고 있다. 연합뉴스",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091831001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "누적 득표율 1위 김민석 46.01%, 정청래 44.53%…표차는 3086표",
+          "gist": "대구 인터불고 엑스코 호텔에서 9일 열린 더불어민주당 당 대표 및 최고위원 선출을 위한 대구·경북 합동연설회에서 김민석 당대표 후보가 연설하고 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091920001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "1위 최민희, 김민석 향해 포문…2위 박선원, 최 의원 맹공",
+          "gist": "친청·친명 ‘최고위원 다툼’ 격화더불어민주당 8·17 전당대회 2주차 순회경선이 마무리된 9일까지 누적 득표수 1위 최고위원 후보는 친정청래(친",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092112005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "김민석, 강원·TK 합산서도 승리",
+          "gist": "민주당 전대 인천·제주 이어 연승대구 잡은 정청래에 선두 안 뺏겨호남과 서울·경기 지역을 제외한 전국 순회경선을 마친 더불어민주당 8·17 전당",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092124025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "김민석, 0.87%p 차이로 누적 1위 탈환…제주·인천서 정청래 제쳐",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272001.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘윤어게인’ 이끈 손현보 목사, 트럼프 만나…“자유대한민국 어려움 당해”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272010.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“몰상식, 우롱”…국힘, 황희 ‘폐버스 청년 주택’ 3일째 맹공",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272011.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "정청래의 재역전? 김민석의 연승?…민주, 오늘 강원·TK 경선",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272014.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“우리가 황교안”이라던 장동혁, 올공 시위서 대면하자 데면데면",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272024.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "윤상현 “득표수 조작 주장은 선동” 발언에 당내 반발…‘올공 재검표’ 미룰듯",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272044.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "민주 당대표 강원·대구·경북 순회 경선서 김민석 승리",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272094.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "민주 “이달중 세제개편안 당·정 조율”…부정 여론 진화 나서",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272102.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "김민석 ‘1%p대 격차’ 1위…이번주 호남·수도권 ‘슈퍼위크’ 주목",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/assembly/1272108.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "골 깊어지는 민주 전대, 청와대도 우려…“갈등 봉합에 시간 걸릴 것”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272110.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "친명 김용 VS 친청 이성윤…최고위원 ‘막차’ 합류 초접전",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/assembly/1272111.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "김민석, 주말 연승 3086표 격차…‘박빙 우위’ 대세는 아직",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1272124.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "'태극기 바람에 시원했던 그날'…광복절 맞이 서울꿈새김판 단장",
+          "gist": "(서울=연합뉴스) 김준태 기자 = 서울시는 81주년 광복절을 앞두고 서울도서관 외벽 대형 글판인 '서울꿈새김판'을 10일 새로 단장했다고 밝혔다",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260809026500004"
         }
       ]
     },
     "economy": {
-      "article_count": 172,
+      "article_count": 202,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -2466,6 +2677,216 @@
           "gist": "1986년 멕시코 월드컵 당시 디에고 마라도나가 '신의 손' 득점에 사용한 축구공이 미국 헤리티지 옥션에서 경매에 부쳐집니다. 경매 시작가는 2",
           "source": "한겨레",
           "link": "https://www.hani.co.kr/arti/economy/consumer/1271993.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "국내 배터리 3사, 전고체 배터리로 로봇 시장 공략",
+          "gist": "국내 배터리 3사가 안전성과 용량이 뛰어난 전고체 배터리를 로봇용으로 개발해 새로운 성장 동력으로 삼으려 합니다. 로봇은 전기차보다 배터리 비용",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092025015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "SK하이닉스 직원들, 협상력 강화를 위한 통합노조 추진",
+          "gist": "SK하이닉스의 생산직과 사무·기술직 임직원들이 성과급 재협상에 대한 불만과 기존 노조에 대한 반발로 통합노조 설립을 추진하고 있습니다. 이는 삼",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092028025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "오픈AI, 안전성 검증 위해 차세대 모델 개발 일시 중단",
+          "gist": "오픈AI가 AI의 무단 침입이나 부정행위 등 통제 불능 위험성에 대응하기 위해 안전 검증을 통과할 때까지 차세대 모델 개발 일부를 잠정 중단합니",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092028035/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "폭락장에 털려나간 ‘빚투’…주가 반등 조짐에 다시 고개",
+          "gist": "지난달 28일 이후 5조원 넘게 줄다 지수 살짝 회복하자 반짝 증가청년층·60대 ‘마통’ 연체율 급증…추세적 상승 미지수, 위험 여전최근 급락했",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092031025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "미 현지 생산 한화큐셀 큰 수혜 예상…공급망 탈중국 K반도체도 타격 없어",
+          "gist": "트럼프, 폴리실리콘 수입 규제 공식화…국내 산업 영향은시장 장악 중 태양광 기업 타깃미국 주도 공급망 재편이 목적일부 중국산 의존 원자재 관세건",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092032005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "서울 유휴부지 쥐어짜는 정부…‘공급 속도 체감’ 실행력이 관건",
+          "gist": "9일 서울 송파구 롯데월드타워 서울스카이에서 한 시민이 아파트 단지로 빼곡한 서울시내를 바라보고 있다.  연합뉴스이르면 13일 추가 공급지 발표",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092106015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "알고리즘 ‘토끼굴’에 중독된 청소년들…칼 빼든 정부는 그들을 보호할 수 있나",
+          "gist": "메타와 구글 등 소셜미디어 중독으로 인해 가족을 잃은 유족들이 지난 3월25일(현지시간) 미국 캘리포니아주 로스앤젤레스 고등법원 앞에서 피해자들",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092119005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "빈 사무실이 집으로, 주택공급 새카드 될까···비아파트에 세제·금융 지원 필요해",
+          "gist": "청년·신혼주택 대안으로 떠오르지만 바닥·채광 등 주거용 변경 쉽지 않아 90년대 사업 추진한 뉴욕, 세제 파격 지원대신 임대료 상한 의무 부과정",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608100600051/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "전월세난·임차인 불안 우려에…정부, 실거주 의무 유예 확대 방침",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1272103.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘자본시장 선진화’와 동떨어진 ‘주가 누르기 방지법’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1272104.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘과감한 주택공급 촉진’ 부동산금융…PF 공적 보증 확대 등 거론",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/finance/1272105.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "DL이앤씨, 부천 소사동에 'e편한세상 부천 어반스퀘어' 분양",
+          "gist": "DL이앤씨가 경기 부천시 소사3구역 재개발을 통해 'e편한세상 부천 어반스퀘어'를 공급합니다. 지하 3층에서 지상 38층, 13개 동, 총 16",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092020025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "농협하나로유통, 부당 입점 장려금 징수로 과징금 처분",
+          "gist": "공정거래위원회는 납품 및 입점 업체에 계약서 교부를 지연하고, 신상품이 아님에도 부당하게 입점 장려금을 받은 농협하나로유통에 시정명령과 함께 과",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092025005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "롯데마트, AI 자동화 물류센터 '제타 스마트센터 부산' 가동",
+          "gist": "롯데마트가 영국 오카도 플랫폼을 적용해 입고부터 배송까지 전 과정을 자동화한 '제타 스마트센터 부산'을 운영합니다. 4만㎡ 규모의 센터에서 AI",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092025025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "농협, 기상 재해 피해 지원 위해 3000억 원 긴급 투입",
+          "gist": "농협이 폭염과 가뭄으로 피해를 입은 농축산인을 돕기 위해 3000억 원 규모의 재해자금을 투입합니다. 이를 통해 영농 및 축산자재 지원을 확대하",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092028005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "소상공인 대상 '노쇼 사기' 등 신종 피싱 급증",
+          "gist": "공공기관 직원을 사칭해 물품 대리 구매를 요구하는 '노쇼 사기'를 포함한 신종 피싱 신고가 한 달 새 5000건에 육박했습니다. 로맨스 스캠과 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092031005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "수입 축산물, 휴가철 국내산 둔갑 주의",
+          "gist": "원산지 속이거나 미표시 106곳 적발…당국 “추석 때도 집중 단속”외국산 축산물을 국내산으로 속여 팔거나 원산지를 표시하지 않은 업체 106곳이",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092031015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“공공기관 이전, 수도권 집중 완화 큰 도움 안 돼…거점도시 조성과 연계해 ‘집적 경제’ 창출해야”",
+          "gist": "산업연 ‘공공기관 이전’ 보고서이전 당시 거점도시 인구 증가서2023년부터 취업·주택 불만 유출대도시 기반시설 연계해 조성해야공공기관 이전이 인",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092106005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "당국 대책 일주일 새…단일종목 레버리지 대금 93%↓",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/finance/1272061.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "서울과기대, ㈜고덕종합건설 나기선 대표로부터 발전기금 1억 원 기탁받아",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1272062.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "대형마트 실적 ‘홈플러스 사태’ 직격타…2분기 판매 9.4% ‘역대 최대 감소’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1272063.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“집에서 즐기는 세계의 맛” 무더위 피하는 미식 홈캉스 ‘한우가 답하다’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1272065.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "사이버한국외국어대학교, 외국인 재학생 간담회 개최…일·학업 병행 지원 강화",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1272067.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "서울시립대학교 첨단반도체패키징연구실 학생팀, ‘시뮬레이션 챌린지 2026’ 대학생부 대상",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1272069.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "경희사이버대학교 글로벌자율학부, 국내외 교육기관과 협력 확대… 이주배경 교육 생태계 구축",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1272074.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "사이버한국외국어대학교-재미한국학교협의회(NAKS), 교육협력 협약 체결",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1272077.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "서울시립대학교 조기취업형 계약학과 사업단, 서울테크노파크와 기술사업화 기업 지원 협력",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/biznews/1272082.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "연이은 폭염에 채소값·생선값도 달아올랐다",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1272093.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "고령층 ‘초고가 주택’ 겨눈 세제 개편안…강남권 집주인 세대교체 빨라질까",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1272115.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[시승기] ‘토르 망치’ 심은 680마력 ‘북유럽의 정숙함’…볼보 전기 SUV EX90",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/car/1272123.html"
         }
       ],
       "stock_picks": [
@@ -3116,11 +3537,119 @@
           "name": "Amazon",
           "reason": "월간 11.88% 상승하며 장기적으로 우상향하고 있으나, 거래량 비율이 0.46배로 낮아 매수세의 강도는 다소 약해진 것으로 보입니다.",
           "price_at_pick": 274.48
+        },
+        {
+          "date": "2026-08-09",
+          "market": "domestic",
+          "horizon": "daily",
+          "symbol": "096770",
+          "name": "SK이노베이션",
+          "reason": "최근 등락률 +21.5%, 거래량 평균 대비 1.48배 흐름을 보이고 있습니다.",
+          "price_at_pick": 120300.0
+        },
+        {
+          "date": "2026-08-09",
+          "market": "domestic",
+          "horizon": "daily",
+          "symbol": "006400",
+          "name": "삼성SDI",
+          "reason": "최근 등락률 +15.6%, 거래량 평균 대비 1.68배 흐름을 보이고 있습니다.",
+          "price_at_pick": 459000.0
+        },
+        {
+          "date": "2026-08-09",
+          "market": "domestic",
+          "horizon": "weekly",
+          "symbol": "006400",
+          "name": "삼성SDI",
+          "reason": "최근 등락률 +15.6%, 거래량 평균 대비 1.68배 흐름을 보이고 있습니다.",
+          "price_at_pick": 459000.0
+        },
+        {
+          "date": "2026-08-09",
+          "market": "domestic",
+          "horizon": "weekly",
+          "symbol": "066570",
+          "name": "LG전자",
+          "reason": "최근 등락률 +14.1%, 거래량 평균 대비 1.22배 흐름을 보이고 있습니다.",
+          "price_at_pick": 185000.0
+        },
+        {
+          "date": "2026-08-09",
+          "market": "domestic",
+          "horizon": "monthly",
+          "symbol": "096770",
+          "name": "SK이노베이션",
+          "reason": "최근 등락률 +21.5%, 거래량 평균 대비 1.48배 흐름을 보이고 있습니다.",
+          "price_at_pick": 120300.0
+        },
+        {
+          "date": "2026-08-09",
+          "market": "domestic",
+          "horizon": "monthly",
+          "symbol": "035720",
+          "name": "카카오",
+          "reason": "최근 등락률 +18.6%, 거래량 평균 대비 1.65배 흐름을 보이고 있습니다.",
+          "price_at_pick": 39900.0
+        },
+        {
+          "date": "2026-08-09",
+          "market": "overseas",
+          "horizon": "daily",
+          "symbol": "TSLA",
+          "name": "Tesla",
+          "reason": "최근 등락률 +2.8%, 거래량 평균 대비 1.21배 흐름을 보이고 있습니다.",
+          "price_at_pick": 328.58
+        },
+        {
+          "date": "2026-08-09",
+          "market": "overseas",
+          "horizon": "daily",
+          "symbol": "NVDA",
+          "name": "NVIDIA",
+          "reason": "최근 등락률 +11.6%, 거래량 평균 대비 0.78배 흐름을 보이고 있습니다.",
+          "price_at_pick": 223.96
+        },
+        {
+          "date": "2026-08-09",
+          "market": "overseas",
+          "horizon": "weekly",
+          "symbol": "NVDA",
+          "name": "NVIDIA",
+          "reason": "최근 등락률 +11.6%, 거래량 평균 대비 0.78배 흐름을 보이고 있습니다.",
+          "price_at_pick": 223.96
+        },
+        {
+          "date": "2026-08-09",
+          "market": "overseas",
+          "horizon": "weekly",
+          "symbol": "AVGO",
+          "name": "Broadcom",
+          "reason": "최근 등락률 +9.9%, 거래량 평균 대비 0.75배 흐름을 보이고 있습니다.",
+          "price_at_pick": 427.76
+        },
+        {
+          "date": "2026-08-09",
+          "market": "overseas",
+          "horizon": "monthly",
+          "symbol": "MSFT",
+          "name": "Microsoft",
+          "reason": "최근 등락률 +29.8%, 거래량 평균 대비 0.58배 흐름을 보이고 있습니다.",
+          "price_at_pick": 499.99
+        },
+        {
+          "date": "2026-08-09",
+          "market": "overseas",
+          "horizon": "monthly",
+          "symbol": "AMZN",
+          "name": "Amazon",
+          "reason": "최근 등락률 +11.9%, 거래량 평균 대비 0.46배 흐름을 보이고 있습니다.",
+          "price_at_pick": 274.48
         }
       ]
     },
     "society": {
-      "article_count": 178,
+      "article_count": 208,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -4367,11 +4896,221 @@
           "gist": "9일 전국적으로 폭염과 열대야 특보가 유지되겠으나, 낮 최고기온은 26~35도로 이전보다 다소 낮아질 전망입니다. 동해안과 제주도에는 비가 내리",
           "source": "한겨레",
           "link": "https://www.hani.co.kr/arti/society/environment/1272002.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "밀양시 유일의 분만 병원, 의료진 고령화와 적자로 폐업",
+          "gist": "경남 밀양의 유일한 분만 의료 기관인 제일병원이 9월 1일자로 문을 닫습니다. 60~70대 전문의 2명이 운영해 왔으나, 신규 의료진 확보의 어",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092050015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "종합특검, 수사 마무리 단계서 40여 명 추가 기소 전망",
+          "gist": "권창영 2차 종합특별검사가 수사 종료를 2주 앞두고 내란 및 관저 이전 의혹과 관련해 40여 명을 추가 기소할 예정입니다. 이번 주 중 수사를 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092056015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "고소득 연구원 대상 '화이트칼라 면제' 도입 논란",
+          "gist": "정부가 서남권 반도체 클러스터 등 메가특구에 고소득 연구개발자의 주 52시간 근로 제한을 없애는 '화이트칼라 이그젬션(white-collar e",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092100005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘대출 절벽’ 청년·신혼부부 대출 문턱 낮추나",
+          "gist": "정부, 세제개편안 후속 조치 고심토허제 실거주 유예 확대도 검토정부가 부동산 세제개편안 발표 후 터져 나오는 불만을 잠재울 후속 대책을 고심하고",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092124005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "0.2㎜ 무심한 비…바싹 ‘마른’ 밀양",
+          "gist": "남부 가뭄, 9월까지 장기화 전망경북 칠곡군에 폭염중대경보가 발효된 지난 7일 지천면 창평리 한 저수지가 가뭄으로 바닥을 드러내고 있다.  연합",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092124015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘들어가지 마시오’ 경고판 넘어가는 순간···‘안전지대’는 사라진다",
+          "gist": "군산·부안 연안 사고 79%가 부주의·물때 미확인‘조금만 더’ 방심이 사고로···추락·고립 등 잇따라8일 전북 군산 비응도 새만금방조제 4구간.",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608100600071/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "가족은 지옥, 혼자는 외롭다···‘나’는 누가 돌볼까",
+          "gist": "단절 일러스트. 경향신문 자료사진혼인율이 감소하고 1인 가구가 증가하는 상황에서 가족이 아닌 개인의 일상과 삶의 기반 조건을 지원하는 방향으로 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608100600091/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "새벽 홀로 쓰레기 치우다 사망…종로구 ‘3인1조 주간근무 원칙’엔 “법적 문제 없다”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1272064.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "택시업계 ‘간주근로제’ 놓고 11일 노조-정부 대화",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/labor/1272070.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "YTN 감사, ‘김건희 사과방송’에 김백 사장 권한 결론 …‘용두사미’ 논란",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/media/1272073.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "건강보험 올 1분기 3조8989억 적자…6년 흑자 기조 ‘빨간불’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/health/1272109.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "인천 자월도 해상서 3명 탄 모터보트 연락 두절…해경 수색",
+          "gist": "사고 추정 위치도[중부지방해양경찰청 제공. 재판매 및 DB 금지][중부지방해양경찰청 제공. 재판매 및 DB 금지] 인천 앞바다에 모터보트를 타고",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260810061959BOZ"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "농민들을 위한 '찾아가는 이동식 쉼터' 운영",
+          "gist": "전남광주종자관리소가 폭염 속에서 일하는 농민들을 위해 트럭을 개조한 '이동식 원두막'을 운영합니다. 좁은 농로 이동이 가능한 트럭에 그늘막, 의",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092050035/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "수도권 매장 상당수가 문 열어둔 채 냉방 중인 것으로 나타나",
+          "gist": "녹색연합의 실태조사 결과, 서울 주요 상권과 수도권 대형 아웃렛 매장의 약 60%가 출입문을 연 채 에어컨을 가동하는 '개문 냉방'을 하고 있었",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092054005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "법원, 국민권익위에 공익신고 심사의견서 공개 판결",
+          "gist": "서울행정법원은 하수도 무자격 공사 신고와 관련해 국민권익위원회가 거부했던 내부 심사의견서를 공개하라고 판결했습니다. 재판부는 해당 자료를 공개하",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092056005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "서울 바캉스 페스티벌에서 더위 식히는 아이들",
+          "gist": "9일 서울 서대문구 신촌 연세로에서 '2026 서울 바캉스 페스티벌'이 개최되어 참가자들이 물총 놀이를 하며 무더위를 해소하고 있습니다.",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092057005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "취약계층, 비취약계층보다 폭염 취약성 더 높게 인식",
+          "gist": "국가통계포털 자료에 따르면, 스스로 폭염에 취약하다고 답한 비율이 취약계층은 19.0%, 비취약계층은 10.7%로 나타났습니다. 또한 서울 내에",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092100015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[단독]“방 빼라” “못 빼” 소송까지 간 서울대 동아리방 갈등···버티던 총불교학생회 결국 졌다",
+          "gist": "동아리연합회, 서울대 내 동아리방 관리·배분총불교학생회 회칙 위반, 동연 측 퇴거 요구에 불응결국 소송전···법원 “총불, 동아리방 비워야”서울",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608100600081/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[단독]이케아 본사 직원들 “매장·콜센터 부당 발령, 한국인 직원만 표적됐다” 노동청 진정…이케아 “충분한 협의 뒤 직무 전환”",
+          "gist": "광명 이케아. 권도현 기자이케아코리아 본사(SO·Service Office) 직원들이 “콜센터와 매장 등으로 부당한 인사발령과 자발적 퇴직을 강",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608100600101/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[단독]매년 늘어나는 서울 내 ‘순간 정전’…여름철 집중 발생 이유는 ‘까치·까마귀’",
+          "gist": "까마귀들이 전신주와 전선에 올라와 있다. 경향신문 자료사진서울에서 ‘순간 정전’ 발생이 매년 늘어나고 있으며 이 가운데 40%가량이 여름철(6~",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608100600111/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[단독] ‘자살 우려’ 판정에도 혼난 신병…유족에 2천만원 국가배상",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1272056.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘한낮 35도’ 이리 시원했나…서울 연속 열대야 17일 만에 끝",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/environment/1272060.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘문재인 매일같이 출근’ 평산책방 1200일…63만 시민이 찾았다",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1272068.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“숨을 못 쉬어요” 생후 2일 신생아 살린 기적…50분 거리 18분에 돌파",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1272076.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘장원영 악플러’ 잡은 디스커버리…일반인 피해자는 ‘꿈도 못꿀 일’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1272092.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“북에서 파견 온 특검이냐” “계엄은 정당”…내란 법정서 계속되는 궤변들",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1272112.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "막힌 노사정 대화, 시민에게 답을 묻다",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/labor/1272117.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "30대 “시니어는 여유로운 줄”…50대 “자식 키우다 번아웃”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/labor/1272118.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "흑백 대신 ‘별별대화’…다른 생각의 짝짓기",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/labor/1272119.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "충북, 구름 많고 무더운 날씨…낮 최고 30∼33도",
+          "gist": "(청주=연합뉴스) 김형우 기자 = 10일 충북은 구름이 많고 무더운 날씨가 이어지겠다.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260810004600064"
         }
       ]
     },
     "life": {
-      "article_count": 153,
+      "article_count": 182,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -5443,11 +6182,214 @@
           "gist": "대전, 세종, 보령 등 충남 대부분 지역에서 밤사이 최저기온이 25도를 넘는 열대야 현상이 나타났으며, 일부 지역은 27도를 기록했습니다.",
           "source": "연합뉴스",
           "link": "https://www.yna.co.kr/view/AKR20260808013700063"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘수용 불가’ 상황에 놓인 고위험 산모, 인하대병원에서 쌍둥이 무사히 분만",
+          "gist": "인하대병원 권역응급의료센터. 인하대병원 제공여러 병원을 전전했지만 병상 부족으로 출산에 어려움을 겪은 고위험 산모가 인하대병원에서 무사히 쌍둥이",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608051620001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "폭염에 익어버린 뇌, 회복돼도 후유증 위험··· 땀 분비 줄고 갈증 못 느끼는 고령층 특히 주의해야",
+          "gist": "폭염이 이어진 지난 3일 서울 종로구 탑골공원을 찾은 시민들이 그늘에서 휴식을 취하고 있다. 한수빈 기자전국 대부분 지역에 폭염특보가 발효되면서",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608060600011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘이것’ 들어간 항암제 추가하니···‘삼중음성유방암’ 환자 생존율 상승",
+          "gist": "삼중음성유방암 치료에 백금 계열 항암제를 추가하면 생존율이 높아질 수 있다는 연구 결과가 발표됐다. 게티이미지젊은 여성에게 비교적 흔히 나타나며",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608061048001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "9월부터 KTX·SRT 통합 운영…운임 평균 10% 인하·좌석 주 11만6000석 확대",
+          "gist": "김태승 코레일 사장은 “고속철도 통합은 대한민국 철도가 새로운 여정을 시작하는 전환점”이라며 “하나 되는 철도로 국민이 더 큰 편익을 누릴 수 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608061131001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘숨 막히는 폭염’, 비유가 아닙니다···이런 질환 있다면 실제로 호흡곤란 위험[건강돋보기]",
+          "gist": "체온 오르면 필요 산소량 늘고 호흡근 부담 커져천식·만성폐쇄성폐질환 등 환자에겐 심한 고통오존 농도 상승도 ‘적신호’···고령 땐 더욱 취약서울",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608071034001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "밀양 지역 유일의 분만 병원, 경영난과 인력 부족으로 폐업",
+          "gist": "경남 밀양의 유일한 분만 의료 기관인 제일병원이 9월 1일 자로 문을 닫습니다. 출생아 수 감소로 인한 누적 적자와 전문의 사직, 원장의 고령화",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091539001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "영국 당국, 일부 진통제 및 항생제의 광과민성 주의보",
+          "gist": "영국 의약품규제청(MHRA)은 이부프로펜을 포함한 일부 진통제와 항생제가 햇빛에 대한 피부 민감도를 높여 화상 위험을 증가시킬 수 있다고 경고하",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260809049300009"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "미국, 멕시코산 할라페뇨 함유 식품에 보건 경보 발령",
+          "gist": "미국 농무부 식품안전검사국(FSIS)은 살모넬라균 오염 가능성이 있는 멕시코산 할라페뇨가 포함된 육류 및 가금류 제품에 대해 공중보건경보를 발령",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260809035300009"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "중일전쟁 당시 일본 의대의 비인도적 수혈 실험 폭로",
+          "gist": "중일전쟁(1937~1945년) 전후 일본의 여러 의과대학에서 어린이 등 환자들을 대상으로 동물 혈액을 수혈하는 등 위험한 인체 실험을 자행했다는",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260809017100073"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "총탄 자국부터 ‘바미기르’ 발자국까지…영화 ‘호프’ 촬영지에 가면",
+          "gist": "영화 ‘호프’의 촬영지 해남 남창마을실제 마을, 남아있는 외계인의 흔적들원래는 폐건물이었지만 영화를 위해 정육식당으로 새롭게 꾸며졌다. 외벽에는",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608071055011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘세계 친환경 병원’ 최고 등급 받은 한국 병원 4곳, 어디일까",
+          "gist": "서울아산·삼성서울·고려대 구로·세브란스국내 병원 10곳이 세계 친환경병원 평가 순위에 이름을 올렸다. 뉴스위크 홈페이지 캡처세계 친환경병원 평가",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608071511001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[뛸지도] '마스터즈 최강 러너' 허드슨 추천 따라 ‘콘 위에 두 스쿠프’···달콤한 완주 후 시원한 ‘가맥’",
+          "gist": "가끔 전주로 출장을 가면 전주 한옥마을과 전주천을 달린다. 2년 전, 국내 마라톤 마스터즈 최강자로 꼽히는 로버트 허드슨(39·전북대학교 영어 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608080600005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "여수세계섬박람회 개최 앞두고 여수 섬들의 매력 조명",
+          "gist": "전남광주시와 여수시가 공동으로 주최하는 '2026 여수세계섬박람회'가 약 한 달 앞으로 다가왔습니다. 여수의 365개 섬들은 금빛 어장, 등대,",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608080730005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "녹내장 치료 시 안압이 정상화되어도 약물 사용을 지속해야 하는 이유",
+          "gist": "녹내장 환자 중 안압이 정상 수치로 돌아오고 자각 증상이 없더라도 임의로 안약 사용을 중단해서는 안 됩니다. 매일 안약을 넣는 과정이 번거롭거나",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608080900005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "소아 복통, 단순 장염으로 오인해 응급 상황 놓칠 위험 주의",
+          "gist": "어린이는 표현 능력이 부족해 복통의 정확한 위치나 강도를 알기 어렵습니다. 가벼운 증상부터 수술이 필요한 응급 질환까지 원인이 다양하므로, 보호",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608080900015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "여름철 강한 자외선과 고온다습한 환경이 피부 건강에 미치는 영향",
+          "gist": "여름철의 강한 자외선과 높은 온습도는 피부에 위협이 됩니다. 특히 자외선 노출은 흑색종과 같은 피부암의 발병 위험을 높이며, 땀과 냉방 기기 사",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608080900025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "숙면과 위생을 위한 올바른 여름철 선풍기 사용법",
+          "gist": "선풍기를 사용할 때는 바람을 사람이 아닌 공기 방향으로 향하게 하고, 강풍보다는 약풍으로 설정하는 것이 숙면에 유리합니다. 또한 쾌적한 사용을 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608090700001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "사레 들림 방지를 위한 올바른 수분 섭취 방법",
+          "gist": "더운 날씨에 물을 급하게 마시거나 고개를 뒤로 젖힌 채 마시면 사레가 들릴 수 있습니다. 자세를 바르게 잡고 한 모금씩 천천히 마시는 습관을 통",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091200001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "병원 의료기기 간접납품업체의 불공정 거래 규제 미흡 지적",
+          "gist": "병원과 의료기기 간접 납품업체 사이의 불공정 거래 문제가 수년간 제기되어 왔음에도 불구하고, 공정거래위원회의 제재가 제대로 이루어지지 않고 있다",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260809026800001"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "식비 절약을 위한 책임감 있는 야생 식물 채집 방법",
+          "gist": "식재료를 직접 채집하는 행위가 서식지에 압력을 줄 수 있다는 우려가 있으나, 일부 생태학자들은 책임감 있는 채집이 오히려 생물 다양성과 보존에 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/environment/2026/aug/09/foraging-food-conservation-biodiversity-aoe"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "정치적 견해 차이를 넘어선 식사 자리의 소통",
+          "gist": "노동당 지지자인 전직 교장과 리폼 UK(Reform)를 지지하는 경찰관이 만나 서로 다른 정치적 성향에도 불구하고 교감을 나누며 이민 문제나 정",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/09/dining-across-the-divide-steph-steve"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "좁은 야외 공간을 효율적으로 꾸미는 인테리어 팁",
+          "gist": "작은 테라스나 발코니, 협소한 정원을 활용하는 방법으로 벽면 녹화, 접이식 가구 사용, 조명 설치 등을 통해 제한된 공간을 휴식처로 변모시키는 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/thefilter/2026/aug/09/how-to-transform-small-outdoor-space"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "호르몬 대체 요법(HRT)을 통한 부부 관계의 회복",
+          "gist": "업무 스트레스, 갱년기, 자녀 양육 등으로 인해 관계 위기를 겪었던 부부가 호르몬 대체 요법(HRT)을 시작하며 성생활과 관계를 긍정적으로 회복",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/09/this-is-how-we-do-it-hrt-revival-sex-life"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "목포대와 순천대 통합 시한 임박에 따른 협상 주목",
+          "gist": "정부가 예고한 목포대학교와 순천대학교의 통합 시한이 하루 앞으로 다가오면서, 최종 협상이 타결될 수 있을지에 관심이 쏠리고 있습니다.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260809038600054"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "영국 작가 5인이 추천하는 최애 강 리스트",
+          "gist": "영국의 작가들이 패들보딩, 카누, 캠핑, 낚시 등을 통해 자연에 몰입할 수 있는 자신들이 좋아하는 영국 강들을 소개합니다. 요크셔의 에스크 강(",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/travel/2026/aug/09/streams-of-beauty-five-of-the-best-british-rivers-to-explore"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "부부간 성적 불만족과 소통 문제에 대한 상담",
+          "gist": "나이 차이가 나는 부부가 겪는 성생활의 어려움에 대한 고민 상담입니다. 신체적 통증과 오르가슴 도달 시간의 차이, 그리고 새로운 시도에 대한 배",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/09/my-husband-wont-make-effort-please-me-in-bed"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "맨체스터의 대형 자동화 한국 식당 '불고기' 리뷰",
+          "gist": "맨체스터 피카딜리 플라자에 오픈한 영국 최대 규모의 한국 바비큐 식당 '불고기'에 대한 리뷰입니다. 모든 테이블에 스크린이 설치된 자동화 주문 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/food/2026/aug/09/bullgogi-manchester-grace-dent-restaurant-review"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "DDP에서 열리는 '런더핏' 및 '애슬레저 서울' 행사",
+          "gist": "서울시가 22일부터 25일까지 동대문디자인플라자(DDP) 일대에서 AI 러닝 분석과 요가복 체험 등이 포함된 'DDP 런더핏'과 '애슬레저 서울",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260808029000004"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "한성백제박물관의 금요일 요가 프로그램 운영",
+          "gist": "한성백제박물관이 금요일 저녁 시간대를 활용해 휴식을 제공하는 '뮤지엄 휴휴프로그램-마음쉼표, 요가'를 운영한다고 밝혔습니다.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260808029800004"
         }
       ]
     },
     "culture": {
-      "article_count": 152,
+      "article_count": 182,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -6512,11 +7454,221 @@
           "gist": "비극적인 상황들을 바라보는 관점과 그에 맞서는 태도에 대해 서술합니다.",
           "source": "한겨레",
           "link": "https://www.hani.co.kr/arti/culture/book/1271981.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "초능력은 ‘괴물급 회복력’ 뿐···‘인간 샌드백’이 온몸으로 겪어낸 폭력의 한국 현대사",
+          "gist": "13년 만에 장편 ‘죽도록 맞으며 살아왔다’ 낸 박형서 평생 맞아도 반격 않는 ‘박복대’한국전쟁·5·18 등 폭력 온몸으로 겪어“독자까지 아프지",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091518001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "정치·자본·노동·일상 얽힌 오늘, 어찌 한눈에 담으리",
+          "gist": "함양아의 ‘정의되지 않은 파노라마 4.0’(2026)는 8채널 영상으로 세계화, 디지털 혁명, 기후위기 등 거대 서사와 일상과 노동 등 미시적 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092042005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "10주년에 40명만 국중박 팬미팅?…블랙핑크, 팬 홀대 논란에 “사과”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/culture_general/1272000.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "북 반출·간토 지진 피해 600년 살아남은 성종실록…한 곳서 전시",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/music/1272019.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[책과 삶]1200만 철새의 터전은 왜 사라졌나···인간이 말려버린 소금호수의 경고",
+          "gist": "사라지는 세계의 소금호수들“쓰지 않으면 빼앗긴다”인간의 욕심이 불러온 생태계 파괴미국 그레이트솔트호 등 소개여행·문학·자아성찰이 섞인 책미국 유",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608071400001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "블랙핑크 완전체, 데뷔 10주년 맞아 ‘국중박’에서 팬들 만난다",
+          "gist": "그룹 블랙핑크. 유튜브 공식 블로그 갈무리.그룹 블랙핑크가 데뷔 10주년 기념일인 8일 완전체로 팬들을 만난다.7일 YG엔터테인먼트에 따르면 블",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608071756001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[위근우의 리플레이] 이런 수작은 지역에서 나오는데···‘공영방송 MBC’에 16개 지역 MBC는 없다",
+          "gist": "8개의 지역 MBC가 공동제작한 다큐멘터리 의 한 장면. MBC 제공근래 간만에 공영방송의 가치를 느꼈던 순간은 부산MBC의 주도로 8개의 지역",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608080600001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[오마주]핍박받은 이들에게 시선 거두지 않은 감독, 그의 안타까운 죽음을 추모하며",
+          "gist": "왓챠 고 허범욱 감독의 장편 애니메이션 의 한 장면. 한국영화아카데미 제공‘오마주’는 주말에 볼 만한 온라인동영상서비스(OTT) 콘텐츠를 추천하",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608080800011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘오디세이’ 4일 만에 100만 넘었다···‘스파이더맨4’는 초고속 500만 돌파",
+          "gist": "영화 와  포스터. 유니버설 픽쳐스, 소니 픽쳐스 제공크리스토퍼 놀런 감독의 신작 영화 ‘오디세이’가 개봉 4일 만에 누적 관객 100만명을 돌",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608081142001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[홀리한 구석] 달콤한 한입, 에그타르트가 품은 수도원의 시간",
+          "gist": "에그타르트 & 텐투갈에그타르트믿음이 없어도 이상하게 마음이 고요해지는 순간들. 먹고 마시며 다니다가 마주치는 뜻밖의 성스러움. 거창하지 않아도 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608081400001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“‘케데헌’에서 보고 왔어요”···외국인 ‘핫플’된 서울한방진흥센터",
+          "gist": "외국인 ‘한방 체험 인증 코스’로 자리잡아상반기 10만명 육박···전년대비 53%↑“한방센터 주변 지역 활성화와 연계할 것”미국 노스웨스턴대학교",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091153001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "거대한 원형 스크린 속 애플·시위대·파묘···8채널 비디오로 직조한 ‘오늘의 세계’",
+          "gist": "아트선재 ‘함양아: 정의되지 않은 파노라마’정치·자본·노동 얽힌 세계, 8채널 영상에 거대 구조와 개인의 삶 교차 ‘움직이는 풍속화’“불확실한 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091535001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[박경은 기자의 클래식 샛길] 피아노 한 대로 오페라·오케스트라까지···‘리사이틀’의 시작은 리스트였다",
+          "gist": "요제프 단하우저가 그린 ‘피아노를 치고 있는 리스트’오는 19일 서울 예술의전당 콘서트홀 무대에 오르는 캐나다 출신 피아니스트 케빈 첸의 국내 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608091558001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“케데헌 보고 왔죠” K한방 체험 인기",
+          "gist": "서울한방진흥센터 관광 핫플 부상 미 대학생들 “경락 마사지 원더풀”지난달 서울한방진흥센터 한방 체험 프로그램에 참여한 미국 노스웨스턴대학교 학생",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092015025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "뮤지션·작가 이랑, 일본 ‘나가이 가후 문학상’",
+          "gist": "음악과 출판 등 다양한 분야에서 활동해온 이랑(사진)이 일본의 종합 문학상 ‘나가이 가후 문학상’을 받는다.출판사 이야기장수는 작가이자 뮤지션인",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092015035/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[클래식 샛길]8곡 다 ‘리스트 작곡’이라는데 왜 바그너·모차르트의 향기가",
+          "gist": "클래식 ‘리사이틀’의 탄생요제프 단하우저가 그린 ‘피아노를 치고 있는 리스트’. 위키피디아피아노 한 대에 온갖 음악 끌어들인 1840년 리스트의",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092042015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘맞을 운명·절대 회복력’ 가진 남자…해학으로 풀어낸 폭력의 시대",
+          "gist": "소설가 박형서 13년 만의 장편 ‘죽도록 맞으며 살아왔다’ 출간소설가 박형서가 13년 만에 신작 장편소설 를 펴냈다. 박형서는 죽도록 맞아도 회",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608092043005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘애쓰지 않는 완벽함’의 함정 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271827.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“집안일 시키라”는 남편이 놓친 ‘기획 노동’ [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271829.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "신임 국립중앙도서관장에 남영준 중앙대 명예교수",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271836.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "이랑 ‘엄마와 딸들의 미친년의 역사’ 나가이 가후 문학상 수상",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271877.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "방수되는 책 들고 물과 환상 속으로 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271965.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[단독] 코로나 뒤 ‘대출 독서’ 첫 감소세…누가 꺾었나 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271966.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "오늘도 냠냠냠: 대구 동인동 찜갈비골목 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271968.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "350년 전 ‘예송’ 논쟁, 당시 백성엔 무의미…제발 당쟁 아닌 정치를! [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271974.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "당신 삶엔 일을 빼면 무엇이 남는가…30년 집사의 “슬픈 얼굴” [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271979.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘영원한 초보’ 순환보직 번아웃…전문성도 자신감도 사라져요 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271980.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "오직 ‘바라보는 일’로부터…그 모든 비극에 맞서 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1271981.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "물화·상품화 시대, 한국 철학이 나아갈 길 [.txt]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/religion/1272004.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘스파이더맨’ ‘오디세이’ 피했더니…한국 영화들, 추석 연휴에 치킨게임",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/culture_general/1272040.html"
         }
       ]
     },
     "it": {
-      "article_count": 157,
+      "article_count": 183,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -7616,11 +8768,193 @@
           "gist": "더현대 서울에서 진행되는 TFT 팝업 스토어는 팬들에게 자부심을 주기 위한 목적으로 기획되었습니다.",
           "source": "한국경제",
           "link": "https://www.hankyung.com/article/202608071540i"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "오픈AI, 새 모델 ‘아스트라’ 개발 중단… “통제 벗어나 공격 위험”",
+          "gist": "오픈AI가 차세대 인공지능(AI) 모델인 ‘아스트라’ 개발을 일부 중단했다. 출시 후 사람의 개입 없이 사이버 공격에 나서는 등 통제 불능 상태",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260810/134445905/2"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "낮 최고 34도 한풀 꺾인 더위… 서울, 17일만에 열대야 ‘탈출’",
+          "gist": "절기상 가을로 접어든다는 입추(7일)가 지나면서 극한 폭염의 기세가 한풀 꺾였다. 최상위 폭염특보인 폭염중대경보(최고 체감온도 38도 이상 등)",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Society/article/all/20260810/134446370/2"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "한 번 갈 때마다 '127만원'인데…\"가깝고 싸네요\" 인기 폭발",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080928791"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“내년 글로벌 기업 절반이 가성비 뛰어난 中 AI 쓸 것”",
+          "gist": "내년도 전 세계 주요 기업의 절반이 중국산 인공지능(AI) 모델을 채택해 사용할 것이라는 전망이 나왔다. 그동안 미국이 AI 기술에서 우위를 선",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260809/134445174/2"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘제2우주센터’ 전남광주-제주 경쟁",
+          "gist": "정부가 개발 중인 재사용 차세대발사체를 위한 발사장인 ‘제2우주센터’ 구축을 두고 전남광주시와 제주도가 경쟁한다. 우주항공청은 6일까지 진행한 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260809/134445172/2"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "소변 몇 방울로 10초면 끝… 1000원대 ‘마약 검사키트’ 나온다",
+          "gist": "국내 온라인 마약사범이 급증하고 신종 마약까지 확산하고 있는 가운데 소변 시료를 몇 방울만 떨어뜨리면 10초 만에 마약 성분을 정량 탐지할 수 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260809/134443830/2"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "가트너 “내년 글로벌기업 절반이 중국산 AI 사용할 것”",
+          "gist": "내년도 전 세계 주요 기업의 절반이 중국산 인공지능(AI) 모델을 채택해 사용할 것이라는 전망이 나왔다. 그동안 미국이 AI 기술에서 우위를 선",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260809/134443471/1"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "AI push is putting banks at mercy of tech firms, warns Moody’s",
+          "gist": "Finance sector will gain from the tech but it will need substantial investment a",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/business/2026/aug/09/ai-push-banks-tech-firms-moodys-risks-financial-sector"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "마운자로·위고비, 상반기 글로벌 매출 69% 증가",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080928771"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "AI·로봇이 하루 3.3만개 주문 ‘척척’… 롯데마트의 승부수",
+          "gist": "",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1kaFJjZHJLbmVLRjR2R0xNeF85U3AzUGxBZWZadURHUmt4eDFZV2JJTjNyanVKZnVURTlYUG5RVThhVExEZTF1UjRVV3lRMTQ?oc=5"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "챗GPT 무료 이용자에게도 최신 AI모델 개방",
+          "gist": "챗GPT 무료 이용자도 오픈AI의 최신 인공지능(AI) 모델을 사용할 수 있게 된다. 기존에는 고성능 최신 AI를 충분히 사용하려면 유료 구독이",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260809/134445157/2"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "부모에게 물려받은 유전자 첫 해독… ‘내 유전체 지도’ 시대 개막",
+          "gist": "부모 양쪽에서 물려받은 두 벌의 염색체를 완전히 해독하는 시대가 열렸다. 개인의 유전적 특성을 담은 ‘개인 맞춤형 게놈(유전체) 지도’가 구현됐",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260809/134443825/2"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[DBR]AI發 뇌 과부하 ‘브레인 프라이’, 피로감 줄이려면?",
+          "gist": "기획자가 인공지능(AI)이 만든 초안을 검토한다. 마케터는 AI가 쏟아낸 카피 문구를 검수한다. 퇴근 무렵이면 머릿속이 윙윙거린다. 집중이 흐려",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260809/134438192/2"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "JP모건 다이먼 “미국, 25년 내 기축통화 지위 잃을 수도”",
+          "gist": "",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFA1SHI1VUZ3aXdNVEpkZnBjbldQUC0zcHZSd05fQzBsR0xUWG1rdURZQ1lOdWdpMEgxNTZUM2g0cmpMZmFRZm55eVowbXNIRUN5TmlUeHd0ZknSAV5BVV95cUxQLVJRdUVpNVVlcHlPOU1YMGZFTE5aUzY5dHdaTnRZWVVwa2Y2WlBDZ19lZWduZjRPXzBVeFBCV2hGM1d2bFAxM3Z6bllvTkxlOEdxcGdkcTRPLXpQZ1hB?oc=5"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "전기가 넘칠 때…전기차가 ‘저수지’ 될까 [에너지보고서]",
+          "gist": "",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1xM2hoYkNvQWQwcDZQZlVDcTFfR3k4VTUzV0V1VmVpdkdpaXY2WUlhZlRScDh1bUlWYVNRV0ozLXpyNXYyQjJmVUVmSlE1ZEJ1Z2FFV2VMYTVveWM?oc=5"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“디지털자산 강세장 눈앞에…2000년대 초반 초고속 인터넷 전환기와 유사”",
+          "gist": "",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9mZUtDeVJER2dTRG5FLUJKcHlwRkFISEstUHBhbjBMX2R2WVN4N0FncGJsNHlvV3p4cUVTUWI3emRqUlZCdnc0WWc5ZWVJU1lzOEhJT1k5YTg?oc=5"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[단독] 데이터센터 90%, 수돗물 쓴다…가뭄 땐 사람 위협",
+          "gist": "",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFA0Y3d3V0s3Um0wNnNFc1FzcV9LRnhOT0t0V2pER3VsY1V5WE5UbHNwVFlkSko0eW02RW9OQlFVanBzbS1uZ3hTQVlaOEEwRFU?oc=5"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "엑스알피, \"사상 최고 반등\" 기대 속 \"1달러 하회\" 전망 엇갈려",
+          "gist": "",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5DRDFtbk8yYWI5XzJ6Y2RIZWFmSG02VE1ad3J1WW53UV91NWJzTTg2cWhrb3o0ZVdWWmxaVFBVV1o3V0tHSm1remI5azFDNWJvMzB4dFIwclI?oc=5"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "삼프로TV 개인정보 '46만여건' 유출…계좌·카드정보 포함",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080929047"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[단독] 크래프톤, 인간관계 잘 아는 '로봇 두뇌' 만든다",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080927621"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "IT 협회 간판도 'AI 대전환'…1년 반 동안 6곳 이름 바꿔",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080927661"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "SKT, 10년 장기고객 행사…흑백요리사 셰프 요리 제공",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080927641"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "엔비디아, 전력 업체 랜시엄에 4조 투자",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080927651"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "美에 VC 설립한 부부 \"K창업가와 세계시장 뚫을 것\"",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080927631"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "\"한국인 유전정보 넘어갈 판\"…中 기업 '초저가 공세'에 발칵",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080927321"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "보로노이, 북미 시장 확대…폐암신약 캐나다 임상 신청",
+          "gist": "",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026080927311"
         }
       ]
     },
     "science": {
-      "article_count": 117,
+      "article_count": 133,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -8440,11 +9774,123 @@
           "gist": "8월 12일 저녁, 스페인 북부와 동부 및 발레아레스 제도에서 120여 년 만에 개기일식이 일어납니다. 특히 소모시에라(Somosierra)가 ",
           "source": "The Guardian",
           "link": "https://www.theguardian.com/world/2026/aug/08/spanish-mountain-village-braces-for-astrotourists-lured-by-total-solar-eclipse"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Perseid meteor shower set to dazzle northern hemisphere this week",
+          "gist": "Astronomers say viewing conditions promising for this year’s shower, and 50 to 1",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/science/2026/aug/09/perseid-meteor-shower"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘You’re hit with a slam of shadow’: Nasa’s air mission to capture rare eclipse data",
+          "gist": "Two aviators will take off from Iceland to photograph the sun while flying at hi",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/science/2026/aug/09/nasa-mission-total-solar-eclipse-iceland-sun-nanoflares"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "안드로메다은하도 늙었나…별 생성량 5분의 1 수준으로 뚝",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1271448.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "지난 7월 밤, 무슨 일?…열대야 가장 많고, 최저기온 제일 높았다",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1271454.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "우주비행사급 각성, 바다 속 탐험가의 ‘잠망 효과’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1271644.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "탄소 배출 방치하면, 60년 뒤 ‘야외작업 불가’ 연간 50일로 폭증",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1271691.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘연 30일 최고 40도’…목숨 위험한 폭염, 뉴노멀 되나",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1271712.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "태양·구름·얼음이 만든 빛의 마술, ‘불꽃 무지개’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1271850.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "인공지능은 해방의 도구일까, 속박의 굴레일까",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/future/1271867.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "AI가 만든 ‘자연에 없는 바이러스’…“생명공학의 확장이자 인류에 위협”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1271912.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "제2우주센터 공모에 전남광주·제주 응모…10월 결정",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1272041.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Rare turtle to be sent back home in 5,000-mile 'incredibly emotional' trip",
+          "gist": "A rare turtle is being flown home to the Caribbean Sea after being found washed ",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c62vd6j5llgo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Most of sun to be eclipsed across island of Ireland",
+          "gist": "Skywatchers are set to witness two major celestial events next week, with a deep",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c39epmz7ex4o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Australia is the planet's extinction hotspot, but one animal offers a glimmer of hope",
+          "gist": "The country is home to some of the world's most unique species - but it is losin",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c9q94lxqrzzo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "One of UK’s best fossil collections sold overseas in ‘loss to the nation’",
+          "gist": "Exclusive: Lack of funds left British museums unable to pay eight-figure sum for",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/science/ng-interactive/2026/aug/09/one-of-uks-best-fossil-collections-sold-overseas-in-loss-to-the-nation"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Typhoon Dolphin batters Japan's Okinawa before bearing down on China",
+          "gist": "The storm has cut power to at least 44,000 buildings and injured five people on ",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cvglp2zlvrlo?at_medium=RSS&at_campaign=rss"
         }
       ]
     },
     "world": {
-      "article_count": 178,
+      "article_count": 208,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -9691,9 +11137,219 @@
           "gist": "이탈리아 가르다 호수(Lake Garda) 인근에서 산불이 발생하여 최소 200명의 주민이 대피했습니다.",
           "source": "Al Jazeera",
           "link": "https://www.aljazeera.com/video/newsfeed/2026/8/8/at-least-200-people-evacuated-as-wildfire-rages-near-lake-garda?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“어머니가 돌아가셔”…일 지진 ‘희생자 사칭’ SNS로 기부금 챙겨",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272046.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "미-이란 전쟁 속…이스라엘, 중국 청두 총영사관 폐쇄",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/china/1272078.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“북한군 5만명 온다”…젤렌스키, 한국에 방공무기 요청",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/europe/1272080.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘전쟁신사’ 야스쿠니에 갇힌 조선인 혼령…유족들 “합사 철회” 눈물의 호소",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272107.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "미 이민단속국 구금시설서 한국인 3명 사망…2명은 자살",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272122.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“통역·면회 거부당한 채 방치”…사망보고서에도 ‘왜’는 없었다 [인터뷰]",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272125.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "'태아 심장소리 들어라' 법안에 칠레서 임신중단 제한 논란",
+          "gist": "(부에노스아이레스=연합뉴스) 김선정 통신원 = 칠레에서 임신중단을 원하는 여성에게 시술에 앞서 태아의 심장박동을 듣도록 하는 법안을 둘러싼 논란",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260810002100009"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Germany warns of ‘daily hybrid warfare’ after explosive-laden drone found",
+          "gist": "Espionage, sabotage, cyberattacks, and covert operations are a 'constant reality",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/news/2026/8/9/germany-warns-of-daily-hybrid-warfare-following-suspected-drone-attack?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "\"168명 사망 홍콩 아파트 화재원인은 담뱃불\"",
+          "gist": "작년 11월 168명의 목숨을 앗아간 홍콩 고층아파트 화재 사건의 원인이 담뱃불일 가능성이 있다는 조사 결과가 나왔습니다. 신화통신에 따르면 화",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH202608100539418zn"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "사방이 온통 불길…유럽 이어 캐나다도 산불 '비상'",
+          "gist": "[앵커] 캐나다 서부에서 100건이 넘는 산불이 동시다발적으로 발생해 수만 명이 긴급 대피했습니다. 불길이 강풍을 타고 하룻밤 사이 두 배로 번",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260810053847uve"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "트럼프 \"이란에 로키로 대응 중…이건 체스게임\"",
+          "gist": "도널드 트럼프 미국 대통령이 이란 문제에 대해 \"우리는 로키, 저강도로 대응하고 있다\"고 밝혔습니다. 트럼프 대통령은 미 온라인매체 악시오스에 ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260810051722jLb"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "이란, 모즈타바 위독설 일축 나서…\"사진 곧 공개\"",
+          "gist": "이란 매체들이 모즈타바 하메네이 이란 최고지도자의 활동과 관련한 보도를 잇따라 전하며 최근 제기된 위독설을 불식시키는 듯한 모습을 보이고 있습니",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260810051139hXO"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "후티 반군 \"예멘 모카항의 사우디군 집결지 타격\"",
+          "gist": "예멘의 친이란 반군 후티가 예멘 남서부 항구도시 모카의 사우디아라비아 병력 집결지와 무기고를 공습했다고 주장했습니다. 야히야 사리 후티 대변인은",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260810051030hCo"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Palestinians say Netanyahu’s decision leaves ‘no clear path’ to peace",
+          "gist": "‘We're going backwards.’",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/8/9/palestinians-say-netanyahus-decision-leaves-no-clear-path-to-peace?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Israel Rejects Trump’s 15-Point Plan to Disarm Hamas",
+          "gist": "President Trump’s Board of Peace announced an agreement last month that aimed at",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/09/world/middleeast/israel-netanyahu-trump-15-point-plan-hamas-peace-gaza.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "이란 “미군 철수하면 호르무즈 개방”…‘막다른 길’ 미국은 출구 찾기",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/arabafrica/1272045.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "뇌졸중 딛고 ‘360도 회전비행’ 즐긴 97살 “100살엔 뭐 해볼까~”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272049.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "‘서서 맥주 마시기’ 하지 마?…영국 총리실 ‘그건 아니지’",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272054.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "축협 성접대, 바다 건너 ‘불똥’…“일본인 심판 4명 조사 중”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272090.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "네타냐후, 트럼프 주도 ‘하마스 무장해제-이스라엘 철군’ 가자 평화안 거부",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272113.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "“한 달 넘게 햇볕 못 쪼여” “방으로 화장실 오수 들어와”",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1272120.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "중국, 사람 몸값 앞선 AI 배우 등장…쇼트드라마 95%가 AI 제작",
+          "gist": "",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/china/1272126.html"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[中반도체굴기] ③ \"美제재가 키운 것만은 아냐\"…장기투자·인재도 동력",
+          "gist": "(베이징=연합뉴스) 김현정 정성조 특파원 = 한중 전문가들은 최근 연합뉴스와의 인터뷰에서 중국 반도체 굴기의 성과가 미국의 강력한 수출 제재가 ",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260807159800083"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[中반도체굴기] ② 14조원 '실탄' 쥔 CXMT, 심야에도 공장 건설 속도",
+          "gist": "(허페이·상하이=연합뉴스) 차병섭 특파원 = 중국 동부 안후이성 허페이의 기차역에서 30㎞ 넘게 떨어진 시 외곽의 한 산업단지.",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260808047500089"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "[中반도체굴기] ① 강력한 美제재 뚫고…'추격자'에서 '경쟁자'로",
+          "gist": "(베이징=연합뉴스) 한종구 특파원 = 미국이 중국 반도체 산업을 겨냥한 수출 통제를 본격화했을 때만 해도 중국이 이를 뚫고 글로벌 경쟁에서 의미",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260807114200083"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "캐나다서 엔진룸 숨어 120km 이동...'무임승차' 마멋 발견",
+          "gist": "자동차 엔진룸에 숨어 120km를 이동한 마멋[인스타그램 @ratzlaff 캡처][인스타그램 @ratzlaff 캡처] 캐나다에서 다람쥐과 포유류",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260806142521GvA"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "中, AI로 전투계획·동향분석…'중국판 팔란티어' 평가",
+          "gist": "[앵커] 최근 중국에서는 AI가 직접 수백개의 타격 계획을 짜는 전투체계가 공개됐습니다. 민간업체는 수억개의 데이터를 실시간으로 분석하는 시스템",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260810054518gcl"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "영국도 '소음 갈등'...이웃 연못 물고기까지 죽인 70대",
+          "gist": "어항 속 금붕어. 본 기사 내용과 관련 없음. [출처=연합뉴스]어항 속 금붕어. 본 기사 내용과 관련 없음. [출처=연합뉴스] 영국 런던에서 이",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260806103818BVy"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "\"매미 소리쯤이야\" 했다가…4시간 만에 청력 손상된 사연",
+          "gist": "이비인후과 난청검사 (기사 내용과 직접적인 관련 없는 사진)[연합뉴스TV][연합뉴스TV] 4시간 동안 매미 소리에 노출된 18살 중국 소년이 일",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260807155302jxO"
+        },
+        {
+          "date": "2026-08-09",
+          "title": "Nigerian army says it safely rescued 33 people kidnapped by gunmen",
+          "gist": "The people were abducted while travelling through the country's north-western Za",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c89nkkvx2veo?at_medium=RSS&at_campaign=rss"
         }
       ]
     }
   },
-  "compacted_at": "2026-11-07T03:58:58.143865"
+  "compacted_at": "2026-11-08T04:07:06.040592"
 }
