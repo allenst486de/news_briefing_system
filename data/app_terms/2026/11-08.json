@@ -1,0 +1,135 @@
+{
+  "date": "2026-11-08",
+  "terms": [
+    {
+      "term": "집속탄",
+      "reading": "",
+      "meaning": "하나의 큰 탄체 안에 수많은 작은 자탄이 들어 있어, 공중에서 폭발하며 넓은 지역에 자탄을 뿌리는 무기를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "집속탄",
+      "url": "https://ko.wikipedia.org/wiki/집속탄",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-08",
+      "via": "news_terms"
+    },
+    {
+      "term": "Resellers",
+      "reading": "리셀러",
+      "meaning": "제품을 구매한 뒤 프리미엄을 붙여 더 높은 가격으로 되파는 개인이나 업자를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "리셀러",
+      "url": "https://ko.wikipedia.org/wiki/리셀러",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-08",
+      "via": "news_terms"
+    },
+    {
+      "term": "Honeycomb Texture",
+      "reading": "벌집 구조",
+      "meaning": "육각형 모양의 세포가 반복되는 구조로, 가벼우면서도 강도가 높고 충격 흡수력이 뛰어난 형태를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "벌집 구조",
+      "url": "https://ko.wikipedia.org/wiki/벌집_구조",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-08",
+      "via": "news_terms"
+    },
+    {
+      "term": "Dark Web",
+      "reading": "다크웹",
+      "meaning": "특수한 소프트웨어를 사용해야만 접속할 수 있으며, 익명성이 보장되어 일반적인 검색 엔진으로는 찾을 수 없는 인터넷 영역을 뜻한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "다크 웹",
+      "url": "https://ko.wikipedia.org/wiki/다크_웹",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-08",
+      "via": "news_terms"
+    },
+    {
+      "term": "Supply Chain Attack",
+      "reading": "공급망 공격",
+      "meaning": "소프트웨어나 하드웨어의 개발 및 유통 과정인 공급망에 침투하여 악성 코드를 삽입하는 사이버 공격 방식을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "공급망 공격",
+      "url": "https://ko.wikipedia.org/wiki/공급망_공격",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-08",
+      "via": "news_terms"
+    },
+    {
+      "term": "TF",
+      "reading": "태스크포스",
+      "meaning": "특정한 과업을 수행하기 위해 서로 다른 부서나 조직에서 전문가들이 모여 일시적으로 구성한 임시 팀을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "태스크 포스",
+      "url": "https://ko.wikipedia.org/wiki/태스크_포스",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-08",
+      "via": "news_terms"
+    },
+    {
+      "term": "간헐적 단식",
+      "reading": "",
+      "meaning": "하루 중 일정 시간 동안 음식을 먹지 않고 공복 상태를 유지하는 식사 방법을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "간헐적 단식",
+      "url": "https://ko.wikipedia.org/wiki/간헐적_단식",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-08",
+      "via": "raw"
+    },
+    {
+      "term": "팬픽",
+      "reading": "",
+      "meaning": "원작 작품의 인물이나 세계관을 바탕으로 팬이 자유롭게 창작하는 2차 창작물을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "팬 픽션",
+      "url": "https://ko.wikipedia.org/wiki/팬_픽션",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-08",
+      "via": "raw"
+    },
+    {
+      "term": "최저임금",
+      "reading": "",
+      "meaning": "사용자가 노동자에게 법으로 정한 금액보다 낮은 임금을 지급할 수 없도록 한 제도 또는 그 임금을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "최저임금",
+      "url": "https://ko.wikipedia.org/wiki/최저임금",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-08",
+      "via": "raw"
+    },
+    {
+      "term": "유전자 치료",
+      "reading": "",
+      "meaning": "정상 유전자를 체내에 넣거나 결함 있는 유전자를 고쳐 유전병 따위를 치료하는 방법을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "유전자 치료",
+      "url": "https://ko.wikipedia.org/wiki/유전자_치료",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-08",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-08T04:07:26+09:00",
+      "added": 10,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
