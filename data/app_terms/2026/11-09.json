@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-09",
+  "terms": [
+    {
+      "term": "종합부동산세",
+      "reading": "",
+      "meaning": "일정 규모를 넘는 부동산을 보유한 사람에게 보유 가액을 합산하여 부과하는 세금을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "종합부동산세",
+      "url": "https://ko.wikipedia.org/wiki/종합부동산세",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-09",
+      "via": "news_terms"
+    },
+    {
+      "term": "유엔기후변화협약 당사국총회",
+      "reading": "",
+      "meaning": "기후변화에 대응하기 위해 유엔기후변화협약에 가입한 국가들이 모여 온실가스 감축과 관련한 사항을 논의하는 회의를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "유엔기후변화협약 당사국총회",
+      "url": "https://ko.wikipedia.org/wiki/유엔기후변화협약_당사국총회",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-09",
+      "via": "raw"
+    },
+    {
+      "term": "클로드 코드",
+      "reading": "",
+      "meaning": "인공지능 기업 앤스로픽이 만든 대규모 언어 모델 클로드를 기반으로 코드 작성과 수정을 돕는 도구를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "클로드 (언어 모델)",
+      "url": "https://ko.wikipedia.org/wiki/클로드_(언어_모델)",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-09",
+      "via": "raw"
+    },
+    {
+      "term": "발사체",
+      "reading": "",
+      "meaning": "로켓이나 미사일 등으로 물체를 대기권 밖이나 목표 지점까지 쏘아 올리는 데 쓰이는 장치나 그 물체를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "발사체",
+      "url": "https://ko.wikipedia.org/wiki/발사체",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-09",
+      "via": "raw"
+    },
+    {
+      "term": "스트리밍",
+      "reading": "",
+      "meaning": "음악이나 영상 같은 데이터를 인터넷으로 전송해 저장하지 않고 실시간으로 재생하는 방식을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "스트리밍",
+      "url": "https://ko.wikipedia.org/wiki/스트리밍",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-09",
+      "via": "raw"
+    },
+    {
+      "term": "멀티모달 모델",
+      "reading": "",
+      "meaning": "글과 이미지, 소리 등 여러 종류의 데이터를 함께 처리할 수 있도록 만든 인공지능 모델을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "멀티모달 학습",
+      "url": "https://ko.wikipedia.org/wiki/멀티모달_학습",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-09",
+      "via": "raw"
+    },
+    {
+      "term": "적외선",
+      "reading": "",
+      "meaning": "빛 가운데 눈에 보이지 않고 열로 느껴지는 파장이 긴 전자기파를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "적외선",
+      "url": "https://ko.wikipedia.org/wiki/적외선",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-09",
+      "via": "raw"
+    },
+    {
+      "term": "점자",
+      "reading": "",
+      "meaning": "시각장애인이 손끝으로 읽을 수 있도록 볼록한 점을 일정한 규칙으로 배열해 만든 문자를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "점자",
+      "url": "https://ko.wikipedia.org/wiki/점자",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-09",
+      "via": "raw"
+    },
+    {
+      "term": "알도스테론",
+      "reading": "",
+      "meaning": "부신 겉질에서 분비되어 체내의 나트륨과 칼륨 균형 및 혈압 조절에 관여하는 호르몬을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "알도스테론",
+      "url": "https://ko.wikipedia.org/wiki/알도스테론",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-09",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-09T03:58:06+09:00",
+      "added": 9,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
