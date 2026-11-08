@@ -108,6 +108,18 @@
       "model": "deepseek-ai/deepseek-v4.1-flash",
       "date": "2026-11-09",
       "via": "raw"
+    },
+    {
+      "term": "가시광선",
+      "reading": "",
+      "meaning": "사람의 눈으로 볼 수 있는 파장 범위의 전자기파를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "가시광선",
+      "url": "https://ko.wikipedia.org/wiki/가시광선",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-09",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -116,6 +128,13 @@
       "added": 9,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-09T05:45:08+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
