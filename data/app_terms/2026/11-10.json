@@ -48,6 +48,54 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-10",
       "via": "raw"
+    },
+    {
+      "term": "GPU",
+      "reading": "",
+      "meaning": "컴퓨터에서 영상을 처리하는 연산을 맡는 반도체 칩을 말한다. 인공지능 학습처럼 많은 계산을 동시에 처리하는 데에도 널리 쓰인다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "그래픽 처리 장치",
+      "url": "https://ko.wikipedia.org/wiki/그래픽_처리_장치",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-10",
+      "via": "raw"
+    },
+    {
+      "term": "플라즈마",
+      "reading": "",
+      "meaning": "고체·액체·기체에 이은 물질의 네 번째 상태로, 기체에 에너지를 가해 전자와 이온이 섞인 상태를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "플라스마",
+      "url": "https://ko.wikipedia.org/wiki/플라스마",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-10",
+      "via": "raw"
+    },
+    {
+      "term": "사이버 공격",
+      "reading": "",
+      "meaning": "인터넷 등 컴퓨터 네트워크를 통해 시스템에 침입하여 정보를 빼내거나 기능을 파괴·마비시키는 공격을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "사이버 공격",
+      "url": "https://ko.wikipedia.org/wiki/사이버_공격",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-10",
+      "via": "raw"
+    },
+    {
+      "term": "연립정부",
+      "reading": "",
+      "meaning": "하나의 정당이 과반 의석을 확보하지 못했을 때 여러 정당이 연합하여 구성하는 정부를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "연립정부",
+      "url": "https://ko.wikipedia.org/wiki/연립정부",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-10",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -56,6 +104,13 @@
       "added": 4,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-10T05:45:10+09:00",
+      "added": 4,
+      "via": [
         "raw"
       ]
     }
