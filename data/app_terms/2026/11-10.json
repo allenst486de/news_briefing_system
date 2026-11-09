@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-10",
+  "terms": [
+    {
+      "term": "중위소득",
+      "reading": "",
+      "meaning": "모든 가구를 소득 순으로 세웠을 때 정확히 중간에 위치한 가구의 소득을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "중위소득",
+      "url": "https://ko.wikipedia.org/wiki/중위소득",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-10",
+      "via": "news_terms"
+    },
+    {
+      "term": "심리불속행",
+      "reading": "",
+      "meaning": "상고심에서 원심 판결에 영향을 미칠 만한 법률 위반이 없다고 판단하여 더 이상 심리하지 않고 기각하는 결정을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "심리불속행",
+      "url": "https://ko.wikipedia.org/wiki/심리불속행",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-10",
+      "via": "news_terms"
+    },
+    {
+      "term": "이슬람혁명수비대",
+      "reading": "",
+      "meaning": "이란에 정규군과는 별도로 이슬람 정권과 혁명의 성과를 지키기 위해 창설된 군사 조직을 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "이슬람 혁명 수비대",
+      "url": "https://ko.wikipedia.org/wiki/이슬람_혁명_수비대",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-10",
+      "via": "raw"
+    },
+    {
+      "term": "호흡기세포융합바이러스",
+      "reading": "",
+      "meaning": "영유아에게 모세기관지염이나 폐렴 따위 호흡기 감염을 일으키는 바이러스로, RSV라고도 한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "호흡기세포융합바이러스",
+      "url": "https://ko.wikipedia.org/wiki/호흡기세포융합바이러스",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-10",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-10T03:52:46+09:00",
+      "added": 4,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
