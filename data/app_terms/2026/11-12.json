@@ -96,6 +96,18 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-12",
       "via": "raw"
+    },
+    {
+      "term": "역주행",
+      "reading": "",
+      "meaning": "발표된 지 오래된 노래나 콘텐츠가 시간이 지난 뒤 다시 인기를 얻어 차트 상위권으로 오르는 현상을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "역주행",
+      "url": "https://ko.wikipedia.org/wiki/역주행",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -104,6 +116,13 @@
       "added": 8,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-12T07:30:14+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
