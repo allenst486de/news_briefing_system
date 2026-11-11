@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-12",
+  "terms": [
+    {
+      "term": "Put Option",
+      "reading": "풋옵션",
+      "meaning": "미리 정한 가격에 정해진 기간 안에 자산을 팔 수 있는 권리를 거래하는 금융 상품을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "옵션 (금융)",
+      "url": "https://ko.wikipedia.org/wiki/옵션_(금융)",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "news_terms"
+    },
+    {
+      "term": "General Strike",
+      "reading": "총파업",
+      "meaning": "노동자들이 업종과 사업장의 구분 없이 함께 참여해 노동을 멈추는 대규모 파업을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "총파업",
+      "url": "https://ko.wikipedia.org/wiki/총파업",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "news_terms"
+    },
+    {
+      "term": "Conversion Therapy",
+      "reading": "전환 치료",
+      "meaning": "개인의 성적 지향이나 성별 정체성을 바꾸려 시도하는 치료 행위를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "전환 치료",
+      "url": "https://ko.wikipedia.org/wiki/전환_치료",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "news_terms"
+    },
+    {
+      "term": "Export Controls",
+      "reading": "수출 규제",
+      "meaning": "국가가 안보나 정책상의 이유로 특정 물자나 기술의 해외 수출을 제한하는 조치를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "수출규제",
+      "url": "https://ko.wikipedia.org/wiki/수출규제",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "news_terms"
+    },
+    {
+      "term": "예산안",
+      "reading": "",
+      "meaning": "정부나 기관이 일정 기간의 수입과 지출 계획을 담아 의결 기관의 심사를 받기 위해 제출하는 안건을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "예산",
+      "url": "https://ko.wikipedia.org/wiki/예산",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "raw"
+    },
+    {
+      "term": "트레일러닝",
+      "reading": "",
+      "meaning": "산길이나 들길 등 자연 지형의 길을 달리는 레저 스포츠를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "트레일 러닝",
+      "url": "https://ko.wikipedia.org/wiki/트레일_러닝",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "raw"
+    },
+    {
+      "term": "비상계엄",
+      "reading": "",
+      "meaning": "전시나 사변 등 국가 비상사태 시 선포되어 군이 치안과 질서를 통제하는 제도를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "비상계엄",
+      "url": "https://ko.wikipedia.org/wiki/비상계엄",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "raw"
+    },
+    {
+      "term": "ETF",
+      "reading": "상장지수펀드",
+      "meaning": "특정 지수의 움직임을 따르도록 만들어 주식시장에 상장되어 거래되는 펀드를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "상장지수 펀드",
+      "url": "https://ko.wikipedia.org/wiki/상장지수_펀드",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-12",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-12T05:49:10+09:00",
+      "added": 8,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
