@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-13",
+  "terms": [
+    {
+      "term": "당론",
+      "reading": "",
+      "meaning": "정당이 특정 사안에 대해 당원들이 따르도록 정한 공식적인 입장이나 방침을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "당론",
+      "url": "https://ko.wikipedia.org/wiki/당론",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "news_terms"
+    },
+    {
+      "term": "Economies Of Scale",
+      "reading": "규모의 경제",
+      "meaning": "생산량이 늘어날수록 제품 한 단위당 생산 비용이 줄어드는 경제 현상을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "규모의 경제",
+      "url": "https://ko.wikipedia.org/wiki/규모의_경제",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "news_terms"
+    },
+    {
+      "term": "Rehabilitation",
+      "reading": "갱생",
+      "meaning": "범죄자나 비행을 저지른 사람을 교육과 훈련을 통해 사회에 적응하도록 이끄는 일을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "교화 (사회)",
+      "url": "https://ko.wikipedia.org/wiki/교화_(사회)",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "news_terms"
+    },
+    {
+      "term": "순항미사일",
+      "reading": "",
+      "meaning": "적의 주요 시설을 정밀 타격하기 위해 지형을 따라 낮게 비행하도록 만든 유도 미사일을 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "순항 미사일",
+      "url": "https://ko.wikipedia.org/wiki/순항_미사일",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "raw"
+    },
+    {
+      "term": "극중극",
+      "reading": "",
+      "meaning": "연극이나 영화 같은 작품 속에서 등장인물들이 또 다른 연극이나 영화를 하는 형식의 이야기를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "극중극",
+      "url": "https://ko.wikipedia.org/wiki/극중극",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "raw"
+    },
+    {
+      "term": "위장취업",
+      "reading": "",
+      "meaning": "신분이나 의도를 숨기고 남의 회사나 단체에 취직하는 일을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "위장취업",
+      "url": "https://ko.wikipedia.org/wiki/위장취업",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "raw"
+    },
+    {
+      "term": "파쿠르",
+      "reading": "",
+      "meaning": "도시의 건물과 장애물을 이용해 달리기·점프·등반 동작으로 이동하는 신체 운동을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "파쿠르",
+      "url": "https://ko.wikipedia.org/wiki/파쿠르",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "raw"
+    },
+    {
+      "term": "쿠다 플랫폼",
+      "reading": "",
+      "meaning": "엔비디아가 만든 병렬 컴퓨팅 플랫폼과 프로그래밍 모델을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "CUDA",
+      "url": "https://ko.wikipedia.org/wiki/CUDA",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-13T04:18:51+09:00",
+      "added": 8,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
