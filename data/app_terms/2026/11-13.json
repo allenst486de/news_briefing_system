@@ -96,6 +96,30 @@
       "model": "deepseek-ai/deepseek-v4.1-flash",
       "date": "2026-11-13",
       "via": "raw"
+    },
+    {
+      "term": "국가배상",
+      "reading": "",
+      "meaning": "국가나 공공단체가 공무원의 직무상 불법 행위로 국민에게 입힌 손해를 배상할 책임을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "국가배상책임",
+      "url": "https://ko.wikipedia.org/wiki/국가배상책임",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "raw"
+    },
+    {
+      "term": "불계",
+      "reading": "",
+      "meaning": "바둑에서 서로 상대의 돌을 잡을 수 없는 형태로 얽혀 있어 승부를 가리지 못하는 상태를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "부처",
+      "url": "https://ko.wikipedia.org/wiki/부처",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-13",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -104,6 +128,13 @@
       "added": 8,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-13T05:45:05+09:00",
+      "added": 2,
+      "via": [
         "raw"
       ]
     }
