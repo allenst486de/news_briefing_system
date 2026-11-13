@@ -72,6 +72,18 @@
       "model": "google/gemma-4-31b-it",
       "date": "2026-11-14",
       "via": "raw"
+    },
+    {
+      "term": "학예연구사",
+      "reading": "",
+      "meaning": "박물관이나 미술관 등에서 유물과 예술품의 수집, 보존, 전시, 연구를 전문적으로 수행하는 공무원 또는 전문가를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "학예사",
+      "url": "https://ko.wikipedia.org/wiki/학예사",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-14",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -80,6 +92,13 @@
       "added": 6,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-14T05:45:09+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
