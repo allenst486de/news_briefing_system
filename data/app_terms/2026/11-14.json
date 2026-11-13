@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-14",
+  "terms": [
+    {
+      "term": "Hostile Takeover",
+      "reading": "적대적 인수합병",
+      "meaning": "대상 기업의 경영진이나 이사회의 동의 없이 강제로 경영권을 확보하려는 인수합병 방식을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "공개매수",
+      "url": "https://ko.wikipedia.org/wiki/공개매수",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-14",
+      "via": "news_terms"
+    },
+    {
+      "term": "Entity List",
+      "reading": "엔티티 리스트",
+      "meaning": "국가 안보 등의 이유로 특정 기업이나 단체와의 거래를 제한하기 위해 작성한 명단을 뜻한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "거래 제한 목록",
+      "url": "https://ko.wikipedia.org/wiki/거래_제한_목록",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-14",
+      "via": "news_terms"
+    },
+    {
+      "term": "Pink Tax",
+      "reading": "핑크 택스",
+      "meaning": "여성용 제품이 남성용 제품보다 더 비싸게 판매되는 현상을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "핑크 택스",
+      "url": "https://ko.wikipedia.org/wiki/핑크_택스",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-14",
+      "via": "news_terms"
+    },
+    {
+      "term": "근로기준법",
+      "reading": "",
+      "meaning": "근로 조건의 기준을 정하여 근로자의 기본적 생활을 보장하고 향상시키며 균형 있는 국민 경제의 발전을 꾀하기 위해 제정된 법률을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "근로기준법",
+      "url": "https://ko.wikipedia.org/wiki/근로기준법",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-14",
+      "via": "raw"
+    },
+    {
+      "term": "탁발",
+      "reading": "",
+      "meaning": "불교에서 승려가 수행의 일환으로 음식이나 시주물을 구하기 위해 집집마다 다니며 공양을 받는 행위를 뜻한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "탁발",
+      "url": "https://ko.wikipedia.org/wiki/탁발",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-14",
+      "via": "raw"
+    },
+    {
+      "term": "디지털 노마드",
+      "reading": "",
+      "meaning": "디지털(Digital)과 노마드(Nomad)의 합성어로, 정보 통신 기술을 활용해 장소에 구애받지 않고 이동하며 일하는 사람이나 그러한 생활 방식을 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "디지털 유목민",
+      "url": "https://ko.wikipedia.org/wiki/디지털_유목민",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-14",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-14T04:19:21+09:00",
+      "added": 6,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
