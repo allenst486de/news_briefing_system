@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-15",
+  "terms": [
+    {
+      "term": "Yang-Mills Theory",
+      "reading": "양-밀스 이론",
+      "meaning": "게이지 이론의 일종으로, 기본 상호작용을 설명하기 위해 도입된 비가환 게이지 이론을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "양-밀스 이론",
+      "url": "https://ko.wikipedia.org/wiki/양-밀스_이론",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-15",
+      "via": "news_terms"
+    },
+    {
+      "term": "Biomarker",
+      "reading": "바이오마커",
+      "meaning": "생물학적 상태나 질병의 진행 정도를 객관적으로 측정하고 평가할 수 있는 지표를 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "바이오마커",
+      "url": "https://ko.wikipedia.org/wiki/바이오마커",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-15",
+      "via": "news_terms"
+    },
+    {
+      "term": "Nuclear Proliferation",
+      "reading": "핵 확산",
+      "meaning": "핵무기나 그 제조 기술이 핵보유국 외의 국가나 집단으로 퍼지는 현상을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "핵확산",
+      "url": "https://ko.wikipedia.org/wiki/핵확산",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-15",
+      "via": "raw"
+    },
+    {
+      "term": "NHS",
+      "reading": "국민보건서비스",
+      "meaning": "영국의 국가 보건 의료 서비스 체제로, 정부가 세금으로 운영하며 국민에게 무상 의료를 제공하는 제도이다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "국민 보건 서비스",
+      "url": "https://ko.wikipedia.org/wiki/국민_보건_서비스",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-15",
+      "via": "raw"
+    },
+    {
+      "term": "암호화",
+      "reading": "",
+      "meaning": "정보를 권한이 없는 제삼자가 읽을 수 없도록 특정한 알고리즘을 사용하여 암호문으로 변환하는 것을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "암호화",
+      "url": "https://ko.wikipedia.org/wiki/암호화",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-15",
+      "via": "raw"
+    },
+    {
+      "term": "라우터",
+      "reading": "",
+      "meaning": "네트워크 간에 데이터를 주고받을 때 최적의 경로를 설정하여 패킷을 전송하는 네트워크 장치이다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "라우터",
+      "url": "https://ko.wikipedia.org/wiki/라우터",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-15",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-15T04:06:43+09:00",
+      "added": 6,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
