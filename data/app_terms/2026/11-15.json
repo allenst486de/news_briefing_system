@@ -96,6 +96,30 @@
       "model": "google/gemma-4-31b-it",
       "date": "2026-11-15",
       "via": "raw"
+    },
+    {
+      "term": "메디케이드",
+      "reading": "",
+      "meaning": "미국의 저소득층을 대상으로 하는 공적 의료 지원 제도를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "메디케이드",
+      "url": "https://ko.wikipedia.org/wiki/메디케이드",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-15",
+      "via": "raw"
+    },
+    {
+      "term": "가택 연금",
+      "reading": "",
+      "meaning": "특정 인물을 자신의 집이나 지정된 장소에 강제로 머물게 하여 외부와의 접촉을 제한하는 구금 형태를 뜻한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "가택 연금",
+      "url": "https://ko.wikipedia.org/wiki/가택_연금",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-15",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -109,6 +133,13 @@
     },
     {
       "at": "2026-11-15T05:45:10+09:00",
+      "added": 2,
+      "via": [
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-15T07:30:12+09:00",
       "added": 2,
       "via": [
         "raw"
