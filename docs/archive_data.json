@@ -1,5 +1,42 @@
 [
   {
+    "date": "2026-11-15",
+    "categories": [
+      {
+        "name": "🏛️ 정치",
+        "path": "/news_briefing_system/2026/11/15/politics-XdLc4niHK9.html"
+      },
+      {
+        "name": "💰 경제",
+        "path": "/news_briefing_system/2026/11/15/economy-fez8RKy5Xd.html"
+      },
+      {
+        "name": "👥 사회",
+        "path": "/news_briefing_system/2026/11/15/society-FSl37a0cMh.html"
+      },
+      {
+        "name": "🌱 생활",
+        "path": "/news_briefing_system/2026/11/15/life-7XqbDW71U7.html"
+      },
+      {
+        "name": "🎭 문화",
+        "path": "/news_briefing_system/2026/11/15/culture-vlv2MfcM6f.html"
+      },
+      {
+        "name": "💻 IT",
+        "path": "/news_briefing_system/2026/11/15/it-M0f48ttvVc.html"
+      },
+      {
+        "name": "🔬 과학",
+        "path": "/news_briefing_system/2026/11/15/science-5fGP0PhK5F.html"
+      },
+      {
+        "name": "🌍 국제",
+        "path": "/news_briefing_system/2026/11/15/world-YD1uQO9sED.html"
+      }
+    ]
+  },
+  {
     "date": "2026-11-14",
     "categories": [
       {
@@ -2919,43 +2956,6 @@
       {
         "name": "🌍 국제",
         "path": "/news_briefing_system/2026/08/17/world-OpBuPcz4AI.html"
-      }
-    ]
-  },
-  {
-    "date": "2026-08-16",
-    "categories": [
-      {
-        "name": "🏛️ 정치",
-        "path": "/news_briefing_system/2026/08/16/politics-8v7m8u8RB9.html"
-      },
-      {
-        "name": "💰 경제",
-        "path": "/news_briefing_system/2026/08/16/economy-X7629T6rp1.html"
-      },
-      {
-        "name": "👥 사회",
-        "path": "/news_briefing_system/2026/08/16/society-abRhN93Edq.html"
-      },
-      {
-        "name": "🌱 생활",
-        "path": "/news_briefing_system/2026/08/16/life-c2PjXKrzt0.html"
-      },
-      {
-        "name": "🎭 문화",
-        "path": "/news_briefing_system/2026/08/16/culture-QbH4hgAlfm.html"
-      },
-      {
-        "name": "💻 IT",
-        "path": "/news_briefing_system/2026/08/16/it-QBdYbi4FTr.html"
-      },
-      {
-        "name": "🔬 과학",
-        "path": "/news_briefing_system/2026/08/16/science-NB8yOxUXbb.html"
-      },
-      {
-        "name": "🌍 국제",
-        "path": "/news_briefing_system/2026/08/16/world-SJwte7MFDX.html"
       }
     ]
   },
