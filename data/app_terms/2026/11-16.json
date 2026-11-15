@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-16",
+  "terms": [
+    {
+      "term": "Eurovision Song Contest",
+      "reading": "유로비전 송 콘테스트",
+      "meaning": "유럽 방송 연맹이 주관하는 국제 음악 경연 대회로, 유럽 각국 대표들이 참가하여 노래를 통해 경쟁하는 행사이다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "유로비전 송 콘테스트",
+      "url": "https://ko.wikipedia.org/wiki/유로비전_송_콘테스트",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-16",
+      "via": "news_terms"
+    },
+    {
+      "term": "Live Commerce",
+      "reading": "라이브커머스",
+      "meaning": "실시간 동영상 스트리밍과 전자 상거래가 결합된 형태로, 판매자가 방송을 통해 상품을 소개하고 소비자가 즉시 구매하는 방식이다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "라이브 커머스",
+      "url": "https://ko.wikipedia.org/wiki/라이브_커머스",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-16",
+      "via": "news_terms"
+    },
+    {
+      "term": "페이퍼컴퍼니",
+      "reading": "",
+      "meaning": "실제 영업 활동을 하지 않으면서 서류상으로만 회사 형태를 갖춘 회사를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "페이퍼 컴퍼니",
+      "url": "https://ko.wikipedia.org/wiki/페이퍼_컴퍼니",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-16",
+      "via": "raw"
+    },
+    {
+      "term": "업무방해죄",
+      "reading": "",
+      "meaning": "위계나 위력으로 사람의 업무를 방해해 처벌 대상이 되는 범죄를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "업무방해죄",
+      "url": "https://ko.wikipedia.org/wiki/업무방해죄",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-16",
+      "via": "raw"
+    },
+    {
+      "term": "코르티솔",
+      "reading": "",
+      "meaning": "부신 겉질에서 분비되는 스테로이드 호르몬으로, 스트레스에 대응하고 신진대사를 조절하는 역할을 하는 물질을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "코르티솔",
+      "url": "https://ko.wikipedia.org/wiki/코르티솔",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-16",
+      "via": "raw"
+    },
+    {
+      "term": "멜론뮤직어워드",
+      "reading": "",
+      "meaning": "음악 스트리밍 서비스 멜론이 주최하는 대중음악 시상식으로, 한 해의 음원 성적 등을 바탕으로 상을 주는 행사를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "멜론 뮤직 어워드",
+      "url": "https://ko.wikipedia.org/wiki/멜론_뮤직_어워드",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-16",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-16T04:22:50+09:00",
+      "added": 6,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
