@@ -72,6 +72,54 @@
       "model": "deepseek-ai/deepseek-v4.1-flash",
       "date": "2026-11-16",
       "via": "raw"
+    },
+    {
+      "term": "포스파티딜세린",
+      "reading": "",
+      "meaning": "세포막을 구성하는 인지질의 한 종류로, 뇌 기능과 기억력 유지에 관여하는 성분을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "포스파티딜세린",
+      "url": "https://ko.wikipedia.org/wiki/포스파티딜세린",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-16",
+      "via": "raw"
+    },
+    {
+      "term": "제미나이 AI",
+      "reading": "",
+      "meaning": "구글이 개발한 대규모 언어 모델 기반의 인공지능 서비스를 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "구글 제미나이",
+      "url": "https://ko.wikipedia.org/wiki/구글_제미나이",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-16",
+      "via": "raw"
+    },
+    {
+      "term": "얄타회담",
+      "reading": "",
+      "meaning": "제2차 세계대전 말기에 미국·영국·소련 정상이 전후 처리 문제를 논의하기 위해 가진 회담을 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "얄타 회담",
+      "url": "https://ko.wikipedia.org/wiki/얄타_회담",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-16",
+      "via": "raw"
+    },
+    {
+      "term": "레버리지",
+      "reading": "",
+      "meaning": "빌린 돈이나 자본을 지렛대 삼아 투자 규모를 늘리는 것을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "레버리지",
+      "url": "https://ko.wikipedia.org/wiki/레버리지",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-16",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -80,6 +128,13 @@
       "added": 6,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-16T05:45:05+09:00",
+      "added": 4,
+      "via": [
         "raw"
       ]
     }
