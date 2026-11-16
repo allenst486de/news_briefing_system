@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-17",
+  "terms": [
+    {
+      "term": "재이온화",
+      "reading": "",
+      "meaning": "중성 상태의 원자나 분자가 에너지를 얻어 다시 전자와 이온으로 분리되는 현상을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "재전리",
+      "url": "https://ko.wikipedia.org/wiki/재전리",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-17",
+      "via": "news_terms"
+    },
+    {
+      "term": "집행유예",
+      "reading": "",
+      "meaning": "법원이 형을 선고하면서 일정 기간 그 집행을 유보하고, 유예 기간을 무사히 보내면 형의 효력이 없어지게 하는 제도를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "집행유예",
+      "url": "https://ko.wikipedia.org/wiki/집행유예",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-17",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-17T04:13:23+09:00",
+      "added": 2,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
