@@ -24,6 +24,42 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-17",
       "via": "raw"
+    },
+    {
+      "term": "국정연설",
+      "reading": "",
+      "meaning": "국가 원수가 의회나 국민을 상대로 나라의 정치 방향과 정책을 밝히는 연설을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "국정 연설",
+      "url": "https://ko.wikipedia.org/wiki/국정_연설",
+      "via": "stock",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-17"
+    },
+    {
+      "term": "공판",
+      "reading": "",
+      "meaning": "법원이 재판을 열어 사건을 심리하고 판결을 내리는 절차를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "공판",
+      "url": "https://ko.wikipedia.org/wiki/공판",
+      "via": "stock",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-17"
+    },
+    {
+      "term": "R&D",
+      "reading": "",
+      "meaning": "연구개발(Research and Development)의 줄임말로, 새로운 지식이나 기술을 얻기 위해 수행하는 창조적 활동을 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "연구개발",
+      "url": "https://ko.wikipedia.org/wiki/연구개발",
+      "via": "stock",
+      "model": "deepseek-ai/deepseek-v4.1-flash",
+      "date": "2026-11-17"
     }
   ],
   "runs": [
@@ -33,6 +69,13 @@
       "via": [
         "news_terms",
         "raw"
+      ]
+    },
+    {
+      "at": "2026-11-17T07:30:10+09:00",
+      "added": 3,
+      "via": [
+        "stock"
       ]
     }
   ]

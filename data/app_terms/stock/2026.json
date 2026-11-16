@@ -1,42 +1,6 @@
 {
  "terms": [
   {
-   "term": "국정연설",
-   "reading": "",
-   "meaning": "국가 원수가 의회나 국민을 상대로 나라의 정치 방향과 정책을 밝히는 연설을 말한다.",
-   "category": "politics",
-   "categoryName": "정치",
-   "wikiTitle": "국정 연설",
-   "url": "https://ko.wikipedia.org/wiki/국정_연설",
-   "via": "stock",
-   "foundOn": "2026-02-19",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
-   "term": "공판",
-   "reading": "",
-   "meaning": "법원이 재판을 열어 사건을 심리하고 판결을 내리는 절차를 말한다.",
-   "category": "society",
-   "categoryName": "사회",
-   "wikiTitle": "공판",
-   "url": "https://ko.wikipedia.org/wiki/공판",
-   "via": "stock",
-   "foundOn": "2026-02-19",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
-   "term": "R&D",
-   "reading": "",
-   "meaning": "연구개발(Research and Development)의 줄임말로, 새로운 지식이나 기술을 얻기 위해 수행하는 창조적 활동을 뜻한다.",
-   "category": "science",
-   "categoryName": "과학",
-   "wikiTitle": "연구개발",
-   "url": "https://ko.wikipedia.org/wiki/연구개발",
-   "via": "stock",
-   "foundOn": "2026-10-15",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
    "term": "우편 투표",
    "reading": "",
    "meaning": "선거인이 투표소에 직접 가지 않고 우편으로 투표용지를 보내 투표하는 방식을 말한다.",
@@ -190,18 +154,6 @@
    "url": "https://ko.wikipedia.org/wiki/가계부채",
    "via": "stock",
    "foundOn": "2026-06-10",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
-   "term": "비상계엄",
-   "reading": "",
-   "meaning": "전쟁이나 큰 재난 등 비상사태 때 국가가 헌법상의 질서를 제한하며 통치하는 계엄을 말한다.",
-   "category": "politics",
-   "categoryName": "정치",
-   "wikiTitle": "비상계엄",
-   "url": "https://ko.wikipedia.org/wiki/비상계엄",
-   "via": "stock",
-   "foundOn": "2026-02-19",
    "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
@@ -469,18 +421,6 @@
    "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
-   "term": "총파업",
-   "reading": "",
-   "meaning": "한 산업이나 지역의 모든 노동자가 참여하여 벌이는 전면적인 파업을 말한다.",
-   "category": "economy",
-   "categoryName": "경제",
-   "wikiTitle": "총파업",
-   "url": "https://ko.wikipedia.org/wiki/총파업",
-   "via": "stock",
-   "foundOn": "2026-05-05",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
    "term": "싱크탱크",
    "reading": "",
    "meaning": "정책이나 사회 문제에 대한 연구·분석을 통해 대안과 조언을 제시하는 연구 기관을 말한다.",
@@ -538,18 +478,6 @@
    "url": "https://ko.wikipedia.org/wiki/프리_재즈",
    "via": "stock",
    "foundOn": "2026-09-12",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
-   "term": "GPU",
-   "reading": "",
-   "meaning": "컴퓨터에서 그래픽 연산과 화면 출력을 전문적으로 처리하는 장치를 뜻한다. 영어 'Graphics Processing Unit'의 줄임말이다.",
-   "category": "it",
-   "categoryName": "IT",
-   "wikiTitle": "그래픽 처리 장치",
-   "url": "https://ko.wikipedia.org/wiki/그래픽_처리_장치",
-   "via": "stock",
-   "foundOn": "2026-09-30",
    "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
@@ -611,18 +539,6 @@
    "via": "stock",
    "foundOn": "2026-08-10",
    "model": "meta/muse-glimmer-30b"
-  },
-  {
-   "term": "NPT",
-   "reading": "핵확산금지조약",
-   "meaning": "핵무기와 핵물질의 확산을 막기 위해 체결된 국제 조약을 말한다.",
-   "category": "world",
-   "categoryName": "국제",
-   "wikiTitle": "핵확산방지조약",
-   "url": "https://ko.wikipedia.org/wiki/핵확산방지조약",
-   "via": "stock",
-   "foundOn": "2026-09-09",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
    "term": "황금사자상",
@@ -745,18 +661,6 @@
    "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
-   "term": "희귀의약품",
-   "reading": "",
-   "meaning": "환자가 드물어 개발이나 공급이 어려운 질환의 치료·진단에 쓰이는 의약품을 말한다.",
-   "category": "life",
-   "categoryName": "생활",
-   "wikiTitle": "희귀의약품",
-   "url": "https://ko.wikipedia.org/wiki/희귀의약품",
-   "via": "stock",
-   "foundOn": "2026-10-21",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
    "term": "ISA",
    "reading": "개인종합자산관리계좌",
    "meaning": "예금·펀드·주식 등 여러 금융상품을 한 계좌에 담아 세제 혜택을 받으며 운용하는 개인 종합 자산 관리 계좌를 말한다.",
@@ -776,18 +680,6 @@
    "categoryName": "정치",
    "wikiTitle": "직권남용죄",
    "url": "https://ko.wikipedia.org/wiki/직권남용죄",
-   "via": "stock",
-   "foundOn": "2026-05-23",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
-   "term": "메디케이드",
-   "reading": "",
-   "meaning": "미국의 저소득층을 대상으로 연방과 주 정부가 함께 운영하는 공공 의료보험 제도를 말한다.",
-   "category": "society",
-   "categoryName": "사회",
-   "wikiTitle": "메디케이드",
-   "url": "https://ko.wikipedia.org/wiki/메디케이드",
    "via": "stock",
    "foundOn": "2026-05-23",
    "model": "deepseek-ai/deepseek-v4.1-flash"
@@ -1045,18 +937,6 @@
    "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
-   "term": "레버리지",
-   "reading": "",
-   "meaning": "빌린 돈이나 자본을 지렛대 삼아 더 큰 투자나 이익을 얻는 방식을 뜻한다.",
-   "category": "economy",
-   "categoryName": "경제",
-   "wikiTitle": "레버리지",
-   "url": "https://ko.wikipedia.org/wiki/레버리지",
-   "via": "stock",
-   "foundOn": "2026-05-26",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
    "term": "정당법",
    "reading": "",
    "meaning": "정당의 설립·조직·운영·재정·해산 등을 규율하는 법을 말한다.",
@@ -1165,18 +1045,6 @@
    "model": "meta/muse-glimmer-30b"
   },
   {
-   "term": "전환 치료",
-   "reading": "",
-   "meaning": "성적 지향이나 성별 정체성을 바꾸려고 심리 치료나 종교적 방법 등을 동원하는 행위를 말한다.",
-   "category": "society",
-   "categoryName": "사회",
-   "wikiTitle": "전환 치료",
-   "url": "https://ko.wikipedia.org/wiki/전환_치료",
-   "via": "stock",
-   "foundOn": "2026-03-30",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
    "term": "비브리오패혈증",
    "reading": "",
    "meaning": "비브리오 불니피쿠스 균에 오염된 해산물이나 바닷물을 통해 감염되어 패혈증을 일으키는 질병을 말한다.",
@@ -1186,18 +1054,6 @@
    "url": "https://ko.wikipedia.org/wiki/비브리오_불니피쿠스",
    "via": "stock",
    "foundOn": "2026-09-12",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
-   "term": "수출 통제",
-   "reading": "",
-   "meaning": "국가가 안보나 외교 목적 등으로 특정 물품의 수출을 제한하거나 금지하는 조치를 말한다.",
-   "category": "world",
-   "categoryName": "국제",
-   "wikiTitle": "수출규제",
-   "url": "https://ko.wikipedia.org/wiki/수출규제",
-   "via": "stock",
-   "foundOn": "2026-10-18",
    "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
@@ -1726,18 +1582,6 @@
    "url": "https://ko.wikipedia.org/wiki/계약",
    "via": "stock",
    "foundOn": "2026-03-15",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
-  },
-  {
-   "term": "내란",
-   "reading": "",
-   "meaning": "국가의 권력이나 질서를 무력으로 뒤집거나 국가를 어지럽히는 범죄를 말한다.",
-   "category": "politics",
-   "categoryName": "정치",
-   "wikiTitle": "내란죄",
-   "url": "https://ko.wikipedia.org/wiki/내란죄",
-   "via": "stock",
-   "foundOn": "2026-07-01",
    "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
@@ -2365,18 +2209,6 @@
    "foundOn": "2026-09-24"
   },
   {
-   "term": "양자컴퓨팅",
-   "reading": "",
-   "meaning": "양자역학의 중첩과 얽힘 원리를 이용해 정보를 처리하는 컴퓨팅 기술을 말한다.",
-   "category": "it",
-   "categoryName": "IT",
-   "wikiTitle": "양자 컴퓨터",
-   "url": "https://ko.wikipedia.org/wiki/양자_컴퓨터",
-   "via": "stock",
-   "foundOn": "2026-09-06",
-   "model": "meta/muse-glimmer-30b"
-  },
-  {
    "term": "초극소 미숙아",
    "reading": "",
    "meaning": "출생 체중이 매우 낮아 극도로 미숙하게 태어난 신생아를 말한다.",
@@ -2387,18 +2219,6 @@
    "model": "meta/muse-glimmer-30b",
    "via": "stock",
    "foundOn": "2026-09-24"
-  },
-  {
-   "term": "영업이익",
-   "reading": "",
-   "meaning": "기업이 매출에서 매출원가와 판매비·관리비를 뺀 뒤 남은 이익을 말한다.",
-   "category": "economy",
-   "categoryName": "경제",
-   "wikiTitle": "이자 및 세금 차감 전 이익",
-   "url": "https://ko.wikipedia.org/wiki/이자_및_세금_차감_전_이익",
-   "via": "stock",
-   "foundOn": "2026-04-23",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
    "term": "장사정포",
@@ -3049,18 +2869,6 @@
    "foundOn": "2026-09-24"
   },
   {
-   "term": "간헐적 단식",
-   "reading": "",
-   "meaning": "일정 시간 동안 음식 섭취를 제한하고 단식하는 식사 패턴을 말한다.",
-   "category": "life",
-   "categoryName": "생활",
-   "wikiTitle": "간헐적 단식",
-   "url": "https://ko.wikipedia.org/wiki/간헐적_단식",
-   "model": "meta/muse-glimmer-30b",
-   "via": "stock",
-   "foundOn": "2026-09-30"
-  },
-  {
    "term": "Beige Book",
    "reading": "베이지북",
    "meaning": "미국 연방준비제도이사회가 각 지역 연은의 경제 정보를 취합해 발간하는 비공식 경제 동향 보고서를 말한다.",
@@ -3347,30 +3155,6 @@
    "model": "meta/muse-glimmer-30b",
    "via": "stock",
    "foundOn": "2026-08-07"
-  },
-  {
-   "term": "FTA",
-   "reading": "자유무역협정",
-   "meaning": "관세와 비관세 장벽을 완화하거나 철폐해 회원국 간 자유로운 교역을 보장하는 협정을 말한다.",
-   "category": "economy",
-   "categoryName": "경제",
-   "wikiTitle": "자유 무역 협정",
-   "url": "https://ko.wikipedia.org/wiki/자유_무역_협정",
-   "via": "stock",
-   "foundOn": "2026-07-28",
-   "model": "meta/muse-glimmer-30b"
-  },
-  {
-   "term": "이해충돌",
-   "reading": "",
-   "meaning": "공적인 직무를 수행하는 사람이 사적 이익과 공적 이익이 충돌하는 상황에 놓이는 것을 말한다.",
-   "category": "politics",
-   "categoryName": "정치",
-   "wikiTitle": "이해충돌",
-   "url": "https://ko.wikipedia.org/wiki/이해충돌",
-   "via": "stock",
-   "foundOn": "2026-05-29",
-   "model": "deepseek-ai/deepseek-v4.1-flash"
   },
   {
    "term": "중앙노동위원회",
@@ -3851,18 +3635,6 @@
    "model": "meta/muse-glimmer-30b",
    "via": "stock",
    "foundOn": "2026-08-07"
-  },
-  {
-   "term": "사이드카",
-   "reading": "",
-   "meaning": "보험사나 투자자가 위험을 분산하기 위해 별도로 조성하는 자금 운용 구조를 말한다.",
-   "category": "economy",
-   "categoryName": "경제",
-   "wikiTitle": "사이드카",
-   "url": "https://ko.wikipedia.org/wiki/사이드카",
-   "via": "stock",
-   "foundOn": "2026-03-09",
-   "model": "meta/muse-glimmer-30b"
   },
   {
    "term": "법원행정처",
@@ -4367,18 +4139,6 @@
    "model": "meta/muse-glimmer-30b",
    "via": "stock",
    "foundOn": "2026-04-29"
-  },
-  {
-   "term": "혁명수비대",
-   "reading": "",
-   "meaning": "이란의 이슬람 혁명 이념 수호를 임무로 하는 준군사 조직을 말한다.",
-   "category": "politics",
-   "categoryName": "정치",
-   "wikiTitle": "이슬람 혁명 수비대",
-   "url": "https://ko.wikipedia.org/wiki/이슬람_혁명_수비대",
-   "via": "stock",
-   "foundOn": "2026-04-11",
-   "model": "meta/muse-glimmer-30b"
   },
   {
    "term": "보완수사권",
