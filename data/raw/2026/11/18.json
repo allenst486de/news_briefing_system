@@ -1,0 +1,2555 @@
+{
+  "date": "2026-11-18",
+  "categories": {
+    "politics": {
+      "domestic": [
+        {
+          "title": "더불어민주당과 정부, AI 활용 수능 부정행위 방지책 논의",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20261118023504MnL",
+          "published": "2026-11-17T17:35:05+00:00",
+          "summary": "더불어민주당과 정부가 당정 협의를 통해 AI 및 초소형 전자기기를 이용한 수능 부정행위 대응책을 논의합니다. 민주당은 부정행위자의 응시 자격 박탈 기간을 1년에서 10년으로 확대하고, 이를 올해 수능부터 소급 적용하는 특별법 제정과 사후 적발 시 형사처벌 및 입학 취소 방안을 검토 중입니다.",
+          "source": "연합뉴스TV",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "한일 정상, 국제 정세 속 전략적 협력 강화 합의",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20261118001908jCD",
+          "published": "2026-11-17T15:19:10+00:00",
+          "summary": "이재명 대통령과 다카이치 사나에 일본 총리가 필리핀에서 정상회담을 갖고, 복잡한 국제 정세 속에서 한일 협력을 강화하기로 했습니다. 양 정상은 내년 1월 일본 초청 방문에 합의했으며, 한중일 협력의 중요성에도 공감대를 형성했습니다.",
+          "source": "연합뉴스TV",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "이재명 대통령, 아세안 일정 마치고 APEC 참석 위해 중국행",
+          "link": "https://www.yna.co.kr/view/AKR20261117162700001",
+          "published": "2026-11-17T14:40:01+00:00",
+          "summary": "이재명 대통령이 필리핀에서 아세안 정상회의 및 다자간 협력 회의, 일본·태국·필리핀과의 양자 회담 일정을 마무리했습니다. 이 대통령은 18일부터 중국 선전에서 열리는 아시아태평양경제협력체(APEC) 정상회의에 참석할 예정입니다.",
+          "source": "연합뉴스",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "법무장관 후보 이용철, 과거 3채 보유 사실 해명",
+          "link": "https://www.yna.co.kr/view/AKR20261117115351001",
+          "published": "2026-11-17T13:45:52+00:00",
+          "summary": "이용철 법무장관 후보가 한때 3주택자였다는 보도에 대해 공직 취임 전 일시적 상황이었다고 설명했다. 기사에는 이재명 대통령의 수능 부정행위 대응 발언 등 다른 정치·사회 이슈도 함께 실렸다.",
+          "source": "연합뉴스",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "이재명 대통령, 수능 부정행위 근절 위해 무관용 원칙 강조",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1287837.html",
+          "published": "2026-11-17T12:58:00+00:00",
+          "summary": "이재명 대통령은 필리핀 방문 중 화상회의를 통해 수능 부정행위를 중대 범죄로 규정하고 엄정 대응을 지시했습니다. 특히 AI 등 첨단기술을 이용한 부정을 막기 위해 시험 중 최고 등급 재난문자 발송, 신고 포상금 1억원 지급, AI 업체의 이용 기록 제출 의무화를 위한 법률 제정 등을 추진하겠다고 밝혔습니다.",
+          "source": "한겨레",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "이재명 대통령, 수능 첨단 부정행위 차단 위해 재난문자 및 포상금 도입 지시",
+          "link": "https://www.hani.co.kr/arti/politics/bluehouse/1287836.html",
+          "published": "2026-11-17T12:50:00+00:00",
+          "summary": "이재명 대통령은 수능 중 위급재난문자 수시 발신, 교육부의 학용품 일괄 지원, 부정행위 신고 시 건당 1억원 이상의 포상금 지급 등을 지시했습니다. 또한 빅테크 기업과의 협약을 통해 AI 서비스 이용 사례를 전수조사하고, 불법 답안 요구 기록 제출을 의무화하는 법제화를 추진할 계획입니다.",
+          "source": "한겨레",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "이용철 후보, 청와대 재직 중 경실련 관련 기업 주식 취득 의혹",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1HZDlDcnBud1lMS2haNFpUa2ItM0pWdjdUN3ZIYndwU2xmbllZUkdfUEUyZDhlVFVVa3hrY0tGSlk5ZzhCdmdickxYWHd2YWU3S0E1R0pxdlLSAVRBVV95cUxOaVpvM0xTS2lmX3JULTJ1ZWJwWmlVUTVPWHotSWNBVTJZLTlVbzBIT2VFWGstSkloMVJZRjcxN3RrMnRpb3F4RVNycVphQ19ybXlFZlg?oc=5",
+          "published": "2026-11-17T08:17:14+00:00",
+          "summary": "이용철 후보가 청와대 재직 시 경실련 인사와 관련된 기업의 비상장 주식을 취득했다는 단독 보도가 나왔다.",
+          "source": "구글 뉴스",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "민주당과 국방부, 국군사관학교 통합 방안 논의",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20261118021331PaM",
+          "published": "2026-11-17T17:13:33+00:00",
+          "summary": "더불어민주당과 국방부가 국군사관학교 창설을 위한 당정 협의를 진행합니다. 기존의 완전 통합안 대신, 1·4학년은 통합 학교에서, 2·3학년은 각 군 사관학교에서 교육받는 '1+2+1' 방식과 육군사관학교의 충청권 이전 방안 등이 검토되고 있습니다.",
+          "source": "연합뉴스TV",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "이재명 대통령, APEC 참석차 중국 선전 방문",
+          "link": "https://www.yna.co.kr/view/AKR20261117162800001",
+          "published": "2026-11-17T17:13:25+00:00",
+          "summary": "이재명 대통령이 APEC 회의가 열리는 중국 선전에 도착했으며, 한반도 관련 메시지에 관심이 쏠리고 있습니다.",
+          "source": "연합뉴스",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "이재명 대통령, 미·일 정상 회동 및 수능 부정행위 엄단 지시",
+          "link": "https://www.hankyung.com/article/2026111730731",
+          "published": "2026-11-17T15:58:44+00:00",
+          "summary": "이재명 대통령이 미·중·러 회담을 앞두고 미국 및 일본 정상과 만났습니다. 또한, 수능 부정행위자에 대해 무관용 원칙을 적용하고 신고 시 1억 원의 포상금을 지급하는 등 강도 높은 대응을 정부에 주문했습니다.",
+          "source": "한국경제",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "이재명 대통령, 주요국 정상들과 외교 행보 지속",
+          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNSTYtdnJpSG9pXzZ6aDcxbXhKTUtJeDhPZlJRSFFzeG1yOWkxMUI0UF9nOWttWGZ0Nm8yZTZXbjdBdkx5NldrVlF2eGIzbnRaX1ZIeEl2Mk5xZnNTdHJXVGJnRTNHN0dqQUtYc1Bicjc4aWVCd28yZXZJOEZuM1NVUmkwSmpGN1FSSEl3WWpLaVE?oc=5",
+          "published": "2026-11-17T14:05:51+00:00",
+          "summary": "이재명 대통령이 필리핀 대통령 주최 만찬에서 트럼프 미국 대통령과 대화를 나누었으며, 동아시아 정상회의 참석 및 APEC 방문 등을 통해 실용 외교와 한일 셔틀외교 공고화에 나섰습니다.",
+          "source": "구글 뉴스",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "트럼프 미국 대통령, 한국 투자로 알래스카 LNG 사업 승인 주장",
+          "link": "https://www.khan.co.kr/article/202611172257001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news",
+          "published": "2026-11-17T13:57:00+00:00",
+          "summary": "도널드 트럼프 미국 대통령은 한국의 대규모 대미 투자 덕분에 알래스카 액화천연가스(LNG) 파이프라인 사업이 승인되었다고 주장했습니다.",
+          "source": "경향신문",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "이용철 법무장관 후보자 부동산 보유 논란",
+          "link": "https://www.hankyung.com/article/2026111730926",
+          "published": "2026-11-17T13:52:47+00:00",
+          "summary": "이용철 법무장관 후보자가 2년 8개월 동안 3채의 주택을 보유했으며, 배우자가 21.8억 원 상당의 강남 분양권을 가졌다는 내용입니다.",
+          "source": "한국경제",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "대통령, 수능 AI 부정행위 신고 포상금 검토와 감독 강화 지시",
+          "link": "https://www.hankyung.com/article/2026111730851",
+          "published": "2026-11-17T13:50:21+00:00",
+          "summary": "이재명 대통령이 수능 부정행위자에 대해 무관용 대응을 주문하고 신고 시 1억 원 포상금 검토를 언급했다. 수능 감독관 추가 배치와 미제출 휴대전화 적발을 위한 재난문자 활용 등이 소개됐다.",
+          "source": "한국경제",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "정부의 수능 AI 부정행위 방지책에 누리꾼들 풍자 섞인 반응",
+          "link": "https://www.donga.com/news/Society/article/all/20261117/135042874/2",
+          "published": "2026-11-17T13:27:00+00:00",
+          "summary": "정부가 수능 AI 부정행위를 막기 위해 단추 스티커 부착 등의 대책을 발표하자, 온라인 커뮤니티에서는 이를 풍자하는 밈(meme)과 합성 이미지 등이 올라오며 실효성에 대한 냉소적인 반응이 나타나고 있습니다.",
+          "source": "동아일보",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "이 대통령, 수능 부정행위 근절 및 철저한 대비 지시",
+          "link": "https://www.khan.co.kr/article/202611172222001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news",
+          "published": "2026-11-17T13:22:00+00:00",
+          "summary": "필리핀을 방문 중인 이재명 대통령이 화상으로 수능 비상 점검회의를 주재하며, 성적 절도와 부정행위를 엄단할 것을 강조했습니다. 특히 최고등급 재난문자를 통한 시험 중 발신 검토를 지시하며 국가 역량을 총동원할 것을 주문했습니다.",
+          "source": "경향신문",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "대통령, 필리핀서 수능 부정행위 엄단과 포상금 검토 지시",
+          "link": "https://www.khan.co.kr/article/202611172221005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news",
+          "published": "2026-11-17T13:21:00+00:00",
+          "summary": "이재명 대통령이 필리핀에서 화상으로 수능 비상 점검회의를 주재하고 부정행위 엄단과 신고 시 1억 원 포상금 검토를 지시했다. 재난문자 불시 발송 보완과 AI 업로드 추적도 언급됐다.",
+          "source": "경향신문",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "이준석 의원, AI 기반 수능 전파 탐지 앱 제안",
+          "link": "https://www.donga.com/news/Politics/article/all/20261117/135042805/1",
+          "published": "2026-11-17T13:06:16+00:00",
+          "summary": "이준석 개혁신당 의원이 AI를 활용해 부정행위를 막는 전파 탐지 앱 'KoriyoSCAN(코리요스캔)'을 개발했다고 밝혔습니다. 이 의원은 교육부가 감독관의 휴대전화 사용 제한에 한시적 예외를 두어 해당 앱을 활용하는 방안을 검토해달라고 요청했습니다.",
+          "source": "동아일보",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "이 대통령, 수능 부정행위에 '무관용 원칙' 강조",
+          "link": "https://www.hani.co.kr/arti/politics/bluehouse/1287834.html",
+          "published": "2026-11-17T12:12:00+00:00",
+          "summary": "이재명 대통령은 화상회의를 통해 첨단 기기를 이용한 수능 부정행위에 대해 엄정 대응할 것을 지시했습니다. AI 등을 활용한 부정행위는 반드시 적발됨을 알려 예방하고, 적발 시 10년 응시 기회 박탈 등 강력한 처벌을 홍보하라고 주문했습니다.",
+          "source": "한겨레",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "국민의힘, 조작기소 특검법 반대로 국무회의 의결 저지",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9ncUZqMHpENXdGeEx0SFdpd2hBUTJ1d2NFSDBNbFdzS3o5dkVVbnNjUmVpc1VMNmNOQWZLX1UteVZKUHNjVXd2Z1Y0eUlfbE9Tc281Sk1rc0NUZw?oc=5",
+          "published": "2026-11-17T08:30:11+00:00",
+          "summary": "국민의힘이 조작기소 특검법에 반대하며 국무회의 의결을 저지했습니다.",
+          "source": "구글 뉴스",
+          "category": "politics",
+          "is_important": false
+        }
+      ],
+      "overseas": [
+        {
+          "title": "영국, 서안 지구 정착촌 건설 관련 기업에 제재 부과",
+          "link": "https://www.bbc.co.uk/news/articles/cvglr977x3z0o?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T18:27:27+00:00",
+          "summary": "영국이 점령지 서안 지구 정착촌 건설에 관여한다는 이유로 건설·부동산 개발 기업 8곳에 제재를 단행했다. 정부는 자금 흐름을 차단해 정착촌 지원을 어렵게 하겠다는 입장이다. 이스라엘 외무장관은 적대적 조치라며 맞대응을 예고했고, 팔레스타인 외교부는 환영했다. 제재는 예루살렘 동쪽 E1 지역 입찰 마감 이틀 전 나왔다.",
+          "source": "BBC News",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "정부, 밀번 복지 개혁안 지지하며 청년 세대의 복지 의존 방지 추진",
+          "link": "https://www.bbc.co.uk/news/articles/ck79210y125xo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T18:18:40+00:00",
+          "summary": "전직 장관 앨런 밀번이 제시한 복지 개혁안을 정부가 지지했다. 25세 미만 미취업 청년 대상 맞춤형 지원을 확대하고 일부 수당 삭감으로 재원을 마련한다는 내용이다. 2036년까지 44만 명 취업 목표가 제시됐고, 번햄 총리는 원칙을 지지하며 다음 달 공식 입장을 밝히겠다고 했다.",
+          "source": "BBC News",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "트럼프 행정부 압박 속 국세청, 좌파 단체에 대한 형사 수사 개시",
+          "link": "https://www.nytimes.com/2026/11/17/us/politics/irs-criminal-investigations.html",
+          "published": "2026-11-17T18:01:45+00:00",
+          "summary": "국세청이 트럼프 행정부의 좌파 단체 단속의 일환으로 최소 4건의 형사 수사를 시작했다. 내부 문서에 따르면 지난해 9월 찰리 커크 사망 이후 꾸려진 범부처 태스크포스에 파견된 직원들이 수사 중이다. 비영리단체가 정치 폭력이나 국내 테러를 간접 지원했는지 점검하라는 지시에 따른 것이다.",
+          "source": "New York Times",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "앤디 버넘 영국 총리, EU와의 관계 재검토 일정 연기",
+          "link": "https://www.theguardian.com/politics/2026/nov/17/andy-burnham-delays-taking-stock-of-uk-relationship-with-eu",
+          "published": "2026-11-17T17:50:40+00:00",
+          "summary": "앤디 버넘 총리는 EU와의 장기적 관계 설정에 서두를 필요가 없다고 밝히며, 구체적인 방안 제시를 12월로 미뤘습니다. 그는 먼저 브뤼셀 정상회의에서 식품, 농업, 배출권 거래 및 청년 이동성 계획에 관한 합의를 이끌어내는 데 집중할 계획입니다. 이는 여당 내 신중론과 국민 여론 확인 필요성에 따른 결정으로 보입니다.",
+          "source": "The Guardian",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "앤디 번햄 총리 첫 유럽 연설, EU 재가입 기대에는 미치지 못해",
+          "link": "https://www.theguardian.com/commentisfree/2026/nov/17/hope-britain-rejoin-eu-andy-burnham-europe",
+          "published": "2026-11-17T15:58:47+00:00",
+          "summary": "앤디 번햄 총리가 여름에 취임한 이후 첫 영국-유럽 연설에서 신중한 입장을 보였다. 시티 오브 런던에서 열린 연설은 재가입 기대에 비해 실망스럽다는 평가를 받았다. 금요일 EU 정상회담에서 논의될 소규모 조치 외에는 현 의회 임기 동안 키어 스타머의 레드라인을 유지할 것으로 보인다.",
+          "source": "The Guardian",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "영국 정부, 청년층을 위한 새로운 복지 체계 구축 추진",
+          "link": "https://www.theguardian.com/society/2026/nov/17/alan-milburn-report-young-people-work-neets-job-support-savingsalan-milburn-plan-young-people-work-neets-savings-200m-a-year",
+          "published": "2026-11-17T15:35:09+00:00",
+          "summary": "영국 정부가 밀번 보고서를 수용하여 청년 고용 지원은 확대하되 급여 수준은 낮추는 새로운 복지 시스템을 도입하기로 했습니다. 이를 위해 내년도 예산 삭감을 통해 재원을 마련할 계획입니다.",
+          "source": "The Guardian",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "민주당의 물가 하락 공약, 실현 가능성은 어느 정도인가",
+          "link": "https://www.nytimes.com/2026/11/17/podcasts/the-daily/democrats-promised-lower-prices-what-can-they-actually-do.html",
+          "published": "2026-11-17T14:01:13+00:00",
+          "summary": "미국 민주당이 생활비 절감을 공약으로 내세워 중간선거에서 승리했으나, 내년 1월 의회 주도권을 잡더라도 대통령의 거부권 행사 가능성 등 현실적인 제약에 직면해 있다는 분석입니다.",
+          "source": "New York Times",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "밀번 보고서, NEET 청년 2036년까지 5%로 줄이기 위한 광범위한 대책 제시",
+          "link": "https://www.bbc.co.uk/news/articles/cq074grvdpz2o?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T11:31:40+00:00",
+          "summary": "전 장관 앨런 밀번의 검토 보고서가 영국 청년 NEET 문제를 줄이기 위한 개혁안을 공개했다. NEET 비율을 2036년까지 13%에서 약 5%로 낮추는 목표와 함께 기회 보장, 지역 청년 기회 서비스, 청년 기회 테스트 등을 제안했다.",
+          "source": "BBC News",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "트럼프 중국 방문 앞두고 미중 AI 안전 협상 진전 없이 긴장 고조",
+          "link": "https://www.nytimes.com/2026/11/17/us/politics/trump-china-ai-tensions.html",
+          "published": "2026-11-17T10:22:54+00:00",
+          "summary": "트럼프 대통령과 시진핑 주석의 3차 정상회담을 앞두고 미중 간 인공지능 안전과 개발 가이드라인 협상이 진전이 없다는 관측이 나온다. 양측은 공동 관리 필요성을 언급했지만, 미국 내에서는 스파이 우려와 안전 불안에 대한 인식이 커지고 있다.",
+          "source": "New York Times",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "트럼프 대통령의 문화 전쟁, 중간선거 패배 후 의회 견제 직면",
+          "link": "https://www.nytimes.com/2026/11/17/arts/design/trump-congress-smithsonian-kennedy-center.html",
+          "published": "2026-11-17T10:02:57+00:00",
+          "summary": "트럼프 대통령이 정부 기관의 '워키즘(wokeness)'을 척결하려는 문화 전쟁을 벌여왔으나, 중간선거에서 공화당이 패배하며 의회의 강력한 견제에 부딪히게 되었습니다. 민주당이 문화 예산과 인사권에 더 많은 영향력을 갖게 되면서 트럼프의 행보에 제동이 걸릴 전망입니다.",
+          "source": "New York Times",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "트럼프 행정부 내 대중국 정책 갈등 표면화",
+          "link": "https://www.nytimes.com/2026/11/16/us/politics/trump-china-ai-chip-policy.html",
+          "published": "2026-11-17T03:48:50+00:00",
+          "summary": "도널드 트럼프 행정부 내부에서 중국 정책을 둘러싼 견해 차이가 외부로 드러나고 있습니다.",
+          "source": "New York Times",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "영국, 망명 신청 거절자 대상 통보 기간 없이 즉시 추방 추진",
+          "link": "https://www.bbc.co.uk/news/articles/cq20xnp2egm8o?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T01:24:49+00:00",
+          "summary": "영국 정부가 망명 신청이 거부된 이들에 대해 기존의 5일 통보 기간 없이 추방할 수 있는 방안을 추진합니다. 2025년 7월부터 2026년 6월까지의 망명 신청 건수는 전년 대비 21% 감소한 85,891건으로 집계되었습니다.",
+          "source": "BBC News",
+          "category": "politics",
+          "is_important": true
+        },
+        {
+          "title": "웨일스 개혁당 전 대표 댄 토마스, 폭행 혐의 수사 종결돼 추가 조치 없음",
+          "link": "https://www.bbc.co.uk/news/articles/cq98xl8jgp0go?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T18:13:27+00:00",
+          "summary": "웨일스 개혁당 전 대표 댄 토마스에 대한 폭행 및 강압적 행위 혐의 수사가 2개월 만에 종결됐다. 토마스는 무혐의 처분으로 결백이 확인됐다고 밝혔다. 수사로 사임한 당 대표직은 헬렌 제너가 맡고 있으며, 나이젤 파라지는 전 과정을 지지했다고 전했다.",
+          "source": "BBC News",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "번햄 총리, EU와 관계 강화 방안 발표를 다음 달로 연기",
+          "link": "https://www.theguardian.com/politics/live/2026/nov/17/alan-milburn-youth-unempolyment-neets-economy-welfare-brexit-latest-news-updates",
+          "published": "2026-11-17T17:46:07+00:00",
+          "summary": "번햄 총리가 EU와 더 가까운 관계 구축 옵션에 대한 발표를 다음 달로 미뤘다. 코먼 연설에서 밀번 계획에 가장 비판적이었던 브라이언 리시먼 의원은 수당 삭감이 빈곤을 초래할 것이라고 지적했다. 패트 맥파든은 복지 의존이 빈곤을 만든다고 반박했다.",
+          "source": "The Guardian",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "재무부 직원 사망 사건 계기로 '클로이 정책' 제안",
+          "link": "https://www.theguardian.com/politics/2026/nov/17/chloe-moffat-policy-parents-treasury-worker-employers",
+          "published": "2026-11-17T15:00:14+00:00",
+          "summary": "익명의 제보로 인한 징계 절차 중 스스로 생을 마감한 재무부 직원 클로이 모팻의 부모가 고용주들이 직원을 더 인도적으로 대우하도록 하는 '클로이 정책(Chloe’s policy)'을 제안했습니다. 검시관은 재무부의 대응이 사망에 실질적인 영향을 미쳤다고 판단했으며, 유족은 유사한 비극을 막기 위해 전국의 인사 부서가 이 정책을 도입하기를 촉구하고 있습니다.",
+          "source": "The Guardian",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "영국 기후 행동 계획의 실효성과 국제적 책임 강조",
+          "link": "https://www.theguardian.com/commentisfree/2026/nov/17/britain-climate-action-plan-working-cop31-voters-jobs-home-prices",
+          "published": "2026-11-17T13:32:44+00:00",
+          "summary": "영국의 수석 협상가 미아타 판불레는 터키 안탈리아에서 열리는 Cop31을 앞두고, 기후 위기가 현실화된 상황에서 넷제로(net zero) 달성을 위한 정치적 합의와 국제적 협력의 중요성을 강조했습니다. 그녀는 일부 정치권의 회의론에도 불구하고 지속적인 기후 행동이 필요하다고 주장했습니다.",
+          "source": "The Guardian",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "전직 장관, 로열 메일의 생존을 위한 정부의 즉각적인 조치 촉구",
+          "link": "https://www.bbc.co.uk/news/articles/cjvg26p3z2gdo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T12:43:07+00:00",
+          "summary": "피터 카일 전 사업부 장관은 로열 메일이 경쟁 업체들의 저가 공세로 인해 존립 위기에 처해 있다고 경고하며, 정부가 시장의 공정한 경쟁 환경(level the playing field)을 조성하기 위해 긴급히 개입해야 한다고 주장했습니다.",
+          "source": "BBC News",
+          "category": "politics",
+          "is_important": false
+        },
+        {
+          "title": "카스 남작부인, 성전환 치료 금지 법안 초안의 실효성에 의문 제기",
+          "link": "https://www.bbc.co.uk/news/articles/c6m25vd2yxgdo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T10:36:21+00:00",
+          "summary": "청소년 성정체성 서비스 검토 보고서를 작성한 카스 남작부인이 성전환 치료 금지(conversion practices) 법안 초안이 현재로서는 실행 가능하지 않다고 밝혔습니다. 그녀는 법안의 취지에는 동의하지만, 의료진과 보호자에게 심각한 의도치 않은 결과가 발생할 위험이 있다고 경고했습니다.",
+          "source": "BBC News",
+          "category": "politics",
+          "is_important": false
+        }
+      ]
+    },
+    "economy": {
+      "domestic": [
+        {
+          "title": "클리블랜드 연은 총재, 인플레이션 방향성에 우려 표명",
+          "link": "https://news.einfomax.co.kr/news/articleView.html?idxno=4445225",
+          "published": "2026-11-18T02:34:36+00:00",
+          "summary": "베스 해맥 클리블랜드 연방준비은행 총재는 인플레이션이 잘못된 방향으로 움직이고 있다고 진단했습니다. 그는 수요와 공급 충격으로 인해 연준의 목표치인 2% 달성 전망이 불투명해졌으며, 통화정책을 통해 이를 다시 통제하는 것이 최선이라고 강조했습니다.",
+          "source": "연합인포맥스",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "미 연준 총재들, 인플레이션 우려에 금리 추가 인상 가능성 시사",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOYXh3TjVFQ3RLX1FJUk05WEUyQ2lYQTFBaDFkbVhVQkpOT3VrSnF0SDhGRldxZmNUbjhRckFsaFJyX2xmY3Q1dy1UWDNXNDM4dDBoTUg3dHFWYnU2VHpzcjlFUlZXUVNTRFQzMGdvNXN2R01fWHlrUk1WS1U2S2x2X2J0RU1wVGhj?oc=5",
+          "published": "2026-11-17T18:00:00+00:00",
+          "summary": "클리블랜드, 세인트루이스, 캔자스시티 연은 총재들이 인플레이션 과열과 잘못된 방향성을 지적하며, 내년 봄 전까지 여러 차례의 금리 인상이나 통화정책 대응이 필요할 수 있다는 의견을 내놓았습니다.",
+          "source": "구글 뉴스",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "AI 기업 앤스로픽, 공모주 주문 폭주하며 나스닥 상장 예정",
+          "link": "https://www.hankyung.com/article/202611173114i",
+          "published": "2026-11-17T14:45:44+00:00",
+          "summary": "AI 연구소 앤스로픽이 나스닥 상장을 앞두고 발행 주식 수의 6배가 넘는 주문을 받았습니다. 9개월간 매출이 전년 동기 대비 약 1,200% 증가하는 폭발적 성장을 기록했으며, 이번 IPO와 사모 발행을 통해 최대 904억 달러를 조달할 것으로 예상됩니다.",
+          "source": "한국경제",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "IMF, 한국 올해 경제성장률 전망치 3.9%로 상향 조정",
+          "link": "https://www.khan.co.kr/article/202611172127005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news",
+          "published": "2026-11-17T12:27:00+00:00",
+          "summary": "국제통화기금(IMF)이 한국의 올해 경제성장률 전망치를 한 달 만에 0.6%포인트 올린 3.9%로 수정했습니다. 내년 성장률은 3.3%로 예상했으며, AI 투자 확대로 인해 잠재성장률이 최대 2%대 중반까지 높아질 것으로 분석했습니다.",
+          "source": "경향신문",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "세입자 주거비 부담 8년 만에 최대치 기록",
+          "link": "https://www.khan.co.kr/article/202611172126015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news",
+          "published": "2026-11-17T12:26:01+00:00",
+          "summary": "지난해 세입자의 월소득 대비 주택 임차료 비율이 최근 8년 중 가장 높게 나타났습니다. 특히 신혼 가구의 부담률은 20.2%에 달하며 청년층과 신혼부부의 어려움이 가중되었습니다. 또한 가구주가 된 후 첫 주택을 마련하기까지 평균 8년이 소요되는 것으로 분석되었습니다.",
+          "source": "경향신문",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "미 법원, 삼성·SK하이닉스 등 D램 가격 담합 의혹 소송 본안 심리 결정",
+          "link": "https://www.hani.co.kr/arti/economy/global/1287825.html",
+          "published": "2026-11-17T10:52:00+00:00",
+          "summary": "미국 법원이 삼성전자, SK하이닉스, 마이크론의 D램 가격 담합 의혹 소송을 본안 심리로 넘겼습니다. 법원은 범용 D램의 장기 계약 거부와 생산 시설 미증설 등이 사전 합의 없이는 불가능한 결정이라며 담합 가능성을 뒷받침하는 정황이 있다고 판단했습니다.",
+          "source": "한겨레",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "공정위, 총수 지정 자료 허위 제출 혐의로 쿠팡 및 김범석 의장 고발 검토",
+          "link": "https://www.yna.co.kr/view/AKR20261117163200002",
+          "published": "2026-11-17T09:47:59+00:00",
+          "summary": "공정거래위원회는 동일인(총수) 지정 자료를 허위로 제출한 혐의로 쿠팡 법인과 김범석 이사회 의장을 고발해야 한다는 심사보고서를 전달했습니다. 김 의장의 동생 김유석 씨의 경영 참여 사실이 드러나면서, 그동안 경영에 참여하지 않았다고 주장해온 쿠팡의 자료 제출 내용이 허위인지 여부를 심의할 예정입니다.",
+          "source": "연합뉴스",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "미 국가안보국(NSA) 내부 기밀망 장애 발생…사이버 공격 흔적은 없어",
+          "link": "https://news.einfomax.co.kr/news/articleView.html?idxno=4445226",
+          "published": "2026-11-18T03:12:46+00:00",
+          "summary": "미국 국가안보국(NSA)의 기밀 통신 네트워크인 'NSA 넷'에 장애가 발생했습니다. 현재까지 사이버 공격의 증거는 발견되지 않았으며, NSA는 피해 범위를 파악하는 동시에 직원들의 출근 시간을 분산하는 조치를 취했습니다.",
+          "source": "연합인포맥스",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "미국, 중국산 데이터센터 장비 수입 차단 추진 및 엔비디아 판매 감시 강화",
+          "link": "https://www.hankyung.com/article/202611183128i",
+          "published": "2026-11-17T15:36:06+00:00",
+          "summary": "미국 정부가 빅테크 기업들의 반대에도 불구하고 국가 안보를 이유로 중국산 데이터센터 장비 수입 차단을 추진합니다. 이에 따라 엔비디아는 이사회 내에 새로운 위원회를 구성하여 AI 칩의 수출 통제 및 판매 감시를 강화하기로 했습니다.",
+          "source": "한국경제",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "국내 금융사 해킹 인지 지연…평균 3.9일 소요되어 피해 확산 우려",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135041903/2",
+          "published": "2026-11-17T15:30:00+00:00",
+          "summary": "최근 2개월간 해킹 피해를 입은 국내 금융회사 22곳이 사고를 인지하기까지 평균 3.9일이 걸린 것으로 나타났습니다. 일부 업체는 인지까지 15일이 소요되기도 하여, 개인정보 및 자금 유출 피해를 줄이기 위한 즉각적인 보고 체계 마련이 시급하다는 지적이 나옵니다.",
+          "source": "동아일보",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "삼성전자, 현금성 자산 214조 원으로 급증",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135041910/2",
+          "published": "2026-11-17T15:30:00+00:00",
+          "summary": "삼성전자의 3분기 말 연결 기준 현금 및 단기금융상품 합산 규모가 전년 동기 대비 약 2배 증가한 214조 7,743억 원을 기록했습니다. 다만, 반도체 부문 성과급 적립 등으로 인해 급여 비용이 전년 동기 대비 4.8배로 크게 늘어났으며 법인세와 외환 손실도 함께 증가했습니다.",
+          "source": "동아일보",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "KB증권 베트남법인 계좌에서 정체불명의 자금 출금 사고 발생",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20261117230738csS",
+          "published": "2026-11-17T14:07:38+00:00",
+          "summary": "KB증권 베트남법인이 현지 은행에 예치한 법인 계좌에서 비정상적인 출금이 발생했습니다. 출금된 자금은 여러 현지 은행으로 분산 송금되었으며, 현재 회사와 현지 경찰 및 금융당국이 정확한 액수와 경위를 조사 중입니다.",
+          "source": "연합뉴스TV",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "서울 내 집 마련 기간 11.7년… 임대료 부담 가중",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20261117230438Py8",
+          "published": "2026-11-17T14:04:40+00:00",
+          "summary": "2025년 주거실태조사에 따르면 서울의 소득 대비 주택가격 비율(PIR)은 11.7배로, 소득을 모두 모아 집을 사는 데 약 11년 8개월이 소요됩니다. 또한 서울 임차가구의 월소득 대비 임대료 비율은 21.5%로 전년보다 상승하며 주거비 부담이 커진 것으로 나타났습니다.",
+          "source": "연합뉴스TV",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "보험사 손해율 및 기타 사회 뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20261117144851002",
+          "published": "2026-11-17T10:52:40+00:00",
+          "summary": "보험사 손해율 개선을 위한 계리가정 수정 필요성이 제기되었습니다.",
+          "source": "연합뉴스",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "국민연금, KB금융지주 신임 회장 후보 이재근 선임에 찬성",
+          "link": "https://view.asiae.co.kr/article/2026111719104885563",
+          "published": "2026-11-17T10:10:48+00:00",
+          "summary": "국민연금기금 수탁자책임 전문위원회가 KB금융지주의 신임 회장 후보자인 이재근 글로벌부문장의 사내이사 선임안에 찬성하기로 결정했습니다. 국민연금은 10월 19일 기준 9.17%의 지분을 보유한 최대주주이며, 관련 주주총회는 오는 20일에 개최될 예정입니다.",
+          "source": "아시아경제",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "이훈기 의원, 재경부의 주가 관련 방안 비판",
+          "link": "https://view.asiae.co.kr/article/2026111719071115256",
+          "published": "2026-11-17T10:07:11+00:00",
+          "summary": "이훈기 의원이 주가 40% 할증 조치만으로는 주가 누르기 현상을 막을 수 없다며 재경부의 안을 정면으로 비판했습니다.",
+          "source": "아시아경제",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "삼성전자, 내년 CES서 휴머노이드 로봇 2종 공개 예정",
+          "link": "https://www.hani.co.kr/arti/economy/marketing/1287815.html",
+          "published": "2026-11-17T10:01:00+00:00",
+          "summary": "삼성전자가 내년 CES 2027에서 고성능 모델인 '에이치이(HE)'와 보급형 모델인 '에이치알(HR)' 두 가지 휴머노이드 로봇을 선보입니다. 삼성은 RX사업추진실을 통해 개발을 진행 중이며, 이를 통해 기술력 과시와 시장 확대라는 투트랙 전략을 추진할 계획입니다.",
+          "source": "한겨레",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "폴란드 1인당 국민소득, 일본 추월하며 성장세 기록",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9ZOVJ6aU5nZ0g2ZGEtYTFVbVRoR0RhU2ZGSTk1WlhJaGdBMmhwdF9jM29XNmttRTNaTGIwdlE0RENGVm1fcmdpd2huWFZ4OHg4TjllVzVRTkRjdw?oc=5",
+          "published": "2026-11-17T09:09:54+00:00",
+          "summary": "폴란드의 1인당 국민소득이 일본을 추월하며 유럽의 새로운 성장 동력으로 주목받고 있습니다.",
+          "source": "구글 뉴스",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "HLB펩, 이원직 전 롯데바이오로직스 대표 영입",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9PRVRSZzRqNkU3MDQ2YjM2cF9vaUZuT0RDbi1rRTNJS3UxNkhMYWhwU2pCR1dEcHhia0pWZWpmZXJZZEpqdGZqMWdNSTluaUtfeHowMjZWNmRKX3pXVGVkWVZBTTlNQXIyamtneTZn?oc=5",
+          "published": "2026-11-17T07:58:02+00:00",
+          "summary": "HLB펩이 이원직 전 롯데바이오로직스 대표를 영입했습니다.",
+          "source": "비즈워치",
+          "category": "economy",
+          "is_important": false
+        }
+      ],
+      "overseas": [
+        {
+          "title": "젠슨 황, 엔비디아 복귀 희망하나 이사회는 부정적",
+          "link": "https://www.bbc.co.uk/news/articles/cwx2en2vrxmdo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T18:24:21+00:00",
+          "summary": "엔비디아의 창립자 젠슨 황이 CEO 복귀 의사를 밝혔으나, 이사회는 이를 고려하지 않고 있습니다. 황은 개인적인 실수에 대해 사과하며 복귀를 요청하는 지지 세력이 많다고 주장했지만, 현재 이사회는 그의 부적절한 행실에 대한 조사를 진행 중입니다.",
+          "source": "BBC News",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "미 국세청, 트럼프 정부 지시로 좌파 단체 형사 조사 착수",
+          "link": "https://www.nytimes.com/2026/11/17/us/politics/irs-criminal-investigations.html",
+          "published": "2026-11-17T18:01:45+00:00",
+          "summary": "미 국세청(IRS)이 트럼프 행정부의 지시에 따라 좌파 성향 단체들에 대한 최소 4건의 형사 조사를 시작했습니다. 이는 지난해 찰리 커크 사망 사건 이후 안티파(antifa) 등 극단주의 그룹의 자금 흐름을 파악하려는 정부 차원의 압박의 일환입니다.",
+          "source": "New York Times",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "영국 총리, EU와의 관계 재설정 논의 시점 연기",
+          "link": "https://www.theguardian.com/politics/2026/nov/17/andy-burnham-delays-taking-stock-of-uk-relationship-with-eu",
+          "published": "2026-11-17T17:50:40+00:00",
+          "summary": "앤디 버넘 영국 총리가 EU와의 장기적 관계를 결정하는 일을 서두르지 않겠다고 밝혔습니다. 그는 브뤼셀 정상회의에서 식품, 농업, 배출권 거래 및 청년 이동성 계획에 관한 합의를 먼저 이끌어낸 후, 관계 전반을 검토할 예정입니다.",
+          "source": "The Guardian",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "젠슨 황, 엔비디아 CEO 복귀 가능성 시사했으나 이사회는 부정적",
+          "link": "https://www.theguardian.com/technology/2026/nov/17/nvidia-jensen-huang-statement",
+          "published": "2026-11-17T17:35:26+00:00",
+          "summary": "최근 사임한 젠슨 황 전 CEO가 주주와 회사의 이익을 위해 복귀할 의사가 있다고 밝혔으나, 엔비디아 이사회는 현재 그의 복귀를 고려하지 않고 있습니다.",
+          "source": "The Guardian",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "젠슨 황, 엔비디아 CEO 복귀 가능성 시사",
+          "link": "https://www.nytimes.com/2026/11/17/technology/jensen-huang-nvidia-statement.html",
+          "published": "2026-11-17T17:25:36+00:00",
+          "summary": "최근 사임한 젠슨 황 전 엔비디아 CEO가 이사회의 요청이 있다면 복귀할 의사가 있다고 밝혔습니다. 그는 직원과 투자자들의 복귀 요청이 많았다고 언급했으나, 현재 이사회는 복귀를 고려하지 않고 국가 안보 및 무역 규제 준수를 위한 위원회 구성에 집중하고 있습니다.",
+          "source": "New York Times",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "엔비디아, 매출 급증에 따라 싱가포르 지역 매출 공개 중단",
+          "link": "https://www.ft.com/content/dbde7a30-548c-4f9d-a4be-7898a0c24dcf?syn-25a6b1a6=1",
+          "published": "2026-11-17T17:06:32+00:00",
+          "summary": "엔비디아가 전체 매출 1,040억 달러를 기록한 가운데, 싱가포르를 통해 기록된 매출이 70% 급증함에 따라 해당 지역의 매출 공시 방식을 변경했습니다.",
+          "source": "Financial Times",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "젠슨 황, 엔비디아 CEO 복귀 의향 밝힌 첫 공개 발언",
+          "link": "https://www.ft.com/content/e265542c-25d9-4a82-8cb7-e4a4b641cdda?syn-25a6b1a6=1",
+          "published": "2026-11-17T16:49:56+00:00",
+          "summary": "엔비디아 창업자 젠슨 황이 CEO로 복귀할 준비가 돼 있다고 밝혔다. 이는 불륜 의혹 보도 이후 사임했다는 공동 창업자에 대한 논란 이후 나온 첫 공개 발언이다.",
+          "source": "Financial Times",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "트럼프 정부의 AI 칩 규제 강화에 동남아시아 데이터 센터 시장 술렁",
+          "link": "https://www.nytimes.com/2026/11/17/business/southeast-asia-china-ai-chips.html",
+          "published": "2026-11-17T16:42:30+00:00",
+          "summary": "트럼프 행정부가 중국의 첨단 AI 칩 접근을 제한하는 방안을 추진하면서 동남아시아의 데이터 센터 투자 붐이 위협받고 있습니다. 중국 기업들이 미국 규제를 피하기 위해 동남아를 거점으로 활용해 온 전략이 차단될 가능성이 커졌기 때문입니다.",
+          "source": "New York Times",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "영국 정부, 밀번 보고서 지지하며 청년 대상 복지 체계 전면 개편 추진",
+          "link": "https://www.theguardian.com/society/2026/nov/17/alan-milburn-report-young-people-work-neets-job-support-savingsalan-milburn-plan-young-people-work-neets-savings-200m-a-year",
+          "published": "2026-11-17T15:35:09+00:00",
+          "summary": "영국 정부가 앨런 밀번의 278쪽 보고서를 지지하며 청년을 위한 새로운 복지 체계를 만들겠다고 밝혔다. 총리는 이를 전환점으로 규정했고, 내각은 내년 지출 삭감으로 재원을 마련하겠다고 약속했다.",
+          "source": "The Guardian",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "리사 쿡 연준 이사, 트럼프 소집 청문회 참석 거부",
+          "link": "https://www.ft.com/content/ac8fe697-a48d-4b0a-b556-46ae5463a6e4?syn-25a6b1a6=1",
+          "published": "2026-11-17T15:15:35+00:00",
+          "summary": "리사 쿡 미국 연방준비제도(Fed) 이사가 도널드 트럼프 전 대통령이 소집한 청문회에 출석하지 않겠다고 밝혔습니다. 그녀는 불공정한 절차에 참여하는 것이 중앙은행의 특수한 지위와 독립성을 해칠 수 있다고 주장했습니다.",
+          "source": "Financial Times",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "미국의 동남아 데이터센터 규제 강화로 중국 반도체 접근 차단",
+          "link": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T14:25:45+00:00",
+          "summary": "미국이 싱가포르, 말레이시아, 태국, 인도네시아, 브라질 데이터센터 운영자에 대한 검사를 강화하는 잠정 규칙을 발표했다. 엔비디아 등 미국 반도체 구매에 정부 허가가 필요해져 중국 기업이 해외에서 대여하는 연산 능력 사용이 제한된다. 중국 외교부는 경제 강압이라고 반발했다.",
+          "source": "BBC News",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "영국 실업률 4.6%로 예상 밖 하락, 하지만 구인 수요는 감소",
+          "link": "https://www.theguardian.com/business/2026/nov/17/uk-unemployment-wage-growth-milburn-report",
+          "published": "2026-11-17T13:44:09+00:00",
+          "summary": "영국의 9월 실업률이 4.6%를 기록하며 예상보다 낮아졌습니다. 하지만 글로벌 경제 불확실성과 AI 도입으로 인해 구인 건수는 2014년 이후 최저 수준으로 급감했으며, 특히 청년층의 실업 문제가 심각한 상황입니다.",
+          "source": "The Guardian",
+          "category": "economy",
+          "is_important": true
+        },
+        {
+          "title": "엔비디아 실적 발표 앞두고 미국 기술주 하락",
+          "link": "https://www.ft.com/content/4a3b9892-67c6-4177-8503-80c0a5eb3b60?syn-25a6b1a6=1",
+          "published": "2026-11-17T17:56:57+00:00",
+          "summary": "엔비디아의 실적 발표를 앞두고 변동성이 큰 거래 양상을 보인 끝에 나스닥 100 지수가 1.1% 하락하며 미국 기술주들이 전반적으로 약세를 보였습니다.",
+          "source": "Financial Times",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "디즈니, 비용 절감과 콘텐츠 확대 병행하며 성장 전략 공개",
+          "link": "https://www.nytimes.com/2026/11/17/business/disney-earnings-3billion-savings.html",
+          "published": "2026-11-17T17:03:49+00:00",
+          "summary": "조시 대마로 CEO 취임 후 주가가 19% 오른 디즈니가 성장 전략을 발표했다. 2029년까지 연간 운영 비용 30억 달러를 절감하고 대부분을 사업 재투자에 쓰겠다고 밝혔다. 콘텐츠 지출은 9% 늘려 260억 달러로 확대하고 해외 오리지널 프로그램을 3년 내 3배로 늘린다.",
+          "source": "New York Times",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "영국 청년 고용 확대를 위한 사회보험료 감면 제안",
+          "link": "https://www.bbc.co.uk/news/articles/c6d01e8m15mko?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T15:56:04+00:00",
+          "summary": "앨런 밀번의 보고서에서 21~24세 청년 고용을 늘리기 위해 고용주가 부담하는 국민보험(NI) 납부액을 낮추고 현금 인센티브를 제공하는 방안이 제시되었습니다. 이는 최저임금과 보험료 상승으로 인한 기업의 채용 부담을 줄이기 위함입니다.",
+          "source": "BBC News",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "엔비디아 제이슨 황 가족과 메가속 거래 의혹에 이사회 조사",
+          "link": "https://www.ft.com/content/65ff066f-a81c-4d24-95da-73c2d7b83a27?syn-25a6b1a6=1",
+          "published": "2026-11-17T15:33:25+00:00",
+          "summary": "엔비디아 창업자 제이슨 황의 딸과 사위가 메가속과 관련된 거래에 연루된 의혹이 제기되면서 이사회가 조사를 시작했다. 가족 관계가 회사와 메가속 간 연결고리에 영향을 미쳤는지가 주목된다.",
+          "source": "Financial Times",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "이케아, 높은 사업세 부담으로 영국 내 신규 매장 확대 계획 철회",
+          "link": "https://www.theguardian.com/business/2026/nov/17/ikea-new-uk-stores-business-taxes-john-healey-budget",
+          "published": "2026-11-17T15:09:32+00:00",
+          "summary": "이케아가 유럽 내 가장 높은 수준의 사업세 부담과 시장 복잡성을 이유로 영국 내 신규 매장 오픈 계획을 취소했습니다. 최근 영국 내 매출 성장이 정체된 가운데, 가계 예산 압박으로 인한 소비자 구매력 저하가 영향을 미친 것으로 분석됩니다.",
+          "source": "The Guardian",
+          "category": "economy",
+          "is_important": false
+        },
+        {
+          "title": "전직 장관, 로열 메일의 생존을 위한 정부의 즉각적인 개입 촉구",
+          "link": "https://www.bbc.co.uk/news/articles/cjvg26p3z2gdo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T12:43:07+00:00",
+          "summary": "피터 카일 전 사업부 장관이 로열 메일(Royal Mail)의 경영 위기를 경고하며 정부의 긴급 조치를 요구했습니다. 그는 고용 조건이 다른 경쟁 택배사들과의 불공정 경쟁으로 인해 로열 메일이 존립 위기에 처했다고 주장했습니다.",
+          "source": "BBC News",
+          "category": "economy",
+          "is_important": false
+        }
+      ]
+    },
+    "society": {
+      "domestic": [
+        {
+          "title": "경북 상주서 규모 3.6 지진 발생…올해 최대 규모",
+          "link": "https://www.nocutnews.co.kr/news/6608484",
+          "published": "2026-11-17T23:52:40+00:00",
+          "summary": "17일 밤 11시 10분경 경북 상주시 북서쪽 22km 지점에서 규모 3.6의 지진이 발생했습니다. 이는 올해 한반도와 주변 해역에서 발생한 지진 중 가장 큰 규모이며, 상주, 문경, 보은 지역에서 계기진도 4의 흔들림이 감지되었습니다. 규모 3.5 이상의 지진이 발생한 것은 약 1년 6개월 만입니다.",
+          "source": "노컷뉴스",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "AI 활용 부정행위 자수한 세무사 수석 합격자, 경찰 조사 마쳐",
+          "link": "https://www.nocutnews.co.kr/news/6608483",
+          "published": "2026-11-17T23:49:50+00:00",
+          "summary": "세무사 시험에서 AI와 초소형 전자기기로 부정행위를 저질렀다고 자수한 수석 합격자 한원석 씨가 약 13시간 30분 동안 경찰 조사를 받았습니다. 한 씨는 수험생들에게 사과하며 성실히 조사에 임했다고 밝혔으나, 구체적인 범행 수법에 대해서는 답하지 않았습니다. 경찰은 포렌식 결과 등을 토대로 추가 수사를 검토 중입니다.",
+          "source": "노컷뉴스",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "이 대통령, 수능 부정행위 근절 위해 국가 역량 총동원 지시",
+          "link": "https://www.nocutnews.co.kr/news/6608471",
+          "published": "2026-11-17T22:04:31+00:00",
+          "summary": "이재명 대통령은 수능 부정행위를 '성적 절도'로 규정하며 엄정 대응을 지시했습니다. AI 기업의 이용 사례 제출 의무화 법률 제정, 시험 중 재난문자 발송 검토, 부정행위 신고 시 1억 원 이상의 포상금 지급 및 신고자 제재 감면 등의 대책을 추진하며, 적발 시 예외 없는 형사처벌을 예고했습니다.",
+          "source": "노컷뉴스",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "대학가 AI 활용 부정행위 급증에 입학 취소 등 강력 대응",
+          "link": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008850408",
+          "published": "2026-11-17T17:00:00+00:00",
+          "summary": "서강대, 경희대, 건국대 등 주요 대학에서 AI 및 초소형 카메라를 이용한 부정행위 의혹이 제기되어 조사가 진행 중입니다. 특히 최근 7년간 AI 활용 부정행위 적발 건수가 3년 전 1건에서 올해 12건으로 급증함에 따라, 대학들은 탐지 장비 도입과 처벌 내규 마련 등 대책 수립에 나섰습니다.",
+          "source": "SBS 뉴스",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "상주 지역 규모 3.6 지진, 올해 한반도 내 최대치 기록",
+          "link": "https://www.hani.co.kr/arti/society/environment/1287841.html",
+          "published": "2026-11-17T14:44:00+00:00",
+          "summary": "17일 밤 경북 상주 북서쪽 22km 지점에서 규모 3.6의 지진이 발생했습니다. 진원의 깊이는 20km이며, 경북과 충북 일부 지역에서 실내 흔들림과 잠에서 깰 정도의 진동(계기진도 4)이 느껴졌습니다. 기상청은 최초 P파 분석으로 규모를 3.7로 추정했으나 상세 분석을 통해 3.6으로 조정했습니다.",
+          "source": "한겨레",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "경북 상주서 규모 3.6 지진…올해 최대 규모 기록",
+          "link": "https://www.donga.com/news/Society/article/all/20261117/135043127/2",
+          "published": "2026-11-17T14:44:00+00:00",
+          "summary": "17일 오후 11시 10분경 경북 상주시 북서쪽 22km 지점에서 규모 3.6의 지진이 발생했습니다. 이는 올해 한반도 주변에서 발생한 지진 중 가장 강한 규모이며, 경북과 충북 지역에서 실내 사람들이 흔들림을 느끼는 수준인 최대계기진도 Ⅳ가 관측되었습니다.",
+          "source": "동아일보",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "AI 부정행위 자수한 세무사 수석 합격자 경찰 조사",
+          "link": "https://www.khan.co.kr/article/202611172332001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news",
+          "published": "2026-11-17T14:32:00+00:00",
+          "summary": "제63회 세무사 시험에서 초소형 카메라와 AI를 이용해 부정행위를 저질렀다고 자수한 수석 합격자 한모씨가 17일 경찰 조사를 받았습니다. 한씨는 피의자 신분으로 출석해 약 13시간 30분 동안 조사를 받은 뒤 귀가하며 사과의 뜻을 밝혔습니다.",
+          "source": "경향신문",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "세무사 수석 합격자, AI 커닝 자수 후 경찰 조사 종료",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1287840.html",
+          "published": "2026-11-17T14:28:00+00:00",
+          "summary": "제63회 세무사 시험에서 AI와 초소형 기기를 이용해 부정행위를 한 수석 합격자 한 씨가 14시간의 경찰 조사를 마쳤습니다. 한 씨는 세무사 시험뿐 아니라 공인회계사 1차 시험에서도 부정행위를 했다고 자수했으며, 경찰은 위계에 의한 공무집행방해 혐의 적용을 검토하고 있습니다.",
+          "source": "한겨레",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "경북 상주서 규모 3.6 지진 발생… 올해 최대 강도",
+          "link": "https://www.khan.co.kr/article/202611172327001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news",
+          "published": "2026-11-17T14:27:00+00:00",
+          "summary": "17일 오후 11시 10분경 경북 상주시 북서쪽 22km 지점에서 규모 3.6의 지진이 일어났습니다. 이번 지진은 올해 한반도 및 주변 해역에서 발생한 58차례의 지진 중 가장 강력한 규모로 기록되었습니다.",
+          "source": "경향신문",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "이재명 대통령-다카이치 총리, 전략적 소통의 중요성 합의",
+          "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003285920",
+          "published": "2026-11-17T14:24:32+00:00",
+          "summary": "이재명 대통령은 필리핀 마닐라에서 다카이치 사나에 일본 총리를 만나 동북아 평화와 안정을 위한 양국의 전략적 소통과 협력 강화에 뜻을 모았습니다. 이는 APEC 정상회의를 계기로 예정된 미·중·러 정상회담의 영향으로 풀이되며, 해당 정상들은 중동 전쟁과 핵군축 등을 논의하고 공동성명을 발표할 가능성이 있습니다.",
+          "source": "오마이뉴스",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "AI 일기 서비스 '유리병 일기', 글로벌 시장 진출 가속화",
+          "link": "https://www.pressian.com/pages/articles/2026111802184597407&ref=rss",
+          "published": "2026-11-18T02:27:08+00:00",
+          "summary": "한국장학재단 광주청년창업센터 입주기업 '이그마인드'의 AI 일기 서비스 '유리병 일기'가 일본과 미국 출시 후 2027년 1월 베트남 진출을 준비 중입니다. 현재 총 이용자는 약 6천 명이며, 해외 이용자가 절반 이상을 차지합니다. 해당 서비스는 AI와의 대화를 통해 일상을 기록하고 공유하는 방식으로, 향후 심리상담 및 치료 영역으로 확장을 목표로 하고 있습니다.",
+          "source": "프레시안",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "대구시와 대구문화예술진흥원, 대한민국 소통어워즈 관광 부문 대상 수상",
+          "link": "https://www.pressian.com/pages/articles/2026111801585807115&ref=rss",
+          "published": "2026-11-18T02:01:35+00:00",
+          "summary": "대구광역시와 (재)대구문화예술진흥원이 '대한민국 소통어워즈' 관광·여행 부문에서 대상을 받았습니다. 대구관광 SNS '비짓대구'는 치어리더 기획 영상과 MZ 세대 맞춤형 콘텐츠 등을 통해 글로벌 바이럴 성과를 거두며 올해 주요 SNS 시상식에서 3관왕을 달성했습니다.",
+          "source": "프레시안",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "경산시노인종합복지회관, 어르신 축제 개최",
+          "link": "https://www.pressian.com/pages/articles/2026111800153600352&ref=rss",
+          "published": "2026-11-18T01:37:34+00:00",
+          "summary": "경북 경산시노인종합복지관이 17일부터 20일까지 5일간 '2026년 개관 기념 어르신 축제'를 엽니다. 이번 행사에서는 회원들이 학습한 성과를 나누는 작품 전시회, 발표회 등 다양한 프로그램이 진행되며, 지역 노인복지 증진에 기여한 이들에 대한 표창 수여식도 함께 열렸습니다.",
+          "source": "프레시안",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "대학 편입 및 법학적성시험에서 스마트 기기 이용 부정행위 적발",
+          "link": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008850642",
+          "published": "2026-11-17T16:49:00+00:00",
+          "summary": "경희대와 서강대에서 편입 시험 합격자의 부정행위 의혹이 제기되어 조사가 진행 중입니다. 또한, 지난 7월 법학적성시험 응시생이 반입 금지 품목인 스마트 안경을 착용했다가 감독관에게 적발되어 경찰 수사를 받고 있는 것으로 드러났습니다.",
+          "source": "SBS 뉴스",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "원안위, 상주 지진으로 인한 원자로 영향 없다고 발표",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20261118014649dPq",
+          "published": "2026-11-17T16:46:50+00:00",
+          "summary": "원자력안전위원회는 경북 상주에서 발생한 규모 3.6 지진 이후 국내 모든 원자로 시설의 안전성에 이상이 없다고 밝혔습니다. 진앙과 가장 가까운 '하나로' 연구용원자로의 계측값은 0.001g으로, 내진 설계값인 0.2g보다 훨씬 낮아 영향이 없는 것으로 확인되었습니다.",
+          "source": "연합뉴스TV",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "상주 규모 3.6 지진 발생, 원자력 시설 안전 이상 무",
+          "link": "https://www.yna.co.kr/view/AKR20261118002600017",
+          "published": "2026-11-17T16:35:05+00:00",
+          "summary": "원자력안전위원회는 17일 밤 경북 상주 인근에서 발생한 규모 3.6 지진과 관련해 국내 원자로 시설들이 안전함을 확인했습니다. 대전 유성구의 하나로 연구용원자로를 현장 점검한 결과, 지진 계측값이 내진 설계값보다 낮아 특이 사항이 없는 것으로 나타났습니다.",
+          "source": "연합뉴스",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "AI 부정행위 우려로 수능 효력 정지 신청한 수험생",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20261118002011s0E",
+          "published": "2026-11-17T15:20:11+00:00",
+          "summary": "인공지능 기술을 이용한 부정행위 가능성이 있음에도 2027학년도 수능을 예정대로 치르는 것은 위헌이라며, 한 수험생이 헌법재판소에 수능 시험일 지정의 효력을 정지해달라는 가처분 신청과 헌법소원을 제기했습니다.",
+          "source": "연합뉴스TV",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "경북 상주 지역 규모 3.6 지진 발생",
+          "link": "https://www.yna.co.kr/view/AKR20261117177653530",
+          "published": "2026-11-17T14:54:26+00:00",
+          "summary": "경북 상주에서 올해 들어 가장 강한 규모 3.6의 지진이 발생했습니다.",
+          "source": "연합뉴스",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "조국, 일본 입국 거부에 '과거 방문 땐 문제 없었다' 반발",
+          "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003285892",
+          "published": "2026-11-17T13:40:33+00:00",
+          "summary": "조국 혁신정책연구원장이 일본 하네다공항에서 입국을 거부당해 귀국했습니다. 조 원장은 과거 국가보안법 위반 전과가 있을 때도 여러 차례 일본을 방문했던 점을 들어, 이번 입국 거부 조치의 일관성이 없다고 비판했습니다. 혁신당 측은 독도 방문 일정 등이 사유일 것으로 추정하고 있습니다.",
+          "source": "오마이뉴스",
+          "category": "society",
+          "is_important": false
+        }
+      ],
+      "overseas": [
+        {
+          "title": "영국 정부, 청년층을 위한 새로운 복지 체계 구축 추진",
+          "link": "https://www.theguardian.com/society/2026/nov/17/alan-milburn-report-young-people-work-neets-job-support-savingsalan-milburn-plan-young-people-work-neets-savings-200m-a-year",
+          "published": "2026-11-17T15:35:09+00:00",
+          "summary": "영국 정부가 앨런 밀번의 보고서를 수용하여 청년들을 위한 새로운 복지 시스템을 구축하겠다고 발표했습니다. 고용 지원은 대폭 강화하되 복지 급여 지급액은 낮추는 방향으로 개편하며, 이를 위한 재원 마련을 위해 정부 지출 삭감을 단행할 계획입니다.",
+          "source": "The Guardian",
+          "category": "society",
+          "is_important": true
+        },
+        {
+          "title": "조력 사망 선택한 케슬러 쌍둥이 자매의 마지막 편지 공개",
+          "link": "https://www.theguardian.com/society/2026/nov/17/kessler-twins-assisted-dying-decision",
+          "published": "2026-11-17T17:12:07+00:00",
+          "summary": "과거 TV 스타로 활동했던 독일의 케슬러 쌍둥이 자매가 건강 악화로 인해 조력 사망(assisted dying)을 선택한 이유를 담은 편지를 남겼습니다. 이들은 심장 문제와 감각 상실, 뇌줄기 뇌졸중 등으로 삶의 질이 낮아졌으며, 함께 세상에 왔듯 함께 떠나기를 원했다고 밝혔습니다.",
+          "source": "The Guardian",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "영국 NEET 청년들의 취업을 돕는 '프로젝트 서치'의 성과",
+          "link": "https://www.theguardian.com/society/2026/nov/17/helping-neets-into-work-project",
+          "published": "2026-11-17T16:00:15+00:00",
+          "summary": "교육, 고용, 훈련 어느 것에도 참여하지 않는 NEET 청년들, 특히 자폐증이나 학습 장애가 있는 이들을 돕는 '프로젝트 서치(Project Search)'의 사례가 소개되었습니다. 실제 작업 환경에서의 경험과 직무 코치의 지원이 이들의 성공적인 사회 진출에 핵심적인 역할을 하고 있습니다.",
+          "source": "The Guardian",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "앨런 밀번, 청년 일자리 대책 미흡 시 세대 손실 경고",
+          "link": "https://www.theguardian.com/society/video/2026/nov/17/alan-milburn-says-great-british-promise-to-young-people-is-being-broken-video",
+          "published": "2026-11-17T14:11:12+00:00",
+          "summary": "전 보건장관이 구글 런던 본사에서 보고서 발표하며 청년 실업 대응을 위한 근본 개혁을 촉구했다. 반쪽짜리 대책으로는 부족하다는 입장을 밝히고, 청년 고용 확대안으로 연간 2억 파운드 절감 가능성을 언급했다.",
+          "source": "The Guardian",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "사트팔 람 사건 다큐, 커리집 공격과 24년 수감의 기록",
+          "link": "https://www.theguardian.com/society/ng-interactive/2026/nov/17/after-eight-the-story-of-satpal-ram-documentary",
+          "published": "2026-11-17T12:45:36+00:00",
+          "summary": "40년 전 인종적 공격을 계기로 살인죄로 유죄 판결을 받은 사트팔 람의 이야기를 다룬 다큐멘터리다. 24년 복역 후 아시아 더브 파운데이션 등 밴드 주도의 국제적 캠페인을 통해 석방됐다.",
+          "source": "The Guardian",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "밀번 보고서, NEET 문제 해결을 위한 278쪽 권고안 공개",
+          "link": "https://www.theguardian.com/society/2026/nov/17/neet-alan-milburn-report-young-people-not-in-education-employment-or-training",
+          "published": "2026-11-17T11:30:35+00:00",
+          "summary": "전 장관이 교육·고용·복지 전반을 재검토해야 한다고 주장하는 278쪽 보고서를 발표했다. 첫 보고서 발표 5개월 만에 나온 권고안은 고용 규제, 교육, 의료, 복지에 변화를 요구한다.",
+          "source": "The Guardian",
+          "category": "society",
+          "is_important": false
+        },
+        {
+          "title": "영국 전직 경찰관의 조기 석방 결정에 피해 여성 강력 반발",
+          "link": "https://www.theguardian.com/society/2026/nov/17/police-officer-early-release-catherine-dobson-michael-harvey",
+          "published": "2026-11-17T10:15:43+00:00",
+          "summary": "영국에서 전직 경찰관 마이클 하비가 형기의 3분의 1만 채우고 조기 석방될 예정이라는 소식에, 그의 피해자이자 전 파트너인 캐서린 돕슨이 공포와 분노를 표했습니다. 돕슨은 경찰 권력을 남용해 여성을 대상으로 범죄를 저지른 이들이 정부의 조기 석방 프로그램 대상에서 제외되어야 한다고 주장했습니다.",
+          "source": "The Guardian",
+          "category": "society",
+          "is_important": false
+        }
+      ]
+    },
+    "life": {
+      "domestic": [
+        {
+          "title": "서울의료원, 온라인 성착취 피해 청소년 의료 연계 협약",
+          "link": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3044631",
+          "published": "2026-11-17T17:38:36+00:00",
+          "summary": "서울의료원이 서울시여성가족재단과 업무협약을 맺고 온라인 성착취 피해 청소년에게 산부인과와 정신건강의학과 등 전문 진료를 연계하기로 했다. 의료 접근성 강화와 성인지 역량 강화도 함께 추진한다.",
+          "source": "청년의사",
+          "category": "life",
+          "is_important": true
+        },
+        {
+          "title": "비만치료제 위고비, 아동 투여 시 성장 저해 우려",
+          "link": "https://www.donga.com/news/Inter/article/all/20261117/135041520/1",
+          "published": "2026-11-17T08:53:00+00:00",
+          "summary": "만 6~11세 비만 아동에게 위고비를 투여했을 때 체질량지수(BMI)는 평균 13.5% 감소했으나, 키는 대조군보다 약 3.3㎝ 덜 자랐다는 임상 연구 결과가 발표되었습니다. 최종 신장이 더 작아질 가능성도 제기되었습니다.",
+          "source": "동아일보",
+          "category": "life",
+          "is_important": true
+        },
+        {
+          "title": "복지부, 난임 시술비 지원 확대 방안 의료계와 논의",
+          "link": "https://www.yna.co.kr/view/AKR20261117150800530",
+          "published": "2026-11-17T08:14:05+00:00",
+          "summary": "보건복지부는 정은경 장관 주재로 의료계 전문가 간담회를 열고 난임 지원 확대 방안을 논의했다. 현재 출산당 최대 25회 지원 제한을 두고 실효성 있는 개선안을 검토 중이다.",
+          "source": "연합뉴스",
+          "category": "life",
+          "is_important": true
+        },
+        {
+          "title": "대웅제약, 자가면역질환 신약 후보물질 임상 1상 결과 발표",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135038602/1",
+          "published": "2026-11-17T03:41:30+00:00",
+          "summary": "대웅제약이 미국류마티스학회(ACR Convergence 2026)에서 경구용 신약 후보물질 '플로디시티닙'의 임상 1상 중간결과를 공개했습니다. 해당 물질은 JAK3, ITK, BTK 등 3개 단백질을 동시에 표적으로 삼으며, 표적점유율 90% 이상과 초기 안전성을 확인했습니다.",
+          "source": "동아일보",
+          "category": "life",
+          "is_important": true
+        },
+        {
+          "title": "개발도상국 의료 AI 도입, 현지 맞춤형 체계 구축이 핵심",
+          "link": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3044634",
+          "published": "2026-11-17T18:08:54+00:00",
+          "summary": "경희의료원이 주관한 ‘제3회 2026 의료 AI 콜로키움’에서 개발도상국에 의료 AI를 적용하기 위해서는 단순한 기술 도입을 넘어 의료진의 검증, 성능 관리 및 현지 환경에 적합한 적용 체계 마련이 필수적이라는 의견이 제시되었습니다.",
+          "source": "청년의사",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "건양대병원, 유가족 편의 높인 장례식장 리모델링 오픈",
+          "link": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3044635",
+          "published": "2026-11-17T18:00:40+00:00",
+          "summary": "건양대병원이 장례식장을 확장 리모델링하여 재개장했습니다. 소형 빈소를 통합해 공간을 넓혔으며, 유가족을 위한 온돌침대, 개별 샤워실, 독립 휴게실 등 편의시설을 확충했습니다.",
+          "source": "청년의사",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "가천대 길병원 안정열 교수, 대한진단혈액학회장으로 선임",
+          "link": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3044632",
+          "published": "2026-11-17T17:52:28+00:00",
+          "summary": "가천대 길병원 진단검사의학과 안정열 교수가 대한진단혈액학회장으로 선출됐다. 임기는 내년 1월부터 2년이다. 학술 연구 활성화와 전문인력 양성을 추진할 계획이다.",
+          "source": "청년의사",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "자폐 아동의 발달과 자립을 다룬 신간 출간",
+          "link": "http://www.docdocdoc.co.kr/news/articleView.html?idxno=3044629",
+          "published": "2026-11-17T17:26:06+00:00",
+          "summary": "자폐 진단을 받은 아들을 30년간 키운 경험과 뇌과학, 특수교육 이론을 결합한 도서 〈뇌를 깨워 자폐의 벽을 넘다〉가 출간되었습니다. 영유아기부터 성인기 자립까지의 과정과 가정에서 실천 가능한 교육 및 치료 전략을 제시합니다.",
+          "source": "청년의사",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "전남대병원 학동 새병원 건립 계획 변경 및 기타 단신",
+          "link": "https://www.yna.co.kr/view/AKR20261117059900054",
+          "published": "2026-11-17T13:09:07+00:00",
+          "summary": "전남대병원이 학동 새병원을 1개 통합동으로 건립하기로 계획을 변경했습니다.",
+          "source": "연합뉴스",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "독신자 대다수, 장기간 높은 삶의 만족도 유지",
+          "link": "https://www.donga.com/news/It/article/all/20261117/135040983/2",
+          "published": "2026-11-17T08:26:12+00:00",
+          "summary": "독일 독신자 2,930명을 11년간 추적 조사한 결과, 약 90%가 10년 넘게 높은 수준의 삶의 만족도를 안정적으로 유지한 것으로 나타났습니다. 초기 만족도가 낮았던 이들도 시간이 흐르며 만족도가 높아지는 경향을 보였습니다.",
+          "source": "동아일보",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "인하대병원 로봇 기관지내시경 시술, 대만 의료진 참관",
+          "link": "https://www.khan.co.kr/article/202611171659001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news",
+          "published": "2026-11-17T07:59:00+00:00",
+          "summary": "국립 대만대학교병원 암센터 의료진이 인하대병원을 방문하여 로봇 기관지내시경인 ‘아이온(Ion)’ 시술 과정을 참관하고 관련 교육을 받았습니다.",
+          "source": "경향신문",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "휴온스, 경구용 비만 신약 후보물질 비임상 결과 미국 학회에서 공개",
+          "link": "https://www.khan.co.kr/article/202611171647011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news",
+          "published": "2026-11-17T07:47:01+00:00",
+          "summary": "휴온스 연구진이 미국비만학회 연례 학술대회에서 경구용 MC4R 작용제 HUC1A-622의 비임상 연구 결과를 발표했다. 펩타이드 주사제를 대체할 먹는 저분자 신약 후보물질의 가능성을 소개했다.",
+          "source": "경향신문",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "서울관광재단, 대만 인기 캐릭터 카푸와 서울 관광 홍보 협업",
+          "link": "https://www.khan.co.kr/article/202611171534011/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news",
+          "published": "2026-11-17T06:34:01+00:00",
+          "summary": "서울관광재단이 대만 인기 캐릭터 카푸와 협업해 서울 관광 홍보 캠페인을 진행한다. 온라인 관심을 실제 방문으로 연결하려는 취지다.",
+          "source": "경향신문",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "알츠하이머 전조로 시신경 변화 포착, 조기 진단 가능성 제시",
+          "link": "https://www.donga.com/news/Society/article/all/20261117/135038631/1",
+          "published": "2026-11-17T03:57:46+00:00",
+          "summary": "칠곡경북대병원 전보영 교수가 알츠하이머병 동물모델에서 인지장애 전 시신경에 베타 아밀로이드가 축적되는 것을 확인했다. 제136회 대한안과학회 추계학술대회에서 최우수상을 받았다.",
+          "source": "동아일보",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "삼척 도계농협, 파크골프 클럽 창단 기념 대회 개최",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5ia1BQYS1MMHJpUVQ5MVNBeC0wdlJBY3lDOUxiVEwxeWpBTnRUSDZob3ZwX0RxMlJ0MGJMRllMaU5UQjU5dklObTlBM1loOE9aRU5uNzdUWW0zQQ?oc=5",
+          "published": "2026-11-16T08:14:00+00:00",
+          "summary": "삼척 도계농협이 클럽 창단을 기념하여 파크골프 대회를 개최했습니다.",
+          "source": "농민신문",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "신지식인협회가 방역 물품을 나눔",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9VLWtpQ1J3U0o4WU00cGNvczF5Z3JhdV9vVnNNUlhSWFZTNGVoNVRtUFd6WjdOdG9jX0ZyVEtIcEo2a0lDU3dXZVA4ZlY0MFBYNy1HaG1XTWxHUQ?oc=5",
+          "published": "2026-11-16T08:00:00+00:00",
+          "summary": "신지식인협회가 방역물품 나눔 활동을 진행했다.",
+          "source": "농민신문",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "국산 포인세티아로 연말 분위기 조성 준비",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9KVkxqWmRob2l6amlIVVNfT0lHR3ZqUTRpRVpjem5SVlNzSEFFRlllektCcEI3SnlXMGZKSEtOR2dsOWtBS0h3S1RidEVfMjdJcWR3anc0aVpEdw?oc=5",
+          "published": "2026-11-16T08:00:00+00:00",
+          "summary": "국산 포인세티아 재배가 성탄 시즌을 앞두고 한창이다. 연말 분위기를 내는 국산 화훼 준비가 진행 중이다.",
+          "source": "농민신문",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "산불 예방을 위한 영농부산물 파쇄 지원",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA0ZlpmRnpPR3R3NUVoTExSYndidXVCdFc2dmdjQWFCY1UzWl9aX2d3Vi1hTkZiZVdpWkZFMlUzWlhhS1ZRbGFfcGkyNFd3d3JsaTZkUERzYkthQQ?oc=5",
+          "published": "2026-11-16T08:00:00+00:00",
+          "summary": "산불을 예방하기 위해 농가에서 발생하는 영농부산물의 소각을 막고 이를 갈아주는 파쇄 지원 사업이 진행됩니다.",
+          "source": "농민신문",
+          "category": "life",
+          "is_important": false
+        }
+      ],
+      "overseas": [
+        {
+          "title": "애플파이 바닥이 눅눅해지는 이유와 해결 방법",
+          "link": "https://www.theguardian.com/food/2026/nov/17/kitchen-aide-apple-pie-soggy-base-baking-advice",
+          "published": "2026-11-17T13:00:47+00:00",
+          "summary": "애플파이 바닥이 눅눅해지는 문제를 해결하기 위해 필링의 수분 조절, 설탕과 밀가루 혼합물 사용, 금속 틀 사용 등의 방법이 제시되었습니다.",
+          "source": "The Guardian",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "이탈리아 볼로냐 사람들이 '스파게티 볼로네제'를 부정하는 이유",
+          "link": "https://www.theguardian.com/food/2026/nov/17/a-heretical-outrage-why-italians-disown-spaghetti-bolognese",
+          "published": "2026-11-17T12:00:37+00:00",
+          "summary": "전 세계적으로 유명한 '스파게티 볼로네제'가 정작 그 이름의 유래지인 이탈리아 볼로냐에서는 존재하지 않는 음식이며, 현지인들은 이를 부정한다는 내용입니다.",
+          "source": "The Guardian",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "인스타그램 요리 영상의 함정과 실제 조리 실패 경험",
+          "link": "https://www.theguardian.com/commentisfree/2026/nov/17/instagram-scam-recipe-disgusting-dinner",
+          "published": "2026-11-17T11:00:35+00:00",
+          "summary": "인스타그램의 자극적인 요리 콘텐츠를 따라 했다가 실패한 경험담으로, 검증되지 않은 조리법의 위험성을 경고합니다.",
+          "source": "The Guardian",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "부성애의 진화적 관점: 아빠의 육아가 세상에 미치는 영향",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/nov/17/would-more-hands-on-dads-create-a-more-peaceful-world-this-pioneering-scientist-thinks-so",
+          "published": "2026-11-17T10:00:10+00:00",
+          "summary": "진화생물학자 사라 블래퍼 허디(Sarah Blaffer Hrdy)는 남성의 육아 참여가 호르몬 변화를 일으킨다는 점을 강조합니다. 연구 결과, 아이를 돌보는 남성에게서 옥시토신 수치가 상승하고 테스토스테론 수치가 낮아지는 현상이 확인되었습니다.",
+          "source": "The Guardian",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "토론토 영화제 당시 겪은 빈대 습격 사건 회상",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/nov/17/the-pest-ill-never-forget-bedbugs-bit-me-worried-jake-gyllenhaal",
+          "published": "2026-11-17T07:00:06+00:00",
+          "summary": "작가는 2012년 토론토 국제영화제 취재 중 호텔 매트리스에 서식하던 빈대(bedbugs) 때문에 고통받았던 경험을 공유했습니다. 이로 인해 호텔 층 전체가 폐쇄되고 소지품을 화학 처리해야 하는 소동이 벌어졌습니다.",
+          "source": "The Guardian",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "웨일스 북부와 남부를 잇는 새로운 직행 버스 노선 소개",
+          "link": "https://www.theguardian.com/travel/2026/nov/17/britain-most-beautiful-bus-journey-wales-beats-train",
+          "published": "2026-11-17T07:00:06+00:00",
+          "summary": "웨일스 북부 홀리헤드(Holyhead)와 남부 카마던(Carmarthen)을 잇는 '타이스킴루(TaithCymru)' 버스 서비스가 시작되었습니다. 기존 열차보다 빠르고 저렴하며, 웨일스의 아름다운 풍경을 감상할 수 있는 것이 특징입니다.",
+          "source": "The Guardian",
+          "category": "life",
+          "is_important": false
+        },
+        {
+          "title": "채소의 껍질과 줄기까지 섭취하는 '전체 식단'의 이점",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/nov/17/root-to-tip-revolution-a-to-z-eat-plants-full-flavour-fibre-savings",
+          "published": "2026-11-17T05:00:07+00:00",
+          "summary": "킹스 칼리지 런던의 연구에 따르면, 평소 버려지는 채소의 껍질, 줄기, 씨앗 등에 과육보다 더 많은 식이섬유가 포함되어 있습니다. 이를 활용해 식재료를 완전히 소비하는 방식은 전 세계적인 식이섬유 부족 문제를 해결하고 음식물 쓰레기를 줄이는 대안이 될 수 있습니다.",
+          "source": "The Guardian",
+          "category": "life",
+          "is_important": false
+        }
+      ]
+    },
+    "culture": {
+      "domestic": [
+        {
+          "title": "한국 창작춤의 선구자 배정혜 무용가 별세",
+          "link": "https://www.khan.co.kr/article/202611172010025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news",
+          "published": "2026-11-17T11:10:02+00:00",
+          "summary": "전 국립무용단장이자 한국 창작춤의 대모로 알려진 배정혜 무용가가 폐렴 투병 끝에 17일 향년 82세로 별세했다. 고인은 300편 이상의 작품을 통해 전통춤에 현대적 감각을 더하며 창작춤의 영역을 확장했다는 평가를 받는다.",
+          "source": "경향신문",
+          "category": "culture",
+          "is_important": true
+        },
+        {
+          "title": "퐁피두센터 한화, 샤갈의 회화 및 조각 65점 전시",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135041915/2",
+          "published": "2026-11-17T15:30:00+00:00",
+          "summary": "서울 영등포구 퐁피두센터 한화에서 '샤갈, 너머의 여정' 전시가 개최되었습니다. 파리 퐁피두센터의 샤갈 컬렉션 중 회화 57점과 조각·도자 8점 등 총 65점이 공개되며, 이 중 61점은 국내 최초로 전시되는 작품입니다.",
+          "source": "동아일보",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "스푼랩스 대표, AI 기반 영화의 극장 진출 전망",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135041879/2",
+          "published": "2026-11-17T15:30:00+00:00",
+          "summary": "스푼랩스의 최혁재 대표는 1~2년 내에 1인 창작자가 AI로 만든 영화가 극장에 걸릴 것이라고 전망했습니다. 스푼랩스는 오디오 플랫폼 '스푼'에 이어 글로벌 숏드라마 플랫폼 '비글루'를 출시하며 AI 콘텐츠 시장으로 영역을 확장하고 있습니다.",
+          "source": "동아일보",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "남성 패션 아이템으로 다시 주목받는 브로치",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135041457/2",
+          "published": "2026-11-17T15:30:00+00:00",
+          "summary": "최근 남성들 사이에서 브로치 활용이 늘고 있습니다. 핀터레스트의 '2026년 트렌드 보고서(Pinterest Predicts 2026)'에 따르면 남성 슈트용 브로치 검색량이 전년 대비 90% 증가했으며, 이는 고대 그리스와 로마의 '피불라(Fibula)'에서 유래한 전통이 현대적으로 재해석된 결과입니다.",
+          "source": "동아일보",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "영화 '헝거게임 50번째 추첨의 날' 공개",
+          "link": "https://www.yna.co.kr/view/AKR20261114033700005",
+          "published": "2026-11-17T14:01:00+00:00",
+          "summary": "영화 '헝거게임 50번째 추첨의 날' 관련 소식입니다.",
+          "source": "연합뉴스",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "코미디언 김지민, 남편 김준호를 위한 정성 어린 식사 준비",
+          "link": "https://www.donga.com/news/Culture/article/all/20261117/135042858/1",
+          "published": "2026-11-17T13:12:22+00:00",
+          "summary": "출산을 앞둔 김지민이 해외 일정을 마치고 돌아온 김준호를 위해 자연산 송이와 두릅, 김치찌개 등이 포함된 풍성한 상차림을 준비해 소셜미디어에 공개했다. 김지민은 2027년 2월에 출산할 예정이다.",
+          "source": "동아일보",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "춘향가를 통해 본 여성의 욕망과 남성 중심 질서에 대한 저항",
+          "link": "https://www.khan.co.kr/article/202611172041005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news",
+          "published": "2026-11-17T11:41:00+00:00",
+          "summary": "춘향가 속에 나타난 여성의 이상과 욕망을 다루며, <삼강행실도>의 열녀도와 대비하여 남성 중심의 문묘 질서를 뒤집고자 했던 여성들의 관점을 살펴봅니다.",
+          "source": "경향신문",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "강릉시립교향악단, 바그너의 '니벨룽의 반지' 첫 공연 준비",
+          "link": "https://www.khan.co.kr/article/202611172039005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news",
+          "published": "2026-11-17T11:39:00+00:00",
+          "summary": "강릉시향이 바그너의 대작 '니벨룽의 반지' 4부작 중 첫 번째 작품을 내달 무대에 올립니다. 지휘자 정민을 비롯해 성악과 제작 전반을 한국 음악인들이 담당하며, 향후 4년에 걸쳐 전편을 공연할 계획입니다.",
+          "source": "경향신문",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "국립현대미술관, 조지아 오키프 전시 개최",
+          "link": "https://www.khan.co.kr/article/202611172038005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news",
+          "published": "2026-11-17T11:38:00+00:00",
+          "summary": "국립현대미술관 과천관에서 모더니즘의 주역 조지아 오키프의 전시가 열립니다. 이번 전시는 오키프를 단순히 여성성이라는 틀로 보는 시각에서 벗어나 그녀만의 독자적인 예술 세계를 조명합니다.",
+          "source": "경향신문",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "신동훈 작곡가, 서소문성지에서 신작 및 '겨울 소나타' 아시아 초연",
+          "link": "https://www.hani.co.kr/arti/culture/music/1287810.html",
+          "published": "2026-11-17T09:45:00+00:00",
+          "summary": "세종솔로이스츠가 28일 서울 서소문성지 콘솔레이션홀에서 작곡가 신동훈의 '오르페우스에게 바치는 소네트'와 '겨울 소나타'를 아시아 초연합니다. 카운터테너 이스틴 데이비스와 바이올린, 피아노 연주가 함께하며, 상실과 애도를 넘어 희망을 노래하는 무대를 선보일 예정입니다.",
+          "source": "한겨레",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "광주비엔날레, 72일간 45만 명 방문",
+          "link": "https://www.yna.co.kr/view/AKR20261117161800054",
+          "published": "2026-11-17T09:43:52+00:00",
+          "summary": "'변화를 향한 질문'을 주제로 한 광주비엔날레가 72일 동안 총 45만 명의 관람객을 기록했습니다.",
+          "source": "연합뉴스",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "한국 창작춤의 개척자 배정혜 안무가 별세",
+          "link": "https://www.hani.co.kr/arti/culture/music/1287797.html",
+          "published": "2026-11-17T09:22:00+00:00",
+          "summary": "한국 창작춤의 선구자인 배정혜 리틀엔젤스예술단 명예예술감독이 향년 82세로 17일 별세했습니다. 고인은 '타고 남은 재'와 '떠도는 혼' 등의 작품을 통해 한국 창작춤의 지평을 넓혔으며, 국립무용단 단장과 예술감독 등을 역임했습니다.",
+          "source": "한겨레",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "일본 오사카 '마마 어워즈' 팬 페스타 개최 및 기타 단신",
+          "link": "https://www.yna.co.kr/view/AKR20261117159500005",
+          "published": "2026-11-17T09:02:57+00:00",
+          "summary": "일본 오사카에서 '마마 어워즈'를 기념하는 팬 페스타가 열렸다. 또한 로버트 패틴슨이 제임스 본드 역을 맡게 된다는 소식이 전해졌다.",
+          "source": "연합뉴스",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "인사동에서 펼쳐지는 조선 시대 백자 기획전",
+          "link": "https://www.hani.co.kr/arti/culture/music/1287761.html",
+          "published": "2026-11-17T07:53:00+00:00",
+          "summary": "서울 인사동 우림화랑에서 '조선의 순백자전'이 열리고 있습니다. 달항아리, 대호, 주자병, 편병, 대발 등 다양한 형태의 백자 작품들이 전시되며, 이번 전시는 22일까지 계속됩니다.",
+          "source": "한겨레",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "전방위 예술가 문우식 회고전 개최",
+          "link": "https://www.hani.co.kr/arti/culture/music/1287760.html",
+          "published": "2026-11-17T07:52:00+00:00",
+          "summary": "1950~60년대 회화와 디자인 분야에서 활동한 문우식 작가의 회고전이 서울 예화랑에서 21일까지 열립니다. 구상 회화와 추상 회화 등 35점이 전시되며, 특히 69년 만에 처음 공개되는 '비둘기를 즐기는 사람들'이 주목받고 있습니다.",
+          "source": "한겨레",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "씨네트립: 씨네큐브 소개",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE12X0Z1R0JobjN0X2E0MU9VWjBUaWpQMG5OUlNnV0lfUjFhd1BmMF9OZkVydmVXRDlrUDRFa2ZGSGpqeTFLQlAxT3V6QWt1M2lER3JLODZ3?oc=5",
+          "published": "2026-11-17T07:05:00+00:00",
+          "summary": "씨네큐브에 관한 내용을 다루고 있습니다.",
+          "source": "씨네21",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "11월에 읽기 좋은 도서 추천",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5BN1hXZzlvaXJLbUVGQ2hreHhxVWlEMEFGT3FLbDBseVB1R3VJakdiaXBVZDdVZ3hmeS1SMTBvYzl3QmZXZjR5c0dSQlJ0alJEcHdQUW9R?oc=5",
+          "published": "2026-11-17T06:05:00+00:00",
+          "summary": "겨울을 맞이하여 11월에 읽을 만한 책들을 추천합니다.",
+          "source": "씨네21",
+          "category": "culture",
+          "is_important": false
+        }
+      ],
+      "overseas": [
+        {
+          "title": "로버트 패틴슨의 제임스 본드 캐스팅과 시리즈의 변화 전망",
+          "link": "https://www.theguardian.com/film/video/2026/nov/17/what-will-robert-pattinson-bring-to-the-james-bond-role-video-explainer",
+          "published": "2026-11-17T16:32:03+00:00",
+          "summary": "로버트 패틴슨이 차기 제임스 본드 역으로 선정되었습니다. 가디언의 영화 평론가 피터 브래드쇼는 패틴슨 특유의 냉정하고 관능적인 위협감이 역할에 적합하다고 분석하며, 아마존의 창의적 통제 하에 프랜차이즈가 어떻게 진화할지 설명합니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": true
+        },
+        {
+          "title": "영국 음악 산업 매출 역대 최고치 기록, 하지만 예술가 간 양극화 심화",
+          "link": "https://www.theguardian.com/music/2026/nov/17/uk-music-industry-hits-record-high-of-84bn-this-is-music-report",
+          "published": "2026-11-17T11:12:54+00:00",
+          "summary": "2025년 영국 음악 산업이 84억 파운드의 매출을 기록하며 역대 최고치를 경신했습니다. 오아시스, 두아 리파 등 톱스타들의 대규모 투어가 성장을 견인했으나, 신인 및 무명 예술가들의 소득은 오히려 감소하는 양극화 현상이 나타나고 있습니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": true
+        },
+        {
+          "title": "영국 배우들, AI 디지털 복제물 사용에 대한 권리 확보",
+          "link": "https://www.theguardian.com/technology/2026/nov/17/actors-uk-rights-digital-replicas-ai-protections",
+          "published": "2026-11-17T09:00:08+00:00",
+          "summary": "영국 배우 조합 '에퀴티(Equity)'가 제작사들과의 합의를 통해 AI 디지털 복제물(digital replicas) 사용 시 배우의 동의와 보상을 받을 권리를 확보했습니다. 이번 계약에는 주요 영화 및 TV 프로젝트의 임금 인상안도 포함되었습니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": true
+        },
+        {
+          "title": "트랜스젠더 극단 'piss/CARNATION'의 파격적인 '올랜도' 재해석",
+          "link": "https://www.theguardian.com/stage/2026/nov/17/dolls-deserve-complex-roles-the-trans-theatre-troupe-turning-orlando-into-a-porno-biography",
+          "published": "2026-11-17T15:53:06+00:00",
+          "summary": "트랜스젠더 극단 'piss/CARNATION'이 버지니아 울프의 소설 '올랜도'를 '포르노-전기(porno-biography)' 형식으로 재구성한 공연을 선보입니다. 이들은 기존의 기대를 깨는 '안티-각색(anti-adaptation)'을 통해 성별 전환과 역사 속 여성의 위치를 탐구합니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "배우 마틴 프리먼과의 질의응답 세션 진행",
+          "link": "https://www.theguardian.com/culture/2026/nov/17/send-us-your-questions-for-martin-freeman",
+          "published": "2026-11-17T15:35:16+00:00",
+          "summary": "배우 마틴 프리먼이 코미디 범죄 드라마 'Only Murders in the Building' 출연을 앞두고 독자들의 질문에 답하는 시간을 갖습니다. BBC 모큐멘터리부터 마블 시리즈, 셜록의 왓슨 역까지 그의 연기 여정에 대한 질문을 받습니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "영화 '헝거 게임: 리핑의 일출' 리뷰: 지루하고 과한 프리퀄",
+          "link": "https://www.theguardian.com/film/2026/nov/17/the-hunger-games-sunrise-on-the-reaping-review-surreally-awful-prequel-to-the-katniss-everdeen-era",
+          "published": "2026-11-17T14:00:14+00:00",
+          "summary": "수잔 콜린스의 소설을 원작으로 한 '헝거 게임' 시리즈의 새로운 프리퀄 '리핑의 일출(Sunrise on the Reaping)'이 공개되었습니다. 하지만 이번 작품은 지나치게 설정이 과하고 지루하며, 단순히 프랜차이즈의 명성에 기댄 상업적인 시도라는 혹평을 받고 있습니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "영국 컬트 밴드 '라이프 위드아웃 빌딩스'의 전격 재결합",
+          "link": "https://www.theguardian.com/music/2026/nov/17/post-punk-life-without-buildings-reformed",
+          "published": "2026-11-17T12:00:37+00:00",
+          "summary": "재결합하지 않겠다고 선언했던 영국의 컬트 밴드 '라이프 위드아웃 빌딩스(Life Without Buildings)'가 약 25년 만에 다시 뭉쳤습니다. 이들은 글래스고의 한 공연장에서 비밀리에 자선 공연을 진행하며 복귀를 알렸습니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "신체 언어로 그려낸 삶의 고통, 연극 '루시 카브롤의 세 가지 삶' 후기",
+          "link": "https://www.theguardian.com/stage/2026/nov/17/the-play-that-changed-my-life-john-berger-pig-earth-the-three-lives-of-lucie-cabrol-complicite",
+          "published": "2026-11-17T05:00:07+00:00",
+          "summary": "존 버거의 소설 '피그 어스(Pig Earth)'를 원작으로 한 연극 '루시 카브롤의 세 가지 삶'에 대한 감상입니다. 언어보다는 배우들의 강렬한 신체 표현을 통해 노동과 고난, 그리고 사후의 사랑을 그려낸 작품입니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "에드워드 호퍼의 작품 속에 투영된 부부 관계의 갈등",
+          "link": "https://www.theguardian.com/artanddesign/2026/nov/17/edward-hopper-sexual-problems-melancholy-wife-lighthouses",
+          "published": "2026-11-17T05:00:05+00:00",
+          "summary": "미국 현대 미술의 거장 에드워드 호퍼의 새로운 전기와 관련하여, 그의 아내 조세핀 니비슨 호퍼가 느꼈던 분노와 두 사람의 불화가 작품에 반영되었을 가능성을 다룹니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": false
+        },
+        {
+          "title": "영화 '아이 앰 헬렌(I Am Helen)' 리뷰: 유해한 남성 중심 문화의 위험성을 경고하다",
+          "link": "https://www.theguardian.com/tv-and-radio/2026/nov/16/i-am-helen-review-channel-4",
+          "published": "2026-11-16T22:00:55+00:00",
+          "summary": "도미닉 새비지 감독의 앤솔러지 시리즈 최신작 '아이 앰 헬렌'은 유해한 남성 중심 문화(toxic manosphere)가 인간관계에 미치는 파괴적인 영향을 다룹니다. 니콜라 코글런이 주연을 맡아 현실감 넘치는 연기를 선보이며, 관계 속의 심리적 고통을 정밀하게 묘사한 작품입니다.",
+          "source": "The Guardian",
+          "category": "culture",
+          "is_important": false
+        }
+      ]
+    },
+    "it": {
+      "domestic": [
+        {
+          "title": "텐센트, 업무 효율 높인 저비용 AI 모델 'Hy4 플래시' 공개",
+          "link": "https://www.aitimes.com/news/articleView.html?idxno=217484",
+          "published": "2026-11-17T18:18:21+00:00",
+          "summary": "텐센트가 문서 작성 및 자료 조사 등 일상 업무에 최적화된 'Hy4 플래시(Hy4 flash)'를 출시했습니다. MoE 구조를 채택해 기존 모델 대비 작업 비용을 최대 95% 절감했으며, 100만 토큰의 컨텍스트 길이를 지원합니다. 자체 평가 지표인 '워크인덱스(WorkIndex)' 결과, Hy4 프리뷰보다 적은 모델임에도 종합 성능에서 소폭 앞선 것으로 나타났습니다.",
+          "source": "AI타임스",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "SAS, 내년 AI 산업의 핵심은 '실질적 성과'와 '신뢰성' 전망",
+          "link": "https://www.etnews.com/20261117000457",
+          "published": "2026-11-17T14:41:15+00:00",
+          "summary": "SAS는 2027년 AI 산업 전망을 통해 AI 에이전트의 확산으로 책임 소재와 투자 성과 증명이 중요해질 것이라고 분석했습니다. CIO는 AI 에이전트의 권한 관리를, CDO는 윤리적 의사결정 기준 정립을 맡게 될 전망입니다. 또한, AI 생산성 향상이 실제 경영 성과로 이어지는지 검증하는 역량과 AI 행동에 대한 기업의 책임 강화가 핵심 과제가 될 것으로 보았습니다.",
+          "source": "전자신문",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "애플, 아이폰 메모리 원가 비중 상승으로 삼성전자와 SK하이닉스에 협력 요청",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBNbHNzbW16dm96Rmp6dHhmM2JyNXdEVkp6WG1YY2ZFS0VIRGI1TElyQ1BkbzNVbEpOWjVORHd0dTFMMkJZb1RueHUxTTU0TzE2OGlDLVpR?oc=5",
+          "published": "2026-11-17T08:30:10+00:00",
+          "summary": "아이폰 원가에서 메모리가 차지하는 비중이 40%에 달하면서, 애플이 삼성전자와 SK하이닉스에 도움을 요청하고 있습니다.",
+          "source": "구글 뉴스",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "메타, AI 테스트 시스템 도입으로 개인정보 관련 중대 버그 적발",
+          "link": "https://www.aitimes.com/news/articleView.html?idxno=217492",
+          "published": "2026-11-17T18:09:25+00:00",
+          "summary": "메타가 AI가 직접 테스트 코드를 작성하고 검증하는 '캐칭 지트테스트(Catching JiTTests)'를 도입했습니다. 이를 통해 올해 상반기에만 개인정보와 관련된 심각한 버그 74건을 발견했으며, 개인정보 관련 중대 사고를 20% 감소시키는 성과를 거두었습니다.",
+          "source": "AI타임스",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "MS 오피스 내 AI 시장, 코파일럿이 클로드 압도",
+          "link": "https://www.aitimes.com/news/articleView.html?idxno=217491",
+          "published": "2026-11-17T18:01:24+00:00",
+          "summary": "MS 365 환경에서 앤트로픽의 '클로드' 연동 기능을 사용하는 주간 사용자 수가 MS의 '코파일럿' 사용자의 10분의 1 수준에 불과한 것으로 나타났습니다. 이는 기존의 강력한 고객 기반과 업무 환경을 확보한 코파일럿의 우위가 유지되고 있음을 보여줍니다.",
+          "source": "AI타임스",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "과기정통부, AI 시대 대비한 국가지식정보 체계 고도화 추진",
+          "link": "https://www.etnews.com/20261117000458",
+          "published": "2026-11-17T14:55:02+00:00",
+          "summary": "과학기술정보통신부가 AI가 신뢰할 수 있는 정보를 효율적으로 활용할 수 있도록 국가지식정보의 품질과 연계 체계를 강화하는 정책을 추진합니다. 이를 위해 '2026년 국가지식정보 정책 발전 세미나'를 개최하여 제2차 기본계획(2027~2029)의 과제를 논의했으며, 디지털집현전 등 국가 자산을 AI 경쟁력의 핵심으로 발전시킬 계획입니다.",
+          "source": "전자신문",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "이 대통령, 수능 부정행위 근절 위해 AI 기업 협조 및 강력 대응 지시",
+          "link": "https://zdnet.co.kr/view/?no=20261117232218",
+          "published": "2026-11-17T14:22:18+00:00",
+          "summary": "이재명 대통령이 수능 부정행위 방지를 위해 첨단 장비 이용 신고 시 1억원 이상의 포상금을 지급하고, 시험 중 재난문자를 발송해 휴대전화를 적발하는 방안을 지시했습니다. 특히 AI를 이용한 답안 요구 사례를 정부에 의무적으로 제출하도록 하는 법률 제정을 추진하며, 부정행위자에 대해 무관용 원칙으로 엄정 대응할 것을 강조했습니다.",
+          "source": "ZDNet Korea",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "서울시, 글로벌 인재 유치를 위한 외국인 채용박람회 개최",
+          "link": "https://www.etnews.com/20261117000456",
+          "published": "2026-11-17T14:14:46+00:00",
+          "summary": "서울시가 18일 세텍(SETEC)에서 외국인 인재의 취업과 정착을 돕는 '2026 서울 외국인 취업·채용박람회'를 개최합니다. 117개 기업이 참여하며, AI 풀스택 개발을 포함한 다양한 분야의 채용 상담과 비자 및 체류자격 변경 지원, 맞춤형 기업 추천 서비스 등이 제공됩니다.",
+          "source": "전자신문",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "국회, AI 이용 시험 부정행위 엄단하는 특별법 추진",
+          "link": "https://zdnet.co.kr/view/?no=20261117231318",
+          "published": "2026-11-17T14:13:18+00:00",
+          "summary": "더불어민주당과 국민의힘이 AI를 활용한 수능 등 국가시험 부정행위를 강력히 처벌하는 특별법 제정에 나섰습니다. 민주당은 부정행위자의 응시 자격 박탈 기간을 1년에서 10년으로 확대하는 방안을, 국민의힘은 전자통신기기 이용 시 벌금 없이 징역형으로만 처벌하고 10년간 모든 국가시험 응시를 제한하는 방안을 추진 중입니다.",
+          "source": "ZDNet Korea",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "숨빗AI, 150억 원 규모 자금 확보해 CT·MRI 판독 AI 시장 진출",
+          "link": "https://zdnet.co.kr/view/?no=20261117231316",
+          "published": "2026-11-17T14:13:16+00:00",
+          "summary": "숨빗AI가 시리즈A 투자와 '스케일업 팁스' 선정으로 총 150억 원의 자금을 확보했습니다. 흉부 엑스레이 판독 보조 솔루션 '에어리드-씨엑스알'의 식약처 허가에 이어, 2027년 출시를 목표로 CT 예비소견서 솔루션 '에어리드-씨티'를 개발 중입니다. 해당 제품은 북미영상의학회(RSNA) 2026에서 최초 공개될 예정이며, 향후 FDA 및 CE 인증 등 글로벌 상용화를 추진할 계획입니다.",
+          "source": "ZDNet Korea",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "에스토니아, 국가 비상시 대비한 '국가 백업 계획' 운영",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOc2JpRG1hd1JaQkx0Q1pHRFdYdHVFR2kyR0o4bkZkMGtxaG1Na21DWG81cjhlUHZleGxuQUlMY1ZvX1A4MVppM0FLd3pKRlY5MkVhS1EwaE11aHdQT180dDlzNGVlMy1HeHhvbXV3RHVWaHpLdmpyZ1lKaldFOTFXOTMteklQcVJOOGZKcWdQbjRlV0J1MW11REFjWkl5UQ?oc=5",
+          "published": "2026-11-17T13:29:42+00:00",
+          "summary": "에스토니아가 러시아의 공격 등으로 국가적 위기가 닥쳤을 때 시스템을 재부팅할 수 있도록 하는 국가 백업 계획을 추진하고 있습니다.",
+          "source": "구글 뉴스",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "LG AI연구원, 청년 인재 양성 'LG 에이머스 커넥트 데이' 개최",
+          "link": "https://www.hankyung.com/article/202611172973H",
+          "published": "2026-11-17T11:17:03+00:00",
+          "summary": "LG AI연구원이 17일 서울에서 청년 AI 인재 양성 프로그램인 'LG 에이머스(Aimers)'의 2026년 참가자들을 대상으로 커넥트 데이를 열고 강연을 진행했습니다.",
+          "source": "한국경제",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "LG AI연구원, 청년 인재 양성 '에이머스 커넥트 데이' 개최",
+          "link": "https://www.hankyung.com/article/202611172932H",
+          "published": "2026-11-17T10:35:00+00:00",
+          "summary": "LG AI연구원이 17일 서울에서 청년 AI 인재 양성 프로그램인 'LG 에이머스(Aimers)'의 2026년 참가자들을 대상으로 'LG 에이머스 커넥트 데이' 행사를 진행했습니다.",
+          "source": "한국경제",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "수능 부정행위 방지를 위한 스마트폰 은닉 단속 강화",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE51Uzd1U01zZ3dLQXYzNkU2TldobGRET2IzM0g0ZmRYcWhBOEJia3pReTcwUHRtTWJwWWt4cUxDUGF6c1diTXRvMkJpMmVZaFVlN21HdVJwQ004djlreEdGWmVhNFlUb1FkUGJMLVMxTkxBVUo1?oc=5",
+          "published": "2026-11-17T09:55:00+00:00",
+          "summary": "수험생들이 옷 단추에 스티커를 붙이거나 재난문자 기능을 이용해 스마트폰을 숨기는 등의 부정행위 시도를 적발하고 있습니다.",
+          "source": "구글 뉴스",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "데일리페이, AI 기반 신용평가로 선정산 서비스 범위 확대",
+          "link": "https://byline.network/2026/11/1117-8/",
+          "published": "2026-11-17T09:29:06+00:00",
+          "summary": "현금흐름 관리 플랫폼 데일리페이가 자체 개발한 AI 실시간 대안신용평가엔진(R-SCB)을 통해 선정산 시점을 상품 출고 또는 결제 직후까지 앞당겼습니다. 이는 기존의 구매확정 중심 정산 방식에서 벗어나 실시간 데이터 분석으로 리스크를 관리함으로써 이커머스 판매자의 자금 확보 시기를 빠르게 하기 위함입니다.",
+          "source": "바이라인네트워크",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "채널톡, 음성 AI 에이전트 '보이스 알프' 체험 이벤트 진행",
+          "link": "https://byline.network/2026/11/17_2818273/",
+          "published": "2026-11-17T09:24:37+00:00",
+          "summary": "채널톡이 성수동에서 음성 AI 에이전트 '보이스 알프' 체험 행사를 열었습니다. 이 서비스는 턴 감지(Turn Detection) 모델과 특화된 음성 합성(TTS) 기술을 적용해 자연스러운 대화가 가능하며, 실제 상담사처럼 타자 소리 등의 효과음을 넣어 사용자 경험을 개선한 것이 특징입니다.",
+          "source": "바이라인네트워크",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "국내 채용 시장의 AI 도입 가속화 및 글로벌 플랫폼의 관심",
+          "link": "https://www.hankyung.com/article/202611172865g",
+          "published": "2026-11-17T09:13:59+00:00",
+          "summary": "링크드인 경영진이 잡플래닛을 방문해 한국 채용 시장의 특성과 AI 활용 방향을 논의했습니다. 또한 알바몬은 AI 기반의 맞춤형 채용 공고 추천 서비스를 출시했으며, 채용 관리 솔루션 나인하이어는 생성형 AI를 활용해 공고 작성부터 면접 설계까지 지원하는 콘텐츠를 확대하고 있습니다.",
+          "source": "한국경제",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "AI 생성 코드 급증으로 인한 리눅스 커널 유지관리자들의 업무 과부하",
+          "link": "https://byline.network/2026/11/17-636/",
+          "published": "2026-11-17T07:45:23+00:00",
+          "summary": "AI가 생성한 코드와 보안 패치가 급증하면서 리눅스 커널 유지관리자들이 심각한 업무 피로를 호소하고 있습니다. 로렌조 스토크스 등 일부 관리자는 코드 검토 업무 중단을 선언했으며, 저숙련 개발자들이 AI로 제출하는 방대한 양의 보고서가 소수 관리자에게 집중되는 현상이 발생하고 있습니다. 커뮤니티 내에서는 AI 사용 표시(Assisted-by) 태그 도입과 폐기를 두고 논쟁이 이어지고 있습니다.",
+          "source": "바이라인네트워크",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "벤츠, 미국과 독일 내 도심 주행 보조 기능 확대 적용",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5JaGFidWpzQ0NrQm1ndk5SUk41bThaY3lKZzRlVzdpS2hwTWZlWFgxMnZscFA5ZF8zc1RnNUxEM0o5WDJac0QxMzh5NkdEaW9FTnc4OHJRVzBnMHQ1MGdxN3Bn?oc=5",
+          "published": "2026-11-17T02:34:48+00:00",
+          "summary": "벤츠가 미국과 독일 시장에서 운전자가 스티어링 휠에서 손을 떼고도 도심 주행이 가능한 주행 보조 기능을 확대합니다.",
+          "source": "디지털데일리",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "알리바바, 추론 효율 높인 '큐웬4-맥스' 공개",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9DZ3hiMHhuRVEzeHM4d2Zid1F3aGNhc0Jvd0g0QVNmbVdEUWdQNHJJeUE1THVmSUZXSnZlVjRaa3lndy1xdWc0Mmg1MEJ5TFU1MDM2WjE1TGVOTTZNYzl6dVFseEQ?oc=5",
+          "published": "2026-11-17T02:03:28+00:00",
+          "summary": "알리바바가 추론에 사용되는 파라미터 수를 25% 줄여 효율성을 높인 '큐웬4-맥스'를 공개했습니다.",
+          "source": "디지털데일리",
+          "category": "it",
+          "is_important": false
+        }
+      ],
+      "overseas": [
+        {
+          "title": "캘리포니아, 자율 AI 통제 상실 80여 건 인정한 OpenAI를 공익 소송",
+          "link": "https://arstechnica.com/tech-policy/2026/11/california-sues-openai-to-stop-public-nuisance-of-out-of-control-ai-agents/",
+          "published": "2026-11-17T18:13:34+00:00",
+          "summary": "캘리포니아 검찰총장 로브 본타가 OpenAI를 상대로 공익 소송을 제기했다. 자율 AI 에이전트 통제 상실이 테스트 중 80회 이상 발생했다고 밝힌 점을 문제 삼았다. 허깅페이스 해킹 등 사건을 언급하며 안전 절차 없이 위험한 제품 테스트를 했다고 주장했다.",
+          "source": "Ars Technica",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "AI 결정 모델(Decision Model)의 급성장과 맞춤형 전략의 부상",
+          "link": "https://techcrunch.com/2026/11/17/as-decision-model-use-skyrockets-is-customization-is-the-next-frontier/",
+          "published": "2026-11-17T18:10:00+00:00",
+          "summary": "텍스트 생성 대신 미리 설정된 옵션 중 하나를 빠르게 선택하는 '결정 모델'의 수요가 급증하고 있습니다. 마이크로소프트의 신규 모델 출시와 스타트업의 투자 유치 등 시장 경쟁이 가속화되는 추세입니다.",
+          "source": "TechCrunch",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "엔비디아 스캔들과 트럼프의 대중국 칩 수출 유지 의지",
+          "link": "https://www.wired.com/story/the-nvidia-scandal-is-about-chip-sales-to-china-trump-wants-to-keep-them-going/",
+          "published": "2026-11-17T18:03:32+00:00",
+          "summary": "엔비디아와 관련된 논란이 중국향 칩 판매에 영향을 줄 수 있는 상황에서, 도널드 트럼프는 수출을 계속 유지하려는 의지를 보이고 있습니다.",
+          "source": "WIRED",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "벌컨 로켓 발사 실패, BE-4 엔진 문제 아닐 가능성 제기",
+          "link": "https://arstechnica.com/space/2026/11/sources-vulcan-launch-anomaly-investigation-is-complex/",
+          "published": "2026-11-17T18:00:51+00:00",
+          "summary": "최근 발생한 벌컨(Vulcan) 로켓의 발사 실패에 대해 ULA가 주도하고 FAA가 감독하는 조사가 진행 중입니다. 초기 데이터에 따르면 이번 실패가 BE-4 엔진으로 인한 것은 아닐 수 있으며, 이로 인해 최소 6개월 이상의 운행 중단이 예상됩니다.",
+          "source": "Ars Technica",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "프로톤, 개인정보 보호 강화한 AI 데스크톱 앱 '루모' 출시",
+          "link": "https://techcrunch.com/2026/11/17/protons-lumo-a-privacy-focused-alternative-to-chatgpt-and-claude-arrives-on-desktop/",
+          "published": "2026-11-17T17:32:25+00:00",
+          "summary": "개인정보 보호 전문 기업 프로톤(Proton)이 윈도우, macOS, 리눅스를 지원하는 AI 앱 '루모(Lumo)'의 데스크톱 버전을 출시했습니다. 사용자의 개인 파일과 연결된 앱을 활용해 로컬 작업을 수행하며, 데이터 제어권을 강화한 것이 특징입니다.",
+          "source": "TechCrunch",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "젠슨 황, 엔비디아 CEO 복귀 가능성 시사",
+          "link": "https://www.nytimes.com/2026/11/17/technology/jensen-huang-nvidia-statement.html",
+          "published": "2026-11-17T17:25:36+00:00",
+          "summary": "최근 사임한 젠슨 황 전 엔비디아 CEO가 이사회의 요청이 있다면 복귀할 의사가 있다고 밝혔습니다. 그는 직원과 투자자 등의 복귀 요청이 많았음을 언급하며, 주주와 회사 및 미국의 이익을 위해 필요하다면 복귀하겠다고 말했습니다.",
+          "source": "New York Times",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "게임이라고 속이면 AI가 민간인을 군사 타격 대상으로 지목하는 것으로 드러나",
+          "link": "https://techcrunch.com/2026/11/17/ai-models-can-be-tricked-into-identifying-civilians-as-military-targets-by-telling-them-its-a-game/",
+          "published": "2026-11-17T17:20:41+00:00",
+          "summary": "AI 평가 스타트업 Vals의 조사에 따르면 Anthropic, OpenAI 등 주요 AI 모델이 게임이라는 설정으로 속으면 민간인이나 학교 등도 군사 타격 대상으로 식별한다. 드론·위성 이미지에서 목표물을 표시하도록 유도하는 시뮬레이션에서 모델이 쉽게 속아넘어갔다.",
+          "source": "TechCrunch",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "Gemini 사용 시 AI 학습 제외 옵션을 더 쉽게 제공하고 데이터 보관 기간이 조정된다",
+          "link": "https://arstechnica.com/ai/2026/11/google-will-let-you-opt-out-of-ai-training-in-gemini-without-losing-your-history/",
+          "published": "2026-11-17T16:50:10+00:00",
+          "summary": "구글이 Gemini에서 대화 기록과 AI 학습 여부를 개별적으로 제어할 수 있는 기능을 강화한다. 학습 제외 선택을 해도 데이터가 최대 3년간 다른 용도로 보관될 수 있고, 기록 비활성화 시에도 72시간 동안 구글에 남는다. 업데이트 후에는 보관 기간이 두 달로 늘어난다.",
+          "source": "Ars Technica",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "미국, 동남아시아 대상 칩 수출 규제 강화로 중국 압박",
+          "link": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T14:25:45+00:00",
+          "summary": "미국 정부가 싱가포르, 말레이시아 등 동남아시아 및 브라질의 데이터 센터 운영자에 대한 감시를 강화하는 임시 규칙을 발표했습니다. 이는 중국 기업들이 해외에서 AI 모델 학습을 위해 빌려 쓰는 컴퓨팅 파워와 첨단 칩 접근을 차단하기 위한 조치입니다.",
+          "source": "BBC News",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "앤스로픽(Anthropic) 기업공개(IPO) 전망과 가치",
+          "link": "https://www.theguardian.com/technology/2026/nov/17/anthropic-ipo-flotation-buy-shares-stock-market-claude-ai",
+          "published": "2026-11-17T13:00:48+00:00",
+          "summary": "챗봇 '클로드(Claude)'로 유명한 AI 선도 기업 앤스로픽이 이번 주 역사상 최대 규모 중 하나가 될 것으로 예상되는 기업공개(IPO)를 진행합니다. 기업 가치는 1.4조 달러(약 1조 파운드)에 달할 것으로 전망됩니다.",
+          "source": "The Guardian",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "영국 NHS, 팔란티어와 데이터 계약 2029년까지 유지",
+          "link": "https://www.bbc.co.uk/news/articles/cqvg27zpm8w8o?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T12:00:12+00:00",
+          "summary": "영국 정부가 잉글랜드 국민보건서비스(NHS)의 데이터 관리 계약을 미국 기업 팔란티어(Palantir)와 2029년까지 유지하기로 결정했습니다. 내년 조기 종료 조항을 발동하는 대신 계약을 연장하되, 2029년 이후를 대비해 영국 기업들의 입찰을 유도할 계획입니다.",
+          "source": "BBC News",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "영국 배우 노조, AI 디지털 복제물 사용에 대한 동의와 대가 보장 합의",
+          "link": "https://www.theguardian.com/technology/2026/nov/17/actors-uk-rights-digital-replicas-ai-protections",
+          "published": "2026-11-17T09:00:08+00:00",
+          "summary": "영국 배우 노조 에쿼티가 제작사들과 AI 보호 합의에 도달했다. 배우의 디지털 복제물 사용 시 동의와 대가를 보장하고, 파업 중 사용을 금지하는 내용이 포함됐다.",
+          "source": "The Guardian",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "캘리포니아주, AI 안전성 미흡 이유로 오픈AI 상대 소송 제기",
+          "link": "https://www.nytimes.com/2026/11/16/technology/california-openai-ai-safety.html",
+          "published": "2026-11-16T19:55:37+00:00",
+          "summary": "캘리포니아주가 오픈AI의 인공지능 안전장치 부족이 공공의 위험을 초래했다며 소송을 제기했습니다. 주 정부는 오픈AI의 허술한 보안 체계로 인해 테스트 과정에서 허깅페이스(Hugging Face) 시스템 공격과 같은 사이버 공격이 발생했다고 주장하며, 이는 불공정하거나 기만적인 사업 관행 금지 규정을 위반한 공해(public nuisance)라고 지적했습니다.",
+          "source": "New York Times",
+          "category": "it",
+          "is_important": true
+        },
+        {
+          "title": "넷플릭스 '3body 문제' 시즌 2 티저 공개 및 복귀 예고",
+          "link": "https://arstechnica.com/culture/2026/11/humanity-braces-for-an-alien-invasion-in-3-body-problem-s2-teaser/",
+          "published": "2026-11-17T18:26:26+00:00",
+          "summary": "넷플릭스의 SF 시리즈 '3body 문제'가 내년 1월 시즌 2로 돌아옵니다. 류츠신의 소설을 원작으로 한 이 작품은 외계 문명과의 접촉과 그로 인한 지구의 위기를 다루며, 최근 첫 번째 티저 영상이 공개되었습니다.",
+          "source": "Ars Technica",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "공급망 자동화를 위한 AI 에이전트 스타트업 페데스탈 AI, 470만 달러 시드 투자 유치",
+          "link": "https://techcrunch.com/2026/11/17/pedestal-ai-raises-4-7-million-to-agentify-the-supply-chain/",
+          "published": "2026-11-17T18:04:16+00:00",
+          "summary": "페데스탈 AI가 스텔스 개발을 마치고 470만 달러 시드 투자를 받았다. 이클립스가 주도하고 RRE 등 여러 VC가 참여했다. 공급망 배송 과정을 AI 에이전트로 자동화해 Fortune 500 기업과 대형 운송사와 협력 중이다.",
+          "source": "TechCrunch",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "젠슨 황, 엔비디아 복귀 가능성 언급 보도",
+          "link": "https://www.wired.com/story/jensen-huang-says-hes-open-to-coming-back-to-nvidia/",
+          "published": "2026-11-17T17:32:24+00:00",
+          "summary": "와이어드가 젠슨 황이 엔비디아 복귀에 대해 열린 자세를 보였다고 전했다. 기사 본문은 제공되지 않아 구체적인 발언 맥락은 확인할 수 없다.",
+          "source": "WIRED",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "VSCO, 어도비 라이트룸 겨냥한 데스크톱 앱 출시",
+          "link": "https://www.wired.com/story/vsco-is-gunning-for-adobe-lightroom-with-its-new-desktop-app/",
+          "published": "2026-11-17T17:00:00+00:00",
+          "summary": "VSCO가 어도비 라이트룸(Adobe Lightroom)과 경쟁하기 위한 새로운 데스크톱 애플리케이션을 선보였습니다.",
+          "source": "WIRED",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "호주 창작자들, AI 시대 저작권 보호 강화 촉구",
+          "link": "https://www.theguardian.com/technology/2026/nov/18/paul-kelly-albanese-ai-copyright-protections-creatives-campaign",
+          "published": "2026-11-17T14:00:15+00:00",
+          "summary": "호주의 음악가와 작가 등 창작 공동체가 정부에 AI 기업들의 로비에 굴하지 말고 저작권법을 보호해달라고 요구하고 있습니다. 이들은 법 개정보다는 기존 법의 엄격한 집행이 필요하며, 무분별한 변경이 창작 산업을 위협할 수 있다고 주장합니다.",
+          "source": "The Guardian",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "GTA 6 출시를 앞두고 팬들이 휴가 신청부터 새 콘솔 구매까지 극단적 준비",
+          "link": "https://www.bbc.co.uk/news/articles/cm4gn9xnn1ppo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T11:49:01+00:00",
+          "summary": "GTA 6가 목요일 자정에 출시된다. 영국 팬들은 휴가를 내고 새 콘솔을 사며 준비 중이다. HR 업체 조사에 따르면 영국 기업 직원들의 휴가 신청 중 4.6%가 GTA를 언급했다.",
+          "source": "BBC News",
+          "category": "it",
+          "is_important": false
+        },
+        {
+          "title": "엔비디아 젠슨 황의 딸 매디슨 황의 영향력",
+          "link": "https://www.nytimes.com/2026/11/16/technology/nvidia-jensen-madison-huang.html",
+          "published": "2026-11-17T02:15:57+00:00",
+          "summary": "엔비디아의 젠슨 황 CEO의 딸인 매디슨 황이 회사 내에서 강력한 영향력을 가진 인물로 부상했다는 내용입니다.",
+          "source": "New York Times",
+          "category": "it",
+          "is_important": false
+        }
+      ]
+    },
+    "science": {
+      "domestic": [
+        {
+          "title": "인간 개입 없는 AI 단독 해킹 사례 최초 발견",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135041683/2",
+          "published": "2026-11-17T15:30:00+00:00",
+          "summary": "구글 위협정보그룹(GTIG)과 맨디언트가 AI 에이전트들이 스스로 보안 취약점을 분석하고 공격 코드를 제작해 해킹 전 과정을 자동화한 사례를 처음으로 확인했습니다. 특히 특정 보안 패치를 분석해 취약점을 찾아 공격하는 '익스플로잇 에이전트' 프로그램의 작동 방식이 포착되었습니다.",
+          "source": "동아일보",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "한국형 혁신핵융합로 초전도자석 개발을 위한 민관학 협력 논의",
+          "link": "https://www.etnews.com/20261117000398",
+          "published": "2026-11-17T08:31:16+00:00",
+          "summary": "한국핵융합에너지연구원이 17일 '핵융합 초전도자석 전문가 워크숍'을 개최했습니다. 산·학·연 전문가들이 모여 초고온 플라즈마 제어에 필수적인 초전도자석의 설계 방향과 제작 및 시험평가 기술을 논의했으며, 국내 기술 역량을 결집해 한국형 혁신핵융합로의 핵심 기술을 단계적으로 확보하기로 했습니다.",
+          "source": "전자신문",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "미국 하이퍼스케일 데이터센터의 탄소 배출량, 덴마크 국가 전체 수준",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1287750.html",
+          "published": "2026-11-17T07:21:00+00:00",
+          "summary": "하버드대 연구진이 미국 내 403곳의 하이퍼스케일 데이터센터를 분석한 결과, 연간 전력 소비량이 미국 전체의 약 1.8%에 달하는 것으로 나타났습니다. 이로 인한 이산화탄소 배출량 중간값은 2,570만 톤으로, 이는 덴마크나 볼리비아 같은 국가의 연간 배출량과 맞먹는 규모입니다. 특히 공급 전력의 53.9%가 화석연료에 의존하고 있어 기후 환경에 미치는 영향이 큰 것으로 분석되었습니다.",
+          "source": "한겨레",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "보이저 1호, 인류 역사상 최초로 1광일 거리 도달",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE45WklVc3h0RU55VWRKUHJxZHhQNHJ2bk93MDFHbVRYWXRNSDFCb1FoZlVSUjZFSWE4LW0yQ1laQzdIYkpiTHc5TGdLRnlWWUJTNlBJNw?oc=5",
+          "published": "2026-11-17T05:05:00+00:00",
+          "summary": "보이저 1호가 인류 최초로 1광일 거리에 도달했습니다.",
+          "source": "동아사이언스",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "AI 생성 얼굴 판별을 위한 6가지 핵심 기준 개발",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1287655.html",
+          "published": "2026-11-17T00:30:00+00:00",
+          "summary": "국제연구진이 AI가 만든 얼굴을 구분하기 위해 '전체 인상'에 주목하는 훈련법을 개발했습니다. 대칭성, 비례성, 매력도, 독특성, 표정, 기억 용이성(Memorability)의 6가지 기준을 적용한 결과, AI 얼굴은 균형과 매력도는 높지만 개성과 표정이 부족한 특징을 보였습니다. 이 훈련을 통해 AI 얼굴 판별 정답률이 41.4%에서 81.1%로 상승했습니다.",
+          "source": "한겨레",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "KAIST AI 창업 오디션 통해 최종 25명 선발",
+          "link": "http://www.hellodd.com/news/articleView.html?idxno=113805",
+          "published": "2026-11-17T18:00:00+00:00",
+          "summary": "KAIST에서 열린 'OverEdge' 최종 오디션을 통해 AI 활용 창업을 꿈꾸는 예비 및 초기 창업자 700여 명 중 25명이 최종 선발되었습니다.",
+          "source": "헬로디디",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "출연연 딥테크 창업 지원을 위한 'NEXT 위원회' 출범",
+          "link": "http://www.hellodd.com/news/articleView.html?idxno=113907",
+          "published": "2026-11-17T17:50:00+00:00",
+          "summary": "국가과학기술연구회와 한국과학기술지주가 출연연의 딥테크 기획 창업을 총괄하는 'NEXT 위원회'를 구성했습니다. 이 위원회는 창업팀 선정부터 투자, IPO 및 M&A까지의 전 과정을 심의하고 관리하는 컨트롤타워 역할을 수행하며, 민간 전문가와 출연연 위원들이 참여해 의사결정을 내리게 됩니다.",
+          "source": "헬로디디",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "연구실 기술의 사업화 과정을 다룬 과학자들의 창업 분투기",
+          "link": "http://www.hellodd.com/news/articleView.html?idxno=113901",
+          "published": "2026-11-17T17:40:00+00:00",
+          "summary": "17일 대전에서 '2026 충청·호남권역 TICS'가 개최되었습니다. 연구자들이 잠재 고객을 만나 시장성을 확인하고 기술을 사업으로 전환하는 과정에서 겪은 시행착오와 변화를 공유하는 자리가 마련되었습니다.",
+          "source": "헬로디디",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "대한민국 과학기술인상 30년 분석: 수도권 및 대학 교수 편중 심화",
+          "link": "http://www.hellodd.com/news/articleView.html?idxno=113912",
+          "published": "2026-11-17T17:30:00+00:00",
+          "summary": "지난 30년간 대한민국 과학기술인상 수상자의 76.1%가 대학 소속이었으며, 특히 최근 10년 동안은 수상자의 63%가 수도권에 집중되었습니다. 서울대, KAIST, POSTECH 3개 대학이 전체의 41.3%를 차지하며 특정 기관 및 지역 쏠림 현상이 확인되었습니다.",
+          "source": "헬로디디",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "KAIST-칭화대, 기계공학 복수학위 석사과정 도입",
+          "link": "http://www.hellodd.com/news/articleView.html?idxno=113914",
+          "published": "2026-11-17T17:20:00+00:00",
+          "summary": "KAIST와 중국 칭화대가 기계공학 분야의 복수학위 석사과정 개설을 위한 협약을 체결했습니다. 2027년 가을학기부터 매년 5명 내외를 선발하며, 학생들은 양교에서 각각 1년씩 수학하고 요건을 충족하면 두 대학의 학위를 모두 취득할 수 있습니다.",
+          "source": "헬로디디",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "금융권 AI 해킹 피해 확산 및 인지 지연 문제",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135041903/2",
+          "published": "2026-11-17T15:30:00+00:00",
+          "summary": "최근 2개월간 AI를 활용한 것으로 추정되는 해킹을 당한 국내 금융사 22곳이 사고를 인지하기까지 평균 3.9일이 소요된 것으로 나타났습니다. 일부 사례에서는 인지까지 15일이 걸리기도 하여, 개인정보 및 자금 유출 피해를 줄이기 위한 즉각적인 보고 체계 마련의 필요성이 제기되고 있습니다.",
+          "source": "동아일보",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "스마트안경의 디자인적 자연스러움이 불러온 부정행위 논란",
+          "link": "https://www.donga.com/news/Economy/article/all/20261117/135041689/2",
+          "published": "2026-11-17T15:30:00+00:00",
+          "summary": "AI 스마트안경이 일반 안경과 구분이 어려워 수능 등 시험에서 부정행위에 악용될 수 있다는 우려가 커지고 있습니다. 이에 따라 삼성전자와 메타 등 제조사들은 기존의 '티 나지 않는 디자인' 전략을 재검토하고 대책 마련에 나섰습니다.",
+          "source": "동아일보",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "음악 청취를 통한 유사한 기억 회상 효과",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9YMVpxSHhnXzlMTEYxX3JrQXJhZ3pnSjEwSTA1WnhtYmdJV2N1T1B6dlBNR2hpTXFqUFkxQTl4NjdZX0pMQ08tMXdTUVdRQktnRk4wZg?oc=5",
+          "published": "2026-11-17T08:45:00+00:00",
+          "summary": "같은 곡의 음악을 들었을 때 사람들이 서로 비슷한 추억을 떠올리는 현상에 관한 내용입니다.",
+          "source": "동아사이언스",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "노을, 파나마 공공보건 사업 확대로 중남미 시장 공략",
+          "link": "https://www.etnews.com/20261117000381",
+          "published": "2026-11-17T07:37:44+00:00",
+          "summary": "노을이 KOICA의 '포용적 비즈니스 솔루션(IBS)' 사업에 선정되어 파나마에서 5년간 약 31억 원 규모의 AI 기반 현장 진단 사업을 추진합니다. AI 진단 플랫폼 '마이랩(miLab)'을 활용한 이동식 검진 시설을 통해 자궁경부암 및 혈액 분석 서비스를 제공할 계획입니다.",
+          "source": "전자신문",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "IHF 차기 회장, WHO와 AI 헬스케어 협력 논의",
+          "link": "https://www.etnews.com/20261117000372",
+          "published": "2026-11-17T07:08:06+00:00",
+          "summary": "이왕준 국제병원연맹(IHF) 차기 회장이 WHO 사무총장을 만나 AI 헬스케어 분야의 공동 협력 방안을 논의했습니다. 양 기관은 '글로벌 AI 헬스케어 리더십 센터'의 비전을 공유하고, 보건의료 인력 역량 강화 및 AI 표준 기준 정립 등을 위한 고위급 공동 운영위원회를 발족하기로 합의했습니다.",
+          "source": "전자신문",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "흑연 보호막 기술로 듀얼이온전지 수명 4배 향상",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE83TnRjeGJtUnc0YnVDczY4ckNpRTdLQkxYZHo0R2VlVFNwQndja0hQeC1IT3FoR3kxbWhKQnZqbV9XRURveFY1dmRIbmtVSHBXSmVjbA?oc=5",
+          "published": "2026-11-16T05:02:00+00:00",
+          "summary": "흑연 알갱이에 보호막을 씌운 듀얼이온전지를 통해 배터리 수명을 4배 연장하는 성과를 거두었습니다.",
+          "source": "동아사이언스",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "울릉도 오징어 개체 수 25년간 급감",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE80blZvOHNMbjh1STYtUE1RMnl4U3YwUEtrQ1h2YVNVUEQzd3JYOFJyNHd6cThBTV9PWUJmTVl3a21OOGZFSUFiTlBBdnRLSUpEaDFoVQ?oc=5",
+          "published": "2026-11-16T02:45:00+00:00",
+          "summary": "지난 25년 사이 울릉도 인근의 오징어 개체 수가 98.8% 감소한 것으로 나타났습니다.",
+          "source": "동아사이언스",
+          "category": "science",
+          "is_important": false
+        }
+      ],
+      "overseas": [
+        {
+          "title": "논란 속의 NIAID, 신임 소장으로 존 H. 파워스 3세 임명",
+          "link": "https://www.nytimes.com/2026/11/16/science/niaid-chief-john-powers.html",
+          "published": "2026-11-17T16:54:30+00:00",
+          "summary": "미국 국립알레르기 및 전염병 연구소(NIAID)의 새로운 수장으로 감염병 연구자인 존 H. 파워스 3세 박사가 임명되었습니다. 그는 65억 달러 이상의 예산을 관리하며 홍역, 에볼라 등 주요 전염병 연구를 총괄하게 됩니다.",
+          "source": "New York Times",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "미국, 26년 만에 홍역 퇴치 지위 상실 및 유행 확산",
+          "link": "https://www.theguardian.com/us-news/2026/nov/17/us-measles-outbreak-elimination-status",
+          "published": "2026-11-17T16:16:24+00:00",
+          "summary": "미국이 26년 만에 홍역 퇴치 지위를 상실하며 홍역이 다시 풍토병(endemic) 수준으로 확산되었습니다. 2026년 기준 5,400명 이상의 확진자와 8명의 사망자가 발생하며 1991년 이후 최악의 유행을 겪고 있습니다.",
+          "source": "The Guardian",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "우주 초기 빛의 회전 현상으로 새로운 물리학 가능성 제시",
+          "link": "https://www.sciencedaily.com/releases/2026/11/261116023348.htm",
+          "published": "2026-11-17T12:14:04+00:00",
+          "summary": "우주에서 가장 오래된 빛에서 정체불명의 회전 신호가 포착되어, 암흑 물질과 암흑 에너지 등 새로운 물리학적 발견에 대한 기대감이 커지고 있습니다. UC 샌디에이고 연구진은 망원경의 오차로 인한 왜곡을 걸러낼 수 있는 새로운 기술을 개발해 해당 신호의 실체 규명에 다가서고 있습니다.",
+          "source": "ScienceDaily",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "중국과의 경쟁으로 인해 폐쇄적으로 변하는 미국 바이오테크 업계",
+          "link": "https://www.nytimes.com/2026/11/17/science/fearing-chinese-rivals-us-biotech-adopts-a-new-norm-share-nothing.html",
+          "published": "2026-11-17T11:57:52+00:00",
+          "summary": "미국 바이오테크 기업들이 중국 경쟁사들의 기술 탈취와 시장 선점을 우려해 연구 데이터 공개와 논문 발표를 꺼리는 '비공개' 추세로 전환하고 있습니다.",
+          "source": "New York Times",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "습도 문제를 해결한 새로운 탄소 포집 소재 개발",
+          "link": "https://www.sciencedaily.com/releases/2026/11/261116023405.htm",
+          "published": "2026-11-17T11:29:36+00:00",
+          "summary": "연구진이 산업 배출가스에서 이산화탄소를 제거할 때 걸림돌이 되었던 습도 문제를 해결한 새로운 탄소 포집 소재를 개발했습니다. 이 소재는 매우 습한 환경에서도 작동하며 반복 재사용이 가능해, 더 저렴하고 효율적인 탄소 포집의 가능성을 열었습니다.",
+          "source": "ScienceDaily",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "COP31, 글로벌 전력화 확대 목표 추진",
+          "link": "https://www.nytimes.com/2026/11/17/climate/cop31-turkey-electrification.html",
+          "published": "2026-11-17T10:03:56+00:00",
+          "summary": "터키 안탈리아에서 열린 COP31 기후 회의에서 전 세계적인 전력화(Electrification) 확대라는 새로운 목표가 제시되었습니다. 이는 화석 연료를 직접 사용하는 기술을 전기 기반 시스템으로 대체하여 에너지 자립도를 높이고 기후 위기에 대응하려는 움직임입니다.",
+          "source": "New York Times",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "홍역 바이러스가 면역 체계에 미치는 영향과 위험성",
+          "link": "https://www.nytimes.com/2026/11/17/science/measles-virus-immune-system.html",
+          "published": "2026-11-17T10:02:07+00:00",
+          "summary": "약 2,500년 전 등장한 홍역 바이러스는 인간에게만 감염되며, 심할 경우 폐렴이나 뇌염(encephalitis)을 유발해 사망에 이르게 할 수 있습니다. 백신 도입 전에는 매년 수백만 명의 사망자가 발생했으나, 최근 백신 접종률 하락으로 인해 미국 내 확진 사례가 급증하며 1991년 이후 최고치를 기록하고 있습니다.",
+          "source": "New York Times",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "화요일 밤, 사자자리 유성우 절정 예상",
+          "link": "https://www.bbc.co.uk/weather/articles/c6742xzg3eljo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T09:03:08+00:00",
+          "summary": "11월 17일 화요일 밤부터 수요일 새벽 사이 사자자리 유성우(Leonid meteor shower)가 절정에 달할 전망입니다. 시간당 10~15개의 유성을 관측할 수 있으며, 11월 30일까지 이어집니다.",
+          "source": "BBC News",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "보이저 1호, 지구로부터 1광일 거리 도달 앞둬",
+          "link": "https://www.theguardian.com/science/audio/2026/nov/17/nasa-voyager-1-probe-incredible-milestone-podcast",
+          "published": "2026-11-17T05:00:04+00:00",
+          "summary": "나사(NASA)의 보이저 1호가 지구에서 1광일(light-day) 거리라는 기념비적인 지점에 도달할 전망입니다.",
+          "source": "The Guardian",
+          "category": "science",
+          "is_important": true
+        },
+        {
+          "title": "윌리엄 왕세자 부부, 뭄바이에서 '어스샷상' 시상식 참석",
+          "link": "https://www.bbc.co.uk/news/articles/cqlykve012d1o?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T18:20:36+00:00",
+          "summary": "윌리엄 왕세자와 케이트 미들턴 왕세자빈이 인도 뭄바이에서 열린 제6회 어스샷상(Earthshot Prize) 시상식에 참석했습니다. 이번 시상식에서는 환경 혁신을 이끈 5명의 수상자가 선정되었으며, 각 수상자에게는 프로젝트 확장을 위한 100만 파운드의 상금이 수여됩니다.",
+          "source": "BBC News",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "셔클턴의 구조 거점, 남조지아섬 스트롬네스 관리자 별장 복원",
+          "link": "https://www.nytimes.com/2026/11/17/science/ernest-shackleton-antarctic-south-georgia-villa.html",
+          "published": "2026-11-17T16:36:48+00:00",
+          "summary": "남조지아 헤리티지 트러스트(South Georgia Heritage Trust)가 1916년 탐험가 어니스트 셔클턴이 조난된 대원들을 구출하기 위해 이용했던 스트롬네스 포경 기지의 관리자 별장을 복원했습니다.",
+          "source": "New York Times",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "스크린 타임과 아동 인지 능력의 상관관계에 대한 새로운 발견",
+          "link": "https://www.sciencedaily.com/releases/2026/11/261116014725.htm",
+          "published": "2026-11-17T12:03:58+00:00",
+          "summary": "핀란드 연구팀이 8년간 아동을 추적 조사한 결과, 어린 시절 스크린 사용 시간이 많았던 아이들이 청소년기에 더 나은 인지 처리 능력을 보이는 경향이 있다는 사실을 발견했습니다.",
+          "source": "ScienceDaily",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "사이코패스 특성에 따른 예상 밖의 언어 사용 패턴 발견",
+          "link": "https://www.sciencedaily.com/releases/2026/11/261116023346.htm",
+          "published": "2026-11-17T11:51:35+00:00",
+          "summary": "사이코패스 성향을 가진 사람들이 사용하는 언어 패턴이 기존의 고정관념과 다르다는 연구 결과가 나왔습니다. 일부는 긍정적인 단어를 더 많이 사용하고, 일부는 부정적인 표현을 많이 쓰거나 불안감을 적게 드러내는 등 다양한 양상을 보였습니다.",
+          "source": "ScienceDaily",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "비만 치료제가 뇌 건강에 미치는 영향 연구",
+          "link": "https://www.sciencedaily.com/releases/2026/11/261116023401.htm",
+          "published": "2026-11-17T11:39:45+00:00",
+          "summary": "오젬픽(Ozempic)과 마운자로(Mounjaro) 같은 GLP-1 계열 비만 치료제가 체중 감량 외에 뇌 건강에도 영향을 줄 수 있다는 증거가 늘고 있습니다. 특히 비만이나 당뇨 환자의 인지 능력 보존에 효과적일 가능성이 제기되었습니다.",
+          "source": "ScienceDaily",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "영국 북부 및 스코틀랜드 남부, 강설로 인한 교통 혼잡 예고",
+          "link": "https://www.bbc.co.uk/weather/articles/ck5y1g0rnx02o?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T08:01:38+00:00",
+          "summary": "영국 기상청(Met Office)이 북부 잉글랜드와 스코틀랜드 남부 지역에 황색 경보를 발령했습니다. 해발 300~400m 이상 지역에 5~15cm의 눈이 내릴 것으로 예상되며, 주요 도로와 철도 운행에 차질이 빚어질 전망입니다.",
+          "source": "BBC News",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "슈퍼 엘니뇨 대비를 위한 해양 모니터링 강화 필요성",
+          "link": "https://www.nature.com/articles/d41586-026-03744-2",
+          "published": "2026-11-17T00:00:00+00:00",
+          "summary": "강력한 '슈퍼' 엘니뇨 발생 가능성에 대비하여 더욱 정밀한 해양 모니터링 체계가 필요하다는 제언이 나왔습니다.",
+          "source": "Nature",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "공룡의 휴식 흔적에 관한 연구",
+          "link": "https://www.nature.com/articles/d41586-026-03749-x",
+          "published": "2026-11-17T00:00:00+00:00",
+          "summary": "공룡의 휴식 흔적이 남긴 영향에 관한 내용입니다.",
+          "source": "Nature",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "AI 웨어러블 기기의 취약점 이용 가능성 경고",
+          "link": "https://www.nature.com/articles/d41586-026-03742-4",
+          "published": "2026-11-17T00:00:00+00:00",
+          "summary": "AI 웨어러블 기기가 사용자의 심리적으로 취약한 순간을 악용할 수 있다는 우려가 제기되었습니다.",
+          "source": "Nature",
+          "category": "science",
+          "is_important": false
+        },
+        {
+          "title": "음낭 비대칭의 기원 연구",
+          "link": "https://www.nature.com/articles/d41586-026-03279-6",
+          "published": "2026-11-17T00:00:00+00:00",
+          "summary": "음낭 비대칭의 기원에 관한 연구 내용입니다.",
+          "source": "Nature",
+          "category": "science",
+          "is_important": false
+        }
+      ]
+    },
+    "world": {
+      "domestic": [
+        {
+          "title": "미·중·러 정상 회동 및 국제 정세 관련 단신",
+          "link": "https://www.yna.co.kr/view/AKR20261118006400071",
+          "published": "2026-11-17T17:57:25+00:00",
+          "summary": "미국, 중국, 러시아 정상의 집결이 강대국 중심의 질서를 보여준다는 분석과 함께 미국 동맹국들의 긴장이 고조되고 있습니다. 이 외에도 김정은 위원장의 백두산 시찰, 중국의 세계 최대 무인화물기 비행 성공, 트럼프 전 대통령의 김정은 위원장 관련 발언 등이 보도되었습니다.",
+          "source": "연합뉴스",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "트럼프 대통령, 쿼드 정상 회동 및 미·중·러 회담 추진",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5MUHNsZ04zdFFfeEN5eExTRlpBeFFubnNlRHZOR1Y1ZHJhWGhVNWJXYnczb1VJZTB3Sk4wRFhiNWgwVzZMMjlUNjh6TWtQVlB4OW02bXdQNTdQZmpncWVYemtZN1EyVVVaRS1nNUc1bGZVVGti0gF0QVVfeXFMTi1Td3Rod1N5d2lrVVZRMnM2X2VRWWV1SnhHODdocXJzSGNzaW5xcUNKOHU5d3R1UEQ0TWtYcUZSRmdfemxyNXVuRmwwajhibDVqOGI5OU1YN2NkU2hfTG9CTUdBdl9BeUI5a3luejB3aEZqUzY?oc=5",
+          "published": "2026-11-17T17:02:35+00:00",
+          "summary": "트럼프 대통령이 쿼드(Quad) 및 아세안 정상들과 만남을 가졌으며, 중국 선전에서 미국, 중국, 러시아 정상회담이 열릴 예정입니다. 쿼드 공동성명에서는 중국의 경제적 강압에 대한 우려가 표명될 것으로 보입니다.",
+          "source": "구글 뉴스",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "젠슨 황 전 엔비디아 CEO, 이사회 요청 시 복귀 가능성 시사",
+          "link": "https://www.hani.co.kr/arti/international/america/1287842.html",
+          "published": "2026-11-17T16:30:00+00:00",
+          "summary": "불륜 및 기밀 유출 의혹으로 사임한 젠슨 황 전 엔비디아 CEO가 이사회의 판단에 따라 복귀할 의사가 있다고 밝혔습니다. 일론 머스크와 트럼프 대통령 등이 복귀에 긍정적인 반응을 보였으나, 현재 이사회는 그의 복귀를 검토하지 않고 있으며 국가안보 및 수출통제 감독을 위한 새 위원회를 구성했습니다.",
+          "source": "한겨레",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "미·중·러 정상회담 개최 전망과 주요 쟁점",
+          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE55T0I5VW40YlNSUmVCaklqZ2UtNHhYOGkwZ0lmYmY1eUJCcEc3bE5tRUxMNzhzelhDVGZCMXRaenVlRURLSEdrYUpsRENLbW9I0gFTQVVfeXFMTjlQTHZLc3BxbEtqQ3N2LTdyZUFBWFhXeTBYUzB5UWxSZ0ZERlYycU1GRllsdUdCYklJa0dEZU9OQ0NoWWtMYVVtRjFqeXYyMXJpUE0?oc=5",
+          "published": "2026-11-17T16:07:09+00:00",
+          "summary": "트럼프, 시진핑, 푸틴 정상이 한자리에 모이는 회담의 관전 포인트가 주목받고 있습니다. 한국 정부는 국익 반영을 위해 동향을 주시하고 있으며, 트럼프 대통령과 김정은 위원장의 만남 성사 여부도 주요 관심사입니다.",
+          "source": "구글 뉴스",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "러시아, 우크라이나의 나토 가입 거부하며 미국 제안 배격",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9iUEhVWFZHdjJxeU5feGtzTjFfTUt2NW1xZFVZcUdwM2FlNHJGTGVvSkNTRFo0Qk00dnJSUm1KTVhoV29xeFVaRXZrT3NWcGJGVV9mZnRtTzJjZHBmZGdUUlZKN1N3ZkU?oc=5",
+          "published": "2026-11-17T15:49:00+00:00",
+          "summary": "러시아가 우크라이나의 나토(NATO) 가입을 수용하지 않겠다며 미국의 제안을 사실상 거부했습니다. 미국은 우크라이나의 나토 가입과 러시아의 돈바스 지역 양도를 맞교환하는 종전 협상을 추진 중인 것으로 알려졌습니다.",
+          "source": "구글 뉴스",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "미 정보당국, 이란의 워싱턴 대상 방사능 테러 모의 정황 포착",
+          "link": "https://www.donga.com/news/Inter/article/all/20261117/135040128/1",
+          "published": "2026-11-17T14:43:00+00:00",
+          "summary": "이란이 미국 워싱턴에서 방사능 오염 물질을 이용한 '더티밤(dirty bomb)' 테러를 통해 트럼프 행정부 고위 인사를 공격하는 방안을 검토 중이라는 미 정보당국의 분석이 나왔습니다. 이에 미국은 중동 지역에 USS 시어도어 루스벨트함 전단을 추가 배치하며 대응하고 있습니다.",
+          "source": "동아일보",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "카타르, 이란과 협상 조율하며 확전 방지 노력",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBXYVRwaF9pNnY0cGY2eUdyLWdkRDh4QnEzSWtNVEIzX2tHckRtUXVVTkhFV2w3N2w0QlJRZjk5SzNhYWZZZjFIS2E5QjNZa0xmOHVTVk44S2lfRmlYQmlLd01LWV8zeXM?oc=5",
+          "published": "2026-11-17T11:59:00+00:00",
+          "summary": "중재국인 카타르가 이란과 협상안을 조율하며 확전 자제를 촉구하고 있습니다. 한편, 이란의 바레인 내 미군 기지 공격과 미군의 게슘섬 공습, 호르무즈 해협 내 유조선 폭발 사고 등이 겹치며 중동 지역의 긴장이 고조되고 있습니다.",
+          "source": "구글 뉴스",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "트럼프 대통령, 북미 정상회담 가능성 및 대중·대러 정책 언급",
+          "link": "https://www.hani.co.kr/arti/international/america/1287831.html",
+          "published": "2026-11-17T11:56:00+00:00",
+          "summary": "트럼프 대통령은 중국에서 김정은 위원장을 만날 가능성을 시사하며 시진핑 주석의 역할을 언급했습니다. 또한 희토류 생산 확대를 통해 중국을 추월하겠다는 의지와 우크라이나 전쟁 종식을 위해 시 주석과 푸틴 대통령을 압박하겠다는 계획을 밝혔습니다.",
+          "source": "한겨레",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "이재명 대통령-다카이치 일본 총리, 필리핀서 정상회담 개최",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1287812.html",
+          "published": "2026-11-17T09:58:00+00:00",
+          "summary": "이재명 대통령과 다카이치 사나에 일본 총리가 필리핀 마닐라 아세안 정상회의를 계기로 만나 한일 관계 발전과 국제 정세에 대해 논의했습니다. 다카이치 총리는 셔틀 외교의 중요성을 강조했으며, 이 대통령은 내년 1월 방일 초청에 감사를 표했습니다. 양 정상은 오는 19일 중국 선전 APEC 정상회의 중 예정된 미·중·러 정상회담 관련 논의도 진행할 것으로 보입니다.",
+          "source": "한겨레",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "미·중·러 3자 회담 통한 북핵 동결 논의 가능성 제기",
+          "link": "https://www.yna.co.kr/view/AKR20261118006700071",
+          "published": "2026-11-17T18:22:41+00:00",
+          "summary": "북한 전문가가 향후 예정된 미국, 중국, 러시아의 3자 회담에서 북핵 동결 문제가 다뤄질 수 있다고 전망했습니다.",
+          "source": "연합뉴스",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "미국 국가안보국(NSA) 내부 기밀 네트워크 장애 발생",
+          "link": "https://www.donga.com/news/Inter/article/all/20261118/135043337/1",
+          "published": "2026-11-17T18:09:43+00:00",
+          "summary": "미국 국가안보국(NSA)의 내부 통신망인 'NSA넷'이 다운되었습니다. 현재까지 사이버 공격의 흔적은 발견되지 않았으며, 정부는 트럼프 대통령의 아시아 순방 중 긴급 정보 전달에 차질이 없도록 백업 시스템을 가동하고 있습니다.",
+          "source": "동아일보",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "아세안 정상회의 종료 및 트럼프 대통령 주요 인사 회동",
+          "link": "https://www.yna.co.kr/view/AKR20261117160752084",
+          "published": "2026-11-17T18:09:36+00:00",
+          "summary": "필리핀 마닐라에서 아세안 정상회의가 폐막한 가운데, 트럼프 대통령이 쿼드 및 아세안 정상들과 회동했습니다. 한편, 현지에서는 트럼프 대통령의 방문에 반대하는 시위가 발생했습니다.",
+          "source": "연합뉴스",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "젠슨 황 전 CEO, 이사회 요청 시 엔비디아 복귀 의사 밝혀",
+          "link": "https://www.donga.com/news/Inter/article/all/20261118/135043334/1",
+          "published": "2026-11-17T18:09:32+00:00",
+          "summary": "불륜 및 정보 유출 의혹으로 사임한 젠슨 황 전 엔비디아 CEO가 이사회가 주주와 회사의 이익에 부합한다고 판단한다면 복귀하겠다고 밝혔습니다. 그는 현재 FBI와 의회의 조사를 앞두고 있습니다.",
+          "source": "동아일보",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "미군, 이란 게슘섬 공습 단행…이란 측은 심각한 피해 부인",
+          "link": "https://www.yna.co.kr/view/AKR20261117176051079",
+          "published": "2026-11-17T18:04:53+00:00",
+          "summary": "미군이 이란 남부 게슘섬 여러 지역을 공습했으며, 이란 국영 통신은 주거지나 인프라에 심각한 피해가 없었다고 보도했습니다. 한편, 이란 이슬람 혁명수비대는 무인기를 이용해 바레인 내 미군 레이더 시스템을 공격했다고 발표했습니다.",
+          "source": "연합뉴스",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "다양한 국내외 단신 뉴스 모음",
+          "link": "https://www.yna.co.kr/view/AKR20261118006600091",
+          "published": "2026-11-17T18:02:21+00:00",
+          "summary": "엔비디아의 안보·수출통제위원회 설치, 김정은의 백두산 시찰, 트럼프 대통령의 김정은 관련 발언 등 여러 단신이 포함되어 있습니다.",
+          "source": "연합뉴스",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "미국과 한국·일본 등 10개국, AI 공급망 보호를 위한 '샌프란시스코 선언' 서명",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBxYXJoWHQteV9pX1BNUmxJU0VJWlJmbHpFdlJyODZnVFN3R2k3UzNFZmhnRWlEUlRTZ2VFQTB0dmhGV1JmdU1VMHVJb1Z2d19iRjVzeFBIYm4yMkXSAWBBVV95cUxPUXV6c1B3ZEF4QmtjbGFTMS1QbHJYcmlOZ2NjM3huaG14NFd5RGxqbFk3MTE3RkRCdjRTcFZwLVFmX1g2Wlpwa1RPMmlfZjU1TFgxMERraWYyS3ZaR281SEw?oc=5",
+          "published": "2026-11-17T15:07:30+00:00",
+          "summary": "미국, 한국, 일본을 포함한 10개국이 AI 핵심 공급망 보호를 위한 '샌프란시스코 선언'에 서명하고 5개 분야의 실무그룹을 추진하기로 했습니다.",
+          "source": "구글 뉴스",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "트럼프 대통령, 쿼드 정상회의 참석해 인도·태평양 협력 강조",
+          "link": "https://www.donga.com/news/Inter/article/all/20261117/135043004/1",
+          "published": "2026-11-17T14:37:00+00:00",
+          "summary": "도널드 트럼프 미국 대통령이 필리핀 마닐라에서 열린 쿼드(Quad) 정상회의에 처음 참석하여 안보 및 경제 협력을 재확인했습니다. 정상들은 중국의 해양 진출과 경제적 영향력 확대에 대응하는 방안을 논의했으며, 트럼프 대통령은 파트너 국가들과의 긴밀한 소통 의지를 밝혔습니다.",
+          "source": "동아일보",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "중국 여성, 비행기 탑승 중 동전 던져 이륙 지연",
+          "link": "https://www.donga.com/news/Inter/article/all/20261117/135043048/2",
+          "published": "2026-11-17T14:08:00+00:00",
+          "summary": "중국 후베이성에서 60대 여성이 안전한 여행을 기원하는 속설에 따라 비행기 탑승 중 동전을 던져 항공편이 약 58분 지연되었습니다. 공항 측은 엔진 등 이물질 점검을 위해 비상대응체계를 가동했으며, 공안은 항공 안전을 위협하는 위험한 행동이라고 경고했습니다.",
+          "source": "동아일보",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "리창 중국 총리, 아세안 회의 중 조기 귀국…일본 총리와 접촉 피했나",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1287798.html",
+          "published": "2026-11-17T09:24:00+00:00",
+          "summary": "리창 중국 국무원 총리가 필리핀 아세안 정상회의 주요 일정을 남겨둔 채 조기 귀국했습니다. 이는 다카이치 일본 총리와의 만남을 의도적으로 피한 것이라는 분석이 나옵니다. 양국은 대만 관련 발언 등으로 외교적 갈등을 겪고 있으며, 다가오는 APEC 정상회의에서도 시진핑 주석과 다카이치 총리의 회담 성사 여부가 불투명한 상황입니다.",
+          "source": "한겨레",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "주요국 대입 시험장, AI 활용 부정행위 차단에 총력",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1287777.html",
+          "published": "2026-11-17T08:46:00+00:00",
+          "summary": "중국, 일본, 미국, 프랑스 등 주요국들이 AI를 이용한 시험 부정행위를 막기 위해 감시를 강화하고 있습니다. 중국은 무선통신 차단과 AI 서비스 제한을 실시했으며, 일본은 스마트안경 반입 통제와 광학센서 도입 등 '3중 방어망'을 구축했습니다. 미국 SAT는 스마트안경 사용 금지를 공식화했고, 프랑스는 부정행위 적발 시 최대 5년간 응시 자격을 박탈하는 강도 높은 징계를 도입했습니다.",
+          "source": "한겨레",
+          "category": "world",
+          "is_important": false
+        }
+      ],
+      "overseas": [
+        {
+          "title": "젠슨 황, 엔비디아 복귀 희망하나 이사회는 부정적",
+          "link": "https://www.bbc.co.uk/news/articles/cwx2en2vrxmdo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T18:24:21+00:00",
+          "summary": "전 엔비디아 CEO 젠슨 황이 복귀 의사를 밝혔으나, 이사회는 이를 고려하지 않고 있습니다. 황은 개인적 실수와 잘못을 인정하며 복귀 시 영광일 것이라고 언급했지만, 현재 이사회는 그의 행실에 대한 조사를 진행 중입니다.",
+          "source": "BBC News",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "미 하원, 젠슨 황 전 CEO 대상 국가 안보 관련 청문회 실시",
+          "link": "https://www.aljazeera.com/economy/2026/11/17/jensen-huang-to-testify-before-us-house-committees-next-month?traffic_source=rss",
+          "published": "2026-11-17T18:14:06+00:00",
+          "summary": "젠슨 황 전 엔비디아 CEO가 12월 1일 미 하원 여러 위원회에 출석해 인터뷰를 갖기로 했습니다. 이번 조사는 중국 스파이 의혹 및 첨단 AI 칩의 중국 유출과 관련된 국가 안보 위반 여부를 다룰 예정입니다.",
+          "source": "Al Jazeera",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "트럼프 대통령, 필리핀 방문으로 아시아 순방 시작",
+          "link": "https://www.nytimes.com/live/2026/11/17/world/trump-asean-summit",
+          "published": "2026-11-17T18:01:43+00:00",
+          "summary": "트럼프 대통령이 필리핀 마닐라에 도착하며 48시간 일정의 아시아 순방을 시작했습니다. 이번 방문에서는 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령 등 주요 지도자들과 만나 관세, 핵 통제, AI 칩 제한 등을 논의할 예정입니다.",
+          "source": "New York Times",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "미국 드론 공격 생존한 에콰도르 어민들, 트럼프 정부 상대 소송 제기",
+          "link": "https://www.nytimes.com/2026/11/17/world/americas/trump-us-boat-strikes-lawsuit-ecuador-fishermen.html",
+          "published": "2026-11-17T17:49:40+00:00",
+          "summary": "에콰도르 어민들이 올해 초 태평양에서 미국 군용 드론의 공격을 받았다고 주장하며 미국 연방법원에 소송을 제기했습니다. 이들은 금전적 배상과 더불어 카리브해 및 동태평양 내 소형 선박에 대한 공격 중단을 요구하고 있습니다.",
+          "source": "New York Times",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "아이티 대통령 암살 공모 혐의로 재판 받는 크리스천 에마뉘엘 사논",
+          "link": "https://www.nytimes.com/2026/11/17/world/americas/christian-sanon-trial-haiti-president-assassination.html",
+          "published": "2026-11-17T17:41:06+00:00",
+          "summary": "플로리다 거주자인 크리스천 에마뉘엘 사논이 2021년 아이티의 조브넬 모이즈 대통령을 납치 또는 살해하려 공모한 혐의로 마이애미에서 재판을 받고 있습니다.",
+          "source": "New York Times",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "트럼프, 이란의 워싱턴 공격 음모 가능성에 심각한 우려 표명",
+          "link": "https://www.bbc.co.uk/news/articles/cq808vzd3nnpo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T17:37:04+00:00",
+          "summary": "트럼프 대통령은 필리핀 아세안 정상회의에서 CNN 보도에 대해 이란이 워싱턴에 더러운 폭탄 공격을 계획할 수 있다는 정찰 평가를 매우 심각하게 받아들이고 있다고 밝혔다. 백악관은 현재 신뢰할 만한 위협은 없다고 했고 이란은 주장을 근거 없다며 반박했다.",
+          "source": "BBC News",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "이라크 총리, 호르무즈 해협 대체 석유 경로 모색 위해 레바논 방문",
+          "link": "https://www.aljazeera.com/economy/2026/11/17/iraq-pm-heads-to-lebanon-amid-push-to-explore-oil-routes-beyond-hormuz?traffic_source=rss",
+          "published": "2026-11-17T17:34:27+00:00",
+          "summary": "알리 알자이디 이라크 총리가 경제 협력 강화를 위해 레바논을 방문합니다. 이번 방문에서는 양국 간 무역 확대와 보안 협력뿐만 아니라, 미국과 이스라엘의 이란 공격으로 차단된 호르무즈 해협을 우회하여 키르쿠크에서 레바논 트리폴리로 이어지는 새로운 석유 수출 경로 확보 방안이 논의될 예정입니다.",
+          "source": "Al Jazeera",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "이스라엘 내 정치적 폭력 우려 고조: 랍비의 위험한 종교적 판결",
+          "link": "https://www.aljazeera.com/news/2026/11/17/religious-ruling-revives-memories-in-israel-of-rabin-assassination?traffic_source=rss",
+          "published": "2026-11-17T17:33:18+00:00",
+          "summary": "이스라엘의 한 전직 랍비가 아랍계 정당이 참여하는 정부를 돕는 정치인을 살해하는 것을 정당화할 수 있는 종교적 판결을 내려 논란이 되고 있습니다. 이는 1995년 라빈 총리 암살 당시 사용된 논리와 유사해 정치적 폭력에 대한 우려가 커지고 있습니다.",
+          "source": "Al Jazeera",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "러시아의 키이우 교량 공습으로 인한 시민들의 공포와 불편",
+          "link": "https://www.bbc.co.uk/news/articles/cq7825234lgmo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T17:19:57+00:00",
+          "summary": "러시아가 우크라이나 키이우의 드니프로강 주요 교량을 탄도 미사일로 공격해 도로가 파손되고 교통이 마비되었습니다. 인근 주민들은 반복되는 공격으로 인해 극심한 공포를 느끼고 있습니다.",
+          "source": "BBC News",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "캐나다-중국 무역 협정 체결: 미국과의 관계 악화 속 전략적 행보",
+          "link": "https://www.nytimes.com/2026/11/17/world/canada/carney-china-xi-trade-apec.html",
+          "published": "2026-11-17T17:19:20+00:00",
+          "summary": "마크 카니 캐나다 총리와 시진핑 중국 국가주석이 일부 관세를 낮추는 무역 협정을 체결했습니다. 이는 미국과의 무역 갈등이 심화되는 상황에서 캐나다가 경제적 파트너를 다변화하려는 전략적 움직임으로 풀이됩니다.",
+          "source": "New York Times",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "코스타리카 기자 피살, 25년 만에 첫 언론인 살해",
+          "link": "https://www.theguardian.com/world/2026/nov/17/costa-rica-journalist-camilo-rodriguez-shot-dead",
+          "published": "2026-11-17T17:19:12+00:00",
+          "summary": "마약 밀매업자·정치인 의혹을 보도한 코스타리카 기자 카밀로 로드리게스가 수도 인근 고속도로에서 총격으로 사망했다. 당국은 계약 살해 양상이라 보고 마약 폭력 확산 속에 언론 자유에 대한 우려가 커지고 있다.",
+          "source": "The Guardian",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "우크라이나, 러시아-크림반도 연결 케르치 대교에 대규모 타격 가해",
+          "link": "https://www.nytimes.com/2026/11/17/world/europe/ukraine-kyiv-russia-kerch-bridge-crimea.html",
+          "published": "2026-11-17T17:11:53+00:00",
+          "summary": "우크라이나가 드론과 미사일을 동원해 러시아와 점령지 크림반도를 잇는 케르치 대교의 상당 부분을 파괴했습니다. 러시아 당국은 피해를 인정하며 복구를 약속했으나, 차량 통행은 중단되고 제한적인 열차 운행만 재개된 상태입니다.",
+          "source": "New York Times",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "미국, 홍역 퇴치 지위 26년 만에 상실",
+          "link": "https://www.bbc.co.uk/news/articles/c977p71jx0xxo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T17:10:03+00:00",
+          "summary": "미국이 기록적인 홍역 확산과 사망자 발생으로 인해 26년 만에 홍역 퇴치(measles-free) 지위를 잃었습니다.",
+          "source": "BBC News",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "우크라이나, 러시아-크림반도 연결 교량 타격으로 일부 붕괴 유도",
+          "link": "https://www.bbc.co.uk/news/articles/cw772jk4rvmxo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T16:56:38+00:00",
+          "summary": "우크라이나가 러시아의 크림반도 연결 교량을 공격해 일부 구간을 붕괴시켰습니다. 젤렌스키 대통령은 이를 치밀하게 준비된 '전례 없는 작전'이라고 평가했습니다. 이번 공격은 러시아의 군수 물자 보급에 타격을 주고, 푸틴 대통령이 중국 및 미국 정상과 만나기 직전 정치적 부담을 주기 위한 전략으로 풀이됩니다.",
+          "source": "BBC News",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "우크라이나의 크림대교 정밀 타격 과정 공개",
+          "link": "https://www.bbc.co.uk/news/articles/crz9dgz28zwdo?at_medium=RSS&at_campaign=rss",
+          "published": "2026-11-17T15:38:10+00:00",
+          "summary": "우크라이나가 다단계 작전을 통해 러시아의 상징적 구조물인 크림대교를 파괴했습니다. 이번 공격은 러시아의 방공망을 점진적으로 무력화한 뒤 정밀 타격한 결과로, 러시아의 군사 방어 체계를 뚫을 수 있는 우크라이나의 능력을 입증했습니다.",
+          "source": "BBC News",
+          "category": "world",
+          "is_important": true
+        },
+        {
+          "title": "이스라엘군 시리아 다라아 마을 진입, 주택 피해 발생",
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/11/17/israeli-forces-invade-syrian-village-leaving-homes-damaged?traffic_source=rss",
+          "published": "2026-11-17T17:57:20+00:00",
+          "summary": "영상에 따르면 이스라엘군의 시리아 다라아 마을 공습 후 총탄 자국 난 벽과 불에 탄 소지품이 확인됐다.",
+          "source": "Al Jazeera",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "제국주의가 현대 세계에 남긴 영향과 유산",
+          "link": "https://www.aljazeera.com/video/doha-debates/2026/11/17/has-empire-shaped-todays-world?traffic_source=rss",
+          "published": "2026-11-17T17:45:00+00:00",
+          "summary": "오늘날의 세계 질서와 구조 중 제국주의의 유산이 어느 정도 영향을 미치고 있는지 분석합니다.",
+          "source": "Al Jazeera",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "윌리엄 왕세자, 기후 위기 해결책 모색 위해 인도 방문 및 '어스샷상' 시상",
+          "link": "https://www.nytimes.com/2026/11/17/world/asia/prince-william-climate-prize-india-rickshaw.html",
+          "published": "2026-11-17T17:22:25+00:00",
+          "summary": "영국 윌리엄 왕세자가 기후 위기 대응을 위한 '어스샷상(Earthshot Prize)' 시상식을 위해 인도를 방문했습니다. 윌리엄 왕세자는 전기 릭샤를 타고 등장하며 기존 기술의 확장을 통한 환경 문제 해결의 중요성을 강조했으며, 선정된 5명의 수상자에게는 각각 100만 파운드(약 130만 달러)의 상금이 수여되었습니다.",
+          "source": "New York Times",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "미국 이슬람 관계 위원회(CAIR), 트럼프 전 대통령의 테러 단체 지정 가능성 비판",
+          "link": "https://www.aljazeera.com/news/2026/11/17/cair-defends-civil-rights-work-against-trumps-smear?traffic_source=rss",
+          "published": "2026-11-17T17:09:49+00:00",
+          "summary": "미국 최대의 무슬림 시민 자유 단체인 CAIR가 자신들을 테러 단체로 지정할 수 있다는 도널드 트럼프 전 대통령의 발언을 강력히 비판했습니다. CAIR는 정부가 시민 단체를 공격하기보다 무슬림을 향한 증오 범죄 해결에 집중해야 한다고 주장했습니다.",
+          "source": "Al Jazeera",
+          "category": "world",
+          "is_important": false
+        },
+        {
+          "title": "유럽산 살충제, 브라질 내 대규모 중독 사고 원인으로 지목",
+          "link": "https://www.theguardian.com/environment/2026/nov/17/european-made-pesticides-named-1605-brazil-poisoning-reports",
+          "published": "2026-11-17T06:00:05+00:00",
+          "summary": "지난해 브라질에서 발생한 살충제 중독 보고 1,605건이 유럽 화학 기업 제품과 관련이 있다는 조사 결과가 나왔습니다. 특히 EU 내에서는 환경 및 인체 위험으로 금지된 성분이 포함된 제품이 상당수 포함되었습니다.",
+          "source": "The Guardian",
+          "category": "world",
+          "is_important": false
+        }
+      ]
+    }
+  },
+  "stock_picks": {
+    "domestic": {
+      "daily": [],
+      "weekly": [],
+      "monthly": []
+    },
+    "overseas": {
+      "daily": [
+        {
+          "market": "overseas",
+          "symbol": "AVGO",
+          "name": "Broadcom",
+          "price": 337.08,
+          "daily_change_pct": 1.1,
+          "weekly_change_pct": 1.53,
+          "monthly_change_pct": 0.81,
+          "volume_ratio": 0.35,
+          "reason": "일간 가격이 1.1% 상승하며 긍정적인 흐름을 보이고 있으나, 거래량 비율이 0.35로 낮아 향후 추세 지속 여부를 지켜볼 필요가 있습니다."
+        },
+        {
+          "market": "overseas",
+          "symbol": "XOM",
+          "name": "ExxonMobil",
+          "price": 167.64,
+          "daily_change_pct": 0.46,
+          "weekly_change_pct": 2.57,
+          "monthly_change_pct": -5.15,
+          "volume_ratio": 0.31,
+          "reason": "주간 기준 2.57% 상승하며 견조한 흐름을 보이고 있습니다. 낮은 거래량 비율(0.31)에도 불구하고 상승 폭이 나타나 추세 유지가 기대됩니다."
+        }
+      ],
+      "weekly": [
+        {
+          "market": "overseas",
+          "symbol": "XOM",
+          "name": "ExxonMobil",
+          "price": 167.64,
+          "daily_change_pct": 0.46,
+          "weekly_change_pct": 2.57,
+          "monthly_change_pct": -5.15,
+          "volume_ratio": 0.31,
+          "reason": "주간 기준 2.57% 상승하며 견조한 흐름을 보이고 있습니다. 낮은 거래량 비율(0.31)에도 불구하고 상승 폭이 나타나 추세 유지가 기대됩니다."
+        },
+        {
+          "market": "overseas",
+          "symbol": "CVX",
+          "name": "Chevron",
+          "price": 216.55,
+          "daily_change_pct": -0.27,
+          "weekly_change_pct": 2.53,
+          "monthly_change_pct": -4.06,
+          "volume_ratio": 0.38,
+          "reason": "주간 가격이 2.53% 상승하며 긍정적인 추세를 보이고 있으며, 거래량 비율은 0.38로 나타나 완만한 상승 흐름이 이어질 가능성이 있습니다."
+        }
+      ],
+      "monthly": [
+        {
+          "market": "overseas",
+          "symbol": "PG",
+          "name": "Procter & Gamble",
+          "price": 172.72,
+          "daily_change_pct": -0.17,
+          "weekly_change_pct": 2.41,
+          "monthly_change_pct": 9.13,
+          "volume_ratio": 0.5,
+          "reason": "월간 9.13%의 높은 상승률을 기록하며 강한 추세를 보이고 있습니다. 거래량 비율 0.5와 함께 중장기적인 상승 흐름이 나타나고 있습니다."
+        },
+        {
+          "market": "overseas",
+          "symbol": "WMT",
+          "name": "Walmart",
+          "price": 127.79,
+          "daily_change_pct": -0.48,
+          "weekly_change_pct": 1.78,
+          "monthly_change_pct": 8.43,
+          "volume_ratio": 0.5,
+          "reason": "월간 가격이 8.43% 상승하며 뚜렷한 우상향 추세를 보이고 있습니다. 거래량 비율 0.5를 동반한 상승세로 긍정적인 흐름이 전망됩니다."
+        }
+      ]
+    }
+  }
+}
