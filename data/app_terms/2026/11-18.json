@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-18",
+  "terms": [
+    {
+      "term": "Mockumentary",
+      "reading": "모큐멘터리",
+      "meaning": "다큐멘터리의 형식을 빌려 허구의 내용을 사실처럼 연출한 영화나 드라마 장르를 말한다. 모의를 뜻하는 'Mock'과 'Documentary'의 합성어이다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "모큐멘터리",
+      "url": "https://ko.wikipedia.org/wiki/모큐멘터리",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-18",
+      "via": "news_terms"
+    },
+    {
+      "term": "Fibula",
+      "reading": "피불라",
+      "meaning": "고대에 망토나 옷을 여미는 데 쓰던 안전핀 모양의 금속 장식 단추를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "피불라",
+      "url": "https://ko.wikipedia.org/wiki/피불라",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-18",
+      "via": "raw"
+    },
+    {
+      "term": "Dirty Bomb",
+      "reading": "더티밤",
+      "meaning": "재래식 폭발물에 방사성 물질을 섞어 폭발할 때 방사능을 퍼뜨리도록 만든 무기를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "더러운 폭탄",
+      "url": "https://ko.wikipedia.org/wiki/더러운_폭탄",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-18",
+      "via": "raw"
+    },
+    {
+      "term": "모더니즘",
+      "reading": "",
+      "meaning": "19세기 말부터 20세기에 걸쳐 전통적 형식을 거부하고 새로운 표현과 실험을 추구한 예술·사상 운동을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "모더니즘",
+      "url": "https://ko.wikipedia.org/wiki/모더니즘",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-18",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-18T03:55:53+09:00",
+      "added": 4,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
