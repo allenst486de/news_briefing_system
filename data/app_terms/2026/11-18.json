@@ -48,6 +48,18 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-18",
       "via": "raw"
+    },
+    {
+      "term": "배출권 거래",
+      "reading": "",
+      "meaning": "정부가 온실가스 배출 허용량을 정하고, 기업들이 남거나 부족한 배출권을 시장에서 사고팔 수 있게 하는 제도를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "배출권 거래제",
+      "url": "https://ko.wikipedia.org/wiki/배출권_거래제",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-18",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -56,6 +68,13 @@
       "added": 4,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-18T05:45:10+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
