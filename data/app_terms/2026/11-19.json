@@ -72,6 +72,30 @@
       "model": "google/gemma-4-31b-it",
       "date": "2026-11-19",
       "via": "raw"
+    },
+    {
+      "term": "한한령",
+      "reading": "",
+      "meaning": "중국 정부가 한국의 대중문화 콘텐츠 유입을 제한하는 조치를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "한한령",
+      "url": "https://ko.wikipedia.org/wiki/한한령",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-19",
+      "via": "news_terms"
+    },
+    {
+      "term": "4DX",
+      "reading": "",
+      "meaning": "영화 상영 중 의자의 움직임과 환경 효과를 통해 오감을 자극하는 4차원 영화 상영 시스템을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "4DX",
+      "url": "https://ko.wikipedia.org/wiki/4DX",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-19",
+      "via": "news_terms"
     }
   ],
   "runs": [
@@ -81,6 +105,13 @@
       "via": [
         "news_terms",
         "raw"
+      ]
+    },
+    {
+      "at": "2026-11-19T05:45:07+09:00",
+      "added": 2,
+      "via": [
+        "news_terms"
       ]
     }
   ]
