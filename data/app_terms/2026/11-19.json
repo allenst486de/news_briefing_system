@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-19",
+  "terms": [
+    {
+      "term": "Subculture",
+      "reading": "서브컬처",
+      "meaning": "전체 사회의 지배적인 문화와는 구별되는, 특정 집단이나 계층이 공유하는 독자적인 문화를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "하위문화",
+      "url": "https://ko.wikipedia.org/wiki/하위문화",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-19",
+      "via": "news_terms"
+    },
+    {
+      "term": "최혜국대우",
+      "reading": "",
+      "meaning": "특정 국가가 다른 국가에 부여하는 가장 유리한 무역 조건을 다른 모든 협정국에게도 동일하게 적용하는 대우를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "최혜국 대우",
+      "url": "https://ko.wikipedia.org/wiki/최혜국_대우",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-19",
+      "via": "news_terms"
+    },
+    {
+      "term": "공소시효",
+      "reading": "",
+      "meaning": "범죄 발생 후 일정 기간이 지나면 국가의 공소권을 소멸시켜 더 이상 기소할 수 없게 하는 제도이다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "공소시효",
+      "url": "https://ko.wikipedia.org/wiki/공소시효",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-19",
+      "via": "news_terms"
+    },
+    {
+      "term": "Room-temperature superconductor",
+      "reading": "상온 초전도체",
+      "meaning": "매우 낮은 온도가 아닌 일반적인 상온 상태에서도 전기 저항이 0이 되는 성질을 가진 초전도체를 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "상온 초전도체",
+      "url": "https://ko.wikipedia.org/wiki/상온_초전도체",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-19",
+      "via": "news_terms"
+    },
+    {
+      "term": "한중 FTA",
+      "reading": "",
+      "meaning": "한국과 중국이 상품의 관세를 낮추거나 없애고 서비스 및 투자 시장을 개방하기 위해 체결한 자유 무역 협정을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "한중 자유 무역 협정",
+      "url": "https://ko.wikipedia.org/wiki/한중_자유_무역_협정",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-19",
+      "via": "raw"
+    },
+    {
+      "term": "조류인플루엔자",
+      "reading": "",
+      "meaning": "조류에서 발생하는 인플루엔자 바이러스에 의한 감염병으로, 일부 변종은 사람에게도 전염될 수 있는 질환이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "조류 인플루엔자",
+      "url": "https://ko.wikipedia.org/wiki/조류_인플루엔자",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-19",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-19T04:27:18+09:00",
+      "added": 6,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
