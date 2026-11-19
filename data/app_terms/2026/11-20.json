@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-20",
+  "terms": [
+    {
+      "term": "Leasehold",
+      "reading": "임차권",
+      "meaning": "임대차 계약을 통해 타인의 부동산을 일정 기간 사용할 수 있는 권리를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "임대차",
+      "url": "https://ko.wikipedia.org/wiki/임대차",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-20",
+      "via": "news_terms"
+    },
+    {
+      "term": "Commonhold",
+      "reading": "공동소유",
+      "meaning": "여러 사람이 공동으로 소유하며 관리하는 소유 형태를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "공동소유",
+      "url": "https://ko.wikipedia.org/wiki/공동소유",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-20",
+      "via": "news_terms"
+    },
+    {
+      "term": "Glutamate",
+      "reading": "글루타메이트",
+      "meaning": "글루탐산의 음이온 형태로, 뇌에서 흥분성 신경전달물질로 작용하는 아미노산의 일종이다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "글루탐산",
+      "url": "https://ko.wikipedia.org/wiki/글루탐산",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-20",
+      "via": "news_terms"
+    },
+    {
+      "term": "ICJ",
+      "reading": "국제사법재판소",
+      "meaning": "유엔의 주요 사법 기구로서 국가 간 분쟁을 법적으로 판결하고 자문 의견을 내는 국제재판소를 말한다.",
+      "category": "world",
+      "categoryName": "국제",
+      "wikiTitle": "국제사법재판소",
+      "url": "https://ko.wikipedia.org/wiki/국제사법재판소",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-20",
+      "via": "raw"
+    },
+    {
+      "term": "Genocide",
+      "reading": "제노사이드",
+      "meaning": "특정 민족·인종·종교 집단을 전부 또는 일부 파괴할 목적으로 체계적으로 살해하는 행위를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "집단학살",
+      "url": "https://ko.wikipedia.org/wiki/집단학살",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-20",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-20T04:01:20+09:00",
+      "added": 5,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
