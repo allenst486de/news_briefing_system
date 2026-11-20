@@ -108,6 +108,18 @@
       "model": "google/gemma-4-31b-it",
       "date": "2026-11-21",
       "via": "raw"
+    },
+    {
+      "term": "극단주의",
+      "reading": "",
+      "meaning": "중도적인 입장을 거부하고 어느 한쪽의 극단적인 견해나 신념을 맹목적으로 추구하며 이를 강요하는 태도를 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "극단주의",
+      "url": "https://ko.wikipedia.org/wiki/극단주의",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -121,6 +133,13 @@
     },
     {
       "at": "2026-11-21T05:45:12+09:00",
+      "added": 1,
+      "via": [
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-21T07:30:07+09:00",
       "added": 1,
       "via": [
         "raw"
