@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-21",
+  "terms": [
+    {
+      "term": "배임",
+      "reading": "",
+      "meaning": "타인의 사무를 처리하는 사람이 그 임무에 위배되는 행위를 하여 재산상의 이익을 취득하거나 제3자로 하여금 이를 취득하게 하여 손해를 입히는 것을 말한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "배임죄",
+      "url": "https://ko.wikipedia.org/wiki/배임죄",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "news_terms"
+    },
+    {
+      "term": "준법투쟁",
+      "reading": "",
+      "meaning": "법규나 단체 협약 등 정해진 규칙을 엄격하게 준수함으로써 결과적으로 업무 효율을 떨어뜨려 상대방에게 타격을 주는 투쟁 방식을 뜻한다.",
+      "category": "society",
+      "categoryName": "사회",
+      "wikiTitle": "준법투쟁",
+      "url": "https://ko.wikipedia.org/wiki/준법투쟁",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "news_terms"
+    },
+    {
+      "term": "PHEIC",
+      "reading": "국제공중보건위기상황",
+      "meaning": "Public Health Emergency of International Concern의 약자로, 다른 국가로 확산될 가능성이 있고 국제적인 협동 대응이 필요한 공중보건 위기 상황을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "국제적 공중보건 비상사태",
+      "url": "https://ko.wikipedia.org/wiki/국제적_공중보건_비상사태",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "news_terms"
+    },
+    {
+      "term": "CB",
+      "reading": "전환사채",
+      "meaning": "Convertible Bond의 약자로, 발행 당시에는 사채로 발행되었으나 일정 기간이 지난 후 발행 회사의 주식으로 전환할 수 있는 권리가 부여된 채권을 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "전환사채",
+      "url": "https://ko.wikipedia.org/wiki/전환사채",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "news_terms"
+    },
+    {
+      "term": "Quantum Contextuality",
+      "reading": "양자 맥락성",
+      "meaning": "양자 역학에서 측정 결과가 측정 대상의 상태뿐만 아니라 함께 측정되는 다른 관측량의 선택, 즉 맥락에 따라 달라지는 성질을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "양자 맥락성",
+      "url": "https://ko.wikipedia.org/wiki/양자_맥락성",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "news_terms"
+    },
+    {
+      "term": "뇌동맥류",
+      "reading": "",
+      "meaning": "뇌혈관 벽의 일부가 약해져 풍선처럼 부풀어 오르는 질환을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "뇌동맥류",
+      "url": "https://ko.wikipedia.org/wiki/뇌동맥류",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "raw"
+    },
+    {
+      "term": "자금 세탁",
+      "reading": "",
+      "meaning": "불법적으로 얻은 자금의 출처를 숨겨 적법한 자금처럼 보이게 만드는 행위를 뜻한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "돈세탁",
+      "url": "https://ko.wikipedia.org/wiki/돈세탁",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "raw"
+    },
+    {
+      "term": "청탁금지법",
+      "reading": "",
+      "meaning": "부정한 청탁을 금지하고 공직자 등이 금품을 받는 것을 제한하여 공정한 직무 수행을 보장하는 법률이다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "부정청탁 및 금품등 수수의 금지에 관한 법률",
+      "url": "https://ko.wikipedia.org/wiki/부정청탁_및_금품등_수수의_금지에_관한_법률",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-21T03:47:42+09:00",
+      "added": 8,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
