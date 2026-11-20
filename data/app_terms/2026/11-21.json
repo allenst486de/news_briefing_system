@@ -96,6 +96,18 @@
       "model": "google/gemma-4-31b-it",
       "date": "2026-11-21",
       "via": "raw"
+    },
+    {
+      "term": "분리주의",
+      "reading": "",
+      "meaning": "특정 지역이나 집단이 기존의 국가나 정치 체제에서 벗어나 독립된 국가를 세우거나 자치권을 얻으려는 정치적 경향을 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "분리주의",
+      "url": "https://ko.wikipedia.org/wiki/분리주의",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-21",
+      "via": "raw"
     }
   ],
   "runs": [
@@ -104,6 +116,13 @@
       "added": 8,
       "via": [
         "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-21T05:45:12+09:00",
+      "added": 1,
+      "via": [
         "raw"
       ]
     }
