@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-22",
+  "terms": [
+    {
+      "term": "Pyrolysis",
+      "reading": "열분해",
+      "meaning": "물질에 열을 가하여 화학적으로 분해하는 과정을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "열분해",
+      "url": "https://ko.wikipedia.org/wiki/열분해",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-22",
+      "via": "news_terms"
+    },
+    {
+      "term": "리만 가설",
+      "reading": "",
+      "meaning": "리만 제타 함수의 제로점들이 모두 특정 직선 위에 있다는 수학적 가설을 뜻한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "리만 가설",
+      "url": "https://ko.wikipedia.org/wiki/리만_가설",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-22",
+      "via": "news_terms"
+    },
+    {
+      "term": "패혈증",
+      "reading": "",
+      "meaning": "세균 등 병원균의 감염이 혈류를 타고 전신으로 퍼져 몸 전체에 염증 반응이 일어나 생명을 위협할 수 있는 상태를 말한다.",
+      "category": "life",
+      "categoryName": "생활",
+      "wikiTitle": "패혈증",
+      "url": "https://ko.wikipedia.org/wiki/패혈증",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-22",
+      "via": "raw"
+    },
+    {
+      "term": "디지털세",
+      "reading": "",
+      "meaning": "국내에 사업장을 두지 않은 인터넷 플랫폼 기업이 그 나라 이용자로부터 벌어들인 수익에 대해 부과하는 세금을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "디지털세",
+      "url": "https://ko.wikipedia.org/wiki/디지털세",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-22",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-22T04:18:01+09:00",
+      "added": 4,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
