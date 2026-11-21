@@ -19,11 +19,12 @@
     "2026-08-19",
     "2026-08-20",
     "2026-08-21",
-    "2026-08-22"
+    "2026-08-22",
+    "2026-08-23"
   ],
   "categories": {
     "politics": {
-      "article_count": 655,
+      "article_count": 691,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -4609,11 +4610,263 @@
           "gist": "그린피스가 산불 피해 지역 산등성이에 앤디 버넘 시장의 모습이 담긴 대형 벽화를 그려 기후 위기를 경고했으나, 주민들은 이를 '슬픔에 대한 침해",
           "source": "BBC News",
           "link": "https://www.bbc.co.uk/news/articles/cn7n0yvpm7vo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이 대통령, 28일 민주당 의원 전원 청와대 초청 오찬 개최",
+          "gist": "이재명 대통령이 오는 28일 더불어민주당 소속 국회의원 전원을 청와대로 초청해 오찬을 함께할 예정입니다.",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9tVk56MjI4ZEthYVRMRzVsMzVCQjhXVm1mMkY5clFoYlFBemhCMUMzeU5vNnpYRVpTZnljQkwwcFdxdm96cndKREFERlg1WU9IWkpkTkluQTREVV9DNjRDYmtvWUpGdUNkZ09HM25qaDd4eUlC?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "노웅래 전 의원 무죄 판결 두고 여야 정치적 공방 가열",
+          "gist": "노웅래 전 의원의 2심 무죄 판결을 두고 민주당은 조작 기소라며 한동훈 의원의 책임을 물었습니다. 이에 한 의원은 위법수집증거 배제라는 형식적 ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260822191527fvs"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "트럼프 대통령의 북미 대화 시도와 북한의 냉담한 반응",
+          "gist": "도널드 트럼프 미국 대통령이 한미연합훈련 규모 축소를 지시하고 김정은 위원장과의 연내 회담 가능성을 언급하며 유화책을 펼쳤습니다. 우리 정부는 ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260822182854gjE"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "오세훈 시장-김영배 의원, 용산공원 주택 공급 방안 두고 대립",
+          "gist": "오세훈 서울시장과 김영배 더불어민주당 의원이 용산공원 부지 활용 주택 공급 방안을 논의했으나 이견을 좁히지 못했습니다. 오 시장은 공원 본체 부",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1274140.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이재명 대통령, 민주당 의원 초청 오찬 및 지지율 반등",
+          "gist": "이재명 대통령이 오는 28일 민주당 의원 전원을 청와대에 초청해 오찬을 가질 예정입니다. 한편, 한국갤럽 조사 결과 이 대통령의 국정 지지율은 ",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026082261447"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "한동훈, 이재명 대통령의 노웅래 사과를 '공소취소 전략'으로 비판",
+          "gist": "한동훈 무소속 의원은 이재명 대통령이 노웅래 전 의원의 무죄 판결 후 사과한 것을 두고, 본인 사건의 공소취소를 위한 사전 작업(build-up",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/politics_general/1274136.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이재명 대통령, 명진 스님 입적에 애도 메시지 전해",
+          "gist": "이재명 대통령이 봉은사 주지를 지낸 명진 스님의 입적 소식에 깊은 슬픔을 표하며 애도 글을 올렸습니다. 이 대통령은 과거 오찬에서 나눈 평등과 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608222159001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "김민석 대표, 이진숙 의원 제명 촉구 및 조희대 대법원장 사퇴 요구",
+          "gist": "김민석 더불어민주당 대표가 이진숙 국민의힘 의원을 당 윤리위에 제소한 국민의힘 당원들에게 감사를 표하며 이 의원의 제명이나 활동 정지를 요구했습",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026082262247"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "김민석 대표, 민주당 '90도 인사' 논란에 해명",
+          "gist": "김민석 더불어민주당 대표는 최근 의원총회와 최고위원회의에서 행한 단체 '90도 인사'가 과도하다는 지적에 대해, 국민에 대한 존중을 표현하려 한",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608222004001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "여야, 용산공원 주택 공급 문제로 팽팽한 대립",
+          "gist": "더불어민주당 김영배 서울시당위원장과 오세훈 서울시장이 주택 공급을 논의했으나 용산공원 부지 활용을 두고 입장 차를 확인했습니다. 김 의원은 오 ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260822191433dgN"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "장동혁 대표, 이 대통령의 노웅래 전 의원 격려 비판",
+          "gist": "장동혁 국민의힘 대표는 이재명 대통령이 무죄 판결을 받은 노웅래 전 의원을 격려한 것에 대해, 실질적인 무죄가 아닌 증거 채택 문제일 뿐이라며 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Politics/article/all/20260822/134523779/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미 대법원, 백악관 연회장 신축 공사 일시적으로 허용",
+          "gist": "미국 대법원이 4억 달러 규모의 백악관 연회장 공사를 당분간 허용하는 결정을 내렸습니다. 이에 대해 트럼프 전 대통령은 감사의 뜻을 표하며 해당",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB6anE1ZHNKZWJRemFqeXpVNENoZllfQXNzZU5HbGhfZFA5OEhzX0MtMnZoeXVNNHZQLWxrcklFRHY0eDVQOW9PalFUR0lVdUMtNndmcEcwNmFxVmpnUnRmSWQ1eDRoMlRoM3BxRzEzUjNnU3fSAWZBVV95cUxNMWl6SWkzdHh3YklJcWFVd3V5Ny1Tczd2QUhSRzNrSmkxZmpHUTBxZzJuZlhSWHplcGQzaUd5bTdCTWZoNUV0b1ZqSk8tajhCeXJsRDVVYnlrOGo4WjYwcm15NTBrRWc?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "민주당, 노웅래 무죄 판결에 한동훈 전 장관 사과 요구",
+          "gist": "더불어민주당은 노웅래 전 의원이 항소심에서 무죄를 선고받은 것과 관련해, 당시 체포동의요청 발언을 했던 한동훈 법무부 장관(현 무소속 의원)이 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Politics/article/all/20260822/134523746/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "국민의힘, 노웅래 전 의원 무죄 판결 관련 이 대통령 비판",
+          "gist": "국민의힘은 이재명 대통령이 불법 정치자금 수수 혐의로 항소심에서 무죄를 선고받은 노웅래 전 의원에게 사과한 것을 두고, 이를 검찰 무력화와 사법",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Politics/article/all/20260822/134523727/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "다카이치 총리, 취임 후 현장 행보 부족 지적",
+          "gist": "다카이치 총리가 취임 후 10개월 동안 현장 시찰을 8회만 수행하고 휴일의 상당 시간을 집에서 보낸 것으로 나타났습니다. 이에 대해 총리 측은 ",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBwRF9tR3dQRWh6WUU1Q1VMS3NmTDZCSW9kbWpqWWVkOHhzbDNPRkpPNGlXRTliSzB0ZDI1NGt0d1BFTDJJdVVCTjlfVl9UVUtIeXRxQkY5T2F3dXPSAWBBVV95cUxNcUVrV0FDRFVKbWt2NWd1dFN2TFA5dXlXRjJuM1ZGWkVRd3V1LXM4NHRZaW9KRExvQXNXTGpqcGJ4WkdibTl6Y0tWRTlicjZmeEo2ektYSWZjTmtfV1U0TFA?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "오세훈 시장, 용산공원 내 주택 공급 두고 국토부와 이견",
+          "gist": "오세훈 서울시장은 김윤덕 국토교통부 장관과 면담했으나 용산공원 내 주택 공급 문제에 대해 합의점을 찾지 못했습니다. 오 시장은 정부의 세제 개편",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026082261667"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "강경숙 의원, 조국혁신당 전북도당위원장으로 선출",
+          "gist": "조국혁신당 강경숙 의원이 당원 투표에서 93.1%의 찬성표를 얻어 전북특별자치도당위원장에 선출되었습니다. 임기는 2년이며, 강 위원장은 도민과 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608221724001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "북한, 일본의 역대 최대 방위비 편성 추진에 강력 반발",
+          "gist": "북한은 일본 방위성이 내년도 예산을 포함해 총 10조 엔(약 88조 원) 규모의 역대 최대 방위비를 추진하는 것을 '침략전쟁 준비'라고 비난했습",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/defense/1274139.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이재명 대통령, 민주당 의원 전원 청와대 오찬 초청",
+          "gist": "이재명 대통령이 정기국회를 앞두고 오는 28일 더불어민주당 소속 국회의원 전원을 청와대 영빈관으로 초청해 오찬을 가질 예정입니다. 민주당 의원들",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608221553001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=politic_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "더불어민주당, 원외 지역위 지원 및 민생 TF 인선 단행",
+          "gist": "더불어민주당 김민석 대표는 원외 지역위원회 지원을 위한 '정치제도개혁추진단' 공동 단장에 임미애 의원과 최택용 대표를 임명했습니다. 또한 민생 ",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/politics/assembly/1274133.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미 우체국, 우편 투표 제한 최종 계획 발표",
+          "gist": "미국 우체국이 우편 투표를 제한하는 최종 계획을 공개했습니다. 이는 트럼프 대통령의 행정 명령을 따른 것이며, 대법원이 해당 명령에 대해 긍정적",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/us/politics/postal-service-rule-restrict-mail-ballots.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "케미 베이든노크 보수당 대표, 리폼 UK와의 연합 및 배신자 복귀 거부",
+          "gist": "케미 베이든노크 영국 보수당 대표가 나이절 파라지의 리폼 UK(Reform UK)와의 선거 협력 및 연합 가능성을 일축했습니다. 또한 보수당을 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/politics/2026/aug/22/kemi-badenoch-says-reform-defectors-some-of-the-most-dishonest-people-i-have-met"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 정치의 혼란을 야기하는 여론조사의 불확실성",
+          "gist": "부정확한 여론조사와 오해를 불러일으키는 베팅 배당률, 특정 의도를 가진 설문조사 등이 미국 정치권에 혼란을 주고 있습니다. 이로 인해 중간선거와",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/us/politics/election-polls-confusion-prediction-markets.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영·프 전직 외교관들, 이스라엘의 팔레스타인 말살 중단 촉구",
+          "gist": "영국과 프랑스의 전직 고위 외교관 100여 명이 이스라엘의 인종 청소(ethnic cleansing)를 비판하며, 팔레스타인 국가 인정과 무기 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/world/2026/aug/22/uk-france-diplomats-israel-palestine"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "트럼프 전 대통령, 공화당에 자신의 영향력 강조 요청",
+          "gist": "트럼프 전 대통령이 사우스캐롤라이나주에서 달린 그레이엄의 선거 운동을 지원하며, 공화당원들에게 자신을 투표 용지에 있는 후보처럼 생각하고 행동해",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/us/politics/trump-darline-graham-south-carolina.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미 법원, 트럼프 정부의 75개국 비자 제한 조치 무효 판결",
+          "gist": "뉴욕 남부지방법원은 75개국을 대상으로 한 비자 금지 정책이 마르코 루비오 국무장관의 법적 권한을 넘어섰다고 판단하여 이를 무효화했습니다.",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/us/politics/judge-trump-75-country-visa-ban.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미 상원 주요 위원회 최초 여성 위원장 낸시 카세바움 별세",
+          "gist": "미국 캔자스주 출신의 중도파 공화당원인 낸시 카세바움 전 상원의원이 94세의 나이로 별세했습니다. 그녀는 미 상원 주요 위원회를 이끈 최초의 여",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/us/politics/nancy-kassebaum-dead.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "워싱턴 D.C. 내 그랑프리 준비로 인한 시민 불편 가중",
+          "gist": "워싱턴 D.C.에서 열리는 그랑프리 경주 준비 과정에서 교통 정체와 항공편 경로 변경이 발생하고 있으며, 국립미술관이 진동 테스트를 실시하는 등",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/us/politics/dc-grand-prix-indycar-traffic-damage.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "조 론스데일과 시세로 연구소가 트럼프의 노숙자 정책에 미친 영향",
+          "gist": "벤처 캐피털리스트 조 론스데일(Joe Lonsdale)이 설립한 시세로 연구소(Cicero Institute)가 거리 정화를 위한 강경책을 옹호",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/us/politics/homelessness-lonsdale-billionaire-trump.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "푸드 스탬프의 탄산음료 구매 금지 조치 효과 분석",
+          "gist": "일부 주에서 푸드 스탬프를 이용한 탄산음료 구매를 금지한 결과, 구매량이 소폭 감소한 것으로 나타났으나 이러한 효과가 장기적으로 지속될지는 불분",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/upshot/snap-restrictions-soda-sugary-drinks.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "플로리다주 진보 성향 민주당원의 승리가 주는 시사점",
+          "gist": "잭슨빌의 주 의원 앤지 닉슨이 공화당 강세 지역인 플로리다주에서 중도 성향의 경선 상대 후보를 꺾고 승리했습니다. 이 결과는 민주당 내 진보 진",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/us/politics/angie-nixon-florida-senate-socialist.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "짐 오닐 경제 고문, 정부 공식직 임용 거절 및 지방 분권 지지",
+          "gist": "앤디 버넘 정부의 경제 고문으로 거론되었던 짐 오닐 경이 공식적인 정부 직책을 맡지 않겠다고 밝혔습니다. 그는 개인 사업 유지와 제약 없는 활동",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cwym4m4j848o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영국 노동당의 제로 시간 계약(zero-hours contracts) 정책을 둘러싼 노조의 우려",
+          "gist": "영국 노동조합들이 노동당의 제로 시간 계약(zero-hours contracts) 축소 계획이 당초 선언문(manifesto)의 약속을 제대로 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/uk-news/2026/aug/22/unions-worry-labours-plan-for-zero-hours-contracts-may-break-manifesto-pledge"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "톰 킨 하원의원 캠페인 행사 중 취재진 출입 제한 및 경찰 출동 소동",
+          "gist": "토마스 킨 주니어 하원의원이 마이크 존슨 하원의장과 함께한 선거 운동 행사에서 보좌진이 기자의 입장을 막았고, 이후 경찰까지 호출되는 상황이 발",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/nyregion/kean-campaign-johnson.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영국 정부, 프랑스 협력으로 소형 보트 불법 입국 감소세 발표",
+          "gist": "2026년 1월부터 8월까지 프랑스발 소형 보트를 통한 영국 입국자 수가 전년 동기 대비 43% 감소했습니다. 영국 정부는 인신매매 조직 소탕을",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c1d1v333ewxo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "인구 감소 해결을 위해 이민자 유치에 나선 스코틀랜드 그리녹 시의회",
+          "gist": "스코틀랜드 그리녹(Greenock) 시의회가 심각한 인구 감소 문제를 해결하기 위해 이민자와 난민을 적극적으로 유치하는 전략을 추진하고 있습니다",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/ckgdpdk84d0o?at_medium=RSS&at_campaign=rss"
         }
       ]
     },
     "economy": {
-      "article_count": 636,
+      "article_count": 669,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -9066,6 +9319,237 @@
           "gist": "로열 메일이 1·2등 우편 배송 목표치를 다시 한번 달성하지 못했습니다. 하지만 전년 동기 대비 배송 성공률이 상승하며 경영 회복 계획에 따라 ",
           "source": "BBC News",
           "link": "https://www.bbc.co.uk/news/articles/c1w1rg208xdo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국-캐나다 무역 갈등 심화, 맞불 관세 예고",
+          "gist": "미국이 캐나다산 유제품과 주류 등 약 200억 달러 규모 수입품에 50% 관세를 부과하자, 캐나다가 동일 규모의 보복 관세로 대응하겠다고 선언했",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608230607001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "주요국 장기금리 급등에 따른 세계 경제 위기 경고",
+          "gist": "미국, 일본, 유럽 등 선진국의 장기금리가 빠르게 상승하며 금융시장 불안이 커지고 있습니다. 특히 미국채 30년 금리는 2007년 6월 이후 최",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1274130.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "삼성전자, 역대 최대 규모인 110조 원 주주환원 결정",
+          "gist": "삼성전자가 올해 최대 110조 원 규모의 주주환원을 시행합니다. 3분기에 약 30조 원의 현금 배당을 진행하며, 나머지는 내년 1월에 배당 및 ",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/marketing/1274090.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "한진그룹 LCC 3사 합병, 2027년 3월 '통합 진에어' 출범",
+          "gist": "진에어, 에어부산, 에어서울이 합병 계약을 체결하고 2027년 3월 17일 '통합 진에어'로 출범합니다. 진에어 1을 기준으로 에어부산 0.28",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/economy/economy_general/1274079.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "자사주 매입을 통한 유동성 공급의 한계와 과제",
+          "gist": "바이백(buyback)을 통한 유동성 확보가 근본적인 문제 해결책이 되지 못한다는 분석이 제기되었습니다. 주주환원 정책에 대한 기대감은 있으나,",
+          "source": "연합인포맥스",
+          "link": "https://news.einfomax.co.kr/news/articleView.html?idxno=4431337"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "호남 지역 반도체 산업의 인프라 부족 문제",
+          "gist": "호남 지역의 반도체 산업 육성과 관련하여 부지는 확보되었으나, 전력과 용수 등 필수 인프라 공급이 부족한 상황이 2030년의 과제로 제기되고 있",
+          "source": "연합인포맥스",
+          "link": "https://news.einfomax.co.kr/news/articleView.html?idxno=4431336"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "KF-21 전투기 관련 이슈 및 주요 경제 뉴스 요약",
+          "gist": "KF-21 전투기 관련 내용과 더불어 호남 지역 반도체 인프라 부족 문제, SK하이닉스의 자사주 매각 공시 및 특별배당 추측, 일본의 엔저 현상",
+          "source": "연합인포맥스",
+          "link": "https://news.einfomax.co.kr/news/articleView.html?idxno=4431335"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "비주택 리모델링 통한 주택 공급 사업 실적 전무",
+          "gist": "정부가 도심 내 빈 상가와 오피스를 공공임대주택으로 전환하는 '비주택 리모델링' 사업을 4년 만에 재개했으나, 2023년부터 올해 7월까지 실적",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260822048400003"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "공공기관 지방 이전의 경제적 효과 분석 결과",
+          "gist": "혁신도시 10곳을 분석한 결과, 공공기관 이전이 지역내총생산(GRDP) 증가에 미치는 영향은 미미한 것으로 나타났습니다. 다만, 부산과 울산 등",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260822037800530"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "국내 가상자산 거래소 외국인 계정 다수지만 실제 이용률은 극소수",
+          "gist": "국내 5대 가상자산 거래소의 외국인 계정은 약 56만 개에 달하지만, 실제 활성 이용자는 0.01%인 90명에 불과한 것으로 나타났습니다. 이는",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821177500002"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "잭슨홀 심포지엄, '금융혁신'과 디지털 결제 논의",
+          "gist": "오는 28일 잭슨홀 심포지엄에서 연준 의장이 기조연설을 하며, 지급결제 디지털화와 통화정책을 포함한 '금융혁신'이 주요 의제로 다뤄질 예정입니다",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQeFFrUkF0a182NUxNR3piT2plU2ZmcUtwRmtoSHowaE9HQW81SnBlQzRrSnJsUUV1a0lOQmdQNzNIUExjd2FSOVF2NTVMZ1EtZUthLTNSTmxBU01oNDlVbURxS3RUSHZIajBTYTMxbXhQeW5SRFJyWWsxVjRaa054NHpWUTVkVVUy?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "8월 중순 수출 호조 및 중소기업 세정 지원",
+          "gist": "8월 1~20일 수출액이 반도체 호조에 힘입어 전년 동기 대비 56.0% 증가했습니다. 한편, 국세청은 극한호우 피해를 입은 거제, 통영 등 남",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026082262687"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "추석 앞두고 빵·라면 등 주요 먹거리 가격 인상",
+          "gist": "파리바게뜨, 삼립, 팔도, 오뚜기 등 주요 식품업체들이 원가 부담을 이유로 빵과 라면 가격을 5~9%대 인상합니다. 이에 대해 소비자단체는 원재",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260822213005DMt"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "여름철 소비 트렌드 변화: 홈 미식과 K-뷰티 상품화",
+          "gist": "폭염으로 인해 집에서 즐기는 '홈 미식' 수요가 늘며 생선회 판매가 증가했습니다. 또한 호텔 어메니티로 제공되던 제품들이 독립적인 K-뷰티 상품",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/202608226179i"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "농협중앙회, 경남 수해 지역 농가 지원 강화",
+          "gist": "강호동 농협중앙회장이 경남 거제시 수해 현장을 방문하여 피해 농가를 점검했습니다. 농협은 영양제 공급, 농기계 수리, 재해보험 조사 및 피해 포",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260822160255ULC"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "앤트로픽, 자체 AI 칩 개발 위해 구글 TPU 전문가 영입",
+          "gist": "AI 모델 '클로드' 개발사인 앤트로픽이 구글 TPU 개발을 주도했던 아미르 살렉을 영입하며 자체 AI 칩 개발을 추진합니다. 연산 인프라 부족",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608220953001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=economy_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 8월 S&P PMI 지수: 서비스업 강세와 제조업 약세",
+          "gist": "미국의 8월 S&P 구매관리자지수(PMI) 분석 결과, 서비스업은 개선세를 보이며 경제 확장을 뒷받침하고 있으나 제조업은 둔화 추세가 지속되고 ",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5YWTk4VUhwMkZTaThiYzhUWU04RXN5QWFhSERkRlR1RlV5SzJxRmkwM2ZhN25zOTdOSkNkb1VJaFZrMmZCU0xmT0xYY0FZSUJodnVrblhNc3A1T1N0Q1BDWXRZRUs3TTZKd0pWQXdNTzA?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "마크 카니, 캐나다와 미국의 무역 갈등 심화 경고",
+          "gist": "마크 카니가 캐나다와 미국이 현재 무역 문제로 인해 사실상 '전쟁' 상태에 있다고 언급했습니다.",
+          "source": "Financial Times",
+          "link": "https://www.ft.com/content/e3b5c236-bd5f-45c2-8ddf-5279a7375d3f?syn-25a6b1a6=1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국의 고율 관세 부과에 캐나다 '동일 규모 보복' 예고",
+          "gist": "미국이 일부 품목에 50%의 관세를 부과하자, 캐나다는 이에 대응해 동일한 규모로 맞대응(dollar for dollar)하겠다고 선언하며 무역",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/world/2026/aug/22/canada-tariffs-trump-trade-deal-talks-fail"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "중국, 세계 기록 경신한 휴머노이드 로봇 '라이트닝' 공개",
+          "gist": "중국 스마트폰 제조사 아너(Honor)가 개발한 휴머노이드 로봇 '라이트닝'이 100m를 9.32초에 주파하며 우사인 볼트의 세계 기록을 넘어섰",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/sport/2026/aug/22/chinese-robot-runs-100m-sprint-quicker-usain-bolt-world-record"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "저금리 시대의 종료와 미국 경제의 잠재적 위험",
+          "gist": "약 20년 동안 지속된 초저금리 환경에 익숙해진 미국 경제가 금리 상승으로 인한 급격한 조정기를 맞이하며 다양한 리스크에 직면할 수 있다는 분석",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/business/bonds-borrowing-costs-economy.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "트럼프가 직면한 경제적 과제: 부채와 고금리 및 물가",
+          "gist": "트럼프 전 대통령이 직면한 경제적 도전 과제로 40조 달러의 부채, 6.7%의 모기지 금리, 그리고 갤런당 5달러의 디젤 가격 등이 언급되었습니",
+          "source": "Financial Times",
+          "link": "https://www.ft.com/content/6cb399fa-9fba-4806-98a3-9572fe319622?syn-25a6b1a6=1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 국가 부채 40조 달러 돌파에 따른 경제적 우려",
+          "gist": "미국의 국가 부채가 40조 달러를 넘어서며 국내외적으로 우려가 커지고 있습니다. 과거 1조 달러 돌파 당시와 달리, 현재는 부채 이자 비용만으로",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c9d8z72nn02o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "엘니뇨 여파로 파나마 운하 통과 선박 수 제한",
+          "gist": "엘니뇨 현상으로 인한 강수량 감소로 파나마 운하 당국이 통과 선박 수를 제한합니다. 9월 15일부터 하루 통과 가능 선박 수가 기존 36척에서 ",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cwyl0jkxxryo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "하버드 비즈니스 스쿨, 교수진 AI 아바타 활용한 유료 강의 개설",
+          "gist": "하버드 비즈니스 스쿨이 기업가들을 위한 새로운 부트캠프를 마련하며, 교수진의 AI 복제본(AI clones)이 가르치는 699달러 규모의 강의를",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/business/dealbook/harvard-ai-faculty.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "파라마운트와 캘리포니아주, 워너 브라더스 인수 관련 협의 착수",
+          "gist": "파라마운트가 워너 브라더스 디스커버리를 1,110억 달러에 인수하는 것을 저지하기 위해 캘리포니아주를 포함한 12개 주가 제기한 소송을 해결하고",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/business/paramount-california-warner-bros.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국-캐나다 무역 갈등으로 인한 경제적 타격 우려",
+          "gist": "미국과 캐나다 사이의 보복성 무역 전쟁이 발생할 경우, 이미 고물가로 고통받는 소비자들과 기업들이 추가적인 경제적 어려움을 겪을 수 있다는 전망",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/business/economy-trade-war-us-canada.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "디지털 피로감에 밀려난 '초저속 메시징 앱'의 인기",
+          "gist": "끊임없는 알림에 지친 사람들이 전송 속도가 매우 느린 디지털 메시징 앱을 통해 느린 삶의 속도를 즐기는 추세입니다.",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/technology/carrier-pigeon-app-texting-technology.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "앤디 번햄 시장, 2042년 월드컵 영국 유치 희망",
+          "gist": "앤디 번햄 시장이 2042년 남자 월드컵의 영국 유치 의사를 밝혔습니다. 영국 총리 또한 지역 시장들과의 논의에서 월드컵의 영국 제도(Briti",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/politics/2026/aug/22/andy-burnham-uk-host-mens-world-cup-football-2042"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "마이크 애슐리, 불황 속 럭셔리 리테일 시장 확장 가속",
+          "gist": "스포츠 다이렉트 창업자 마이크 애슐리가 하비 니콜스 인수와 휴고 보스 지분 확대 등 고가 브랜드 쇼핑에 집중하며 럭셔리 소매 시장 점유율을 높이",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/business/2026/aug/22/mike-ashley-sports-direct-luxury-frasers-group-harvey-nichols-hugo-boss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영국 노동당의 제로시간 계약 제한 정책을 둘러싼 노조의 우려",
+          "gist": "영국 노동조합들이 제로시간 계약(zero-hours contracts)을 줄이려는 노동당의 계획이 당초 공약에 미치지 못할 가능성을 경고하고 있",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/uk-news/2026/aug/22/unions-worry-labours-plan-for-zero-hours-contracts-may-break-manifesto-pledge"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "농장 관리 효율화 앱 개발한 16세 청소년 기업가",
+          "gist": "북아일랜드의 16세 소년 벤 오코너가 농장 업무와 서류 작업을 간소화하여 농민들의 노동 시간을 줄여주는 '팜플로우(FarmFlow)' 앱을 개발",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cx2r9gxp3xgo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "TUI 리버 크루즈, 시설 관리 부실로 고객 불만 폭주",
+          "gist": "TUI 리버 크루즈 이용객들이 고가의 비용을 지불했음에도 불구하고 에어컨 고장과 화장실 파손 등 열악한 시설 상태로 인해 큰 불편을 겪었다고 주",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cy07exrz5lpo?at_medium=RSS&at_campaign=rss"
         }
       ],
       "stock_picks": [
@@ -11120,11 +11604,119 @@
           "name": "Tesla",
           "reason": "월간 15.92% 상승과 1.73의 높은 거래량 비율을 동반하며, 중장기적으로 강한 매수세가 유입되고 있는 추세입니다.",
           "price_at_pick": 362.86
+        },
+        {
+          "date": "2026-08-23",
+          "market": "domestic",
+          "horizon": "daily",
+          "symbol": "028260",
+          "name": "삼성물산",
+          "reason": "최근 등락률 +8.4%, 거래량 평균 대비 1.5배 흐름을 보이고 있습니다.",
+          "price_at_pick": 395500.0
+        },
+        {
+          "date": "2026-08-23",
+          "market": "domestic",
+          "horizon": "daily",
+          "symbol": "086790",
+          "name": "하나금융지주",
+          "reason": "최근 등락률 +4.4%, 거래량 평균 대비 0.93배 흐름을 보이고 있습니다.",
+          "price_at_pick": 128800.0
+        },
+        {
+          "date": "2026-08-23",
+          "market": "domestic",
+          "horizon": "weekly",
+          "symbol": "000660",
+          "name": "SK하이닉스",
+          "reason": "최근 등락률 +8.6%, 거래량 평균 대비 0.88배 흐름을 보이고 있습니다.",
+          "price_at_pick": 1730000.0
+        },
+        {
+          "date": "2026-08-23",
+          "market": "domestic",
+          "horizon": "weekly",
+          "symbol": "028260",
+          "name": "삼성물산",
+          "reason": "최근 등락률 +8.4%, 거래량 평균 대비 1.5배 흐름을 보이고 있습니다.",
+          "price_at_pick": 395500.0
+        },
+        {
+          "date": "2026-08-23",
+          "market": "domestic",
+          "horizon": "monthly",
+          "symbol": "207940",
+          "name": "삼성바이오로직스",
+          "reason": "최근 등락률 +12.5%, 거래량 평균 대비 1.04배 흐름을 보이고 있습니다.",
+          "price_at_pick": 1551000.0
+        },
+        {
+          "date": "2026-08-23",
+          "market": "domestic",
+          "horizon": "monthly",
+          "symbol": "068270",
+          "name": "셀트리온",
+          "reason": "최근 등락률 +11.7%, 거래량 평균 대비 0.72배 흐름을 보이고 있습니다.",
+          "price_at_pick": 192300.0
+        },
+        {
+          "date": "2026-08-23",
+          "market": "overseas",
+          "horizon": "daily",
+          "symbol": "TSLA",
+          "name": "Tesla",
+          "reason": "최근 등락률 +15.9%, 거래량 평균 대비 1.77배 흐름을 보이고 있습니다.",
+          "price_at_pick": 362.86
+        },
+        {
+          "date": "2026-08-23",
+          "market": "overseas",
+          "horizon": "daily",
+          "symbol": "V",
+          "name": "Visa",
+          "reason": "최근 등락률 +1.4%, 거래량 평균 대비 0.78배 흐름을 보이고 있습니다.",
+          "price_at_pick": 371.04
+        },
+        {
+          "date": "2026-08-23",
+          "market": "overseas",
+          "horizon": "weekly",
+          "symbol": "TSLA",
+          "name": "Tesla",
+          "reason": "최근 등락률 +15.9%, 거래량 평균 대비 1.77배 흐름을 보이고 있습니다.",
+          "price_at_pick": 362.86
+        },
+        {
+          "date": "2026-08-23",
+          "market": "overseas",
+          "horizon": "weekly",
+          "symbol": "KO",
+          "name": "Coca-Cola",
+          "reason": "최근 등락률 +3.9%, 거래량 평균 대비 1.2배 흐름을 보이고 있습니다.",
+          "price_at_pick": 91.1
+        },
+        {
+          "date": "2026-08-23",
+          "market": "overseas",
+          "horizon": "monthly",
+          "symbol": "MSFT",
+          "name": "Microsoft",
+          "reason": "최근 등락률 +26.8%, 거래량 평균 대비 1.02배 흐름을 보이고 있습니다.",
+          "price_at_pick": 483.24
+        },
+        {
+          "date": "2026-08-23",
+          "market": "overseas",
+          "horizon": "monthly",
+          "symbol": "TSLA",
+          "name": "Tesla",
+          "reason": "최근 등락률 +15.9%, 거래량 평균 대비 1.77배 흐름을 보이고 있습니다.",
+          "price_at_pick": 362.86
         }
       ]
     },
     "society": {
-      "article_count": 511,
+      "article_count": 534,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -14702,11 +15294,172 @@
           "gist": "심각한 뇌전증으로 영아기 생존 가능성이 낮았던 빌리 콜드웰이 대마초 기반 의약품 치료를 통해 발작을 극복하고 21세 생일을 맞았습니다. 그의 사",
           "source": "The Guardian",
           "link": "https://www.theguardian.com/society/2026/aug/21/family-joy-as-boy-who-helped-legalise-cannabis-medicine-in-uk-turns-21"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "기후에너지환경부, 계절별 송전용량 및 유연 접속 제도 도입 추진",
+          "gist": "기후에너지환경부가 전력망 효율을 높이기 위해 9월부터 '계절별 송전용량(SAR)' 방식을 시범 적용합니다. 이는 기온이 낮은 겨울철에 송전 용량",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821114900530"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "캐리비안 베이 여장 후 여자 탈의실 불법 촬영한 20대 검거",
+          "gist": "가발과 소품으로 여장을 하고 캐리비안 베이 여자 탈의실에 침입해 불법 촬영을 한 20대 남성이 범행 20여 일 만에 구속영장이 신청된 상태로 검",
+          "source": "노컷뉴스",
+          "link": "https://www.nocutnews.co.kr/news/6566430"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "제주 실종 사건 허위 종결한 경찰관 긴급체포",
+          "gist": "제주경찰청은 실종 신고를 허위로 종결한 혐의로 제주서부경찰서 소속 A경장을 긴급체포했습니다. A경장은 장미란 씨의 실종 사건뿐만 아니라 또 다른",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608221909001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "여수 화력발전소 석탄 분진 필터 화재 발생",
+          "gist": "22일 오후 전남 여수시의 한 화력발전소 지상 100m 높이 석탄 분진 필터 설비에서 불이 났습니다. 인명피해는 없으나 설비 내에 약 1~2t의",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608221845001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=society_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "2026 대구 세계 마스터즈 육상경기대회 개막",
+          "gist": "2026 대구 세계 마스터즈 육상경기대회가 22일 개막하여 9월 3일까지 13일간 진행됩니다. 이번 대회에는 106개국에서 1만 1천176명의 ",
+          "source": "프레시안",
+          "link": "https://www.pressian.com/pages/articles/2026082223061015540&ref=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "광주서 '계엄 정당' 주장 우파 집회와 맞불 시위 발생",
+          "gist": "광주 충장로에서 '호남우파친구들' 회원 150여 명이 모여 계엄의 정당성과 부정선거를 주장하는 행진을 벌였습니다. 이에 5·18 관련 단체인 '",
+          "source": "프레시안",
+          "link": "https://www.pressian.com/pages/articles/2026082221254079941&ref=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "강경숙 의원, 조국혁신당 전북도당위원장으로 선출",
+          "gist": "강경숙 국회의원이 93.1%의 높은 찬성률로 조국혁신당 전북특별자치도당 위원장에 당선되었습니다. 강 위원장은 민주당 중심의 지역 정치 구도 변화",
+          "source": "프레시안",
+          "link": "https://www.pressian.com/pages/articles/2026082220403967099&ref=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "정치 얘기 말라는 대리기사 폭행한 60대 벌금형",
+          "gist": "대리운전 기사에게 특정 정당 비판을 이어가다, 정치 이야기를 그만해달라는 요청에 뺨을 때린 60대 A씨에게 벌금 100만 원이 선고되었습니다. ",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821056900057"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "호주 시드니에서 51년간 태권도를 전파한 김명만 사범",
+          "gist": "1975년부터 호주 시드니에서 태권도를 가르쳐온 김명만 사범의 이야기입니다. 그는 초기 낯선 환경과 타 무술 사범들과의 대련을 극복하며 태권도를",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/labor/1274147.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "제주 실종 사건 조작 경찰관 체포, 추가 허위 종결 확인",
+          "gist": "제주에서 실종된 장미란 씨 사건을 허위로 종결하고 관련 정보를 삭제한 혐의로 A경장이 긴급체포되었습니다. 조사 결과 A경장이 다른 실종 사건 또",
+          "source": "노컷뉴스",
+          "link": "https://www.nocutnews.co.kr/news/6566427"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "충남 예산군 주택 화재로 60대 2명 부상",
+          "gist": "23일 새벽 2시 10분경 충남 예산군 광시면의 한 주택에서 화재가 발생했습니다. 약 1시간 반 만에 진화되었으나, 집 안에 있던 60대 남녀 ",
+          "source": "SBS 뉴스",
+          "link": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008717063"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "제주 서귀포 동쪽 해역서 규모 2.2 지진 발생",
+          "gist": "23일 오전 1시 44분경 제주 서귀포시 동쪽 79km 해역에서 규모 2.2의 지진이 발생했습니다. 기상청은 이번 지진으로 인한 피해는 없을 것",
+          "source": "SBS 뉴스",
+          "link": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008717062"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "여성 탈의실 불법 촬영한 20대 남성 구속영장 신청",
+          "gist": "용인 캐리비안 베이 여자 탈의실에서 이용객들을 불법 촬영한 20대 남성이 검거되었습니다. 피의자는 숏컷 가발과 마스크 등으로 변장해 침입했으며,",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260823015500iha"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "처서에도 계속되는 무더위와 전국적 소나기 예보",
+          "gist": "23일 처서에도 무더위와 열대야가 이어지는 가운데, 전국 곳곳에 천둥과 번개를 동반한 비나 소나기가 내릴 전망입니다. 특히 경기 남부, 충남, ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Society/article/all/20260823/134523897/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "거제·통영 수해 복구 위해 주말 간 4,800여 명 투입",
+          "gist": "집중호우 피해를 입은 거제와 통영 지역의 복구를 위해 22일부터 이틀간 인력 4,824명과 장비 516대가 투입됩니다. 공무원, 군·경, 소방 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Society/article/all/20260822/134523881/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "에너지의 날 맞아 전국 주요 랜드마크 10분간 소등",
+          "gist": "제23회 에너지의 날을 기념해 22일 밤 9시부터 10분간 서울시청, 국회의사당 등 전국 23곳의 공공기관과 랜드마크에서 소등 행사가 진행되었습",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/society/society_general/1274145.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "명진스님의 봉은사 재정 공개와 파격적 운영",
+          "gist": "종교 단체의 재정 불투명성을 언급하며, 2007년 봉은사 주지였던 명진스님이 단행한 재정 공개와 '수행자와 신도의 역할 분리'라는 파격적인 운영",
+          "source": "오마이뉴스",
+          "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003261083"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "글쓰기 과정에서 퇴고가 갖는 의미와 가치",
+          "gist": "시민기자들이 퇴고를 '외출 전 거울을 보는 일'이나 '끝없는 뫼비우스의 띠'에 비유하며, 불필요한 부분을 덜어내고 글의 전체 모습을 살피는 과정",
+          "source": "오마이뉴스",
+          "link": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003257722"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "광교신도시 출몰 '나일왕도마뱀' 11일 만에 포획",
+          "gist": "경기도 광교신도시 산책로에 나타나 주민들을 불안하게 했던 몸길이 70cm의 나일왕도마뱀이 수색 11일 만에 잡혔습니다. 국제멸종위기종인 이 도마",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260822191308gtg"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영국, 성범죄자 대상 성욕 억제제 도입 확대 검토",
+          "gist": "영국 잉글랜드와 웨일스 정부가 성범죄 수감자들을 대상으로 성욕 억제 약물 사용을 확대하는 방안을 추진합니다. 11월부터 시범 프로그램 대상 교도",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/society/2026/aug/22/sex-offenders-libido-control-drugs-prisons-england-wales"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 유치원생 백신 접종률 하락 및 면제 신청 역대 최고치 기록",
+          "gist": "미국 질병통제예방센터(CDC) 발표 결과, 유치원생의 백신 접종률이 전반적으로 하락했습니다. 특히 비의료적 사유로 인한 접종 면제율이 전년 대비",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/society/2026/aug/22/kindergarten-mmr-vaccination-rates-dip"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "온리팬스 이용한 여성 강요 및 성착취 범죄 실태 드러나",
+          "gist": "영국 법원에서 여성의 동의 없이 성적 콘텐츠를 온리팬스(OnlyFans)에 게시하거나, 금전적 이득을 위해 계정 생성을 강요한 남성들이 유죄 판",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/society/2026/aug/22/two-uk-men-convicted-explicit-content-onlyfans-without-consent"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "ADHD 산모가 겪는 출산 후의 심리적 혼란과 극복 과정",
+          "gist": "ADHD(주의력결핍 과잉행동장애)를 가진 한 여성이 출산 직후 병원 환경에서 겪은 극심한 심리적 붕괴와 혼란을 고백했습니다. 저자는 신경다양성(",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/society/2026/aug/22/my-ability-to-cope-was-unravelling-how-i-navigated-adhd-and-childbirth-and-seven-things-i-learned"
         }
       ]
     },
     "life": {
-      "article_count": 482,
+      "article_count": 506,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -18081,11 +18834,179 @@
           "gist": "어린 시절부터 암벽 등반을 즐겼던 한 작성자가 17세 때 유타주의 한 호수에서 겪은 추락 사고를 회상했습니다. 바위 위에서 물로 뛰어들려던 중,",
           "source": "The Guardian",
           "link": "https://www.theguardian.com/lifeandstyle/2026/aug/21/experience-fell-bouldering-smashed-pelvis"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "체중감량제 사용 후 요요 현상 겪으면 자살 생각 위험 급증",
+          "gist": "서울아산병원 연구팀이 성인 2만 7,741명의 데이터를 분석한 결과, 체중감량제 사용자는 비사용자보다 우울 경험(1.9배)과 자살 생각(2.7배",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821141700530"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "아동 학대·방임 가정에도 지급되는 아동수당 논란",
+          "gist": "아동학대 살해 혐의로 구속된 부모들이 아이가 사망한 후에도 부모급여와 아동수당을 수령한 사례가 잇따라 확인되었습니다. 이에 안전장치 마련 필요성",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821165600530"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "고령 입원 환자 섬망 증상, 아침 햇빛과 통합 관리로 완화 가능",
+          "gist": "분당서울대병원 연구팀이 고령 환자의 급성 뇌 기능 장애인 섬망을 관리하는 '통합 섬망 관리 프로그램'을 개발했습니다. 이 프로그램은 고위험 약물",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608220900015/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "어린이 흉곽 기형(새가슴·오목가슴), 10대 초중반이 치료 적기",
+          "gist": "흉골과 갈비뼈 연골의 과성장으로 발생하는 새가슴과 오목가슴은 성장기에 악화될 수 있어 보호자의 주의가 필요합니다. 특히 초등학교 고학년에서 중학",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608220900005/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "식사 순서만 바꿔도 '혈당 스파이크' 예방 가능",
+          "gist": "이화여대 연구팀에 따르면 채소와 단백질을 먼저 먹고 탄수화물을 마지막에 섭취할 때 식후 혈당 상승이 가장 완만했습니다. 실험 결과, '채소→단백",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821106400530"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "커피 섭취가 체지방 감소와 근육량 증가에 도움 된다는 연구 결과",
+          "gist": "핀란드 오울루 대학교 연구진이 성인 2,264명의 대사 데이터를 분석한 결과, 커피 섭취량이 많을수록 체질량지수(BMI)와 상관없이 내장지방과 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260821/134516904/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "체중 4.5kg 감량 시 무릎 관절 부담 18kg 줄어든다",
+          "gist": "과체중인 사람이 몸무게를 약 4.5kg 줄이면 보행 시 무릎에 가해지는 하중을 약 18kg 정도 낮출 수 있습니다.",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260821/134519154/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "의료계, 자율 규제 및 면허 관리 위한 '의사면허원' 설립 추진",
+          "gist": "대한의사협회와 서울특별시의사회는 공동 심포지엄을 통해 의사면허관리원 설립 필요성을 논의했습니다. 이는 의료계의 자율 징계권을 강화하고 체계적인 ",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260822042000530"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "데오드란트와 땀 분비 억제제, 목적에 맞는 선택 필요",
+          "gist": "데오드란트는 땀 냄새를 가려주는 화장품이며, 땀 분비 억제제는 땀샘을 일시적으로 막아 배출량을 줄이는 의약외품 또는 일반의약품입니다. 두 제품은",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260822/134523740/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "제주의 자연과 아픈 역사를 품은 다랑쉬오름",
+          "gist": "해발 382.4m의 다랑쉬오름은 가파른 계단길을 올라야 하지만, 정상에서는 성산일출봉과 우도 등 제주 동부의 절경을 감상할 수 있습니다. 또한 ",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608221711001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "익산시, 지역 특산물 알리는 '고구마(순) 축제' 개최",
+          "gist": "익산시가 8월 22일부터 23일까지 삼기농협 로컬푸드복합센터 일원에서 '2026 익산 고구마(순) 축제'를 엽니다. 고구마 종가로서의 위상을 알",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260822033800055"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "중국, 대소변 처리 및 간병 돕는 돌봄 로봇 도입",
+          "gist": "중국에서 노인의 배설물 자동 처리, 가사 및 보행 보조, 요양보호사의 신체 부담을 덜어주는 마사지 및 말벗 로봇 등 다양한 간병 로봇이 등장하고",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260821/134497098/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "씨름 선수에서 보디빌딩 국가대표 도전하는 40대 여성의 열정",
+          "gist": "플로리스트로 활동하다 마흔 이후 실업팀 씨름 선수로 발탁된 노은수 씨의 도전기입니다. 과거 생활체육 씨름대회 우승 경험을 시작으로 운동에 입문한",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260821/134517668/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "보건복지부, APEC 보건실무그룹 회의서 AI 및 고령화 대응 논의",
+          "gist": "보건복지부가 의장국 자격으로 중국 대련에서 열리는 APEC 보건실무그룹(HWG) 회의에 참석합니다. 이번 회의에서는 AI를 활용한 일차 보건의료",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260822023900530"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "전 세대를 아우르는 장수 의약품 '용각산'의 진화",
+          "gist": "1967년 출시된 진해거담제 용각산이 최근 2030 세대의 취향에 맞춘 다양한 향과 스틱 형태로 변신하며 연 매출 200억 원 이상의 브랜드로 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260822/134523402/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "신장이식 환자, 지역 병원 중심의 관리가 효율적",
+          "gist": "경북대병원 조장희 교수는 신장이식 후 예후 관찰을 위해 집 근처 지역 병원을 이용하는 것이 유리하다고 강조했습니다. 신장이식은 투석보다 생존 기",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608220900025/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "운동 효율 높이는 전 단계 추천 간식과 섭취 방법",
+          "gist": "운동 전 간식은 에너지 보충이 필요할 때 선택하며, 소화가 잘되는 탄수화물 중심이 좋습니다. 추천 식품으로는 바나나, 플레인 요거트 곁들인 바나",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608220830001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=life_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "아동기 스마트폰 사용과 인지능력 간의 상관관계 추적 연구",
+          "gist": "핀란드 연구진이 아동부터 8년간 추적 조사를 실시하여 스마트폰 등 스크린 사용이 인지능력에 미치는 영향에 대해 예상과 다른 연관성을 발견했습니다",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260820/134513361/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영국 내 저가형 '플러그인' 태양광 패널 도입과 기대 효과",
+          "gist": "영국에 설치가 간편하고 비용 부담이 적은 '플러그인(plug-in)' 방식의 소형 태양광 패널이 출시됩니다. 발코니나 정원 벽에 설치해 콘센트에",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/money/2026/aug/22/plug-in-solar-cost-panel-cut-bills-balcony"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "시판 케첩 제품별 토마토 함량 및 품질 비교 분석",
+          "gist": "다양한 슈퍼마켓 케첩 제품을 테스트한 결과, 가격과 상관없이 전반적인 성능은 양호했으나 토마토 함량에는 큰 차이가 있었습니다. 토마토 함량이 낮",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/thefilter/2026/aug/22/best-supermarket-ketchup-tested-rated"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "아일랜드와 웨일스, 맨섬의 신석기 유적지 탐방기",
+          "gist": "더블린 북쪽의 뉴그레인지(Newgrange)를 포함해 아일랜드해 주변의 신석기 시대 석조 유적지를 여행한 기록입니다. 약 5,100년 전 바다를",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/travel/2026/aug/22/stone-age-history-ireland-wales-isle-of-man"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "건강 중시 시대, 아이스크림 산업의 미래와 현주소",
+          "gist": "영국 글로스터에 위치한 매그넘(Magnum) 사의 대규모 아이스크림 공장을 방문하여 비에네타(Viennetta) 등 다양한 제품의 자동화 생산 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/food/ng-interactive/2026/aug/22/ice-cream-future-pleasure-wellness-fads-weight-loss-drugs"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "맨체스터에서 가진 어느 소개팅의 솔직한 후기",
+          "gist": "맨체스터 피카딜리 역 인근에서 이루어진 '피트(Pete)'와의 소개팅 경험담입니다. 두 사람은 정치적 견해와 개인적 공통점을 나누며 긍정적인 시",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/22/blind-date-pete-susan"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "외모적 매력을 오래 유지하기 위한 실천적인 생활 습관",
+          "gist": "피부 노화의 최대 원인인 자외선 차단제 매일 사용하기, 과도한 보톡스 지양, 바른 자세 유지 등 외모의 젊음을 유지하는 구체적인 방법들을 제시합",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/lifeandstyle/2026/aug/21/dont-overdo-botox-stop-referring-to-yourself-as-old-extend-your-hotspan"
         }
       ]
     },
     "culture": {
-      "article_count": 509,
+      "article_count": 535,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -21649,11 +22570,193 @@
           "gist": "앨리스 로버츠가 어린 시절 읽은 동화부터 청소년기에 신앙을 버리게 만든 리처드 도킨스의 과학 서적까지, 자신의 삶에 영향을 준 책들을 소개합니다",
           "source": "The Guardian",
           "link": "https://www.theguardian.com/books/2026/aug/21/alice-roberts-by-the-time-id-finished-richard-dawkins-id-left-faith-behind"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "부산 인디 공연장 '오방가르드' 영업 중단 위기와 제도 개선 요구",
+          "gist": "부산의 인디 음악 거점인 '오방가르드'가 공연 중 춤을 췄다는 이유로 영업 정지 위기에 처하며 영업 중단을 예고했습니다. 이에 따라 소규모 라이",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821105400505"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "사회 참여와 불교 개혁에 헌신한 명진스님 입적",
+          "gist": "민주화 운동과 조계종단 개혁에 앞장섰던 명진스님이 22일 입적했습니다. 세수 76세인 명진스님은 봉은사 주지 시절 투명한 사찰 운영으로 주목받았",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608230600021/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "관객 춤췄다고 영업정지 당한 부산 라이브클럽, 제도 개선 요구",
+          "gist": "부산의 인디 음악 공연장 '오방가르드'가 관객들이 춤을 췄다는 이유로 식품위생법 위반에 따른 2개월 영업정지 처분을 받았습니다. 음악계는 소규모",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/culture_general/1274141.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "생성형 AI 시대, 독서의 위기와 문해력의 중요성",
+          "gist": "생성형 AI가 방대한 문서를 빠르게 요약하고 분석하면서 인간이 직접 책을 읽을 동기가 줄어들고 있습니다. 문체부의 '2025 국민 독서실태 조사",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1274124.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "조수미·손흥민 등 세계적 성과 거둔 인물들 기념메달 제작",
+          "gist": "소프라노 조수미의 세계무대 데뷔 40주년, 조성진의 쇼팽 콩쿠르 우승 10주년 등을 기념하는 메달이 출시되었습니다. 이 외에도 손흥민, 안세영 ",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821125000063"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "공주문화관광재단, 거액의 출연금 무이자 계좌 관리로 적발",
+          "gist": "공주문화관광재단이 최근 3년간 약 163억 원의 사업비를 이자가 없는 무이자 계좌로 관리해 공주시의 세입 확보 기회를 상실시킨 사실이 감사에 적",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260821148800063"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "수줍음과 떨림을 안고 살아가는 이들에게 전하는 위로",
+          "gist": "작가 요조가 평생 수줍음과 떨림으로 고민해온 50대 사연자에게 자신의 마음을 들여다볼 것을 제안했습니다. 특히 에두아르 르베의 소설 '자화상(S",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1274146.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "우지원의 딸 우서윤, 제70회 미스코리아 진 선정",
+          "gist": "전 프로농구 선수 우지원의 장녀 우서윤(22)이 22일 서울 코엑스에서 열린 제70회 미스코리아 선발대회에서 진(眞)으로 선정되었습니다. 미국 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Culture/article/all/20260822/134523836/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "Z세대 사이에서 유행하는 '규칙 괴담' 콘텐츠",
+          "gist": "명확한 공포 장면 없이 지켜야 할 규칙들을 나열하고, 이를 어겼을 때의 위험을 암시하는 '규칙 괴담' 형식이 최근 Z세대 사이에서 인기 장르로 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Culture/article/all/20260821/134520168/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "제9회 경향뮤지컬콩쿠르 본선 개최",
+          "gist": "22일 서울 호원아트홀에서 제9회 경향뮤지컬콩쿠르 본선이 열렸으며, 대학·일반부 단체 참가자들이 뮤지컬 <스위니 토드> 등의 곡을 선보였습니다.",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608221818001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "제9회 경향뮤지컬콩쿠르 본선 안성훈 참가",
+          "gist": "22일 서울 호원아트홀에서 열린 제9회 경향뮤지컬콩쿠르 본선에서 대학·일반부 안성훈이 뮤지컬 <인터뷰>의 '맷의 이야기'를 가창했습니다.",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608221738001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "제9회 경향뮤지컬콩쿠르 본선 유재은 참가",
+          "gist": "22일 서울 호원아트홀에서 개최된 제9회 경향뮤지컬콩쿠르 본선에서 대학·일반부 유재은이 뮤지컬 <Six the Musical>의 'No Way'",
+          "source": "경향신문",
+          "link": "https://www.khan.co.kr/article/202608221732001/?utm_source=khan_rss&utm_medium=rss&utm_campaign=culture_news"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "전 봉은사 주지 명진스님, 제주 프리다이빙 중 사고로 입적",
+          "gist": "전 봉은사 주지 명진스님이 22일 제주 해상에서 프리다이빙을 하다 사고로 향년 76세에 입적했습니다. 명진스님은 과거 조계종 집행부 비판으로 승",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Society/article/all/20260822/134523662/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "한·일 양국 여행 트렌드, 소도시 및 취향 중심 경험으로 변화",
+          "gist": "비자(Visa)의 분석 결과, 한국인의 희망 여행지 1위는 일본(38.5%)으로 나타났으며, 일본인의 한국 방문 결제액 또한 골든위크 기간 전년",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260822/134523574/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "트럼프가 게시한 김정은 사진의 실체와 합성의 의미",
+          "gist": "트럼프 전 대통령이 SNS에 올린 김정은 위원장의 전화 통화 사진은 실제 장면을 바탕으로 했으나, 대화 내용 등이 가공된 이미지입니다. 많은 매",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Inter/article/all/20260822/134523104/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영화 '오디세이'로 보는 그리스 신화와 문학적 배경",
+          "gist": "영화 '오디세이'의 흥행과 함께 원작 서사시 '오디세이아'와 관련 지식을 살펴봅니다. 오디세우스의 주인공 오디세우스의 라틴어 이름인 '율리시스'",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/music/1274126.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영화 '팬텀 스레드'를 통해 본 사랑과 반복의 의미",
+          "gist": "영화 '팬텀 스레드' 속 인물들이 보여주는 강박과 반복적인 관계를 통해 사랑의 기이한 측면을 고찰합니다. 상대에게서 자신의 모습을 발견하고 동일",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/culture/book/1274125.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영화 '아폴로 13'이 전하는 상실 극복과 생존의 메시지",
+          "gist": "필자는 영화 '아폴로 13'을 통해 상실감을 극복하는 법을 배웠다고 고백합니다. 특히 실패를 거부하고 끝내 살아남아 돌아온 NASA 관제 센터 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/culture/2026/aug/22/the-film-apollo-13-taught-me-how-to-survive-heartbreak"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "인종 폭력의 공포를 그린 연극 '행 타임(Hang Time)' 리뷰",
+          "gist": "뉴욕 플리 극장에서 상연된 조라 하워드 작·연출의 '행 타임(Hang Time)'은 세 남자의 일상적인 대화를 통해 인종 폭력의 비극과 삶의 애",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/stage/2026/aug/22/hang-time-review-royal-lyceum-theatre-edinburgh"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "비틀즈 '애비 로드' 앨범 커버가 지닌 평범함과 특별함의 조화",
+          "gist": "비틀즈의 '애비 로드(Abbey Road)' 앨범 커버가 시대를 초월해 사랑받는 이유는 횡단보도를 건너는 평범한 모습과 비틀즈라는 아이콘의 카리",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/music/2026/aug/22/the-beatles-abbey-road-album-cover-zebra-crossing"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "개봉 40주년을 맞은 영화 '스탠 바이 미'의 성취와 가치",
+          "gist": "롭 라이너 감독의 성장 영화 '스탠 바이 미'가 개봉 40주년을 맞았습니다. 스티븐 킹의 중편 소설 '더 바디(The Body)를 원작으로 한 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/film/2026/aug/22/stand-by-me-40th-anniversary"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "코트니 뷔크너의 공연 '원 오브 더 걸즈' 리뷰: 우정과 사랑의 경계",
+          "gist": "코트니 뷔크너의 공연 '원 오브 더 걸즈(One of the Girls)'는 작가가 영국 이주 후 만난 친구 스텔라와의 복잡한 플라토닉 관계를 ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/stage/2026/aug/22/courtney-buchner-one-of-the-girls-review-pleasance-edinburgh"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "올가을 주목해야 할 주요 신간 도서 목록",
+          "gist": "말론 제임스, 콜름 토이빈 등 유명 작가들의 신작을 포함해 올가을 출간 예정인 주요 도서들이 소개되었습니다. 부커상 후보작과 유명 인사의 회고록",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/books/ng-interactive/2026/aug/22/new-autumn-fiction-nonfiction-marlon-james-emma-cline-michael-douglas-dustin-hoffman-judi-dench-yiyun-li"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "시각 매체에 잠식된 팟캐스트, 오디오만의 매력을 잃어가는가",
+          "gist": "팟캐스트가 청각 중심에서 시각 중심으로 빠르게 변화하며 '비디오 팟캐스트'가 주류가 되었습니다. 유튜브가 미국과 영국에서 주요 팟캐스트 플랫폼으",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/culture/2026/aug/21/what-we-lose-when-a-medium-built-for-the-ear-surrenders-to-the-camera"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "디아스포라 작가들이 이끄는 새로운 자연 시 운동",
+          "gist": "영국 내 흑인 및 아시아계 디아스포라 작가들이 기후 위기와 생물 다양성 감소를 배경으로 기존의 주류 자연 시 전통에 도전하고 있습니다. 앤솔러지",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/books/2026/aug/22/nature-matters-eco-poetry"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이번 주 주목할 만한 영화 및 공연 가이드",
+          "gist": "제인 숀브런의 퀴어 호러 영화 '틴에이지 섹스 앤 데스 앳 캠프 미아즈마(Teenage Sex and Death at Camp Miasma)'를",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/culture/2026/aug/22/entertainment-guide-week-ahead-teenage-sex-death-tyler-creator-fightland-cinema-theatre-art-music"
         }
       ]
     },
     "it": {
-      "article_count": 603,
+      "article_count": 635,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -25875,11 +26978,235 @@
           "gist": "UC 버클리의 한 수학 교수가 학생들의 수학 기초 능력 부족을 지적하는 기고문을 작성하며 AI를 이용해 편집했다는 사실을 인정했습니다. 해당 교",
           "source": "The Guardian",
           "link": "https://www.theguardian.com/us-news/2026/aug/19/uc-berkeley-professor-ai"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "앤트로픽, 구글 TPU 전문가 영입하며 AI 칩 자체 개발 속도",
+          "gist": "AI 모델 '클로드' 개발사인 앤트로픽이 구글의 TPU(텐서처리장치) 개발을 주도했던 아미르 살렉을 영입했습니다. 앤트로픽은 증가하는 연산 수요",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260822000034"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "GIST-삼성-MIT 연구팀, 루테늄 기반 반도체 배선 저항 45% 감소 성공",
+          "gist": "GIST, 삼성전자, MIT 공동 연구팀이 루테늄(Ru)에 미량의 탄소를 첨가해 차세대 반도체 초미세 배선의 전기저항을 최대 45% 낮추는 기술",
+          "source": "ZDNet Korea",
+          "link": "https://zdnet.co.kr/view/?no=20260822214044"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "앤트로픽, 기업가치 2조 달러 목표로 역대 최대 규모 상장 추진",
+          "gist": "AI 기업 앤트로픽이 최대 2조 달러의 기업가치를 목표로 기업공개(IPO)를 준비하고 있습니다. 1,000억 달러 이상의 자금 조달을 논의 중이",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260822000033"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "테슬라, 중국 내 차량 298만 대 대규모 리콜 실시",
+          "gist": "테슬라가 중국에서 비상시 도어 개방이 어려울 수 있다는 안전 우려로 인해 모델 3, Y, S, X 등 298만 대를 리콜합니다. 충돌 후 전원 ",
+          "source": "ZDNet Korea",
+          "link": "https://zdnet.co.kr/view/?no=20260822165253"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "오피뉴로, 초저전력 뉴로모픽 AI 반도체 개발 추진",
+          "gist": "AI 반도체 스타트업 오피뉴로가 전력 소모와 메모리 병목 현상을 개선한 뉴로모픽 칩을 개발하고 있습니다. SNN 기술을 적용한 'N260' 시리",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260821000149"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "LG전자, 레이저 직접 묘화 기술로 AI 칩 패키징 사업 진출",
+          "gist": "LG전자가 '레이저 직접 묘화' 장비를 활용해 AI 칩 패키징 시장에 진출하며 TSMC의 병목 현상을 해결하려 합니다.",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQS1RyOXFoX1JFZ21aYnllVENhUWF3OEsxa0w2MGdIOW5vRDNSSTQ5dGh1TDQ5WUx6Y0FNN21MSHJ4Wm1pdmFLaTZJeFZ0NTRHNDFtd0NJTXVnTVg1ZHB4MjZITk50NEpCdmE5ZW1xZDNXUXhPY3JrWmJPLWNFVTZacFhncGlpcHZR?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "삼성전자, 반도체 배선 저항 45% 낮춘 신기술 세계 최초 구현",
+          "gist": "삼성전자가 GIST와 협력하여 반도체 내부 초미세 배선의 저항을 약 45% 감소시키는 기술을 세계 최초로 개발했습니다.",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/202608215737i"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "엘리스그룹, 코스닥 상장 추진 및 공모가 공개",
+          "gist": "AI 클라우드 및 AX(AI 전환) 솔루션 기업 엘리스그룹이 코스닥 상장을 위해 증권신고서를 제출했습니다. 희망 공모가는 7만 400원에서 9만",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260821000292"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "한국연구재단 뇌·첨단의공학단장에 한백수 생명연 책임연구원 선임",
+          "gist": "한백수 한국생명공학연구원 센터장이 한국연구재단(NRF) 국가전략연구본부 뇌·첨단의공학단장에 임명되었습니다. 한 신임 단장은 향후 2년간 관련 분",
+          "source": "ZDNet Korea",
+          "link": "https://zdnet.co.kr/view/?no=20260822202837"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "콜 오브 듀티: 모던 워페어 4, 한국 배경 맵 포함해 베타 테스트 실시",
+          "gist": "액티비전이 10월 23일 출시 예정인 '콜 오브 듀티: 모던 워페어 4'의 베타 테스트를 22일부터 시작했습니다. 이번 베타에는 한국의 쇼핑 지",
+          "source": "ZDNet Korea",
+          "link": "https://zdnet.co.kr/view/?no=20260822132915"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "줌라이언, 2026 세계로봇대회서 산업용 체화된 지능 기술 공개",
+          "gist": "줌라이언이 2026 세계로봇대회(WRC)에서 휴머노이드 및 4족 보행 로봇과 함께 체화된 지능(embodied intelligence) 기술을 ",
+          "source": "ZDNet Korea",
+          "link": "https://zdnet.co.kr/view/?no=20260822171002"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "엔비디아, 또다시 역대 최대 실적 달성 전망",
+          "gist": "엔비디아가 다시 한번 사상 최대 실적을 기록할 것으로 예상됩니다.",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1IT3Zuc1I5TWx1eHdBQlBWM1hxeWEzaWpmM0Y0UUhYZGszUW4wZkpIX0VBYW9ySkF1Ui1JYU9UTGhTUEZrOExMbHQ3QU1VQ3c?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "갤럭시 신제품 공세에 스마트폰 시장 판도 변화",
+          "gist": "삼성 갤럭시 신제품 출시로 인해 스마트폰 시장의 경쟁 구도가 변화하고 있습니다.",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1IeUhTSG1kMnRJc0VJQWNpLW90MkhOR1ZQajllajhwOTRadEdLdktmWTA4TFBqWXF0OVYtTFJsZkJwVXItby1wbml1VzZQQUFEa1Bz?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이통 3사, AI 데이터센터 등 신사업으로 실적 견인",
+          "gist": "국내 이동통신 3사가 올해 2분기 실적에서 AI 데이터센터(AIDC)와 클라우드 등 AI 관련 신사업의 성장세를 보였습니다. 특히 LG유플러스는",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/202608214323g"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "e심 이용객 증가로 인한 통신사 로밍 수익 감소 우려",
+          "gist": "여행객들의 e심(eSIM) 사용이 급증하면서 통신사들의 주요 수익원인 로밍 매출에 부정적인 영향이 예상됩니다.",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNRkx5V1Q3TlVnNU1QeG5lc0lQbW95dllNZEFMakFHc0JLbkQwUHVEenZKT3l5bkRVOXJjT3ZqVGgybFdqczl5OW5qcG1rN1dBU01hVFV2UEhRVHlPSUpCOU9nWkFxVG5SUDV0S284QTAtWUZOaGJjN3ZiTDNrMHNFdUxFVQ?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "수원시, AI 기반의 지능형 생활 행정 서비스 도입",
+          "gist": "수원특례시가 도로 포트홀 자동 탐지, 효원공원 자율순찰로봇, 생성형 AI 챗봇 '새빛봇' 등 행정 전반에 AI를 도입합니다. 또한 AI 예측 모",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260822000022"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "펄어비스, 신작 공백기 우려에 주가 하락",
+          "gist": "펄어비스가 '붉은사막'의 누적 판매량 600만 장 돌파에도 불구하고, 판매 속도 둔화와 차기작 '도깨비' 출시 전까지의 공백기에 대한 우려로 주",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/202608214115i"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "카카오, 카카오X의 지주사 전환 계획 부인",
+          "gist": "카카오는 카카오X의 지주사 전환 계획이 전혀 없으며, 김범수 창업자가 대주주 역할을 계속 수행할 것이라고 밝혔습니다.",
+          "source": "한국경제",
+          "link": "https://www.hankyung.com/article/2026082148757"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미 법무부의 a16z 조사, 벤처캐피털 업계에 미칠 영향",
+          "gist": "미 법무부(DOJ)가 경쟁 관계에 있는 AI 기업들의 이사회 자리를 동시에 보유한 벤처캐피털 안드레센 호로위츠(a16z)를 조사 중이라는 소식에",
+          "source": "TechCrunch",
+          "link": "https://techcrunch.com/2026/08/22/will-the-dojs-investigation-into-a16z-spook-other-vcs/"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "딥마인드 출신 설립 '인헤런트', 연구 재현 능력 갖춘 AI 에이전트 공개",
+          "gist": "구글 딥마인드 출신들이 설립한 런던의 AI 스타트업 인헤런트(Inherent)가 과학 논문의 결과를 독립적으로 재현하는 AI 에이전트 '패러데이",
+          "source": "TechCrunch",
+          "link": "https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "OpenAI, 캘리포니아 AI 안전 법안의 강화된 보호 조치 제안",
+          "gist": "OpenAI가 캘리포니아주의 AI 안전 법안(SB 53)에 더 강력한 안전장치를 추가할 것을 요청했습니다. 특히 훈련 및 평가 단계의 프런티어 ",
+          "source": "TechCrunch",
+          "link": "https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "주요 AI 연구소들, 통제 불능 모델에 대한 대응 계획 미흡",
+          "gist": "가이드라이트 AI 스탠다즈(Guidelight AI Standards)의 조사 결과, 주요 AI 연구소들이 통제에서 벗어난 '로그 모델(rogu",
+          "source": "TechCrunch",
+          "link": "https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "메타의 아동 대상 중독적 설계 및 데이터 수집 혐의 재판 시작",
+          "gist": "메타가 아동을 중독시키는 제품을 설계하고 13세 미만 아동의 데이터를 무단 수집했다는 혐의로 29개 미국 주 정부와 법적 공방을 벌이고 있습니다",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/technology/2026/aug/22/meta-trial-children-privacy"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "앤스로픽, 기업공개(IPO) 통해 최대 1,000억 달러 조달 가능성",
+          "gist": "AI 스타트업 앤스로픽(Anthropic)이 기업공개(IPO)를 통해 최대 1,000억 달러를 조달할 가능성이 제기되었습니다. 주관사들은 잠재적",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/technology/anthropic-ipo-100-billion.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국, 2030년까지 연간 1,000회 이상 발사 목표로 우주 운송 정책 개편",
+          "gist": "도널드 트럼프 대통령이 서명한 새로운 국가 우주 운송 정책에 따라, 2030년까지 연간 1,000회 이상의 발사와 재진입을 지원하기 위한 연방 ",
+          "source": "Ars Technica",
+          "link": "https://arstechnica.com/space/2026/08/trump-admin-calls-for-more-spaceports-to-handle-surge-in-launches/"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "틱톡, 아동 개인정보 보호 위반 관련 미국 정부와 4억 달러에 합의",
+          "gist": "틱톡이 아동의 개인정보를 불법적으로 수집했다는 혐의로 제기된 미국 법무부의 소송에 대해 4억 달러 규모의 합의금을 지급하며 사건을 해결했습니다.",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/technology/tiktok-settlement-justice-department.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "틱톡, 아동 개인정보 보호 위반으로 미국에 4억 달러 지급 합의",
+          "gist": "틱톡이 13세 미만 아동의 방대한 데이터를 무단 수집해 아동 온라인 개인정보 보호법(COPPA)을 위반했다는 혐의로 미국 정부에 4억 달러(약 ",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cwyr0l45xjro?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "디지털 피로감 해소하는 '초저속 메시징' 앱의 유행",
+          "gist": "끊임없는 알림에 지친 사용자들이 전서구(carrier pigeon)처럼 매우 느린 속도로 메시지를 전송하는 앱을 통해 느린 삶의 속도를 즐기고 ",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/technology/carrier-pigeon-app-texting-technology.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "베이징 로봇 컨퍼런스에서 주목받은 로봇 말과 기수",
+          "gist": "중국 베이징에서 열린 5일간의 로봇 공학 행사에서 로봇 말과 기수 모델이 큰 관심을 끌었습니다. 이번 행사에는 300개 이상의 기업이 참여하여 ",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/videos/cy4k4d3lj21o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "안드로이드 스마트폰에서 업무용 프로필 분리하여 사용하는 방법",
+          "gist": "안드로이드의 다중 프로필 기능을 활용해 하나의 기기에서 업무용과 개인용 환경을 완전히 분리할 수 있습니다. 구글 계정을 기반으로 앱, 알림, 파",
+          "source": "WIRED",
+          "link": "https://www.wired.com/story/set-up-a-separate-work-profile-on-your-android-phone/"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "할리우드 창작자들, 생계 위해 AI 학습 돕는 역설적 상황",
+          "gist": "일자리 감소로 어려움을 겪는 할리우드의 작가, 감독, 프로듀서들이 자신의 전문 기술을 AI 모델에 학습시키는 단기 일자리에 투입되고 있습니다. ",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/technology/2026/aug/22/the-hollywood-creatives-training-ai-to-do-their-jobs"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "감시 카메라의 확산과 개인정보 보호에 대한 사회적 갈등",
+          "gist": "미국 내에서 감시 카메라 설치에 대한 거부감과 실제 이용 사이의 모순적인 태도가 나타나고 있습니다. 시민들은 사생활 침해를 우려하면서도, 동시에",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/magazine/flock-cameras-surveillance-state.html"
         }
       ]
     },
     "science": {
-      "article_count": 505,
+      "article_count": 539,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -29415,11 +30742,249 @@
           "gist": "다크스카이 인터내셔널(DarkSky International)이 주최한 제6회 야간 사진 공모전 '캡처 더 다크 2026'의 수상작들이 선정되었",
           "source": "The Guardian",
           "link": "https://www.theguardian.com/artanddesign/gallery/2026/aug/20/capture-the-dark-2026-winning-photographs"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "출연연 및 과기원 연구자의 창업 기업 지분 보유 가능해져",
+          "gist": "정부출연연구기관법과 과기원법 개정안이 국회 본회의를 통과함에 따라, 연구자들이 창업 기업의 지분을 보유할 수 있게 되었습니다. 과학기술출연기관장",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260821000270"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "뷰웍스, AI 탑재 디지털 병리 스캐너로 자동화 시장 공략",
+          "gist": "뷰웍스가 AI 기술을 적용한 디지털 병리 슬라이드 스캐너 '비스큐 DPS(VISQUE DPS)'를 공개했습니다. 딥러닝 기반 AI로 비조직 영역",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260821000194"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "지상 최대 태양 망원경, 태양 표면의 미세 플라스마 소용돌이 최초 포착",
+          "gist": "미국과 독일 공동연구진이 다니엘 K. 이노우에 태양 망원경(DKIST)을 통해 태양 표면에서 미세한 플라스마 소용돌이를 처음으로 발견했습니다. ",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/science/science_general/1272890.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "만성콩팥병 위험 요인, 나트륨보다 '과일 섭취 부족'이 더 큰 영향",
+          "gist": "경희대 의대 연구팀이 204개 국가의 자료를 분석한 결과, 만성콩팥병의 질병 부담(DALY)과 가장 밀접한 식생활 위험 요인은 과일 섭취 부족인",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260822000031"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "“에어팟에 카메라 탑재…사생활 침해 우려?” 관련 영상 유출",
+          "gist": "애플이 카메라를 탑재한 새로운 에어팟을 개발하고 있는 가운데, 최근 관련 영상이 유출된 것으로 확인됐다. 사생활 침해를 우려하는 목소리가 나오고",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Inter/article/all/20260822/134523787/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "체중 4.5kg 감량 시 무릎 관절 부담 18kg 감소 효과",
+          "gist": "과체중인 사람이 체중을 약 4.5kg 줄이면 보행 시 무릎에 가해지는 하중이 약 18kg 정도 줄어들 수 있어, 무릎 골관절염 관리에 체중 조절",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260821/134519154/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "데오드란트와 땀 분비 억제제, 목적과 사용법 엄연히 달라",
+          "gist": "식품의약품안전처는 땀 냄새를 가려주는 화장품인 데오드란트와 땀샘을 일시적으로 막아 배출을 줄이는 의약외품/의약품인 땀 분비 억제제를 구분해 사용",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260822/134523740/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "Z세대 70%, 생성형 AI에 개인적 고민 상담하는 것으로 나타나",
+          "gist": "진학사 캐치가 Z세대 구직자 1,110명을 조사한 결과, 응답자의 70%가 생성형 AI에 속마음이나 고민을 털어놓은 적이 있다고 답했습니다. 특",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Society/article/all/20260822/134523690/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "애플 맥용 챗GPT, 메시지 앱 연동으로 'AI 에이전트' 기능 강화",
+          "gist": "오픈AI가 맥용 챗GPT 데스크톱 앱에 '애플 메시지(Apple Messages)' 플러그인을 추가했습니다. 이를 통해 AI가 사용자의 아이메시",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Economy/article/all/20260822/134523579/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "중국, 고령층 돌봄 위한 다기능 간병 로봇 도입 확산",
+          "gist": "중국에서 노인의 배설 처리, 보행 및 가사 지원을 돕는 로봇과 요양보호사의 신체 부담을 줄여주는 보조 로봇, 정서적 교감을 위한 말벗 로봇 등 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260821/134497098/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "보건복지부, APEC 회의서 AI 의료 혁신 및 고령화 대응 전략 주도",
+          "gist": "보건복지부가 중국 다롄에서 열리는 APEC 보건실무그룹 회의에 참석해 디지털 및 AI 기반 의료 혁신과 건강한 고령화 전략을 논의합니다. 한국은",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260822000026"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "경기도, 바이오 기업 투자 및 협력 위한 'G-BIO Week 2026' 개최",
+          "gist": "경기도와 경기도경제과학진흥원이 9월 16~17일 수원에서 'G-BIO Week 2026'을 개최합니다. 이번 행사에서는 AI 기반 K-바이오의 ",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260822000025"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "AI의 허구적 답변 생성 문제: 자칭 전문가를 그대로 인용하는 사례",
+          "gist": "한 마케팅 전문가가 링크드인 프로필에 자신을 '세계적인 AI 가시성 전문가'라고 허위로 기재하자, 구글 AI(Google Overview)가 이",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260821/134505911/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "전통 의약품 '용각산'의 세대 확장과 브랜드 성장",
+          "gist": "1967년 출시된 진해거담제 용각산이 최근 2030 세대를 겨냥한 다양한 향과 제형을 선보이며 연 매출 200억 원 이상의 브랜드로 성장했습니다",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/It/article/all/20260822/134523402/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "야간 다리 경련, 영양제보다 취침 전 스트레칭이 효과적",
+          "gist": "밤마다 발생하는 종아리 경련은 단순한 마그네슘 부족보다는 신경 과활성화나 노화, 장시간 기립 등이 원인일 수 있습니다. 연구에 따르면 고령층의 ",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260821000276"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "엔젠바이오, GLP-1 비만치료제 맞춤형 반응 및 부작용 예측 검사 개발",
+          "gist": "엔젠바이오가 GLP-1 계열 비만치료제의 효과와 부작용을 예측하는 맞춤형 솔루션 개발에 착수했습니다. 투약 전에는 유전정보를 분석해 약물 반응과",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260821000199"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "시지메드텍, 의료기기 사업 성장으로 상반기 매출 177억 원 달성",
+          "gist": "정형·치과 임플란트 기업 시지메드텍이 올해 상반기 별도 기준 매출 177억 2,000만 원을 기록하며 전년 대비 35.1% 성장했습니다. 척추 ",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260821000198"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "식약처-WHO, 아시아·태평양 지역 바이오시밀러 규제 조화 논의",
+          "gist": "식품의약품안전처와 WHO가 서울에서 '바이오시밀러 평가 가이드라인 이행 워크숍'을 공동 개최합니다. 아태 지역 규제기관과 전문가들이 모여 WHO",
+          "source": "전자신문",
+          "link": "https://www.etnews.com/20260821000195"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "다국어 구사자의 뇌 연령, 최대 13년 더 젊을 가능성",
+          "gist": "유럽 신경과학 연맹(Federation of European Neuroscience Societies)에 따르면, 여러 언어를 사용하는 사람들의",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260821012226.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "빛과 소리의 상호작용을 1,000배 강화한 냉동 광섬유 개발",
+          "gist": "광섬유의 액체 코어를 얼려 빛과 소리의 상호작용을 일반 섬유보다 1,000배 이상 강화하는 데 성공했습니다. 이를 통해 광음향 메모리(optoa",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260821012228.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "제임스 웹 우주 망원경, 초기 은하 초기 형성 이론에 의문 제기하는 거대 은하 발견",
+          "gist": "제임스 웹 우주 망원경(JWST) 관측 결과, 초기 은하들이 예상보다 훨씬 많은 수의 작고 희미한 별들을 포함하고 있음이 밝혀졌습니다. 이로 인",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260822015141.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "췌장암 수술 후 생존율과 치아 개수의 상관관계 확인",
+          "gist": "췌장암 환자 339명을 대상으로 한 연구 결과, 자연 치아가 21개 이상인 환자가 그렇지 않은 환자보다 수술 후 생존 기간이 약 2년 더 길게 ",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260821012218.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영구동토층 해빙 가속화에 따른 기후 임계점 경고",
+          "gist": "스톡홀름 대학교의 구스타프 후겔리우스(Gustaf Hugelius) 교수는 폭염과 산불이 영구동토층의 해빙을 촉진해 메탄과 탄소 배출을 가속화할",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/environment/2026/aug/20/tipping-points-heatwaves-wildfires-permafrost-climate-crisis"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 국립과학재단(NSF), 40년 만에 최저 수준의 신규 연구비 지원 전망",
+          "gist": "미국 국립과학재단(NSF)의 이번 회계연도 신규 연구 보조금 지급 건수가 전년 대비 약 30% 감소하며 40년 만에 최저치를 기록할 것으로 보입",
+          "source": "Nature",
+          "link": "https://www.nature.com/articles/d41586-026-02574-6"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "AI를 활용한 정자 발견 및 바이러스 생성, 기후 변화로 인한 나비 서식지 이동",
+          "gist": "인공지능(AI)이 극소량의 정자를 식별해 남성의 생물학적 자녀 출산을 도울 가능성이 제기되었습니다. 또한 AI가 DNA 라이브러리를 학습해 16",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/quiz/2026/08/21/science/21sciencequiz-gamma-ray.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "페퍼민트 오일의 경미한 고혈압 완화 효과 확인",
+          "gist": "페퍼민트 오일이 경미한 고혈압 환자의 혈압을 낮추는 데 도움이 될 수 있다는 연구 결과가 나왔습니다. 20일 동안 소량의 오일을 하루 두 번 섭",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260821012238.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "운동, 체중 감량보다 유지에 더 효과적",
+          "gist": "운동이 단독으로 체중을 줄이는 강력한 도구는 아닐 수 있지만, 감량한 체중을 유지하는 데는 매우 중요한 역할을 합니다. 근육 보존과 신진대사 지",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260821012240.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "웨일스 토르펜 지역, 산불로 인한 탄소 배출 세계적 핫스팟 기록",
+          "gist": "지난 7월 웨일스 토르펜(Torfaen) 지역의 산불로 인해 단위 면적당 탄소 배출량이 세계 최고 수준을 기록했습니다. 유럽연합의 코페르니쿠스(",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cp9e9rg255vo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "효모 보충제가 암세포 대응 면역력 강화에 도움 줄 가능성 확인",
+          "gist": "쥐를 대상으로 한 연구에서 효모 기반의 식품 보충제가 암과 싸우는 면역 체계의 회복을 도울 수 있다는 결과가 나왔습니다. 특히 효모 베타글루칸이",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260821012230.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 최대 규모의 '데드존(Dead Zone)' 지도 제작",
+          "gist": "미국 멕시코만 연안 해역에서 산소 농도가 주기적으로 급감하며 해양 생태계가 파괴되는 이른바 '데드존(Dead Zone)' 현상이 수십 년째 지속",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/science/gulf-coast-hypoxia-fish.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "여왕벌의 살충제 생존 방식에 관한 연구",
+          "gist": "캘리포니아 대학교 데이비스 캠퍼스(UC Davis) 연구팀이 여왕벌이 살충제로부터 살아남는 특이한 방식에 대해 연구한 내용을 발표했습니다.",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260821012224.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "에어컨 없이 더위를 이기는 '패시브하우스' 건축 사례",
+          "gist": "영국 런던의 한 1960년대 주택이 '패시브하우스(Passivhaus)' 표준을 적용해 에어컨 없이도 외부보다 10도 낮은 실내 온도를 유지하고",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cg5l3z7p922o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "2,200년 전 로마 난파선에서 고대 방수 기술 발견",
+          "gist": "약 2,200년 전의 로마 시대 난파선 조사를 통해 당시 사용되었던 고대의 방수 처리 기법이 밝혀졌습니다.",
+          "source": "ScienceDaily",
+          "link": "https://www.sciencedaily.com/releases/2026/08/260820202907.htm"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영국, 주말부터 고기압 영향으로 맑은 날씨 회복 전망",
+          "gist": "영국에 고기압이 형성되면서 주말부터 비가 그치고 맑은 날씨가 찾아올 예정입니다. 금요일까지는 일부 지역에 강한 소나기와 천둥번개가 예상되나, 이",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/weather/articles/c2el98pkd3po?at_medium=RSS&at_campaign=rss"
         }
       ]
     },
     "world": {
-      "article_count": 663,
+      "article_count": 703,
       "headlines": [
         {
           "date": "2026-08-01",
@@ -34061,9 +35626,289 @@
           "gist": "최근 여론조사에 따르면 영국 대중은 해리 왕자와 메건 마클 부부에 대해 대체로 부정적인 인식을 가지고 있으며, 특히 윌리엄 왕세자와 케이트 왕세",
           "source": "New York Times",
           "link": "https://www.nytimes.com/2026/08/21/world/europe/harry-meghan-royal-return-public-opinion.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국과 캐나다, 무역 협상 결렬로 관세 전쟁 돌입",
+          "gist": "미국과 캐나다의 무역 협상이 최종 결렬되면서 갈등이 심화되고 있습니다. 미국은 약 200억 달러 규모의 캐나다산 제품에 50% 관세를 부과했으며",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260823014539TAr"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "캐나다, 미국산 철강 및 낙농품에 보복 관세 부과",
+          "gist": "미국과의 무역 협상 결렬에 따라 캐나다가 다음 달 8일부터 철강, 낙농품, 종이 등 미국산 제품에 대해 보복 관세를 부과하며 맞대응에 나섰습니다",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9Wdnh0emJGNnYtY1lsWVZNS29SX0sxTzYtVFZuUGE3UXlhT3BJQzZJQi03aGRnX3hHaEZBdnZQSjA5djJTb2J6WGw2Nl9ZcHUxbDhEMEV2bndWUzDSAWBBVV95cUxNSjhIaTN4N1d3bGtTNS1XN0RlLXB6UG5XT1VwcTZzQ0pXRU9HREVpTG1kMW9kc05LVkxNY3ZqbFhVTU5EM2w5akZ3aDBCemNUc01KNWFVOHBUel9iaXU0d2Y?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "러시아-우크라이나 상호 공습 격화로 민간인 피해 및 경제 시설 타격",
+          "gist": "우크라이나의 드론 공격으로 러시아의 주요 온라인 쇼핑몰 물류센터가 타격을 입어 운영이 중단되었습니다. 이에 푸틴 대통령은 경제 공격에 대해 파괴",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNdnZPWHpEdzdYU2g1VVh2dDBaTWI3U0o3czM1WmdBMUdhdnVwVEJ6M3ZUeDNlamFwVENnZklNeFhLRmF2RGZsalRQWUY0LTFkRUNkWXZkTUhwNWZTN2dhdnpJZUttbl8xakpGRWU1UEdTa21lVHpwOXBCUU9kTjk2QnVOTW9XR19lWXl4cFc5ZEZXa1h3TGxRZ1ppQ3VCd9IBsgFBVV95cUxQVVFUMzNwYVBvb3FhaEhjNEwzYV9nOS1LYWpKNGFZby1XbHE2QzNSNzlYMzdGQ2p3ZnFlTUdnRE1HaTUwRG9UYUVBS0lkdWVQM1NVb2xCaHJXRjFpTmtZWmVyT2NRa0laZUhxWHFzWkItVFdLZ0xnWnJiVWQ1MUoxMS1pXzRWRE1fdkFjd0YyNkVoYUltQkhOaWJBa0VjLWtreDVPR0R4a0NhX0xmcHVZenln?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국과 캐나다 무역 협상 결렬로 고율 관세 부과",
+          "gist": "미국과 캐나다의 무역 협상이 최종 타결되지 못하면서 일부 캐나다산 수입품에 최대 50%의 관세가 적용되었습니다. 이에 마크 카니 캐나다 총리가 ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/MYH20260822213901cC6"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "러시아-우크라이나 상호 공습으로 민간인 사망자 발생",
+          "gist": "러시아와 우크라이나가 서로의 영토에 미사일과 드론 공격을 가해 최소 5명이 사망했습니다. 러시아는 키이우의 철도 시설 등을 타격했으며, 우크라이",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Inter/article/all/20260822/134523845/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국의 초강력 경제 제재 예고에 이란 '불법 경제전쟁'이라며 반발",
+          "gist": "미국이 이란을 상대로 역사상 최대 규모의 경제적 고립을 추진하겠다고 밝히자, 이란 외무부는 이를 유엔 회원국의 주권을 침해하는 불법적인 '경제전",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Inter/article/all/20260822/134523823/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "경제 위기 직면한 이란 지도부, 종전 필요성 강조",
+          "gist": "6개월간의 전쟁과 미국의 제재로 경제난이 심화되자 이란 지도부 내에서 종전 목소리가 나오고 있습니다. 페제시키안 대통령과 갈리바프 의회 의장은 ",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Inter/article/all/20260822/134523793/1"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국과 캐나다 무역 협상 결렬로 관세 전쟁 위기",
+          "gist": "미국과 캐나다의 무역 협상이 최종 타결에 실패하며 갈등이 심화되었습니다. 미국은 캐나다산 수입품에 50%의 관세를 부과했으며, 이에 캐나다 마크",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/america/1274134.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미 법원, 75개국 대상 이민 비자 중단 조치에 제동",
+          "gist": "미 연방법원이 75개국에 대한 이민 비자 발급을 중단한 트럼프 행정부의 조치가 법률에 위배된다고 판결했습니다. 법원은 재정적 부담이라는 행정부의",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/america/1274132.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "우크라이나, 러시아 파병 북한군 규모 및 무기 지원 현황 분석",
+          "gist": "우크라이나 정보 당국은 현재 약 8,500명의 북한군이 러시아 쿠르스크 지역에 배치되었으며, 드론 운용병과 공병 등이 포함되었다고 밝혔습니다. ",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1274129.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "코트라, 남아공에서 한국 소비재 홍보 행사 개최",
+          "gist": "코트라 아프리카지역본부가 남아프리카공화국 요하네스버그의 샌턴시티 쇼핑몰에서 한국 소비재 종합홍보행사인 '서울 인 샌턴'을 열어 현지 시민들에게 ",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260822045100099"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 열차 변기에 빠진 120년 전 결혼반지 극적 회수",
+          "gist": "미국 뉴저지에서 한 여성이 열차 화장실 변기에 실수로 빠뜨린 1905년경 제작된 골동품 결혼반지를 한 달 만에 되찾았습니다. 철도 운영사인 NJ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260821171511AYV"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "네덜란드 여성 옷장에서 발견된 뱀, 알고 보니 이웃집 반려동물",
+          "gist": "네덜란드 블레릭의 한 여성이 침실 옷장에서 뱀을 발견해 경찰이 출동했으나, 조사 결과 이웃집 테라리움에서 탈출한 어린 그물무늬비단뱀으로 밝혀져 ",
+          "source": "연합뉴스TV",
+          "link": "https://www.yonhapnewstv.co.kr/news/AKR20260820171914M4G"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국, 중국 다롄 APEC 회의 참석해 자국 기업 기회 모색",
+          "gist": "미국 국무부는 중국 다롄에서 열리는 APEC 고위관리 회의에 대표단을 파견합니다. 농업, 에너지, 보건 등 다양한 분야에서 미국 기업의 사업 기",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260823002100071"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "마약 카르텔 연루 혐의 멕시코 주지사, 무혐의 주장하며 업무 복귀",
+          "gist": "미국 정부에 의해 마약 밀매 혐의로 기소되어 직무가 정지됐던 루벤 로차 모야 멕시코 시날로아주지사가 멕시코 검찰의 무혐의 처분을 근거로 업무에 ",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260823002000087"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 드라마 '브이' 출연 배우 마이클 라이트 별세",
+          "gist": "1980년대 SF 시리즈 '브이(V)'에서 일라이어스 테일러 역을 맡았던 배우 마이클 라이트가 심부전과 퇴행성 신경질환 합병증으로 향년 70세로",
+          "source": "연합뉴스",
+          "link": "https://www.yna.co.kr/view/AKR20260823001600075"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "일본의 역대 최대 방위비 편성 추진에 북한 강력 비난",
+          "gist": "일본 정부가 사상 처음으로 130조 엔을 돌파할 것으로 예상되는 역대 최대 규모의 방위비를 편성하려 하자, 북한은 이를 침략 전쟁을 준비하는 행",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE0yZE1leHh3Z194MHoxcEVWZmpTUFp2emx6azJTalM3R0E4am1JTGhBNTR6QzY1dmgyNTF0TXBlcHpzNnk1ODc2SFByV3d5XzRNSVA3cVRDaE5hNnlLTDVBMnZpYVJyMFUw?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "페루 지역 규모 8.8 강진 발생 가능성 제기",
+          "gist": "불의 고리에 축적된 에너지 중 20%만 방출된 상태여서 페루에 규모 8.8의 대지진이 발생할 수 있다는 분석이 나왔습니다.",
+          "source": "구글 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9IbVp2UWlJbmVGam1TUDlHZldoZEo2S3FwVmJjOS1OeE5pYUNOTVN0U1hqbHJtNjhfTU5nbGs4ekZTcjBZTXgtQkNhcHhSSHp1Snc?oc=5"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "뺑소니 혐의 및 결혼 이력 논란으로 미국 미인대회 우승자 자격 박탈",
+          "gist": "2026 미스 그랜드 USA 우승자인 메킬라 리가 왕관을 쓴 지 일주일 만에 자격을 박탈당했습니다. 주최 측은 계약 정책 위반을 이유로 들었으며",
+          "source": "동아일보",
+          "link": "https://www.donga.com/news/Inter/article/all/20260822/134523807/2"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "FIFA, 월드컵 결승전 난투극 아르헨티나 선수들에게 중징계 부과",
+          "gist": "국제축구연맹(FIFA)은 2026 월드컵 결승전 후 스페인 선수들을 폭행한 아르헨티나의 레안드로 파레데스에게 10경기 출전 정지와 벌금 9만 달",
+          "source": "한겨레",
+          "link": "https://www.hani.co.kr/arti/international/international_general/1274128.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미 우체국, 법원 판결에도 불구하고 우편 투표 제한 규정 초안 공개",
+          "gist": "미국 우체국(USPS)이 도널드 트럼프 대통령 하에서 우편 투표 사용을 제한하는 규정 초안을 발표했습니다. 현재 법원에 의해 제동이 걸린 상태지",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/news/2026/8/22/us-postal-service-shares-mail-in-ballot-restrictions-despite-court-ruling?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "캐나다-미국 무역 협상 결렬과 관세 전쟁 돌입",
+          "gist": "미국과 캐나다의 무역 협상이 결렬되면서 캐나다에 대한 미국의 새로운 관세가 부과되었습니다. 마크 카니 캐나다 총리는 이를 '판단 착오(misca",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cx272np7vgyo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "캐나다 총리, 트럼프 행정부의 무역 협상 결렬 후 정면 돌파 선택",
+          "gist": "마크 캐니(Mark Carney 캐나다 총리가 도널드 트럼프 미국 대통령과의 무역 협상을 중단하고 보복 조치를 결정했습니다. 캐니 총리는 미국이",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c3040pn8lmmo?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이스라엘의 서안지구 불법 정착촌 확대 배경과 갈등",
+          "gist": "베냐민 네타냐후 정부가 팔레스타인 국가 건설을 저지하기 위해 서안지구 내 불법 정착촌 확대를 가속화하고 있습니다. 최근 1,200가구 규모의 주",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/video/inside-story/2026/8/22/why-is-israel-building-new-illegal-settlements?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "가자지구 내 이스라엘 공격으로 민간인 사상자 발생",
+          "gist": "최근 48시간 동안 이스라엘의 가자지구 공격으로 최소 2명의 팔레스타인인이 사망하고 여러 명이 부상을 입었습니다. 특히 데이르 알-발라 지역에서",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/news/2026/8/22/israeli-strikes-kill-two-and-injure-others-as-gaza-attacks-continue?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "푸틴, 우크라이나 평화 제안 거부 및 경제적 위협",
+          "gist": "블라디미르 푸틴 러시아 대통령이 우크라이나의 평화 제안을 거부하며, 우크라이나의 가장 취약한 경제 부문을 겨냥해 위협을 가했습니다. 푸틴 대통령",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/8/22/08-22-26-putin-ukraine-talks-clip?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미군 신문 편집장, 해고 후 검열 가능성 우려 표명",
+          "gist": "미 국방부(DoD)가 '항명'을 이유로 미군 신문 '스타즈 앤 스트라이프스(Stars and Stripes)'의 편집장 에릭 슬래빈과 기자, 발",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cm2g23ng8p4o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국-캐나다 무역 협상 결렬로 관세 전쟁 심화",
+          "gist": "트럼프 행정부의 새로운 관세 부과를 막기 위한 미국과 캐나다의 협상이 마크 카니(Mark Carney)의 협상 중단으로 결렬되었습니다. 이에 따",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/world/canada/trump-tariffs-trade-no-deal-carney-canada.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미국 관세 부과에 캐나다 '동일 규모' 맞대응 예고",
+          "gist": "미국이 일부 품목에 50%의 관세를 부과하자 캐나다가 동일한 수준으로 대응하겠다고 밝혔습니다. 양국은 철강, 알루미늄, 자동차 관세 인하 합의에",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/world/2026/aug/22/canada-tariffs-trump-trade-deal-talks-fail"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미얀마 사원 공습으로 노인 등 14명 사망",
+          "gist": "금요일 오전 미얀마 사가잉 지역의 한 사원에 군부의 공습이 발생해 노인 14명이 숨졌습니다. 당시 현장에는 불교 사순절(Buddhist Lent",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/cqlxlvz01z1o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "영국 역사학자 두 명이 만든 인기 팟캐스트의 성공 비결",
+          "gist": "아즈텍 제국의 멸망부터 프랑스 혁명, 링컨 암살 사건, 그리고 역사 속의 원숭이들에 이르기까지 다양한 주제를 다룬 영국 역사학자들의 팟캐스트가 ",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/world/europe/rest-is-history-podcast-sandbrook-holland.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "카니 캐나다 총리, 미국 무역 제안 비판 및 보복 예고",
+          "gist": "마크 카니 캐나다 총리가 미국의 징벌적 관세 부과에 대응해 미국과의 무역 협상 중단을 명령하고, 국민들을 대상으로 강력한 비판 연설을 진행했습니",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/world/canada/carney-tariffs-trade-trump.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이란, 일부 이라크 유조선의 호르무즈 해협 통과 허용",
+          "gist": "이란이 바그다드의 거듭된 요청을 받아들여 일부 이라크 유조선의 호르무즈 해협 통과를 허용했습니다. 이라크는 지역 전쟁에 휘말리지 않겠다는 의지를",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/news/2026/8/22/iran-grants-permission-for-some-iraqi-oil-tankers-to-pass-through-hormuz?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "수단 코르도판 지역 내 실향민 20만 명 돌파",
+          "gist": "수단 코르도판 지역에서 격화된 교전으로 인해 지난해 말부터 최소 20만 명 이상의 새로운 실향민이 발생했습니다.",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/video/newsfeed/2026/8/22/more-than-200000-newly-displaced-in-sudans-kordofan-region?traffic_source=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "미-캐나다 무역 갈등 속 트럼프에 맞선 캐나다 총리",
+          "gist": "캐나다 총리가 미국과의 불리한 무역 협상을 거부하며 맞섰습니다. 많은 캐나다 국민이 이를 지지하고 있으나, 이로 인한 경제적 비용 발생은 불가피",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/world/canada/carney-trump-canada-tariffs.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "카르텔 조력 혐의 받는 멕시코 주지사, 직무 복귀",
+          "gist": "미국 검찰로부터 시날로아 카르텔을 보호했다는 혐의를 받은 루벤 로차 모야 멕시코 주지사가 방어권 행사를 위해 물러나겠다고 했으나, 최근 다시 직",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/21/world/americas/mexico-sinaloa-governor-cartels.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "이탈리아 가족 제도의 억압성을 다룬 소설 출간",
+          "gist": "소설가 안드레아 바야니가 이탈리아 가족 관계를 심리적, 물리적 폭력이 존재하는 '작은 전체주의 체제'로 묘사한 신작 소설을 통해 가족의 억압적인",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/world/europe/italian-families-novel-anniversary-bajani.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "트럼프 특사 존 콜의 파격적인 외교 방식과 논란",
+          "gist": "존 콜(John Coale) 트럼프 특사가 보드카와 농담을 섞은 개인 맞춤형 외교 방식을 통해 성과를 내고 있다고 주장하는 가운데, 권위주의 지",
+          "source": "New York Times",
+          "link": "https://www.nytimes.com/2026/08/22/world/europe/belarus-john-coale-lukashenko-trump.html"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "후지산 등반 중 7세 아들 홀로 방치한 아버지 훈방",
+          "gist": "일본 후지산에서 48세 아버지가 피곤해하는 7세 아들을 간식과 음료만 준 채 벤치에 홀로 남겨두고 등반을 계속했다가 경찰의 질책을 받았습니다. ",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c93403wg288o?at_medium=RSS&at_campaign=rss"
+        },
+        {
+          "date": "2026-08-23",
+          "title": "자녀 살해 혐의 매사추세츠 어머니, 산후 정신병으로 인한 환청 주장",
+          "gist": "세 자녀를 살해한 혐의로 재판을 받는 런던의 린지 클랜시(Lindsay Clancy) 측 변호인이 그녀가 범행 당시 산후 정신병(postpart",
+          "source": "BBC News",
+          "link": "https://www.bbc.co.uk/news/articles/c62xpre63j2o?at_medium=RSS&at_campaign=rss"
         }
       ]
     }
   },
-  "compacted_at": "2026-11-21T03:47:21.721208"
+  "compacted_at": "2026-11-22T04:17:41.608003"
 }
