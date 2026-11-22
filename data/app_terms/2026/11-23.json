@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-23",
+  "terms": [
+    {
+      "term": "Blue plaque",
+      "reading": "블루 플라크",
+      "meaning": "영국에서 역사적 인물이나 사건과 연관된 건물임을 알리기 위해 벽에 부착하는 파란색 표지판을 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "블루 플라크",
+      "url": "https://ko.wikipedia.org/wiki/블루_플라크",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-23",
+      "via": "news_terms"
+    },
+    {
+      "term": "조세 회피처",
+      "reading": "",
+      "meaning": "세율이 낮거나 세금을 거의 부과하지 않아 자금과 기업이 몰리는 나라나 지역을 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "조세 피난처",
+      "url": "https://ko.wikipedia.org/wiki/조세_피난처",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-23",
+      "via": "news_terms"
+    },
+    {
+      "term": "소프라노",
+      "reading": "",
+      "meaning": "서양 성악에서 여성 목소리 중 가장 높은 음역을 가진 성부, 또는 그 음역으로 노래하는 가수를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "소프라노",
+      "url": "https://ko.wikipedia.org/wiki/소프라노",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-23",
+      "via": "raw"
+    },
+    {
+      "term": "메트로놈",
+      "reading": "",
+      "meaning": "일정한 간격으로 소리를 내어 연주할 때 빠르기를 일정하게 유지하도록 도와 주는 기구를 말한다.",
+      "category": "culture",
+      "categoryName": "문화",
+      "wikiTitle": "메트로놈",
+      "url": "https://ko.wikipedia.org/wiki/메트로놈",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-23",
+      "via": "raw"
+    },
+    {
+      "term": "조혈모세포이식",
+      "reading": "",
+      "meaning": "혈액 세포를 만드는 조혈모세포를 환자의 몸에 옮겨 심어 백혈병 같은 혈액 질환을 치료하는 의료 시술을 말한다.",
+      "category": "science",
+      "categoryName": "과학",
+      "wikiTitle": "조혈모세포 이식",
+      "url": "https://ko.wikipedia.org/wiki/조혈모세포_이식",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-23",
+      "via": "raw"
+    }
+  ],
+  "runs": [
+    {
+      "at": "2026-11-23T04:38:39+09:00",
+      "added": 5,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    }
+  ]
+}
