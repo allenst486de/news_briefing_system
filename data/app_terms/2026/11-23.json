@@ -60,12 +60,56 @@
       "model": "z-ai/glm-5.3-flash",
       "date": "2026-11-23",
       "via": "raw"
+    },
+    {
+      "term": "신임장",
+      "reading": "",
+      "meaning": "외교 사절이 파견국 국가 원수로부터 임명되었음을 증명하여 접수국 국가 원수에게 제출하는 공식 문서를 말한다.",
+      "category": "politics",
+      "categoryName": "정치",
+      "wikiTitle": "신임장",
+      "url": "https://ko.wikipedia.org/wiki/신임장",
+      "model": "google/gemma-4-31b-it",
+      "date": "2026-11-23",
+      "via": "news_terms"
+    },
+    {
+      "term": "소버린 AI",
+      "reading": "",
+      "meaning": "한 나라가 외국 기술에 의존하지 않고 자국의 인프라, 데이터, 인재를 바탕으로 인공지능을 자체적으로 개발하고 통제하려는 개념을 말한다.",
+      "category": "it",
+      "categoryName": "IT",
+      "wikiTitle": "소버린 AI",
+      "url": "https://ko.wikipedia.org/wiki/소버린_AI",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-23",
+      "via": "raw"
+    },
+    {
+      "term": "공매도",
+      "reading": "",
+      "meaning": "주가 하락을 예상해 빌린 주식을 먼저 팔고, 값이 내리면 되사서 갚아 차익을 얻는 거래를 말한다.",
+      "category": "economy",
+      "categoryName": "경제",
+      "wikiTitle": "공매도",
+      "url": "https://ko.wikipedia.org/wiki/공매도",
+      "model": "z-ai/glm-5.3-flash",
+      "date": "2026-11-23",
+      "via": "raw"
     }
   ],
   "runs": [
     {
       "at": "2026-11-23T04:38:39+09:00",
       "added": 5,
+      "via": [
+        "news_terms",
+        "raw"
+      ]
+    },
+    {
+      "at": "2026-11-23T05:45:09+09:00",
+      "added": 3,
       "via": [
         "news_terms",
         "raw"
